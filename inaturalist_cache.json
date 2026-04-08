@@ -1,0 +1,1426 @@
+{
+  "mammoth-cave-national-park:10": {
+    "total_observations": 13234,
+    "total_species": 1623,
+    "taxa_counts": [
+      {
+        "label": "Plants",
+        "count": 629
+      },
+      {
+        "label": "Birds",
+        "count": 106
+      },
+      {
+        "label": "Insects",
+        "count": 546
+      },
+      {
+        "label": "Mammals",
+        "count": 22
+      },
+      {
+        "label": "Fungi",
+        "count": 137
+      },
+      {
+        "label": "Reptiles",
+        "count": 26
+      },
+      {
+        "label": "Amphibians",
+        "count": 25
+      },
+      {
+        "label": "Arachnids",
+        "count": 60
+      }
+    ],
+    "top_species": [
+      {
+        "name": "White-tailed Deer",
+        "scientific": "Odocoileus virginianus",
+        "count": 216,
+        "id": 42223
+      },
+      {
+        "name": "woodland stonecrop",
+        "scientific": "Sedum ternatum",
+        "count": 183,
+        "id": 127597
+      },
+      {
+        "name": "Christmas fern",
+        "scientific": "Polystichum acrostichoides",
+        "count": 161,
+        "id": 54412
+      },
+      {
+        "name": "Virginia saxifrage",
+        "scientific": "Micranthes virginiensis",
+        "count": 157,
+        "id": 204176
+      },
+      {
+        "name": "northern maidenhair fern",
+        "scientific": "Adiantum pedatum",
+        "count": 152,
+        "id": 48435
+      }
+    ]
+  },
+  "sea-rim-state-park:5": {
+    "total_observations": 5254,
+    "total_species": 571,
+    "taxa_counts": [
+      {
+        "label": "Plants",
+        "count": 158
+      },
+      {
+        "label": "Birds",
+        "count": 216
+      },
+      {
+        "label": "Insects",
+        "count": 128
+      },
+      {
+        "label": "Mammals",
+        "count": 12
+      },
+      {
+        "label": "Fungi",
+        "count": 9
+      },
+      {
+        "label": "Reptiles",
+        "count": 16
+      },
+      {
+        "label": "Amphibians",
+        "count": 8
+      },
+      {
+        "label": "Arachnids",
+        "count": 13
+      }
+    ],
+    "top_species": [
+      {
+        "name": "Summer Tanager",
+        "scientific": "Piranga rubra",
+        "count": 148,
+        "id": 9915
+      },
+      {
+        "name": "Hooded Warbler",
+        "scientific": "Setophaga citrina",
+        "count": 109,
+        "id": 145229
+      },
+      {
+        "name": "Scarlet Tanager",
+        "scientific": "Piranga olivacea",
+        "count": 103,
+        "id": 9921
+      },
+      {
+        "name": "Orchard Oriole",
+        "scientific": "Icterus spurius",
+        "count": 96,
+        "id": 9325
+      },
+      {
+        "name": "American Alligator",
+        "scientific": "Alligator mississippiensis",
+        "count": 87,
+        "id": 26159
+      }
+    ]
+  },
+  "caprock-canyon:8": {
+    "total_observations": 35,
+    "total_species": 28,
+    "taxa_counts": [
+      {
+        "label": "Plants",
+        "count": 17
+      },
+      {
+        "label": "Birds",
+        "count": 6
+      },
+      {
+        "label": "Insects",
+        "count": 1
+      },
+      {
+        "label": "Reptiles",
+        "count": 3
+      },
+      {
+        "label": "Amphibians",
+        "count": 1
+      }
+    ],
+    "top_species": [
+      {
+        "name": "Texas Horned Lizard",
+        "scientific": "Phrynosoma cornutum",
+        "count": 4,
+        "id": 73905
+      },
+      {
+        "name": "Western Massasauga",
+        "scientific": "Sistrurus tergeminus",
+        "count": 3,
+        "id": 520470
+      },
+      {
+        "name": "Antelopehorn Milkweed",
+        "scientific": "Asclepias asperula",
+        "count": 2,
+        "id": 62298
+      },
+      {
+        "name": "Missouri Milkvetch",
+        "scientific": "Astragalus missouriensis",
+        "count": 2,
+        "id": 158940
+      },
+      {
+        "name": "American Kestrel",
+        "scientific": "Falco sparverius",
+        "count": 1,
+        "id": 4665
+      }
+    ]
+  },
+  "palo-duro-canyon:8": {
+    "total_observations": 8903,
+    "total_species": 862,
+    "taxa_counts": [
+      {
+        "label": "Plants",
+        "count": 308
+      },
+      {
+        "label": "Birds",
+        "count": 97
+      },
+      {
+        "label": "Insects",
+        "count": 353
+      },
+      {
+        "label": "Mammals",
+        "count": 23
+      },
+      {
+        "label": "Fungi",
+        "count": 8
+      },
+      {
+        "label": "Reptiles",
+        "count": 31
+      },
+      {
+        "label": "Amphibians",
+        "count": 7
+      },
+      {
+        "label": "Arachnids",
+        "count": 25
+      }
+    ],
+    "top_species": [
+      {
+        "name": "Eastern Collared Lizard",
+        "scientific": "Crotaphytus collaris",
+        "count": 317,
+        "id": 33135
+      },
+      {
+        "name": "Wild Turkey",
+        "scientific": "Meleagris gallopavo",
+        "count": 262,
+        "id": 906
+      },
+      {
+        "name": "Christmas cholla",
+        "scientific": "Cylindropuntia leptocaulis",
+        "count": 254,
+        "id": 202757
+      },
+      {
+        "name": "Greater Roadrunner",
+        "scientific": "Geococcyx californianus",
+        "count": 200,
+        "id": 1986
+      },
+      {
+        "name": "Tahoka daisy",
+        "scientific": "Machaeranthera tanacetifolia",
+        "count": 195,
+        "id": 77920
+      }
+    ]
+  },
+  "johnsons-shut-ins-state-park:5": {
+    "total_observations": 1711,
+    "total_species": 697,
+    "taxa_counts": [
+      {
+        "label": "Plants",
+        "count": 297
+      },
+      {
+        "label": "Birds",
+        "count": 57
+      },
+      {
+        "label": "Insects",
+        "count": 212
+      },
+      {
+        "label": "Mammals",
+        "count": 7
+      },
+      {
+        "label": "Fungi",
+        "count": 47
+      },
+      {
+        "label": "Reptiles",
+        "count": 24
+      },
+      {
+        "label": "Amphibians",
+        "count": 10
+      },
+      {
+        "label": "Arachnids",
+        "count": 20
+      }
+    ],
+    "top_species": [
+      {
+        "name": "Prairie Lizard",
+        "scientific": "Sceloporus consobrinus",
+        "count": 41,
+        "id": 146413
+      },
+      {
+        "name": "fire pink",
+        "scientific": "Silene virginica",
+        "count": 27,
+        "id": 57291
+      },
+      {
+        "name": "woodland stonecrop",
+        "scientific": "Sedum ternatum",
+        "count": 20,
+        "id": 127597
+      },
+      {
+        "name": "Common Watersnake",
+        "scientific": "Nerodia sipedon",
+        "count": 19,
+        "id": 29305
+      },
+      {
+        "name": "Blanchard's Cricket Frog",
+        "scientific": "Acris blanchardi",
+        "count": 18,
+        "id": 70421
+      }
+    ]
+  },
+  "elephant-rocks-state-park:5": {
+    "total_observations": 646,
+    "total_species": 263,
+    "taxa_counts": [
+      {
+        "label": "Plants",
+        "count": 127
+      },
+      {
+        "label": "Birds",
+        "count": 20
+      },
+      {
+        "label": "Insects",
+        "count": 59
+      },
+      {
+        "label": "Mammals",
+        "count": 4
+      },
+      {
+        "label": "Fungi",
+        "count": 23
+      },
+      {
+        "label": "Reptiles",
+        "count": 18
+      },
+      {
+        "label": "Amphibians",
+        "count": 4
+      },
+      {
+        "label": "Arachnids",
+        "count": 7
+      }
+    ],
+    "top_species": [
+      {
+        "name": "Prairie Lizard",
+        "scientific": "Sceloporus consobrinus",
+        "count": 46,
+        "id": 146413
+      },
+      {
+        "name": "blackjack oak",
+        "scientific": "Quercus marilandica",
+        "count": 38,
+        "id": 82329
+      },
+      {
+        "name": "shining sumac",
+        "scientific": "Rhus copallinum",
+        "count": 19,
+        "id": 126698
+      },
+      {
+        "name": "Six-lined Racerunner",
+        "scientific": "Aspidoscelis sexlineatus",
+        "count": 13,
+        "id": 717858
+      },
+      {
+        "name": "fragrant sumac",
+        "scientific": "Rhus aromatica",
+        "count": 12,
+        "id": 58738
+      }
+    ]
+  },
+  "charons-garden-wilderness-area:8": {
+    "total_observations": 13832,
+    "total_species": 1259,
+    "taxa_counts": [
+      {
+        "label": "Plants",
+        "count": 388
+      },
+      {
+        "label": "Birds",
+        "count": 167
+      },
+      {
+        "label": "Insects",
+        "count": 552
+      },
+      {
+        "label": "Mammals",
+        "count": 22
+      },
+      {
+        "label": "Fungi",
+        "count": 27
+      },
+      {
+        "label": "Reptiles",
+        "count": 38
+      },
+      {
+        "label": "Amphibians",
+        "count": 10
+      },
+      {
+        "label": "Arachnids",
+        "count": 34
+      }
+    ],
+    "top_species": [
+      {
+        "name": "Eastern Collared Lizard",
+        "scientific": "Crotaphytus collaris",
+        "count": 845,
+        "id": 33135
+      },
+      {
+        "name": "American Bison",
+        "scientific": "Bison bison",
+        "count": 557,
+        "id": 42408
+      },
+      {
+        "name": "lace hedgehog cactus",
+        "scientific": "Echinocereus reichenbachii",
+        "count": 556,
+        "id": 162187
+      },
+      {
+        "name": "Black-tailed Prairie Dog",
+        "scientific": "Cynomys ludovicianus",
+        "count": 322,
+        "id": 46179
+      },
+      {
+        "name": "Prairie Lizard",
+        "scientific": "Sceloporus consobrinus",
+        "count": 268,
+        "id": 146413
+      }
+    ]
+  },
+  "wichita-mountains-national-wildlife-refuge:10": {
+    "total_observations": 15460,
+    "total_species": 1334,
+    "taxa_counts": [
+      {
+        "label": "Birds",
+        "count": 170
+      },
+      {
+        "label": "Mammals",
+        "count": 22
+      },
+      {
+        "label": "Reptiles",
+        "count": 38
+      },
+      {
+        "label": "Amphibians",
+        "count": 10
+      }
+    ],
+    "top_species": [
+      {
+        "name": "Eastern Collared Lizard",
+        "scientific": "Crotaphytus collaris",
+        "count": 921,
+        "id": 33135
+      },
+      {
+        "name": "American Bison",
+        "scientific": "Bison bison",
+        "count": 653,
+        "id": 42408
+      },
+      {
+        "name": "lace hedgehog cactus",
+        "scientific": "Echinocereus reichenbachii",
+        "count": 592,
+        "id": 162187
+      },
+      {
+        "name": "Black-tailed Prairie Dog",
+        "scientific": "Cynomys ludovicianus",
+        "count": 491,
+        "id": 46179
+      },
+      {
+        "name": "Prairie Lizard",
+        "scientific": "Sceloporus consobrinus",
+        "count": 288,
+        "id": 146413
+      }
+    ]
+  },
+  "john-bryan-state-park:5": {
+    "total_observations": 10628,
+    "total_species": 0,
+    "taxa_counts": [
+      {
+        "label": "Plants",
+        "count": 498
+      },
+      {
+        "label": "Birds",
+        "count": 101
+      },
+      {
+        "label": "Insects",
+        "count": 645
+      },
+      {
+        "label": "Mammals",
+        "count": 19
+      },
+      {
+        "label": "Reptiles",
+        "count": 14
+      },
+      {
+        "label": "Amphibians",
+        "count": 11
+      }
+    ],
+    "top_species": []
+  },
+  "hocking-hills:8": {
+    "total_observations": 18444,
+    "total_species": 0,
+    "taxa_counts": [
+      {
+        "label": "Plants",
+        "count": 649
+      },
+      {
+        "label": "Insects",
+        "count": 1582
+      },
+      {
+        "label": "Fungi",
+        "count": 428
+      },
+      {
+        "label": "Amphibians",
+        "count": 23
+      }
+    ],
+    "top_species": []
+  },
+  "arc-of-appalachia:8": {
+    "total_observations": 4758,
+    "total_species": 0,
+    "taxa_counts": [
+      {
+        "label": "Plants",
+        "count": 443
+      },
+      {
+        "label": "Insects",
+        "count": 462
+      },
+      {
+        "label": "Fungi",
+        "count": 74
+      },
+      {
+        "label": "Amphibians",
+        "count": 15
+      }
+    ],
+    "top_species": []
+  },
+  "mount-airy-forest:5": {
+    "total_observations": 17942,
+    "total_species": 0,
+    "taxa_counts": [
+      {
+        "label": "Plants",
+        "count": 693
+      },
+      {
+        "label": "Insects",
+        "count": 1506
+      },
+      {
+        "label": "Mammals",
+        "count": 19
+      },
+      {
+        "label": "Reptiles",
+        "count": 18
+      },
+      {
+        "label": "Arachnids",
+        "count": 104
+      }
+    ],
+    "top_species": []
+  },
+  "clifton-gorge-state-nature-preserve:5": {
+    "total_observations": 0,
+    "total_species": 1652,
+    "taxa_counts": [
+      {
+        "label": "Birds",
+        "count": 108
+      },
+      {
+        "label": "Mammals",
+        "count": 19
+      },
+      {
+        "label": "Reptiles",
+        "count": 14
+      },
+      {
+        "label": "Arachnids",
+        "count": 81
+      }
+    ],
+    "top_species": [
+      {
+        "name": "sharp-lobed hepatica",
+        "scientific": "Hepatica acutiloba",
+        "count": 236,
+        "id": 179786
+      },
+      {
+        "name": "Dutchman's breeches",
+        "scientific": "Dicentra cucullaria",
+        "count": 150,
+        "id": 51053
+      },
+      {
+        "name": "woodland stonecrop",
+        "scientific": "Sedum ternatum",
+        "count": 150,
+        "id": 127597
+      },
+      {
+        "name": "Virginia bluebells",
+        "scientific": "Mertensia virginica",
+        "count": 138,
+        "id": 59771
+      },
+      {
+        "name": "large white trillium",
+        "scientific": "Trillium grandiflorum",
+        "count": 126,
+        "id": 55402
+      }
+    ]
+  },
+  "glen-helen-nature-preserve:5": {
+    "total_observations": 0,
+    "total_species": 1844,
+    "taxa_counts": [
+      {
+        "label": "Plants",
+        "count": 565
+      },
+      {
+        "label": "Insects",
+        "count": 754
+      },
+      {
+        "label": "Mammals",
+        "count": 22
+      },
+      {
+        "label": "Fungi",
+        "count": 178
+      },
+      {
+        "label": "Reptiles",
+        "count": 13
+      },
+      {
+        "label": "Amphibians",
+        "count": 12
+      }
+    ],
+    "top_species": [
+      {
+        "name": "sharp-lobed hepatica",
+        "scientific": "Hepatica acutiloba",
+        "count": 216,
+        "id": 179786
+      },
+      {
+        "name": "woodland stonecrop",
+        "scientific": "Sedum ternatum",
+        "count": 149,
+        "id": 127597
+      },
+      {
+        "name": "Dutchman's breeches",
+        "scientific": "Dicentra cucullaria",
+        "count": 144,
+        "id": 51053
+      },
+      {
+        "name": "Virginia bluebells",
+        "scientific": "Mertensia virginica",
+        "count": 133,
+        "id": 59771
+      },
+      {
+        "name": "large white trillium",
+        "scientific": "Trillium grandiflorum",
+        "count": 122,
+        "id": 55402
+      }
+    ]
+  },
+  "otto-armleder-memorial-park:5": {
+    "total_observations": 23982,
+    "total_species": 2438,
+    "taxa_counts": [
+      {
+        "label": "Plants",
+        "count": 738
+      },
+      {
+        "label": "Insects",
+        "count": 990
+      },
+      {
+        "label": "Mammals",
+        "count": 21
+      },
+      {
+        "label": "Reptiles",
+        "count": 18
+      },
+      {
+        "label": "Arachnids",
+        "count": 101
+      }
+    ],
+    "top_species": [
+      {
+        "name": "American Rubyspot",
+        "scientific": "Hetaerina americana",
+        "count": 231,
+        "id": 51761
+      },
+      {
+        "name": "toadshade",
+        "scientific": "Trillium sessile",
+        "count": 212,
+        "id": 116339
+      },
+      {
+        "name": "Blue-fronted Dancer",
+        "scientific": "Argia apicalis",
+        "count": 185,
+        "id": 47975
+      },
+      {
+        "name": "Elusive Clubtail",
+        "scientific": "Stylurus notatus",
+        "count": 176,
+        "id": 113404
+      },
+      {
+        "name": "Virginia Springbeauty",
+        "scientific": "Claytonia virginica",
+        "count": 175,
+        "id": 117434
+      }
+    ]
+  },
+  "bender-mountain-nature-preserve:5": {
+    "total_observations": 0,
+    "total_species": 1540,
+    "taxa_counts": [
+      {
+        "label": "Birds",
+        "count": 112
+      },
+      {
+        "label": "Mammals",
+        "count": 16
+      },
+      {
+        "label": "Reptiles",
+        "count": 15
+      },
+      {
+        "label": "Arachnids",
+        "count": 64
+      }
+    ],
+    "top_species": [
+      {
+        "name": "dwarf larkspur",
+        "scientific": "Delphinium tricorne",
+        "count": 139,
+        "id": 81800
+      },
+      {
+        "name": "Virginia bluebells",
+        "scientific": "Mertensia virginica",
+        "count": 94,
+        "id": 59771
+      },
+      {
+        "name": "spring blue-eyed Mary",
+        "scientific": "Collinsia verna",
+        "count": 92,
+        "id": 116349
+      },
+      {
+        "name": "toadshade",
+        "scientific": "Trillium sessile",
+        "count": 85,
+        "id": 116339
+      },
+      {
+        "name": "Virginia Springbeauty",
+        "scientific": "Claytonia virginica",
+        "count": 77,
+        "id": 117434
+      }
+    ]
+  },
+  "big-south-fork-national-river-and-recreation-area:10": {
+    "total_observations": 7986,
+    "total_species": 1761,
+    "taxa_counts": [
+      {
+        "label": "Plants",
+        "count": 644
+      },
+      {
+        "label": "Birds",
+        "count": 89
+      },
+      {
+        "label": "Insects",
+        "count": 661
+      },
+      {
+        "label": "Mammals",
+        "count": 18
+      },
+      {
+        "label": "Fungi",
+        "count": 154
+      },
+      {
+        "label": "Reptiles",
+        "count": 27
+      },
+      {
+        "label": "Amphibians",
+        "count": 21
+      },
+      {
+        "label": "Arachnids",
+        "count": 68
+      }
+    ],
+    "top_species": [
+      {
+        "name": "mountain laurel",
+        "scientific": "Kalmia latifolia",
+        "count": 74,
+        "id": 49397
+      },
+      {
+        "name": "downy rattlesnake plantain",
+        "scientific": "Goodyera pubescens",
+        "count": 69,
+        "id": 62406
+      },
+      {
+        "name": "Hartford fern",
+        "scientific": "Lygodium palmatum",
+        "count": 67,
+        "id": 82571
+      },
+      {
+        "name": "box huckleberry",
+        "scientific": "Gaylussacia brachycera",
+        "count": 66,
+        "id": 118771
+      },
+      {
+        "name": "bigleaf magnolia",
+        "scientific": "Magnolia macrophylla",
+        "count": 64,
+        "id": 165075
+      }
+    ]
+  },
+  "parker-woods:5": {
+    "total_observations": 36105,
+    "total_species": 3414,
+    "taxa_counts": [
+      {
+        "label": "Plants",
+        "count": 855
+      },
+      {
+        "label": "Birds",
+        "count": 170
+      },
+      {
+        "label": "Insects",
+        "count": 1838
+      },
+      {
+        "label": "Mammals",
+        "count": 22
+      },
+      {
+        "label": "Fungi",
+        "count": 249
+      },
+      {
+        "label": "Reptiles",
+        "count": 18
+      },
+      {
+        "label": "Amphibians",
+        "count": 13
+      },
+      {
+        "label": "Arachnids",
+        "count": 129
+      }
+    ],
+    "top_species": [
+      {
+        "name": "Brown-belted Bumble Bee",
+        "scientific": "Bombus griseocollis",
+        "count": 1404,
+        "id": 120215
+      },
+      {
+        "name": "Eastern Carpenter Bee",
+        "scientific": "Xylocopa virginica",
+        "count": 823,
+        "id": 51110
+      },
+      {
+        "name": "Common Eastern Bumble Bee",
+        "scientific": "Bombus impatiens",
+        "count": 781,
+        "id": 118970
+      },
+      {
+        "name": "Western Honey Bee",
+        "scientific": "Apis mellifera",
+        "count": 632,
+        "id": 47219
+      },
+      {
+        "name": "Spotted Lanternfly",
+        "scientific": "Lycorma delicatula",
+        "count": 331,
+        "id": 324726
+      }
+    ]
+  },
+  "french-park:5": {
+    "total_observations": 11180,
+    "total_species": 1853,
+    "taxa_counts": [
+      {
+        "label": "Plants",
+        "count": 618
+      },
+      {
+        "label": "Birds",
+        "count": 132
+      },
+      {
+        "label": "Insects",
+        "count": 758
+      },
+      {
+        "label": "Mammals",
+        "count": 16
+      },
+      {
+        "label": "Fungi",
+        "count": 132
+      },
+      {
+        "label": "Reptiles",
+        "count": 14
+      },
+      {
+        "label": "Amphibians",
+        "count": 16
+      },
+      {
+        "label": "Arachnids",
+        "count": 98
+      }
+    ],
+    "top_species": [
+      {
+        "name": "Virginia Springbeauty",
+        "scientific": "Claytonia virginica",
+        "count": 121,
+        "id": 117434
+      },
+      {
+        "name": "Monarch",
+        "scientific": "Danaus plexippus",
+        "count": 101,
+        "id": 48662
+      },
+      {
+        "name": "tree-of-heaven",
+        "scientific": "Ailanthus altissima",
+        "count": 101,
+        "id": 57278
+      },
+      {
+        "name": "lesser celandine",
+        "scientific": "Ficaria verna",
+        "count": 100,
+        "id": 204321
+      },
+      {
+        "name": "cut-leaved toothwort",
+        "scientific": "Cardamine concatenata",
+        "count": 92,
+        "id": 60438
+      }
+    ]
+  },
+  "clifty-falls-state-park:5": {
+    "total_observations": 4581,
+    "total_species": 1060,
+    "taxa_counts": [
+      {
+        "label": "Plants",
+        "count": 388
+      },
+      {
+        "label": "Birds",
+        "count": 79
+      },
+      {
+        "label": "Insects",
+        "count": 281
+      },
+      {
+        "label": "Mammals",
+        "count": 13
+      },
+      {
+        "label": "Fungi",
+        "count": 186
+      },
+      {
+        "label": "Reptiles",
+        "count": 19
+      },
+      {
+        "label": "Amphibians",
+        "count": 22
+      },
+      {
+        "label": "Arachnids",
+        "count": 38
+      }
+    ],
+    "top_species": [
+      {
+        "name": "Eastern Red-backed Salamander",
+        "scientific": "Plethodon cinereus",
+        "count": 96,
+        "id": 27186
+      },
+      {
+        "name": "Marbled Salamander",
+        "scientific": "Ambystoma opacum",
+        "count": 88,
+        "id": 26736
+      },
+      {
+        "name": "Northern Dusky Salamander",
+        "scientific": "Desmognathus fuscus",
+        "count": 85,
+        "id": 27420
+      },
+      {
+        "name": "dwarf larkspur",
+        "scientific": "Delphinium tricorne",
+        "count": 64,
+        "id": 81800
+      },
+      {
+        "name": "Southern Two-lined Salamander",
+        "scientific": "Eurycea cirrigera",
+        "count": 60,
+        "id": 27093
+      }
+    ]
+  },
+  "fernald-preserve:5": {
+    "total_observations": 21905,
+    "total_species": 2097,
+    "taxa_counts": [
+      {
+        "label": "Plants",
+        "count": 670
+      },
+      {
+        "label": "Birds",
+        "count": 231
+      },
+      {
+        "label": "Insects",
+        "count": 937
+      },
+      {
+        "label": "Mammals",
+        "count": 24
+      },
+      {
+        "label": "Fungi",
+        "count": 58
+      },
+      {
+        "label": "Reptiles",
+        "count": 13
+      },
+      {
+        "label": "Amphibians",
+        "count": 16
+      },
+      {
+        "label": "Arachnids",
+        "count": 77
+      }
+    ],
+    "top_species": [
+      {
+        "name": "wild bergamot",
+        "scientific": "Monarda fistulosa",
+        "count": 234,
+        "id": 85320
+      },
+      {
+        "name": "Eastern Pondhawk",
+        "scientific": "Erythemis simplicicollis",
+        "count": 232,
+        "id": 61495
+      },
+      {
+        "name": "Widow Skimmer",
+        "scientific": "Libellula luctuosa",
+        "count": 198,
+        "id": 47934
+      },
+      {
+        "name": "Ring-necked Duck",
+        "scientific": "Aythya collaris",
+        "count": 197,
+        "id": 7044
+      },
+      {
+        "name": "Mute Swan",
+        "scientific": "Cygnus olor",
+        "count": 195,
+        "id": 6921
+      }
+    ]
+  },
+  "shawnee-lookout:8": {
+    "total_observations": 8664,
+    "total_species": 1753,
+    "taxa_counts": [
+      {
+        "label": "Plants",
+        "count": 478
+      },
+      {
+        "label": "Birds",
+        "count": 192
+      },
+      {
+        "label": "Insects",
+        "count": 759
+      },
+      {
+        "label": "Mammals",
+        "count": 22
+      },
+      {
+        "label": "Fungi",
+        "count": 86
+      },
+      {
+        "label": "Reptiles",
+        "count": 21
+      },
+      {
+        "label": "Amphibians",
+        "count": 18
+      },
+      {
+        "label": "Arachnids",
+        "count": 95
+      }
+    ],
+    "top_species": [
+      {
+        "name": "common pawpaw",
+        "scientific": "Asimina triloba",
+        "count": 84,
+        "id": 50897
+      },
+      {
+        "name": "dwarf larkspur",
+        "scientific": "Delphinium tricorne",
+        "count": 84,
+        "id": 81800
+      },
+      {
+        "name": "Miami Mist",
+        "scientific": "Phacelia purshii",
+        "count": 70,
+        "id": 166605
+      },
+      {
+        "name": "mayapple",
+        "scientific": "Podophyllum peltatum",
+        "count": 64,
+        "id": 49288
+      },
+      {
+        "name": "toadshade",
+        "scientific": "Trillium sessile",
+        "count": 63,
+        "id": 116339
+      }
+    ]
+  },
+  "caesar-creek-state-park:8": {
+    "total_observations": 14379,
+    "total_species": 1882,
+    "taxa_counts": [
+      {
+        "label": "Plants",
+        "count": 611
+      },
+      {
+        "label": "Birds",
+        "count": 203
+      },
+      {
+        "label": "Insects",
+        "count": 653
+      },
+      {
+        "label": "Mammals",
+        "count": 19
+      },
+      {
+        "label": "Fungi",
+        "count": 203
+      },
+      {
+        "label": "Reptiles",
+        "count": 17
+      },
+      {
+        "label": "Amphibians",
+        "count": 18
+      },
+      {
+        "label": "Arachnids",
+        "count": 74
+      }
+    ],
+    "top_species": [
+      {
+        "name": "Eastern Forktail",
+        "scientific": "Ischnura verticalis",
+        "count": 273,
+        "id": 84722
+      },
+      {
+        "name": "Eastern Pondhawk",
+        "scientific": "Erythemis simplicicollis",
+        "count": 265,
+        "id": 61495
+      },
+      {
+        "name": "Fragile Forktail",
+        "scientific": "Ischnura posita",
+        "count": 212,
+        "id": 103498
+      },
+      {
+        "name": "Blue Dasher",
+        "scientific": "Pachydiplax longipennis",
+        "count": 206,
+        "id": 59774
+      },
+      {
+        "name": "Widow Skimmer",
+        "scientific": "Libellula luctuosa",
+        "count": 161,
+        "id": 47934
+      }
+    ]
+  },
+  "caesar-creek:8": {
+    "total_observations": 14379,
+    "total_species": 1882,
+    "taxa_counts": [
+      {
+        "label": "Plants",
+        "count": 611
+      },
+      {
+        "label": "Birds",
+        "count": 203
+      },
+      {
+        "label": "Insects",
+        "count": 653
+      },
+      {
+        "label": "Mammals",
+        "count": 19
+      },
+      {
+        "label": "Fungi",
+        "count": 203
+      },
+      {
+        "label": "Reptiles",
+        "count": 17
+      },
+      {
+        "label": "Amphibians",
+        "count": 18
+      },
+      {
+        "label": "Arachnids",
+        "count": 74
+      }
+    ],
+    "top_species": [
+      {
+        "name": "Eastern Forktail",
+        "scientific": "Ischnura verticalis",
+        "count": 273,
+        "id": 84722
+      },
+      {
+        "name": "Eastern Pondhawk",
+        "scientific": "Erythemis simplicicollis",
+        "count": 265,
+        "id": 61495
+      },
+      {
+        "name": "Fragile Forktail",
+        "scientific": "Ischnura posita",
+        "count": 212,
+        "id": 103498
+      },
+      {
+        "name": "Blue Dasher",
+        "scientific": "Pachydiplax longipennis",
+        "count": 206,
+        "id": 59774
+      },
+      {
+        "name": "Widow Skimmer",
+        "scientific": "Libellula luctuosa",
+        "count": 161,
+        "id": 47934
+      }
+    ]
+  }
+}

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Shawnee Lookout — Public Lands Institute</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://publiclandsinstitute.net/sites/shawnee-lookout.html" rel="canonical"/>
+<link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<style>
+  :root {
+    --bg: #f5f5f5;
+    --fg: #111111;
+    --muted: #777777;
+    --border: #dddddd;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+  }
+  a { color: inherit; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .page {
+    max-width: 1120px;
+    margin: 24px auto 56px auto;
+    padding: 0 18px;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 28px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .logotype {
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .header-nav {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+    display: flex;
+    gap: 16px;
+  }
+  .divider { border-bottom: 1px solid var(--border); margin: 0 0 28px 0; }
+  footer {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  @media (min-width: 720px) {
+    .page { margin-top: 40px; padding: 0 24px; }
+    header { margin-bottom: 40px; }
+  }
+  .site-header { margin-bottom: 24px; }
+  .site-header h1 {
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    margin-bottom: 2px;
+  }
+  .site-header .state {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+  }
+  .site-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .site-data {
+    display: grid;
+    grid-template-columns: 148px 1fr;
+    font-size: 11px;
+    line-height: 1.55;
+    border-top: 1px solid var(--border);
+    padding-top: 8px;
+    align-items: baseline;
+    align-content: start;
+  }
+  .site-data dt {
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 10px;
+    padding: 4px 0;
+  }
+  .site-data dd {
+    color: var(--fg);
+    padding: 4px 0 4px 12px;
+    margin: 0;
+  }
+  .site-images { display: flex; flex-direction: column; gap: 14px; }
+  .site-figure { border: 1px solid var(--border); background: #e1e1e1; }
+  .site-figure img { width: 100%; height: auto; display: block; filter: grayscale(100%); }
+  .site-figure figcaption {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    padding: 6px 8px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .caption-filename {
+    color: var(--muted);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    flex-shrink: 0;
+    font-family: monospace;
+  }
+  .inat-section-label {
+    color: var(--fg) !important;
+    font-weight: 500;
+    padding-top: 12px !important;
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+  }
+  .inat-section-spacer {
+    padding-top: 12px !important;
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+  }
+  .inat-species {
+    line-height: 1.8;
+  }
+  .inat-sci {
+    color: var(--muted);
+    font-style: italic;
+  }
+  .obs-header {
+    border-top: 1px solid var(--border);
+    padding: 10px 0 4px 0;
+    margin-top: 6px;
+  }
+  .obs-header:first-child {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+  }
+  .obs-date {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    display: block;
+  }
+  .obs-notes {
+    font-size: 11px;
+    color: var(--fg);
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+  .site-nav {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  @media (min-width: 720px) {
+    .site-layout { grid-template-columns: 300px 1fr; gap: 48px; align-items: start; }
+    .site-data { position: sticky; top: 24px; }
+  }
+  @media (max-width: 480px) {
+    .site-data { grid-template-columns: 110px 1fr; }
+    .site-images { order: -1; }
+    .site-data { order: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="logotype"><a href="../index.html">Public Lands Institute</a></div>
+  <nav class="header-nav">
+    <a href="../index.html">Index</a>
+    <a href="../archive.html">Archive</a>
+  </nav>
+</header>
+<div class="divider"></div>
+<div class="site-header">
+  <h1>Shawnee Lookout</h1>
+  <div class="state">OH</div>
+</div>
+<div class="site-layout">
+  <aside>
+    <dl class="site-data">
+      <dt>Geological age</dt><dd>~450 Mya Ordovician limestone and shale</dd>
+      <dt>Epoch</dt><dd>Late Ordovician (Cincinnatian Series); Waynesville and Arnheim formations</dd>
+      <dt>Taxa</dt><dd>478 plants, 192 birds, 759 insects, 22 mammals, 86 fungi, 21 reptiles, 18 amphibians, 95 arachnids</dd>
+      <dt>Most observed</dt><dd class="inat-species">common pawpaw <span class="inat-sci">(Asimina triloba)</span><br>dwarf larkspur <span class="inat-sci">(Delphinium tricorne)</span><br>Miami Mist <span class="inat-sci">(Phacelia purshii)</span><br>mayapple <span class="inat-sci">(Podophyllum peltatum)</span><br>toadshade <span class="inat-sci">(Trillium sessile)</span></dd>
+      <dt>Native lands</dt><dd>Adena culture · Hopewell tradition · Fort Ancient culture · Shawnee (Shawanwaki) · Myaamia (Miami); site occupied continuously for approximately 14,000 years; Hopewell builders constructed the Miami Fort earthwork complex approximately 2,000 years ago -- a water management and ceremonial enclosure nearly 6 km in extent, the largest of its kind in Ohio; Fort Ancient culture succeeded Hopewell occupation; Shawnee cultural continuity with the earthwork builders documented by University of Cincinnati archaeologists; the Treaty of Fort Finney (January 31, 1786) was signed at Fort Finney, a U.S. military post erected at the mouth of the Great Miami River directly below the Miami Fort earthwork; Shawnee delegates were coerced under military threat; the broader Shawnee nation repudiated the treaty, triggering the Northwest Indian War; full cession came via Treaty of Greene Ville 1795 following Battle of Fallen Timbers 1794</dd>
+      <dt>Displacement & Tenure</dt><dd>Cession 11: Treaty of Greene Ville (1795); land acquired by Hamilton County Park District (founded 1930), later Great Parks of Hamilton County; Shawnee Lookout Golf Course operated 1979-2019 on portions of the Shawnee Lookout Archaeological District</dd>
+      <dt>Shadow History</dt><dd>The Shawnee Lookout Archaeological District was listed on the National Register of Historic Places in 1974 (NRHP #74001516), recognizing it as one of the most significant Native American hilltop sites in the eastern United States; the listing did not prevent the Hamilton County Park District from constructing the Shawnee Lookout Golf Course in 1979 directly over portions of the archaeological district, burying more than 9,000 feet of headwater streams in culverts and grading land across an active site of national significance; cart paths were laid across the earthwork landscape; the golf course operated until 2019. University of Cincinnati archaeologist Ken Tankersley's fieldwork in 2008-2009 revealed via LiDAR survey that the Miami Fort earthwork complex is approximately twice the size recorded by the standard 19th-century maps, suggesting that major portions of the site were unmapped, unprotected, and potentially altered for over 150 years. The foundational documentation of the site came from E.G. Squier and Edwin Davis's 1847-1848 survey, published as the Smithsonian's first monograph, Ancient Monuments of the Mississippi Valley (1848); in the course of that survey Squier and Davis collected more than 6,000 objects from Ohio Valley mounds and enclosures; Squier sold the collection to a British collector in 1864 for $10,000, and it was transferred to the British Museum in 1931, where it remains today; which objects originated at Miami Fort specifically has not been confirmed in accessible public records. Stream daylighting and archaeological district restoration began 2025 in partnership with The Nature Conservancy, with the Miami Tribe of Oklahoma's Tribal Historic Preservation Office actively consulted on the identification of intact sites and sacred areas.</dd>
+      <dt>Ecology</dt><dd>Upland deciduous ridge forest above the Ohio and Great Miami River confluence; pawpaw groves host the largest zebra swallowtail butterfly population in Hamilton County; spicebush understory; tallgrass prairie remnants along trail corridors; bottomland forest along the Great Miami; more than 500 plant species documented; cerulean warbler, bald eagle, and fox squirrel present; adjacent Oxbow wetlands (914 acres) support 270+ bird species</dd>
+      <dt>Hydrology</dt><dd>Confluence of the Ohio River and Great Miami River at the park's southern and western margins; headwater streams drain west from the ridge to the Great Miami; more than 9,000 feet of headwater streams were buried in culverts during 1979 golf course construction and are being daylighted beginning 2025; Great Miami watershed</dd>
+      <dt>Acreage</dt><dd>2,179</dd>
+      <dt>GPS</dt><dd>39.1207° N, 84.8084° W</dd>
+    </dl>
+  </aside>
+  <div class="site-images">
+    <figure class="site-figure">
+      <a href="../img/full/shawnee-lookout/_DSF1168.tif" download title="Download _DSF1168.jpg">
+        <img src="../img/jpg/shawnee-lookout/_DSF1168.jpg" alt="Shawnee Lookout I" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Shawnee Lookout I &middot; 2026-04-03</span>
+        <span class="caption-filename">_DSF1168.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/shawnee-lookout/_DSF1174.tif" download title="Download _DSF1174.jpg">
+        <img src="../img/jpg/shawnee-lookout/_DSF1174.jpg" alt="Shawnee Lookout II" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Shawnee Lookout II &middot; 2026-04-03</span>
+        <span class="caption-filename">_DSF1174.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/shawnee-lookout/_DSF1193.tif" download title="Download _DSF1193.jpg">
+        <img src="../img/jpg/shawnee-lookout/_DSF1193.jpg" alt="Shawnee Lookout III" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Shawnee Lookout III &middot; 2026-04-03</span>
+        <span class="caption-filename">_DSF1193.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/shawnee-lookout/_DSF1195.tif" download title="Download _DSF1195.jpg">
+        <img src="../img/jpg/shawnee-lookout/_DSF1195.jpg" alt="Shawnee Lookout IV" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Shawnee Lookout IV &middot; 2026-04-03</span>
+        <span class="caption-filename">_DSF1195.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/shawnee-lookout/_DSF1201.tif" download title="Download _DSF1201.jpg">
+        <img src="../img/jpg/shawnee-lookout/_DSF1201.jpg" alt="Shawnee Lookout V" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Shawnee Lookout V &middot; 2026-04-03</span>
+        <span class="caption-filename">_DSF1201.jpg</span>
+      </figcaption>
+    </figure>
+  </div>
+</div>
+<nav class="site-nav">
+  <a href="caesar-creek.html">← Caesar Creek State Park</a>
+  <a href="fernald-preserve.html">Fernald Preserve →</a>
+</nav>
+<footer>
+  <span>Public Lands Institute — ongoing project</span>
+  <span>CC0 Public Domain</span>
+</footer>
+</div>
+<script src="../js/lightbox.js"></script>
+</body>
+</html>

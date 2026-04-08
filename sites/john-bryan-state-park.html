@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>John Bryan State Park — Public Lands Institute</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://publiclandsinstitute.net/sites/john-bryan-state-park.html" rel="canonical"/>
+<link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<style>
+  :root {
+    --bg: #f5f5f5;
+    --fg: #111111;
+    --muted: #777777;
+    --border: #dddddd;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+  }
+  a { color: inherit; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .page {
+    max-width: 1120px;
+    margin: 24px auto 56px auto;
+    padding: 0 18px;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 28px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .logotype {
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .header-nav {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+    display: flex;
+    gap: 16px;
+  }
+  .divider { border-bottom: 1px solid var(--border); margin: 0 0 28px 0; }
+  footer {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  @media (min-width: 720px) {
+    .page { margin-top: 40px; padding: 0 24px; }
+    header { margin-bottom: 40px; }
+  }
+  .site-header { margin-bottom: 24px; }
+  .site-header h1 {
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    margin-bottom: 2px;
+  }
+  .site-header .state {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+  }
+  .site-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .site-data {
+    display: grid;
+    grid-template-columns: 148px 1fr;
+    font-size: 11px;
+    line-height: 1.55;
+    border-top: 1px solid var(--border);
+    padding-top: 8px;
+    align-items: baseline;
+    align-content: start;
+  }
+  .site-data dt {
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 10px;
+    padding: 4px 0;
+  }
+  .site-data dd {
+    color: var(--fg);
+    padding: 4px 0 4px 12px;
+    margin: 0;
+  }
+  .site-images { display: flex; flex-direction: column; gap: 14px; }
+  .site-figure { border: 1px solid var(--border); background: #e1e1e1; }
+  .site-figure img { width: 100%; height: auto; display: block; filter: grayscale(100%); }
+  .site-figure figcaption {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    padding: 6px 8px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .caption-filename {
+    color: var(--muted);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    flex-shrink: 0;
+    font-family: monospace;
+  }
+  .inat-section-label {
+    color: var(--fg) !important;
+    font-weight: 500;
+    padding-top: 12px !important;
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+  }
+  .inat-section-spacer {
+    padding-top: 12px !important;
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+  }
+  .inat-species {
+    line-height: 1.8;
+  }
+  .inat-sci {
+    color: var(--muted);
+    font-style: italic;
+  }
+  .obs-header {
+    border-top: 1px solid var(--border);
+    padding: 10px 0 4px 0;
+    margin-top: 6px;
+  }
+  .obs-header:first-child {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+  }
+  .obs-date {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    display: block;
+  }
+  .obs-notes {
+    font-size: 11px;
+    color: var(--fg);
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+  .site-nav {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  @media (min-width: 720px) {
+    .site-layout { grid-template-columns: 300px 1fr; gap: 48px; align-items: start; }
+    .site-data { position: sticky; top: 24px; }
+  }
+  @media (max-width: 480px) {
+    .site-data { grid-template-columns: 110px 1fr; }
+    .site-images { order: -1; }
+    .site-data { order: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="logotype"><a href="../index.html">Public Lands Institute</a></div>
+  <nav class="header-nav">
+    <a href="../index.html">Index</a>
+    <a href="../archive.html">Archive</a>
+  </nav>
+</header>
+<div class="divider"></div>
+<div class="site-header">
+  <h1>John Bryan State Park</h1>
+  <div class="state">OH</div>
+</div>
+<div class="site-layout">
+  <aside>
+    <dl class="site-data">
+      <dt>Geological age</dt><dd>~430–420 million years ago (bedrock); gorge carved ~12,000–14,000 years ago</dd>
+      <dt>Epoch</dt><dd>Silurian period (Llandovery–Wenlock); dolomite formed in shallow tropical sea; gorge incised during Late Pleistocene and early Holocene by glacial meltwater drainage</dd>
+      <dt>Taxa</dt><dd>498 plants, 101 birds, 645 insects, 19 mammals, 14 reptiles, 11 amphibians</dd>
+      <dt>Native lands</dt><dd>Shawnee (Shawanwaki) · Miami · Adena and Hopewell cultures (500 BCE–500 CE); Little Miami River corridor a major Shawnee territory; Shawnee ceded Ohio lands via Treaty of Greene Ville 1795</dd>
+      <dt>Displacement & Tenure</dt><dd>Cession 11: Treaty of Greene Ville (1795); Clifton Gorge corridor industrialized through the 19th century as a water-power district with textile mills, gristmills, and sawmills; John Bryan purchased 335 acres as Riverside Farm in 1896 and bequeathed it to the State of Ohio in 1918 for use as a forestry, botanic, and wildlife reserve; designated a state forest park in 1925.</dd>
+      <dt>Shadow History</dt><dd>The Little Miami River corridor through Clifton Gorge supported at least six mills within one mile by the early 19th century, including a woolen mill, sawmill, paper mill, barrel mill, and two grist mills, all operating before workplace safety or child labor laws; most were abandoned by the late 19th century as water power became uneconomical; no records of worker injuries or labor litigation from the Clifton mill district appear in accessible archives, though the pre-regulatory context makes the absence of documentation unsurprising.</dd>
+      <dt>Ecology</dt><dd>Gorge microclimate supporting relict northern plant communities; Canadian yew, white cedar, walking fern — species absent from surrounding landscape; National Natural Landmark</dd>
+      <dt>Hydrology</dt><dd>Little Miami River (Ohio State Scenic River; National Wild & Scenic River); Yellow Spring iron-rich seep; Jacoby Creek tributary</dd>
+      <dt>Acreage</dt><dd>752 acres (park); 268 acres (Clifton Gorge SNP)</dd>
+      <dt>GPS</dt><dd>39.7960° N, 83.8310° W</dd>
+    </dl>
+  </aside>
+  <div class="site-images">
+    <figure class="site-figure">
+      <a href="../img/full/john-bryan-state-park/_DSF0446.tif" download title="Download _DSF0446.jpg">
+        <img src="../img/jpg/john-bryan-state-park/_DSF0446.jpg" alt="John Bryan State Park I" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">John Bryan State Park I &middot; 2025-12-05</span>
+        <span class="caption-filename">_DSF0446.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/john-bryan-state-park/_DSF0467.tif" download title="Download _DSF0467.jpg">
+        <img src="../img/jpg/john-bryan-state-park/_DSF0467.jpg" alt="John Bryan State Park II" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">John Bryan State Park II &middot; 2025-12-05</span>
+        <span class="caption-filename">_DSF0467.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/john-bryan-state-park/_DSF0470.tif" download title="Download _DSF0470.jpg">
+        <img src="../img/jpg/john-bryan-state-park/_DSF0470.jpg" alt="John Bryan State Park III" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">John Bryan State Park III &middot; 2025-12-05</span>
+        <span class="caption-filename">_DSF0470.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/john-bryan-state-park/_DSF0472.tif" download title="Download _DSF0472.jpg">
+        <img src="../img/jpg/john-bryan-state-park/_DSF0472.jpg" alt="John Bryan State Park IV" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">John Bryan State Park IV &middot; 2025-12-05</span>
+        <span class="caption-filename">_DSF0472.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/john-bryan-state-park/_DSF0488.tif" download title="Download _DSF0488.jpg">
+        <img src="../img/jpg/john-bryan-state-park/_DSF0488.jpg" alt="John Bryan State Park V" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">John Bryan State Park V &middot; 2025-12-05</span>
+        <span class="caption-filename">_DSF0488.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/john-bryan-state-park/_DSF0494.tif" download title="Download _DSF0494.jpg">
+        <img src="../img/jpg/john-bryan-state-park/_DSF0494.jpg" alt="John Bryan State Park VI" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">John Bryan State Park VI &middot; 2025-12-05</span>
+        <span class="caption-filename">_DSF0494.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/john-bryan-state-park/_DSF0497.tif" download title="Download _DSF0497.jpg">
+        <img src="../img/jpg/john-bryan-state-park/_DSF0497.jpg" alt="John Bryan State Park VII" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">John Bryan State Park VII &middot; 2025-12-05</span>
+        <span class="caption-filename">_DSF0497.jpg</span>
+      </figcaption>
+    </figure>
+  </div>
+</div>
+<nav class="site-nav">
+  <a href="wichita-mountains-national-wildlife-refuge.html">← Wichita Mountains National Wildlife Refuge</a>
+  <a href="hocking-hills.html">Hocking Hills State Park →</a>
+</nav>
+<footer>
+  <span>Public Lands Institute — ongoing project</span>
+  <span>CC0 Public Domain</span>
+</footer>
+</div>
+<script src="../js/lightbox.js"></script>
+</body>
+</html>

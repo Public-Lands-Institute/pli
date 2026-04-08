@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Bender Mountain Nature Preserve — Public Lands Institute</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://publiclandsinstitute.net/sites/bender-mountain-nature-preserve.html" rel="canonical"/>
+<link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<style>
+  :root {
+    --bg: #f5f5f5;
+    --fg: #111111;
+    --muted: #777777;
+    --border: #dddddd;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+  }
+  a { color: inherit; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .page {
+    max-width: 1120px;
+    margin: 24px auto 56px auto;
+    padding: 0 18px;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 28px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .logotype {
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .header-nav {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+    display: flex;
+    gap: 16px;
+  }
+  .divider { border-bottom: 1px solid var(--border); margin: 0 0 28px 0; }
+  footer {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  @media (min-width: 720px) {
+    .page { margin-top: 40px; padding: 0 24px; }
+    header { margin-bottom: 40px; }
+  }
+  .site-header { margin-bottom: 24px; }
+  .site-header h1 {
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    margin-bottom: 2px;
+  }
+  .site-header .state {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+  }
+  .site-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .site-data {
+    display: grid;
+    grid-template-columns: 148px 1fr;
+    font-size: 11px;
+    line-height: 1.55;
+    border-top: 1px solid var(--border);
+    padding-top: 8px;
+    align-items: baseline;
+    align-content: start;
+  }
+  .site-data dt {
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 10px;
+    padding: 4px 0;
+  }
+  .site-data dd {
+    color: var(--fg);
+    padding: 4px 0 4px 12px;
+    margin: 0;
+  }
+  .site-images { display: flex; flex-direction: column; gap: 14px; }
+  .site-figure { border: 1px solid var(--border); background: #e1e1e1; }
+  .site-figure img { width: 100%; height: auto; display: block; filter: grayscale(100%); }
+  .site-figure figcaption {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    padding: 6px 8px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .caption-filename {
+    color: var(--muted);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    flex-shrink: 0;
+    font-family: monospace;
+  }
+  .inat-section-label {
+    color: var(--fg) !important;
+    font-weight: 500;
+    padding-top: 12px !important;
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+  }
+  .inat-section-spacer {
+    padding-top: 12px !important;
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+  }
+  .inat-species {
+    line-height: 1.8;
+  }
+  .inat-sci {
+    color: var(--muted);
+    font-style: italic;
+  }
+  .obs-header {
+    border-top: 1px solid var(--border);
+    padding: 10px 0 4px 0;
+    margin-top: 6px;
+  }
+  .obs-header:first-child {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+  }
+  .obs-date {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    display: block;
+  }
+  .obs-notes {
+    font-size: 11px;
+    color: var(--fg);
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+  .site-nav {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  @media (min-width: 720px) {
+    .site-layout { grid-template-columns: 300px 1fr; gap: 48px; align-items: start; }
+    .site-data { position: sticky; top: 24px; }
+  }
+  @media (max-width: 480px) {
+    .site-data { grid-template-columns: 110px 1fr; }
+    .site-images { order: -1; }
+    .site-data { order: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="logotype"><a href="../index.html">Public Lands Institute</a></div>
+  <nav class="header-nav">
+    <a href="../index.html">Index</a>
+    <a href="../archive.html">Archive</a>
+  </nav>
+</header>
+<div class="divider"></div>
+<div class="site-header">
+  <h1>Bender Mountain Nature Preserve</h1>
+  <div class="state">OH</div>
+</div>
+<div class="site-layout">
+  <aside>
+    <dl class="site-data">
+      <dt>Geological age</dt><dd>~450 million years ago (Ordovician bedrock); ridge morphology shaped by Illinoian glaciation ~400,000 years ago</dd>
+      <dt>Epoch</dt><dd>Ordovician period (Cincinnatian); Ohio River rerouted during Illinoian glaciation created oversteepened valley walls; Pleistocene colluvium mantles bedrock slopes</dd>
+      <dt>Native lands</dt><dd>Shawnee (Shawanwaki) · earlier Adena and Hopewell peoples; Ohio River ridge a known travel and hunting corridor; Shawnee ceded Hamilton County lands via Treaty of Greene Ville 1795</dd>
+      <dt>Displacement & Tenure</dt><dd>Cession 11: Treaty of Greene Ville (1795); established in 2003 through Clean Ohio conservation program funds and Great Parks of Hamilton County ForeverGreen funding; in 2023 the Sisters of Charity of Cincinnati donated 73 acres to the Western Wildlife Corridor, the largest single gift in that organization's history.</dd>
+      <dt>Shadow History</dt><dd>Prior land use included grazing, hog foraging, fruit growing, and selective logging; no quarrying, industrial use, or documented forced removal has been identified for this Ohio River bluff site in accessible records; the Western Wildlife Corridor began managing the site in 2003 and describes it as degraded agricultural and silvicultural land undergoing active restoration.</dd>
+      <dt>Ecology</dt><dd>Mixed mesophytic forest; steep south-facing Ohio River bluff; 390+ vascular plant species; described as best site in Hamilton County for native wildflowers; invasive honeysuckle removal ongoing since 2003</dd>
+      <dt>Hydrology</dt><dd>Rapid Run Creek drainage to the north; Ohio River corridor to the south; steep slope hydrology with seasonal seeps</dd>
+      <dt>Acreage</dt><dd>130+ acres</dd>
+      <dt>GPS</dt><dd>39.1100° N, 84.6200° W</dd>
+    </dl>
+  </aside>
+  <div class="site-images">
+    <figure class="site-figure">
+      <a href="../img/full/bender-mountain-nature-preserve/_DSC0346.tif" download title="Download _DSC0346.jpg">
+        <img src="../img/jpg/bender-mountain-nature-preserve/_DSC0346.jpg" alt="Bender Mountain Nature Preserve I" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Bender Mountain Nature Preserve I &middot; 2025-09-15</span>
+        <span class="caption-filename">_DSC0346.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/bender-mountain-nature-preserve/_DSC0348.tif" download title="Download _DSC0348.jpg">
+        <img src="../img/jpg/bender-mountain-nature-preserve/_DSC0348.jpg" alt="Bender Mountain Nature Preserve II" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Bender Mountain Nature Preserve II &middot; 2025-09-15</span>
+        <span class="caption-filename">_DSC0348.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/bender-mountain-nature-preserve/_DSC0358.tif" download title="Download _DSC0358.jpg">
+        <img src="../img/jpg/bender-mountain-nature-preserve/_DSC0358.jpg" alt="Bender Mountain Nature Preserve III" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Bender Mountain Nature Preserve III &middot; 2025-09-15</span>
+        <span class="caption-filename">_DSC0358.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/bender-mountain-nature-preserve/_DSC0359.tif" download title="Download _DSC0359.jpg">
+        <img src="../img/jpg/bender-mountain-nature-preserve/_DSC0359.jpg" alt="Bender Mountain Nature Preserve IV" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Bender Mountain Nature Preserve IV &middot; 2025-09-15</span>
+        <span class="caption-filename">_DSC0359.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/bender-mountain-nature-preserve/_DSC0366.tif" download title="Download _DSC0366.jpg">
+        <img src="../img/jpg/bender-mountain-nature-preserve/_DSC0366.jpg" alt="Bender Mountain Nature Preserve V" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Bender Mountain Nature Preserve V &middot; 2025-09-15</span>
+        <span class="caption-filename">_DSC0366.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/bender-mountain-nature-preserve/_DSC0368.tif" download title="Download _DSC0368.jpg">
+        <img src="../img/jpg/bender-mountain-nature-preserve/_DSC0368.jpg" alt="Bender Mountain Nature Preserve VI" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Bender Mountain Nature Preserve VI &middot; 2025-09-15</span>
+        <span class="caption-filename">_DSC0368.jpg</span>
+      </figcaption>
+    </figure>
+  </div>
+</div>
+<nav class="site-nav">
+  <a href="otto-armleder-memorial-park.html">← Otto Armleder Memorial Park</a>
+  <span></span>
+</nav>
+<footer>
+  <span>Public Lands Institute — ongoing project</span>
+  <span>CC0 Public Domain</span>
+</footer>
+</div>
+<script src="../js/lightbox.js"></script>
+</body>
+</html>

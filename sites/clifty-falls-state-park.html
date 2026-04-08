@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Clifty Falls State Park — Public Lands Institute</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://publiclandsinstitute.net/sites/clifty-falls-state-park.html" rel="canonical"/>
+<link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<style>
+  :root {
+    --bg: #f5f5f5;
+    --fg: #111111;
+    --muted: #777777;
+    --border: #dddddd;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+  }
+  a { color: inherit; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .page {
+    max-width: 1120px;
+    margin: 24px auto 56px auto;
+    padding: 0 18px;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 28px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .logotype {
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .header-nav {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+    display: flex;
+    gap: 16px;
+  }
+  .divider { border-bottom: 1px solid var(--border); margin: 0 0 28px 0; }
+  footer {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  @media (min-width: 720px) {
+    .page { margin-top: 40px; padding: 0 24px; }
+    header { margin-bottom: 40px; }
+  }
+  .site-header { margin-bottom: 24px; }
+  .site-header h1 {
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    margin-bottom: 2px;
+  }
+  .site-header .state {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+  }
+  .site-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .site-data {
+    display: grid;
+    grid-template-columns: 148px 1fr;
+    font-size: 11px;
+    line-height: 1.55;
+    border-top: 1px solid var(--border);
+    padding-top: 8px;
+    align-items: baseline;
+    align-content: start;
+  }
+  .site-data dt {
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 10px;
+    padding: 4px 0;
+  }
+  .site-data dd {
+    color: var(--fg);
+    padding: 4px 0 4px 12px;
+    margin: 0;
+  }
+  .site-images { display: flex; flex-direction: column; gap: 14px; }
+  .site-figure { border: 1px solid var(--border); background: #e1e1e1; }
+  .site-figure img { width: 100%; height: auto; display: block; filter: grayscale(100%); }
+  .site-figure figcaption {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    padding: 6px 8px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .caption-filename {
+    color: var(--muted);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    flex-shrink: 0;
+    font-family: monospace;
+  }
+  .inat-section-label {
+    color: var(--fg) !important;
+    font-weight: 500;
+    padding-top: 12px !important;
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+  }
+  .inat-section-spacer {
+    padding-top: 12px !important;
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+  }
+  .inat-species {
+    line-height: 1.8;
+  }
+  .inat-sci {
+    color: var(--muted);
+    font-style: italic;
+  }
+  .obs-header {
+    border-top: 1px solid var(--border);
+    padding: 10px 0 4px 0;
+    margin-top: 6px;
+  }
+  .obs-header:first-child {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+  }
+  .obs-date {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    display: block;
+  }
+  .obs-notes {
+    font-size: 11px;
+    color: var(--fg);
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+  .site-nav {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  @media (min-width: 720px) {
+    .site-layout { grid-template-columns: 300px 1fr; gap: 48px; align-items: start; }
+    .site-data { position: sticky; top: 24px; }
+  }
+  @media (max-width: 480px) {
+    .site-data { grid-template-columns: 110px 1fr; }
+    .site-images { order: -1; }
+    .site-data { order: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="logotype"><a href="../index.html">Public Lands Institute</a></div>
+  <nav class="header-nav">
+    <a href="../index.html">Index</a>
+    <a href="../archive.html">Archive</a>
+  </nav>
+</header>
+<div class="divider"></div>
+<div class="site-header">
+  <h1>Clifty Falls State Park</h1>
+  <div class="state">IN</div>
+</div>
+<div class="site-layout">
+  <aside>
+    <dl class="site-data">
+      <dt>Geological age</dt><dd>~445 Mya Ordovician limestone and shale</dd>
+      <dt>Epoch</dt><dd>Late Ordovician; Dillsboro Formation (shale and limestone) on lower canyon slopes; Saluda Formation (limestone and dolomite) capping waterfall crests and upper cliffs</dd>
+      <dt>Taxa</dt><dd>388 plants, 79 birds, 281 insects, 13 mammals, 186 fungi, 19 reptiles, 22 amphibians, 38 arachnids</dd>
+      <dt>Most observed</dt><dd class="inat-species">Eastern Red-backed Salamander <span class="inat-sci">(Plethodon cinereus)</span><br>Marbled Salamander <span class="inat-sci">(Ambystoma opacum)</span><br>Northern Dusky Salamander <span class="inat-sci">(Desmognathus fuscus)</span><br>dwarf larkspur <span class="inat-sci">(Delphinium tricorne)</span><br>Southern Two-lined Salamander <span class="inat-sci">(Eurycea cirrigera)</span></dd>
+      <dt>Native lands</dt><dd>Shawandasse Tula (Shawnee) · Myaamia (Miami); Ohio River valley ancestral Shawnee homeland; Shawnee displaced from the Ohio valley following the American Revolution; Treaty of Greenville 1795 ceded southeastern Indiana to the United States; Shawnee, Miami, and allied nations removed from Indiana under the Indian Removal Act 1830</dd>
+      <dt>Displacement & Tenure</dt><dd>Cession 56: Treaty with the Delawares, Pottawatimies, Miames, Eel River, and Weas (1805); 570-acre core acquired October 27, 1920 via joint purchase by Jefferson County citizens and the State of Indiana, initiated by state parks director Richard Lieber; Madison State Hospital transferred adjacent farm fields to the park in 1965, expanding total acreage to approximately 1,416 acres.</dd>
+      <dt>Shadow History</dt><dd>Madison State Hospital (opened 1910 as Southeastern Indiana Hospital for the Insane) operated the adjacent farm fields under a patient-labor model in which psychiatric patients grew food, ran a dairy, and built roads without compensation; the Indiana legislature determined in the 1960s that this constituted indentured servitude, leading the hospital to discontinue farming rather than pay patients; the farm fields transferred to the park in 1965 were worked under this system for at least four decades; an institutional cemetery on hospital grounds holds an estimated 300 to 400 burials, the majority marked only with metal crosses bearing patient numbers rather than names.</dd>
+      <dt>Ecology</dt><dd>Mixed deciduous forest with chestnut oak, post oak, and black oak on dry canyon rim slopes; beech and sycamore in canyon bottoms; Clifty Canyon State Nature Preserve protects one of Indiana's finest gorge ecosystems.</dd>
+      <dt>Hydrology</dt><dd>Clifty Creek drains through a 300-foot-deep canyon to the Ohio River; four major waterfalls including Tunnel Falls (83 ft) and Hoffman Falls (78 ft); drainage pattern established during Pleistocene glaciation when streams were redirected southward to the newly formed Ohio River valley.</dd>
+      <dt>Acreage</dt><dd>1,416</dd>
+      <dt>GPS</dt><dd>38.7608° N, 85.4188° W</dd>
+    </dl>
+  </aside>
+  <div class="site-images">
+    <figure class="site-figure">
+      <a href="../img/full/clifty-falls-state-park/_DSF1072.tif" download title="Download _DSF1072.jpg">
+        <img src="../img/jpg/clifty-falls-state-park/_DSF1072.jpg" alt="Clifty Falls State Park I" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Clifty Falls State Park I &middot; 2026-03-30</span>
+        <span class="caption-filename">_DSF1072.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/clifty-falls-state-park/_DSF1075.tif" download title="Download _DSF1075.jpg">
+        <img src="../img/jpg/clifty-falls-state-park/_DSF1075.jpg" alt="Clifty Falls State Park II" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Clifty Falls State Park II &middot; 2026-03-30</span>
+        <span class="caption-filename">_DSF1075.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/clifty-falls-state-park/_DSF1084.tif" download title="Download _DSF1084.jpg">
+        <img src="../img/jpg/clifty-falls-state-park/_DSF1084.jpg" alt="Clifty Falls State Park III" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Clifty Falls State Park III &middot; 2026-03-30</span>
+        <span class="caption-filename">_DSF1084.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/clifty-falls-state-park/_DSF1091.tif" download title="Download _DSF1091.jpg">
+        <img src="../img/jpg/clifty-falls-state-park/_DSF1091.jpg" alt="Clifty Falls State Park IV" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Clifty Falls State Park IV &middot; 2026-03-30</span>
+        <span class="caption-filename">_DSF1091.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/clifty-falls-state-park/_DSF1096.tif" download title="Download _DSF1096.jpg">
+        <img src="../img/jpg/clifty-falls-state-park/_DSF1096.jpg" alt="Clifty Falls State Park V" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Clifty Falls State Park V &middot; 2026-03-30</span>
+        <span class="caption-filename">_DSF1096.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/clifty-falls-state-park/_DSF1103.tif" download title="Download _DSF1103.jpg">
+        <img src="../img/jpg/clifty-falls-state-park/_DSF1103.jpg" alt="Clifty Falls State Park VI" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Clifty Falls State Park VI &middot; 2026-03-30</span>
+        <span class="caption-filename">_DSF1103.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/clifty-falls-state-park/_DSF1108.tif" download title="Download _DSF1108.jpg">
+        <img src="../img/jpg/clifty-falls-state-park/_DSF1108.jpg" alt="Clifty Falls State Park VII" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Clifty Falls State Park VII &middot; 2026-03-30</span>
+        <span class="caption-filename">_DSF1108.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/clifty-falls-state-park/_DSF1109.tif" download title="Download _DSF1109.jpg">
+        <img src="../img/jpg/clifty-falls-state-park/_DSF1109.jpg" alt="Clifty Falls State Park VIII" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Clifty Falls State Park VIII &middot; 2026-03-30</span>
+        <span class="caption-filename">_DSF1109.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/clifty-falls-state-park/_DSF1115.tif" download title="Download _DSF1115.jpg">
+        <img src="../img/jpg/clifty-falls-state-park/_DSF1115.jpg" alt="Clifty Falls State Park IX" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Clifty Falls State Park IX &middot; 2026-03-30</span>
+        <span class="caption-filename">_DSF1115.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/clifty-falls-state-park/_DSF1124.tif" download title="Download _DSF1124.jpg">
+        <img src="../img/jpg/clifty-falls-state-park/_DSF1124.jpg" alt="Clifty Falls State Park X" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Clifty Falls State Park X &middot; 2026-03-30</span>
+        <span class="caption-filename">_DSF1124.jpg</span>
+      </figcaption>
+    </figure>
+  </div>
+</div>
+<nav class="site-nav">
+  <a href="fernald-preserve.html">← Fernald Preserve</a>
+  <a href="french-park.html">French Park →</a>
+</nav>
+<footer>
+  <span>Public Lands Institute — ongoing project</span>
+  <span>CC0 Public Domain</span>
+</footer>
+</div>
+<script src="../js/lightbox.js"></script>
+</body>
+</html>

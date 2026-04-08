@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Caprock Canyon State Park — Public Lands Institute</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://publiclandsinstitute.net/sites/caprock-canyon.html" rel="canonical"/>
+<link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<style>
+  :root {
+    --bg: #f5f5f5;
+    --fg: #111111;
+    --muted: #777777;
+    --border: #dddddd;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+  }
+  a { color: inherit; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .page {
+    max-width: 1120px;
+    margin: 24px auto 56px auto;
+    padding: 0 18px;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 28px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .logotype {
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .header-nav {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+    display: flex;
+    gap: 16px;
+  }
+  .divider { border-bottom: 1px solid var(--border); margin: 0 0 28px 0; }
+  footer {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  @media (min-width: 720px) {
+    .page { margin-top: 40px; padding: 0 24px; }
+    header { margin-bottom: 40px; }
+  }
+  .site-header { margin-bottom: 24px; }
+  .site-header h1 {
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    margin-bottom: 2px;
+  }
+  .site-header .state {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+  }
+  .site-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .site-data {
+    display: grid;
+    grid-template-columns: 148px 1fr;
+    font-size: 11px;
+    line-height: 1.55;
+    border-top: 1px solid var(--border);
+    padding-top: 8px;
+    align-items: baseline;
+    align-content: start;
+  }
+  .site-data dt {
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 10px;
+    padding: 4px 0;
+  }
+  .site-data dd {
+    color: var(--fg);
+    padding: 4px 0 4px 12px;
+    margin: 0;
+  }
+  .site-images { display: flex; flex-direction: column; gap: 14px; }
+  .site-figure { border: 1px solid var(--border); background: #e1e1e1; }
+  .site-figure img { width: 100%; height: auto; display: block; filter: grayscale(100%); }
+  .site-figure figcaption {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    padding: 6px 8px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .caption-filename {
+    color: var(--muted);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    flex-shrink: 0;
+    font-family: monospace;
+  }
+  .inat-section-label {
+    color: var(--fg) !important;
+    font-weight: 500;
+    padding-top: 12px !important;
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+  }
+  .inat-section-spacer {
+    padding-top: 12px !important;
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+  }
+  .inat-species {
+    line-height: 1.8;
+  }
+  .inat-sci {
+    color: var(--muted);
+    font-style: italic;
+  }
+  .obs-header {
+    border-top: 1px solid var(--border);
+    padding: 10px 0 4px 0;
+    margin-top: 6px;
+  }
+  .obs-header:first-child {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+  }
+  .obs-date {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    display: block;
+  }
+  .obs-notes {
+    font-size: 11px;
+    color: var(--fg);
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+  .site-nav {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  @media (min-width: 720px) {
+    .site-layout { grid-template-columns: 300px 1fr; gap: 48px; align-items: start; }
+    .site-data { position: sticky; top: 24px; }
+  }
+  @media (max-width: 480px) {
+    .site-data { grid-template-columns: 110px 1fr; }
+    .site-images { order: -1; }
+    .site-data { order: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="logotype"><a href="../index.html">Public Lands Institute</a></div>
+  <nav class="header-nav">
+    <a href="../index.html">Index</a>
+    <a href="../archive.html">Archive</a>
+  </nav>
+</header>
+<div class="divider"></div>
+<div class="site-header">
+  <h1>Caprock Canyon State Park</h1>
+  <div class="state">TX</div>
+</div>
+<div class="site-layout">
+  <aside>
+    <dl class="site-data">
+      <dt>Geological age</dt><dd>~299–2.6 million years ago (surface strata)</dd>
+      <dt>Epoch</dt><dd>Permian through Pliocene; Quartermaster Formation (Permian, ~280 Mya); caliche caprock (Pliocene, ~5 Mya)</dd>
+      <dt>Taxa</dt><dd>17 plants, 6 birds, 1 insects, 3 reptiles, 1 amphibians</dd>
+      <dt>Most observed</dt><dd class="inat-species">Texas Horned Lizard <span class="inat-sci">(Phrynosoma cornutum)</span><br>Western Massasauga <span class="inat-sci">(Sistrurus tergeminus)</span><br>Antelopehorn Milkweed <span class="inat-sci">(Asclepias asperula)</span><br>Missouri Milkvetch <span class="inat-sci">(Astragalus missouriensis)</span><br>American Kestrel <span class="inat-sci">(Falco sparverius)</span></dd>
+      <dt>Native lands</dt><dd>Comanche (Nʉmʉnʉʉ) · Kiowa · Apache; territory of the Comancheria; Caprock Canyons part of the southern Comanche range; forced removal to Oklahoma reservations 1874–75</dd>
+      <dt>Displacement & Tenure</dt><dd>Cession 478: Treaty with the Comanche and Kiowa (Little Arkansas Treaty, 1865); Cession 511: Agreement with the Comanche, Kiowa, and Apache (Jerome Agreement, 1892, ratified 1900); Comanche and Kiowa bands used the canyon breaks as a refuge until Col. Ranald Mackenzie's Fifth Cavalry swept through during the Red River War campaign of 1874, forcing their return to the Fort Sill reservation; state purchased approximately 13,961 acres from the estate of rancher Theodore Geisler in May 1975; the park opened in 1982.</dd>
+      <dt>Shadow History</dt><dd>The Texas State Bison Herd at Caprock Canyons descends from calves captured by Charles Goodnight beginning in 1878, immediately after the systematic extermination campaign of 1874 to 1878 reduced the southern plains bison population from an estimated tens of millions to fewer than 1,000 animals continent-wide; Folsom- and Archaic-period archaeological sites are documented throughout the canyon, and Texas Parks and Wildlife acknowledges that most have been disturbed, with many artifacts removed, though no specific prosecution for looting at this site appears in public records.</dd>
+      <dt>Ecology</dt><dd>Shortgrass prairie; canyon riparian; home to the official Texas State Bison Herd — last free-ranging southern plains bison lineage</dd>
+      <dt>Hydrology</dt><dd>South Prong Little Red River; Lake Theo (reservoir); playa lakes; intermittent canyon streams</dd>
+      <dt>Acreage</dt><dd>15,313 acres</dd>
+      <dt>GPS</dt><dd>33.9778° N, 101.0578° W</dd>
+    </dl>
+  </aside>
+  <div class="site-images">
+    <figure class="site-figure">
+      <a href="../img/full/caprock-canyon/_DSF0725.tif" download title="Download _DSF0725.jpg">
+        <img src="../img/jpg/caprock-canyon/_DSF0725.jpg" alt="Caprock Canyon State Park I" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Caprock Canyon State Park I &middot; 2026-01-08</span>
+        <span class="caption-filename">_DSF0725.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/caprock-canyon/_DSF0729.tif" download title="Download _DSF0729.jpg">
+        <img src="../img/jpg/caprock-canyon/_DSF0729.jpg" alt="Caprock Canyon State Park II" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Caprock Canyon State Park II &middot; 2026-01-08</span>
+        <span class="caption-filename">_DSF0729.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/caprock-canyon/_DSF0731.tif" download title="Download _DSF0731.jpg">
+        <img src="../img/jpg/caprock-canyon/_DSF0731.jpg" alt="Caprock Canyon State Park III" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Caprock Canyon State Park III &middot; 2026-01-08</span>
+        <span class="caption-filename">_DSF0731.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/caprock-canyon/_DSF0733.tif" download title="Download _DSF0733.jpg">
+        <img src="../img/jpg/caprock-canyon/_DSF0733.jpg" alt="Caprock Canyon State Park IV" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Caprock Canyon State Park IV &middot; 2026-01-08</span>
+        <span class="caption-filename">_DSF0733.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/caprock-canyon/_DSF0739.tif" download title="Download _DSF0739.jpg">
+        <img src="../img/jpg/caprock-canyon/_DSF0739.jpg" alt="Caprock Canyon State Park V" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Caprock Canyon State Park V &middot; 2026-01-08</span>
+        <span class="caption-filename">_DSF0739.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/caprock-canyon/_DSF0744.tif" download title="Download _DSF0744.jpg">
+        <img src="../img/jpg/caprock-canyon/_DSF0744.jpg" alt="Caprock Canyon State Park VI" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Caprock Canyon State Park VI &middot; 2026-01-08</span>
+        <span class="caption-filename">_DSF0744.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/caprock-canyon/_DSF0746.tif" download title="Download _DSF0746.jpg">
+        <img src="../img/jpg/caprock-canyon/_DSF0746.jpg" alt="Caprock Canyon State Park VII" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Caprock Canyon State Park VII &middot; 2026-01-08</span>
+        <span class="caption-filename">_DSF0746.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/caprock-canyon/_DSF0751.tif" download title="Download _DSF0751.jpg">
+        <img src="../img/jpg/caprock-canyon/_DSF0751.jpg" alt="Caprock Canyon State Park VIII" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Caprock Canyon State Park VIII &middot; 2026-01-08</span>
+        <span class="caption-filename">_DSF0751.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/caprock-canyon/_DSF0753.tif" download title="Download _DSF0753.jpg">
+        <img src="../img/jpg/caprock-canyon/_DSF0753.jpg" alt="Caprock Canyon State Park IX" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Caprock Canyon State Park IX &middot; 2026-01-08</span>
+        <span class="caption-filename">_DSF0753.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/caprock-canyon/_DSF0757.tif" download title="Download _DSF0757.jpg">
+        <img src="../img/jpg/caprock-canyon/_DSF0757.jpg" alt="Caprock Canyon State Park X" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Caprock Canyon State Park X &middot; 2026-01-08</span>
+        <span class="caption-filename">_DSF0757.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/caprock-canyon/_DSF0758.tif" download title="Download _DSF0758.jpg">
+        <img src="../img/jpg/caprock-canyon/_DSF0758.jpg" alt="Caprock Canyon State Park XI" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Caprock Canyon State Park XI &middot; 2026-01-08</span>
+        <span class="caption-filename">_DSF0758.jpg</span>
+      </figcaption>
+    </figure>
+  </div>
+</div>
+<nav class="site-nav">
+  <a href="sea-rim-state-park.html">← Sea Rim State Park</a>
+  <a href="palo-duro-canyon.html">Palo Duro Canyon State Park →</a>
+</nav>
+<footer>
+  <span>Public Lands Institute — ongoing project</span>
+  <span>CC0 Public Domain</span>
+</footer>
+</div>
+<script src="../js/lightbox.js"></script>
+</body>
+</html>

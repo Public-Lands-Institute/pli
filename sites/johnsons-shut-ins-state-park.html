@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Johnson's Shut-Ins State Park — Public Lands Institute</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://publiclandsinstitute.net/sites/johnsons-shut-ins-state-park.html" rel="canonical"/>
+<link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<style>
+  :root {
+    --bg: #f5f5f5;
+    --fg: #111111;
+    --muted: #777777;
+    --border: #dddddd;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+  }
+  a { color: inherit; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .page {
+    max-width: 1120px;
+    margin: 24px auto 56px auto;
+    padding: 0 18px;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 28px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .logotype {
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .header-nav {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+    display: flex;
+    gap: 16px;
+  }
+  .divider { border-bottom: 1px solid var(--border); margin: 0 0 28px 0; }
+  footer {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  @media (min-width: 720px) {
+    .page { margin-top: 40px; padding: 0 24px; }
+    header { margin-bottom: 40px; }
+  }
+  .site-header { margin-bottom: 24px; }
+  .site-header h1 {
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    margin-bottom: 2px;
+  }
+  .site-header .state {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+  }
+  .site-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .site-data {
+    display: grid;
+    grid-template-columns: 148px 1fr;
+    font-size: 11px;
+    line-height: 1.55;
+    border-top: 1px solid var(--border);
+    padding-top: 8px;
+    align-items: baseline;
+    align-content: start;
+  }
+  .site-data dt {
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 10px;
+    padding: 4px 0;
+  }
+  .site-data dd {
+    color: var(--fg);
+    padding: 4px 0 4px 12px;
+    margin: 0;
+  }
+  .site-images { display: flex; flex-direction: column; gap: 14px; }
+  .site-figure { border: 1px solid var(--border); background: #e1e1e1; }
+  .site-figure img { width: 100%; height: auto; display: block; filter: grayscale(100%); }
+  .site-figure figcaption {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    padding: 6px 8px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .caption-filename {
+    color: var(--muted);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    flex-shrink: 0;
+    font-family: monospace;
+  }
+  .inat-section-label {
+    color: var(--fg) !important;
+    font-weight: 500;
+    padding-top: 12px !important;
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+  }
+  .inat-section-spacer {
+    padding-top: 12px !important;
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+  }
+  .inat-species {
+    line-height: 1.8;
+  }
+  .inat-sci {
+    color: var(--muted);
+    font-style: italic;
+  }
+  .obs-header {
+    border-top: 1px solid var(--border);
+    padding: 10px 0 4px 0;
+    margin-top: 6px;
+  }
+  .obs-header:first-child {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+  }
+  .obs-date {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    display: block;
+  }
+  .obs-notes {
+    font-size: 11px;
+    color: var(--fg);
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+  .site-nav {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  @media (min-width: 720px) {
+    .site-layout { grid-template-columns: 300px 1fr; gap: 48px; align-items: start; }
+    .site-data { position: sticky; top: 24px; }
+  }
+  @media (max-width: 480px) {
+    .site-data { grid-template-columns: 110px 1fr; }
+    .site-images { order: -1; }
+    .site-data { order: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="logotype"><a href="../index.html">Public Lands Institute</a></div>
+  <nav class="header-nav">
+    <a href="../index.html">Index</a>
+    <a href="../archive.html">Archive</a>
+  </nav>
+</header>
+<div class="divider"></div>
+<div class="site-header">
+  <h1>Johnson's Shut-Ins State Park</h1>
+  <div class="state">MO</div>
+</div>
+<div class="site-layout">
+  <aside>
+    <dl class="site-data">
+      <dt>Geological age</dt><dd>~1.47 billion years ago (bedrock)</dd>
+      <dt>Epoch</dt><dd>Proterozoic eon; Rhyacian period; St. Francois Mountains rhyolite and granite among the oldest exposed rock in Missouri; river incision Quaternary</dd>
+      <dt>Taxa</dt><dd>297 plants, 57 birds, 212 insects, 7 mammals, 47 fungi, 24 reptiles, 10 amphibians, 20 arachnids</dd>
+      <dt>Most observed</dt><dd class="inat-species">Prairie Lizard <span class="inat-sci">(Sceloporus consobrinus)</span><br>fire pink <span class="inat-sci">(Silene virginica)</span><br>woodland stonecrop <span class="inat-sci">(Sedum ternatum)</span><br>Common Watersnake <span class="inat-sci">(Nerodia sipedon)</span><br>Blanchard's Cricket Frog <span class="inat-sci">(Acris blanchardi)</span></dd>
+      <dt>Native lands</dt><dd>Osage Nation (Wazhazhe) · earlier Paleo-Indian peoples; Osage hunted throughout the St. Francois Mountains; ceded territory via 1808 treaty under duress</dd>
+      <dt>Displacement & Tenure</dt><dd>Cession 67: Treaty with the Osage (1808); on December 14, 2005, the Taum Sauk upper reservoir owned by AmerenUE failed, releasing approximately 1.4 billion gallons of water that destroyed the lower park; AmerenUE pled no contest to a federal Clean Water Act violation; a 2009 settlement awarded $102.3 million for park restoration, completed in 2010.</dd>
+      <dt>Shadow History</dt><dd>The park was assembled over 17 years by Joseph Desloge, heir to a St. Louis lead-mining family whose wealth derived from mineral extraction in the same regional belt as the park's Precambrian geology, and donated to the state in 1955; a 2006 to 2007 USGS study following the 2005 reservoir breach documented elevated turbidity, dissolved aluminum, dissolved iron, and a blue-green surface coloration in the East Fork Black River attributed to rock flour and an alum-based flocculant used by AmerenUE; the East Fork Black River corridor has documented Paleo-Indian occupation extending to approximately 12,000 years BP, and whether the flood disturbed intact subsurface deposits has not been publicly assessed.</dd>
+      <dt>Ecology</dt><dd>Ozark Highland; dolomite glades; dry chert woodland; rare endemic species in igneous glade communities</dd>
+      <dt>Hydrology</dt><dd>East Fork Black River; Taum Sauk Reservoir (upstream); shut-in pools and cascades; 2005 reservoir breach reshaped lower park terrain</dd>
+      <dt>Acreage</dt><dd>8,916 acres</dd>
+      <dt>GPS</dt><dd>37.5530° N, 90.8480° W</dd>
+    </dl>
+  </aside>
+  <div class="site-images">
+    <figure class="site-figure">
+      <a href="../img/full/johnsons-shut-ins-state-park/_DSF0552.tif" download title="Download _DSF0552.jpg">
+        <img src="../img/jpg/johnsons-shut-ins-state-park/_DSF0552.jpg" alt="Johnson's Shut-Ins State Park I" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Johnson's Shut-Ins State Park I &middot; 2026-01-06</span>
+        <span class="caption-filename">_DSF0552.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/johnsons-shut-ins-state-park/_DSF0566.tif" download title="Download _DSF0566.jpg">
+        <img src="../img/jpg/johnsons-shut-ins-state-park/_DSF0566.jpg" alt="Johnson's Shut-Ins State Park II" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Johnson's Shut-Ins State Park II &middot; 2026-01-06</span>
+        <span class="caption-filename">_DSF0566.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/johnsons-shut-ins-state-park/_DSF0569.tif" download title="Download _DSF0569.jpg">
+        <img src="../img/jpg/johnsons-shut-ins-state-park/_DSF0569.jpg" alt="Johnson's Shut-Ins State Park III" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Johnson's Shut-Ins State Park III &middot; 2026-01-06</span>
+        <span class="caption-filename">_DSF0569.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/johnsons-shut-ins-state-park/_DSF0571.tif" download title="Download _DSF0571.jpg">
+        <img src="../img/jpg/johnsons-shut-ins-state-park/_DSF0571.jpg" alt="Johnson's Shut-Ins State Park IV" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Johnson's Shut-Ins State Park IV &middot; 2026-01-06</span>
+        <span class="caption-filename">_DSF0571.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/johnsons-shut-ins-state-park/_DSF0572.tif" download title="Download _DSF0572.jpg">
+        <img src="../img/jpg/johnsons-shut-ins-state-park/_DSF0572.jpg" alt="Johnson's Shut-Ins State Park V" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Johnson's Shut-Ins State Park V &middot; 2026-01-06</span>
+        <span class="caption-filename">_DSF0572.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/johnsons-shut-ins-state-park/_DSF0580.tif" download title="Download _DSF0580.jpg">
+        <img src="../img/jpg/johnsons-shut-ins-state-park/_DSF0580.jpg" alt="Johnson's Shut-Ins State Park VI" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Johnson's Shut-Ins State Park VI &middot; 2026-01-06</span>
+        <span class="caption-filename">_DSF0580.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/johnsons-shut-ins-state-park/_DSF0586.tif" download title="Download _DSF0586.jpg">
+        <img src="../img/jpg/johnsons-shut-ins-state-park/_DSF0586.jpg" alt="Johnson's Shut-Ins State Park VII" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Johnson's Shut-Ins State Park VII &middot; 2026-01-06</span>
+        <span class="caption-filename">_DSF0586.jpg</span>
+      </figcaption>
+    </figure>
+  </div>
+</div>
+<nav class="site-nav">
+  <a href="palo-duro-canyon.html">← Palo Duro Canyon State Park</a>
+  <a href="elephant-rocks-state-park.html">Elephant Rocks State Park →</a>
+</nav>
+<footer>
+  <span>Public Lands Institute — ongoing project</span>
+  <span>CC0 Public Domain</span>
+</footer>
+</div>
+<script src="../js/lightbox.js"></script>
+</body>
+</html>

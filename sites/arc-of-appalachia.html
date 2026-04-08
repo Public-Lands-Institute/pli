@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Arc of Appalachia — Public Lands Institute</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://publiclandsinstitute.net/sites/arc-of-appalachia.html" rel="canonical"/>
+<link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<style>
+  :root {
+    --bg: #f5f5f5;
+    --fg: #111111;
+    --muted: #777777;
+    --border: #dddddd;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+  }
+  a { color: inherit; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .page {
+    max-width: 1120px;
+    margin: 24px auto 56px auto;
+    padding: 0 18px;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 28px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .logotype {
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .header-nav {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+    display: flex;
+    gap: 16px;
+  }
+  .divider { border-bottom: 1px solid var(--border); margin: 0 0 28px 0; }
+  footer {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  @media (min-width: 720px) {
+    .page { margin-top: 40px; padding: 0 24px; }
+    header { margin-bottom: 40px; }
+  }
+  .site-header { margin-bottom: 24px; }
+  .site-header h1 {
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    margin-bottom: 2px;
+  }
+  .site-header .state {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+  }
+  .site-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .site-data {
+    display: grid;
+    grid-template-columns: 148px 1fr;
+    font-size: 11px;
+    line-height: 1.55;
+    border-top: 1px solid var(--border);
+    padding-top: 8px;
+    align-items: baseline;
+    align-content: start;
+  }
+  .site-data dt {
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 10px;
+    padding: 4px 0;
+  }
+  .site-data dd {
+    color: var(--fg);
+    padding: 4px 0 4px 12px;
+    margin: 0;
+  }
+  .site-images { display: flex; flex-direction: column; gap: 14px; }
+  .site-figure { border: 1px solid var(--border); background: #e1e1e1; }
+  .site-figure img { width: 100%; height: auto; display: block; filter: grayscale(100%); }
+  .site-figure figcaption {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    padding: 6px 8px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .caption-filename {
+    color: var(--muted);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    flex-shrink: 0;
+    font-family: monospace;
+  }
+  .inat-section-label {
+    color: var(--fg) !important;
+    font-weight: 500;
+    padding-top: 12px !important;
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+  }
+  .inat-section-spacer {
+    padding-top: 12px !important;
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+  }
+  .inat-species {
+    line-height: 1.8;
+  }
+  .inat-sci {
+    color: var(--muted);
+    font-style: italic;
+  }
+  .obs-header {
+    border-top: 1px solid var(--border);
+    padding: 10px 0 4px 0;
+    margin-top: 6px;
+  }
+  .obs-header:first-child {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+  }
+  .obs-date {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    display: block;
+  }
+  .obs-notes {
+    font-size: 11px;
+    color: var(--fg);
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+  .site-nav {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  @media (min-width: 720px) {
+    .site-layout { grid-template-columns: 300px 1fr; gap: 48px; align-items: start; }
+    .site-data { position: sticky; top: 24px; }
+  }
+  @media (max-width: 480px) {
+    .site-data { grid-template-columns: 110px 1fr; }
+    .site-images { order: -1; }
+    .site-data { order: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="logotype"><a href="../index.html">Public Lands Institute</a></div>
+  <nav class="header-nav">
+    <a href="../index.html">Index</a>
+    <a href="../archive.html">Archive</a>
+  </nav>
+</header>
+<div class="divider"></div>
+<div class="site-header">
+  <h1>Arc of Appalachia</h1>
+  <div class="state">OH</div>
+</div>
+<div class="site-layout">
+  <aside>
+    <dl class="site-data">
+      <dt>Geological age</dt><dd>~485–420 million years ago (bedrock)</dd>
+      <dt>Epoch</dt><dd>Ordovician and Silurian periods; limestone and dolomite deposited in shallow Iapetus Ocean; terrain never covered by Pleistocene glaciation — landscape continuity extending back millions of years</dd>
+      <dt>Taxa</dt><dd>443 plants, 462 insects, 74 fungi, 15 amphibians</dd>
+      <dt>Native lands</dt><dd>Shawnee (Shawanwaki) · Adena and Hopewell mound-building cultures; unglaciated Adams County at southern edge of Shawnee territory; proximity to Serpent Mound (Adena/Fort Ancient, ~300 BCE–1200 CE)</dd>
+      <dt>Displacement & Tenure</dt><dd>Cession 11: Treaty of Greene Ville (1795); co-founded by Nancy Stranahan in 1995, beginning with a 47-acre purchase at Rocky Fork Gorge in Highland County; the system has grown to approximately 5,000 acres across five southern Ohio counties through more than 100 individual real estate transactions, funded in part by Ohio's Clean Ohio program; operates independently of The Nature Conservancy, which separately manages the adjacent Edge of Appalachia Preserve System established 1959.</dd>
+      <dt>Shadow History</dt><dd>Frederic Ward Putnam of the Harvard Peabody Museum excavated Serpent Mound from 1887 to 1889, placing trenches in the effigy and excavating two nearby conical mounds; the excavations yielded pipes, points, earspools, gorgets, and multiple human burials with associated grave goods; Putnam raised funds to have Harvard purchase the site in 1887 -- making it the first privately funded archaeological preserve in the United States -- and the Peabody held the site until 1900; whether Serpent Mound skeletal material and grave goods remain in the Peabody collections or have been subject to NAGPRA repatriation has not been confirmed in publicly available records.</dd>
+      <dt>Ecology</dt><dd>One of the most biodiverse landscapes in Ohio; 114 rare or endangered species; dry limestone prairie (Lynx Prairie); eastern red cedar savanna; unglaciated forest; relict Appalachian flora</dd>
+      <dt>Hydrology</dt><dd>Brush Creek watershed; Rocky Fork Creek; numerous limestone seeps and springs; Serpent Mound crypto-explosion structure (nearby)</dd>
+      <dt>Acreage</dt><dd>7,000+ acres across preserve system</dd>
+      <dt>GPS</dt><dd>38.8200° N, 83.5400° W</dd>
+    </dl>
+  </aside>
+  <div class="site-images">
+    <figure class="site-figure">
+      <a href="../img/full/arc-of-appalachia/_DSF0216.tif" download title="Download _DSF0216.jpg">
+        <img src="../img/jpg/arc-of-appalachia/_DSF0216.jpg" alt="Arc of Appalachia I" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Arc of Appalachia I &middot; 2025-10-27</span>
+        <span class="caption-filename">_DSF0216.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/arc-of-appalachia/_DSF0227.tif" download title="Download _DSF0227.jpg">
+        <img src="../img/jpg/arc-of-appalachia/_DSF0227.jpg" alt="Arc of Appalachia II" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Arc of Appalachia II &middot; 2025-10-27</span>
+        <span class="caption-filename">_DSF0227.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/arc-of-appalachia/_DSF0229.tif" download title="Download _DSF0229.jpg">
+        <img src="../img/jpg/arc-of-appalachia/_DSF0229.jpg" alt="Arc of Appalachia III" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Arc of Appalachia III &middot; 2025-10-27</span>
+        <span class="caption-filename">_DSF0229.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/arc-of-appalachia/_DSF0238.tif" download title="Download _DSF0238.jpg">
+        <img src="../img/jpg/arc-of-appalachia/_DSF0238.jpg" alt="Arc of Appalachia IV" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Arc of Appalachia IV &middot; 2025-10-27</span>
+        <span class="caption-filename">_DSF0238.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/arc-of-appalachia/_DSF0243.tif" download title="Download _DSF0243.jpg">
+        <img src="../img/jpg/arc-of-appalachia/_DSF0243.jpg" alt="Arc of Appalachia V" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Arc of Appalachia V &middot; 2025-10-27</span>
+        <span class="caption-filename">_DSF0243.jpg</span>
+      </figcaption>
+    </figure>
+  </div>
+</div>
+<nav class="site-nav">
+  <a href="hocking-hills.html">← Hocking Hills State Park</a>
+  <a href="mount-airy-forest.html">Mount Airy Forest →</a>
+</nav>
+<footer>
+  <span>Public Lands Institute — ongoing project</span>
+  <span>CC0 Public Domain</span>
+</footer>
+</div>
+<script src="../js/lightbox.js"></script>
+</body>
+</html>

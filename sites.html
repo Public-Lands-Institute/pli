@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Public Lands Institute — Index</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  :root {
+    --black: #111;
+    --white: #fff;
+    --gray-100: #f5f5f5;
+    --gray-200: #e5e5e5;
+    --gray-300: #d4d4d4;
+    --gray-400: #a3a3a3;
+    --gray-500: #737373;
+    --gray-600: #525252;
+    --font-serif: 'EB Garamond', 'Georgia', serif;
+    --font-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Mono', monospace;
+  }
+
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-serif);
+    color: var(--black);
+    background: var(--white);
+    line-height: 1.6;
+  }
+
+  a { color: var(--black); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .header {
+    padding: 3rem 2rem 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .header h1 {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+  }
+
+  .header h1 a { text-decoration: none; }
+
+  .header nav {
+    font-family: var(--font-serif);
+    font-size: 0.875rem;
+    color: var(--gray-500);
+    margin-top: 0.5rem;
+  }
+
+  .header nav a {
+    color: var(--gray-500);
+    margin-right: 1.5rem;
+  }
+
+  .header nav a:hover { color: var(--black); }
+  .header nav a.active { color: var(--black); }
+
+  .filters {
+    padding: 1.5rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-top: 1px solid var(--gray-200);
+    border-bottom: 1px solid var(--gray-200);
+  }
+
+  .filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+
+  .filter-group { flex: 1; min-width: 200px; }
+
+  .filter-label {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .filter-select {
+    width: 100%;
+    font-family: var(--font-serif);
+    font-size: 0.9375rem;
+    padding: 0.4rem 0;
+    border: none;
+    border-bottom: 1px solid var(--gray-300);
+    background: transparent;
+    color: var(--black);
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    border-radius: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23737373'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0 center;
+    padding-right: 1.25rem;
+  }
+
+  .filter-select:focus { outline: none; border-bottom-color: var(--black); }
+
+  .results-bar {
+    padding: 1rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .results-count {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--gray-500);
+    letter-spacing: 0.04em;
+  }
+
+  .clear-filters {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: none;
+  }
+
+  .clear-filters:hover { color: var(--black); }
+  .clear-filters.visible { display: block; }
+
+  .index-table {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem 4rem;
+  }
+
+  table { width: 100%; border-collapse: collapse; }
+
+  thead th {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    text-align: left;
+    padding: 0.75rem 1rem 0.75rem 0;
+    border-bottom: 1px solid var(--gray-300);
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+  }
+
+  thead th:hover { color: var(--black); }
+
+  thead th .sort-indicator {
+    display: inline-block;
+    margin-left: 0.25rem;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+
+  thead th:hover .sort-indicator,
+  thead th.sorted .sort-indicator { opacity: 1; }
+
+  tbody tr {
+    border-bottom: 1px solid var(--gray-100);
+    transition: background 0.1s;
+  }
+
+  tbody tr:hover { background: var(--gray-100); }
+
+  tbody td {
+    font-family: var(--font-serif);
+    font-size: 0.9375rem;
+    padding: 0.75rem 1rem 0.75rem 0;
+    vertical-align: top;
+  }
+
+  td.site-name { font-weight: 500; min-width: 220px; }
+
+  td.site-name a { border-bottom: 1px solid transparent; }
+
+  td.site-name a:hover {
+    text-decoration: none;
+    border-bottom-color: var(--black);
+  }
+
+  td.state {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    letter-spacing: 0.02em;
+    color: var(--gray-600);
+    white-space: nowrap;
+  }
+
+  td.agency { font-size: 0.875rem; color: var(--gray-600); }
+  td.geology { font-size: 0.875rem; color: var(--gray-600); }
+
+  td.acreage {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--gray-600);
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  td.native-lands {
+    font-size: 0.875rem;
+    color: var(--gray-600);
+    max-width: 200px;
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--gray-400);
+    font-style: italic;
+    font-size: 0.9375rem;
+    display: none;
+  }
+
+  .footer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    border-top: 1px solid var(--gray-200);
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    color: var(--gray-400);
+    letter-spacing: 0.04em;
+  }
+
+  @media (max-width: 900px) {
+    .filter-group { min-width: 150px; }
+    td.native-lands, th.native-lands-col { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .header { padding: 2rem 1.25rem 1rem; }
+    .filters { padding: 1.25rem; }
+    .filter-row { gap: 1rem; }
+    .filter-group { min-width: 100%; }
+    .results-bar { padding: 0.75rem 1.25rem; }
+    .index-table { padding: 0 1.25rem 3rem; overflow-x: auto; }
+    table { min-width: 600px; }
+    .footer { padding: 1.5rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1><a href="https://publiclandsinstitute.net/">Public Lands Institute</a></h1>
+  <nav>
+    <a href="https://publiclandsinstitute.net/">Sites</a>
+    <a href="https://publiclandsinstitute.net/archive.html">Archive</a>
+    <a href="#" class="active">Index</a>
+  </nav>
+</div>
+
+<div class="filters">
+  <div class="filter-row">
+    <div class="filter-group">
+      <span class="filter-label">State</span>
+      <select class="filter-select" id="filter-state">
+        <option value="">All states</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Managing agency</span>
+      <select class="filter-select" id="filter-agency">
+        <option value="">All agencies</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Geological period</span>
+      <select class="filter-select" id="filter-geology">
+        <option value="">All periods</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Indigenous territory</span>
+      <select class="filter-select" id="filter-territory">
+        <option value="">All territories</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<div class="results-bar">
+  <span class="results-count" id="results-count"></span>
+  <button class="clear-filters" id="clear-filters">Clear filters</button>
+</div>
+
+<div class="index-table">
+  <table>
+    <thead>
+      <tr>
+        <th data-sort="name">Site <span class="sort-indicator">&#9650;</span></th>
+        <th data-sort="state">State <span class="sort-indicator">&#9650;</span></th>
+        <th data-sort="agency">Agency <span class="sort-indicator">&#9650;</span></th>
+        <th data-sort="geology">Geology <span class="sort-indicator">&#9650;</span></th>
+        <th data-sort="acreage">Acreage <span class="sort-indicator">&#9650;</span></th>
+        <th class="native-lands-col" data-sort="territory">Indigenous territory <span class="sort-indicator">&#9650;</span></th>
+      </tr>
+    </thead>
+    <tbody id="site-tbody">
+    </tbody>
+  </table>
+  <div class="empty-state" id="empty-state">No sites match the current filters.</div>
+</div>
+
+<div class="footer">
+  Public Lands Institute &#183; CC0 Public Domain &#183; <a href="https://publiclandsinstitute.net/" style="color: var(--gray-400);">publiclandsinstitute.net</a>
+</div>
+
+<script>
+const sites = [
+  {
+    "name": "Caesar Creek State Park",
+    "state": "Ohio",
+    "stateAbbr": "OH",
+    "agency": "Ohio DNR",
+    "agencyType": "State park",
+    "geology": "Ordovician",
+    "geologyDetail": "~447 Mya Ordovician limestone and shale",
+    "acreage": 7530,
+    "territory": [
+      "Shawnee",
+      "Myaamia",
+      "Hopewell",
+      "Fort Ancient"
+    ],
+    "url": "https://publiclandsinstitute.net/sites/caesar-creek.html"
+  },
+  {
+    "name": "Shawnee Lookout",
+    "state": "Ohio",
+    "stateAbbr": "OH",
+    "agency": "Great Parks of Hamilton County",
+    "agencyType": "County park",
+    "geology": "Ordovician",
+    "geologyDetail": "~450 Mya Ordovician limestone and shale",
+    "acreage": 2179,
+    "territory": [
+      "Shawnee",
+      "Myaamia",
+      "Hopewell",
+      "Fort Ancient"
+    ],
+    "url": "https://publiclandsinstitute.net/sites/shawnee-lookout.html"
+  },
+  {
+    "name": "Fernald Preserve",
+    "state": "Ohio",
+    "stateAbbr": "OH",
+    "agency": "U.S. Department of Energy, Office of Legacy Management",
+    "agencyType": "DOE legacy site",
+    "geology": "Ordovician",
+    "geologyDetail": "~450 Mya Ordovician limestone and shale",
+    "acreage": 1050,
+    "territory": [
+      "Myaamia",
+      "Shawnee"
+    ],
+    "url": "https://publiclandsinstitute.net/sites/fernald-preserve.html"
+  },
+  {
+    "name": "Clifty Falls State Park",
+    "state": "Indiana",
+    "stateAbbr": "IN",
+    "agency": "Indiana DNR",
+    "agencyType": "State park",
+    "geology": "Ordovician",
+    "geologyDetail": "~445 Mya Ordovician limestone and shale",
+    "acreage": 1416,
+    "territory": [
+      "Shawnee",
+      "Miami"
+    ],
+    "url": "https://publiclandsinstitute.net/sites/clifty-falls-state-park.html"
+  },
+  {
+    "name": "French Park",
+    "state": "Ohio",
+    "stateAbbr": "OH",
+    "agency": "Cincinnati Parks",
+    "agencyType": "Municipal park",
+    "geology": "Ordovician",
+    "geologyDetail": "~450 Mya Ordovician limestone and shale",
+    "acreage": 275,
+    "territory": [
+      "Hopewell",
+      "Shawnee",
+      "Myaamia"
+    ],
+    "url": "https://publiclandsinstitute.net/sites/french-park.html"
+  },
+  {
+    "name": "Big South Fork National River and Recreation Area",
+    "state": "Tennessee",
+    "stateAbbr": "TN",
+    "agency": "National Park Service",
+    "agencyType": "NPS",
+    "geology": "Pennsylvanian",
+    "geologyDetail": "~310 Mya Pennsylvanian sandstone and conglomerate",
+    "acreage": 125000,
+    "territory": [
+      "Cherokee",
+      "Yuchi",
+      "Shawnee"
+    ],
+    "url": "https://publiclandsinstitute.net/sites/big-south-fork-national-river-and-recreation-area.html"
+  },
+  {
+    "name": "Mammoth Cave National Park",
+    "state": "Kentucky",
+    "stateAbbr": "KY",
+    "agency": "National Park Service",
+    "agencyType": "NPS",
+    "geology": "Mississippian",
+    "geologyDetail": "~340 million years ago (limestone bedrock); cave passages formed over last 10 million years",
+    "acreage": 54012,
+    "territory": [
+      "Shawnee",
+      "Cherokee",
+      "Chickasaw",
+      "Osage"
+    ],
+    "url": "https://publiclandsinstitute.net/sites/mammoth-cave-national-park.html"
+  },
+  {
+    "name": "Sea Rim State Park",
+    "state": "Texas",
+    "stateAbbr": "TX",
+    "agency": "Texas Parks and Wildlife",
+    "agencyType": "State park",
+    "geology": "Holocene",
+    "geologyDetail": "~11,700 years ago – present",
+    "acreage": 15109,
+    "territory": [
+      "Ishak (Atakapa-Ishak)",
+      "Akokisa"
+    ],
+    "url": "https://publiclandsinstitute.net/sites/sea-rim-state-park.html"
+  },
+  {
+    "name": "Caprock Canyon State Park",
+    "state": "Texas",
+    "stateAbbr": "TX",
+    "agency": "Texas Parks and Wildlife",
+    "agencyType": "State park",
+    "geology": "Permian",
+    "geologyDetail": "~299–2.6 million years ago (surface strata)",
+    "acreage": 15313,
+    "territory": [
+      "Comanche",
+      "Kiowa",
+      "Apache"
+    ],
+    "url": "https://publiclandsinstitute.net/sites/caprock-canyon.html"
+  },
+  {
+    "name": "Palo Duro Canyon State Park",
+    "state": "Texas",
+    "stateAbbr": "TX",
+    "agency": "Texas Parks and Wildlife",
+    "agencyType": "State park",
+    "geology": "Triassic",
+    "geologyDetail": "~252–201 million years ago (exposed strata)",
+    "acreage": 29182,
+    "territory": [
+      "Comanche",
+      "Kiowa",
+      "Southern Cheyenne",
+      "Arapaho"
+    ],
+    "url": "https://publiclandsinstitute.net/sites/palo-duro-canyon.html"
+  },
+  {
+    "name": "Johnson's Shut-Ins State Park",
+    "state": "Missouri",
+    "stateAbbr": "MO",
+    "agency": "Missouri State Parks",
+    "agencyType": "State park",
+    "geology": "Proterozoic",
+    "geologyDetail": "~1.47 billion years ago (bedrock)",
+    "acreage": 8916,
+    "territory": [
+      "Osage"
+    ],
+    "url": "https://publiclandsinstitute.net/sites/johnsons-shut-ins-state-park.html"
+  },
+  {
+    "name": "Elephant Rocks State Park",
+    "state": "Missouri",
+    "stateAbbr": "MO",
+    "agency": "Missouri State Parks",
+    "agencyType": "State park",
+    "geology": "Proterozoic",
+    "geologyDetail": "~1.47 billion years ago (granite intrusion)",
+    "acreage": 132,
+    "territory": [
+      "Osage"
+    ],
+    "url": "https://publiclandsinstitute.net/sites/elephant-rocks-state-park.html"
+  },
+  {
+    "name": "Charon's Garden Wilderness Area",
+    "state": "Oklahoma",
+    "stateAbbr": "OK",
+    "agency": "U.S. Fish and Wildlife Service",
+    "agencyType": "USFWS",
+    "geology": "Cambrian",
+    "geologyDetail": "~525 million years ago (bedrock)",
+    "acreage": 5723,
+    "territory": [
+      "Comanche",
+      "Kiowa",
+      "Wichita",
+      "Apache"
+    ],
+    "url": "https://publiclandsinstitute.net/sites/charons-garden-wilderness-area.html"
+  },
+  {
+    "name": "Wichita Mountains National Wildlife Refuge",
+    "state": "Oklahoma",
+    "stateAbbr": "OK",
+    "agency": "U.S. Fish and Wildlife Service",
+    "agencyType": "USFWS",
+    "geology": "Cambrian",
+    "geologyDetail": "~525 million years ago (bedrock); mountains re-exhumed ~300 Mya",
+    "acreage": 59020,
+    "territory": [
+      "Comanche",
+      "Kiowa",
+      "Wichita",
+      "Apache"
+    ],
+    "url": "https://publiclandsinstitute.net/sites/wichita-mountains-national-wildlife-refuge.html"
+  },
+  {
+    "name": "John Bryan State Park",
+    "state": "Ohio",
+    "stateAbbr": "OH",
+    "agency": "Ohio DNR",
+    "agencyType": "State park",
+    "geology": "Silurian",
+    "geologyDetail": "~430–420 million years ago (bedrock); gorge carved ~12,000–14,000 years ago",
+    "acreage": 752,
+    "territory": [
+      "Shawnee",
+      "Miami",
+      "Adena",
+      "Hopewell"
+    ],
+    "url": "https://publiclandsinstitute.net/sites/john-bryan-state-park.html"
+  },
+  {
+    "name": "Hocking Hills State Park",
+    "state": "Ohio",
+    "stateAbbr": "OH",
+    "agency": "Ohio DNR",
+    "agencyType": "State park",
+    "geology": "Mississippian",
+    "geologyDetail": "~330 million years ago (sandstone); caves and gorges carved ~14,000–18,000 years ago",
+    "acreage": 2356,
+    "territory": [
+      "Shawnee",
+      "Delaware (Lenape)",
+      "Wyandot",
+      "Adena",
+      "Hopewell"
+    ],
+    "url": "https://publiclandsinstitute.net/sites/hocking-hills.html"
+  },
+  {
+    "name": "Arc of Appalachia",
+    "state": "Ohio",
+    "stateAbbr": "OH",
+    "agency": "Arc of Appalachia Preserve System",
+    "agencyType": "Private preserve",
+    "geology": "Ordovician",
+    "geologyDetail": "~485–420 million years ago (bedrock)",
+    "acreage": 7000,
+    "territory": [
+      "Shawnee",
+      "Adena",
+      "Hopewell"
+    ],
+    "url": "https://publiclandsinstitute.net/sites/arc-of-appalachia.html"
+  },
+  {
+    "name": "Mount Airy Forest",
+    "state": "Ohio",
+    "stateAbbr": "OH",
+    "agency": "Cincinnati Parks",
+    "agencyType": "Municipal park",
+    "geology": "Ordovician",
+    "geologyDetail": "~450 million years ago (Ordovician bedrock); surface soils entirely reworked by 19th-century agricultural erosion and 20th-century reforestation",
+    "acreage": 1459,
+    "territory": [
+      "Shawnee",
+      "Fort Ancient culture"
+    ],
+    "url": "https://publiclandsinstitute.net/sites/mount-airy-forest.html"
+  },
+  {
+    "name": "Clifton Gorge State Nature Preserve",
+    "state": "Ohio",
+    "stateAbbr": "OH",
+    "agency": "Ohio DNR",
+    "agencyType": "State nature preserve",
+    "geology": "Silurian",
+    "geologyDetail": "~445–430 million years ago (bedrock); gorge carved ~15,000 years ago",
+    "acreage": 268,
+    "territory": [
+      "Shawnee",
+      "Miami",
+      "Adena",
+      "Hopewell"
+    ],
+    "url": "https://publiclandsinstitute.net/sites/clifton-gorge-state-nature-preserve.html"
+  },
+  {
+    "name": "Parker Woods",
+    "state": "Ohio",
+    "stateAbbr": "OH",
+    "agency": "Cincinnati Parks",
+    "agencyType": "Municipal park",
+    "geology": "Ordovician",
+    "geologyDetail": "~450 Mya Ordovician shale and limestone (Kope Formation)",
+    "acreage": 63,
+    "territory": [
+      "Shawnee",
+      "Myaamia",
+      "Adena",
+      "Hopewell"
+    ],
+    "url": "https://publiclandsinstitute.net/sites/parker-woods.html"
+  },
+  {
+    "name": "Glen Helen Nature Preserve",
+    "state": "Ohio",
+    "stateAbbr": "OH",
+    "agency": "Glen Helen Association",
+    "agencyType": "Private preserve",
+    "geology": "Silurian",
+    "geologyDetail": "~445–430 million years ago (bedrock); gorge and ravine system formed by glacial meltwater ~15,000 years ago",
+    "acreage": 1147,
+    "territory": [
+      "Shawnee",
+      "Miami",
+      "Adena"
+    ],
+    "url": "https://publiclandsinstitute.net/sites/glen-helen-nature-preserve.html"
+  },
+  {
+    "name": "Otto Armleder Memorial Park",
+    "state": "Ohio",
+    "stateAbbr": "OH",
+    "agency": "Cincinnati Parks",
+    "agencyType": "Municipal park",
+    "geology": "Ordovician",
+    "geologyDetail": "~450 million years ago (Ordovician bedrock); floodplain deposits Holocene",
+    "acreage": 347,
+    "territory": [
+      "Shawnee",
+      "Fort Ancient culture"
+    ],
+    "url": "https://publiclandsinstitute.net/sites/otto-armleder-memorial-park.html"
+  },
+  {
+    "name": "Bender Mountain Nature Preserve",
+    "state": "Ohio",
+    "stateAbbr": "OH",
+    "agency": "Cincinnati Parks",
+    "agencyType": "Municipal park",
+    "geology": "Ordovician",
+    "geologyDetail": "~450 million years ago (Ordovician bedrock); ridge morphology shaped by Illinoian glaciation ~400,000 years ago",
+    "acreage": 130,
+    "territory": [
+      "Shawnee",
+      "Adena",
+      "Hopewell"
+    ],
+    "url": "https://publiclandsinstitute.net/sites/bender-mountain-nature-preserve.html"
+  }
+];
+
+function getUnique(arr, key) {
+  const vals = new Set();
+  arr.forEach(s => {
+    if (Array.isArray(s[key])) {
+      s[key].forEach(v => vals.add(v));
+    } else if (s[key]) {
+      vals.add(s[key]);
+    }
+  });
+  return [...vals].sort();
+}
+
+function populateFilter(selectId, values) {
+  const select = document.getElementById(selectId);
+  const defaultOption = select.options[0];
+  select.innerHTML = '';
+  select.appendChild(defaultOption);
+  values.forEach(v => {
+    const opt = document.createElement('option');
+    opt.value = v;
+    opt.textContent = v;
+    select.appendChild(opt);
+  });
+}
+
+populateFilter('filter-state', getUnique(sites, 'state'));
+populateFilter('filter-agency', getUnique(sites, 'agency'));
+populateFilter('filter-geology', getUnique(sites, 'geology'));
+populateFilter('filter-territory', getUnique(sites, 'territory'));
+
+let sortKey = 'name';
+let sortAsc = true;
+
+function sortSites(filtered) {
+  return filtered.sort((a, b) => {
+    let valA, valB;
+    if (sortKey === 'acreage') {
+      valA = a.acreage || 0;
+      valB = b.acreage || 0;
+      return sortAsc ? valA - valB : valB - valA;
+    }
+    if (sortKey === 'territory') {
+      valA = (a.territory || []).join(', ').toLowerCase();
+      valB = (b.territory || []).join(', ').toLowerCase();
+    } else {
+      valA = (a[sortKey] || '').toLowerCase();
+      valB = (b[sortKey] || '').toLowerCase();
+    }
+    if (valA < valB) return sortAsc ? -1 : 1;
+    if (valA > valB) return sortAsc ? 1 : -1;
+    return 0;
+  });
+}
+
+function formatAcreage(n) {
+  if (!n) return '';
+  return n.toLocaleString();
+}
+
+function render() {
+  const stateFilter = document.getElementById('filter-state').value;
+  const agencyFilter = document.getElementById('filter-agency').value;
+  const geologyFilter = document.getElementById('filter-geology').value;
+  const territoryFilter = document.getElementById('filter-territory').value;
+
+  let filtered = sites.filter(s => {
+    if (stateFilter && s.state !== stateFilter) return false;
+    if (agencyFilter && s.agency !== agencyFilter) return false;
+    if (geologyFilter && s.geology !== geologyFilter) return false;
+    if (territoryFilter && !s.territory.includes(territoryFilter)) return false;
+    return true;
+  });
+
+  filtered = sortSites(filtered);
+
+  const tbody = document.getElementById('site-tbody');
+  tbody.innerHTML = '';
+
+  filtered.forEach(s => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td class="site-name"><a href="${s.url}">${s.name}</a></td>
+      <td class="state">${s.stateAbbr}</td>
+      <td class="agency">${s.agency}</td>
+      <td class="geology">${s.geologyDetail}</td>
+      <td class="acreage">${formatAcreage(s.acreage)}</td>
+      <td class="native-lands">${s.territory.join(', ')}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  const total = sites.length;
+  const shown = filtered.length;
+  const countEl = document.getElementById('results-count');
+  if (shown === total) {
+    countEl.textContent = `${total} sites`;
+  } else {
+    countEl.textContent = `${shown} of ${total} sites`;
+  }
+
+  document.getElementById('empty-state').style.display = shown === 0 ? 'block' : 'none';
+
+  const hasFilters = stateFilter || agencyFilter || geologyFilter || territoryFilter;
+  document.getElementById('clear-filters').classList.toggle('visible', hasFilters);
+
+  document.querySelectorAll('thead th').forEach(th => {
+    const key = th.dataset.sort;
+    th.classList.toggle('sorted', key === sortKey);
+    const indicator = th.querySelector('.sort-indicator');
+    if (indicator) {
+      indicator.innerHTML = (key === sortKey && !sortAsc) ? '&#9660;' : '&#9650;';
+    }
+  });
+}
+
+['filter-state', 'filter-agency', 'filter-geology', 'filter-territory'].forEach(id => {
+  document.getElementById(id).addEventListener('change', render);
+});
+
+document.getElementById('clear-filters').addEventListener('click', () => {
+  document.getElementById('filter-state').value = '';
+  document.getElementById('filter-agency').value = '';
+  document.getElementById('filter-geology').value = '';
+  document.getElementById('filter-territory').value = '';
+  render();
+});
+
+document.querySelectorAll('thead th[data-sort]').forEach(th => {
+  th.addEventListener('click', () => {
+    const key = th.dataset.sort;
+    if (sortKey === key) {
+      sortAsc = !sortAsc;
+    } else {
+      sortKey = key;
+      sortAsc = true;
+    }
+    render();
+  });
+});
+
+render();
+</script>
+
+</body>
+</html>

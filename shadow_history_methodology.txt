@@ -1,0 +1,402 @@
+PUBLIC LANDS INSTITUTE — SHADOW HISTORY FIELD METHODOLOGY
+Research protocol and writing guide for the shadow_history field.
+Last updated 2026-04-02.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DEFINITION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+The shadow_history field documents history that is verifiably true but
+structurally underreported: events and conditions that do not appear in
+standard park interpretive materials, tourism copy, or managing-agency
+press releases. The field is not an editorial opinion about a site. It
+is a factual record drawn from administrative, legal, scientific, and
+archival sources.
+
+The field is distinct from displacement_tenure, which focuses on the
+legal and treaty history of how land passed from indigenous peoples to
+the United States. Shadow history addresses what happened after — and
+sometimes well before — the land entered public ownership, including
+events that occurred under public management.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CATEGORIES OF INQUIRY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Research each new site against all of the following categories. Not all
+categories will yield findings for every site. If nothing significant
+is found after genuine search effort, the field may be left empty or
+omitted.
+
+1. SEGREGATED LABOR (CCC, WPA, prison labor)
+   The Civilian Conservation Corps (1933-1942) operated racially
+   segregated camps nationally, formally codified by CCC director
+   Robert Fechner in summer 1935. All-Black companies were typically
+   numbered in the 200s (e.g., Company 526) or 1500s (e.g., Company
+   1505-C) and were often assigned to geographically isolated sites
+   to reduce contact with white communities.
+
+   Questions to answer:
+   - Did CCC companies work this site? Which company numbers?
+   - Were any companies racially segregated all-Black units?
+   - Were Black enrollees subsequently barred from using the facilities
+     they built, and if so, until when?
+   - Was WPA labor used? Were workers paid equitably?
+   - Was prison or convict labor used in development?
+
+   Primary sources: Living New Deal (livingnewdeal.org), state
+   historical CCC records, NPS administrative histories, camp rosters
+   in National Archives Record Group 35.
+
+2. FORCED RESIDENTIAL REMOVAL (non-indigenous)
+   Many parks and preserves required the condemnation and removal of
+   existing communities of farmers, miners, and rural residents.
+   This most commonly occurred in national park and national forest
+   formation (1890s-1940s) but also in state park assembly and
+   reservoir construction.
+
+   Questions to answer:
+   - Were families or communities displaced through eminent domain
+     to assemble the park?
+   - Were condemned landowners compensated at fair market value?
+   - Were named communities, towns, or neighborhoods destroyed?
+   - Are remnant structures, cemeteries, or place names preserved
+     within the park that document former occupation?
+   - Were racial or class distinctions documented in who was
+     displaced versus who was retained (e.g., as guides or laborers)?
+   - Did large private landholders accelerate extraction (logging,
+     mining, quarrying) between authorization and actual condemnation,
+     extracting maximum value before government acquisition?
+
+   EMINENT DOMAIN RECORDS — WHERE TO LOOK:
+   Eminent domain/condemnation records are NOT in EPA or environmental
+   databases. They live in entirely separate repositories:
+
+   Federal district court records (PACER — pacer.gov):
+     Federal condemnation suits (NPS, Army Corps, USFWS acquisitions)
+     are filed as civil cases in the U.S. district court for the
+     district where the land is located. Search by park name or
+     "United States v. [acres/parcel description]."
+
+   State court records:
+     State park condemnations go through state common pleas or
+     circuit courts. Search by county and approximate acquisition
+     date.
+
+   NPS Administrative Histories (npshistory.com):
+     The "Land Acquisition" chapter is the most reliable single
+     source for national park eminent domain. Often names specific
+     communities, families, compensation disputes, and racial
+     dimensions of who was displaced and who was not.
+
+   Army Corps of Engineers Digital Library (usace.army.mil):
+     Project environmental impact statements and land acquisition
+     histories for Corps-managed lands. Search by project name
+     under "Engineer Pamphlets" and "Project Histories."
+
+   LOC Chronicling America (chroniclingamerica.loc.gov):
+     Historical newspapers 1770-1963. Search for "[Site Name]
+     eminent domain," "[Site Name] condemnation," or "[County]
+     park acquisition." Local papers covered condemnation
+     proceedings in detail, often naming families and amounts.
+
+   County deed and probate records:
+     Condemnation proceedings create deed transfers; contested
+     valuations often produce probate or chancery court records.
+     Available at county recorders and on Ancestry.com for many
+     states.
+
+   NOTE: Eminent domain research is most likely to require direct
+   archival access (PACER, county recorder, state archives) rather
+   than web search. If accessible records are exhausted without
+   findings, document what was searched with a TODO note rather
+   than assuming no condemnation occurred.
+
+   Primary sources: NPS administrative histories (npshistory.com),
+   Army Corps of Engineers project histories (USACE Digital Library),
+   LOC Chronicling America, federal and state court records (PACER),
+   county deed records.
+
+3. INDUSTRIAL CONTAMINATION
+   Many public lands were acquired specifically because prior
+   industrial use made them unsuitable or unprofitable for private
+   development. Industrial legacy can include active contamination
+   affecting current visitors, or contamination in adjacent systems
+   that affects the site hydrology.
+
+   Questions to answer:
+   - Is the site or an adjacent property listed on EPA's CERCLA
+     (Superfund) National Priorities List?
+   - Is there a Brownfield designation?
+   - Does the site have legacy mining, quarrying, milling, or
+     manufacturing history that left contaminated soil, water, or
+     sediment?
+   - Is the site's watershed affected by acid mine drainage, PCBs,
+     organochlorine pesticides, or petroleum contamination?
+   - Were there documented industrial accidents or spills on or
+     adjacent to the site?
+
+   Primary sources: EPA Cleanups in My Community
+   (cleanups.epa.gov), EPA Superfund site profiles (cumulis.epa.gov),
+   NOAA Damage Assessment and Restoration Program (darrp.noaa.gov),
+   USGS water quality publications, state environmental agency records.
+
+4. INSTITUTIONAL LABOR AND CONFINEMENT
+   Some public lands incorporate or abut property formerly used by
+   state institutions — psychiatric hospitals, reformatories, poor
+   farms, or tuberculosis sanatoria — that operated self-sufficiency
+   agricultural programs using unpaid institutional labor.
+
+   Questions to answer:
+   - Was the land or an adjacent parcel previously held by a state
+     institution?
+   - Did the institution use patient or inmate labor on the land?
+   - Were patients, inmates, or residents buried on the property?
+   - Was land transferred to public park use after institutional
+     closure, and what conditions governed that transfer?
+
+   Primary sources: State hospital and institutional histories
+   (Asylum Projects: asylumprojects.org), state archives, county
+   recorder records, Find A Grave (findagrave.com) for institutional
+   cemeteries.
+
+5. ARCHAEOLOGICAL EXTRACTION AND ANCESTRAL ERASURE
+   Archaeological sites within public lands have a documented history
+   of unauthorized excavation, institutional collection without
+   community consent, and failure to repatriate remains under NAGPRA
+   (Native American Graves Protection and Repatriation Act, 1990).
+
+   Questions to answer:
+   - Were archaeological excavations conducted at the site before
+     professional standards and legal protections existed?
+   - Who conducted excavations, and where did recovered material go?
+   - Have skeletal remains or funerary objects been subject to
+     NAGPRA consultation or repatriation?
+   - Is there documented looting or unauthorized artifact removal?
+   - Were human remains displayed publicly, and when was the
+     practice ended?
+
+   Primary sources: NAGPRA databases (National Park Service and
+   individual institutions), Ohio History Connection and equivalent
+   state archaeological surveys, institutional museum NAGPRA
+   registers, Wikipedia for named mounds and site histories.
+
+6. MILITARY USE AND APPROPRIATION
+   Federal public lands are frequently subject to military training
+   use, airspace restrictions, weapons testing, or outright
+   annexation. This is especially common at national wildlife refuges
+   and national forests.
+
+   Questions to answer:
+   - Has any portion of the site been used for military training,
+     weapons testing, or airspace operations?
+   - Have Department of Defense joint-use arrangements restricted
+     public access to portions of the site?
+   - Was the land ever considered for military annexation?
+   - Are there unexploded ordnance concerns on the site?
+
+   Primary sources: Defense Technical Information Center (DTIC),
+   National Archives military records, managing agency NEPA
+   documents, inspector general reports.
+
+7. PRE-PARK INDUSTRIAL HISTORY
+   Even sites with clean current environmental records often have
+   significant industrial histories: quarrying, logging, mining,
+   milling, or commercial agriculture that reshaped the landscape
+   before public acquisition.
+
+   Questions to answer:
+   - What was the land used for before public acquisition?
+   - Were there commercial operations (quarries, mills, mines) that
+     employed workers under documented hazardous conditions?
+   - Did the prior industrial use define the landscape the park
+     now interprets (e.g., reforested farmland presented as
+     "wilderness")?
+   - Were there company towns or dependent communities on the site?
+
+   Primary sources: State and local historical societies, managing
+   agency cultural resource reports, railroad and industrial company
+   histories, Sanborn fire insurance maps (LOC).
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+RESEARCH PROTOCOL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Step 1: Identify the site's primary category
+Before searching, determine which of the seven categories above is
+most likely to yield findings for this type of site:
+
+  Reservoir / Lake          -> Forced residential removal, contamination
+  National Park             -> Forced residential removal, CCC labor,
+                               archaeological extraction
+  National Wildlife Refuge  -> Military use, CCC/WPA labor
+  State Park (pre-WWII)     -> CCC labor, prior industrial history
+  State Park (post-WWII)    -> Institutional land transfer, contamination
+  Urban / municipal park    -> Industrial contamination, segregated access
+  Private preserve          -> Archaeological extraction, prior use
+  Mining / quarry site      -> Industrial contamination, labor history
+
+Step 2: Query the primary archival silos
+Issue targeted searches in these repositories:
+
+  EPA Cleanups in My Community:
+    cleanups.epa.gov
+    Search by site name or address. Look for CERCLA/Superfund status,
+    Brownfield designation, or corrective action records.
+
+  NOAA Damage Assessment and Restoration Program:
+    darrp.noaa.gov
+    Covers industrial spill liability, wetland contamination, and
+    natural resource damage assessments.
+
+  NPS Administrative Histories:
+    npshistory.com
+    Search for the park name. Look for chapters on "Land Acquisition,"
+    "Pre-Park Residents," or "CCC/WPA."
+
+  Living New Deal:
+    livingnewdeal.org
+    Search by site name for CCC and WPA project records including
+    company numbers, project types, and labor histories.
+
+  USGS Publications Warehouse:
+    pubs.usgs.gov
+    Search for water quality studies, post-disaster assessments,
+    and contamination studies by watershed or site name.
+
+  LOC Chronicling America:
+    chroniclingamerica.loc.gov
+    Historical newspapers 1770-1963. Search for "[Site Name] eminent
+    domain," "[Site Name] condemnation," "[County] CCC camp."
+
+  Asylum Projects:
+    asylumprojects.org
+    Comprehensive database of state institutions. Search by county
+    or institution name adjacent to the site.
+
+  National Archives Record Group 35 (CCC):
+    archives.gov
+    CCC camp rosters, inspection reports, and company records.
+    Identifies racial composition of companies by number.
+
+Step 3: Filter results
+Discard all of the following source types as insufficient for citation:
+  - Travel blogs and tourism boards
+  - "Things to do" listicles
+  - Press releases from the managing agency
+  - Wikipedia as a terminal source (use it to find primary sources)
+  - Undated or uncredited web content
+
+Accept:
+  - Government agency publications and databases (EPA, NPS, USGS,
+    USACE, state agencies)
+  - Peer-reviewed academic publications
+  - Named journalism with publication date and outlet
+  - Court records and legal citations
+  - Archival databases with traceable provenance (Find A Grave,
+    Asylum Projects, Chronicling America)
+  - Wikipedia articles with cited primary sources (follow the
+    citations; cite the primary source, not Wikipedia)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+WRITING GUIDE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+The shadow_history field is a plain text string written in the same
+register as the other PLI narrative fields. It appears on individual
+site pages between displacement_tenure and ecology.
+
+Tone: Deadpan. Report facts as facts. Do not characterize events as
+"shameful," "tragic," "troubling," or "disturbing." The facts speak
+for themselves. Do not use hedging language ("it is possible that,"
+"may have been") unless the uncertainty is genuinely material.
+
+Format: Clauses separated by semicolons. 2-5 sentences maximum.
+Do not use headers, bullet points, or markdown within the field value.
+
+Specificity: Always prefer the specific over the general. Name the
+people, the companies, the dollar amounts, the dates, the court cases.
+
+  Wrong: "The park used segregated labor during the New Deal era."
+  Right: "CCC Company 526, an all-Black unit, improved over 2,000
+          acres of the park from approximately 1934 to 1937; Black
+          Ohioans were subsequently barred from visiting the facilities
+          they built under formal state park segregation policies."
+
+Never use em dashes or en dashes. Use "to" for ranges (1934 to 1937)
+and semicolons for clause breaks.
+
+Do not repeat information already in displacement_tenure. If
+indigenous forced removal is in displacement_tenure, do not restate
+it in shadow_history unless there is a distinct additional fact
+(e.g., specific archaeological extraction of remains).
+
+If genuine research effort yields nothing significant, leave the field
+empty. Do not invent findings or speculate. Do not write "No
+significant shadow history documented" as a field value — simply
+omit the field or write an empty string.
+
+Model entries:
+
+  STRONG (multiple documented facts, named specifics):
+    "CCC Companies 2875 and 2876, composed of African American
+    enrollees, built the park's infrastructure in 1935 and were
+    housed in a segregated camp selected for its distance from white
+    communities; Black Texans were legally barred from entering the
+    park they built until federal desegregation pressure in 1964;
+    Texas Parks and Wildlife acknowledges that most of the canyon's
+    archaeological sites have been picked over and many artifacts
+    removed."
+
+  ADEQUATE (single well-documented fact):
+    "The Graniteville quarry operated beginning in 1869 as a company
+    town with approximately 700 residents at peak; silica dust
+    exposure in granite quarrying was a nationally documented
+    occupational hazard by the 1890s, producing silicosis in quarry
+    workers, though no site-specific injury records for Graniteville
+    appear in accessible public records."
+
+  TOO VAGUE (do not use):
+    "The site has a complex industrial history and was used for
+    commercial purposes before becoming a park."
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+BIBLIOGRAPHY MAINTENANCE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Every source used to populate or update a shadow_history field value
+must be added to shadow_history_bibliography.txt before deploying.
+
+Format:
+  Site name (as a section header using the ━━━ rule convention)
+  Source title — Publisher/Database
+    Full URL
+
+shadow_history_bibliography.txt is archived with each deploy in
+Archive/YYYY-MM-DD/ alongside sites.json and the HTML files.
+
+When updating an existing shadow_history field, add new sources to
+the existing site section in the bibliography rather than creating
+a duplicate section.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ADDING SHADOW HISTORY TO A NEW SITE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+When a new location is added to the site (see the ADDING A NEW
+LOCATION protocol in CLAUDE.md), shadow_history research should be
+conducted as part of the initial research phase using the protocol
+above. The field should be populated or left empty before the first
+deploy, not added as a follow-up.
+
+For sites where research is genuinely inconclusive or requires access
+to physical archives (county recorders, state archives, NPS FOIA
+requests), document what was searched and what remains open with a
+TODO prefix:
+
+  "TODO: RESEARCH SHADOW HISTORY -- [what was searched, what
+  repositories to check]"
+
+TODO entries are visible in the generated HTML and flag the site for
+future archival research.
+EOF

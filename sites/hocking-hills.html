@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Hocking Hills State Park — Public Lands Institute</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://publiclandsinstitute.net/sites/hocking-hills.html" rel="canonical"/>
+<link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<style>
+  :root {
+    --bg: #f5f5f5;
+    --fg: #111111;
+    --muted: #777777;
+    --border: #dddddd;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+  }
+  a { color: inherit; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .page {
+    max-width: 1120px;
+    margin: 24px auto 56px auto;
+    padding: 0 18px;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 28px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .logotype {
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .header-nav {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+    display: flex;
+    gap: 16px;
+  }
+  .divider { border-bottom: 1px solid var(--border); margin: 0 0 28px 0; }
+  footer {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  @media (min-width: 720px) {
+    .page { margin-top: 40px; padding: 0 24px; }
+    header { margin-bottom: 40px; }
+  }
+  .site-header { margin-bottom: 24px; }
+  .site-header h1 {
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    margin-bottom: 2px;
+  }
+  .site-header .state {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+  }
+  .site-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .site-data {
+    display: grid;
+    grid-template-columns: 148px 1fr;
+    font-size: 11px;
+    line-height: 1.55;
+    border-top: 1px solid var(--border);
+    padding-top: 8px;
+    align-items: baseline;
+    align-content: start;
+  }
+  .site-data dt {
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 10px;
+    padding: 4px 0;
+  }
+  .site-data dd {
+    color: var(--fg);
+    padding: 4px 0 4px 12px;
+    margin: 0;
+  }
+  .site-images { display: flex; flex-direction: column; gap: 14px; }
+  .site-figure { border: 1px solid var(--border); background: #e1e1e1; }
+  .site-figure img { width: 100%; height: auto; display: block; filter: grayscale(100%); }
+  .site-figure figcaption {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    padding: 6px 8px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .caption-filename {
+    color: var(--muted);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    flex-shrink: 0;
+    font-family: monospace;
+  }
+  .inat-section-label {
+    color: var(--fg) !important;
+    font-weight: 500;
+    padding-top: 12px !important;
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+  }
+  .inat-section-spacer {
+    padding-top: 12px !important;
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+  }
+  .inat-species {
+    line-height: 1.8;
+  }
+  .inat-sci {
+    color: var(--muted);
+    font-style: italic;
+  }
+  .obs-header {
+    border-top: 1px solid var(--border);
+    padding: 10px 0 4px 0;
+    margin-top: 6px;
+  }
+  .obs-header:first-child {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+  }
+  .obs-date {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    display: block;
+  }
+  .obs-notes {
+    font-size: 11px;
+    color: var(--fg);
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+  .site-nav {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  @media (min-width: 720px) {
+    .site-layout { grid-template-columns: 300px 1fr; gap: 48px; align-items: start; }
+    .site-data { position: sticky; top: 24px; }
+  }
+  @media (max-width: 480px) {
+    .site-data { grid-template-columns: 110px 1fr; }
+    .site-images { order: -1; }
+    .site-data { order: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="logotype"><a href="../index.html">Public Lands Institute</a></div>
+  <nav class="header-nav">
+    <a href="../index.html">Index</a>
+    <a href="../archive.html">Archive</a>
+  </nav>
+</header>
+<div class="divider"></div>
+<div class="site-header">
+  <h1>Hocking Hills State Park</h1>
+  <div class="state">OH</div>
+</div>
+<div class="site-layout">
+  <aside>
+    <dl class="site-data">
+      <dt>Geological age</dt><dd>~330 million years ago (sandstone); caves and gorges carved ~14,000–18,000 years ago</dd>
+      <dt>Epoch</dt><dd>Mississippian period (Osagean–Meramecian); Black Hand sandstone deposited in deltaic system; recess caves and gorges formed by Pleistocene periglacial weathering and glacial meltwater during Wisconsin glaciation</dd>
+      <dt>Taxa</dt><dd>649 plants, 1,582 insects, 428 fungi, 23 amphibians</dd>
+      <dt>Native lands</dt><dd>Shawnee (Shawanwaki) · Delaware (Lenape) · Wyandot (Wendat) · Adena (700 BCE–100 CE) · Hopewell (100 BCE–500 CE); 'Hockhocking' a Shawnee/Delaware place name; all tribes removed from Ohio by 1843</dd>
+      <dt>Displacement & Tenure</dt><dd>Cession 11: Treaty of Greene Ville (1795); the Hocking Valley underwent intensive coal extraction and old-growth clear-cutting during the 1870s; Ohio's Division of Forestry purchased the first 146 acres including Old Man's Cave in 1924 to restore fire- and farm-damaged land; CCC labor constructed trails, bridges, and stone steps through the 1930s.</dd>
+      <dt>Shadow History</dt><dd>Two racially segregated CCC companies built the park's infrastructure in the 1930s: Company 505 (white enrollees) was based at Camp Hocking near Conkle's Hollow, while Company 526 (Black enrollees) was based at Camp Logan from approximately 1934 to 1937, improving over 2,000 acres including Cantwell Cliffs, Rock House, and Rockbridge; by July 1935 all CCC camps nationally were formally segregated under an order from CCC director Robert Fechner; acid mine drainage from abandoned coal operations in the broader Hocking watershed is well-documented, with Monday Creek and its tributaries largely devoid of fish due to sulfuric acid and settled iron and aluminum particles.</dd>
+      <dt>Ecology</dt><dd>Hemlock-dominated gorge; Canadian hemlock at southern range limit; rock shelter communities; old-growth hemlock remnants; high biodiversity microclimate</dd>
+      <dt>Hydrology</dt><dd>Old Man's Creek; Queer Creek; Cedar Fork; multiple seasonal waterfalls; cave seeps maintaining year-round moisture; Cedar Falls (50 ft wide)</dd>
+      <dt>Acreage</dt><dd>2,356 acres (park); adjacent 9,267-acre Hocking State Forest</dd>
+      <dt>GPS</dt><dd>39.4354° N, 82.5408° W</dd>
+    </dl>
+  </aside>
+  <div class="site-images">
+    <figure class="site-figure">
+      <a href="../img/full/hocking-hills/_DSF0264.tif" download title="Download _DSF0264.jpg">
+        <img src="../img/jpg/hocking-hills/_DSF0264.jpg" alt="Hocking Hills State Park I" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Hocking Hills State Park I &middot; 2025-11-08</span>
+        <span class="caption-filename">_DSF0264.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/hocking-hills/_DSF0284.tif" download title="Download _DSF0284.jpg">
+        <img src="../img/jpg/hocking-hills/_DSF0284.jpg" alt="Hocking Hills State Park II" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Hocking Hills State Park II &middot; 2025-11-08</span>
+        <span class="caption-filename">_DSF0284.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/hocking-hills/_DSF0292.tif" download title="Download _DSF0292.jpg">
+        <img src="../img/jpg/hocking-hills/_DSF0292.jpg" alt="Hocking Hills State Park III" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Hocking Hills State Park III &middot; 2025-11-08</span>
+        <span class="caption-filename">_DSF0292.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/hocking-hills/_DSF0300.tif" download title="Download _DSF0300.jpg">
+        <img src="../img/jpg/hocking-hills/_DSF0300.jpg" alt="Hocking Hills State Park IV" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Hocking Hills State Park IV &middot; 2025-11-08</span>
+        <span class="caption-filename">_DSF0300.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/hocking-hills/_DSF0303.tif" download title="Download _DSF0303.jpg">
+        <img src="../img/jpg/hocking-hills/_DSF0303.jpg" alt="Hocking Hills State Park V" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Hocking Hills State Park V &middot; 2025-11-08</span>
+        <span class="caption-filename">_DSF0303.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/hocking-hills/_DSF0304.tif" download title="Download _DSF0304.jpg">
+        <img src="../img/jpg/hocking-hills/_DSF0304.jpg" alt="Hocking Hills State Park VI" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Hocking Hills State Park VI &middot; 2025-11-08</span>
+        <span class="caption-filename">_DSF0304.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/hocking-hills/_DSF0316.tif" download title="Download _DSF0316.jpg">
+        <img src="../img/jpg/hocking-hills/_DSF0316.jpg" alt="Hocking Hills State Park VII" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Hocking Hills State Park VII &middot; 2025-11-08</span>
+        <span class="caption-filename">_DSF0316.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/hocking-hills/_DSF0326.tif" download title="Download _DSF0326.jpg">
+        <img src="../img/jpg/hocking-hills/_DSF0326.jpg" alt="Hocking Hills State Park VIII" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Hocking Hills State Park VIII &middot; 2025-11-08</span>
+        <span class="caption-filename">_DSF0326.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/hocking-hills/_DSF0349.tif" download title="Download _DSF0349.jpg">
+        <img src="../img/jpg/hocking-hills/_DSF0349.jpg" alt="Hocking Hills State Park IX" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Hocking Hills State Park IX &middot; 2025-11-08</span>
+        <span class="caption-filename">_DSF0349.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/hocking-hills/_DSF0360.tif" download title="Download _DSF0360.jpg">
+        <img src="../img/jpg/hocking-hills/_DSF0360.jpg" alt="Hocking Hills State Park X" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Hocking Hills State Park X &middot; 2025-11-08</span>
+        <span class="caption-filename">_DSF0360.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/hocking-hills/_DSF0392.tif" download title="Download _DSF0392.jpg">
+        <img src="../img/jpg/hocking-hills/_DSF0392.jpg" alt="Hocking Hills State Park XI" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Hocking Hills State Park XI &middot; 2025-11-08</span>
+        <span class="caption-filename">_DSF0392.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/hocking-hills/_DSF0400.tif" download title="Download _DSF0400.jpg">
+        <img src="../img/jpg/hocking-hills/_DSF0400.jpg" alt="Hocking Hills State Park XII" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Hocking Hills State Park XII &middot; 2025-11-08</span>
+        <span class="caption-filename">_DSF0400.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/hocking-hills/_DSF0413.tif" download title="Download _DSF0413.jpg">
+        <img src="../img/jpg/hocking-hills/_DSF0413.jpg" alt="Hocking Hills State Park XIII" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Hocking Hills State Park XIII &middot; 2025-11-08</span>
+        <span class="caption-filename">_DSF0413.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/hocking-hills/_DSF0414.tif" download title="Download _DSF0414.jpg">
+        <img src="../img/jpg/hocking-hills/_DSF0414.jpg" alt="Hocking Hills State Park XIV" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Hocking Hills State Park XIV &middot; 2025-11-08</span>
+        <span class="caption-filename">_DSF0414.jpg</span>
+      </figcaption>
+    </figure>
+  </div>
+</div>
+<nav class="site-nav">
+  <a href="john-bryan-state-park.html">← John Bryan State Park</a>
+  <a href="arc-of-appalachia.html">Arc of Appalachia →</a>
+</nav>
+<footer>
+  <span>Public Lands Institute — ongoing project</span>
+  <span>CC0 Public Domain</span>
+</footer>
+</div>
+<script src="../js/lightbox.js"></script>
+</body>
+</html>

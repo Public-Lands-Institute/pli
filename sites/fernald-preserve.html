@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Fernald Preserve — Public Lands Institute</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://publiclandsinstitute.net/sites/fernald-preserve.html" rel="canonical"/>
+<link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<style>
+  :root {
+    --bg: #f5f5f5;
+    --fg: #111111;
+    --muted: #777777;
+    --border: #dddddd;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+  }
+  a { color: inherit; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .page {
+    max-width: 1120px;
+    margin: 24px auto 56px auto;
+    padding: 0 18px;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 28px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .logotype {
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .header-nav {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+    display: flex;
+    gap: 16px;
+  }
+  .divider { border-bottom: 1px solid var(--border); margin: 0 0 28px 0; }
+  footer {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  @media (min-width: 720px) {
+    .page { margin-top: 40px; padding: 0 24px; }
+    header { margin-bottom: 40px; }
+  }
+  .site-header { margin-bottom: 24px; }
+  .site-header h1 {
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    margin-bottom: 2px;
+  }
+  .site-header .state {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+  }
+  .site-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .site-data {
+    display: grid;
+    grid-template-columns: 148px 1fr;
+    font-size: 11px;
+    line-height: 1.55;
+    border-top: 1px solid var(--border);
+    padding-top: 8px;
+    align-items: baseline;
+    align-content: start;
+  }
+  .site-data dt {
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 10px;
+    padding: 4px 0;
+  }
+  .site-data dd {
+    color: var(--fg);
+    padding: 4px 0 4px 12px;
+    margin: 0;
+  }
+  .site-images { display: flex; flex-direction: column; gap: 14px; }
+  .site-figure { border: 1px solid var(--border); background: #e1e1e1; }
+  .site-figure img { width: 100%; height: auto; display: block; filter: grayscale(100%); }
+  .site-figure figcaption {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    padding: 6px 8px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .caption-filename {
+    color: var(--muted);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    flex-shrink: 0;
+    font-family: monospace;
+  }
+  .inat-section-label {
+    color: var(--fg) !important;
+    font-weight: 500;
+    padding-top: 12px !important;
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+  }
+  .inat-section-spacer {
+    padding-top: 12px !important;
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+  }
+  .inat-species {
+    line-height: 1.8;
+  }
+  .inat-sci {
+    color: var(--muted);
+    font-style: italic;
+  }
+  .obs-header {
+    border-top: 1px solid var(--border);
+    padding: 10px 0 4px 0;
+    margin-top: 6px;
+  }
+  .obs-header:first-child {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+  }
+  .obs-date {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    display: block;
+  }
+  .obs-notes {
+    font-size: 11px;
+    color: var(--fg);
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+  .site-nav {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  @media (min-width: 720px) {
+    .site-layout { grid-template-columns: 300px 1fr; gap: 48px; align-items: start; }
+    .site-data { position: sticky; top: 24px; }
+  }
+  @media (max-width: 480px) {
+    .site-data { grid-template-columns: 110px 1fr; }
+    .site-images { order: -1; }
+    .site-data { order: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="logotype"><a href="../index.html">Public Lands Institute</a></div>
+  <nav class="header-nav">
+    <a href="../index.html">Index</a>
+    <a href="../archive.html">Archive</a>
+  </nav>
+</header>
+<div class="divider"></div>
+<div class="site-header">
+  <h1>Fernald Preserve</h1>
+  <div class="state">OH</div>
+</div>
+<div class="site-layout">
+  <aside>
+    <dl class="site-data">
+      <dt>Geological age</dt><dd>~450 Mya Ordovician limestone and shale</dd>
+      <dt>Epoch</dt><dd>Late Ordovician (Cincinnatian Series)</dd>
+      <dt>Taxa</dt><dd>670 plants, 231 birds, 937 insects, 24 mammals, 58 fungi, 13 reptiles, 16 amphibians, 77 arachnids</dd>
+      <dt>Most observed</dt><dd class="inat-species">wild bergamot <span class="inat-sci">(Monarda fistulosa)</span><br>Eastern Pondhawk <span class="inat-sci">(Erythemis simplicicollis)</span><br>Widow Skimmer <span class="inat-sci">(Libellula luctuosa)</span><br>Ring-necked Duck <span class="inat-sci">(Aythya collaris)</span><br>Mute Swan <span class="inat-sci">(Cygnus olor)</span></dd>
+      <dt>Native lands</dt><dd>Myaamia (Miami) · Shawnee (Shawanwaki) · Fort Ancient culture (900-1650 CE); Great Miami River valley a core Myaamia territory, river named for the nation; Fort Ancient people, widely regarded as Shawnee ancestors, occupied bluffs above the river; Shawnee and Miami among signatories who ceded southwestern Ohio via Treaty of Greene Ville 1795 following Battle of Fallen Timbers 1794; Myaamia removed to Kansas then Indian Territory (present-day Oklahoma) by 1846</dd>
+      <dt>Displacement & Tenure</dt><dd>Cession 11: Treaty of Greene Ville (1795); Atomic Energy Commission condemned and acquired the 1,050-acre Fernald tract in 1951 from eleven private landowners at $375-$652 per acre; three owners who refused sale were dispossessed via federal court condemnation decree April 24, 1951; AEC transferred management to the Department of Energy; site decommissioned 1989; cleanup completed 2006; transferred to DOE Office of Legacy Management November 17, 2006; opened as Fernald Preserve 2007</dd>
+      <dt>Shadow History</dt><dd>From 1951 to 1989 the site operated as the Fernald Feed Materials Production Center (FMPC), a classified uranium metal refining plant processing ore for the U.S. nuclear weapons program under the Atomic Energy Commission and later the Department of Energy; operated by National Lead Company of Ohio 1951-1986, then Westinghouse; produced approximately 170,000 metric tons of uranium metal products over 38 years. DOE and its contractors concealed ongoing contamination from residents for decades: uranium dust was released into air and groundwater throughout the 1950s-1980s; DOE knew by 1980 that private wells near the site were contaminated with uranium but did not disclose this to residents for four years. In 1984 a broken filtration system released approximately 275 pounds of uranium oxide dust off-site. K-65 silos on the site's western end stored radium-226-contaminated waste from uranium ore residues, a persistent source of radon gas; NIOSH documented elevated lung cancer risk among workers exposed to the K-65 radon plume. In 1984 Lisa Crawford, a renter on adjacent property who discovered her well was contaminated, founded Fernald Residents for Environmental Safety and Health (FRESH) and sued the Department of Energy that same year. Also in 1984, pipefitter David Bocks, 39, disappeared during a night shift; his remains were found in a uranium oxide furnace operating at 1,350 degrees; OSHA investigation ruled the death accidental, but coworkers and family disputed this, alleging he had documented plant emissions violations before his death; the case was cited in federal congressional testimony on contractor conduct at DOE weapons facilities. A class-action lawsuit (In re Fernald Litigation, Case No. C-1-85-149) produced a 1989 settlement of $78 million for 9,764 residents within five miles, covering emotional distress, property value loss, and an 18-year medical monitoring program (1990-2008); documented outcomes in the cohort included elevated rates of kidney and urinary tract cancers, lupus, and renal disease. In 1994, plant workers won a separate $20 million settlement for emotional distress and lifetime medical monitoring. EPA designated Fernald a Superfund priority in 1989; cleanup cost $4.4 billion over fifteen years, entombing more than 925,000 cubic yards of low-level radioactive waste under eight capped on-site disposal cells beneath a permanent mound. Uranium contamination of the Great Miami Buried Valley Aquifer was confirmed; pump-and-treat groundwater remediation begun in 1993 continues, with monitoring expected into the late 2030s. The site is permanently restricted from residential use by institutional controls.</dd>
+      <dt>Ecology</dt><dd>Restored tallgrass prairie, wetlands, and upland forest on reclaimed nuclear weapons production land; 360 acres of prairie and savanna supporting Dickcissel, Bobolink, Grasshopper Sparrow, and Eastern Meadowlark; 400 acres of shingle oak and sycamore-cottonwood forest; 140 acres of wetlands including three open-water lakes supporting migratory waterfowl and shorebirds; more than 250 bird species recorded since 2008</dd>
+      <dt>Hydrology</dt><dd>Paddys Run watershed; Paddys Run, a 9-mile tributary of the Great Miami River, flows through the western preserve and drains approximately 16 square miles before joining the Great Miami at Crosby Township; a losing stream that recharges the Great Miami Buried Valley Aquifer directly below the site; uranium contamination in the aquifer confirmed; active groundwater pump-and-treat system ongoing</dd>
+      <dt>Acreage</dt><dd>1,050</dd>
+      <dt>GPS</dt><dd>39.2922° N, 84.6878° W</dd>
+    </dl>
+  </aside>
+  <div class="site-images">
+    <figure class="site-figure">
+      <a href="../img/full/fernald-preserve/_DSF1138.tif" download title="Download _DSF1138.jpg">
+        <img src="../img/jpg/fernald-preserve/_DSF1138.jpg" alt="Fernald Preserve I" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Fernald Preserve I &middot; 2026-04-03</span>
+        <span class="caption-filename">_DSF1138.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/fernald-preserve/_DSF1155.tif" download title="Download _DSF1155.jpg">
+        <img src="../img/jpg/fernald-preserve/_DSF1155.jpg" alt="Fernald Preserve II" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Fernald Preserve II &middot; 2026-04-03</span>
+        <span class="caption-filename">_DSF1155.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/fernald-preserve/_DSF1161.tif" download title="Download _DSF1161.jpg">
+        <img src="../img/jpg/fernald-preserve/_DSF1161.jpg" alt="Fernald Preserve III" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Fernald Preserve III &middot; 2026-04-03</span>
+        <span class="caption-filename">_DSF1161.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/fernald-preserve/_DSF1163.tif" download title="Download _DSF1163.jpg">
+        <img src="../img/jpg/fernald-preserve/_DSF1163.jpg" alt="Fernald Preserve IV" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Fernald Preserve IV &middot; 2026-04-03</span>
+        <span class="caption-filename">_DSF1163.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/fernald-preserve/_DSF1164.tif" download title="Download _DSF1164.jpg">
+        <img src="../img/jpg/fernald-preserve/_DSF1164.jpg" alt="Fernald Preserve V" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Fernald Preserve V &middot; 2026-04-03</span>
+        <span class="caption-filename">_DSF1164.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/fernald-preserve/_DSF1165.tif" download title="Download _DSF1165.jpg">
+        <img src="../img/jpg/fernald-preserve/_DSF1165.jpg" alt="Fernald Preserve VI" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Fernald Preserve VI &middot; 2026-04-03</span>
+        <span class="caption-filename">_DSF1165.jpg</span>
+      </figcaption>
+    </figure>
+  </div>
+</div>
+<nav class="site-nav">
+  <a href="shawnee-lookout.html">← Shawnee Lookout</a>
+  <a href="clifty-falls-state-park.html">Clifty Falls State Park →</a>
+</nav>
+<footer>
+  <span>Public Lands Institute — ongoing project</span>
+  <span>CC0 Public Domain</span>
+</footer>
+</div>
+<script src="../js/lightbox.js"></script>
+</body>
+</html>

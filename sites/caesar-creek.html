@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Caesar Creek State Park — Public Lands Institute</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://publiclandsinstitute.net/sites/caesar-creek.html" rel="canonical"/>
+<link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<style>
+  :root {
+    --bg: #f5f5f5;
+    --fg: #111111;
+    --muted: #777777;
+    --border: #dddddd;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+  }
+  a { color: inherit; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .page {
+    max-width: 1120px;
+    margin: 24px auto 56px auto;
+    padding: 0 18px;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 28px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .logotype {
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .header-nav {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+    display: flex;
+    gap: 16px;
+  }
+  .divider { border-bottom: 1px solid var(--border); margin: 0 0 28px 0; }
+  footer {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  @media (min-width: 720px) {
+    .page { margin-top: 40px; padding: 0 24px; }
+    header { margin-bottom: 40px; }
+  }
+  .site-header { margin-bottom: 24px; }
+  .site-header h1 {
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    margin-bottom: 2px;
+  }
+  .site-header .state {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+  }
+  .site-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .site-data {
+    display: grid;
+    grid-template-columns: 148px 1fr;
+    font-size: 11px;
+    line-height: 1.55;
+    border-top: 1px solid var(--border);
+    padding-top: 8px;
+    align-items: baseline;
+    align-content: start;
+  }
+  .site-data dt {
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 10px;
+    padding: 4px 0;
+  }
+  .site-data dd {
+    color: var(--fg);
+    padding: 4px 0 4px 12px;
+    margin: 0;
+  }
+  .site-images { display: flex; flex-direction: column; gap: 14px; }
+  .site-figure { border: 1px solid var(--border); background: #e1e1e1; }
+  .site-figure img { width: 100%; height: auto; display: block; filter: grayscale(100%); }
+  .site-figure figcaption {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    padding: 6px 8px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .caption-filename {
+    color: var(--muted);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    flex-shrink: 0;
+    font-family: monospace;
+  }
+  .inat-section-label {
+    color: var(--fg) !important;
+    font-weight: 500;
+    padding-top: 12px !important;
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+  }
+  .inat-section-spacer {
+    padding-top: 12px !important;
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+  }
+  .inat-species {
+    line-height: 1.8;
+  }
+  .inat-sci {
+    color: var(--muted);
+    font-style: italic;
+  }
+  .obs-header {
+    border-top: 1px solid var(--border);
+    padding: 10px 0 4px 0;
+    margin-top: 6px;
+  }
+  .obs-header:first-child {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+  }
+  .obs-date {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    display: block;
+  }
+  .obs-notes {
+    font-size: 11px;
+    color: var(--fg);
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+  .site-nav {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  @media (min-width: 720px) {
+    .site-layout { grid-template-columns: 300px 1fr; gap: 48px; align-items: start; }
+    .site-data { position: sticky; top: 24px; }
+  }
+  @media (max-width: 480px) {
+    .site-data { grid-template-columns: 110px 1fr; }
+    .site-images { order: -1; }
+    .site-data { order: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="logotype"><a href="../index.html">Public Lands Institute</a></div>
+  <nav class="header-nav">
+    <a href="../index.html">Index</a>
+    <a href="../archive.html">Archive</a>
+  </nav>
+</header>
+<div class="divider"></div>
+<div class="site-header">
+  <h1>Caesar Creek State Park</h1>
+  <div class="state">OH</div>
+</div>
+<div class="site-layout">
+  <aside>
+    <dl class="site-data">
+      <dt>Geological age</dt><dd>~447 Mya Ordovician limestone and shale</dd>
+      <dt>Epoch</dt><dd>Late Ordovician (Cincinnatian Series); Waynesville, Liberty, and Whitewater formations</dd>
+      <dt>Taxa</dt><dd>611 plants, 203 birds, 653 insects, 19 mammals, 203 fungi, 17 reptiles, 18 amphibians, 74 arachnids</dd>
+      <dt>Most observed</dt><dd class="inat-species">Eastern Forktail <span class="inat-sci">(Ischnura verticalis)</span><br>Eastern Pondhawk <span class="inat-sci">(Erythemis simplicicollis)</span><br>Fragile Forktail <span class="inat-sci">(Ischnura posita)</span><br>Blue Dasher <span class="inat-sci">(Pachydiplax longipennis)</span><br>Widow Skimmer <span class="inat-sci">(Libellula luctuosa)</span></dd>
+      <dt>Native lands</dt><dd>Shawnee (Shawanwaki) · Myaamia (Miami) · Hopewell culture (300 BCE-600 CE) · Fort Ancient culture (1200-1600 CE); Fort Ancient Earthworks, a UNESCO World Heritage Site, located in Warren County; creek named for Caesar, an enslaved Virginian who escaped bondage c. 1774, was adopted by the Shawnee, and used the valley as hunting grounds; Shawnee and Miami ceded southern Ohio via Treaty of Greenville 1795; remaining Ohio Shawnee removed west via Treaty of Wapakoneta 1831</dd>
+      <dt>Displacement & Tenure</dt><dd>Cession 11: Treaty of Greenville (1795); U.S. Army Corps of Engineers began acquiring Caesar Creek Valley land in the mid-1960s under eminent domain authority of the Flood Control Act of 1938; construction started 1971, dam completed 1978; village of New Burlington condemned and inundated, approximately 300 residents displaced involuntarily; last resident departed April 20, 1973; state park opened 1978, managed by Ohio DNR under lease from the Army Corps.</dd>
+      <dt>Shadow History</dt><dd>The creation of Caesar Creek Lake required the forced inundation of New Burlington, a functioning rural community straddling the Warren/Clinton County line at the confluence of Caesar Creek and Anderson Fork. Approximately 300 residents were displaced beginning in the mid-1960s when the Army Corps of Engineers began acquiring land under eminent domain; the last resident, 87-year-old Lawrence Mitchner, departed April 20, 1973, after refusing to meet with Corps appraisers. The community included a post office, Quaker meetinghouse, school, churches, a Masonic lodge, and farms. John Baskin documented the displacement in New Burlington: The Life and Death of an American Village (1976). The Caesar's Creek Quaker Meetinghouse was relocated rather than demolished. A 1976 archaeological reconnaissance conducted prior to inundation documented pre-contact sites in the reservoir footprint; earlier surveys had recorded a Hopewell-era village of 60-70 acres near the creek, featuring burial mounds up to 8 feet high with 79 documented burials; these and other sites were permanently inundated without preservation. The creek's name carries an additional layer: it memorializes Caesar, an enslaved Virginian who escaped bondage c. 1774 and was adopted into the Shawnee nation, a detail absent from most park signage.</dd>
+      <dt>Ecology</dt><dd>Oak-hickory and beech-maple upland forests with northern floodplain forest in creek valleys; restored native prairie and wetland complexes support grassland-dependent birds including grasshopper sparrow, Eastern meadowlark, bald eagle, and osprey; over 200 bird species recorded.</dd>
+      <dt>Hydrology</dt><dd>Caesar Creek is a tributary of the Little Miami River (a National Wild and Scenic River), draining a 237-square-mile watershed in Warren, Clinton, and Greene counties; the U.S. Army Corps of Engineers dam (completed 1978) impounds a 2,830-acre reservoir; Anderson Fork converges with Caesar Creek at the former site of New Burlington.</dd>
+      <dt>Acreage</dt><dd>7,530</dd>
+      <dt>GPS</dt><dd>39.5146° N, 84.0365° W</dd>
+    </dl>
+  </aside>
+  <div class="site-images">
+    <figure class="site-figure">
+      <a href="../img/full/caesar-creek/_DSF0419.tif" download title="Download _DSF0419.jpg">
+        <img src="../img/jpg/caesar-creek/_DSF0419.jpg" alt="Caesar Creek State Park I" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Caesar Creek State Park I &middot; 2025-11-17</span>
+        <span class="caption-filename">_DSF0419.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/caesar-creek/_DSF0426.tif" download title="Download _DSF0426.jpg">
+        <img src="../img/jpg/caesar-creek/_DSF0426.jpg" alt="Caesar Creek State Park II" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Caesar Creek State Park II &middot; 2025-11-17</span>
+        <span class="caption-filename">_DSF0426.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/caesar-creek/_DSF0428.tif" download title="Download _DSF0428.jpg">
+        <img src="../img/jpg/caesar-creek/_DSF0428.jpg" alt="Caesar Creek State Park III" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Caesar Creek State Park III &middot; 2025-11-17</span>
+        <span class="caption-filename">_DSF0428.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/caesar-creek/_DSF0438.tif" download title="Download _DSF0438.jpg">
+        <img src="../img/jpg/caesar-creek/_DSF0438.jpg" alt="Caesar Creek State Park IV" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Caesar Creek State Park IV &middot; 2025-11-17</span>
+        <span class="caption-filename">_DSF0438.jpg</span>
+      </figcaption>
+    </figure>
+  </div>
+</div>
+<nav class="site-nav">
+  <span></span>
+  <a href="shawnee-lookout.html">Shawnee Lookout →</a>
+</nav>
+<footer>
+  <span>Public Lands Institute — ongoing project</span>
+  <span>CC0 Public Domain</span>
+</footer>
+</div>
+<script src="../js/lightbox.js"></script>
+</body>
+</html>

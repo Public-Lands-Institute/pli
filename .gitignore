@@ -1,0 +1,31 @@
+# Credentials — never commit
+.env
+
+# Full-resolution TIFs — too large for GitHub (80-112MB each)
+img/full/
+
+# RAW camera files
+img/RAW/
+
+# Deployment archives
+Archive/
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Backups
+*.bak
+
+# Claude internal
+.claude/
+
+# Working folders
+no image/
+single image/
+Database Style/

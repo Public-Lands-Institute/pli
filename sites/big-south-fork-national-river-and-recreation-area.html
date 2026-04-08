@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Big South Fork National River and Recreation Area — Public Lands Institute</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://publiclandsinstitute.net/sites/big-south-fork-national-river-and-recreation-area.html" rel="canonical"/>
+<link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<style>
+  :root {
+    --bg: #f5f5f5;
+    --fg: #111111;
+    --muted: #777777;
+    --border: #dddddd;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+  }
+  a { color: inherit; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .page {
+    max-width: 1120px;
+    margin: 24px auto 56px auto;
+    padding: 0 18px;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 28px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .logotype {
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .header-nav {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+    display: flex;
+    gap: 16px;
+  }
+  .divider { border-bottom: 1px solid var(--border); margin: 0 0 28px 0; }
+  footer {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  @media (min-width: 720px) {
+    .page { margin-top: 40px; padding: 0 24px; }
+    header { margin-bottom: 40px; }
+  }
+  .site-header { margin-bottom: 24px; }
+  .site-header h1 {
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    margin-bottom: 2px;
+  }
+  .site-header .state {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+  }
+  .site-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .site-data {
+    display: grid;
+    grid-template-columns: 148px 1fr;
+    font-size: 11px;
+    line-height: 1.55;
+    border-top: 1px solid var(--border);
+    padding-top: 8px;
+    align-items: baseline;
+    align-content: start;
+  }
+  .site-data dt {
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 10px;
+    padding: 4px 0;
+  }
+  .site-data dd {
+    color: var(--fg);
+    padding: 4px 0 4px 12px;
+    margin: 0;
+  }
+  .site-images { display: flex; flex-direction: column; gap: 14px; }
+  .site-figure { border: 1px solid var(--border); background: #e1e1e1; }
+  .site-figure img { width: 100%; height: auto; display: block; filter: grayscale(100%); }
+  .site-figure figcaption {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    padding: 6px 8px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .caption-filename {
+    color: var(--muted);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    flex-shrink: 0;
+    font-family: monospace;
+  }
+  .inat-section-label {
+    color: var(--fg) !important;
+    font-weight: 500;
+    padding-top: 12px !important;
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+  }
+  .inat-section-spacer {
+    padding-top: 12px !important;
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+  }
+  .inat-species {
+    line-height: 1.8;
+  }
+  .inat-sci {
+    color: var(--muted);
+    font-style: italic;
+  }
+  .obs-header {
+    border-top: 1px solid var(--border);
+    padding: 10px 0 4px 0;
+    margin-top: 6px;
+  }
+  .obs-header:first-child {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+  }
+  .obs-date {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    display: block;
+  }
+  .obs-notes {
+    font-size: 11px;
+    color: var(--fg);
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+  .site-nav {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  @media (min-width: 720px) {
+    .site-layout { grid-template-columns: 300px 1fr; gap: 48px; align-items: start; }
+    .site-data { position: sticky; top: 24px; }
+  }
+  @media (max-width: 480px) {
+    .site-data { grid-template-columns: 110px 1fr; }
+    .site-images { order: -1; }
+    .site-data { order: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="logotype"><a href="../index.html">Public Lands Institute</a></div>
+  <nav class="header-nav">
+    <a href="../index.html">Index</a>
+    <a href="../archive.html">Archive</a>
+  </nav>
+</header>
+<div class="divider"></div>
+<div class="site-header">
+  <h1>Big South Fork National River and Recreation Area</h1>
+  <div class="state">TN</div>
+</div>
+<div class="site-layout">
+  <aside>
+    <dl class="site-data">
+      <dt>Geological age</dt><dd>~310 Mya Pennsylvanian sandstone and conglomerate</dd>
+      <dt>Epoch</dt><dd>Pennsylvanian</dd>
+      <dt>Taxa</dt><dd>644 plants, 89 birds, 661 insects, 18 mammals, 154 fungi, 27 reptiles, 21 amphibians, 68 arachnids</dd>
+      <dt>Most observed</dt><dd class="inat-species">mountain laurel <span class="inat-sci">(Kalmia latifolia)</span><br>downy rattlesnake plantain <span class="inat-sci">(Goodyera pubescens)</span><br>Hartford fern <span class="inat-sci">(Lygodium palmatum)</span><br>box huckleberry <span class="inat-sci">(Gaylussacia brachycera)</span><br>bigleaf magnolia <span class="inat-sci">(Magnolia macrophylla)</span></dd>
+      <dt>Native lands</dt><dd>Cherokee (Aniyunwiya) held the Cumberland Plateau as ancestral hunting territory, with rockshelter camps documented throughout the gorge zone; Yuchi (Tsoyaha) occupied the plateau prior to Cherokee dominance; Shawnee (Shawanwaki) used the region as hunting grounds following the Beaver Wars in the 1660s; Cherokee ceded adjacent plateau lands via the First Treaty of Tellico 1798 and remaining Cumberland Plateau territory via the Third Treaty of Tellico 1805; Cherokee removed to Oklahoma via the Trail of Tears 1838-1839</dd>
+      <dt>Displacement & Tenure</dt><dd>Cession 57: Treaty with the Cherokee (1805); established by the Water Resources Development Act of 1974 (P.L. 93-251); Army Corps of Engineers began acquisition in 1979 across approximately 125,000 acres; Stearns Coal and Lumber Company had conveyed surface rights on 46,842 acres to the United States by deed in 1937 while retaining mineral rights; litigation over whether retained mineral rights authorized strip mining on federal surface produced United States v. Stearns Coal and Lumber Co., 816 F.2d 279 (6th Cir. 1987), affirming that the 1937 deed's silence on strip mining did not permit destruction of the conveyed surface.</dd>
+      <dt>Shadow History</dt><dd>Abandoned surface and deep coal mines throughout the park, the highest concentration of any NPS unit in the region, produce ongoing acid mine drainage; Roaring Paunch Creek and multiple tributaries carry contamination the NPS characterizes as potentially harmful to humans, with remediation underway under the Infrastructure Investment and Jobs Act; when word spread that the Army Corps of Engineers was authorized to acquire land under the 1974 act, large private landholders including Stearns Coal and Lumber accelerated logging and mining operations on their holdings before condemnation could proceed, extracting maximum value from land they knew would be taken; Blue Heron, the last Stearns company town in the gorge, was abandoned in 1962 after coal reserves were exhausted, leaving residents to relocate independently before Corps acquisition began in 1979.</dd>
+      <dt>Ecology</dt><dd>Mixed mesophytic and oak-hickory forest dominates the upland plateau, with hemlock ravine forest and floodplain forest in the gorge zone; mountain laurel and rhododendron are prominent understory species, and sandstone cliffs host rare endemics including Cumberland cliff sedge and Appalachian shoestring fern.</dd>
+      <dt>Hydrology</dt><dd>Cumberland River watershed via the Big South Fork of the Cumberland River, a 76-mile free-flowing river formed by the confluence of the New River and Clear Fork in Scott County, Tennessee; the gorge system features steep-walled sandstone canyons, waterfalls, and seeps across 472+ miles of streams.</dd>
+      <dt>Acreage</dt><dd>125,000</dd>
+      <dt>GPS</dt><dd>36.5072° N, 84.7025° W</dd>
+    </dl>
+  </aside>
+  <div class="site-images">
+    <figure class="site-figure">
+      <a href="../img/full/big-south-fork-national-river-and-recreation-area/_DSF0991.tif" download title="Download _DSF0991.jpg">
+        <img src="../img/jpg/big-south-fork-national-river-and-recreation-area/_DSF0991.jpg" alt="Big South Fork National River and Recreation Area I" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Big South Fork National River and Recreation Area I &middot; 2026-03-16</span>
+        <span class="caption-filename">_DSF0991.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/big-south-fork-national-river-and-recreation-area/_DSF0994.tif" download title="Download _DSF0994.jpg">
+        <img src="../img/jpg/big-south-fork-national-river-and-recreation-area/_DSF0994.jpg" alt="Big South Fork National River and Recreation Area II" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Big South Fork National River and Recreation Area II &middot; 2026-03-16</span>
+        <span class="caption-filename">_DSF0994.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/big-south-fork-national-river-and-recreation-area/_DSF0999.tif" download title="Download _DSF0999.jpg">
+        <img src="../img/jpg/big-south-fork-national-river-and-recreation-area/_DSF0999.jpg" alt="Big South Fork National River and Recreation Area III" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Big South Fork National River and Recreation Area III &middot; 2026-03-16</span>
+        <span class="caption-filename">_DSF0999.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/big-south-fork-national-river-and-recreation-area/_DSF1006.tif" download title="Download _DSF1006.jpg">
+        <img src="../img/jpg/big-south-fork-national-river-and-recreation-area/_DSF1006.jpg" alt="Big South Fork National River and Recreation Area IV" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Big South Fork National River and Recreation Area IV &middot; 2026-03-16</span>
+        <span class="caption-filename">_DSF1006.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/big-south-fork-national-river-and-recreation-area/_DSF1010.tif" download title="Download _DSF1010.jpg">
+        <img src="../img/jpg/big-south-fork-national-river-and-recreation-area/_DSF1010.jpg" alt="Big South Fork National River and Recreation Area V" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Big South Fork National River and Recreation Area V &middot; 2026-03-16</span>
+        <span class="caption-filename">_DSF1010.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/big-south-fork-national-river-and-recreation-area/_DSF1015.tif" download title="Download _DSF1015.jpg">
+        <img src="../img/jpg/big-south-fork-national-river-and-recreation-area/_DSF1015.jpg" alt="Big South Fork National River and Recreation Area VI" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Big South Fork National River and Recreation Area VI &middot; 2026-03-16</span>
+        <span class="caption-filename">_DSF1015.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/big-south-fork-national-river-and-recreation-area/_DSF1026.tif" download title="Download _DSF1026.jpg">
+        <img src="../img/jpg/big-south-fork-national-river-and-recreation-area/_DSF1026.jpg" alt="Big South Fork National River and Recreation Area VII" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Big South Fork National River and Recreation Area VII &middot; 2026-03-16</span>
+        <span class="caption-filename">_DSF1026.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/big-south-fork-national-river-and-recreation-area/_DSF1031.tif" download title="Download _DSF1031.jpg">
+        <img src="../img/jpg/big-south-fork-national-river-and-recreation-area/_DSF1031.jpg" alt="Big South Fork National River and Recreation Area VIII" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Big South Fork National River and Recreation Area VIII &middot; 2026-03-16</span>
+        <span class="caption-filename">_DSF1031.jpg</span>
+      </figcaption>
+    </figure>
+  </div>
+</div>
+<nav class="site-nav">
+  <a href="french-park.html">← French Park</a>
+  <a href="mammoth-cave-national-park.html">Mammoth Cave National Park →</a>
+</nav>
+<footer>
+  <span>Public Lands Institute — ongoing project</span>
+  <span>CC0 Public Domain</span>
+</footer>
+</div>
+<script src="../js/lightbox.js"></script>
+</body>
+</html>
