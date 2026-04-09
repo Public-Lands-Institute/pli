@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Public Lands Institute Archive Metadata",
+  "description": "Field definitions for archive.csv. CC0 Public Domain.",
+  "type": "object",
+  "properties": {
+    "Location": {
+      "type": "string",
+      "description": "Official name of the protected area."
+    },
+    "GPS": {
+      "type": "string",
+      "description": "Decimal degree coordinates of the park center or main entrance. Format: lat, lng."
+    },
+    "Native_Lands": {
+      "type": "string",
+      "description": "Indigenous nations with historical presence, including territorial context, treaties, and displacement history."
+    },
+    "Tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Keyword tags including state name, agency type, and conservation designations. Stored as array string [Tag1, Tag2] for Zotero compatibility."
+    },
+    "Geological_Age": {
+      "type": "string",
+      "description": "Age in millions of years and rock type. Format: ~450 Mya Ordovician limestone."
+    },
+    "Ecology": {
+      "type": "string",
+      "description": "Dominant plant communities, notable species, and habitat type."
+    },
+    "Hydrology": {
+      "type": "string",
+      "description": "Watershed, named waterways, and notable hydrological features."
+    },
+    "Taxa": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "iNaturalist observed taxa groups (Plants, Birds, Insects, etc.). Stored as array string [Taxa1, Taxa2]."
+    },
+    "Acreage": {
+      "type": "string",
+      "description": "Total acreage of the protected area per managing agency."
+    }
+  }
+}

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Dinsmore Woods State Nature Preserve — Public Lands Institute</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="index, follow" name="robots"/>
+<meta content="Dinsmore Woods State Nature Preserve. Public Lands Institute photographic index. CC0 Public Domain." name="description"/>
+<meta property="og:title" content="Dinsmore Woods State Nature Preserve — Public Lands Institute"/>
+<meta property="og:description" content="Dinsmore Woods State Nature Preserve. An ongoing photographic index and open-access archive of American public lands. CC0 Public Domain."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://publiclandsinstitute.net/sites/dinsmore-woods.html"/>
+<meta property="og:site_name" content="Public Lands Institute"/>
+<link href="https://publiclandsinstitute.net/sites/dinsmore-woods.html" rel="canonical"/>
+<link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<style>
+  :root {
+    --bg: #f5f5f5;
+    --fg: #111111;
+    --muted: #777777;
+    --border: #dddddd;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+  }
+  a { color: inherit; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .page {
+    max-width: 1120px;
+    margin: 24px auto 56px auto;
+    padding: 0 18px;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 28px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .logotype {
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .header-nav {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+    display: flex;
+    gap: 16px;
+  }
+  .divider { border-bottom: 1px solid var(--border); margin: 0 0 28px 0; }
+  footer {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  @media (min-width: 720px) {
+    .page { margin-top: 40px; padding: 0 24px; }
+    header { margin-bottom: 40px; }
+  }
+  .gps-link {
+    color: inherit;
+    text-decoration: none;
+    display: inline-block;
+    padding: 11px 0;
+    margin: -11px 0;
+  }
+  .gps-link:hover { text-decoration: underline; }
+  .site-header { margin-bottom: 24px; }
+  .site-header h1 {
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    margin-bottom: 2px;
+  }
+  .site-header .state {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+  }
+  .site-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .site-data {
+    display: grid;
+    grid-template-columns: 148px 1fr;
+    font-size: 11px;
+    line-height: 1.55;
+    border-top: 1px solid var(--border);
+    padding-top: 8px;
+    align-items: baseline;
+    align-content: start;
+  }
+  .site-data dt {
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 10px;
+    padding: 4px 0;
+  }
+  .site-data dd {
+    color: var(--fg);
+    padding: 4px 0 4px 12px;
+    margin: 0;
+  }
+  .site-images { display: flex; flex-direction: column; gap: 14px; }
+  .site-figure { border: 1px solid var(--border); background: #e1e1e1; }
+  .site-figure img { width: 100%; height: auto; display: block; filter: grayscale(100%); }
+  .site-figure figcaption {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    padding: 6px 8px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .caption-filename {
+    color: var(--muted);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    flex-shrink: 0;
+    font-family: monospace;
+  }
+  .inat-section-label {
+    color: var(--fg) !important;
+    font-weight: 500;
+    padding-top: 12px !important;
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+  }
+  .inat-section-spacer {
+    padding-top: 12px !important;
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+  }
+  .inat-species {
+    line-height: 1.8;
+  }
+  .inat-sci {
+    color: var(--muted);
+    font-style: italic;
+  }
+  .obs-header {
+    border-top: 1px solid var(--border);
+    padding: 10px 0 4px 0;
+    margin-top: 6px;
+  }
+  .obs-header:first-child {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+  }
+  .obs-date {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    display: block;
+  }
+  .obs-notes {
+    font-size: 11px;
+    color: var(--fg);
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+  .site-nav {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  @media (min-width: 720px) {
+    .site-layout { grid-template-columns: 300px 1fr; gap: 48px; align-items: start; }
+    .site-data { position: sticky; top: 24px; }
+  }
+  @media (max-width: 480px) {
+    .site-data { grid-template-columns: 110px 1fr; }
+    .site-images { order: -1; }
+    .site-data { order: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="logotype"><a href="../index.html">Public Lands Institute</a></div>
+  <nav class="header-nav">
+    <a href="../index.html">Index</a>
+    <a href="../archive.html">Archive</a>
+  </nav>
+</header>
+<div class="divider"></div>
+<div class="site-header">
+  <h1>Dinsmore Woods State Nature Preserve</h1>
+  <div class="state">KY</div>
+</div>
+<div class="site-layout">
+  <aside>
+    <dl class="site-data">
+      <dt>Geological age</dt><dd>~450 Mya Ordovician limestone and shale</dd>
+      <dt>Epoch</dt><dd>Late Ordovician (Cincinnatian Series); Kope, Fairview, and Bull Fork formations</dd>
+      <dt>Taxa</dt><dd>331 plants, 72 birds, 244 insects, 11 mammals, 80 fungi, 15 reptiles, 16 amphibians, 23 arachnids</dd>
+      <dt>Most observed</dt><dd class="inat-species">spring blue-eyed Mary <span class="inat-sci">(Collinsia verna)</span><br>Southern Two-lined Salamander <span class="inat-sci">(Eurycea cirrigera)</span><br>dwarf larkspur <span class="inat-sci">(Delphinium tricorne)</span><br>mayapple <span class="inat-sci">(Podophyllum peltatum)</span><br>Dutchman's breeches <span class="inat-sci">(Dicentra cucullaria)</span></dd>
+      <dt>Native lands</dt><dd>Adena culture (500 BCE-200 CE) · Shawnee (Shawanwaki) · Cherokee (Tsalagi); Adena moundbuilding culture occupied the Ohio River valley with documented sites in Boone County; Kentucky's interior served as contested hunting ground at the time of European contact; Iroquois Confederacy ceded their Ohio River corridor claim to the British Crown via Treaty of Fort Stanwix 1768; Cherokee ceded approximately 20 million acres including present-day Kentucky to the Transylvania Company via Treaty of Sycamore Shoals March 1775, opposed by Cherokee leader Dragging Canoe who called the cession a betrayal and withdrew to form the Chickamauga; Shawnee recognized the Ohio River as their southern boundary under Treaty of Camp Charlotte 1774, though many Shawnee rejected this cession; Shawnee and allied nations formally ceded remaining Ohio Valley claims via Treaty of Greenville 1795</dd>
+      <dt>Displacement & Tenure</dt><dd>Shawnee territory recognized as south of the Ohio River under Treaty of Camp Charlotte (1774), though many Shawnee rejected this cession; Cherokee claim extinguished via Henderson Purchase (Treaty of Sycamore Shoals, 1775), voided by Virginia 1778; Iroquois claim to the Ohio River valley ceded to the British Crown via Treaty of Fort Stanwix 1768; northern Kentucky distributed as Virginia military bounty land grants prior to Kentucky statehood 1792; no federal Royce cession applies; the Dinsmore Woods parcel was part of approximately 700 acres purchased by James and Martha Dinsmore in 1839; Martha Munro Ferguson Breasted, a Dinsmore descendant, donated 107 acres to The Nature Conservancy in 1985; dedicated as a Kentucky State Nature Preserve May 16, 1990; Boone County purchased the preserve from the Conservancy using Kentucky Heritage Land Conservation Fund proceeds in November 2010.</dd>
+      <dt>Shadow History</dt><dd>The 107-acre nature preserve is the forested portion of the original Dinsmore farm, a working plantation on which enslaved people lived and labored from 1842 onward. James Dinsmore brought approximately 20-25 enslaved individuals from his Mississippi and Louisiana holdings to Kentucky upon completing Dinsmore Homestead in 1842. Those documented by name include: Coah (ca. 1790-1862), born in West Africa and previously enslaved in Mississippi and Louisiana; Nancy McGruder (ca. 1809-1906), purchased by Dinsmore in 1828 in Mississippi; Sally Taylor (ca. 1810-?) and her children John, Daniel, David, Nannette, Judy, Angeline, and Isaac; Jilson Hawkins (ca. 1811-1879) and Eliza Hawkins (ca. 1819-1903). Nancy McGruder left the farm after the Civil War's end, then returned to work as a free person, living on the property until her death in 1906. The Dinsmore Homestead, listed on the National Register of Historic Places, installed interpretive panels documenting the African American experience on the farm from 1840 through 1865. The woodland tract that became the nature preserve was inseparable from this farm landscape; no public interpretation at the preserve connects the old-growth forest to the labor history of the people who lived among it.</dd>
+      <dt>Ecology</dt><dd>Old-growth mixed hardwood forest unlogged since at least the 1830s, dominated by sugar maple, white oak, hackberry, and walnut; understory of pawpaw thickets and rich spring ephemerals including trillium, bloodroot, dwarf larkspur, wood poppy, and trout lily on deep glacially influenced soils.</dd>
+      <dt>Hydrology</dt><dd>Ridgetop and slope site draining to Middle Creek, a direct tributary of the Ohio River; glacial outwash deposits underlie the site, producing deep, moisture-retentive soils unusual for Kentucky; Ohio River basin.</dd>
+      <dt>Acreage</dt><dd>107</dd>
+      <dt>GPS</dt><dd><a class="gps-link" href="https://maps.google.com/?q=38.9989,-84.8153" target="_blank" rel="noopener">38.9989° N, 84.8153° W</a></dd>
+    </dl>
+  </aside>
+  <div class="site-images">
+    <figure class="site-figure">
+      <a href="../img/full/dinsmore-woods/_DSF1233.tif" download title="Download _DSF1233.jpg">
+        <img src="../img/jpg/dinsmore-woods/_DSF1233.jpg" alt="Dinsmore Woods State Nature Preserve I" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Dinsmore Woods State Nature Preserve I &middot; 2026-04-08</span>
+        <span class="caption-filename">_DSF1233.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/dinsmore-woods/_DSF1235.tif" download title="Download _DSF1235.jpg">
+        <img src="../img/jpg/dinsmore-woods/_DSF1235.jpg" alt="Dinsmore Woods State Nature Preserve II" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Dinsmore Woods State Nature Preserve II &middot; 2026-04-08</span>
+        <span class="caption-filename">_DSF1235.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/dinsmore-woods/_DSF1236.tif" download title="Download _DSF1236.jpg">
+        <img src="../img/jpg/dinsmore-woods/_DSF1236.jpg" alt="Dinsmore Woods State Nature Preserve III" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Dinsmore Woods State Nature Preserve III &middot; 2026-04-08</span>
+        <span class="caption-filename">_DSF1236.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/dinsmore-woods/_DSF1243.tif" download title="Download _DSF1243.jpg">
+        <img src="../img/jpg/dinsmore-woods/_DSF1243.jpg" alt="Dinsmore Woods State Nature Preserve IV" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Dinsmore Woods State Nature Preserve IV &middot; 2026-04-08</span>
+        <span class="caption-filename">_DSF1243.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/dinsmore-woods/_DSF1255.tif" download title="Download _DSF1255.jpg">
+        <img src="../img/jpg/dinsmore-woods/_DSF1255.jpg" alt="Dinsmore Woods State Nature Preserve V" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Dinsmore Woods State Nature Preserve V &middot; 2026-04-08</span>
+        <span class="caption-filename">_DSF1255.jpg</span>
+      </figcaption>
+    </figure>
+  </div>
+</div>
+<nav class="site-nav">
+  <a href="big-bone-lick.html">← Big Bone Lick State Historic Site</a>
+  <a href="caesar-creek.html">Caesar Creek State Park →</a>
+</nav>
+<footer>
+  <span>Public Lands Institute — ongoing project</span>
+  <span>CC0 Public Domain</span>
+</footer>
+</div>
+<script src="../js/lightbox.js"></script>
+</body>
+</html>

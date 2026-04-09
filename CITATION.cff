@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this data or imagery, please cite it as below."
+type: dataset
+title: "Public Lands Institute"
+abstract: "An ongoing photographic index and open-access archive of American public lands, including geological, ecological, hydrological, Indigenous land tenure, and shadow history documentation. CC0 Public Domain."
+authors:
+  - family-names: Tate
+    given-names: Jordan
+url: "https://publiclandsinstitute.net"
+repository-code: "https://github.com/Public-Lands-Institute/pli"
+license: CC0-1.0
+date-released: "2026-04-08"
+keywords:
+  - public lands
+  - photography
+  - open access
+  - ecology
+  - geology
+  - Indigenous land tenure
+  - shadow history
+  - CC0

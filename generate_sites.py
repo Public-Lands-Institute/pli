@@ -385,7 +385,15 @@ SHARED_CSS = '''  :root {
   @media (min-width: 720px) {
     .page { margin-top: 40px; padding: 0 24px; }
     header { margin-bottom: 40px; }
-  }'''
+  }
+  .gps-link {
+    color: inherit;
+    text-decoration: none;
+    display: inline-block;
+    padding: 11px 0;
+    margin: -11px 0;
+  }
+  .gps-link:hover { text-decoration: underline; }'''
 
 def make_site_page(site, all_sites):
     slug  = site['slug']
@@ -424,6 +432,10 @@ def make_site_page(site, all_sites):
         if key in REMAINING_KEYS:
             val = site.get(key, '')
             if val:
+                if key == 'gps':
+                    lat = site.get('lat', '')
+                    lng = site.get('lng', '')
+                    val = f'<a class="gps-link" href="https://maps.google.com/?q={lat},{lng}" target="_blank" rel="noopener">{val}</a>'
                 fields_html += f'      <dt>{label}</dt><dd>{val}</dd>\n'
 
     show_obs_headers = len(observations) > 1 or any(obs.get('notes') for obs in observations)
@@ -453,6 +465,12 @@ def make_site_page(site, all_sites):
 <title>{name} \u2014 Public Lands Institute</title>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="index, follow" name="robots"/>
+<meta content="{name}. Public Lands Institute photographic index. CC0 Public Domain." name="description"/>
+<meta property="og:title" content="{name} \u2014 Public Lands Institute"/>
+<meta property="og:description" content="{name}. An ongoing photographic index and open-access archive of American public lands. CC0 Public Domain."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://publiclandsinstitute.net/sites/{slug}.html"/>
+<meta property="og:site_name" content="Public Lands Institute"/>
 <link href="https://publiclandsinstitute.net/sites/{slug}.html" rel="canonical"/>
 <link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
 <style>
@@ -1299,6 +1317,10 @@ def make_index_page(all_sites):
             if key in ('native_lands', 'displacement_tenure', 'shadow_history', 'acreage', 'gps'):
                 val = site.get(key, '')
                 if val:
+                    if key == 'gps':
+                        lat = site.get('lat', '')
+                        lng = site.get('lng', '')
+                        val = f'<a class="gps-link" href="https://maps.google.com/?q={lat},{lng}" target="_blank" rel="noopener">{val}</a>'
                     field_rows += f'<dt>{label}</dt><dd>{val}</dd>'
 
         rows += f'''  <div class="location-row">
@@ -1323,8 +1345,13 @@ def make_index_page(all_sites):
 <meta charset="utf-8"/>
 <title>Public Lands Institute</title>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="Public Lands Institute is an ongoing photographic index of public lands. CC0 Public Domain." name="description"/>
+<meta content="An ongoing photographic index and open-access archive of American public lands. CC0 Public Domain." name="description"/>
 <meta content="index, follow" name="robots"/>
+<meta property="og:title" content="Public Lands Institute"/>
+<meta property="og:description" content="An ongoing photographic index and open-access archive of American public lands, with geological, ecological, Indigenous land tenure, and shadow history documentation. CC0 Public Domain."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://publiclandsinstitute.net/"/>
+<meta property="og:site_name" content="Public Lands Institute"/>
 <link href="https://publiclandsinstitute.net/" rel="canonical"/>
 <link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
 <link href="/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/>
@@ -1371,7 +1398,18 @@ def make_index_page(all_sites):
     color: var(--muted);
     white-space: nowrap;
     flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
   }}
+  .gps-link {{
+    color: inherit;
+    text-decoration: none;
+    display: inline-block;
+    padding: 11px 0;
+    margin: -11px 0;
+  }}
+  .gps-link:hover {{ text-decoration: underline; }}
   .loc-thumb {{
     display: block;
     border: 1px solid var(--border);

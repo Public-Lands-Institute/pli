@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Big Bone Lick State Historic Site — Public Lands Institute</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="index, follow" name="robots"/>
+<meta content="Big Bone Lick State Historic Site. Public Lands Institute photographic index. CC0 Public Domain." name="description"/>
+<meta property="og:title" content="Big Bone Lick State Historic Site — Public Lands Institute"/>
+<meta property="og:description" content="Big Bone Lick State Historic Site. An ongoing photographic index and open-access archive of American public lands. CC0 Public Domain."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://publiclandsinstitute.net/sites/big-bone-lick.html"/>
+<meta property="og:site_name" content="Public Lands Institute"/>
+<link href="https://publiclandsinstitute.net/sites/big-bone-lick.html" rel="canonical"/>
+<link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<style>
+  :root {
+    --bg: #f5f5f5;
+    --fg: #111111;
+    --muted: #777777;
+    --border: #dddddd;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+  }
+  a { color: inherit; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .page {
+    max-width: 1120px;
+    margin: 24px auto 56px auto;
+    padding: 0 18px;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 28px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .logotype {
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .header-nav {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+    display: flex;
+    gap: 16px;
+  }
+  .divider { border-bottom: 1px solid var(--border); margin: 0 0 28px 0; }
+  footer {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  @media (min-width: 720px) {
+    .page { margin-top: 40px; padding: 0 24px; }
+    header { margin-bottom: 40px; }
+  }
+  .gps-link {
+    color: inherit;
+    text-decoration: none;
+    display: inline-block;
+    padding: 11px 0;
+    margin: -11px 0;
+  }
+  .gps-link:hover { text-decoration: underline; }
+  .site-header { margin-bottom: 24px; }
+  .site-header h1 {
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    margin-bottom: 2px;
+  }
+  .site-header .state {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+  }
+  .site-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .site-data {
+    display: grid;
+    grid-template-columns: 148px 1fr;
+    font-size: 11px;
+    line-height: 1.55;
+    border-top: 1px solid var(--border);
+    padding-top: 8px;
+    align-items: baseline;
+    align-content: start;
+  }
+  .site-data dt {
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 10px;
+    padding: 4px 0;
+  }
+  .site-data dd {
+    color: var(--fg);
+    padding: 4px 0 4px 12px;
+    margin: 0;
+  }
+  .site-images { display: flex; flex-direction: column; gap: 14px; }
+  .site-figure { border: 1px solid var(--border); background: #e1e1e1; }
+  .site-figure img { width: 100%; height: auto; display: block; filter: grayscale(100%); }
+  .site-figure figcaption {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    padding: 6px 8px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .caption-filename {
+    color: var(--muted);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    flex-shrink: 0;
+    font-family: monospace;
+  }
+  .inat-section-label {
+    color: var(--fg) !important;
+    font-weight: 500;
+    padding-top: 12px !important;
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+  }
+  .inat-section-spacer {
+    padding-top: 12px !important;
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+  }
+  .inat-species {
+    line-height: 1.8;
+  }
+  .inat-sci {
+    color: var(--muted);
+    font-style: italic;
+  }
+  .obs-header {
+    border-top: 1px solid var(--border);
+    padding: 10px 0 4px 0;
+    margin-top: 6px;
+  }
+  .obs-header:first-child {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+  }
+  .obs-date {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    display: block;
+  }
+  .obs-notes {
+    font-size: 11px;
+    color: var(--fg);
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+  .site-nav {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  @media (min-width: 720px) {
+    .site-layout { grid-template-columns: 300px 1fr; gap: 48px; align-items: start; }
+    .site-data { position: sticky; top: 24px; }
+  }
+  @media (max-width: 480px) {
+    .site-data { grid-template-columns: 110px 1fr; }
+    .site-images { order: -1; }
+    .site-data { order: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="logotype"><a href="../index.html">Public Lands Institute</a></div>
+  <nav class="header-nav">
+    <a href="../index.html">Index</a>
+    <a href="../archive.html">Archive</a>
+  </nav>
+</header>
+<div class="divider"></div>
+<div class="site-header">
+  <h1>Big Bone Lick State Historic Site</h1>
+  <div class="state">KY</div>
+</div>
+<div class="site-layout">
+  <aside>
+    <dl class="site-data">
+      <dt>Geological age</dt><dd>~450 Mya Ordovician limestone and shale (Kope Formation); Pleistocene fossil-bearing bog deposits (25,000-12,000 BP)</dd>
+      <dt>Epoch</dt><dd>Late Ordovician (Cincinnatian Series); late Pleistocene (Wisconsinan Glaciation)</dd>
+      <dt>Taxa</dt><dd>223 plants, 36 birds, 120 insects, 7 mammals, 32 fungi, 9 reptiles, 9 amphibians, 13 arachnids</dd>
+      <dt>Most observed</dt><dd class="inat-species">honey locust <span class="inat-sci">(Gleditsia triacanthos)</span><br>dwarf larkspur <span class="inat-sci">(Delphinium tricorne)</span><br>White-tailed Deer <span class="inat-sci">(Odocoileus virginianus)</span><br>white snakeroot <span class="inat-sci">(Ageratina altissima)</span><br>tall bellflower <span class="inat-sci">(Campanulastrum americanum)</span></dd>
+      <dt>Native lands</dt><dd>Paleoindians from at least ~12,000 BP · Shawnee (Shawanwaki) · Delaware (Lenape); the salt springs drew Indigenous hunters for millennia; Shawnee used the lick as a salt source and hunting ground; Mary Draper Ingles, captured by Shawnee in 1755, was brought to Big Bone Lick and put to work boiling brine; Iroquois Confederacy ceded their Ohio River corridor claim to the British Crown via Treaty of Fort Stanwix 1768, a transaction the Shawnee disputed; Shawnee ceded rights south of the Ohio under duress via Treaty of Camp Charlotte 1774 ending Lord Dunmore's War; Cherokee ceded overlapping claims via Treaty of Sycamore Shoals 1775, a private purchase nullified by Virginia 1778; two prehistoric burial mounds and a cemetery documented by the 1932 Webb-Funkhouser survey; 2008 excavation found possible cut marks on Pleistocene bones suggesting Paleoindian butchering</dd>
+      <dt>Displacement & Tenure</dt><dd>Kentucky was organized as a Virginia county in 1776 and was never part of the federal public domain; no federal Royce cession applies; Iroquois Confederacy ceded British Crown claim to lands south of the Ohio via Treaty of Fort Stanwix (1768), disputed by the Shawnee; Shawnee ceded rights south of the Ohio via Treaty of Camp Charlotte (1774); Cherokee claim extinguished via Treaty of Sycamore Shoals (1775), voided by Virginia 1778; Kentucky distributed as Virginia military bounty land grants prior to statehood 1792; the Big Bone Lick Historical Association purchased 16.66 acres and deeded them to the Kentucky State Commissioner for conservation, with the park formally established July 2, 1960.</dd>
+      <dt>Shadow History</dt><dd>Big Bone Lick has been systematically stripped of paleontological material for nearly 300 years. In 1739, French-Canadian military commander Charles Le Moyne de Longueuil collected a tusk, femur, and molars and shipped them to Paris, where they entered Louis XV's Cabinet du Roi under Buffon's direction, initiating the first scientific attention to North American Pleistocene megafauna. In 1765-66, British Indian agent George Croghan extracted specimens on two expeditions; one collection was seized during an attack; the second was presented by Benjamin Franklin to the Royal Society of London. By the late 18th century, hundreds and possibly thousands of bones had been removed by collectors. President Thomas Jefferson, fixated on the site as a rebuttal to Buffon's theory of American animal degeneracy, dispatched Meriwether Lewis in October 1803 to collect specimens; those bones were loaded onto a keelboat and shipped south from Fort Mandan in spring 1804 and the boat sank near Natchez, Mississippi, losing the entire collection. Jefferson then commissioned William Clark, who conducted a three-week excavation in fall 1807 with a ten-man crew, removing over 300 bones and teeth; Jefferson divided the collection among the Paris Museum of Natural History, the American Philosophical Society, and Monticello, where specimens were displayed in the Entrance Hall. Clark's 11-page description allowed naturalists to distinguish mammoths from mastodons for the first time, making this the first funded paleontological field excavation in North America. In 1962-67, University of Nebraska paleontologists recovered over 2,000 specimens now held at the University of Nebraska State Museum; four species were formally named from Big Bone Lick material. James Colquohoun operated a salt works at the site from approximately 1795 until 1812; Kentucky salt works of the era routinely used enslaved labor, and the 1800 Boone County census recorded 325 enslaved persons (21% of the county population), though direct documentary evidence tying enslaved workers to Colquohoun's operation has not yet been confirmed in available records. The Clay House hotel opened at Big Bone Lick in 1815 and operated until approximately 1845, serving planter families including the Clays and Breckinridges for mineral spring bathing; enslaved domestic service workers almost certainly staffed the operation, but no named records have been located.</dd>
+      <dt>Ecology</dt><dd>Mixed mesophytic forest with oak-hickory overstory on surrounding uplands; active sulphur spring and mineralized salt lick complex creating a distinctive halophytic microhabitat; native grassland and savanna remnants along Discovery Trail; wetland and bog habitat in the spring-fed lowland supports running buffalo clover (Trifolium stoloniferum, delisted 2021) and rare bats.</dd>
+      <dt>Hydrology</dt><dd>Big Bone Creek drainage, a tributary of the Ohio River; sulphur-bearing mineral springs emerge from the Ordovician bedrock and discharge into the creek floodplain, forming the historic salt lick; Pleistocene fossil record owes its preservation to glacial meltwater drainage from the Laurentide ice sheet during the Wisconsinan Glaciation, which created standing-water conditions that trapped megafauna; Ohio River basin.</dd>
+      <dt>Acreage</dt><dd>525</dd>
+      <dt>GPS</dt><dd><a class="gps-link" href="https://maps.google.com/?q=38.8838,-84.7474" target="_blank" rel="noopener">38.8838° N, 84.7474° W</a></dd>
+    </dl>
+  </aside>
+  <div class="site-images">
+    <figure class="site-figure">
+      <a href="../img/full/big-bone-lick/_DSF1203.tif" download title="Download _DSF1203.jpg">
+        <img src="../img/jpg/big-bone-lick/_DSF1203.jpg" alt="Big Bone Lick State Historic Site I" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Big Bone Lick State Historic Site I &middot; 2026-04-08</span>
+        <span class="caption-filename">_DSF1203.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/big-bone-lick/_DSF1205.tif" download title="Download _DSF1205.jpg">
+        <img src="../img/jpg/big-bone-lick/_DSF1205.jpg" alt="Big Bone Lick State Historic Site II" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Big Bone Lick State Historic Site II &middot; 2026-04-08</span>
+        <span class="caption-filename">_DSF1205.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/big-bone-lick/_DSF1215.tif" download title="Download _DSF1215.jpg">
+        <img src="../img/jpg/big-bone-lick/_DSF1215.jpg" alt="Big Bone Lick State Historic Site III" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Big Bone Lick State Historic Site III &middot; 2026-04-08</span>
+        <span class="caption-filename">_DSF1215.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/big-bone-lick/_DSF1223.tif" download title="Download _DSF1223.jpg">
+        <img src="../img/jpg/big-bone-lick/_DSF1223.jpg" alt="Big Bone Lick State Historic Site IV" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Big Bone Lick State Historic Site IV &middot; 2026-04-08</span>
+        <span class="caption-filename">_DSF1223.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/big-bone-lick/_DSF1228.tif" download title="Download _DSF1228.jpg">
+        <img src="../img/jpg/big-bone-lick/_DSF1228.jpg" alt="Big Bone Lick State Historic Site V" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Big Bone Lick State Historic Site V &middot; 2026-04-08</span>
+        <span class="caption-filename">_DSF1228.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure">
+      <a href="../img/full/big-bone-lick/_DSF1229.tif" download title="Download _DSF1229.jpg">
+        <img src="../img/jpg/big-bone-lick/_DSF1229.jpg" alt="Big Bone Lick State Historic Site VI" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Big Bone Lick State Historic Site VI &middot; 2026-04-08</span>
+        <span class="caption-filename">_DSF1229.jpg</span>
+      </figcaption>
+    </figure>
+  </div>
+</div>
+<nav class="site-nav">
+  <span></span>
+  <a href="dinsmore-woods.html">Dinsmore Woods State Nature Preserve →</a>
+</nav>
+<footer>
+  <span>Public Lands Institute — ongoing project</span>
+  <span>CC0 Public Domain</span>
+</footer>
+</div>
+<script src="../js/lightbox.js"></script>
+</body>
+</html>

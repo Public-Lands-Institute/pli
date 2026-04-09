@@ -1,4 +1,14 @@
 {
+  "big-bone-lick": {
+    "agency": "Kentucky State Parks",
+    "agency_type": "State historic site",
+    "territory": ["Shawnee", "Delaware", "Paleoindian"]
+  },
+  "dinsmore-woods": {
+    "agency": "Boone County Parks / Office of Kentucky Nature Preserves",
+    "agency_type": "State nature preserve",
+    "territory": ["Shawnee", "Cherokee", "Adena"]
+  },
   "caesar-creek": {
     "agency": "Ohio DNR",
     "agency_type": "State park",
