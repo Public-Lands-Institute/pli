@@ -14,17 +14,28 @@ Host: DreamHost (SFTP port 22, credentials in .env)
 - .env — DreamHost credentials (never commit this file)
 
 ## Deploying
-Install lftp once: brew install lftp
+Install sshpass once: brew install sshpass
 Before deploying, archive the current generated files:
   DATE=$(date +%Y-%m-%d)
   mkdir -p Archive/$DATE/sites
   cp *.html Archive/$DATE/ 2>/dev/null || true
   cp sites/*.html Archive/$DATE/sites/ 2>/dev/null || true
   cp sites.json sites_meta.json nativeland_cache.json shadow_history_bibliography.txt shadow_history_methodology.txt Archive/$DATE/ 2>/dev/null || true
-Then deploy:
+Then deploy (two-phase — keeps deploys fast even as image library grows):
   source .env
-  /opt/homebrew/bin/lftp -u "$DREAMHOST_USER","$DREAMHOST_PASS" sftp://"$DREAMHOST_HOST" \
-    -e "mirror -R --only-newer --no-perms . $DREAMHOST_REMOTE_PATH ; quit"
+  # Phase 1: HTML/JS/JSON/text files — checksum-accurate, deletes removed files, skips images
+  sshpass -p "$DREAMHOST_PASS" rsync -avz --checksum --delete \
+    --chmod=Du=rwx,Dgo=rx,Fu=rw,Fgo=r \
+    --exclude '.git/' --exclude '.env' --exclude '.claude/' \
+    --exclude 'Archive/' --exclude '__pycache__/' --exclude '*.pyc' \
+    --exclude '*.py' --exclude 'img/' \
+    -e "ssh -o StrictHostKeyChecking=no -o PubkeyAuthentication=no" \
+    . "$DREAMHOST_USER@$DREAMHOST_HOST:$DREAMHOST_REMOTE_PATH/"
+  # Phase 2: Images — skip existing (images are immutable once uploaded, never re-checksum)
+  sshpass -p "$DREAMHOST_PASS" rsync -avz --ignore-existing \
+    --chmod=Du=rwx,Dgo=rx,Fu=rw,Fgo=r \
+    -e "ssh -o StrictHostKeyChecking=no -o PubkeyAuthentication=no" \
+    img/ "$DREAMHOST_USER@$DREAMHOST_HOST:$DREAMHOST_REMOTE_PATH/img/"
 
 ## Field order in sites.json
 geological_age, epoch, native_lands, displacement_tenure, shadow_history, ecology, hydrology, acreage, gps
@@ -133,6 +144,14 @@ Add an entry to sites_meta.json with the new slug as key:
 ### Step 4: Generate and deploy
 
 Run python3 generate_sites.py and confirm the new .html file appears in the output list. Then deploy via lftp (archive first per deploy protocol above).
+
+### Step 5: Generate metrics
+
+After deploy completes, run:
+
+  python3 generate_metrics.py
+
+This overwrites PLI-Project-Metrics.txt in the project root with current counts: total sites, total images, states represented, total acreage, managing agencies, and Wikimedia Commons upload totals. The file is regenerated on every site addition and always reflects current state. This step runs automatically via a post-deploy hook when deploy.py is used; run it manually if deploying via rsync.
 
 ---
 
