@@ -31,7 +31,7 @@
   a { color: inherit; text-decoration: none; }
   a:hover { text-decoration: underline; }
   .page {
-    max-width: 1120px;
+    max-width: 1500px;
     margin: 24px auto 56px auto;
     padding: 0 18px;
   }
@@ -143,25 +143,6 @@
     flex-shrink: 0;
     font-family: monospace;
   }
-  .inat-section-label {
-    color: var(--fg) !important;
-    font-weight: 500;
-    padding-top: 12px !important;
-    border-top: 1px solid var(--border);
-    margin-top: 4px;
-  }
-  .inat-section-spacer {
-    padding-top: 12px !important;
-    border-top: 1px solid var(--border);
-    margin-top: 4px;
-  }
-  .inat-species {
-    line-height: 1.8;
-  }
-  .inat-sci {
-    color: var(--muted);
-    font-style: italic;
-  }
   .obs-header {
     border-top: 1px solid var(--border);
     padding: 10px 0 4px 0;
@@ -185,6 +166,16 @@
     margin-top: 4px;
     line-height: 1.5;
   }
+  .pli-img-extra { display: none; }
+  .pli-view-all {
+    display: block; width: 100%; padding: 10px 0;
+    font-family: system-ui, sans-serif; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.16em;
+    color: var(--muted); background: transparent;
+    border: 1px solid var(--border); cursor: pointer;
+    margin-top: 4px;
+  }
+  .pli-view-all:hover { color: var(--fg); }
   .site-nav {
     margin-top: 40px;
     padding-top: 12px;
@@ -199,13 +190,19 @@
     gap: 8px;
   }
   @media (min-width: 720px) {
-    .site-layout { grid-template-columns: 300px 1fr; gap: 48px; align-items: start; }
+    .site-layout { grid-template-columns: 350px 1fr; gap: 48px; align-items: start; }
     .site-data { position: sticky; top: 24px; }
+  }
+  @media (min-width: 1148px) {
+    .site-layout { grid-template-columns: 7fr 15fr; }
   }
   @media (max-width: 480px) {
     .site-data { grid-template-columns: 110px 1fr; }
     .site-images { order: -1; }
     .site-data { order: 0; }
+    .site-figure { display: none; }
+    .site-figure.carousel-active { display: block; }
+    .obs-header { display: none; }
   }
 </style>
 </head>
@@ -226,15 +223,13 @@
 <div class="site-layout">
   <aside>
     <dl class="site-data">
-      <dt>Geological age</dt><dd>~299–2.6 million years ago (surface strata)</dd>
-      <dt>Epoch</dt><dd>Permian through Pliocene; Quartermaster Formation (Permian, ~280 Mya); caliche caprock (Pliocene, ~5 Mya)</dd>
-      <dt>Taxa</dt><dd>17 plants, 6 birds, 1 insects, 3 reptiles, 1 amphibians</dd>
-      <dt>Most observed</dt><dd class="inat-species">Texas Horned Lizard <span class="inat-sci">(Phrynosoma cornutum)</span><br>Western Massasauga <span class="inat-sci">(Sistrurus tergeminus)</span><br>Antelopehorn Milkweed <span class="inat-sci">(Asclepias asperula)</span><br>Missouri Milkvetch <span class="inat-sci">(Astragalus missouriensis)</span><br>American Kestrel <span class="inat-sci">(Falco sparverius)</span></dd>
-      <dt>Native lands</dt><dd>Comanche (Nʉmʉnʉʉ) · Kiowa · Apache; territory of the Comancheria; Caprock Canyons part of the southern Comanche range; forced removal to Oklahoma reservations 1874–75</dd>
+      <dt>Geological age</dt><dd>~299-2.6 million years ago (surface strata).</dd>
+      <dt>Epoch</dt><dd>Permian through Pliocene; Quartermaster Formation (Permian, ~280 Mya); caliche caprock (Pliocene, ~5 Mya).</dd>
+      <dt>Native lands</dt><dd>Comanche (Nʉmʉnʉʉ) · Kiowa · Apache; territory of the Comancheria; Caprock Canyons part of the southern Comanche range; forced removal to Oklahoma reservations 1874-75.</dd>
       <dt>Displacement & Tenure</dt><dd>Cession 478: Treaty with the Comanche and Kiowa (Little Arkansas Treaty, 1865); Cession 511: Agreement with the Comanche, Kiowa, and Apache (Jerome Agreement, 1892, ratified 1900); Comanche and Kiowa bands used the canyon breaks as a refuge until Col. Ranald Mackenzie's Fifth Cavalry swept through during the Red River War campaign of 1874, forcing their return to the Fort Sill reservation; state purchased approximately 13,961 acres from the estate of rancher Theodore Geisler in May 1975; the park opened in 1982.</dd>
       <dt>Shadow History</dt><dd>The Texas State Bison Herd at Caprock Canyons descends from calves captured by Charles Goodnight beginning in 1878, immediately after the systematic extermination campaign of 1874 to 1878 reduced the southern plains bison population from an estimated tens of millions to fewer than 1,000 animals continent-wide; Folsom- and Archaic-period archaeological sites are documented throughout the canyon, and Texas Parks and Wildlife acknowledges that most have been disturbed, with many artifacts removed, though no specific prosecution for looting at this site appears in public records.</dd>
-      <dt>Ecology</dt><dd>Shortgrass prairie; canyon riparian; home to the official Texas State Bison Herd — last free-ranging southern plains bison lineage</dd>
-      <dt>Hydrology</dt><dd>South Prong Little Red River; Lake Theo (reservoir); playa lakes; intermittent canyon streams</dd>
+      <dt>Ecology</dt><dd>Shortgrass prairie; canyon riparian; home to the official Texas State Bison Herd ; last free-ranging southern plains bison lineage.</dd>
+      <dt>Hydrology</dt><dd>South Prong Little Red River; Lake Theo (reservoir); playa lakes; intermittent canyon streams.</dd>
       <dt>Acreage</dt><dd>15,313 acres</dd>
       <dt>GPS</dt><dd><a class="gps-link" href="https://maps.google.com/?q=33.9778,-101.0578" target="_blank" rel="noopener">33.9778° N, 101.0578° W</a></dd>
     </dl>
@@ -249,7 +244,7 @@
         <span class="caption-filename">_DSF0725.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/caprock-canyon/_DSF0729.tif" download title="Download _DSF0729.jpg">
         <img src="../img/jpg/caprock-canyon/_DSF0729.jpg" alt="Caprock Canyon State Park II" loading="lazy"/>
       </a>
@@ -258,7 +253,7 @@
         <span class="caption-filename">_DSF0729.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/caprock-canyon/_DSF0731.tif" download title="Download _DSF0731.jpg">
         <img src="../img/jpg/caprock-canyon/_DSF0731.jpg" alt="Caprock Canyon State Park III" loading="lazy"/>
       </a>
@@ -267,7 +262,7 @@
         <span class="caption-filename">_DSF0731.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/caprock-canyon/_DSF0733.tif" download title="Download _DSF0733.jpg">
         <img src="../img/jpg/caprock-canyon/_DSF0733.jpg" alt="Caprock Canyon State Park IV" loading="lazy"/>
       </a>
@@ -276,7 +271,7 @@
         <span class="caption-filename">_DSF0733.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/caprock-canyon/_DSF0739.tif" download title="Download _DSF0739.jpg">
         <img src="../img/jpg/caprock-canyon/_DSF0739.jpg" alt="Caprock Canyon State Park V" loading="lazy"/>
       </a>
@@ -285,7 +280,7 @@
         <span class="caption-filename">_DSF0739.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/caprock-canyon/_DSF0744.tif" download title="Download _DSF0744.jpg">
         <img src="../img/jpg/caprock-canyon/_DSF0744.jpg" alt="Caprock Canyon State Park VI" loading="lazy"/>
       </a>
@@ -294,7 +289,7 @@
         <span class="caption-filename">_DSF0744.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/caprock-canyon/_DSF0746.tif" download title="Download _DSF0746.jpg">
         <img src="../img/jpg/caprock-canyon/_DSF0746.jpg" alt="Caprock Canyon State Park VII" loading="lazy"/>
       </a>
@@ -303,7 +298,7 @@
         <span class="caption-filename">_DSF0746.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/caprock-canyon/_DSF0751.tif" download title="Download _DSF0751.jpg">
         <img src="../img/jpg/caprock-canyon/_DSF0751.jpg" alt="Caprock Canyon State Park VIII" loading="lazy"/>
       </a>
@@ -312,7 +307,7 @@
         <span class="caption-filename">_DSF0751.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/caprock-canyon/_DSF0753.tif" download title="Download _DSF0753.jpg">
         <img src="../img/jpg/caprock-canyon/_DSF0753.jpg" alt="Caprock Canyon State Park IX" loading="lazy"/>
       </a>
@@ -321,7 +316,7 @@
         <span class="caption-filename">_DSF0753.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/caprock-canyon/_DSF0757.tif" download title="Download _DSF0757.jpg">
         <img src="../img/jpg/caprock-canyon/_DSF0757.jpg" alt="Caprock Canyon State Park X" loading="lazy"/>
       </a>
@@ -330,7 +325,7 @@
         <span class="caption-filename">_DSF0757.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/caprock-canyon/_DSF0758.tif" download title="Download _DSF0758.jpg">
         <img src="../img/jpg/caprock-canyon/_DSF0758.jpg" alt="Caprock Canyon State Park XI" loading="lazy"/>
       </a>
@@ -339,6 +334,7 @@
         <span class="caption-filename">_DSF0758.jpg</span>
       </figcaption>
     </figure>
+    <button class="pli-view-all" data-index="0">View all 11 images</button>
   </div>
 </div>
 <nav class="site-nav">
@@ -351,5 +347,31 @@
 </footer>
 </div>
 <script src="../js/lightbox.js"></script>
+<script>
+(function () {
+  if (!window.matchMedia('(max-width: 480px)').matches) return;
+  var figures = Array.from(document.querySelectorAll('.site-figure'));
+  if (!figures.length) return;
+  var cur = 0;
+  figures[0].classList.add('carousel-active');
+  if (figures.length < 2) return;
+  function show(i) {
+    figures[cur].classList.remove('carousel-active');
+    cur = (i + figures.length) % figures.length;
+    figures[cur].classList.add('carousel-active');
+  }
+  var container = document.querySelector('.site-images');
+  var sx, sy;
+  container.addEventListener('touchstart', function (e) {
+    sx = e.touches[0].clientX;
+    sy = e.touches[0].clientY;
+  }, { passive: true });
+  container.addEventListener('touchend', function (e) {
+    var dx = e.changedTouches[0].clientX - sx;
+    var dy = e.changedTouches[0].clientY - sy;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) show(dx < 0 ? cur + 1 : cur - 1);
+  }, { passive: true });
+})();
+</script>
 </body>
 </html>

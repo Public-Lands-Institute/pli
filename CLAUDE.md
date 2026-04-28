@@ -1,6 +1,11 @@
 # Public Lands Institute
 
 Static photographic index of public lands. CC0 Public Domain.
+
+## Important
+Always work directly in the main repo. Never use git worktrees for this project — they drift from main and cause data loss on deploy. If you find yourself in a worktree, sync sites.json, sites_meta.json, and *_cache.json from the main repo before generating or deploying.
+Never use preview_start, preview_screenshot, preview_snapshot, or any browser preview tools. They do not work in this environment. Do not attempt browser verification for any change — report what changed and move on.
+At the start of every session, read sites.json (first 60 lines), sites_meta.json, shadow_history_bibliography.txt, generate_sites.py, and js/lightbox.js before performing any task.
 Site: publiclandsinstitute.net
 Host: DreamHost (SFTP port 22, credentials in .env)
 
@@ -15,27 +20,52 @@ Host: DreamHost (SFTP port 22, credentials in .env)
 
 ## Deploying
 Install sshpass once: brew install sshpass
-Before deploying, archive the current generated files:
-  DATE=$(date +%Y-%m-%d)
-  mkdir -p Archive/$DATE/sites
-  cp *.html Archive/$DATE/ 2>/dev/null || true
-  cp sites/*.html Archive/$DATE/sites/ 2>/dev/null || true
-  cp sites.json sites_meta.json nativeland_cache.json shadow_history_bibliography.txt shadow_history_methodology.txt Archive/$DATE/ 2>/dev/null || true
-Then deploy (two-phase — keeps deploys fast even as image library grows):
+**Always run all 3 phases below — never construct a custom rsync command. Phase 3 (chmod) is mandatory after every deploy; rsync --chmod only applies to files transferred in that run, not existing files.**
+Before deploying, archive the current generated files (timestamp includes H-M so multiple deploys per day are preserved):
+  STAMP=$(date +%Y-%m-%d_%H-%M)
+  mkdir -p Archive/$STAMP/sites
+  cp *.html Archive/$STAMP/ 2>/dev/null || true
+  cp sites/*.html Archive/$STAMP/sites/ 2>/dev/null || true
+  cp sites.json sites_meta.json nativeland_cache.json shadow_history_bibliography.txt shadow_history_methodology.txt Archive/$STAMP/ 2>/dev/null || true
+  # Prune archives older than 30 days, but always keep the two most recent
+  python3 -c "
+import os, shutil
+from datetime import datetime, timedelta
+arc = 'Archive'
+entries = sorted([e for e in os.listdir(arc) if os.path.isdir(os.path.join(arc, e)) and e[0].isdigit()])
+cutoff = datetime.now() - timedelta(days=30)
+for e in entries[:-2]:
+    try:
+        dt = datetime.strptime(e[:10], '%Y-%m-%d')
+        if dt < cutoff:
+            shutil.rmtree(os.path.join(arc, e))
+            print(f'Pruned {e}')
+    except ValueError:
+        pass
+"
+Then deploy (three-phase — images go first so they exist before HTML references them):
   source .env
-  # Phase 1: HTML/JS/JSON/text files — checksum-accurate, deletes removed files, skips images
+  # Phase 1: Images — skip existing (images are immutable once uploaded, never re-checksum)
+  # Images upload first so they are on the server before HTML is updated to reference them.
+  # No -z: JPGs are already compressed; TIFs are large binaries — compression adds CPU overhead with no benefit
+  sshpass -p "$DREAMHOST_PASS" rsync -av --ignore-existing \
+    --chmod=Du=rwx,Dgo=rx,Fu=rw,Fgo=r \
+    -e "ssh -o StrictHostKeyChecking=no -o PubkeyAuthentication=no -o ServerAliveInterval=60 -o ServerAliveCountMax=3" \
+    img/ "$DREAMHOST_USER@$DREAMHOST_HOST:$DREAMHOST_REMOTE_PATH/img/"
+  # Phase 2: HTML/JS/JSON/text files — checksum-accurate, deletes removed files, skips images
   sshpass -p "$DREAMHOST_PASS" rsync -avz --checksum --delete \
     --chmod=Du=rwx,Dgo=rx,Fu=rw,Fgo=r \
     --exclude '.git/' --exclude '.env' --exclude '.claude/' \
     --exclude 'Archive/' --exclude '__pycache__/' --exclude '*.pyc' \
     --exclude '*.py' --exclude 'img/' \
-    -e "ssh -o StrictHostKeyChecking=no -o PubkeyAuthentication=no" \
+    -e "ssh -o StrictHostKeyChecking=no -o PubkeyAuthentication=no -o ServerAliveInterval=60 -o ServerAliveCountMax=3" \
     . "$DREAMHOST_USER@$DREAMHOST_HOST:$DREAMHOST_REMOTE_PATH/"
-  # Phase 2: Images — skip existing (images are immutable once uploaded, never re-checksum)
-  sshpass -p "$DREAMHOST_PASS" rsync -avz --ignore-existing \
-    --chmod=Du=rwx,Dgo=rx,Fu=rw,Fgo=r \
-    -e "ssh -o StrictHostKeyChecking=no -o PubkeyAuthentication=no" \
-    img/ "$DREAMHOST_USER@$DREAMHOST_HOST:$DREAMHOST_REMOTE_PATH/img/"
+  # Phase 3: Fix permissions on existing files — rsync --chmod only applies to files transferred in that run
+  # Use + (not \;) to batch chmod calls — much faster on large image libraries
+  sshpass -p "$DREAMHOST_PASS" ssh \
+    -o StrictHostKeyChecking=no -o PubkeyAuthentication=no -o ServerAliveInterval=60 -o ServerAliveCountMax=3 \
+    "$DREAMHOST_USER@$DREAMHOST_HOST" \
+    "find $DREAMHOST_REMOTE_PATH -type d -exec chmod 755 {} + && find $DREAMHOST_REMOTE_PATH -type f -exec chmod 644 {} +"
 
 ## Field order in sites.json
 geological_age, epoch, native_lands, displacement_tenure, shadow_history, ecology, hydrology, acreage, gps
@@ -56,10 +86,11 @@ Add an `observations` array to group images by visit date:
 - image_list: filenames only (files must exist in img/jpg/<slug>/)
 If omitted, generator falls back to scanning the folder and grouping images by EXIF month.
 
-## research_metadata.py
-Queries native-land.ca treaties API to populate displacement_tenure.
-Run: python3 research_metadata.py
-Safe to re-run; skips already-populated entries. Complex sites (Mammoth Cave, etc.) are flagged TODO for manual research.
+## research_pli_metadata.py
+Populates native_lands and displacement_tenure using native-land.ca territories + treaties APIs and Claude.
+Run: python3 research_pli_metadata.py
+Flags: --site <slug> to process one site, --dry-run to preview, --force-native / --force-tenure to re-research.
+Safe to re-run; skips already-populated entries. Complex sites (Mammoth Cave, etc.) are guarded against overwrite.
 
 ## Writing rules
 - Never use em dashes or en dashes anywhere in output or field values
@@ -89,7 +120,7 @@ Use web search to find the following for the named location. Search specifically
 - **ecology**: Dominant plant communities, notable species, habitat type. 1-2 sentences max.
 - **hydrology**: Watershed, named rivers or streams, any notable hydrological features (springs, karst, etc.)
 - **acreage**: Total acreage of the protected area. Use the official figure from NPS, state DNR, or managing agency.
-- **displacement_tenure**: Land cession and tenure history. Run research_metadata.py after adding to sites.json, or manually research treaties. Format: "Ceded via [Treaty Name]; [additional context]." Complex cases (enslaved labor, litigation) require manual narrative.
+- **displacement_tenure**: Land cession and tenure history. Run research_pli_metadata.py after adding to sites.json, or manually research treaties. Format: "Cession N: Full Treaty Name (YYYY); [qualitative context]." For Kentucky, Tennessee, and other non-federal-domain states, document the colonial-era dispossession chain instead (no Royce cession applies). Complex cases (enslaved labor, litigation) require manual narrative.
 - **shadow_history**: Documented but underreported history. Research via EPA records, NPS administrative histories, CCC camp rosters, archaeological site files, court records. Add to shadow_history_bibliography.txt. Leave empty if nothing significant found.
 - **conservation_status**: Official federal or state designations. Kept in JSON, not displayed.
 - **endangered_species**: Federally listed T&E species. Kept in JSON, not displayed.
@@ -141,17 +172,23 @@ Add an entry to sites_meta.json with the new slug as key:
 }
 ```
 
+### Step 3c: Update shadow_history_bibliography.txt
+
+If shadow_history is non-empty, add a new section at the top of shadow_history_bibliography.txt (after the header lines) listing each source consulted. Use the same format as existing sections. Update the "Generated" date to today.
+
 ### Step 4: Generate and deploy
 
-Run python3 generate_sites.py and confirm the new .html file appears in the output list. Then deploy via lftp (archive first per deploy protocol above).
+Run python3 generate_sites.py and confirm the new .html file appears in the output list. Then deploy (archive first per deploy protocol above).
 
-### Step 5: Generate metrics
+### Step 5: Generate metrics and archive metadata
 
-After deploy completes, run:
+After deploy completes, run both:
 
   python3 generate_metrics.py
+  python3 generate_metadata.py
 
-This overwrites PLI-Project-Metrics.txt in the project root with current counts: total sites, total images, states represented, total acreage, managing agencies, and Wikimedia Commons upload totals. The file is regenerated on every site addition and always reflects current state. This step runs automatically via a post-deploy hook when deploy.py is used; run it manually if deploying via rsync.
+generate_metrics.py overwrites PLI-Project-Metrics.txt with current counts: total sites, total images, states represented, total acreage, and managing agencies.
+generate_metadata.py overwrites archive-metadata/archive.csv with a full metadata export for archival use.
 
 ---
 

@@ -47,6 +47,23 @@ except ImportError:
 SITES_FILE = 'sites.json'
 CACHE_FILE = 'nativeland_cache.json'
 
+# Sites whose tenure history requires manual narrative — complex enough that
+# automated API + Claude results would be misleading or incomplete. These are
+# skipped for displacement_tenure even with --force-tenure.
+COMPLEX_TENURE = {
+    'mammoth-cave-national-park':
+        'TODO: enslaved labor documented in cave saltpeter mining and tourist operations '
+        '1810s-1840s; NPS acquired land from private owners beginning 1926; full land '
+        'tenure narrative requires archival research',
+    'johnsons-shut-ins-state-park':
+        'TODO: 2005 AmerenUE Taum Sauk reservoir breach destroyed lower park; '
+        'litigation settlement 2009 funded restoration; land tenure predates breach -- '
+        'research original Ozark acquisition history',
+    'arc-of-appalachia':
+        'TODO: privately assembled preserve system beginning 1995; parcels acquired '
+        'from multiple landowners; research individual tract deed history',
+}
+
 with open(SITES_FILE) as f:
     sites = json.load(f)
 
@@ -314,6 +331,13 @@ for site in sites:
         site_updated = True
 
     # ── displacement_tenure ───────────────────────────────────────────────────
+    if do_tenure and slug in COMPLEX_TENURE:
+        print(f'    displacement_tenure: complex site -- setting TODO (manual research required)')
+        if not DRY_RUN:
+            site['displacement_tenure'] = COMPLEX_TENURE[slug]
+        updated += 1
+        continue
+
     if do_tenure:
         if client:
             resolved, qualitative = claude_research_tenure(

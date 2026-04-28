@@ -1,127 +1,267 @@
 {
+  "rocky-fork-state-park": {
+    "agency": "Ohio DNR",
+    "agency_type": "State park",
+    "territory": [
+      "Shawnee",
+      "Hopewell",
+      "Myaamia"
+    ]
+  },
+  "hopewell-culture-national-historical-park": {
+    "agency": "National Park Service",
+    "agency_type": "NPS",
+    "territory": [
+      "Shawnee",
+      "Adena",
+      "Hopewell"
+    ]
+  },
+  "new-river-gorge-national-park": {
+    "agency": "National Park Service",
+    "agency_type": "NPS",
+    "territory": [
+      "Shawnee",
+      "Cherokee",
+      "Seneca",
+      "Moneton"
+    ]
+  },
   "big-bone-lick": {
     "agency": "Kentucky State Parks",
     "agency_type": "State historic site",
-    "territory": ["Shawnee", "Delaware", "Paleoindian"]
+    "territory": [
+      "Shawnee",
+      "Delaware",
+      "Paleoindian"
+    ]
   },
   "dinsmore-woods": {
     "agency": "Boone County Parks / Office of Kentucky Nature Preserves",
     "agency_type": "State nature preserve",
-    "territory": ["Shawnee", "Cherokee", "Adena"]
+    "territory": [
+      "Shawnee",
+      "Cherokee",
+      "Adena"
+    ]
   },
   "caesar-creek": {
     "agency": "Ohio DNR",
     "agency_type": "State park",
-    "territory": ["Shawnee", "Myaamia", "Hopewell", "Fort Ancient"]
+    "territory": [
+      "Shawnee",
+      "Myaamia",
+      "Hopewell",
+      "Fort Ancient"
+    ]
   },
   "shawnee-lookout": {
     "agency": "Great Parks of Hamilton County",
     "agency_type": "County park",
-    "territory": ["Shawnee", "Myaamia", "Hopewell", "Fort Ancient"]
+    "territory": [
+      "Shawnee",
+      "Myaamia",
+      "Hopewell",
+      "Fort Ancient"
+    ]
   },
   "fernald-preserve": {
     "agency": "U.S. Department of Energy, Office of Legacy Management",
     "agency_type": "DOE legacy site",
-    "territory": ["Myaamia", "Shawnee"]
+    "territory": [
+      "Myaamia",
+      "Shawnee"
+    ]
   },
   "clifty-falls-state-park": {
     "agency": "Indiana DNR",
     "agency_type": "State park",
-    "territory": ["Shawnee", "Miami"]
+    "territory": [
+      "Shawnee",
+      "Miami"
+    ]
   },
   "french-park": {
     "agency": "Cincinnati Parks",
     "agency_type": "Municipal park",
-    "territory": ["Hopewell", "Shawnee", "Myaamia"]
+    "territory": [
+      "Hopewell",
+      "Shawnee",
+      "Myaamia"
+    ]
   },
   "big-south-fork-national-river-and-recreation-area": {
     "agency": "National Park Service",
     "agency_type": "NPS",
-    "territory": ["Cherokee", "Yuchi", "Shawnee"]
+    "territory": [
+      "Cherokee",
+      "Yuchi",
+      "Shawnee"
+    ]
   },
   "mammoth-cave-national-park": {
     "agency": "National Park Service",
     "agency_type": "NPS",
-    "territory": ["Shawnee", "Cherokee", "Chickasaw", "Osage"]
+    "territory": [
+      "Shawnee",
+      "Cherokee",
+      "Chickasaw",
+      "Osage"
+    ]
   },
   "sea-rim-state-park": {
     "agency": "Texas Parks and Wildlife",
     "agency_type": "State park",
-    "territory": ["Ishak (Atakapa-Ishak)", "Akokisa"]
+    "territory": [
+      "Ishak (Atakapa-Ishak)",
+      "Akokisa"
+    ]
   },
   "caprock-canyon": {
     "agency": "Texas Parks and Wildlife",
     "agency_type": "State park",
-    "territory": ["Comanche", "Kiowa", "Apache"]
+    "territory": [
+      "Comanche",
+      "Kiowa",
+      "Apache"
+    ]
   },
   "palo-duro-canyon": {
     "agency": "Texas Parks and Wildlife",
     "agency_type": "State park",
-    "territory": ["Comanche", "Kiowa", "Southern Cheyenne", "Arapaho"]
+    "territory": [
+      "Comanche",
+      "Kiowa",
+      "Southern Cheyenne",
+      "Arapaho"
+    ]
   },
   "johnsons-shut-ins-state-park": {
     "agency": "Missouri State Parks",
     "agency_type": "State park",
-    "territory": ["Osage"]
+    "territory": [
+      "Osage"
+    ]
   },
   "elephant-rocks-state-park": {
     "agency": "Missouri State Parks",
     "agency_type": "State park",
-    "territory": ["Osage"]
+    "territory": [
+      "Osage"
+    ]
   },
   "charons-garden-wilderness-area": {
     "agency": "U.S. Fish and Wildlife Service",
     "agency_type": "USFWS",
-    "territory": ["Comanche", "Kiowa", "Wichita", "Apache"]
+    "territory": [
+      "Comanche",
+      "Kiowa",
+      "Wichita",
+      "Apache"
+    ]
   },
   "wichita-mountains-national-wildlife-refuge": {
     "agency": "U.S. Fish and Wildlife Service",
     "agency_type": "USFWS",
-    "territory": ["Comanche", "Kiowa", "Wichita", "Apache"]
+    "territory": [
+      "Comanche",
+      "Kiowa",
+      "Wichita",
+      "Apache"
+    ]
   },
   "john-bryan-state-park": {
     "agency": "Ohio DNR",
     "agency_type": "State park",
-    "territory": ["Shawnee", "Miami", "Adena", "Hopewell"]
+    "territory": [
+      "Shawnee",
+      "Miami",
+      "Adena",
+      "Hopewell"
+    ]
   },
   "hocking-hills": {
     "agency": "Ohio DNR",
     "agency_type": "State park",
-    "territory": ["Shawnee", "Delaware (Lenape)", "Wyandot", "Adena", "Hopewell"]
+    "territory": [
+      "Shawnee",
+      "Delaware (Lenape)",
+      "Wyandot",
+      "Adena",
+      "Hopewell"
+    ]
   },
   "arc-of-appalachia": {
     "agency": "Arc of Appalachia Preserve System",
     "agency_type": "Private preserve",
-    "territory": ["Shawnee", "Adena", "Hopewell"]
+    "territory": [
+      "Shawnee",
+      "Adena",
+      "Hopewell"
+    ]
   },
   "mount-airy-forest": {
     "agency": "Cincinnati Parks",
     "agency_type": "Municipal park",
-    "territory": ["Shawnee", "Fort Ancient culture"]
+    "territory": [
+      "Shawnee",
+      "Fort Ancient culture"
+    ]
   },
   "clifton-gorge-state-nature-preserve": {
     "agency": "Ohio DNR",
     "agency_type": "State nature preserve",
-    "territory": ["Shawnee", "Miami", "Adena", "Hopewell"]
+    "territory": [
+      "Shawnee",
+      "Miami",
+      "Adena",
+      "Hopewell"
+    ]
   },
   "parker-woods": {
     "agency": "Cincinnati Parks",
     "agency_type": "Municipal park",
-    "territory": ["Shawnee", "Myaamia", "Adena", "Hopewell"]
+    "territory": [
+      "Shawnee",
+      "Myaamia",
+      "Adena",
+      "Hopewell"
+    ]
   },
   "glen-helen-nature-preserve": {
     "agency": "Glen Helen Association",
     "agency_type": "Private preserve",
-    "territory": ["Shawnee", "Miami", "Adena"]
+    "territory": [
+      "Shawnee",
+      "Miami",
+      "Adena"
+    ]
   },
   "otto-armleder-memorial-park": {
     "agency": "Cincinnati Parks",
     "agency_type": "Municipal park",
-    "territory": ["Shawnee", "Fort Ancient culture"]
+    "territory": [
+      "Shawnee",
+      "Fort Ancient culture"
+    ]
   },
   "bender-mountain-nature-preserve": {
     "agency": "Cincinnati Parks",
     "agency_type": "Municipal park",
-    "territory": ["Shawnee", "Adena", "Hopewell"]
+    "territory": [
+      "Shawnee",
+      "Adena",
+      "Hopewell"
+    ]
+  },
+  "seip-earthworks": {
+    "agency": "National Park Service",
+    "agency_type": "NPS",
+    "territory": [
+      "Adena",
+      "Hopewell",
+      "Shawnee",
+      "Myaamia"
+    ]
   }
 }

@@ -31,7 +31,7 @@
   a { color: inherit; text-decoration: none; }
   a:hover { text-decoration: underline; }
   .page {
-    max-width: 1120px;
+    max-width: 1500px;
     margin: 24px auto 56px auto;
     padding: 0 18px;
   }
@@ -143,25 +143,6 @@
     flex-shrink: 0;
     font-family: monospace;
   }
-  .inat-section-label {
-    color: var(--fg) !important;
-    font-weight: 500;
-    padding-top: 12px !important;
-    border-top: 1px solid var(--border);
-    margin-top: 4px;
-  }
-  .inat-section-spacer {
-    padding-top: 12px !important;
-    border-top: 1px solid var(--border);
-    margin-top: 4px;
-  }
-  .inat-species {
-    line-height: 1.8;
-  }
-  .inat-sci {
-    color: var(--muted);
-    font-style: italic;
-  }
   .obs-header {
     border-top: 1px solid var(--border);
     padding: 10px 0 4px 0;
@@ -185,6 +166,16 @@
     margin-top: 4px;
     line-height: 1.5;
   }
+  .pli-img-extra { display: none; }
+  .pli-view-all {
+    display: block; width: 100%; padding: 10px 0;
+    font-family: system-ui, sans-serif; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.16em;
+    color: var(--muted); background: transparent;
+    border: 1px solid var(--border); cursor: pointer;
+    margin-top: 4px;
+  }
+  .pli-view-all:hover { color: var(--fg); }
   .site-nav {
     margin-top: 40px;
     padding-top: 12px;
@@ -199,13 +190,19 @@
     gap: 8px;
   }
   @media (min-width: 720px) {
-    .site-layout { grid-template-columns: 300px 1fr; gap: 48px; align-items: start; }
+    .site-layout { grid-template-columns: 350px 1fr; gap: 48px; align-items: start; }
     .site-data { position: sticky; top: 24px; }
+  }
+  @media (min-width: 1148px) {
+    .site-layout { grid-template-columns: 7fr 15fr; }
   }
   @media (max-width: 480px) {
     .site-data { grid-template-columns: 110px 1fr; }
     .site-images { order: -1; }
     .site-data { order: 0; }
+    .site-figure { display: none; }
+    .site-figure.carousel-active { display: block; }
+    .obs-header { display: none; }
   }
 </style>
 </head>
@@ -226,11 +223,9 @@
 <div class="site-layout">
   <aside>
     <dl class="site-data">
-      <dt>Geological age</dt><dd>~310 Mya Pennsylvanian sandstone and conglomerate</dd>
-      <dt>Epoch</dt><dd>Pennsylvanian</dd>
-      <dt>Taxa</dt><dd>644 plants, 89 birds, 661 insects, 18 mammals, 154 fungi, 27 reptiles, 21 amphibians, 68 arachnids</dd>
-      <dt>Most observed</dt><dd class="inat-species">mountain laurel <span class="inat-sci">(Kalmia latifolia)</span><br>downy rattlesnake plantain <span class="inat-sci">(Goodyera pubescens)</span><br>Hartford fern <span class="inat-sci">(Lygodium palmatum)</span><br>box huckleberry <span class="inat-sci">(Gaylussacia brachycera)</span><br>bigleaf magnolia <span class="inat-sci">(Magnolia macrophylla)</span></dd>
-      <dt>Native lands</dt><dd>Cherokee (Aniyunwiya) held the Cumberland Plateau as ancestral hunting territory, with rockshelter camps documented throughout the gorge zone; Yuchi (Tsoyaha) occupied the plateau prior to Cherokee dominance; Shawnee (Shawanwaki) used the region as hunting grounds following the Beaver Wars in the 1660s; Cherokee ceded adjacent plateau lands via the First Treaty of Tellico 1798 and remaining Cumberland Plateau territory via the Third Treaty of Tellico 1805; Cherokee removed to Oklahoma via the Trail of Tears 1838-1839</dd>
+      <dt>Geological age</dt><dd>~310 Mya Pennsylvanian sandstone and conglomerate.</dd>
+      <dt>Epoch</dt><dd>Pennsylvanian.</dd>
+      <dt>Native lands</dt><dd>Cherokee (Aniyunwiya) held the Cumberland Plateau as ancestral hunting territory, with rockshelter camps documented throughout the gorge zone; Yuchi (Tsoyaha) occupied the plateau prior to Cherokee dominance; Shawnee (Shawanwaki) used the region as hunting grounds following the Beaver Wars in the 1660s; Cherokee ceded adjacent plateau lands via the First Treaty of Tellico 1798 and remaining Cumberland Plateau territory via the Third Treaty of Tellico 1805; Cherokee removed to Oklahoma via the Trail of Tears 1838-1839.</dd>
       <dt>Displacement & Tenure</dt><dd>Cession 57: Treaty with the Cherokee (1805); established by the Water Resources Development Act of 1974 (P.L. 93-251); Army Corps of Engineers began acquisition in 1979 across approximately 125,000 acres; Stearns Coal and Lumber Company had conveyed surface rights on 46,842 acres to the United States by deed in 1937 while retaining mineral rights; litigation over whether retained mineral rights authorized strip mining on federal surface produced United States v. Stearns Coal and Lumber Co., 816 F.2d 279 (6th Cir. 1987), affirming that the 1937 deed's silence on strip mining did not permit destruction of the conveyed surface.</dd>
       <dt>Shadow History</dt><dd>Abandoned surface and deep coal mines throughout the park, the highest concentration of any NPS unit in the region, produce ongoing acid mine drainage; Roaring Paunch Creek and multiple tributaries carry contamination the NPS characterizes as potentially harmful to humans, with remediation underway under the Infrastructure Investment and Jobs Act; when word spread that the Army Corps of Engineers was authorized to acquire land under the 1974 act, large private landholders including Stearns Coal and Lumber accelerated logging and mining operations on their holdings before condemnation could proceed, extracting maximum value from land they knew would be taken; Blue Heron, the last Stearns company town in the gorge, was abandoned in 1962 after coal reserves were exhausted, leaving residents to relocate independently before Corps acquisition began in 1979.</dd>
       <dt>Ecology</dt><dd>Mixed mesophytic and oak-hickory forest dominates the upland plateau, with hemlock ravine forest and floodplain forest in the gorge zone; mountain laurel and rhododendron are prominent understory species, and sandstone cliffs host rare endemics including Cumberland cliff sedge and Appalachian shoestring fern.</dd>
@@ -249,7 +244,7 @@
         <span class="caption-filename">_DSF0991.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/big-south-fork-national-river-and-recreation-area/_DSF0994.tif" download title="Download _DSF0994.jpg">
         <img src="../img/jpg/big-south-fork-national-river-and-recreation-area/_DSF0994.jpg" alt="Big South Fork National River and Recreation Area II" loading="lazy"/>
       </a>
@@ -258,7 +253,7 @@
         <span class="caption-filename">_DSF0994.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/big-south-fork-national-river-and-recreation-area/_DSF0999.tif" download title="Download _DSF0999.jpg">
         <img src="../img/jpg/big-south-fork-national-river-and-recreation-area/_DSF0999.jpg" alt="Big South Fork National River and Recreation Area III" loading="lazy"/>
       </a>
@@ -267,7 +262,7 @@
         <span class="caption-filename">_DSF0999.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/big-south-fork-national-river-and-recreation-area/_DSF1006.tif" download title="Download _DSF1006.jpg">
         <img src="../img/jpg/big-south-fork-national-river-and-recreation-area/_DSF1006.jpg" alt="Big South Fork National River and Recreation Area IV" loading="lazy"/>
       </a>
@@ -276,7 +271,7 @@
         <span class="caption-filename">_DSF1006.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/big-south-fork-national-river-and-recreation-area/_DSF1010.tif" download title="Download _DSF1010.jpg">
         <img src="../img/jpg/big-south-fork-national-river-and-recreation-area/_DSF1010.jpg" alt="Big South Fork National River and Recreation Area V" loading="lazy"/>
       </a>
@@ -285,7 +280,7 @@
         <span class="caption-filename">_DSF1010.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/big-south-fork-national-river-and-recreation-area/_DSF1015.tif" download title="Download _DSF1015.jpg">
         <img src="../img/jpg/big-south-fork-national-river-and-recreation-area/_DSF1015.jpg" alt="Big South Fork National River and Recreation Area VI" loading="lazy"/>
       </a>
@@ -294,7 +289,7 @@
         <span class="caption-filename">_DSF1015.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/big-south-fork-national-river-and-recreation-area/_DSF1026.tif" download title="Download _DSF1026.jpg">
         <img src="../img/jpg/big-south-fork-national-river-and-recreation-area/_DSF1026.jpg" alt="Big South Fork National River and Recreation Area VII" loading="lazy"/>
       </a>
@@ -303,7 +298,7 @@
         <span class="caption-filename">_DSF1026.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/big-south-fork-national-river-and-recreation-area/_DSF1031.tif" download title="Download _DSF1031.jpg">
         <img src="../img/jpg/big-south-fork-national-river-and-recreation-area/_DSF1031.jpg" alt="Big South Fork National River and Recreation Area VIII" loading="lazy"/>
       </a>
@@ -312,6 +307,7 @@
         <span class="caption-filename">_DSF1031.jpg</span>
       </figcaption>
     </figure>
+    <button class="pli-view-all" data-index="0">View all 8 images</button>
   </div>
 </div>
 <nav class="site-nav">
@@ -324,5 +320,31 @@
 </footer>
 </div>
 <script src="../js/lightbox.js"></script>
+<script>
+(function () {
+  if (!window.matchMedia('(max-width: 480px)').matches) return;
+  var figures = Array.from(document.querySelectorAll('.site-figure'));
+  if (!figures.length) return;
+  var cur = 0;
+  figures[0].classList.add('carousel-active');
+  if (figures.length < 2) return;
+  function show(i) {
+    figures[cur].classList.remove('carousel-active');
+    cur = (i + figures.length) % figures.length;
+    figures[cur].classList.add('carousel-active');
+  }
+  var container = document.querySelector('.site-images');
+  var sx, sy;
+  container.addEventListener('touchstart', function (e) {
+    sx = e.touches[0].clientX;
+    sy = e.touches[0].clientY;
+  }, { passive: true });
+  container.addEventListener('touchend', function (e) {
+    var dx = e.changedTouches[0].clientX - sx;
+    var dy = e.changedTouches[0].clientY - sy;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) show(dx < 0 ? cur + 1 : cur - 1);
+  }, { passive: true });
+})();
+</script>
 </body>
 </html>

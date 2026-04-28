@@ -31,7 +31,7 @@
   a { color: inherit; text-decoration: none; }
   a:hover { text-decoration: underline; }
   .page {
-    max-width: 1120px;
+    max-width: 1500px;
     margin: 24px auto 56px auto;
     padding: 0 18px;
   }
@@ -143,25 +143,6 @@
     flex-shrink: 0;
     font-family: monospace;
   }
-  .inat-section-label {
-    color: var(--fg) !important;
-    font-weight: 500;
-    padding-top: 12px !important;
-    border-top: 1px solid var(--border);
-    margin-top: 4px;
-  }
-  .inat-section-spacer {
-    padding-top: 12px !important;
-    border-top: 1px solid var(--border);
-    margin-top: 4px;
-  }
-  .inat-species {
-    line-height: 1.8;
-  }
-  .inat-sci {
-    color: var(--muted);
-    font-style: italic;
-  }
   .obs-header {
     border-top: 1px solid var(--border);
     padding: 10px 0 4px 0;
@@ -185,6 +166,16 @@
     margin-top: 4px;
     line-height: 1.5;
   }
+  .pli-img-extra { display: none; }
+  .pli-view-all {
+    display: block; width: 100%; padding: 10px 0;
+    font-family: system-ui, sans-serif; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.16em;
+    color: var(--muted); background: transparent;
+    border: 1px solid var(--border); cursor: pointer;
+    margin-top: 4px;
+  }
+  .pli-view-all:hover { color: var(--fg); }
   .site-nav {
     margin-top: 40px;
     padding-top: 12px;
@@ -199,13 +190,19 @@
     gap: 8px;
   }
   @media (min-width: 720px) {
-    .site-layout { grid-template-columns: 300px 1fr; gap: 48px; align-items: start; }
+    .site-layout { grid-template-columns: 350px 1fr; gap: 48px; align-items: start; }
     .site-data { position: sticky; top: 24px; }
+  }
+  @media (min-width: 1148px) {
+    .site-layout { grid-template-columns: 7fr 15fr; }
   }
   @media (max-width: 480px) {
     .site-data { grid-template-columns: 110px 1fr; }
     .site-images { order: -1; }
     .site-data { order: 0; }
+    .site-figure { display: none; }
+    .site-figure.carousel-active { display: block; }
+    .obs-header { display: none; }
   }
 </style>
 </head>
@@ -226,15 +223,13 @@
 <div class="site-layout">
   <aside>
     <dl class="site-data">
-      <dt>Geological age</dt><dd>~1.47 billion years ago (bedrock)</dd>
-      <dt>Epoch</dt><dd>Proterozoic eon; Rhyacian period; St. Francois Mountains rhyolite and granite among the oldest exposed rock in Missouri; river incision Quaternary</dd>
-      <dt>Taxa</dt><dd>297 plants, 57 birds, 212 insects, 7 mammals, 47 fungi, 24 reptiles, 10 amphibians, 20 arachnids</dd>
-      <dt>Most observed</dt><dd class="inat-species">Prairie Lizard <span class="inat-sci">(Sceloporus consobrinus)</span><br>fire pink <span class="inat-sci">(Silene virginica)</span><br>woodland stonecrop <span class="inat-sci">(Sedum ternatum)</span><br>Common Watersnake <span class="inat-sci">(Nerodia sipedon)</span><br>Blanchard's Cricket Frog <span class="inat-sci">(Acris blanchardi)</span></dd>
-      <dt>Native lands</dt><dd>Osage Nation (Wazhazhe) · earlier Paleo-Indian peoples; Osage hunted throughout the St. Francois Mountains; ceded territory via 1808 treaty under duress</dd>
+      <dt>Geological age</dt><dd>~1.47 billion years ago (bedrock).</dd>
+      <dt>Epoch</dt><dd>Proterozoic eon; Rhyacian period; St. Francois Mountains rhyolite and granite among the oldest exposed rock in Missouri; river incision Quaternary.</dd>
+      <dt>Native lands</dt><dd>Osage Nation (Wazhazhe) · earlier Paleo-Indian peoples; Osage hunted throughout the St. Francois Mountains; ceded territory via 1808 treaty under duress.</dd>
       <dt>Displacement & Tenure</dt><dd>Cession 67: Treaty with the Osage (1808); on December 14, 2005, the Taum Sauk upper reservoir owned by AmerenUE failed, releasing approximately 1.4 billion gallons of water that destroyed the lower park; AmerenUE pled no contest to a federal Clean Water Act violation; a 2009 settlement awarded $102.3 million for park restoration, completed in 2010.</dd>
       <dt>Shadow History</dt><dd>The park was assembled over 17 years by Joseph Desloge, heir to a St. Louis lead-mining family whose wealth derived from mineral extraction in the same regional belt as the park's Precambrian geology, and donated to the state in 1955; a 2006 to 2007 USGS study following the 2005 reservoir breach documented elevated turbidity, dissolved aluminum, dissolved iron, and a blue-green surface coloration in the East Fork Black River attributed to rock flour and an alum-based flocculant used by AmerenUE; the East Fork Black River corridor has documented Paleo-Indian occupation extending to approximately 12,000 years BP, and whether the flood disturbed intact subsurface deposits has not been publicly assessed.</dd>
-      <dt>Ecology</dt><dd>Ozark Highland; dolomite glades; dry chert woodland; rare endemic species in igneous glade communities</dd>
-      <dt>Hydrology</dt><dd>East Fork Black River; Taum Sauk Reservoir (upstream); shut-in pools and cascades; 2005 reservoir breach reshaped lower park terrain</dd>
+      <dt>Ecology</dt><dd>Ozark Highland; dolomite glades; dry chert woodland; rare endemic species in igneous glade communities.</dd>
+      <dt>Hydrology</dt><dd>East Fork Black River; Taum Sauk Reservoir (upstream); shut-in pools and cascades; 2005 reservoir breach reshaped lower park terrain.</dd>
       <dt>Acreage</dt><dd>8,916 acres</dd>
       <dt>GPS</dt><dd><a class="gps-link" href="https://maps.google.com/?q=37.553,-90.848" target="_blank" rel="noopener">37.5530° N, 90.8480° W</a></dd>
     </dl>
@@ -249,7 +244,7 @@
         <span class="caption-filename">_DSF0552.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/johnsons-shut-ins-state-park/_DSF0566.tif" download title="Download _DSF0566.jpg">
         <img src="../img/jpg/johnsons-shut-ins-state-park/_DSF0566.jpg" alt="Johnson's Shut-Ins State Park II" loading="lazy"/>
       </a>
@@ -258,7 +253,7 @@
         <span class="caption-filename">_DSF0566.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/johnsons-shut-ins-state-park/_DSF0569.tif" download title="Download _DSF0569.jpg">
         <img src="../img/jpg/johnsons-shut-ins-state-park/_DSF0569.jpg" alt="Johnson's Shut-Ins State Park III" loading="lazy"/>
       </a>
@@ -267,7 +262,7 @@
         <span class="caption-filename">_DSF0569.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/johnsons-shut-ins-state-park/_DSF0571.tif" download title="Download _DSF0571.jpg">
         <img src="../img/jpg/johnsons-shut-ins-state-park/_DSF0571.jpg" alt="Johnson's Shut-Ins State Park IV" loading="lazy"/>
       </a>
@@ -276,7 +271,7 @@
         <span class="caption-filename">_DSF0571.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/johnsons-shut-ins-state-park/_DSF0572.tif" download title="Download _DSF0572.jpg">
         <img src="../img/jpg/johnsons-shut-ins-state-park/_DSF0572.jpg" alt="Johnson's Shut-Ins State Park V" loading="lazy"/>
       </a>
@@ -285,7 +280,7 @@
         <span class="caption-filename">_DSF0572.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/johnsons-shut-ins-state-park/_DSF0580.tif" download title="Download _DSF0580.jpg">
         <img src="../img/jpg/johnsons-shut-ins-state-park/_DSF0580.jpg" alt="Johnson's Shut-Ins State Park VI" loading="lazy"/>
       </a>
@@ -294,7 +289,7 @@
         <span class="caption-filename">_DSF0580.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/johnsons-shut-ins-state-park/_DSF0586.tif" download title="Download _DSF0586.jpg">
         <img src="../img/jpg/johnsons-shut-ins-state-park/_DSF0586.jpg" alt="Johnson's Shut-Ins State Park VII" loading="lazy"/>
       </a>
@@ -303,6 +298,7 @@
         <span class="caption-filename">_DSF0586.jpg</span>
       </figcaption>
     </figure>
+    <button class="pli-view-all" data-index="0">View all 7 images</button>
   </div>
 </div>
 <nav class="site-nav">
@@ -315,5 +311,31 @@
 </footer>
 </div>
 <script src="../js/lightbox.js"></script>
+<script>
+(function () {
+  if (!window.matchMedia('(max-width: 480px)').matches) return;
+  var figures = Array.from(document.querySelectorAll('.site-figure'));
+  if (!figures.length) return;
+  var cur = 0;
+  figures[0].classList.add('carousel-active');
+  if (figures.length < 2) return;
+  function show(i) {
+    figures[cur].classList.remove('carousel-active');
+    cur = (i + figures.length) % figures.length;
+    figures[cur].classList.add('carousel-active');
+  }
+  var container = document.querySelector('.site-images');
+  var sx, sy;
+  container.addEventListener('touchstart', function (e) {
+    sx = e.touches[0].clientX;
+    sy = e.touches[0].clientY;
+  }, { passive: true });
+  container.addEventListener('touchend', function (e) {
+    var dx = e.changedTouches[0].clientX - sx;
+    var dy = e.changedTouches[0].clientY - sy;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) show(dx < 0 ? cur + 1 : cur - 1);
+  }, { passive: true });
+})();
+</script>
 </body>
 </html>

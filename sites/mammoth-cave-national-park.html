@@ -31,7 +31,7 @@
   a { color: inherit; text-decoration: none; }
   a:hover { text-decoration: underline; }
   .page {
-    max-width: 1120px;
+    max-width: 1500px;
     margin: 24px auto 56px auto;
     padding: 0 18px;
   }
@@ -143,25 +143,6 @@
     flex-shrink: 0;
     font-family: monospace;
   }
-  .inat-section-label {
-    color: var(--fg) !important;
-    font-weight: 500;
-    padding-top: 12px !important;
-    border-top: 1px solid var(--border);
-    margin-top: 4px;
-  }
-  .inat-section-spacer {
-    padding-top: 12px !important;
-    border-top: 1px solid var(--border);
-    margin-top: 4px;
-  }
-  .inat-species {
-    line-height: 1.8;
-  }
-  .inat-sci {
-    color: var(--muted);
-    font-style: italic;
-  }
   .obs-header {
     border-top: 1px solid var(--border);
     padding: 10px 0 4px 0;
@@ -185,6 +166,16 @@
     margin-top: 4px;
     line-height: 1.5;
   }
+  .pli-img-extra { display: none; }
+  .pli-view-all {
+    display: block; width: 100%; padding: 10px 0;
+    font-family: system-ui, sans-serif; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.16em;
+    color: var(--muted); background: transparent;
+    border: 1px solid var(--border); cursor: pointer;
+    margin-top: 4px;
+  }
+  .pli-view-all:hover { color: var(--fg); }
   .site-nav {
     margin-top: 40px;
     padding-top: 12px;
@@ -199,13 +190,19 @@
     gap: 8px;
   }
   @media (min-width: 720px) {
-    .site-layout { grid-template-columns: 300px 1fr; gap: 48px; align-items: start; }
+    .site-layout { grid-template-columns: 350px 1fr; gap: 48px; align-items: start; }
     .site-data { position: sticky; top: 24px; }
+  }
+  @media (min-width: 1148px) {
+    .site-layout { grid-template-columns: 7fr 15fr; }
   }
   @media (max-width: 480px) {
     .site-data { grid-template-columns: 110px 1fr; }
     .site-images { order: -1; }
     .site-data { order: 0; }
+    .site-figure { display: none; }
+    .site-figure.carousel-active { display: block; }
+    .obs-header { display: none; }
   }
 </style>
 </head>
@@ -226,236 +223,271 @@
 <div class="site-layout">
   <aside>
     <dl class="site-data">
-      <dt>Geological age</dt><dd>~340 million years ago (limestone bedrock); cave passages formed over last 10 million years</dd>
-      <dt>Epoch</dt><dd>Mississippian period; St. Louis and Ste. Genevieve limestone formations; karst dissolution ongoing since Pliocene</dd>
-      <dt>Taxa</dt><dd>629 plants, 106 birds, 546 insects, 22 mammals, 137 fungi, 26 reptiles, 25 amphibians, 60 arachnids</dd>
-      <dt>Most observed</dt><dd class="inat-species">White-tailed Deer <span class="inat-sci">(Odocoileus virginianus)</span><br>woodland stonecrop <span class="inat-sci">(Sedum ternatum)</span><br>Christmas fern <span class="inat-sci">(Polystichum acrostichoides)</span><br>Virginia saxifrage <span class="inat-sci">(Micranthes virginiensis)</span><br>northern maidenhair fern <span class="inat-sci">(Adiantum pedatum)</span></dd>
-      <dt>Native lands</dt><dd>Shawnee (Shawanwaki) · Cherokee · Chickasaw · Osage; cave known to indigenous peoples 4,000+ years; mummified remains recovered from deep passages; forced removal from Kentucky by early 19th century</dd>
+      <dt>Geological age</dt><dd>~340 million years ago (limestone bedrock); cave passages formed over last 10 million years.</dd>
+      <dt>Epoch</dt><dd>Mississippian period; St. Louis and Ste. Genevieve limestone formations; karst dissolution ongoing since Pliocene.</dd>
+      <dt>Native lands</dt><dd>Shawnee (Shawanwaki) · Cherokee · Chickasaw · Osage; cave known to indigenous peoples 4,000+ years; mummified remains recovered from deep passages; forced removal from Kentucky by early 19th century.</dd>
       <dt>Displacement & Tenure</dt><dd>Cherokee, Shawnee, and Yuchi territory; no federal cession treaty identified for this location; saltpeter mined by enslaved African American men, many leased from neighboring states, under ownership of Charles Wilkins and Fleming Gatewood during the War of 1812 era, producing approximately 115,000 pounds of saltpeter in 1814; Stephen Bishop, Mat Bransford, and Nicholas Bransford, all enslaved, served as the cave's primary guides beginning in 1838, mapping its passages and building its national reputation; Congress authorized the park in 1926, triggering eminent domain proceedings against more than 600 farming families; park formally established July 1, 1941.</dd>
       <dt>Shadow History</dt><dd>In 1842, cave owner Dr. John Croghan moved 16 tuberculosis patients into the cave believing its constant temperature would cure consumption; enslaved workers built two stone cottages and eight wooden huts inside the cave; five patients died inside the cave, their bodies laid on what became known as Corpse Rock; Croghan died of tuberculosis in 1849; CCC Company 510, an all-Black company and the first CCC camp established in Kentucky (May 22, 1933), was placed at Mammoth Cave specifically because of its remoteness from white communities; when the Decree of Eminent Domain was issued against 507 families on 54,000 acres, Black families who had lived and worked the land were displaced without provision for resettlement, while white men retained their positions as guides; landowners widely reported receiving below-market compensation, and more than 70 cemeteries remain within park boundaries today; a pre-Columbian man now called Lost John was displayed publicly in the cave until the mid-1970s; a mummified woman known as Fawn Hoof, recovered in 1811, was exhibited at the 1876 and 1893 World's Fairs and transferred to the Smithsonian where the remains are held today.</dd>
-      <dt>Ecology</dt><dd>Temperate deciduous forest above; cave ecosystem with endemic troglobitic species; endangered Indiana bat and Kentucky cave shrimp; Green River corridor</dd>
-      <dt>Hydrology</dt><dd>Green River and Nolin River; vast karst aquifer; 400+ miles of surveyed passages; Echo River flows underground</dd>
+      <dt>Ecology</dt><dd>Temperate deciduous forest above; cave ecosystem with endemic troglobitic species; endangered Indiana bat and Kentucky cave shrimp; Green River corridor.</dd>
+      <dt>Hydrology</dt><dd>Green River and Nolin River; vast karst aquifer; 400+ miles of surveyed passages; Echo River flows underground.</dd>
       <dt>Acreage</dt><dd>54,012 acres</dd>
       <dt>GPS</dt><dd><a class="gps-link" href="https://maps.google.com/?q=37.1877,-86.1" target="_blank" rel="noopener">37.1877° N, 86.1000° W</a></dd>
     </dl>
   </aside>
   <div class="site-images">
     <figure class="site-figure">
-      <a href="../img/full/mammoth-cave-national-park/_DSC1393.tif" download title="Download _DSC1393.jpg">
-        <img src="../img/jpg/mammoth-cave-national-park/_DSC1393.jpg" alt="Mammoth Cave National Park I" loading="lazy"/>
+      <a href="../img/full/mammoth-cave-national-park/_DSC1366.tif" download title="Download _DSC1366.jpg">
+        <img src="../img/jpg/mammoth-cave-national-park/_DSC1366.jpg" alt="Mammoth Cave National Park I" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park I &middot; 2026-03-07</span>
-        <span class="caption-filename">_DSC1393.jpg</span>
+        <span class="caption-filename">_DSC1366.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
-      <a href="../img/full/mammoth-cave-national-park/_DSC1446.tif" download title="Download _DSC1446.jpg">
-        <img src="../img/jpg/mammoth-cave-national-park/_DSC1446.jpg" alt="Mammoth Cave National Park II" loading="lazy"/>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/mammoth-cave-national-park/_DSC1393.tif" download title="Download _DSC1393.jpg">
+        <img src="../img/jpg/mammoth-cave-national-park/_DSC1393.jpg" alt="Mammoth Cave National Park II" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park II &middot; 2026-03-07</span>
-        <span class="caption-filename">_DSC1446.jpg</span>
+        <span class="caption-filename">_DSC1393.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
-      <a href="../img/full/mammoth-cave-national-park/_DSC1449.tif" download title="Download _DSC1449.jpg">
-        <img src="../img/jpg/mammoth-cave-national-park/_DSC1449.jpg" alt="Mammoth Cave National Park III" loading="lazy"/>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/mammoth-cave-national-park/_DSC1446.tif" download title="Download _DSC1446.jpg">
+        <img src="../img/jpg/mammoth-cave-national-park/_DSC1446.jpg" alt="Mammoth Cave National Park III" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park III &middot; 2026-03-07</span>
-        <span class="caption-filename">_DSC1449.jpg</span>
+        <span class="caption-filename">_DSC1446.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
-      <a href="../img/full/mammoth-cave-national-park/_DSC1455.tif" download title="Download _DSC1455.jpg">
-        <img src="../img/jpg/mammoth-cave-national-park/_DSC1455.jpg" alt="Mammoth Cave National Park IV" loading="lazy"/>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/mammoth-cave-national-park/_DSC1449.tif" download title="Download _DSC1449.jpg">
+        <img src="../img/jpg/mammoth-cave-national-park/_DSC1449.jpg" alt="Mammoth Cave National Park IV" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park IV &middot; 2026-03-07</span>
+        <span class="caption-filename">_DSC1449.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/mammoth-cave-national-park/_DSC1455.tif" download title="Download _DSC1455.jpg">
+        <img src="../img/jpg/mammoth-cave-national-park/_DSC1455.jpg" alt="Mammoth Cave National Park V" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Mammoth Cave National Park V &middot; 2026-03-07</span>
         <span class="caption-filename">_DSC1455.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/mammoth-cave-national-park/_DSF0822.tif" download title="Download _DSF0822.jpg">
-        <img src="../img/jpg/mammoth-cave-national-park/_DSF0822.jpg" alt="Mammoth Cave National Park V" loading="lazy"/>
-      </a>
-      <figcaption>
-        <span class="caption-title">Mammoth Cave National Park V &middot; 2026-03-06</span>
-        <span class="caption-filename">_DSF0822.jpg</span>
-      </figcaption>
-    </figure>
-    <figure class="site-figure">
-      <a href="../img/full/mammoth-cave-national-park/_DSF0830.tif" download title="Download _DSF0830.jpg">
-        <img src="../img/jpg/mammoth-cave-national-park/_DSF0830.jpg" alt="Mammoth Cave National Park VI" loading="lazy"/>
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0822.jpg" alt="Mammoth Cave National Park VI" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park VI &middot; 2026-03-06</span>
-        <span class="caption-filename">_DSF0830.jpg</span>
+        <span class="caption-filename">_DSF0822.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
-      <a href="../img/full/mammoth-cave-national-park/_DSF0843.tif" download title="Download _DSF0843.jpg">
-        <img src="../img/jpg/mammoth-cave-national-park/_DSF0843.jpg" alt="Mammoth Cave National Park VII" loading="lazy"/>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/mammoth-cave-national-park/_DSF0830.tif" download title="Download _DSF0830.jpg">
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0830.jpg" alt="Mammoth Cave National Park VII" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park VII &middot; 2026-03-06</span>
-        <span class="caption-filename">_DSF0843.jpg</span>
+        <span class="caption-filename">_DSF0830.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
-      <a href="../img/full/mammoth-cave-national-park/_DSF0844.tif" download title="Download _DSF0844.jpg">
-        <img src="../img/jpg/mammoth-cave-national-park/_DSF0844.jpg" alt="Mammoth Cave National Park VIII" loading="lazy"/>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/mammoth-cave-national-park/_DSF0843.tif" download title="Download _DSF0843.jpg">
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0843.jpg" alt="Mammoth Cave National Park VIII" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park VIII &middot; 2026-03-06</span>
-        <span class="caption-filename">_DSF0844.jpg</span>
+        <span class="caption-filename">_DSF0843.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
-      <a href="../img/full/mammoth-cave-national-park/_DSF0847.tif" download title="Download _DSF0847.jpg">
-        <img src="../img/jpg/mammoth-cave-national-park/_DSF0847.jpg" alt="Mammoth Cave National Park IX" loading="lazy"/>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/mammoth-cave-national-park/_DSF0844.tif" download title="Download _DSF0844.jpg">
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0844.jpg" alt="Mammoth Cave National Park IX" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park IX &middot; 2026-03-06</span>
-        <span class="caption-filename">_DSF0847.jpg</span>
+        <span class="caption-filename">_DSF0844.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
-      <a href="../img/full/mammoth-cave-national-park/_DSF0851.tif" download title="Download _DSF0851.jpg">
-        <img src="../img/jpg/mammoth-cave-national-park/_DSF0851.jpg" alt="Mammoth Cave National Park X" loading="lazy"/>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/mammoth-cave-national-park/_DSF0847.tif" download title="Download _DSF0847.jpg">
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0847.jpg" alt="Mammoth Cave National Park X" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park X &middot; 2026-03-06</span>
-        <span class="caption-filename">_DSF0851.jpg</span>
+        <span class="caption-filename">_DSF0847.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
-      <a href="../img/full/mammoth-cave-national-park/_DSF0856.tif" download title="Download _DSF0856.jpg">
-        <img src="../img/jpg/mammoth-cave-national-park/_DSF0856.jpg" alt="Mammoth Cave National Park XI" loading="lazy"/>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/mammoth-cave-national-park/_DSF0851.tif" download title="Download _DSF0851.jpg">
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0851.jpg" alt="Mammoth Cave National Park XI" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park XI &middot; 2026-03-06</span>
-        <span class="caption-filename">_DSF0856.jpg</span>
+        <span class="caption-filename">_DSF0851.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
-      <a href="../img/full/mammoth-cave-national-park/_DSF0864.tif" download title="Download _DSF0864.jpg">
-        <img src="../img/jpg/mammoth-cave-national-park/_DSF0864.jpg" alt="Mammoth Cave National Park XII" loading="lazy"/>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/mammoth-cave-national-park/_DSF0856.tif" download title="Download _DSF0856.jpg">
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0856.jpg" alt="Mammoth Cave National Park XII" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park XII &middot; 2026-03-06</span>
-        <span class="caption-filename">_DSF0864.jpg</span>
+        <span class="caption-filename">_DSF0856.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
-      <a href="../img/full/mammoth-cave-national-park/_DSF0865.tif" download title="Download _DSF0865.jpg">
-        <img src="../img/jpg/mammoth-cave-national-park/_DSF0865.jpg" alt="Mammoth Cave National Park XIII" loading="lazy"/>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/mammoth-cave-national-park/_DSF0864.tif" download title="Download _DSF0864.jpg">
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0864.jpg" alt="Mammoth Cave National Park XIII" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park XIII &middot; 2026-03-06</span>
-        <span class="caption-filename">_DSF0865.jpg</span>
+        <span class="caption-filename">_DSF0864.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
-      <a href="../img/full/mammoth-cave-national-park/_DSF0868.tif" download title="Download _DSF0868.jpg">
-        <img src="../img/jpg/mammoth-cave-national-park/_DSF0868.jpg" alt="Mammoth Cave National Park XIV" loading="lazy"/>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/mammoth-cave-national-park/_DSF0865.tif" download title="Download _DSF0865.jpg">
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0865.jpg" alt="Mammoth Cave National Park XIV" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park XIV &middot; 2026-03-06</span>
-        <span class="caption-filename">_DSF0868.jpg</span>
+        <span class="caption-filename">_DSF0865.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
-      <a href="../img/full/mammoth-cave-national-park/_DSF0870.tif" download title="Download _DSF0870.jpg">
-        <img src="../img/jpg/mammoth-cave-national-park/_DSF0870.jpg" alt="Mammoth Cave National Park XV" loading="lazy"/>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/mammoth-cave-national-park/_DSF0868.tif" download title="Download _DSF0868.jpg">
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0868.jpg" alt="Mammoth Cave National Park XV" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park XV &middot; 2026-03-06</span>
-        <span class="caption-filename">_DSF0870.jpg</span>
+        <span class="caption-filename">_DSF0868.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
-      <a href="../img/full/mammoth-cave-national-park/_DSF0875.tif" download title="Download _DSF0875.jpg">
-        <img src="../img/jpg/mammoth-cave-national-park/_DSF0875.jpg" alt="Mammoth Cave National Park XVI" loading="lazy"/>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/mammoth-cave-national-park/_DSF0870.tif" download title="Download _DSF0870.jpg">
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0870.jpg" alt="Mammoth Cave National Park XVI" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park XVI &middot; 2026-03-06</span>
-        <span class="caption-filename">_DSF0875.jpg</span>
+        <span class="caption-filename">_DSF0870.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
-      <a href="../img/full/mammoth-cave-national-park/_DSF0898.tif" download title="Download _DSF0898.jpg">
-        <img src="../img/jpg/mammoth-cave-national-park/_DSF0898.jpg" alt="Mammoth Cave National Park XVII" loading="lazy"/>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/mammoth-cave-national-park/_DSF0875.tif" download title="Download _DSF0875.jpg">
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0875.jpg" alt="Mammoth Cave National Park XVII" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park XVII &middot; 2026-03-06</span>
-        <span class="caption-filename">_DSF0898.jpg</span>
+        <span class="caption-filename">_DSF0875.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
-      <a href="../img/full/mammoth-cave-national-park/_DSF0914.tif" download title="Download _DSF0914.jpg">
-        <img src="../img/jpg/mammoth-cave-national-park/_DSF0914.jpg" alt="Mammoth Cave National Park XVIII" loading="lazy"/>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/mammoth-cave-national-park/_DSF0898.tif" download title="Download _DSF0898.jpg">
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0898.jpg" alt="Mammoth Cave National Park XVIII" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park XVIII &middot; 2026-03-06</span>
+        <span class="caption-filename">_DSF0898.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/mammoth-cave-national-park/_DSF0914.tif" download title="Download _DSF0914.jpg">
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0914.jpg" alt="Mammoth Cave National Park XIX" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Mammoth Cave National Park XIX &middot; 2026-03-06</span>
         <span class="caption-filename">_DSF0914.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/mammoth-cave-national-park/_DSF0919.tif" download title="Download _DSF0919.jpg">
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0919.jpg" alt="Mammoth Cave National Park XX" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Mammoth Cave National Park XX &middot; 2026-03-07</span>
+        <span class="caption-filename">_DSF0919.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/mammoth-cave-national-park/_DSF0923.tif" download title="Download _DSF0923.jpg">
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0923.jpg" alt="Mammoth Cave National Park XXI" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Mammoth Cave National Park XXI &middot; 2026-03-07</span>
+        <span class="caption-filename">_DSF0923.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/mammoth-cave-national-park/_DSF0929.tif" download title="Download _DSF0929.jpg">
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0929.jpg" alt="Mammoth Cave National Park XXII" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Mammoth Cave National Park XXII &middot; 2026-03-07</span>
+        <span class="caption-filename">_DSF0929.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/mammoth-cave-national-park/_DSF0937.tif" download title="Download _DSF0937.jpg">
-        <img src="../img/jpg/mammoth-cave-national-park/_DSF0937.jpg" alt="Mammoth Cave National Park XIX" loading="lazy"/>
-      </a>
-      <figcaption>
-        <span class="caption-title">Mammoth Cave National Park XIX &middot; 2026-03-08</span>
-        <span class="caption-filename">_DSF0937.jpg</span>
-      </figcaption>
-    </figure>
-    <figure class="site-figure">
-      <a href="../img/full/mammoth-cave-national-park/_DSF0946.tif" download title="Download _DSF0946.jpg">
-        <img src="../img/jpg/mammoth-cave-national-park/_DSF0946.jpg" alt="Mammoth Cave National Park XX" loading="lazy"/>
-      </a>
-      <figcaption>
-        <span class="caption-title">Mammoth Cave National Park XX &middot; 2026-03-08</span>
-        <span class="caption-filename">_DSF0946.jpg</span>
-      </figcaption>
-    </figure>
-    <figure class="site-figure">
-      <a href="../img/full/mammoth-cave-national-park/_DSF0971.tif" download title="Download _DSF0971.jpg">
-        <img src="../img/jpg/mammoth-cave-national-park/_DSF0971.jpg" alt="Mammoth Cave National Park XXI" loading="lazy"/>
-      </a>
-      <figcaption>
-        <span class="caption-title">Mammoth Cave National Park XXI &middot; 2026-03-08</span>
-        <span class="caption-filename">_DSF0971.jpg</span>
-      </figcaption>
-    </figure>
-    <figure class="site-figure">
-      <a href="../img/full/mammoth-cave-national-park/_DSF0982.tif" download title="Download _DSF0982.jpg">
-        <img src="../img/jpg/mammoth-cave-national-park/_DSF0982.jpg" alt="Mammoth Cave National Park XXII" loading="lazy"/>
-      </a>
-      <figcaption>
-        <span class="caption-title">Mammoth Cave National Park XXII &middot; 2026-03-08</span>
-        <span class="caption-filename">_DSF0982.jpg</span>
-      </figcaption>
-    </figure>
-    <figure class="site-figure">
-      <a href="../img/full/mammoth-cave-national-park/_DSF0988.tif" download title="Download _DSF0988.jpg">
-        <img src="../img/jpg/mammoth-cave-national-park/_DSF0988.jpg" alt="Mammoth Cave National Park XXIII" loading="lazy"/>
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0937.jpg" alt="Mammoth Cave National Park XXIII" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park XXIII &middot; 2026-03-08</span>
-        <span class="caption-filename">_DSF0988.jpg</span>
+        <span class="caption-filename">_DSF0937.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
-      <a href="../img/full/mammoth-cave-national-park/_DSF0989.tif" download title="Download _DSF0989.jpg">
-        <img src="../img/jpg/mammoth-cave-national-park/_DSF0989.jpg" alt="Mammoth Cave National Park XXIV" loading="lazy"/>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/mammoth-cave-national-park/_DSF0946.tif" download title="Download _DSF0946.jpg">
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0946.jpg" alt="Mammoth Cave National Park XXIV" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park XXIV &middot; 2026-03-08</span>
+        <span class="caption-filename">_DSF0946.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/mammoth-cave-national-park/_DSF0971.tif" download title="Download _DSF0971.jpg">
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0971.jpg" alt="Mammoth Cave National Park XXV" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Mammoth Cave National Park XXV &middot; 2026-03-08</span>
+        <span class="caption-filename">_DSF0971.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/mammoth-cave-national-park/_DSF0982.tif" download title="Download _DSF0982.jpg">
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0982.jpg" alt="Mammoth Cave National Park XXVI" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Mammoth Cave National Park XXVI &middot; 2026-03-08</span>
+        <span class="caption-filename">_DSF0982.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/mammoth-cave-national-park/_DSF0988.tif" download title="Download _DSF0988.jpg">
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0988.jpg" alt="Mammoth Cave National Park XXVII" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Mammoth Cave National Park XXVII &middot; 2026-03-08</span>
+        <span class="caption-filename">_DSF0988.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/mammoth-cave-national-park/_DSF0989.tif" download title="Download _DSF0989.jpg">
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0989.jpg" alt="Mammoth Cave National Park XXVIII" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Mammoth Cave National Park XXVIII &middot; 2026-03-08</span>
         <span class="caption-filename">_DSF0989.jpg</span>
       </figcaption>
     </figure>
+    <button class="pli-view-all" data-index="0">View all 28 images</button>
   </div>
 </div>
 <nav class="site-nav">
@@ -468,5 +500,31 @@
 </footer>
 </div>
 <script src="../js/lightbox.js"></script>
+<script>
+(function () {
+  if (!window.matchMedia('(max-width: 480px)').matches) return;
+  var figures = Array.from(document.querySelectorAll('.site-figure'));
+  if (!figures.length) return;
+  var cur = 0;
+  figures[0].classList.add('carousel-active');
+  if (figures.length < 2) return;
+  function show(i) {
+    figures[cur].classList.remove('carousel-active');
+    cur = (i + figures.length) % figures.length;
+    figures[cur].classList.add('carousel-active');
+  }
+  var container = document.querySelector('.site-images');
+  var sx, sy;
+  container.addEventListener('touchstart', function (e) {
+    sx = e.touches[0].clientX;
+    sy = e.touches[0].clientY;
+  }, { passive: true });
+  container.addEventListener('touchend', function (e) {
+    var dx = e.changedTouches[0].clientX - sx;
+    var dy = e.changedTouches[0].clientY - sy;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) show(dx < 0 ? cur + 1 : cur - 1);
+  }, { passive: true });
+})();
+</script>
 </body>
 </html>

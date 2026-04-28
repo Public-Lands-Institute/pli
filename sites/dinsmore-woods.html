@@ -31,7 +31,7 @@
   a { color: inherit; text-decoration: none; }
   a:hover { text-decoration: underline; }
   .page {
-    max-width: 1120px;
+    max-width: 1500px;
     margin: 24px auto 56px auto;
     padding: 0 18px;
   }
@@ -143,25 +143,6 @@
     flex-shrink: 0;
     font-family: monospace;
   }
-  .inat-section-label {
-    color: var(--fg) !important;
-    font-weight: 500;
-    padding-top: 12px !important;
-    border-top: 1px solid var(--border);
-    margin-top: 4px;
-  }
-  .inat-section-spacer {
-    padding-top: 12px !important;
-    border-top: 1px solid var(--border);
-    margin-top: 4px;
-  }
-  .inat-species {
-    line-height: 1.8;
-  }
-  .inat-sci {
-    color: var(--muted);
-    font-style: italic;
-  }
   .obs-header {
     border-top: 1px solid var(--border);
     padding: 10px 0 4px 0;
@@ -185,6 +166,16 @@
     margin-top: 4px;
     line-height: 1.5;
   }
+  .pli-img-extra { display: none; }
+  .pli-view-all {
+    display: block; width: 100%; padding: 10px 0;
+    font-family: system-ui, sans-serif; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.16em;
+    color: var(--muted); background: transparent;
+    border: 1px solid var(--border); cursor: pointer;
+    margin-top: 4px;
+  }
+  .pli-view-all:hover { color: var(--fg); }
   .site-nav {
     margin-top: 40px;
     padding-top: 12px;
@@ -199,13 +190,19 @@
     gap: 8px;
   }
   @media (min-width: 720px) {
-    .site-layout { grid-template-columns: 300px 1fr; gap: 48px; align-items: start; }
+    .site-layout { grid-template-columns: 350px 1fr; gap: 48px; align-items: start; }
     .site-data { position: sticky; top: 24px; }
+  }
+  @media (min-width: 1148px) {
+    .site-layout { grid-template-columns: 7fr 15fr; }
   }
   @media (max-width: 480px) {
     .site-data { grid-template-columns: 110px 1fr; }
     .site-images { order: -1; }
     .site-data { order: 0; }
+    .site-figure { display: none; }
+    .site-figure.carousel-active { display: block; }
+    .obs-header { display: none; }
   }
 </style>
 </head>
@@ -226,11 +223,9 @@
 <div class="site-layout">
   <aside>
     <dl class="site-data">
-      <dt>Geological age</dt><dd>~450 Mya Ordovician limestone and shale</dd>
-      <dt>Epoch</dt><dd>Late Ordovician (Cincinnatian Series); Kope, Fairview, and Bull Fork formations</dd>
-      <dt>Taxa</dt><dd>331 plants, 72 birds, 244 insects, 11 mammals, 80 fungi, 15 reptiles, 16 amphibians, 23 arachnids</dd>
-      <dt>Most observed</dt><dd class="inat-species">spring blue-eyed Mary <span class="inat-sci">(Collinsia verna)</span><br>Southern Two-lined Salamander <span class="inat-sci">(Eurycea cirrigera)</span><br>dwarf larkspur <span class="inat-sci">(Delphinium tricorne)</span><br>mayapple <span class="inat-sci">(Podophyllum peltatum)</span><br>Dutchman's breeches <span class="inat-sci">(Dicentra cucullaria)</span></dd>
-      <dt>Native lands</dt><dd>Adena culture (500 BCE-200 CE) · Shawnee (Shawanwaki) · Cherokee (Tsalagi); Adena moundbuilding culture occupied the Ohio River valley with documented sites in Boone County; Kentucky's interior served as contested hunting ground at the time of European contact; Iroquois Confederacy ceded their Ohio River corridor claim to the British Crown via Treaty of Fort Stanwix 1768; Cherokee ceded approximately 20 million acres including present-day Kentucky to the Transylvania Company via Treaty of Sycamore Shoals March 1775, opposed by Cherokee leader Dragging Canoe who called the cession a betrayal and withdrew to form the Chickamauga; Shawnee recognized the Ohio River as their southern boundary under Treaty of Camp Charlotte 1774, though many Shawnee rejected this cession; Shawnee and allied nations formally ceded remaining Ohio Valley claims via Treaty of Greenville 1795</dd>
+      <dt>Geological age</dt><dd>~450 Mya Ordovician limestone and shale.</dd>
+      <dt>Epoch</dt><dd>Late Ordovician (Cincinnatian Series); Kope, Fairview, and Bull Fork formations.</dd>
+      <dt>Native lands</dt><dd>Adena culture (500 BCE-200 CE) · Shawnee (Shawanwaki) · Cherokee (Tsalagi); Adena moundbuilding culture occupied the Ohio River valley with documented sites in Boone County; Kentucky's interior served as contested hunting ground at the time of European contact; Iroquois Confederacy ceded their Ohio River corridor claim to the British Crown via Treaty of Fort Stanwix 1768; Cherokee ceded approximately 20 million acres including present-day Kentucky to the Transylvania Company via Treaty of Sycamore Shoals March 1775, opposed by Cherokee leader Dragging Canoe who called the cession a betrayal and withdrew to form the Chickamauga; Shawnee recognized the Ohio River as their southern boundary under Treaty of Camp Charlotte 1774, though many Shawnee rejected this cession; Shawnee and allied nations formally ceded remaining Ohio Valley claims via Treaty of Greenville 1795.</dd>
       <dt>Displacement & Tenure</dt><dd>Shawnee territory recognized as south of the Ohio River under Treaty of Camp Charlotte (1774), though many Shawnee rejected this cession; Cherokee claim extinguished via Henderson Purchase (Treaty of Sycamore Shoals, 1775), voided by Virginia 1778; Iroquois claim to the Ohio River valley ceded to the British Crown via Treaty of Fort Stanwix 1768; northern Kentucky distributed as Virginia military bounty land grants prior to Kentucky statehood 1792; no federal Royce cession applies; the Dinsmore Woods parcel was part of approximately 700 acres purchased by James and Martha Dinsmore in 1839; Martha Munro Ferguson Breasted, a Dinsmore descendant, donated 107 acres to The Nature Conservancy in 1985; dedicated as a Kentucky State Nature Preserve May 16, 1990; Boone County purchased the preserve from the Conservancy using Kentucky Heritage Land Conservation Fund proceeds in November 2010.</dd>
       <dt>Shadow History</dt><dd>The 107-acre nature preserve is the forested portion of the original Dinsmore farm, a working plantation on which enslaved people lived and labored from 1842 onward. James Dinsmore brought approximately 20-25 enslaved individuals from his Mississippi and Louisiana holdings to Kentucky upon completing Dinsmore Homestead in 1842. Those documented by name include: Coah (ca. 1790-1862), born in West Africa and previously enslaved in Mississippi and Louisiana; Nancy McGruder (ca. 1809-1906), purchased by Dinsmore in 1828 in Mississippi; Sally Taylor (ca. 1810-?) and her children John, Daniel, David, Nannette, Judy, Angeline, and Isaac; Jilson Hawkins (ca. 1811-1879) and Eliza Hawkins (ca. 1819-1903). Nancy McGruder left the farm after the Civil War's end, then returned to work as a free person, living on the property until her death in 1906. The Dinsmore Homestead, listed on the National Register of Historic Places, installed interpretive panels documenting the African American experience on the farm from 1840 through 1865. The woodland tract that became the nature preserve was inseparable from this farm landscape; no public interpretation at the preserve connects the old-growth forest to the labor history of the people who lived among it.</dd>
       <dt>Ecology</dt><dd>Old-growth mixed hardwood forest unlogged since at least the 1830s, dominated by sugar maple, white oak, hackberry, and walnut; understory of pawpaw thickets and rich spring ephemerals including trillium, bloodroot, dwarf larkspur, wood poppy, and trout lily on deep glacially influenced soils.</dd>
@@ -249,7 +244,7 @@
         <span class="caption-filename">_DSF1233.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/dinsmore-woods/_DSF1235.tif" download title="Download _DSF1235.jpg">
         <img src="../img/jpg/dinsmore-woods/_DSF1235.jpg" alt="Dinsmore Woods State Nature Preserve II" loading="lazy"/>
       </a>
@@ -258,7 +253,7 @@
         <span class="caption-filename">_DSF1235.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/dinsmore-woods/_DSF1236.tif" download title="Download _DSF1236.jpg">
         <img src="../img/jpg/dinsmore-woods/_DSF1236.jpg" alt="Dinsmore Woods State Nature Preserve III" loading="lazy"/>
       </a>
@@ -267,7 +262,7 @@
         <span class="caption-filename">_DSF1236.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/dinsmore-woods/_DSF1243.tif" download title="Download _DSF1243.jpg">
         <img src="../img/jpg/dinsmore-woods/_DSF1243.jpg" alt="Dinsmore Woods State Nature Preserve IV" loading="lazy"/>
       </a>
@@ -276,7 +271,7 @@
         <span class="caption-filename">_DSF1243.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/dinsmore-woods/_DSF1255.tif" download title="Download _DSF1255.jpg">
         <img src="../img/jpg/dinsmore-woods/_DSF1255.jpg" alt="Dinsmore Woods State Nature Preserve V" loading="lazy"/>
       </a>
@@ -285,6 +280,7 @@
         <span class="caption-filename">_DSF1255.jpg</span>
       </figcaption>
     </figure>
+    <button class="pli-view-all" data-index="0">View all 5 images</button>
   </div>
 </div>
 <nav class="site-nav">
@@ -297,5 +293,31 @@
 </footer>
 </div>
 <script src="../js/lightbox.js"></script>
+<script>
+(function () {
+  if (!window.matchMedia('(max-width: 480px)').matches) return;
+  var figures = Array.from(document.querySelectorAll('.site-figure'));
+  if (!figures.length) return;
+  var cur = 0;
+  figures[0].classList.add('carousel-active');
+  if (figures.length < 2) return;
+  function show(i) {
+    figures[cur].classList.remove('carousel-active');
+    cur = (i + figures.length) % figures.length;
+    figures[cur].classList.add('carousel-active');
+  }
+  var container = document.querySelector('.site-images');
+  var sx, sy;
+  container.addEventListener('touchstart', function (e) {
+    sx = e.touches[0].clientX;
+    sy = e.touches[0].clientY;
+  }, { passive: true });
+  container.addEventListener('touchend', function (e) {
+    var dx = e.changedTouches[0].clientX - sx;
+    var dy = e.changedTouches[0].clientY - sy;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) show(dx < 0 ? cur + 1 : cur - 1);
+  }, { passive: true });
+})();
+</script>
 </body>
 </html>

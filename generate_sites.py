@@ -344,7 +344,7 @@ SHARED_CSS = '''  :root {
   a { color: inherit; text-decoration: none; }
   a:hover { text-decoration: underline; }
   .page {
-    max-width: 1120px;
+    max-width: 1500px;
     margin: 24px auto 56px auto;
     padding: 0 18px;
   }
@@ -408,13 +408,7 @@ def make_site_page(site, all_sites):
     nav_prev = f'<a href="{prev_site["slug"]}.html">\u2190 {prev_site["name"]}</a>' if prev_site else '<span></span>'
     nav_next = f'<a href="{next_site["slug"]}.html">{next_site["name"]} \u2192</a>' if next_site else '<span></span>'
 
-    # Fetch iNaturalist data
-    lat = site.get('lat')
-    lng = site.get('lng')
-    radius = site.get('inat_radius_km', 5)
-    inat = fetch_inaturalist(slug, lat, lng, radius) if lat and lng else None
-
-    # Build fields: geological fields, then iNat section, then remaining fields
+    # Build fields
     GEO_KEYS = {'geological_age', 'epoch'}
     REMAINING_KEYS = {'native_lands', 'displacement_tenure', 'ecology', 'hydrology', 'acreage', 'gps', 'shadow_history'}
 
@@ -424,9 +418,6 @@ def make_site_page(site, all_sites):
             val = site.get(key, '')
             if val:
                 fields_html += f'      <dt>{label}</dt><dd>{val}</dd>\n'
-
-    if inat and inat.get('total_observations', 0) > 0:
-        fields_html += format_inaturalist_html(inat, for_index=False)
 
     for key, label in FIELDS:
         if key in REMAINING_KEYS:
@@ -439,16 +430,20 @@ def make_site_page(site, all_sites):
                 fields_html += f'      <dt>{label}</dt><dd>{val}</dd>\n'
 
     show_obs_headers = len(observations) > 1 or any(obs.get('notes') for obs in observations)
+    total_images = sum(len(obs['images']) for obs in observations)
     images_html = ''
+    first_image_done = False
     for obs in observations:
         if show_obs_headers:
             label = format_obs_date(obs['date']) if obs['date'] else 'Undated'
             notes_html = f'\n      <p class="obs-notes">{obs["notes"]}</p>' if obs.get('notes') else ''
-            images_html += f'    <div class="obs-header">\n      <span class="obs-date">{label}</span>{notes_html}\n    </div>\n'
+            extra_cls = ' pli-img-extra' if first_image_done else ''
+            images_html += f'    <div class="obs-header{extra_cls}">\n      <span class="obs-date">{label}</span>{notes_html}\n    </div>\n'
         for img in obs['images']:
             caption = f'{name} {img["caption_index"]}'
             date_str = f' &middot; {img["date"]}' if img['date'] else ''
-            images_html += f'''    <figure class="site-figure">
+            extra_cls = ' pli-img-extra' if first_image_done else ''
+            images_html += f'''    <figure class="site-figure{extra_cls}">
       <a href="../{img["tif"]}" download title="Download {img["camera_filename"]}">
         <img src="../{img["jpg"]}" alt="{caption}" loading="lazy"/>
       </a>
@@ -457,6 +452,9 @@ def make_site_page(site, all_sites):
         <span class="caption-filename">{img["camera_filename"]}</span>
       </figcaption>
     </figure>\n'''
+            first_image_done = True
+    if total_images > 1:
+        images_html += f'    <button class="pli-view-all" data-index="0">View all {total_images} images</button>\n'
 
     return f'''<!DOCTYPE html>
 <html lang="en">
@@ -537,25 +535,6 @@ def make_site_page(site, all_sites):
     flex-shrink: 0;
     font-family: monospace;
   }}
-  .inat-section-label {{
-    color: var(--fg) !important;
-    font-weight: 500;
-    padding-top: 12px !important;
-    border-top: 1px solid var(--border);
-    margin-top: 4px;
-  }}
-  .inat-section-spacer {{
-    padding-top: 12px !important;
-    border-top: 1px solid var(--border);
-    margin-top: 4px;
-  }}
-  .inat-species {{
-    line-height: 1.8;
-  }}
-  .inat-sci {{
-    color: var(--muted);
-    font-style: italic;
-  }}
   .obs-header {{
     border-top: 1px solid var(--border);
     padding: 10px 0 4px 0;
@@ -579,6 +558,16 @@ def make_site_page(site, all_sites):
     margin-top: 4px;
     line-height: 1.5;
   }}
+  .pli-img-extra {{ display: none; }}
+  .pli-view-all {{
+    display: block; width: 100%; padding: 10px 0;
+    font-family: system-ui, sans-serif; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.16em;
+    color: var(--muted); background: transparent;
+    border: 1px solid var(--border); cursor: pointer;
+    margin-top: 4px;
+  }}
+  .pli-view-all:hover {{ color: var(--fg); }}
   .site-nav {{
     margin-top: 40px;
     padding-top: 12px;
@@ -593,13 +582,19 @@ def make_site_page(site, all_sites):
     gap: 8px;
   }}
   @media (min-width: 720px) {{
-    .site-layout {{ grid-template-columns: 300px 1fr; gap: 48px; align-items: start; }}
+    .site-layout {{ grid-template-columns: 350px 1fr; gap: 48px; align-items: start; }}
     .site-data {{ position: sticky; top: 24px; }}
+  }}
+  @media (min-width: 1148px) {{
+    .site-layout {{ grid-template-columns: 7fr 15fr; }}
   }}
   @media (max-width: 480px) {{
     .site-data {{ grid-template-columns: 110px 1fr; }}
     .site-images {{ order: -1; }}
     .site-data {{ order: 0; }}
+    .site-figure {{ display: none; }}
+    .site-figure.carousel-active {{ display: block; }}
+    .obs-header {{ display: none; }}
   }}
 </style>
 </head>
@@ -635,6 +630,32 @@ def make_site_page(site, all_sites):
 </footer>
 </div>
 <script src="../js/lightbox.js"></script>
+<script>
+(function () {{
+  if (!window.matchMedia('(max-width: 480px)').matches) return;
+  var figures = Array.from(document.querySelectorAll('.site-figure'));
+  if (!figures.length) return;
+  var cur = 0;
+  figures[0].classList.add('carousel-active');
+  if (figures.length < 2) return;
+  function show(i) {{
+    figures[cur].classList.remove('carousel-active');
+    cur = (i + figures.length) % figures.length;
+    figures[cur].classList.add('carousel-active');
+  }}
+  var container = document.querySelector('.site-images');
+  var sx, sy;
+  container.addEventListener('touchstart', function (e) {{
+    sx = e.touches[0].clientX;
+    sy = e.touches[0].clientY;
+  }}, {{ passive: true }});
+  container.addEventListener('touchend', function (e) {{
+    var dx = e.changedTouches[0].clientX - sx;
+    var dy = e.changedTouches[0].clientY - sy;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) show(dx < 0 ? cur + 1 : cur - 1);
+  }}, {{ passive: true }});
+}})();
+</script>
 </body>
 </html>'''
 
@@ -1302,26 +1323,32 @@ def make_index_page(all_sites):
 
         thumb_html = ''
         if first_img:
-            thumb_html = f'''    <a class="loc-thumb" href="sites/{site["slug"]}.html">
+            all_jpgs = json.dumps([img['jpg'] for img in images])
+            thumb_html = f'''    <a class="loc-thumb" href="sites/{site["slug"]}.html" data-images='{all_jpgs}'>
       <img src="{first_img}" alt="{site["name"]} I" loading="lazy"/>
     </a>\n'''
 
+        PRIMARY_INDEX = {'geological_age', 'acreage', 'shadow_history', 'gps'}
+        EXTRA_INDEX   = {'epoch', 'native_lands', 'displacement_tenure'}
         field_rows = ''
+        has_extra  = False
         for key, label in FIELDS:
-            if key in ('geological_age', 'epoch'):
-                val = site.get(key, '')
-                if val:
-                    field_rows += f'<dt>{label}</dt><dd>{val}</dd>'
+            if key not in PRIMARY_INDEX and key not in EXTRA_INDEX:
+                continue
+            val = site.get(key, '')
+            if not val:
+                continue
+            if key == 'gps':
+                lat = site.get('lat', '')
+                lng = site.get('lng', '')
+                val = f'<a class="gps-link" href="https://maps.google.com/?q={lat},{lng}" target="_blank" rel="noopener">{val}</a>'
+            if key in EXTRA_INDEX:
+                field_rows += f'<dt class="extra">{label}</dt><dd class="extra">{val}</dd>'
+                has_extra = True
+            else:
+                field_rows += f'<dt>{label}</dt><dd>{val}</dd>'
 
-        for key, label in FIELDS:
-            if key in ('native_lands', 'displacement_tenure', 'shadow_history', 'acreage', 'gps'):
-                val = site.get(key, '')
-                if val:
-                    if key == 'gps':
-                        lat = site.get('lat', '')
-                        lng = site.get('lng', '')
-                        val = f'<a class="gps-link" href="https://maps.google.com/?q={lat},{lng}" target="_blank" rel="noopener">{val}</a>'
-                    field_rows += f'<dt>{label}</dt><dd>{val}</dd>'
+        toggle_html = '    <button class="site-data-toggle">More</button>\n' if has_extra else ''
 
         rows += f'''  <div class="location-row">
     <div class="location-row-header">
@@ -1329,7 +1356,7 @@ def make_index_page(all_sites):
       <a class="loc-link" href="sites/{site["slug"]}.html">Images</a>
     </div>
 {thumb_html}    <dl class="site-data">{field_rows}</dl>
-  </div>\n'''
+{toggle_html}  </div>\n'''
 
     return f'''<!DOCTYPE html>
 <html lang="en">
@@ -1450,20 +1477,6 @@ def make_index_page(all_sites):
     padding: 4px 0 4px 12px;
     margin: 0;
   }}
-  .inat-section-label {{
-    color: var(--fg) !important;
-    font-weight: 500;
-    padding-top: 10px !important;
-    border-top: 1px solid var(--border);
-  }}
-  .inat-section-spacer {{
-    padding-top: 10px !important;
-    border-top: 1px solid var(--border);
-  }}
-  .inat-sci {{
-    color: var(--muted);
-    font-style: italic;
-  }}
   .nav-toggle {{
     display: inline-flex;
     align-items: center;
@@ -1494,6 +1507,23 @@ def make_index_page(all_sites):
     .site-data {{ grid-template-columns: 172px 1fr; }}
     header {{ margin-bottom: 40px; }}
   }}
+  .site-data-toggle {{ display: none; }}
+  @media (max-width: 480px) {{
+    .site-data .extra {{ display: none; }}
+    .site-data.expanded .extra {{ display: block; }}
+    .site-data-toggle {{
+      display: block;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      background: none;
+      border: none;
+      padding: 4px 0 8px 0;
+      cursor: pointer;
+      font-family: inherit;
+    }}
+  }}
 </style>
 </head>
 <body>
@@ -1513,6 +1543,48 @@ def make_index_page(all_sites):
   <span>US \u00b7 established MMXXV</span>
 </footer>
 </div>
+<script>
+(function () {{
+  document.querySelectorAll('.loc-thumb[data-images]').forEach(function (thumb) {{
+    var imgs = JSON.parse(thumb.dataset.images);
+    if (imgs.length < 2) return;
+    var idx = 0;
+    var img = thumb.querySelector('img');
+    var pos = thumb.querySelector('.loc-img-pos');
+    var x0 = 0, y0 = 0, didSwipe = false;
+
+    thumb.addEventListener('touchstart', function (e) {{
+      if (e.touches.length !== 1) return;
+      x0 = e.touches[0].clientX;
+      y0 = e.touches[0].clientY;
+      didSwipe = false;
+    }}, {{ passive: true }});
+
+    thumb.addEventListener('touchend', function (e) {{
+      if (!e.changedTouches.length) return;
+      var dx = e.changedTouches[0].clientX - x0;
+      var dy = e.changedTouches[0].clientY - y0;
+      if (Math.abs(dx) >= 40 && Math.abs(dx) > Math.abs(dy)) {{
+        didSwipe = true;
+        idx = (idx + (dx < 0 ? 1 : -1) + imgs.length) % imgs.length;
+        img.src = imgs[idx];
+      }}
+    }}, {{ passive: true }});
+
+    thumb.addEventListener('click', function (e) {{
+      if (didSwipe) {{ e.preventDefault(); didSwipe = false; }}
+    }});
+  }});
+
+  document.querySelectorAll('.site-data-toggle').forEach(function (btn) {{
+    btn.addEventListener('click', function () {{
+      var dl = btn.previousElementSibling;
+      var expanded = dl.classList.toggle('expanded');
+      btn.textContent = expanded ? 'Less' : 'More';
+    }});
+  }});
+}})();
+</script>
 </body>
 </html>'''
 

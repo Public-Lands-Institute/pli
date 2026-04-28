@@ -31,7 +31,7 @@
   a { color: inherit; text-decoration: none; }
   a:hover { text-decoration: underline; }
   .page {
-    max-width: 1120px;
+    max-width: 1500px;
     margin: 24px auto 56px auto;
     padding: 0 18px;
   }
@@ -143,25 +143,6 @@
     flex-shrink: 0;
     font-family: monospace;
   }
-  .inat-section-label {
-    color: var(--fg) !important;
-    font-weight: 500;
-    padding-top: 12px !important;
-    border-top: 1px solid var(--border);
-    margin-top: 4px;
-  }
-  .inat-section-spacer {
-    padding-top: 12px !important;
-    border-top: 1px solid var(--border);
-    margin-top: 4px;
-  }
-  .inat-species {
-    line-height: 1.8;
-  }
-  .inat-sci {
-    color: var(--muted);
-    font-style: italic;
-  }
   .obs-header {
     border-top: 1px solid var(--border);
     padding: 10px 0 4px 0;
@@ -185,6 +166,16 @@
     margin-top: 4px;
     line-height: 1.5;
   }
+  .pli-img-extra { display: none; }
+  .pli-view-all {
+    display: block; width: 100%; padding: 10px 0;
+    font-family: system-ui, sans-serif; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.16em;
+    color: var(--muted); background: transparent;
+    border: 1px solid var(--border); cursor: pointer;
+    margin-top: 4px;
+  }
+  .pli-view-all:hover { color: var(--fg); }
   .site-nav {
     margin-top: 40px;
     padding-top: 12px;
@@ -199,13 +190,19 @@
     gap: 8px;
   }
   @media (min-width: 720px) {
-    .site-layout { grid-template-columns: 300px 1fr; gap: 48px; align-items: start; }
+    .site-layout { grid-template-columns: 350px 1fr; gap: 48px; align-items: start; }
     .site-data { position: sticky; top: 24px; }
+  }
+  @media (min-width: 1148px) {
+    .site-layout { grid-template-columns: 7fr 15fr; }
   }
   @media (max-width: 480px) {
     .site-data { grid-template-columns: 110px 1fr; }
     .site-images { order: -1; }
     .site-data { order: 0; }
+    .site-figure { display: none; }
+    .site-figure.carousel-active { display: block; }
+    .obs-header { display: none; }
   }
 </style>
 </head>
@@ -226,13 +223,13 @@
 <div class="site-layout">
   <aside>
     <dl class="site-data">
-      <dt>Geological age</dt><dd>~445–430 million years ago (bedrock); gorge and ravine system formed by glacial meltwater ~15,000 years ago</dd>
-      <dt>Epoch</dt><dd>Silurian period (Llandovery–Wenlock); same dolomite and limestone formations as Clifton Gorge; Holocene iron precipitation at Yellow Spring actively ongoing — visible as orange mineral staining on rock surfaces</dd>
-      <dt>Native lands</dt><dd>Shawnee (Shawanwaki) · Miami · Adena culture; Orators Mound (Adena burial mound) within preserve boundaries; Yellow Spring a known Shawnee waypoint; Little Miami River a principal Shawnee waterway</dd>
+      <dt>Geological age</dt><dd>~445-430 million years ago (bedrock); gorge and ravine system formed by glacial meltwater ~15,000 years ago.</dd>
+      <dt>Epoch</dt><dd>Silurian period (Llandovery-Wenlock); same dolomite and limestone formations as Clifton Gorge; Holocene iron precipitation at Yellow Spring actively ongoing ; visible as orange mineral staining on rock surfaces.</dd>
+      <dt>Native lands</dt><dd>Shawnee (Shawanwaki) · Miami · Adena culture; Orators Mound (Adena burial mound) within preserve boundaries; Yellow Spring a known Shawnee waypoint; Little Miami River a principal Shawnee waterway.</dd>
       <dt>Displacement & Tenure</dt><dd>Cession 11: Treaty of Greene Ville (1795); attorney Hugh Taylor Birch donated the initial 700-acre parcel to Antioch College in 1929 as a memorial to his daughter Helen Birch Bartlett; Glen Helen Association assumed operational ownership from Antioch College in 2020 via a $2.5 million agreement over ten years.</dd>
       <dt>Shadow History</dt><dd>Frank Van Wort partially excavated the Orators Mound within the preserve in 1953 to 1954, finding five skeletons (two adults, three infants) and placing seven skeletons along with artifacts in the Dayton Museum of Natural History; Van Wort published no reports; the current location or repatriation status of this material is not confirmed in available sources; a 1971 Antioch College excavation under archaeologist Wolfgang Marschall identified the mound as Hopewellian; the Neff family's 246-room hotel at the Yellow Spring, built in 1869 at a cost of approximately $250,000 and targeting Southern vacationers, failed financially within 13 years.</dd>
-      <dt>Ecology</dt><dd>Mixed mesophytic gorge forest; 400-year-old trees; regionally significant old-growth stands; beaver wetland; Raptor Center (Ohio’s first raptor rehabilitation facility); 20+ miles of trail connecting to John Bryan State Park and Clifton Gorge</dd>
-      <dt>Hydrology</dt><dd>Little Miami River (2.5 miles; National Wild & Scenic River); Yellow Spring Creek; Birch Creek; iron-rich Yellow Spring seep; beaver impoundment; Cascades waterfall</dd>
+      <dt>Ecology</dt><dd>Mixed mesophytic gorge forest; 400-year-old trees; regionally significant old-growth stands; beaver wetland; Raptor Center (Ohio’s first raptor rehabilitation facility); 20+ miles of trail connecting to John Bryan State Park and Clifton Gorge.</dd>
+      <dt>Hydrology</dt><dd>Little Miami River (2.5 miles; National Wild & Scenic River); Yellow Spring Creek; Birch Creek; iron-rich Yellow Spring seep; beaver impoundment; Cascades waterfall.</dd>
       <dt>Acreage</dt><dd>1,147 acres</dd>
       <dt>GPS</dt><dd><a class="gps-link" href="https://maps.google.com/?q=39.803,-83.891" target="_blank" rel="noopener">39.8030° N, 83.8910° W</a></dd>
     </dl>
@@ -247,7 +244,7 @@
         <span class="caption-filename">_DSF0100.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/glen-helen-nature-preserve/_DSF0101.tif" download title="Download _DSF0101.jpg">
         <img src="../img/jpg/glen-helen-nature-preserve/_DSF0101.jpg" alt="Glen Helen Nature Preserve II" loading="lazy"/>
       </a>
@@ -256,7 +253,7 @@
         <span class="caption-filename">_DSF0101.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/glen-helen-nature-preserve/_DSF0104.tif" download title="Download _DSF0104.jpg">
         <img src="../img/jpg/glen-helen-nature-preserve/_DSF0104.jpg" alt="Glen Helen Nature Preserve III" loading="lazy"/>
       </a>
@@ -265,7 +262,7 @@
         <span class="caption-filename">_DSF0104.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/glen-helen-nature-preserve/_DSF0115.tif" download title="Download _DSF0115.jpg">
         <img src="../img/jpg/glen-helen-nature-preserve/_DSF0115.jpg" alt="Glen Helen Nature Preserve IV" loading="lazy"/>
       </a>
@@ -274,7 +271,7 @@
         <span class="caption-filename">_DSF0115.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/glen-helen-nature-preserve/_DSF0127.tif" download title="Download _DSF0127.jpg">
         <img src="../img/jpg/glen-helen-nature-preserve/_DSF0127.jpg" alt="Glen Helen Nature Preserve V" loading="lazy"/>
       </a>
@@ -283,7 +280,7 @@
         <span class="caption-filename">_DSF0127.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/glen-helen-nature-preserve/_DSF0134.tif" download title="Download _DSF0134.jpg">
         <img src="../img/jpg/glen-helen-nature-preserve/_DSF0134.jpg" alt="Glen Helen Nature Preserve VI" loading="lazy"/>
       </a>
@@ -292,7 +289,7 @@
         <span class="caption-filename">_DSF0134.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/glen-helen-nature-preserve/_DSF0137.tif" download title="Download _DSF0137.jpg">
         <img src="../img/jpg/glen-helen-nature-preserve/_DSF0137.jpg" alt="Glen Helen Nature Preserve VII" loading="lazy"/>
       </a>
@@ -301,7 +298,7 @@
         <span class="caption-filename">_DSF0137.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/glen-helen-nature-preserve/_DSF0139.tif" download title="Download _DSF0139.jpg">
         <img src="../img/jpg/glen-helen-nature-preserve/_DSF0139.jpg" alt="Glen Helen Nature Preserve VIII" loading="lazy"/>
       </a>
@@ -310,6 +307,7 @@
         <span class="caption-filename">_DSF0139.jpg</span>
       </figcaption>
     </figure>
+    <button class="pli-view-all" data-index="0">View all 8 images</button>
   </div>
 </div>
 <nav class="site-nav">
@@ -322,5 +320,31 @@
 </footer>
 </div>
 <script src="../js/lightbox.js"></script>
+<script>
+(function () {
+  if (!window.matchMedia('(max-width: 480px)').matches) return;
+  var figures = Array.from(document.querySelectorAll('.site-figure'));
+  if (!figures.length) return;
+  var cur = 0;
+  figures[0].classList.add('carousel-active');
+  if (figures.length < 2) return;
+  function show(i) {
+    figures[cur].classList.remove('carousel-active');
+    cur = (i + figures.length) % figures.length;
+    figures[cur].classList.add('carousel-active');
+  }
+  var container = document.querySelector('.site-images');
+  var sx, sy;
+  container.addEventListener('touchstart', function (e) {
+    sx = e.touches[0].clientX;
+    sy = e.touches[0].clientY;
+  }, { passive: true });
+  container.addEventListener('touchend', function (e) {
+    var dx = e.changedTouches[0].clientX - sx;
+    var dy = e.changedTouches[0].clientY - sy;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) show(dx < 0 ? cur + 1 : cur - 1);
+  }, { passive: true });
+})();
+</script>
 </body>
 </html>

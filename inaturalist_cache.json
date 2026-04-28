@@ -1422,5 +1422,421 @@
         "id": 47934
       }
     ]
+  },
+  "dinsmore-woods:5": {
+    "total_observations": 2446,
+    "total_species": 827,
+    "taxa_counts": [
+      {
+        "label": "Plants",
+        "count": 331
+      },
+      {
+        "label": "Birds",
+        "count": 72
+      },
+      {
+        "label": "Insects",
+        "count": 244
+      },
+      {
+        "label": "Mammals",
+        "count": 11
+      },
+      {
+        "label": "Fungi",
+        "count": 80
+      },
+      {
+        "label": "Reptiles",
+        "count": 15
+      },
+      {
+        "label": "Amphibians",
+        "count": 16
+      },
+      {
+        "label": "Arachnids",
+        "count": 23
+      }
+    ],
+    "top_species": [
+      {
+        "name": "spring blue-eyed Mary",
+        "scientific": "Collinsia verna",
+        "count": 26,
+        "id": 116349
+      },
+      {
+        "name": "Southern Two-lined Salamander",
+        "scientific": "Eurycea cirrigera",
+        "count": 24,
+        "id": 27093
+      },
+      {
+        "name": "dwarf larkspur",
+        "scientific": "Delphinium tricorne",
+        "count": 22,
+        "id": 81800
+      },
+      {
+        "name": "mayapple",
+        "scientific": "Podophyllum peltatum",
+        "count": 21,
+        "id": 49288
+      },
+      {
+        "name": "Dutchman's breeches",
+        "scientific": "Dicentra cucullaria",
+        "count": 21,
+        "id": 51053
+      }
+    ]
+  },
+  "big-bone-lick:5": {
+    "total_observations": 1150,
+    "total_species": 468,
+    "taxa_counts": [
+      {
+        "label": "Plants",
+        "count": 223
+      },
+      {
+        "label": "Birds",
+        "count": 36
+      },
+      {
+        "label": "Insects",
+        "count": 120
+      },
+      {
+        "label": "Mammals",
+        "count": 7
+      },
+      {
+        "label": "Fungi",
+        "count": 32
+      },
+      {
+        "label": "Reptiles",
+        "count": 9
+      },
+      {
+        "label": "Amphibians",
+        "count": 9
+      },
+      {
+        "label": "Arachnids",
+        "count": 13
+      }
+    ],
+    "top_species": [
+      {
+        "name": "honey locust",
+        "scientific": "Gleditsia triacanthos",
+        "count": 34,
+        "id": 54797
+      },
+      {
+        "name": "dwarf larkspur",
+        "scientific": "Delphinium tricorne",
+        "count": 17,
+        "id": 81800
+      },
+      {
+        "name": "White-tailed Deer",
+        "scientific": "Odocoileus virginianus",
+        "count": 14,
+        "id": 42223
+      },
+      {
+        "name": "white snakeroot",
+        "scientific": "Ageratina altissima",
+        "count": 14,
+        "id": 119048
+      },
+      {
+        "name": "tall bellflower",
+        "scientific": "Campanulastrum americanum",
+        "count": 13,
+        "id": 159769
+      }
+    ]
+  },
+  "new-river-gorge-national-park:10": {
+    "total_observations": 13152,
+    "total_species": 2069,
+    "taxa_counts": [
+      {
+        "label": "Plants",
+        "count": 594
+      },
+      {
+        "label": "Birds",
+        "count": 118
+      },
+      {
+        "label": "Insects",
+        "count": 824
+      },
+      {
+        "label": "Mammals",
+        "count": 20
+      },
+      {
+        "label": "Fungi",
+        "count": 357
+      },
+      {
+        "label": "Reptiles",
+        "count": 20
+      },
+      {
+        "label": "Amphibians",
+        "count": 25
+      },
+      {
+        "label": "Arachnids",
+        "count": 58
+      }
+    ],
+    "top_species": [
+      {
+        "name": "great rhododendron",
+        "scientific": "Rhododendron maximum",
+        "count": 259,
+        "id": 83059
+      },
+      {
+        "name": "mountain laurel",
+        "scientific": "Kalmia latifolia",
+        "count": 171,
+        "id": 49397
+      },
+      {
+        "name": "downy rattlesnake plantain",
+        "scientific": "Goodyera pubescens",
+        "count": 151,
+        "id": 62406
+      },
+      {
+        "name": "Ghost Pipe",
+        "scientific": "Monotropa uniflora",
+        "count": 146,
+        "id": 49477
+      },
+      {
+        "name": "partridgeberry",
+        "scientific": "Mitchella repens",
+        "count": 134,
+        "id": 83799
+      }
+    ]
+  },
+  "rocky-fork-state-park:8": {
+    "total_observations": 4586,
+    "total_species": 1234,
+    "taxa_counts": [
+      {
+        "label": "Plants",
+        "count": 388
+      },
+      {
+        "label": "Birds",
+        "count": 101
+      },
+      {
+        "label": "Insects",
+        "count": 506
+      },
+      {
+        "label": "Mammals",
+        "count": 14
+      },
+      {
+        "label": "Fungi",
+        "count": 113
+      },
+      {
+        "label": "Reptiles",
+        "count": 13
+      },
+      {
+        "label": "Amphibians",
+        "count": 11
+      },
+      {
+        "label": "Arachnids",
+        "count": 52
+      }
+    ],
+    "top_species": [
+      {
+        "name": "eastern shooting star",
+        "scientific": "Primula meadia",
+        "count": 86,
+        "id": 549981
+      },
+      {
+        "name": "large white trillium",
+        "scientific": "Trillium grandiflorum",
+        "count": 80,
+        "id": 55402
+      },
+      {
+        "name": "red columbine",
+        "scientific": "Aquilegia canadensis",
+        "count": 74,
+        "id": 49868
+      },
+      {
+        "name": "woodland stonecrop",
+        "scientific": "Sedum ternatum",
+        "count": 56,
+        "id": 127597
+      },
+      {
+        "name": "Jacob's ladder",
+        "scientific": "Polemonium reptans",
+        "count": 52,
+        "id": 67524
+      }
+    ]
+  },
+  "hopewell-culture-national-historical-park:8": {
+    "total_observations": 3528,
+    "total_species": 956,
+    "taxa_counts": [
+      {
+        "label": "Plants",
+        "count": 371
+      },
+      {
+        "label": "Birds",
+        "count": 80
+      },
+      {
+        "label": "Insects",
+        "count": 314
+      },
+      {
+        "label": "Mammals",
+        "count": 14
+      },
+      {
+        "label": "Fungi",
+        "count": 73
+      },
+      {
+        "label": "Reptiles",
+        "count": 14
+      },
+      {
+        "label": "Amphibians",
+        "count": 12
+      },
+      {
+        "label": "Arachnids",
+        "count": 34
+      }
+    ],
+    "top_species": [
+      {
+        "name": "Ebony Jewelwing",
+        "scientific": "Calopteryx maculata",
+        "count": 56,
+        "id": 84481
+      },
+      {
+        "name": "Blue-tipped Dancer",
+        "scientific": "Argia tibialis",
+        "count": 46,
+        "id": 94575
+      },
+      {
+        "name": "Fragile Forktail",
+        "scientific": "Ischnura posita",
+        "count": 46,
+        "id": 103498
+      },
+      {
+        "name": "Baltimore Checkerspot",
+        "scientific": "Euphydryas phaeton",
+        "count": 45,
+        "id": 58578
+      },
+      {
+        "name": "Common Whitetail",
+        "scientific": "Plathemis lydia",
+        "count": 42,
+        "id": 84549
+      }
+    ]
+  },
+  "seip-earthworks:5": {
+    "total_observations": 494,
+    "total_species": 330,
+    "taxa_counts": [
+      {
+        "label": "Plants",
+        "count": 137
+      },
+      {
+        "label": "Birds",
+        "count": 13
+      },
+      {
+        "label": "Insects",
+        "count": 152
+      },
+      {
+        "label": "Fungi",
+        "count": 9
+      },
+      {
+        "label": "Reptiles",
+        "count": 3
+      },
+      {
+        "label": "Amphibians",
+        "count": 3
+      },
+      {
+        "label": "Arachnids",
+        "count": 8
+      }
+    ],
+    "top_species": [
+      {
+        "name": "Goldenseal",
+        "scientific": "Hydrastis canadensis",
+        "count": 9,
+        "id": 118768
+      },
+      {
+        "name": "bloodroot",
+        "scientific": "Sanguinaria canadensis",
+        "count": 7,
+        "id": 51044
+      },
+      {
+        "name": "Eastern Tiger Swallowtail",
+        "scientific": "Papilio glaucus",
+        "count": 7,
+        "id": 60551
+      },
+      {
+        "name": "ashy sunflower",
+        "scientific": "Helianthus mollis",
+        "count": 6,
+        "id": 125699
+      },
+      {
+        "name": "Rosy Maple Moth",
+        "scientific": "Dryocampa rubicunda",
+        "count": 5,
+        "id": 48094
+      }
+    ]
   }
 }

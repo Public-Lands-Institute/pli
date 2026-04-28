@@ -31,7 +31,7 @@
   a { color: inherit; text-decoration: none; }
   a:hover { text-decoration: underline; }
   .page {
-    max-width: 1120px;
+    max-width: 1500px;
     margin: 24px auto 56px auto;
     padding: 0 18px;
   }
@@ -143,25 +143,6 @@
     flex-shrink: 0;
     font-family: monospace;
   }
-  .inat-section-label {
-    color: var(--fg) !important;
-    font-weight: 500;
-    padding-top: 12px !important;
-    border-top: 1px solid var(--border);
-    margin-top: 4px;
-  }
-  .inat-section-spacer {
-    padding-top: 12px !important;
-    border-top: 1px solid var(--border);
-    margin-top: 4px;
-  }
-  .inat-species {
-    line-height: 1.8;
-  }
-  .inat-sci {
-    color: var(--muted);
-    font-style: italic;
-  }
   .obs-header {
     border-top: 1px solid var(--border);
     padding: 10px 0 4px 0;
@@ -185,6 +166,16 @@
     margin-top: 4px;
     line-height: 1.5;
   }
+  .pli-img-extra { display: none; }
+  .pli-view-all {
+    display: block; width: 100%; padding: 10px 0;
+    font-family: system-ui, sans-serif; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.16em;
+    color: var(--muted); background: transparent;
+    border: 1px solid var(--border); cursor: pointer;
+    margin-top: 4px;
+  }
+  .pli-view-all:hover { color: var(--fg); }
   .site-nav {
     margin-top: 40px;
     padding-top: 12px;
@@ -199,13 +190,19 @@
     gap: 8px;
   }
   @media (min-width: 720px) {
-    .site-layout { grid-template-columns: 300px 1fr; gap: 48px; align-items: start; }
+    .site-layout { grid-template-columns: 350px 1fr; gap: 48px; align-items: start; }
     .site-data { position: sticky; top: 24px; }
+  }
+  @media (min-width: 1148px) {
+    .site-layout { grid-template-columns: 7fr 15fr; }
   }
   @media (max-width: 480px) {
     .site-data { grid-template-columns: 110px 1fr; }
     .site-images { order: -1; }
     .site-data { order: 0; }
+    .site-figure { display: none; }
+    .site-figure.carousel-active { display: block; }
+    .obs-header { display: none; }
   }
 </style>
 </head>
@@ -226,11 +223,9 @@
 <div class="site-layout">
   <aside>
     <dl class="site-data">
-      <dt>Geological age</dt><dd>~447 Mya Ordovician limestone and shale</dd>
-      <dt>Epoch</dt><dd>Late Ordovician (Cincinnatian Series); Waynesville, Liberty, and Whitewater formations</dd>
-      <dt>Taxa</dt><dd>611 plants, 203 birds, 653 insects, 19 mammals, 203 fungi, 17 reptiles, 18 amphibians, 74 arachnids</dd>
-      <dt>Most observed</dt><dd class="inat-species">Eastern Forktail <span class="inat-sci">(Ischnura verticalis)</span><br>Eastern Pondhawk <span class="inat-sci">(Erythemis simplicicollis)</span><br>Fragile Forktail <span class="inat-sci">(Ischnura posita)</span><br>Blue Dasher <span class="inat-sci">(Pachydiplax longipennis)</span><br>Widow Skimmer <span class="inat-sci">(Libellula luctuosa)</span></dd>
-      <dt>Native lands</dt><dd>Shawnee (Shawanwaki) · Myaamia (Miami) · Hopewell culture (300 BCE-600 CE) · Fort Ancient culture (1200-1600 CE); Fort Ancient Earthworks, a UNESCO World Heritage Site, located in Warren County; creek named for Caesar, an enslaved Virginian who escaped bondage c. 1774, was adopted by the Shawnee, and used the valley as hunting grounds; Shawnee and Miami ceded southern Ohio via Treaty of Greenville 1795; remaining Ohio Shawnee removed west via Treaty of Wapakoneta 1831</dd>
+      <dt>Geological age</dt><dd>~447 Mya Ordovician limestone and shale.</dd>
+      <dt>Epoch</dt><dd>Late Ordovician (Cincinnatian Series); Waynesville, Liberty, and Whitewater formations.</dd>
+      <dt>Native lands</dt><dd>Shawnee (Shawanwaki) · Myaamia (Miami) · Hopewell culture (300 BCE-600 CE) · Fort Ancient culture (1200-1600 CE); Fort Ancient Earthworks, a UNESCO World Heritage Site, located in Warren County; creek named for Caesar, an enslaved Virginian who escaped bondage c. 1774, was adopted by the Shawnee, and used the valley as hunting grounds; Shawnee and Miami ceded southern Ohio via Treaty of Greenville 1795; remaining Ohio Shawnee removed west via Treaty of Wapakoneta 1831.</dd>
       <dt>Displacement & Tenure</dt><dd>Cession 11: Treaty of Greenville (1795); U.S. Army Corps of Engineers began acquiring Caesar Creek Valley land in the mid-1960s under eminent domain authority of the Flood Control Act of 1938; construction started 1971, dam completed 1978; village of New Burlington condemned and inundated, approximately 300 residents displaced involuntarily; last resident departed April 20, 1973; state park opened 1978, managed by Ohio DNR under lease from the Army Corps.</dd>
       <dt>Shadow History</dt><dd>The creation of Caesar Creek Lake required the forced inundation of New Burlington, a functioning rural community straddling the Warren/Clinton County line at the confluence of Caesar Creek and Anderson Fork. Approximately 300 residents were displaced beginning in the mid-1960s when the Army Corps of Engineers began acquiring land under eminent domain; the last resident, 87-year-old Lawrence Mitchner, departed April 20, 1973, after refusing to meet with Corps appraisers. The community included a post office, Quaker meetinghouse, school, churches, a Masonic lodge, and farms. John Baskin documented the displacement in New Burlington: The Life and Death of an American Village (1976). The Caesar's Creek Quaker Meetinghouse was relocated rather than demolished. A 1976 archaeological reconnaissance conducted prior to inundation documented pre-contact sites in the reservoir footprint; earlier surveys had recorded a Hopewell-era village of 60-70 acres near the creek, featuring burial mounds up to 8 feet high with 79 documented burials; these and other sites were permanently inundated without preservation. The creek's name carries an additional layer: it memorializes Caesar, an enslaved Virginian who escaped bondage c. 1774 and was adopted into the Shawnee nation, a detail absent from most park signage.</dd>
       <dt>Ecology</dt><dd>Oak-hickory and beech-maple upland forests with northern floodplain forest in creek valleys; restored native prairie and wetland complexes support grassland-dependent birds including grasshopper sparrow, Eastern meadowlark, bald eagle, and osprey; over 200 bird species recorded.</dd>
@@ -249,7 +244,7 @@
         <span class="caption-filename">_DSF0419.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/caesar-creek/_DSF0426.tif" download title="Download _DSF0426.jpg">
         <img src="../img/jpg/caesar-creek/_DSF0426.jpg" alt="Caesar Creek State Park II" loading="lazy"/>
       </a>
@@ -258,7 +253,7 @@
         <span class="caption-filename">_DSF0426.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/caesar-creek/_DSF0428.tif" download title="Download _DSF0428.jpg">
         <img src="../img/jpg/caesar-creek/_DSF0428.jpg" alt="Caesar Creek State Park III" loading="lazy"/>
       </a>
@@ -267,7 +262,7 @@
         <span class="caption-filename">_DSF0428.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/caesar-creek/_DSF0438.tif" download title="Download _DSF0438.jpg">
         <img src="../img/jpg/caesar-creek/_DSF0438.jpg" alt="Caesar Creek State Park IV" loading="lazy"/>
       </a>
@@ -276,6 +271,7 @@
         <span class="caption-filename">_DSF0438.jpg</span>
       </figcaption>
     </figure>
+    <button class="pli-view-all" data-index="0">View all 4 images</button>
   </div>
 </div>
 <nav class="site-nav">
@@ -288,5 +284,31 @@
 </footer>
 </div>
 <script src="../js/lightbox.js"></script>
+<script>
+(function () {
+  if (!window.matchMedia('(max-width: 480px)').matches) return;
+  var figures = Array.from(document.querySelectorAll('.site-figure'));
+  if (!figures.length) return;
+  var cur = 0;
+  figures[0].classList.add('carousel-active');
+  if (figures.length < 2) return;
+  function show(i) {
+    figures[cur].classList.remove('carousel-active');
+    cur = (i + figures.length) % figures.length;
+    figures[cur].classList.add('carousel-active');
+  }
+  var container = document.querySelector('.site-images');
+  var sx, sy;
+  container.addEventListener('touchstart', function (e) {
+    sx = e.touches[0].clientX;
+    sy = e.touches[0].clientY;
+  }, { passive: true });
+  container.addEventListener('touchend', function (e) {
+    var dx = e.changedTouches[0].clientX - sx;
+    var dy = e.changedTouches[0].clientY - sy;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) show(dx < 0 ? cur + 1 : cur - 1);
+  }, { passive: true });
+})();
+</script>
 </body>
 </html>

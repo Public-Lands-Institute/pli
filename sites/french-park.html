@@ -31,7 +31,7 @@
   a { color: inherit; text-decoration: none; }
   a:hover { text-decoration: underline; }
   .page {
-    max-width: 1120px;
+    max-width: 1500px;
     margin: 24px auto 56px auto;
     padding: 0 18px;
   }
@@ -143,25 +143,6 @@
     flex-shrink: 0;
     font-family: monospace;
   }
-  .inat-section-label {
-    color: var(--fg) !important;
-    font-weight: 500;
-    padding-top: 12px !important;
-    border-top: 1px solid var(--border);
-    margin-top: 4px;
-  }
-  .inat-section-spacer {
-    padding-top: 12px !important;
-    border-top: 1px solid var(--border);
-    margin-top: 4px;
-  }
-  .inat-species {
-    line-height: 1.8;
-  }
-  .inat-sci {
-    color: var(--muted);
-    font-style: italic;
-  }
   .obs-header {
     border-top: 1px solid var(--border);
     padding: 10px 0 4px 0;
@@ -185,6 +166,16 @@
     margin-top: 4px;
     line-height: 1.5;
   }
+  .pli-img-extra { display: none; }
+  .pli-view-all {
+    display: block; width: 100%; padding: 10px 0;
+    font-family: system-ui, sans-serif; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.16em;
+    color: var(--muted); background: transparent;
+    border: 1px solid var(--border); cursor: pointer;
+    margin-top: 4px;
+  }
+  .pli-view-all:hover { color: var(--fg); }
   .site-nav {
     margin-top: 40px;
     padding-top: 12px;
@@ -199,13 +190,19 @@
     gap: 8px;
   }
   @media (min-width: 720px) {
-    .site-layout { grid-template-columns: 300px 1fr; gap: 48px; align-items: start; }
+    .site-layout { grid-template-columns: 350px 1fr; gap: 48px; align-items: start; }
     .site-data { position: sticky; top: 24px; }
+  }
+  @media (min-width: 1148px) {
+    .site-layout { grid-template-columns: 7fr 15fr; }
   }
   @media (max-width: 480px) {
     .site-data { grid-template-columns: 110px 1fr; }
     .site-images { order: -1; }
     .site-data { order: 0; }
+    .site-figure { display: none; }
+    .site-figure.carousel-active { display: block; }
+    .obs-header { display: none; }
   }
 </style>
 </head>
@@ -226,11 +223,9 @@
 <div class="site-layout">
   <aside>
     <dl class="site-data">
-      <dt>Geological age</dt><dd>~450 Mya Ordovician limestone and shale</dd>
-      <dt>Epoch</dt><dd>Late Ordovician (Cincinnatian Series)</dd>
-      <dt>Taxa</dt><dd>618 plants, 132 birds, 758 insects, 16 mammals, 132 fungi, 14 reptiles, 16 amphibians, 98 arachnids</dd>
-      <dt>Most observed</dt><dd class="inat-species">Virginia Springbeauty <span class="inat-sci">(Claytonia virginica)</span><br>Monarch <span class="inat-sci">(Danaus plexippus)</span><br>tree-of-heaven <span class="inat-sci">(Ailanthus altissima)</span><br>lesser celandine <span class="inat-sci">(Ficaria verna)</span><br>cut-leaved toothwort <span class="inat-sci">(Cardamine concatenata)</span></dd>
-      <dt>Native lands</dt><dd>Hopewell tradition · Shawnee (Shawanwaki) · Myaamia (Miami); Benham Mound, an 8-foot Hopewell burial mound within the park with recovered mica indicating long-distance trade networks, listed on the National Register of Historic Places 1974; Adena culture earthworks documented throughout Hamilton County; Shawnee and Miami held the Ohio River valley at European contact; ceded Ohio lands via Treaty of Greenville 1795 following Battle of Fallen Timbers 1794</dd>
+      <dt>Geological age</dt><dd>~450 Mya Ordovician limestone and shale.</dd>
+      <dt>Epoch</dt><dd>Late Ordovician (Cincinnatian Series).</dd>
+      <dt>Native lands</dt><dd>Hopewell tradition · Shawnee (Shawanwaki) · Myaamia (Miami); Benham Mound, an 8-foot Hopewell burial mound within the park with recovered mica indicating long-distance trade networks, listed on the National Register of Historic Places 1974; Adena culture earthworks documented throughout Hamilton County; Shawnee and Miami held the Ohio River valley at European contact; ceded Ohio lands via Treaty of Greenville 1795 following Battle of Fallen Timbers 1794.</dd>
       <dt>Displacement & Tenure</dt><dd>Cession 11: Treaty of Greene Ville (1795); former 275-acre estate of Herbert Greer French, bequeathed to the Cincinnati Park Board upon French's death in 1942, including the brick manor house; land was part of the John Cleves Symmes Congressional land purchase of the 1790s.</dd>
       <dt>Shadow History</dt><dd>The Benham Mound within the park, a Hopewell burial mound listed on the National Register of Historic Places in 1974, was excavated by local residents in the late 19th century; the diggings recovered mica deposits, stone tools, axes, scrapers, chisels, and flint projectile points; no institutional repository for the recovered material and no record of human remains from these excavations have been identified in accessible records; Herbert Greer French, who bequeathed the estate to the Cincinnati Park Board in 1942, was a vice president of Procter and Gamble.</dd>
       <dt>Ecology</dt><dd>Mixed mesophytic forest with oak-hickory woodlands, beech-maple slopes, and pawpaw thickets; meadow and prairie patches support pollinators; creek corridor hosts sycamore and tulip-poplar with exposed Ordovician fossil beds.</dd>
@@ -249,7 +244,7 @@
         <span class="caption-filename">_DSF1042.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/french-park/_DSF1043.tif" download title="Download _DSF1043.jpg">
         <img src="../img/jpg/french-park/_DSF1043.jpg" alt="French Park II" loading="lazy"/>
       </a>
@@ -258,7 +253,7 @@
         <span class="caption-filename">_DSF1043.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/french-park/_DSF1047.tif" download title="Download _DSF1047.jpg">
         <img src="../img/jpg/french-park/_DSF1047.jpg" alt="French Park III" loading="lazy"/>
       </a>
@@ -267,7 +262,7 @@
         <span class="caption-filename">_DSF1047.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/french-park/_DSF1049.tif" download title="Download _DSF1049.jpg">
         <img src="../img/jpg/french-park/_DSF1049.jpg" alt="French Park IV" loading="lazy"/>
       </a>
@@ -276,7 +271,7 @@
         <span class="caption-filename">_DSF1049.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/french-park/_DSF1054.tif" download title="Download _DSF1054.jpg">
         <img src="../img/jpg/french-park/_DSF1054.jpg" alt="French Park V" loading="lazy"/>
       </a>
@@ -285,7 +280,7 @@
         <span class="caption-filename">_DSF1054.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/french-park/_DSF1055.tif" download title="Download _DSF1055.jpg">
         <img src="../img/jpg/french-park/_DSF1055.jpg" alt="French Park VI" loading="lazy"/>
       </a>
@@ -294,7 +289,7 @@
         <span class="caption-filename">_DSF1055.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/french-park/_DSF1057.tif" download title="Download _DSF1057.jpg">
         <img src="../img/jpg/french-park/_DSF1057.jpg" alt="French Park VII" loading="lazy"/>
       </a>
@@ -303,7 +298,7 @@
         <span class="caption-filename">_DSF1057.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/french-park/_DSF1060.tif" download title="Download _DSF1060.jpg">
         <img src="../img/jpg/french-park/_DSF1060.jpg" alt="French Park VIII" loading="lazy"/>
       </a>
@@ -312,7 +307,7 @@
         <span class="caption-filename">_DSF1060.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/french-park/_DSF1063.tif" download title="Download _DSF1063.jpg">
         <img src="../img/jpg/french-park/_DSF1063.jpg" alt="French Park IX" loading="lazy"/>
       </a>
@@ -321,7 +316,7 @@
         <span class="caption-filename">_DSF1063.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/french-park/_DSF1064.tif" download title="Download _DSF1064.jpg">
         <img src="../img/jpg/french-park/_DSF1064.jpg" alt="French Park X" loading="lazy"/>
       </a>
@@ -330,7 +325,7 @@
         <span class="caption-filename">_DSF1064.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/french-park/_DSF1069.tif" download title="Download _DSF1069.jpg">
         <img src="../img/jpg/french-park/_DSF1069.jpg" alt="French Park XI" loading="lazy"/>
       </a>
@@ -339,7 +334,7 @@
         <span class="caption-filename">_DSF1069.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/french-park/_DSF1070.tif" download title="Download _DSF1070.jpg">
         <img src="../img/jpg/french-park/_DSF1070.jpg" alt="French Park XII" loading="lazy"/>
       </a>
@@ -348,6 +343,7 @@
         <span class="caption-filename">_DSF1070.jpg</span>
       </figcaption>
     </figure>
+    <button class="pli-view-all" data-index="0">View all 12 images</button>
   </div>
 </div>
 <nav class="site-nav">
@@ -360,5 +356,31 @@
 </footer>
 </div>
 <script src="../js/lightbox.js"></script>
+<script>
+(function () {
+  if (!window.matchMedia('(max-width: 480px)').matches) return;
+  var figures = Array.from(document.querySelectorAll('.site-figure'));
+  if (!figures.length) return;
+  var cur = 0;
+  figures[0].classList.add('carousel-active');
+  if (figures.length < 2) return;
+  function show(i) {
+    figures[cur].classList.remove('carousel-active');
+    cur = (i + figures.length) % figures.length;
+    figures[cur].classList.add('carousel-active');
+  }
+  var container = document.querySelector('.site-images');
+  var sx, sy;
+  container.addEventListener('touchstart', function (e) {
+    sx = e.touches[0].clientX;
+    sy = e.touches[0].clientY;
+  }, { passive: true });
+  container.addEventListener('touchend', function (e) {
+    var dx = e.changedTouches[0].clientX - sx;
+    var dy = e.changedTouches[0].clientY - sy;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) show(dx < 0 ? cur + 1 : cur - 1);
+  }, { passive: true });
+})();
+</script>
 </body>
 </html>

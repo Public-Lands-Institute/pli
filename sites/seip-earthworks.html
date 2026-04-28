@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Seip Earthworks — Public Lands Institute</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="index, follow" name="robots"/>
+<meta content="Seip Earthworks. Public Lands Institute photographic index. CC0 Public Domain." name="description"/>
+<meta property="og:title" content="Seip Earthworks — Public Lands Institute"/>
+<meta property="og:description" content="Seip Earthworks. An ongoing photographic index and open-access archive of American public lands. CC0 Public Domain."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://publiclandsinstitute.net/sites/seip-earthworks.html"/>
+<meta property="og:site_name" content="Public Lands Institute"/>
+<link href="https://publiclandsinstitute.net/sites/seip-earthworks.html" rel="canonical"/>
+<link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<style>
+  :root {
+    --bg: #f5f5f5;
+    --fg: #111111;
+    --muted: #777777;
+    --border: #dddddd;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+  }
+  a { color: inherit; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .page {
+    max-width: 1500px;
+    margin: 24px auto 56px auto;
+    padding: 0 18px;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 28px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .logotype {
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .header-nav {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+    display: flex;
+    gap: 16px;
+  }
+  .divider { border-bottom: 1px solid var(--border); margin: 0 0 28px 0; }
+  footer {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  @media (min-width: 720px) {
+    .page { margin-top: 40px; padding: 0 24px; }
+    header { margin-bottom: 40px; }
+  }
+  .gps-link {
+    color: inherit;
+    text-decoration: none;
+    display: inline-block;
+    padding: 11px 0;
+    margin: -11px 0;
+  }
+  .gps-link:hover { text-decoration: underline; }
+  .site-header { margin-bottom: 24px; }
+  .site-header h1 {
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    margin-bottom: 2px;
+  }
+  .site-header .state {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+  }
+  .site-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .site-data {
+    display: grid;
+    grid-template-columns: 148px 1fr;
+    font-size: 11px;
+    line-height: 1.55;
+    border-top: 1px solid var(--border);
+    padding-top: 8px;
+    align-items: baseline;
+    align-content: start;
+  }
+  .site-data dt {
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 10px;
+    padding: 4px 0;
+  }
+  .site-data dd {
+    color: var(--fg);
+    padding: 4px 0 4px 12px;
+    margin: 0;
+  }
+  .site-images { display: flex; flex-direction: column; gap: 14px; }
+  .site-figure { border: 1px solid var(--border); background: #e1e1e1; }
+  .site-figure img { width: 100%; height: auto; display: block; filter: grayscale(100%); }
+  .site-figure figcaption {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    padding: 6px 8px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .caption-filename {
+    color: var(--muted);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    flex-shrink: 0;
+    font-family: monospace;
+  }
+  .obs-header {
+    border-top: 1px solid var(--border);
+    padding: 10px 0 4px 0;
+    margin-top: 6px;
+  }
+  .obs-header:first-child {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+  }
+  .obs-date {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    display: block;
+  }
+  .obs-notes {
+    font-size: 11px;
+    color: var(--fg);
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+  .pli-img-extra { display: none; }
+  .pli-view-all {
+    display: block; width: 100%; padding: 10px 0;
+    font-family: system-ui, sans-serif; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.16em;
+    color: var(--muted); background: transparent;
+    border: 1px solid var(--border); cursor: pointer;
+    margin-top: 4px;
+  }
+  .pli-view-all:hover { color: var(--fg); }
+  .site-nav {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  @media (min-width: 720px) {
+    .site-layout { grid-template-columns: 350px 1fr; gap: 48px; align-items: start; }
+    .site-data { position: sticky; top: 24px; }
+  }
+  @media (min-width: 1148px) {
+    .site-layout { grid-template-columns: 7fr 15fr; }
+  }
+  @media (max-width: 480px) {
+    .site-data { grid-template-columns: 110px 1fr; }
+    .site-images { order: -1; }
+    .site-data { order: 0; }
+    .site-figure { display: none; }
+    .site-figure.carousel-active { display: block; }
+    .obs-header { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="logotype"><a href="../index.html">Public Lands Institute</a></div>
+  <nav class="header-nav">
+    <a href="../index.html">Index</a>
+    <a href="../archive.html">Archive</a>
+  </nav>
+</header>
+<div class="divider"></div>
+<div class="site-header">
+  <h1>Seip Earthworks</h1>
+  <div class="state">OH</div>
+</div>
+<div class="site-layout">
+  <aside>
+    <dl class="site-data">
+      <dt>Geological age</dt><dd>~425 Mya Silurian dolomite (Peebles Dolomite, Tymochtee Dolomite); earthworks constructed on Pleistocene glacial outwash terrace above Paint Creek at the maximum extent of both the Illinoian and Wisconsinan glacial advances.</dd>
+      <dt>Epoch</dt><dd>Late Silurian (Ludlovian).</dd>
+      <dt>Native lands</dt><dd>Adena (c. 1000 BC-100 AD) and Hopewell (c. 200 BC-500 AD) cultures; Seip lies within the densest 20-mile corridor of Hopewell monumental earthworks on the continent, running from Bainbridge to Chillicothe along the Paint Valley; Chalahgawtha (principal-town) division of the Shawandasse Tula (Shawanwaki/Shawnee) held the Paint Creek valley as the principal Shawnee territorial corridor; documented Chalahgawtha town at Frankfort on Paint Creek in Ross County; Myaamia (Miami) co-held south-central Ohio; Shawnee and Miami lands ceded via Treaty of Greene Ville (August 3, 1795), Article 3 boundary and Article 4 relinquishment; Shawnee removed west via Treaty with the Shawnee 1831 under Indian Removal Act 1830.</dd>
+      <dt>Displacement & Tenure</dt><dd>Ceded via Treaty of Greene Ville (1795); Paxton Township lands entered private agricultural ownership under the Virginia Military District land grant system; site farmed throughout the 19th century and embankment walls leveled to approximately 10% of their original extent by agricultural plowing; Ohio Historical Society archaeologist William Mills excavated 1906-1909 under agreement with the private landowner; site donated to Ohio Historical Society by landowner James Seip 1923; added as an authorized unit of Hopewell Culture National Historical Park via Public Law 102-294 (May 27, 1992); full deed transferred to National Park Service October 10, 2014.</dd>
+      <dt>Shadow History</dt><dd>William Mills (Ohio Historical Society) excavated three conjoined mounds at Seip 1906-1909, removing 48 burials and artifacts including copper, mica, bone, shell, and pearl objects to the Ohio State Museum in Columbus; Henry Shetrone and Emerson Greenman (Ohio Historical Society) excavated the main Seip Mound over three field seasons 1925-1928, removing 122 burials and elaborate grave goods including Isle Royale copper objects, Carolina mica sheets, five Tennessee effigy pipes known as the Great Pipes, woven milkweed-fiber textiles with preserved geometric designs, and thousands of freshwater pearl beads from a log-lined crypt, all transferred to museum collections in Columbus; farming throughout the 19th and early 20th centuries leveled embankment walls to approximately 10% of their original height before Ohio Historical Society acquisition; earthworks not under full federal protection until NPS deed transfer in 2014; LiDAR analysis has documented old stream channels cutting into original earthwork boundaries, indicating centuries of unmitigated flood erosion.</dd>
+      <dt>Ecology</dt><dd>Restored native tallgrass prairie within earthwork enclosures featuring big bluestem (Andropogon gerardii), switchgrass (Panicum virgatum), and Indiangrass (Sorghastrum nutans); reconstructed mound maintained as managed turf; riparian floodplain woodland edge along Paint Creek; 438 vascular plant species in 281 genera and 93 families documented across Hopewell Culture NHP units, representing 17% of Ohio's total flora; Ohio state-listed Spiranthes ovalis (oval ladies'-tresses) and Eleocharis ovata (ovate spike-rush) documented within the park.</dd>
+      <dt>Hydrology</dt><dd>North bank of Paint Creek, a 94.7-mile tributary of the Scioto River draining 1,143 sq mi of south-central Ohio; site situated on Pleistocene glacial outwash terrace immediately adjacent to the Paint Creek floodplain near Bainbridge in Paxton Township, Ross County; LiDAR analysis has documented erosion of earthwork boundaries by old Paint Creek channels; Paint Creek Lake upstream moderates downstream flooding; Paint Creek and Rocky Fork Creek designated Ohio State Scenic Rivers 2021.</dd>
+      <dt>Acreage</dt><dd>121</dd>
+      <dt>GPS</dt><dd><a class="gps-link" href="https://maps.google.com/?q=39.2417,-83.2214" target="_blank" rel="noopener">39.2417° N, 83.2214° W</a></dd>
+    </dl>
+  </aside>
+  <div class="site-images">
+    <figure class="site-figure">
+      <a href="../img/full/seip-earthworks/_DSF1388.tif" download title="Download _DSF1388.jpg">
+        <img src="../img/jpg/seip-earthworks/_DSF1388.jpg" alt="Seip Earthworks I" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Seip Earthworks I &middot; 2026-04-20</span>
+        <span class="caption-filename">_DSF1388.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/seip-earthworks/_DSF1394.tif" download title="Download _DSF1394.jpg">
+        <img src="../img/jpg/seip-earthworks/_DSF1394.jpg" alt="Seip Earthworks II" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Seip Earthworks II &middot; 2026-04-20</span>
+        <span class="caption-filename">_DSF1394.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/seip-earthworks/_DSF1399.tif" download title="Download _DSF1399.jpg">
+        <img src="../img/jpg/seip-earthworks/_DSF1399.jpg" alt="Seip Earthworks III" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Seip Earthworks III &middot; 2026-04-20</span>
+        <span class="caption-filename">_DSF1399.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/seip-earthworks/_DSF1411.tif" download title="Download _DSF1411.jpg">
+        <img src="../img/jpg/seip-earthworks/_DSF1411.jpg" alt="Seip Earthworks IV" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Seip Earthworks IV &middot; 2026-04-20</span>
+        <span class="caption-filename">_DSF1411.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/seip-earthworks/_DSF1416.tif" download title="Download _DSF1416.jpg">
+        <img src="../img/jpg/seip-earthworks/_DSF1416.jpg" alt="Seip Earthworks V" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Seip Earthworks V &middot; 2026-04-20</span>
+        <span class="caption-filename">_DSF1416.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/seip-earthworks/_DSF1420.tif" download title="Download _DSF1420.jpg">
+        <img src="../img/jpg/seip-earthworks/_DSF1420.jpg" alt="Seip Earthworks VI" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Seip Earthworks VI &middot; 2026-04-20</span>
+        <span class="caption-filename">_DSF1420.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/seip-earthworks/_DSF1423.tif" download title="Download _DSF1423.jpg">
+        <img src="../img/jpg/seip-earthworks/_DSF1423.jpg" alt="Seip Earthworks VII" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Seip Earthworks VII &middot; 2026-04-20</span>
+        <span class="caption-filename">_DSF1423.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/seip-earthworks/_DSF1426.tif" download title="Download _DSF1426.jpg">
+        <img src="../img/jpg/seip-earthworks/_DSF1426.jpg" alt="Seip Earthworks VIII" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Seip Earthworks VIII &middot; 2026-04-20</span>
+        <span class="caption-filename">_DSF1426.jpg</span>
+      </figcaption>
+    </figure>
+    <button class="pli-view-all" data-index="0">View all 8 images</button>
+  </div>
+</div>
+<nav class="site-nav">
+  <span></span>
+  <a href="rocky-fork-state-park.html">Rocky Fork State Park →</a>
+</nav>
+<footer>
+  <span>Public Lands Institute — ongoing project</span>
+  <span>CC0 Public Domain</span>
+</footer>
+</div>
+<script src="../js/lightbox.js"></script>
+<script>
+(function () {
+  if (!window.matchMedia('(max-width: 480px)').matches) return;
+  var figures = Array.from(document.querySelectorAll('.site-figure'));
+  if (!figures.length) return;
+  var cur = 0;
+  figures[0].classList.add('carousel-active');
+  if (figures.length < 2) return;
+  function show(i) {
+    figures[cur].classList.remove('carousel-active');
+    cur = (i + figures.length) % figures.length;
+    figures[cur].classList.add('carousel-active');
+  }
+  var container = document.querySelector('.site-images');
+  var sx, sy;
+  container.addEventListener('touchstart', function (e) {
+    sx = e.touches[0].clientX;
+    sy = e.touches[0].clientY;
+  }, { passive: true });
+  container.addEventListener('touchend', function (e) {
+    var dx = e.changedTouches[0].clientX - sx;
+    var dy = e.changedTouches[0].clientY - sy;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) show(dx < 0 ? cur + 1 : cur - 1);
+  }, { passive: true });
+})();
+</script>
+</body>
+</html>

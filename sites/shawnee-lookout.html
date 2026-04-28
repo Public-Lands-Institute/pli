@@ -31,7 +31,7 @@
   a { color: inherit; text-decoration: none; }
   a:hover { text-decoration: underline; }
   .page {
-    max-width: 1120px;
+    max-width: 1500px;
     margin: 24px auto 56px auto;
     padding: 0 18px;
   }
@@ -143,25 +143,6 @@
     flex-shrink: 0;
     font-family: monospace;
   }
-  .inat-section-label {
-    color: var(--fg) !important;
-    font-weight: 500;
-    padding-top: 12px !important;
-    border-top: 1px solid var(--border);
-    margin-top: 4px;
-  }
-  .inat-section-spacer {
-    padding-top: 12px !important;
-    border-top: 1px solid var(--border);
-    margin-top: 4px;
-  }
-  .inat-species {
-    line-height: 1.8;
-  }
-  .inat-sci {
-    color: var(--muted);
-    font-style: italic;
-  }
   .obs-header {
     border-top: 1px solid var(--border);
     padding: 10px 0 4px 0;
@@ -185,6 +166,16 @@
     margin-top: 4px;
     line-height: 1.5;
   }
+  .pli-img-extra { display: none; }
+  .pli-view-all {
+    display: block; width: 100%; padding: 10px 0;
+    font-family: system-ui, sans-serif; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.16em;
+    color: var(--muted); background: transparent;
+    border: 1px solid var(--border); cursor: pointer;
+    margin-top: 4px;
+  }
+  .pli-view-all:hover { color: var(--fg); }
   .site-nav {
     margin-top: 40px;
     padding-top: 12px;
@@ -199,13 +190,19 @@
     gap: 8px;
   }
   @media (min-width: 720px) {
-    .site-layout { grid-template-columns: 300px 1fr; gap: 48px; align-items: start; }
+    .site-layout { grid-template-columns: 350px 1fr; gap: 48px; align-items: start; }
     .site-data { position: sticky; top: 24px; }
+  }
+  @media (min-width: 1148px) {
+    .site-layout { grid-template-columns: 7fr 15fr; }
   }
   @media (max-width: 480px) {
     .site-data { grid-template-columns: 110px 1fr; }
     .site-images { order: -1; }
     .site-data { order: 0; }
+    .site-figure { display: none; }
+    .site-figure.carousel-active { display: block; }
+    .obs-header { display: none; }
   }
 </style>
 </head>
@@ -226,15 +223,13 @@
 <div class="site-layout">
   <aside>
     <dl class="site-data">
-      <dt>Geological age</dt><dd>~450 Mya Ordovician limestone and shale</dd>
-      <dt>Epoch</dt><dd>Late Ordovician (Cincinnatian Series); Waynesville and Arnheim formations</dd>
-      <dt>Taxa</dt><dd>478 plants, 192 birds, 759 insects, 22 mammals, 86 fungi, 21 reptiles, 18 amphibians, 95 arachnids</dd>
-      <dt>Most observed</dt><dd class="inat-species">common pawpaw <span class="inat-sci">(Asimina triloba)</span><br>dwarf larkspur <span class="inat-sci">(Delphinium tricorne)</span><br>Miami Mist <span class="inat-sci">(Phacelia purshii)</span><br>mayapple <span class="inat-sci">(Podophyllum peltatum)</span><br>toadshade <span class="inat-sci">(Trillium sessile)</span></dd>
-      <dt>Native lands</dt><dd>Adena culture · Hopewell tradition · Fort Ancient culture · Shawnee (Shawanwaki) · Myaamia (Miami); site occupied continuously for approximately 14,000 years; Hopewell builders constructed the Miami Fort earthwork complex approximately 2,000 years ago -- a water management and ceremonial enclosure nearly 6 km in extent, the largest of its kind in Ohio; Fort Ancient culture succeeded Hopewell occupation; Shawnee cultural continuity with the earthwork builders documented by University of Cincinnati archaeologists; the Treaty of Fort Finney (January 31, 1786) was signed at Fort Finney, a U.S. military post erected at the mouth of the Great Miami River directly below the Miami Fort earthwork; Shawnee delegates were coerced under military threat; the broader Shawnee nation repudiated the treaty, triggering the Northwest Indian War; full cession came via Treaty of Greene Ville 1795 following Battle of Fallen Timbers 1794</dd>
-      <dt>Displacement & Tenure</dt><dd>Cession 11: Treaty of Greene Ville (1795); land acquired by Hamilton County Park District (founded 1930), later Great Parks of Hamilton County; Shawnee Lookout Golf Course operated 1979-2019 on portions of the Shawnee Lookout Archaeological District</dd>
+      <dt>Geological age</dt><dd>~450 Mya Ordovician limestone and shale.</dd>
+      <dt>Epoch</dt><dd>Late Ordovician (Cincinnatian Series); Waynesville and Arnheim formations.</dd>
+      <dt>Native lands</dt><dd>Adena culture · Hopewell tradition · Fort Ancient culture · Shawnee (Shawanwaki) · Myaamia (Miami); site occupied continuously for approximately 14,000 years; Hopewell builders constructed the Miami Fort earthwork complex approximately 2,000 years ago -- a water management and ceremonial enclosure nearly 6 km in extent, the largest of its kind in Ohio; Fort Ancient culture succeeded Hopewell occupation; Shawnee cultural continuity with the earthwork builders documented by University of Cincinnati archaeologists; the Treaty of Fort Finney (January 31, 1786) was signed at Fort Finney, a U.S. military post erected at the mouth of the Great Miami River directly below the Miami Fort earthwork; Shawnee delegates were coerced under military threat; the broader Shawnee nation repudiated the treaty, triggering the Northwest Indian War; full cession came via Treaty of Greene Ville 1795 following Battle of Fallen Timbers 1794.</dd>
+      <dt>Displacement & Tenure</dt><dd>Cession 11: Treaty of Greene Ville (1795); land acquired by Hamilton County Park District (founded 1930), later Great Parks of Hamilton County; Shawnee Lookout Golf Course operated 1979-2019 on portions of the Shawnee Lookout Archaeological District.</dd>
       <dt>Shadow History</dt><dd>The Shawnee Lookout Archaeological District was listed on the National Register of Historic Places in 1974 (NRHP #74001516), recognizing it as one of the most significant Native American hilltop sites in the eastern United States; the listing did not prevent the Hamilton County Park District from constructing the Shawnee Lookout Golf Course in 1979 directly over portions of the archaeological district, burying more than 9,000 feet of headwater streams in culverts and grading land across an active site of national significance; cart paths were laid across the earthwork landscape; the golf course operated until 2019. University of Cincinnati archaeologist Ken Tankersley's fieldwork in 2008-2009 revealed via LiDAR survey that the Miami Fort earthwork complex is approximately twice the size recorded by the standard 19th-century maps, suggesting that major portions of the site were unmapped, unprotected, and potentially altered for over 150 years. The foundational documentation of the site came from E.G. Squier and Edwin Davis's 1847-1848 survey, published as the Smithsonian's first monograph, Ancient Monuments of the Mississippi Valley (1848); in the course of that survey Squier and Davis collected more than 6,000 objects from Ohio Valley mounds and enclosures; Squier sold the collection to a British collector in 1864 for $10,000, and it was transferred to the British Museum in 1931, where it remains today; which objects originated at Miami Fort specifically has not been confirmed in accessible public records. Stream daylighting and archaeological district restoration began 2025 in partnership with The Nature Conservancy, with the Miami Tribe of Oklahoma's Tribal Historic Preservation Office actively consulted on the identification of intact sites and sacred areas.</dd>
-      <dt>Ecology</dt><dd>Upland deciduous ridge forest above the Ohio and Great Miami River confluence; pawpaw groves host the largest zebra swallowtail butterfly population in Hamilton County; spicebush understory; tallgrass prairie remnants along trail corridors; bottomland forest along the Great Miami; more than 500 plant species documented; cerulean warbler, bald eagle, and fox squirrel present; adjacent Oxbow wetlands (914 acres) support 270+ bird species</dd>
-      <dt>Hydrology</dt><dd>Confluence of the Ohio River and Great Miami River at the park's southern and western margins; headwater streams drain west from the ridge to the Great Miami; more than 9,000 feet of headwater streams were buried in culverts during 1979 golf course construction and are being daylighted beginning 2025; Great Miami watershed</dd>
+      <dt>Ecology</dt><dd>Upland deciduous ridge forest above the Ohio and Great Miami River confluence; pawpaw groves host the largest zebra swallowtail butterfly population in Hamilton County; spicebush understory; tallgrass prairie remnants along trail corridors; bottomland forest along the Great Miami; more than 500 plant species documented; cerulean warbler, bald eagle, and fox squirrel present; adjacent Oxbow wetlands (914 acres) support 270+ bird species.</dd>
+      <dt>Hydrology</dt><dd>Confluence of the Ohio River and Great Miami River at the park's southern and western margins; headwater streams drain west from the ridge to the Great Miami; more than 9,000 feet of headwater streams were buried in culverts during 1979 golf course construction and are being daylighted beginning 2025; Great Miami watershed.</dd>
       <dt>Acreage</dt><dd>2,179</dd>
       <dt>GPS</dt><dd><a class="gps-link" href="https://maps.google.com/?q=39.1207,-84.8084" target="_blank" rel="noopener">39.1207° N, 84.8084° W</a></dd>
     </dl>
@@ -249,7 +244,7 @@
         <span class="caption-filename">_DSF1168.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/shawnee-lookout/_DSF1174.tif" download title="Download _DSF1174.jpg">
         <img src="../img/jpg/shawnee-lookout/_DSF1174.jpg" alt="Shawnee Lookout II" loading="lazy"/>
       </a>
@@ -258,7 +253,7 @@
         <span class="caption-filename">_DSF1174.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/shawnee-lookout/_DSF1193.tif" download title="Download _DSF1193.jpg">
         <img src="../img/jpg/shawnee-lookout/_DSF1193.jpg" alt="Shawnee Lookout III" loading="lazy"/>
       </a>
@@ -267,7 +262,7 @@
         <span class="caption-filename">_DSF1193.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/shawnee-lookout/_DSF1195.tif" download title="Download _DSF1195.jpg">
         <img src="../img/jpg/shawnee-lookout/_DSF1195.jpg" alt="Shawnee Lookout IV" loading="lazy"/>
       </a>
@@ -276,7 +271,7 @@
         <span class="caption-filename">_DSF1195.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure">
+    <figure class="site-figure pli-img-extra">
       <a href="../img/full/shawnee-lookout/_DSF1201.tif" download title="Download _DSF1201.jpg">
         <img src="../img/jpg/shawnee-lookout/_DSF1201.jpg" alt="Shawnee Lookout V" loading="lazy"/>
       </a>
@@ -285,6 +280,7 @@
         <span class="caption-filename">_DSF1201.jpg</span>
       </figcaption>
     </figure>
+    <button class="pli-view-all" data-index="0">View all 5 images</button>
   </div>
 </div>
 <nav class="site-nav">
@@ -297,5 +293,31 @@
 </footer>
 </div>
 <script src="../js/lightbox.js"></script>
+<script>
+(function () {
+  if (!window.matchMedia('(max-width: 480px)').matches) return;
+  var figures = Array.from(document.querySelectorAll('.site-figure'));
+  if (!figures.length) return;
+  var cur = 0;
+  figures[0].classList.add('carousel-active');
+  if (figures.length < 2) return;
+  function show(i) {
+    figures[cur].classList.remove('carousel-active');
+    cur = (i + figures.length) % figures.length;
+    figures[cur].classList.add('carousel-active');
+  }
+  var container = document.querySelector('.site-images');
+  var sx, sy;
+  container.addEventListener('touchstart', function (e) {
+    sx = e.touches[0].clientX;
+    sy = e.touches[0].clientY;
+  }, { passive: true });
+  container.addEventListener('touchend', function (e) {
+    var dx = e.changedTouches[0].clientX - sx;
+    var dy = e.changedTouches[0].clientY - sy;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) show(dx < 0 ? cur + 1 : cur - 1);
+  }, { passive: true });
+})();
+</script>
 </body>
 </html>

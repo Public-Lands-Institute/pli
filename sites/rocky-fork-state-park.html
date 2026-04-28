@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Rocky Fork State Park — Public Lands Institute</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="index, follow" name="robots"/>
+<meta content="Rocky Fork State Park. Public Lands Institute photographic index. CC0 Public Domain." name="description"/>
+<meta property="og:title" content="Rocky Fork State Park — Public Lands Institute"/>
+<meta property="og:description" content="Rocky Fork State Park. An ongoing photographic index and open-access archive of American public lands. CC0 Public Domain."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://publiclandsinstitute.net/sites/rocky-fork-state-park.html"/>
+<meta property="og:site_name" content="Public Lands Institute"/>
+<link href="https://publiclandsinstitute.net/sites/rocky-fork-state-park.html" rel="canonical"/>
+<link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<style>
+  :root {
+    --bg: #f5f5f5;
+    --fg: #111111;
+    --muted: #777777;
+    --border: #dddddd;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+  }
+  a { color: inherit; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .page {
+    max-width: 1500px;
+    margin: 24px auto 56px auto;
+    padding: 0 18px;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 28px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .logotype {
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .header-nav {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+    display: flex;
+    gap: 16px;
+  }
+  .divider { border-bottom: 1px solid var(--border); margin: 0 0 28px 0; }
+  footer {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  @media (min-width: 720px) {
+    .page { margin-top: 40px; padding: 0 24px; }
+    header { margin-bottom: 40px; }
+  }
+  .gps-link {
+    color: inherit;
+    text-decoration: none;
+    display: inline-block;
+    padding: 11px 0;
+    margin: -11px 0;
+  }
+  .gps-link:hover { text-decoration: underline; }
+  .site-header { margin-bottom: 24px; }
+  .site-header h1 {
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    margin-bottom: 2px;
+  }
+  .site-header .state {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+  }
+  .site-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .site-data {
+    display: grid;
+    grid-template-columns: 148px 1fr;
+    font-size: 11px;
+    line-height: 1.55;
+    border-top: 1px solid var(--border);
+    padding-top: 8px;
+    align-items: baseline;
+    align-content: start;
+  }
+  .site-data dt {
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 10px;
+    padding: 4px 0;
+  }
+  .site-data dd {
+    color: var(--fg);
+    padding: 4px 0 4px 12px;
+    margin: 0;
+  }
+  .site-images { display: flex; flex-direction: column; gap: 14px; }
+  .site-figure { border: 1px solid var(--border); background: #e1e1e1; }
+  .site-figure img { width: 100%; height: auto; display: block; filter: grayscale(100%); }
+  .site-figure figcaption {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    padding: 6px 8px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .caption-filename {
+    color: var(--muted);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    flex-shrink: 0;
+    font-family: monospace;
+  }
+  .obs-header {
+    border-top: 1px solid var(--border);
+    padding: 10px 0 4px 0;
+    margin-top: 6px;
+  }
+  .obs-header:first-child {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+  }
+  .obs-date {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    display: block;
+  }
+  .obs-notes {
+    font-size: 11px;
+    color: var(--fg);
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+  .pli-img-extra { display: none; }
+  .pli-view-all {
+    display: block; width: 100%; padding: 10px 0;
+    font-family: system-ui, sans-serif; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.16em;
+    color: var(--muted); background: transparent;
+    border: 1px solid var(--border); cursor: pointer;
+    margin-top: 4px;
+  }
+  .pli-view-all:hover { color: var(--fg); }
+  .site-nav {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  @media (min-width: 720px) {
+    .site-layout { grid-template-columns: 350px 1fr; gap: 48px; align-items: start; }
+    .site-data { position: sticky; top: 24px; }
+  }
+  @media (min-width: 1148px) {
+    .site-layout { grid-template-columns: 7fr 15fr; }
+  }
+  @media (max-width: 480px) {
+    .site-data { grid-template-columns: 110px 1fr; }
+    .site-images { order: -1; }
+    .site-data { order: 0; }
+    .site-figure { display: none; }
+    .site-figure.carousel-active { display: block; }
+    .obs-header { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="logotype"><a href="../index.html">Public Lands Institute</a></div>
+  <nav class="header-nav">
+    <a href="../index.html">Index</a>
+    <a href="../archive.html">Archive</a>
+  </nav>
+</header>
+<div class="divider"></div>
+<div class="site-header">
+  <h1>Rocky Fork State Park</h1>
+  <div class="state">OH</div>
+</div>
+<div class="site-layout">
+  <aside>
+    <dl class="site-data">
+      <dt>Geological age</dt><dd>~425 Mya Silurian dolomite (Peebles Dolomite, Ludlovian); 75-ft gorge incised approximately 25,000 years ago when advancing Wisconsin glacier ice blocked Rocky Fork Creek's original drainage outlet, reversing stream flow direction and rapidly cutting through dolomite bedrock; carbonate dissolution formed cave systems in the gorge walls; collapsed cave ceilings visible as large slump blocks in the streambed.</dd>
+      <dt>Epoch</dt><dd>Middle Silurian (Wenlockian/Ludlovian).</dd>
+      <dt>Native lands</dt><dd>Hopewell culture (c. 200 BC-500 AD) constructed at least two ceremonial earthwork complexes within current park boundaries: Rocky Fork Park Site (NRHP 73001479), a double-concentric circular enclosure with gateways on its eastern side, and the Rocky Fork Park Group (NRHP listed 1973), a separate mound group on an adjacent hilledge; both sites were never plowed, preserving their original earthwork profiles; Chalahgawtha (principal-town) division of the Shawandasse Tula (Shawanwaki/Shawnee) used the Paint Creek and Rocky Fork Creek corridors as principal travel routes and considered the Paint Valley home territory; Myaamia (Miami) co-held southern Ohio; Shawnee lands ceded via Treaty of Greene Ville (August 3, 1795), Article 3; remaining Shawnee removed west via Treaty with the Shawnee 1831 under Indian Removal Act 1830.</dd>
+      <dt>Displacement & Tenure</dt><dd>Ceded via Treaty of Greene Ville (1795, Article 3), extinguishing Shawnee and Miami title to Highland County; county organized 1805 and entered private agricultural ownership; Rocky Fork Creek valley acquired by Ohio Division of Conservation and Natural Resources for reservoir and recreation development; Rocky Fork State Park established 1950; dam construction began 1951, water first impounded April 1953; Rocky Fork Lake (2,080 acres, 31-mile shoreline, dam 74 ft high and 380 ft long, 30,000 cubic yards of concrete) was constructed strictly for recreational purposes, not flood control; condemnation and flooding of valley-floor agricultural land required displacement of farm families.</dd>
+      <dt>Shadow History</dt><dd>Rocky Fork Lake impounded 1951-1953, flooding the Rocky Fork Creek bottomland and requiring condemnation of valley-floor farm properties; the Blue Ribbon Road covered bridge and McCoppin's Mill (in continuous operation since 1829 using water turbines) were among the structures inundated; Rocky Fork Gorge State Nature Preserve (86 acres, Miller Nature Sanctuary), the only state nature preserve in Highland County, was not dedicated until 1982, leaving the gorge corridor without formal protection for nearly 30 years after park establishment; two Hopewell earthwork complexes within park boundaries, Rocky Fork Park Site and Rocky Fork Park Group (NRHP listed 1973), remain without dedicated on-site archaeological interpretation; Rocky Fork Creek biological communities have performed as badly as or worse than at any time since the initial Ohio EPA study in 1991, impaired by agricultural runoff, failing Home Sewage Treatment Systems, and elevated E. coli concentrations.</dd>
+      <dt>Ecology</dt><dd>Mixed mesophytic forest on Silurian dolomite uplands, with alkaline-loving rare plant communities on gorge cliff faces; Sullivantia sullivantii (Sullivant's coolwort, Saxifragaceae) grows profusely on moist seeping dolomite cliffs in the gorge, blooming mid-summer; extremely rare in Ohio and known from only ten midwestern states; snow trillium (Trillium nivale), American Columbo (Frasera caroliniensis, requiring up to 30 years to produce its 5-ft flowering stalk), royal catchfly, queen-of-the-prairie, and prairie dock documented at the gorge preserve; fine-rayed pocketbook mussel (Ohio state-threatened) and 118 fish species documented in the Rocky Fork and Paint Creek watershed; river otter, bald eagle, osprey, cerulean warbler, and Louisiana waterthrush among 230+ bird species; Rocky Fork Creek and Paint Creek jointly rated Exceptional Warmwater Habitat by Ohio EPA.</dd>
+      <dt>Hydrology</dt><dd>Rocky Fork Creek drains 70,399 acres (~110 sq mi) before impoundment by Rocky Fork Lake; tributary of Paint Creek, which drains 1,143 sq mi to the Scioto River; gorge reach below the dam runs approximately 7.5 miles to confluence with Paint Creek near Bainbridge; Rocky Fork Creek reversed drainage direction approximately 25,000 years ago during Wisconsin glaciation; Rocky Fork Lake shoreline 31 miles, average depth approximately 15 ft, maximum depth approximately 40 ft; dam classified Class I by ODNR Division of Engineering; Paint Creek and Rocky Fork Creek designated Ohio State Scenic Rivers 2021 (approximately 81.7 miles total).</dd>
+      <dt>Acreage</dt><dd>3,464</dd>
+      <dt>GPS</dt><dd><a class="gps-link" href="https://maps.google.com/?q=39.1861,-83.472" target="_blank" rel="noopener">39.1861° N, 83.4720° W</a></dd>
+    </dl>
+  </aside>
+  <div class="site-images">
+    <figure class="site-figure">
+      <a href="../img/full/rocky-fork-state-park/_DSF1473.tif" download title="Download _DSF1473.jpg">
+        <img src="../img/jpg/rocky-fork-state-park/_DSF1473.jpg" alt="Rocky Fork State Park I" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Rocky Fork State Park I &middot; 2026-04-20</span>
+        <span class="caption-filename">_DSF1473.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/rocky-fork-state-park/_DSF1479.tif" download title="Download _DSF1479.jpg">
+        <img src="../img/jpg/rocky-fork-state-park/_DSF1479.jpg" alt="Rocky Fork State Park II" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Rocky Fork State Park II &middot; 2026-04-20</span>
+        <span class="caption-filename">_DSF1479.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/rocky-fork-state-park/_DSF1480.tif" download title="Download _DSF1480.jpg">
+        <img src="../img/jpg/rocky-fork-state-park/_DSF1480.jpg" alt="Rocky Fork State Park III" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Rocky Fork State Park III &middot; 2026-04-20</span>
+        <span class="caption-filename">_DSF1480.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/rocky-fork-state-park/_DSF1482.tif" download title="Download _DSF1482.jpg">
+        <img src="../img/jpg/rocky-fork-state-park/_DSF1482.jpg" alt="Rocky Fork State Park IV" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Rocky Fork State Park IV &middot; 2026-04-20</span>
+        <span class="caption-filename">_DSF1482.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/rocky-fork-state-park/_DSF1483.tif" download title="Download _DSF1483.jpg">
+        <img src="../img/jpg/rocky-fork-state-park/_DSF1483.jpg" alt="Rocky Fork State Park V" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Rocky Fork State Park V &middot; 2026-04-20</span>
+        <span class="caption-filename">_DSF1483.jpg</span>
+      </figcaption>
+    </figure>
+    <button class="pli-view-all" data-index="0">View all 5 images</button>
+  </div>
+</div>
+<nav class="site-nav">
+  <a href="seip-earthworks.html">← Seip Earthworks</a>
+  <a href="hopewell-culture-national-historical-park.html">Hopewell Culture National Historical Park →</a>
+</nav>
+<footer>
+  <span>Public Lands Institute — ongoing project</span>
+  <span>CC0 Public Domain</span>
+</footer>
+</div>
+<script src="../js/lightbox.js"></script>
+<script>
+(function () {
+  if (!window.matchMedia('(max-width: 480px)').matches) return;
+  var figures = Array.from(document.querySelectorAll('.site-figure'));
+  if (!figures.length) return;
+  var cur = 0;
+  figures[0].classList.add('carousel-active');
+  if (figures.length < 2) return;
+  function show(i) {
+    figures[cur].classList.remove('carousel-active');
+    cur = (i + figures.length) % figures.length;
+    figures[cur].classList.add('carousel-active');
+  }
+  var container = document.querySelector('.site-images');
+  var sx, sy;
+  container.addEventListener('touchstart', function (e) {
+    sx = e.touches[0].clientX;
+    sy = e.touches[0].clientY;
+  }, { passive: true });
+  container.addEventListener('touchend', function (e) {
+    var dx = e.changedTouches[0].clientX - sx;
+    var dy = e.changedTouches[0].clientY - sy;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) show(dx < 0 ? cur + 1 : cur - 1);
+  }, { passive: true });
+})();
+</script>
+</body>
+</html>
