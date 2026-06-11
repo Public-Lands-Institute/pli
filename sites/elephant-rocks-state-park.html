@@ -96,16 +96,17 @@
     margin: -11px 0;
   }
   .gps-link:hover { text-decoration: underline; }
-  .site-header { margin-bottom: 24px; }
+  .site-header { margin-bottom: 28px; }
   .site-header h1 {
-    font-size: 20px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.16em;
-    margin-bottom: 2px;
+    font-size: 26px;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin-bottom: 4px;
   }
   .site-header .state {
     font-size: 11px;
+    font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.2em;
     color: var(--muted);
@@ -115,59 +116,53 @@
     grid-template-columns: 1fr;
     gap: 32px;
   }
-  .site-data {
-    display: grid;
-    grid-template-columns: 148px 1fr;
-    font-size: 11px;
-    line-height: 1.55;
+  .site-record { align-content: start; }
+  .rec-section {
     border-top: 1px solid var(--border);
-    padding-top: 8px;
-    align-items: baseline;
+    padding-top: 14px;
+    margin-bottom: 18px;
+  }
+  .rec-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .rec-section p {
+    font-size: 13.5px;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+  .geo-era-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .geo-swatch { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .geo-era-name { font-size: 14px; font-weight: 300; }
+  .geo-mya { font-size: 11px; font-weight: 300; color: var(--muted); margin-left: auto; letter-spacing: 0.04em; }
+  .geo-bar-wrap { position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }
+  .geo-bar-fill { position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }
+  .geo-prose { color: var(--fg); }
+  .photo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
     align-content: start;
   }
-  .site-data dt {
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    font-size: 10px;
-    padding: 4px 0;
+  .ph { background: #1f1f1f; aspect-ratio: 1 / 1; overflow: hidden; }
+  .ph a { display: block; width: 100%; height: 100%; }
+  .ph img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    filter: grayscale(100%);
+    opacity: 0.92;
+    transition: opacity 0.15s;
   }
-  .site-data dd {
-    color: var(--fg);
-    padding: 4px 0 4px 12px;
-    margin: 0;
-  }
-  .site-images { display: flex; flex-direction: column; gap: 14px; }
-  .site-figure { border: 1px solid var(--border); background: #1f1f1f; }
-  .site-figure img { width: 100%; height: auto; display: block; filter: grayscale(100%); }
-  .site-figure figcaption {
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: var(--muted);
-    padding: 6px 8px;
-    border-top: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    gap: 8px;
-  }
-  .caption-filename {
-    color: var(--muted);
-    font-size: 9px;
-    letter-spacing: 0.08em;
-    flex-shrink: 0;
-    font-family: monospace;
-  }
+  .ph:hover img { opacity: 1; }
+  .ph figcaption { display: none; }
   .obs-header {
-    border-top: 1px solid var(--border);
+    grid-column: 1 / -1;
     padding: 10px 0 4px 0;
-    margin-top: 6px;
   }
-  .obs-header:first-child {
-    border-top: none;
-    padding-top: 0;
-    margin-top: 0;
-  }
+  .obs-header:first-child { padding-top: 0; }
   .obs-date {
     font-size: 10px;
     text-transform: uppercase;
@@ -176,21 +171,12 @@
     display: block;
   }
   .obs-notes {
-    font-size: 11px;
+    font-size: 12px;
+    font-weight: 300;
     color: var(--fg);
     margin-top: 4px;
-    line-height: 1.5;
+    line-height: 1.6;
   }
-  .pli-img-extra { display: none; }
-  .pli-view-all {
-    display: block; width: 100%; padding: 10px 0;
-    font-family: system-ui, sans-serif; font-size: 10px;
-    text-transform: uppercase; letter-spacing: 0.16em;
-    color: var(--muted); background: transparent;
-    border: 1px solid var(--border); cursor: pointer;
-    margin-top: 4px;
-  }
-  .pli-view-all:hover { color: var(--fg); }
   .site-nav {
     margin-top: 40px;
     padding-top: 12px;
@@ -205,19 +191,15 @@
     gap: 8px;
   }
   @media (min-width: 720px) {
-    .site-layout { grid-template-columns: 350px 1fr; gap: 48px; align-items: start; }
-    .site-data { position: sticky; top: 24px; }
+    .site-layout { grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
+    .site-record { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }
   }
   @media (min-width: 1148px) {
     .site-layout { grid-template-columns: 7fr 15fr; }
+    .photo-grid { grid-template-columns: 1fr 1fr 1fr; }
   }
-  @media (max-width: 480px) {
-    .site-data { grid-template-columns: 110px 1fr; }
-    .site-images { order: -1; position: relative; }
-    .site-data { order: 0; }
-    .site-figure { display: none; }
-    .site-figure.carousel-active { display: block; }
-    .obs-header { display: none; }
+  @media (max-width: 719px) {
+    .photo-grid { order: -1; }
   }
 </style>
 </head>
@@ -237,66 +219,54 @@
   <div class="state">MO</div>
 </div>
 <div class="site-layout">
-  <aside>
-    <dl class="site-data">
-      <dt>Geological age</dt><dd>~1.47 billion years ago (granite intrusion).</dd>
-      <dt>Epoch</dt><dd>Proterozoic eon; Rhyacian period; Graniteville Granite pluton emplaced during Midcontinent Rift precursor activity; spheroidal weathering forms developed over millions of subsequent years.</dd>
-      <dt>Native lands</dt><dd>Osage Nation (Wazhazhe) · earlier Archaic and Woodland period peoples; Osage ancestral domain included all of southern Missouri; forced removal 1825.</dd>
-      <dt>Displacement & Tenure</dt><dd>Cession 67: Treaty with the Osage (1808); Iron County granite quarried commercially from 1869 under the Iron Mountain and Southern Railroad and successors, producing Missouri Red paving granite for the Eads Bridge piers and St. Louis streets; Dr. John Stafford Brown purchased the site and deeded 134 acres to the Missouri Department of Natural Resources in 1966, with a deed clause prohibiting commercial granite extraction for 99 years; the park opened in 1970.</dd>
-      <dt>Shadow History</dt><dd>The Graniteville quarry operated beginning in 1869 as a company town with approximately 700 residents at peak; the company owned the hotel, post office, store, railroad depot, and workers' homes; the quarry supplied paving granite for the Eads Bridge piers and St. Louis streets; silica dust exposure in granite quarrying was a nationally documented occupational hazard by the 1890s, producing silicosis in quarry workers, though no site-specific injury or fatality records for Graniteville appear in accessible public records; two abandoned quarry pits remain within the park without documented environmental remediation.</dd>
-      <dt>Ecology</dt><dd>Igneous glade and savanna; rare lichen communities on granite surfaces; St. Francois Mountains endemic flora.</dd>
-      <dt>Hydrology</dt><dd>Headwaters of Stout Creek; ephemeral drainage between boulder fields.</dd>
-      <dt>Acreage</dt><dd>132 acres</dd>
-      <dt>GPS</dt><dd><a class="gps-link" href="https://maps.google.com/?q=37.637,-90.726" target="_blank" rel="noopener">37.6370° N, 90.7260° W</a></dd>
-    </dl>
-  </aside>
-  <div class="site-images">
-    <figure class="site-figure">
-      <a href="../img/full/elephant-rocks-state-park/_DSF0510.tif" download title="Download _DSF0510.jpg">
-        <img src="../img/jpg/elephant-rocks-state-park/_DSF0510.jpg" alt="Elephant Rocks State Park 1" loading="lazy"/>
+  <aside class="site-record">
+<div class="rec-section"><div class="rec-label">Geology</div><p class="geo-prose">~1.47 billion years ago (granite intrusion).</p></div><div class="rec-section"><div class="rec-label">Epoch</div><p>Proterozoic eon; Rhyacian period; Graniteville Granite pluton emplaced during Midcontinent Rift precursor activity; spheroidal weathering forms developed over millions of subsequent years.</p></div><div class="rec-section"><div class="rec-label">Native lands</div><p>Osage Nation (Wazhazhe) · earlier Archaic and Woodland period peoples; Osage ancestral domain included all of southern Missouri; forced removal 1825.</p></div><div class="rec-section"><div class="rec-label">Displacement &amp; Tenure</div><p>Cession 67: Treaty with the Osage (1808); Iron County granite quarried commercially from 1869 under the Iron Mountain and Southern Railroad and successors, producing Missouri Red paving granite for the Eads Bridge piers and St. Louis streets; Dr. John Stafford Brown purchased the site and deeded 134 acres to the Missouri Department of Natural Resources in 1966, with a deed clause prohibiting commercial granite extraction for 99 years; the park opened in 1970.</p></div><div class="rec-section"><div class="rec-label">Shadow History</div><p>The Graniteville quarry operated beginning in 1869 as a company town with approximately 700 residents at peak; the company owned the hotel, post office, store, railroad depot, and workers' homes; the quarry supplied paving granite for the Eads Bridge piers and St. Louis streets; silica dust exposure in granite quarrying was a nationally documented occupational hazard by the 1890s, producing silicosis in quarry workers, though no site-specific injury or fatality records for Graniteville appear in accessible public records; two abandoned quarry pits remain within the park without documented environmental remediation.</p></div><div class="rec-section"><div class="rec-label">Ecology</div><p>Igneous glade and savanna; rare lichen communities on granite surfaces; St. Francois Mountains endemic flora.</p></div><div class="rec-section"><div class="rec-label">Hydrology</div><p>Headwaters of Stout Creek; ephemeral drainage between boulder fields.</p></div><div class="rec-section"><div class="rec-label">Acreage</div><p>132 acres</p></div><div class="rec-section"><div class="rec-label">GPS</div><p><a class="gps-link" href="https://maps.google.com/?q=37.637,-90.726" target="_blank" rel="noopener">37.6370° N, 90.7260° W</a></p></div>  </aside>
+  <div class="photo-grid">
+    <figure class="ph">
+      <a href="../img/full/elephant-rocks-state-park/_DSF0510.tif" download title="Elephant Rocks State Park 1">
+        <img src="../thumbs/elephant-rocks-state-park/_DSF0510.jpg" data-full="../img/jpg/elephant-rocks-state-park/_DSF0510.jpg" alt="Elephant Rocks State Park 1" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Elephant Rocks State Park 1 &middot; 2026-01-05</span>
         <span class="caption-filename">_DSF0510.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/elephant-rocks-state-park/_DSF0513.tif" download title="Download _DSF0513.jpg">
-        <img src="../img/jpg/elephant-rocks-state-park/_DSF0513.jpg" alt="Elephant Rocks State Park 2" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/elephant-rocks-state-park/_DSF0513.tif" download title="Elephant Rocks State Park 2">
+        <img src="../thumbs/elephant-rocks-state-park/_DSF0513.jpg" data-full="../img/jpg/elephant-rocks-state-park/_DSF0513.jpg" alt="Elephant Rocks State Park 2" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Elephant Rocks State Park 2 &middot; 2026-01-05</span>
         <span class="caption-filename">_DSF0513.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/elephant-rocks-state-park/_DSF0524.tif" download title="Download _DSF0524.jpg">
-        <img src="../img/jpg/elephant-rocks-state-park/_DSF0524.jpg" alt="Elephant Rocks State Park 3" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/elephant-rocks-state-park/_DSF0524.tif" download title="Elephant Rocks State Park 3">
+        <img src="../thumbs/elephant-rocks-state-park/_DSF0524.jpg" data-full="../img/jpg/elephant-rocks-state-park/_DSF0524.jpg" alt="Elephant Rocks State Park 3" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Elephant Rocks State Park 3 &middot; 2026-01-05</span>
         <span class="caption-filename">_DSF0524.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/elephant-rocks-state-park/_DSF0527.tif" download title="Download _DSF0527.jpg">
-        <img src="../img/jpg/elephant-rocks-state-park/_DSF0527.jpg" alt="Elephant Rocks State Park 4" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/elephant-rocks-state-park/_DSF0527.tif" download title="Elephant Rocks State Park 4">
+        <img src="../thumbs/elephant-rocks-state-park/_DSF0527.jpg" data-full="../img/jpg/elephant-rocks-state-park/_DSF0527.jpg" alt="Elephant Rocks State Park 4" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Elephant Rocks State Park 4 &middot; 2026-01-05</span>
         <span class="caption-filename">_DSF0527.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/elephant-rocks-state-park/_DSF0538.tif" download title="Download _DSF0538.jpg">
-        <img src="../img/jpg/elephant-rocks-state-park/_DSF0538.jpg" alt="Elephant Rocks State Park 5" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/elephant-rocks-state-park/_DSF0538.tif" download title="Elephant Rocks State Park 5">
+        <img src="../thumbs/elephant-rocks-state-park/_DSF0538.jpg" data-full="../img/jpg/elephant-rocks-state-park/_DSF0538.jpg" alt="Elephant Rocks State Park 5" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Elephant Rocks State Park 5 &middot; 2026-01-05</span>
         <span class="caption-filename">_DSF0538.jpg</span>
       </figcaption>
     </figure>
-    <button class="pli-view-all" data-index="0">View all 5 images</button>
   </div>
 </div>
 <nav class="site-nav">
@@ -309,47 +279,5 @@
 </footer>
 </div>
 <script src="../js/lightbox.js"></script>
-<script>
-(function () {
-  if (!window.matchMedia('(max-width: 480px)').matches) return;
-  var figures = Array.from(document.querySelectorAll('.site-figure'));
-  if (!figures.length) return;
-  var cur = 0;
-  figures[0].classList.add('carousel-active');
-  if (figures.length < 2) return;
-  var container = document.querySelector('.site-images');
-  var counter = document.createElement('div');
-  counter.className = 'carousel-counter';
-  counter.style.cssText = 'position:absolute;bottom:8px;right:8px;font-size:10px;font-family:monospace;color:var(--muted);letter-spacing:0.1em;pointer-events:none;z-index:3;';
-  counter.textContent = '1 / ' + figures.length;
-  container.appendChild(counter);
-  var btnPrev = document.createElement('button');
-  btnPrev.style.cssText = 'position:absolute;top:0;left:0;width:35%;height:100%;background:transparent;border:none;cursor:pointer;z-index:2;opacity:0;';
-  btnPrev.setAttribute('aria-label', 'Previous image');
-  container.appendChild(btnPrev);
-  var btnNext = document.createElement('button');
-  btnNext.style.cssText = 'position:absolute;top:0;right:0;width:35%;height:100%;background:transparent;border:none;cursor:pointer;z-index:2;opacity:0;';
-  btnNext.setAttribute('aria-label', 'Next image');
-  container.appendChild(btnNext);
-  function show(i) {
-    figures[cur].classList.remove('carousel-active');
-    cur = (i + figures.length) % figures.length;
-    figures[cur].classList.add('carousel-active');
-    counter.textContent = (cur + 1) + ' / ' + figures.length;
-  }
-  btnPrev.addEventListener('click', function () { show(cur - 1); });
-  btnNext.addEventListener('click', function () { show(cur + 1); });
-  var sx, sy;
-  container.addEventListener('touchstart', function (e) {
-    sx = e.touches[0].clientX;
-    sy = e.touches[0].clientY;
-  }, { passive: true });
-  container.addEventListener('touchend', function (e) {
-    var dx = e.changedTouches[0].clientX - sx;
-    var dy = e.changedTouches[0].clientY - sy;
-    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) show(dx < 0 ? cur + 1 : cur - 1);
-  }, { passive: true });
-})();
-</script>
 </body>
 </html>

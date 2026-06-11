@@ -96,16 +96,17 @@
     margin: -11px 0;
   }
   .gps-link:hover { text-decoration: underline; }
-  .site-header { margin-bottom: 24px; }
+  .site-header { margin-bottom: 28px; }
   .site-header h1 {
-    font-size: 20px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.16em;
-    margin-bottom: 2px;
+    font-size: 26px;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin-bottom: 4px;
   }
   .site-header .state {
     font-size: 11px;
+    font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.2em;
     color: var(--muted);
@@ -115,59 +116,53 @@
     grid-template-columns: 1fr;
     gap: 32px;
   }
-  .site-data {
-    display: grid;
-    grid-template-columns: 148px 1fr;
-    font-size: 11px;
-    line-height: 1.55;
+  .site-record { align-content: start; }
+  .rec-section {
     border-top: 1px solid var(--border);
-    padding-top: 8px;
-    align-items: baseline;
+    padding-top: 14px;
+    margin-bottom: 18px;
+  }
+  .rec-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .rec-section p {
+    font-size: 13.5px;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+  .geo-era-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .geo-swatch { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .geo-era-name { font-size: 14px; font-weight: 300; }
+  .geo-mya { font-size: 11px; font-weight: 300; color: var(--muted); margin-left: auto; letter-spacing: 0.04em; }
+  .geo-bar-wrap { position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }
+  .geo-bar-fill { position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }
+  .geo-prose { color: var(--fg); }
+  .photo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
     align-content: start;
   }
-  .site-data dt {
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    font-size: 10px;
-    padding: 4px 0;
+  .ph { background: #1f1f1f; aspect-ratio: 1 / 1; overflow: hidden; }
+  .ph a { display: block; width: 100%; height: 100%; }
+  .ph img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    filter: grayscale(100%);
+    opacity: 0.92;
+    transition: opacity 0.15s;
   }
-  .site-data dd {
-    color: var(--fg);
-    padding: 4px 0 4px 12px;
-    margin: 0;
-  }
-  .site-images { display: flex; flex-direction: column; gap: 14px; }
-  .site-figure { border: 1px solid var(--border); background: #1f1f1f; }
-  .site-figure img { width: 100%; height: auto; display: block; filter: grayscale(100%); }
-  .site-figure figcaption {
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: var(--muted);
-    padding: 6px 8px;
-    border-top: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    gap: 8px;
-  }
-  .caption-filename {
-    color: var(--muted);
-    font-size: 9px;
-    letter-spacing: 0.08em;
-    flex-shrink: 0;
-    font-family: monospace;
-  }
+  .ph:hover img { opacity: 1; }
+  .ph figcaption { display: none; }
   .obs-header {
-    border-top: 1px solid var(--border);
+    grid-column: 1 / -1;
     padding: 10px 0 4px 0;
-    margin-top: 6px;
   }
-  .obs-header:first-child {
-    border-top: none;
-    padding-top: 0;
-    margin-top: 0;
-  }
+  .obs-header:first-child { padding-top: 0; }
   .obs-date {
     font-size: 10px;
     text-transform: uppercase;
@@ -176,21 +171,12 @@
     display: block;
   }
   .obs-notes {
-    font-size: 11px;
+    font-size: 12px;
+    font-weight: 300;
     color: var(--fg);
     margin-top: 4px;
-    line-height: 1.5;
+    line-height: 1.6;
   }
-  .pli-img-extra { display: none; }
-  .pli-view-all {
-    display: block; width: 100%; padding: 10px 0;
-    font-family: system-ui, sans-serif; font-size: 10px;
-    text-transform: uppercase; letter-spacing: 0.16em;
-    color: var(--muted); background: transparent;
-    border: 1px solid var(--border); cursor: pointer;
-    margin-top: 4px;
-  }
-  .pli-view-all:hover { color: var(--fg); }
   .site-nav {
     margin-top: 40px;
     padding-top: 12px;
@@ -205,19 +191,15 @@
     gap: 8px;
   }
   @media (min-width: 720px) {
-    .site-layout { grid-template-columns: 350px 1fr; gap: 48px; align-items: start; }
-    .site-data { position: sticky; top: 24px; }
+    .site-layout { grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
+    .site-record { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }
   }
   @media (min-width: 1148px) {
     .site-layout { grid-template-columns: 7fr 15fr; }
+    .photo-grid { grid-template-columns: 1fr 1fr 1fr; }
   }
-  @media (max-width: 480px) {
-    .site-data { grid-template-columns: 110px 1fr; }
-    .site-images { order: -1; position: relative; }
-    .site-data { order: 0; }
-    .site-figure { display: none; }
-    .site-figure.carousel-active { display: block; }
-    .obs-header { display: none; }
+  @media (max-width: 719px) {
+    .photo-grid { order: -1; }
   }
 </style>
 </head>
@@ -237,111 +219,99 @@
   <div class="state">IN</div>
 </div>
 <div class="site-layout">
-  <aside>
-    <dl class="site-data">
-      <dt>Geological age</dt><dd>~445 Mya Ordovician limestone and shale.</dd>
-      <dt>Epoch</dt><dd>Late Ordovician; Dillsboro Formation (shale and limestone) on lower canyon slopes; Saluda Formation (limestone and dolomite) capping waterfall crests and upper cliffs.</dd>
-      <dt>Native lands</dt><dd>Shawandasse Tula (Shawnee) · Myaamia (Miami); Ohio River valley ancestral Shawnee homeland; Shawnee displaced from the Ohio valley following the American Revolution; Treaty of Greenville 1795 ceded southeastern Indiana to the United States; Shawnee, Miami, and allied nations removed from Indiana under the Indian Removal Act 1830.</dd>
-      <dt>Displacement & Tenure</dt><dd>Cession 56: Treaty with the Delawares, Pottawatimies, Miames, Eel River, and Weas (1805); 570-acre core acquired October 27, 1920 via joint purchase by Jefferson County citizens and the State of Indiana, initiated by state parks director Richard Lieber; Madison State Hospital transferred adjacent farm fields to the park in 1965, expanding total acreage to approximately 1,416 acres.</dd>
-      <dt>Shadow History</dt><dd>Madison State Hospital (opened 1910 as Southeastern Indiana Hospital for the Insane) operated the adjacent farm fields under a patient-labor model in which psychiatric patients grew food, ran a dairy, and built roads without compensation; the Indiana legislature determined in the 1960s that this constituted indentured servitude, leading the hospital to discontinue farming rather than pay patients; the farm fields transferred to the park in 1965 were worked under this system for at least four decades; an institutional cemetery on hospital grounds holds an estimated 300 to 400 burials, the majority marked only with metal crosses bearing patient numbers rather than names.</dd>
-      <dt>Ecology</dt><dd>Mixed deciduous forest with chestnut oak, post oak, and black oak on dry canyon rim slopes; beech and sycamore in canyon bottoms; Clifty Canyon State Nature Preserve protects one of Indiana's finest gorge ecosystems.</dd>
-      <dt>Hydrology</dt><dd>Clifty Creek drains through a 300-foot-deep canyon to the Ohio River; four major waterfalls including Tunnel Falls (83 ft) and Hoffman Falls (78 ft); drainage pattern established during Pleistocene glaciation when streams were redirected southward to the newly formed Ohio River valley.</dd>
-      <dt>Acreage</dt><dd>1,416</dd>
-      <dt>GPS</dt><dd><a class="gps-link" href="https://maps.google.com/?q=38.7608,-85.4188" target="_blank" rel="noopener">38.7608° N, 85.4188° W</a></dd>
-    </dl>
-  </aside>
-  <div class="site-images">
-    <figure class="site-figure">
-      <a href="../img/full/clifty-falls-state-park/_DSF1072.tif" download title="Download _DSF1072.jpg">
-        <img src="../img/jpg/clifty-falls-state-park/_DSF1072.jpg" alt="Clifty Falls State Park 1" loading="lazy"/>
+  <aside class="site-record">
+<div class="rec-section"><div class="rec-label">Geology</div><div class="geo-era-row"><div class="geo-swatch" style="background:#c8a86e"></div><span class="geo-era-name">Ordovician</span><span class="geo-mya">445 Mya</span></div><div class="geo-bar-wrap"><div class="geo-bar-fill" style="width:90%;background:#c8a86e;opacity:0.55"></div></div><p class="geo-prose">~445 Mya Ordovician limestone and shale.</p></div><div class="rec-section"><div class="rec-label">Epoch</div><p>Late Ordovician; Dillsboro Formation (shale and limestone) on lower canyon slopes; Saluda Formation (limestone and dolomite) capping waterfall crests and upper cliffs.</p></div><div class="rec-section"><div class="rec-label">Native lands</div><p>Shawandasse Tula (Shawnee) · Myaamia (Miami); Ohio River valley ancestral Shawnee homeland; Shawnee displaced from the Ohio valley following the American Revolution; Treaty of Greenville 1795 ceded southeastern Indiana to the United States; Shawnee, Miami, and allied nations removed from Indiana under the Indian Removal Act 1830.</p></div><div class="rec-section"><div class="rec-label">Displacement &amp; Tenure</div><p>Cession 56: Treaty with the Delawares, Pottawatimies, Miames, Eel River, and Weas (1805); 570-acre core acquired October 27, 1920 via joint purchase by Jefferson County citizens and the State of Indiana, initiated by state parks director Richard Lieber; Madison State Hospital transferred adjacent farm fields to the park in 1965, expanding total acreage to approximately 1,416 acres.</p></div><div class="rec-section"><div class="rec-label">Shadow History</div><p>Madison State Hospital (opened 1910 as Southeastern Indiana Hospital for the Insane) operated the adjacent farm fields under a patient-labor model in which psychiatric patients grew food, ran a dairy, and built roads without compensation; the Indiana legislature determined in the 1960s that this constituted indentured servitude, leading the hospital to discontinue farming rather than pay patients; the farm fields transferred to the park in 1965 were worked under this system for at least four decades; an institutional cemetery on hospital grounds holds an estimated 300 to 400 burials, the majority marked only with metal crosses bearing patient numbers rather than names.</p></div><div class="rec-section"><div class="rec-label">Ecology</div><p>Mixed deciduous forest with chestnut oak, post oak, and black oak on dry canyon rim slopes; beech and sycamore in canyon bottoms; Clifty Canyon State Nature Preserve protects one of Indiana's finest gorge ecosystems.</p></div><div class="rec-section"><div class="rec-label">Hydrology</div><p>Clifty Creek drains through a 300-foot-deep canyon to the Ohio River; four major waterfalls including Tunnel Falls (83 ft) and Hoffman Falls (78 ft); drainage pattern established during Pleistocene glaciation when streams were redirected southward to the newly formed Ohio River valley.</p></div><div class="rec-section"><div class="rec-label">Acreage</div><p>1,416</p></div><div class="rec-section"><div class="rec-label">GPS</div><p><a class="gps-link" href="https://maps.google.com/?q=38.7608,-85.4188" target="_blank" rel="noopener">38.7608° N, 85.4188° W</a></p></div>  </aside>
+  <div class="photo-grid">
+    <figure class="ph">
+      <a href="../img/full/clifty-falls-state-park/_DSF1072.tif" download title="Clifty Falls State Park 1">
+        <img src="../thumbs/clifty-falls-state-park/_DSF1072.jpg" data-full="../img/jpg/clifty-falls-state-park/_DSF1072.jpg" alt="Clifty Falls State Park 1" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Clifty Falls State Park 1 &middot; 2026-03-30</span>
         <span class="caption-filename">_DSF1072.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/clifty-falls-state-park/_DSF1075.tif" download title="Download _DSF1075.jpg">
-        <img src="../img/jpg/clifty-falls-state-park/_DSF1075.jpg" alt="Clifty Falls State Park 2" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/clifty-falls-state-park/_DSF1075.tif" download title="Clifty Falls State Park 2">
+        <img src="../thumbs/clifty-falls-state-park/_DSF1075.jpg" data-full="../img/jpg/clifty-falls-state-park/_DSF1075.jpg" alt="Clifty Falls State Park 2" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Clifty Falls State Park 2 &middot; 2026-03-30</span>
         <span class="caption-filename">_DSF1075.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/clifty-falls-state-park/_DSF1084.tif" download title="Download _DSF1084.jpg">
-        <img src="../img/jpg/clifty-falls-state-park/_DSF1084.jpg" alt="Clifty Falls State Park 3" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/clifty-falls-state-park/_DSF1084.tif" download title="Clifty Falls State Park 3">
+        <img src="../thumbs/clifty-falls-state-park/_DSF1084.jpg" data-full="../img/jpg/clifty-falls-state-park/_DSF1084.jpg" alt="Clifty Falls State Park 3" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Clifty Falls State Park 3 &middot; 2026-03-30</span>
         <span class="caption-filename">_DSF1084.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/clifty-falls-state-park/_DSF1091.tif" download title="Download _DSF1091.jpg">
-        <img src="../img/jpg/clifty-falls-state-park/_DSF1091.jpg" alt="Clifty Falls State Park 4" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/clifty-falls-state-park/_DSF1091.tif" download title="Clifty Falls State Park 4">
+        <img src="../thumbs/clifty-falls-state-park/_DSF1091.jpg" data-full="../img/jpg/clifty-falls-state-park/_DSF1091.jpg" alt="Clifty Falls State Park 4" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Clifty Falls State Park 4 &middot; 2026-03-30</span>
         <span class="caption-filename">_DSF1091.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/clifty-falls-state-park/_DSF1096.tif" download title="Download _DSF1096.jpg">
-        <img src="../img/jpg/clifty-falls-state-park/_DSF1096.jpg" alt="Clifty Falls State Park 5" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/clifty-falls-state-park/_DSF1096.tif" download title="Clifty Falls State Park 5">
+        <img src="../thumbs/clifty-falls-state-park/_DSF1096.jpg" data-full="../img/jpg/clifty-falls-state-park/_DSF1096.jpg" alt="Clifty Falls State Park 5" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Clifty Falls State Park 5 &middot; 2026-03-30</span>
         <span class="caption-filename">_DSF1096.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/clifty-falls-state-park/_DSF1103.tif" download title="Download _DSF1103.jpg">
-        <img src="../img/jpg/clifty-falls-state-park/_DSF1103.jpg" alt="Clifty Falls State Park 6" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/clifty-falls-state-park/_DSF1103.tif" download title="Clifty Falls State Park 6">
+        <img src="../thumbs/clifty-falls-state-park/_DSF1103.jpg" data-full="../img/jpg/clifty-falls-state-park/_DSF1103.jpg" alt="Clifty Falls State Park 6" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Clifty Falls State Park 6 &middot; 2026-03-30</span>
         <span class="caption-filename">_DSF1103.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/clifty-falls-state-park/_DSF1108.tif" download title="Download _DSF1108.jpg">
-        <img src="../img/jpg/clifty-falls-state-park/_DSF1108.jpg" alt="Clifty Falls State Park 7" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/clifty-falls-state-park/_DSF1108.tif" download title="Clifty Falls State Park 7">
+        <img src="../thumbs/clifty-falls-state-park/_DSF1108.jpg" data-full="../img/jpg/clifty-falls-state-park/_DSF1108.jpg" alt="Clifty Falls State Park 7" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Clifty Falls State Park 7 &middot; 2026-03-30</span>
         <span class="caption-filename">_DSF1108.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/clifty-falls-state-park/_DSF1109.tif" download title="Download _DSF1109.jpg">
-        <img src="../img/jpg/clifty-falls-state-park/_DSF1109.jpg" alt="Clifty Falls State Park 8" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/clifty-falls-state-park/_DSF1109.tif" download title="Clifty Falls State Park 8">
+        <img src="../thumbs/clifty-falls-state-park/_DSF1109.jpg" data-full="../img/jpg/clifty-falls-state-park/_DSF1109.jpg" alt="Clifty Falls State Park 8" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Clifty Falls State Park 8 &middot; 2026-03-30</span>
         <span class="caption-filename">_DSF1109.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/clifty-falls-state-park/_DSF1115.tif" download title="Download _DSF1115.jpg">
-        <img src="../img/jpg/clifty-falls-state-park/_DSF1115.jpg" alt="Clifty Falls State Park 9" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/clifty-falls-state-park/_DSF1115.tif" download title="Clifty Falls State Park 9">
+        <img src="../thumbs/clifty-falls-state-park/_DSF1115.jpg" data-full="../img/jpg/clifty-falls-state-park/_DSF1115.jpg" alt="Clifty Falls State Park 9" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Clifty Falls State Park 9 &middot; 2026-03-30</span>
         <span class="caption-filename">_DSF1115.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/clifty-falls-state-park/_DSF1124.tif" download title="Download _DSF1124.jpg">
-        <img src="../img/jpg/clifty-falls-state-park/_DSF1124.jpg" alt="Clifty Falls State Park 10" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/clifty-falls-state-park/_DSF1124.tif" download title="Clifty Falls State Park 10">
+        <img src="../thumbs/clifty-falls-state-park/_DSF1124.jpg" data-full="../img/jpg/clifty-falls-state-park/_DSF1124.jpg" alt="Clifty Falls State Park 10" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Clifty Falls State Park 10 &middot; 2026-03-30</span>
         <span class="caption-filename">_DSF1124.jpg</span>
       </figcaption>
     </figure>
-    <button class="pli-view-all" data-index="0">View all 10 images</button>
   </div>
 </div>
 <nav class="site-nav">
@@ -354,47 +324,5 @@
 </footer>
 </div>
 <script src="../js/lightbox.js"></script>
-<script>
-(function () {
-  if (!window.matchMedia('(max-width: 480px)').matches) return;
-  var figures = Array.from(document.querySelectorAll('.site-figure'));
-  if (!figures.length) return;
-  var cur = 0;
-  figures[0].classList.add('carousel-active');
-  if (figures.length < 2) return;
-  var container = document.querySelector('.site-images');
-  var counter = document.createElement('div');
-  counter.className = 'carousel-counter';
-  counter.style.cssText = 'position:absolute;bottom:8px;right:8px;font-size:10px;font-family:monospace;color:var(--muted);letter-spacing:0.1em;pointer-events:none;z-index:3;';
-  counter.textContent = '1 / ' + figures.length;
-  container.appendChild(counter);
-  var btnPrev = document.createElement('button');
-  btnPrev.style.cssText = 'position:absolute;top:0;left:0;width:35%;height:100%;background:transparent;border:none;cursor:pointer;z-index:2;opacity:0;';
-  btnPrev.setAttribute('aria-label', 'Previous image');
-  container.appendChild(btnPrev);
-  var btnNext = document.createElement('button');
-  btnNext.style.cssText = 'position:absolute;top:0;right:0;width:35%;height:100%;background:transparent;border:none;cursor:pointer;z-index:2;opacity:0;';
-  btnNext.setAttribute('aria-label', 'Next image');
-  container.appendChild(btnNext);
-  function show(i) {
-    figures[cur].classList.remove('carousel-active');
-    cur = (i + figures.length) % figures.length;
-    figures[cur].classList.add('carousel-active');
-    counter.textContent = (cur + 1) + ' / ' + figures.length;
-  }
-  btnPrev.addEventListener('click', function () { show(cur - 1); });
-  btnNext.addEventListener('click', function () { show(cur + 1); });
-  var sx, sy;
-  container.addEventListener('touchstart', function (e) {
-    sx = e.touches[0].clientX;
-    sy = e.touches[0].clientY;
-  }, { passive: true });
-  container.addEventListener('touchend', function (e) {
-    var dx = e.changedTouches[0].clientX - sx;
-    var dy = e.changedTouches[0].clientY - sy;
-    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) show(dx < 0 ? cur + 1 : cur - 1);
-  }, { passive: true });
-})();
-</script>
 </body>
 </html>

@@ -96,16 +96,17 @@
     margin: -11px 0;
   }
   .gps-link:hover { text-decoration: underline; }
-  .site-header { margin-bottom: 24px; }
+  .site-header { margin-bottom: 28px; }
   .site-header h1 {
-    font-size: 20px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.16em;
-    margin-bottom: 2px;
+    font-size: 26px;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin-bottom: 4px;
   }
   .site-header .state {
     font-size: 11px;
+    font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.2em;
     color: var(--muted);
@@ -115,59 +116,53 @@
     grid-template-columns: 1fr;
     gap: 32px;
   }
-  .site-data {
-    display: grid;
-    grid-template-columns: 148px 1fr;
-    font-size: 11px;
-    line-height: 1.55;
+  .site-record { align-content: start; }
+  .rec-section {
     border-top: 1px solid var(--border);
-    padding-top: 8px;
-    align-items: baseline;
+    padding-top: 14px;
+    margin-bottom: 18px;
+  }
+  .rec-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .rec-section p {
+    font-size: 13.5px;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+  .geo-era-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .geo-swatch { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .geo-era-name { font-size: 14px; font-weight: 300; }
+  .geo-mya { font-size: 11px; font-weight: 300; color: var(--muted); margin-left: auto; letter-spacing: 0.04em; }
+  .geo-bar-wrap { position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }
+  .geo-bar-fill { position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }
+  .geo-prose { color: var(--fg); }
+  .photo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
     align-content: start;
   }
-  .site-data dt {
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    font-size: 10px;
-    padding: 4px 0;
+  .ph { background: #1f1f1f; aspect-ratio: 1 / 1; overflow: hidden; }
+  .ph a { display: block; width: 100%; height: 100%; }
+  .ph img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    filter: grayscale(100%);
+    opacity: 0.92;
+    transition: opacity 0.15s;
   }
-  .site-data dd {
-    color: var(--fg);
-    padding: 4px 0 4px 12px;
-    margin: 0;
-  }
-  .site-images { display: flex; flex-direction: column; gap: 14px; }
-  .site-figure { border: 1px solid var(--border); background: #1f1f1f; }
-  .site-figure img { width: 100%; height: auto; display: block; filter: grayscale(100%); }
-  .site-figure figcaption {
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: var(--muted);
-    padding: 6px 8px;
-    border-top: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    gap: 8px;
-  }
-  .caption-filename {
-    color: var(--muted);
-    font-size: 9px;
-    letter-spacing: 0.08em;
-    flex-shrink: 0;
-    font-family: monospace;
-  }
+  .ph:hover img { opacity: 1; }
+  .ph figcaption { display: none; }
   .obs-header {
-    border-top: 1px solid var(--border);
+    grid-column: 1 / -1;
     padding: 10px 0 4px 0;
-    margin-top: 6px;
   }
-  .obs-header:first-child {
-    border-top: none;
-    padding-top: 0;
-    margin-top: 0;
-  }
+  .obs-header:first-child { padding-top: 0; }
   .obs-date {
     font-size: 10px;
     text-transform: uppercase;
@@ -176,21 +171,12 @@
     display: block;
   }
   .obs-notes {
-    font-size: 11px;
+    font-size: 12px;
+    font-weight: 300;
     color: var(--fg);
     margin-top: 4px;
-    line-height: 1.5;
+    line-height: 1.6;
   }
-  .pli-img-extra { display: none; }
-  .pli-view-all {
-    display: block; width: 100%; padding: 10px 0;
-    font-family: system-ui, sans-serif; font-size: 10px;
-    text-transform: uppercase; letter-spacing: 0.16em;
-    color: var(--muted); background: transparent;
-    border: 1px solid var(--border); cursor: pointer;
-    margin-top: 4px;
-  }
-  .pli-view-all:hover { color: var(--fg); }
   .site-nav {
     margin-top: 40px;
     padding-top: 12px;
@@ -205,19 +191,15 @@
     gap: 8px;
   }
   @media (min-width: 720px) {
-    .site-layout { grid-template-columns: 350px 1fr; gap: 48px; align-items: start; }
-    .site-data { position: sticky; top: 24px; }
+    .site-layout { grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
+    .site-record { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }
   }
   @media (min-width: 1148px) {
     .site-layout { grid-template-columns: 7fr 15fr; }
+    .photo-grid { grid-template-columns: 1fr 1fr 1fr; }
   }
-  @media (max-width: 480px) {
-    .site-data { grid-template-columns: 110px 1fr; }
-    .site-images { order: -1; position: relative; }
-    .site-data { order: 0; }
-    .site-figure { display: none; }
-    .site-figure.carousel-active { display: block; }
-    .obs-header { display: none; }
+  @media (max-width: 719px) {
+    .photo-grid { order: -1; }
   }
 </style>
 </head>
@@ -237,183 +219,171 @@
   <div class="state">WV</div>
 </div>
 <div class="site-layout">
-  <aside>
-    <dl class="site-data">
-      <dt>Geological age</dt><dd>~325 Mya Pennsylvanian and Mississippian sandstone, shale, and coal seams.</dd>
-      <dt>Epoch</dt><dd>Pennsylvanian (Carboniferous).</dd>
-      <dt>Native lands</dt><dd>Shawnee (Shawanwaki) and Cherokee (Aniyvwiya) maintained hunting territories throughout the New River drainage; Shawnee forces under Chief Cornstalk fought Virginia militia at the Battle of Point Pleasant (October 10, 1774), a decisive engagement leading to the Treaty of Camp Charlotte (October 19, 1774), in which the Shawnee agreed to cease hunting south of the Ohio River and recognize Virginia's territorial claims; Seneca (Onöndowa'ga:') of the Haudenosaunee Confederacy maintained the Seneca Trail corridor (present US-219) through the region; Moneton peoples documented in pre-contact archaeological evidence; more than 400 archaeological sites along the New, Gauley, and Bluestone Rivers record at least 11,000 years of continuous Indigenous occupation; Shawnee removed to Kansas beginning 1831 under Treaty of Wapakoneta; Loyal Shawnee relocated to Indian Territory (Oklahoma) 1869-1871.</dd>
-      <dt>Displacement & Tenure</dt><dd>New River Gorge area was part of Virginia's colonial charter (1609) and not included in the Virginia Cession of 1784 to the federal government; lands remained under private Virginia and later West Virginia (statehood June 20, 1863) ownership through coal and timber grants; federal acquisition began when Congress established New River Gorge National River (November 10, 1978, Pub. L. 95-625), with NPS purchasing coal and timber company lands through the 1990s; designated National Park and Preserve December 27, 2020.</dd>
-      <dt>Shadow History</dt><dd>The gorge's coal company towns enforced a scrip economy in which workers were paid in currency redeemable only at company stores, with markups ensuring perpetual indebtedness; armed guards controlled movement in and out of gated communities. African American miners comprised more than 25% of West Virginia's mining workforce by 1909; Helen, WV (developed by East Gulf Coal Company) enforced strict residential and educational segregation above ground while Black and white workers received equal wages for equal work underground; NPS documents segregated housing, schools, and churches at Nuttallburg and Helen. Coal processing operations associated with the gorge's mines introduced heavy metals into New River tributaries, a pattern documented across the Appalachian coalfield. Segregated CCC companies operated in the region 1933-1942 following Director Robert Fechner's 1935 segregation order.</dd>
-      <dt>Ecology</dt><dd>Mixed Mesophytic forest with oak-hickory on xeric south-facing slopes and hemlock-hardwood (Tsuga canadensis, Fagus grandifolia) in cool mesic coves; understory of Rhododendron maximum and mountain laurel; 1,383 vascular plant species documented across 41 community types.</dd>
-      <dt>Hydrology</dt><dd>New River drains into the Kanawha River and the Ohio River system; park corridor encompasses approximately 85 km (53 miles) of the New River; tributaries include the Bluestone and Greenbrier Rivers; gorge characterized by pools, shoals, riffles, and cascades.</dd>
-      <dt>Acreage</dt><dd>72,808</dd>
-      <dt>GPS</dt><dd><a class="gps-link" href="https://maps.google.com/?q=38.07,-81.0758" target="_blank" rel="noopener">38.0700° N, 81.0758° W</a></dd>
-    </dl>
-  </aside>
-  <div class="site-images">
-    <figure class="site-figure">
-      <a href="../img/full/new-river-gorge-national-park/_DSF1276.tif" download title="Download _DSF1276.jpg">
-        <img src="../img/jpg/new-river-gorge-national-park/_DSF1276.jpg" alt="New River Gorge National Park and Preserve 1" loading="lazy"/>
+  <aside class="site-record">
+<div class="rec-section"><div class="rec-label">Geology</div><div class="geo-era-row"><div class="geo-swatch" style="background:#3d7fbf"></div><span class="geo-era-name">Mississippian</span><span class="geo-mya">325 Mya</span></div><div class="geo-bar-wrap"><div class="geo-bar-fill" style="width:66%;background:#3d7fbf;opacity:0.55"></div></div><p class="geo-prose">~325 Mya Pennsylvanian and Mississippian sandstone, shale, and coal seams.</p></div><div class="rec-section"><div class="rec-label">Epoch</div><p>Pennsylvanian (Carboniferous).</p></div><div class="rec-section"><div class="rec-label">Native lands</div><p>Shawnee (Shawanwaki) and Cherokee (Aniyvwiya) maintained hunting territories throughout the New River drainage; Shawnee forces under Chief Cornstalk fought Virginia militia at the Battle of Point Pleasant (October 10, 1774), a decisive engagement leading to the Treaty of Camp Charlotte (October 19, 1774), in which the Shawnee agreed to cease hunting south of the Ohio River and recognize Virginia's territorial claims; Seneca (Onöndowa'ga:') of the Haudenosaunee Confederacy maintained the Seneca Trail corridor (present US-219) through the region; Moneton peoples documented in pre-contact archaeological evidence; more than 400 archaeological sites along the New, Gauley, and Bluestone Rivers record at least 11,000 years of continuous Indigenous occupation; Shawnee removed to Kansas beginning 1831 under Treaty of Wapakoneta; Loyal Shawnee relocated to Indian Territory (Oklahoma) 1869-1871.</p></div><div class="rec-section"><div class="rec-label">Displacement &amp; Tenure</div><p>New River Gorge area was part of Virginia's colonial charter (1609) and not included in the Virginia Cession of 1784 to the federal government; lands remained under private Virginia and later West Virginia (statehood June 20, 1863) ownership through coal and timber grants; federal acquisition began when Congress established New River Gorge National River (November 10, 1978, Pub. L. 95-625), with NPS purchasing coal and timber company lands through the 1990s; designated National Park and Preserve December 27, 2020.</p></div><div class="rec-section"><div class="rec-label">Shadow History</div><p>The gorge's coal company towns enforced a scrip economy in which workers were paid in currency redeemable only at company stores, with markups ensuring perpetual indebtedness; armed guards controlled movement in and out of gated communities. African American miners comprised more than 25% of West Virginia's mining workforce by 1909; Helen, WV (developed by East Gulf Coal Company) enforced strict residential and educational segregation above ground while Black and white workers received equal wages for equal work underground; NPS documents segregated housing, schools, and churches at Nuttallburg and Helen. Coal processing operations associated with the gorge's mines introduced heavy metals into New River tributaries, a pattern documented across the Appalachian coalfield. Segregated CCC companies operated in the region 1933-1942 following Director Robert Fechner's 1935 segregation order.</p></div><div class="rec-section"><div class="rec-label">Ecology</div><p>Mixed Mesophytic forest with oak-hickory on xeric south-facing slopes and hemlock-hardwood (Tsuga canadensis, Fagus grandifolia) in cool mesic coves; understory of Rhododendron maximum and mountain laurel; 1,383 vascular plant species documented across 41 community types.</p></div><div class="rec-section"><div class="rec-label">Hydrology</div><p>New River drains into the Kanawha River and the Ohio River system; park corridor encompasses approximately 85 km (53 miles) of the New River; tributaries include the Bluestone and Greenbrier Rivers; gorge characterized by pools, shoals, riffles, and cascades.</p></div><div class="rec-section"><div class="rec-label">Acreage</div><p>72,808</p></div><div class="rec-section"><div class="rec-label">GPS</div><p><a class="gps-link" href="https://maps.google.com/?q=38.07,-81.0758" target="_blank" rel="noopener">38.0700° N, 81.0758° W</a></p></div>  </aside>
+  <div class="photo-grid">
+    <figure class="ph">
+      <a href="../img/full/new-river-gorge-national-park/_DSF1276.tif" download title="New River Gorge National Park and Preserve 1">
+        <img src="../thumbs/new-river-gorge-national-park/_DSF1276.jpg" data-full="../img/jpg/new-river-gorge-national-park/_DSF1276.jpg" alt="New River Gorge National Park and Preserve 1" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">New River Gorge National Park and Preserve 1 &middot; 2026-04-17</span>
         <span class="caption-filename">_DSF1276.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/new-river-gorge-national-park/_DSF1278.tif" download title="Download _DSF1278.jpg">
-        <img src="../img/jpg/new-river-gorge-national-park/_DSF1278.jpg" alt="New River Gorge National Park and Preserve 2" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/new-river-gorge-national-park/_DSF1278.tif" download title="New River Gorge National Park and Preserve 2">
+        <img src="../thumbs/new-river-gorge-national-park/_DSF1278.jpg" data-full="../img/jpg/new-river-gorge-national-park/_DSF1278.jpg" alt="New River Gorge National Park and Preserve 2" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">New River Gorge National Park and Preserve 2 &middot; 2026-04-17</span>
         <span class="caption-filename">_DSF1278.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/new-river-gorge-national-park/_DSF1290.tif" download title="Download _DSF1290.jpg">
-        <img src="../img/jpg/new-river-gorge-national-park/_DSF1290.jpg" alt="New River Gorge National Park and Preserve 3" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/new-river-gorge-national-park/_DSF1290.tif" download title="New River Gorge National Park and Preserve 3">
+        <img src="../thumbs/new-river-gorge-national-park/_DSF1290.jpg" data-full="../img/jpg/new-river-gorge-national-park/_DSF1290.jpg" alt="New River Gorge National Park and Preserve 3" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">New River Gorge National Park and Preserve 3 &middot; 2026-04-17</span>
         <span class="caption-filename">_DSF1290.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/new-river-gorge-national-park/_DSF1297.tif" download title="Download _DSF1297.jpg">
-        <img src="../img/jpg/new-river-gorge-national-park/_DSF1297.jpg" alt="New River Gorge National Park and Preserve 4" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/new-river-gorge-national-park/_DSF1297.tif" download title="New River Gorge National Park and Preserve 4">
+        <img src="../thumbs/new-river-gorge-national-park/_DSF1297.jpg" data-full="../img/jpg/new-river-gorge-national-park/_DSF1297.jpg" alt="New River Gorge National Park and Preserve 4" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">New River Gorge National Park and Preserve 4 &middot; 2026-04-17</span>
         <span class="caption-filename">_DSF1297.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/new-river-gorge-national-park/_DSF1301.tif" download title="Download _DSF1301.jpg">
-        <img src="../img/jpg/new-river-gorge-national-park/_DSF1301.jpg" alt="New River Gorge National Park and Preserve 5" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/new-river-gorge-national-park/_DSF1301.tif" download title="New River Gorge National Park and Preserve 5">
+        <img src="../thumbs/new-river-gorge-national-park/_DSF1301.jpg" data-full="../img/jpg/new-river-gorge-national-park/_DSF1301.jpg" alt="New River Gorge National Park and Preserve 5" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">New River Gorge National Park and Preserve 5 &middot; 2026-04-17</span>
         <span class="caption-filename">_DSF1301.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/new-river-gorge-national-park/_DSF1317.tif" download title="Download _DSF1317.jpg">
-        <img src="../img/jpg/new-river-gorge-national-park/_DSF1317.jpg" alt="New River Gorge National Park and Preserve 6" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/new-river-gorge-national-park/_DSF1317.tif" download title="New River Gorge National Park and Preserve 6">
+        <img src="../thumbs/new-river-gorge-national-park/_DSF1317.jpg" data-full="../img/jpg/new-river-gorge-national-park/_DSF1317.jpg" alt="New River Gorge National Park and Preserve 6" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">New River Gorge National Park and Preserve 6 &middot; 2026-04-18</span>
         <span class="caption-filename">_DSF1317.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/new-river-gorge-national-park/_DSF1320.tif" download title="Download _DSF1320.jpg">
-        <img src="../img/jpg/new-river-gorge-national-park/_DSF1320.jpg" alt="New River Gorge National Park and Preserve 7" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/new-river-gorge-national-park/_DSF1320.tif" download title="New River Gorge National Park and Preserve 7">
+        <img src="../thumbs/new-river-gorge-national-park/_DSF1320.jpg" data-full="../img/jpg/new-river-gorge-national-park/_DSF1320.jpg" alt="New River Gorge National Park and Preserve 7" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">New River Gorge National Park and Preserve 7 &middot; 2026-04-18</span>
         <span class="caption-filename">_DSF1320.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/new-river-gorge-national-park/_DSF1321.tif" download title="Download _DSF1321.jpg">
-        <img src="../img/jpg/new-river-gorge-national-park/_DSF1321.jpg" alt="New River Gorge National Park and Preserve 8" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/new-river-gorge-national-park/_DSF1321.tif" download title="New River Gorge National Park and Preserve 8">
+        <img src="../thumbs/new-river-gorge-national-park/_DSF1321.jpg" data-full="../img/jpg/new-river-gorge-national-park/_DSF1321.jpg" alt="New River Gorge National Park and Preserve 8" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">New River Gorge National Park and Preserve 8 &middot; 2026-04-18</span>
         <span class="caption-filename">_DSF1321.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/new-river-gorge-national-park/_DSF1326.tif" download title="Download _DSF1326.jpg">
-        <img src="../img/jpg/new-river-gorge-national-park/_DSF1326.jpg" alt="New River Gorge National Park and Preserve 9" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/new-river-gorge-national-park/_DSF1326.tif" download title="New River Gorge National Park and Preserve 9">
+        <img src="../thumbs/new-river-gorge-national-park/_DSF1326.jpg" data-full="../img/jpg/new-river-gorge-national-park/_DSF1326.jpg" alt="New River Gorge National Park and Preserve 9" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">New River Gorge National Park and Preserve 9 &middot; 2026-04-18</span>
         <span class="caption-filename">_DSF1326.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/new-river-gorge-national-park/_DSF1328.tif" download title="Download _DSF1328.jpg">
-        <img src="../img/jpg/new-river-gorge-national-park/_DSF1328.jpg" alt="New River Gorge National Park and Preserve 10" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/new-river-gorge-national-park/_DSF1328.tif" download title="New River Gorge National Park and Preserve 10">
+        <img src="../thumbs/new-river-gorge-national-park/_DSF1328.jpg" data-full="../img/jpg/new-river-gorge-national-park/_DSF1328.jpg" alt="New River Gorge National Park and Preserve 10" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">New River Gorge National Park and Preserve 10 &middot; 2026-04-18</span>
         <span class="caption-filename">_DSF1328.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/new-river-gorge-national-park/_DSF1335.tif" download title="Download _DSF1335.jpg">
-        <img src="../img/jpg/new-river-gorge-national-park/_DSF1335.jpg" alt="New River Gorge National Park and Preserve 11" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/new-river-gorge-national-park/_DSF1335.tif" download title="New River Gorge National Park and Preserve 11">
+        <img src="../thumbs/new-river-gorge-national-park/_DSF1335.jpg" data-full="../img/jpg/new-river-gorge-national-park/_DSF1335.jpg" alt="New River Gorge National Park and Preserve 11" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">New River Gorge National Park and Preserve 11 &middot; 2026-04-18</span>
         <span class="caption-filename">_DSF1335.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/new-river-gorge-national-park/_DSF1341.tif" download title="Download _DSF1341.jpg">
-        <img src="../img/jpg/new-river-gorge-national-park/_DSF1341.jpg" alt="New River Gorge National Park and Preserve 12" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/new-river-gorge-national-park/_DSF1341.tif" download title="New River Gorge National Park and Preserve 12">
+        <img src="../thumbs/new-river-gorge-national-park/_DSF1341.jpg" data-full="../img/jpg/new-river-gorge-national-park/_DSF1341.jpg" alt="New River Gorge National Park and Preserve 12" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">New River Gorge National Park and Preserve 12 &middot; 2026-04-18</span>
         <span class="caption-filename">_DSF1341.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/new-river-gorge-national-park/_DSF1350.tif" download title="Download _DSF1350.jpg">
-        <img src="../img/jpg/new-river-gorge-national-park/_DSF1350.jpg" alt="New River Gorge National Park and Preserve 13" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/new-river-gorge-national-park/_DSF1350.tif" download title="New River Gorge National Park and Preserve 13">
+        <img src="../thumbs/new-river-gorge-national-park/_DSF1350.jpg" data-full="../img/jpg/new-river-gorge-national-park/_DSF1350.jpg" alt="New River Gorge National Park and Preserve 13" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">New River Gorge National Park and Preserve 13 &middot; 2026-04-18</span>
         <span class="caption-filename">_DSF1350.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/new-river-gorge-national-park/_DSF1352.tif" download title="Download _DSF1352.jpg">
-        <img src="../img/jpg/new-river-gorge-national-park/_DSF1352.jpg" alt="New River Gorge National Park and Preserve 14" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/new-river-gorge-national-park/_DSF1352.tif" download title="New River Gorge National Park and Preserve 14">
+        <img src="../thumbs/new-river-gorge-national-park/_DSF1352.jpg" data-full="../img/jpg/new-river-gorge-national-park/_DSF1352.jpg" alt="New River Gorge National Park and Preserve 14" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">New River Gorge National Park and Preserve 14 &middot; 2026-04-18</span>
         <span class="caption-filename">_DSF1352.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/new-river-gorge-national-park/_DSF1357.tif" download title="Download _DSF1357.jpg">
-        <img src="../img/jpg/new-river-gorge-national-park/_DSF1357.jpg" alt="New River Gorge National Park and Preserve 15" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/new-river-gorge-national-park/_DSF1357.tif" download title="New River Gorge National Park and Preserve 15">
+        <img src="../thumbs/new-river-gorge-national-park/_DSF1357.jpg" data-full="../img/jpg/new-river-gorge-national-park/_DSF1357.jpg" alt="New River Gorge National Park and Preserve 15" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">New River Gorge National Park and Preserve 15 &middot; 2026-04-18</span>
         <span class="caption-filename">_DSF1357.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/new-river-gorge-national-park/_DSF1358.tif" download title="Download _DSF1358.jpg">
-        <img src="../img/jpg/new-river-gorge-national-park/_DSF1358.jpg" alt="New River Gorge National Park and Preserve 16" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/new-river-gorge-national-park/_DSF1358.tif" download title="New River Gorge National Park and Preserve 16">
+        <img src="../thumbs/new-river-gorge-national-park/_DSF1358.jpg" data-full="../img/jpg/new-river-gorge-national-park/_DSF1358.jpg" alt="New River Gorge National Park and Preserve 16" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">New River Gorge National Park and Preserve 16 &middot; 2026-04-18</span>
         <span class="caption-filename">_DSF1358.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/new-river-gorge-national-park/_DSF1367.tif" download title="Download _DSF1367.jpg">
-        <img src="../img/jpg/new-river-gorge-national-park/_DSF1367.jpg" alt="New River Gorge National Park and Preserve 17" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/new-river-gorge-national-park/_DSF1367.tif" download title="New River Gorge National Park and Preserve 17">
+        <img src="../thumbs/new-river-gorge-national-park/_DSF1367.jpg" data-full="../img/jpg/new-river-gorge-national-park/_DSF1367.jpg" alt="New River Gorge National Park and Preserve 17" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">New River Gorge National Park and Preserve 17 &middot; 2026-04-18</span>
         <span class="caption-filename">_DSF1367.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/new-river-gorge-national-park/_DSF1372.tif" download title="Download _DSF1372.jpg">
-        <img src="../img/jpg/new-river-gorge-national-park/_DSF1372.jpg" alt="New River Gorge National Park and Preserve 18" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/new-river-gorge-national-park/_DSF1372.tif" download title="New River Gorge National Park and Preserve 18">
+        <img src="../thumbs/new-river-gorge-national-park/_DSF1372.jpg" data-full="../img/jpg/new-river-gorge-national-park/_DSF1372.jpg" alt="New River Gorge National Park and Preserve 18" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">New River Gorge National Park and Preserve 18 &middot; 2026-04-18</span>
         <span class="caption-filename">_DSF1372.jpg</span>
       </figcaption>
     </figure>
-    <button class="pli-view-all" data-index="0">View all 18 images</button>
   </div>
 </div>
 <nav class="site-nav">
@@ -426,47 +396,5 @@
 </footer>
 </div>
 <script src="../js/lightbox.js"></script>
-<script>
-(function () {
-  if (!window.matchMedia('(max-width: 480px)').matches) return;
-  var figures = Array.from(document.querySelectorAll('.site-figure'));
-  if (!figures.length) return;
-  var cur = 0;
-  figures[0].classList.add('carousel-active');
-  if (figures.length < 2) return;
-  var container = document.querySelector('.site-images');
-  var counter = document.createElement('div');
-  counter.className = 'carousel-counter';
-  counter.style.cssText = 'position:absolute;bottom:8px;right:8px;font-size:10px;font-family:monospace;color:var(--muted);letter-spacing:0.1em;pointer-events:none;z-index:3;';
-  counter.textContent = '1 / ' + figures.length;
-  container.appendChild(counter);
-  var btnPrev = document.createElement('button');
-  btnPrev.style.cssText = 'position:absolute;top:0;left:0;width:35%;height:100%;background:transparent;border:none;cursor:pointer;z-index:2;opacity:0;';
-  btnPrev.setAttribute('aria-label', 'Previous image');
-  container.appendChild(btnPrev);
-  var btnNext = document.createElement('button');
-  btnNext.style.cssText = 'position:absolute;top:0;right:0;width:35%;height:100%;background:transparent;border:none;cursor:pointer;z-index:2;opacity:0;';
-  btnNext.setAttribute('aria-label', 'Next image');
-  container.appendChild(btnNext);
-  function show(i) {
-    figures[cur].classList.remove('carousel-active');
-    cur = (i + figures.length) % figures.length;
-    figures[cur].classList.add('carousel-active');
-    counter.textContent = (cur + 1) + ' / ' + figures.length;
-  }
-  btnPrev.addEventListener('click', function () { show(cur - 1); });
-  btnNext.addEventListener('click', function () { show(cur + 1); });
-  var sx, sy;
-  container.addEventListener('touchstart', function (e) {
-    sx = e.touches[0].clientX;
-    sy = e.touches[0].clientY;
-  }, { passive: true });
-  container.addEventListener('touchend', function (e) {
-    var dx = e.changedTouches[0].clientX - sx;
-    var dy = e.changedTouches[0].clientY - sy;
-    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) show(dx < 0 ? cur + 1 : cur - 1);
-  }, { passive: true });
-})();
-</script>
 </body>
 </html>

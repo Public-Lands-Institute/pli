@@ -7,7 +7,7 @@
   // ── Lightbox (all devices) ────────────────────────────────────────────────────
 
   const images = figures.map(f => ({
-    jpg:      f.querySelector('img').src,
+    jpg:      f.querySelector('img').dataset.full || f.querySelector('img').src,
     tif:      f.querySelector('a').href,
     caption:  f.querySelector('.caption-title')?.textContent?.trim() || '',
     filename: f.querySelector('.caption-filename')?.textContent?.trim() || '',

@@ -96,16 +96,17 @@
     margin: -11px 0;
   }
   .gps-link:hover { text-decoration: underline; }
-  .site-header { margin-bottom: 24px; }
+  .site-header { margin-bottom: 28px; }
   .site-header h1 {
-    font-size: 20px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.16em;
-    margin-bottom: 2px;
+    font-size: 26px;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin-bottom: 4px;
   }
   .site-header .state {
     font-size: 11px;
+    font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.2em;
     color: var(--muted);
@@ -115,59 +116,53 @@
     grid-template-columns: 1fr;
     gap: 32px;
   }
-  .site-data {
-    display: grid;
-    grid-template-columns: 148px 1fr;
-    font-size: 11px;
-    line-height: 1.55;
+  .site-record { align-content: start; }
+  .rec-section {
     border-top: 1px solid var(--border);
-    padding-top: 8px;
-    align-items: baseline;
+    padding-top: 14px;
+    margin-bottom: 18px;
+  }
+  .rec-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .rec-section p {
+    font-size: 13.5px;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+  .geo-era-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .geo-swatch { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .geo-era-name { font-size: 14px; font-weight: 300; }
+  .geo-mya { font-size: 11px; font-weight: 300; color: var(--muted); margin-left: auto; letter-spacing: 0.04em; }
+  .geo-bar-wrap { position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }
+  .geo-bar-fill { position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }
+  .geo-prose { color: var(--fg); }
+  .photo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
     align-content: start;
   }
-  .site-data dt {
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    font-size: 10px;
-    padding: 4px 0;
+  .ph { background: #1f1f1f; aspect-ratio: 1 / 1; overflow: hidden; }
+  .ph a { display: block; width: 100%; height: 100%; }
+  .ph img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    filter: grayscale(100%);
+    opacity: 0.92;
+    transition: opacity 0.15s;
   }
-  .site-data dd {
-    color: var(--fg);
-    padding: 4px 0 4px 12px;
-    margin: 0;
-  }
-  .site-images { display: flex; flex-direction: column; gap: 14px; }
-  .site-figure { border: 1px solid var(--border); background: #1f1f1f; }
-  .site-figure img { width: 100%; height: auto; display: block; filter: grayscale(100%); }
-  .site-figure figcaption {
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: var(--muted);
-    padding: 6px 8px;
-    border-top: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    gap: 8px;
-  }
-  .caption-filename {
-    color: var(--muted);
-    font-size: 9px;
-    letter-spacing: 0.08em;
-    flex-shrink: 0;
-    font-family: monospace;
-  }
+  .ph:hover img { opacity: 1; }
+  .ph figcaption { display: none; }
   .obs-header {
-    border-top: 1px solid var(--border);
+    grid-column: 1 / -1;
     padding: 10px 0 4px 0;
-    margin-top: 6px;
   }
-  .obs-header:first-child {
-    border-top: none;
-    padding-top: 0;
-    margin-top: 0;
-  }
+  .obs-header:first-child { padding-top: 0; }
   .obs-date {
     font-size: 10px;
     text-transform: uppercase;
@@ -176,21 +171,12 @@
     display: block;
   }
   .obs-notes {
-    font-size: 11px;
+    font-size: 12px;
+    font-weight: 300;
     color: var(--fg);
     margin-top: 4px;
-    line-height: 1.5;
+    line-height: 1.6;
   }
-  .pli-img-extra { display: none; }
-  .pli-view-all {
-    display: block; width: 100%; padding: 10px 0;
-    font-family: system-ui, sans-serif; font-size: 10px;
-    text-transform: uppercase; letter-spacing: 0.16em;
-    color: var(--muted); background: transparent;
-    border: 1px solid var(--border); cursor: pointer;
-    margin-top: 4px;
-  }
-  .pli-view-all:hover { color: var(--fg); }
   .site-nav {
     margin-top: 40px;
     padding-top: 12px;
@@ -205,19 +191,15 @@
     gap: 8px;
   }
   @media (min-width: 720px) {
-    .site-layout { grid-template-columns: 350px 1fr; gap: 48px; align-items: start; }
-    .site-data { position: sticky; top: 24px; }
+    .site-layout { grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
+    .site-record { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }
   }
   @media (min-width: 1148px) {
     .site-layout { grid-template-columns: 7fr 15fr; }
+    .photo-grid { grid-template-columns: 1fr 1fr 1fr; }
   }
-  @media (max-width: 480px) {
-    .site-data { grid-template-columns: 110px 1fr; }
-    .site-images { order: -1; position: relative; }
-    .site-data { order: 0; }
-    .site-figure { display: none; }
-    .site-figure.carousel-active { display: block; }
-    .obs-header { display: none; }
+  @media (max-width: 719px) {
+    .photo-grid { order: -1; }
   }
 </style>
 </head>
@@ -237,84 +219,72 @@
   <div class="state">OH</div>
 </div>
 <div class="site-layout">
-  <aside>
-    <dl class="site-data">
-      <dt>Geological age</dt><dd>~430-420 million years ago (bedrock); gorge carved ~12,000-14,000 years ago.</dd>
-      <dt>Epoch</dt><dd>Silurian period (Llandovery-Wenlock); dolomite formed in shallow tropical sea; gorge incised during Late Pleistocene and early Holocene by glacial meltwater drainage.</dd>
-      <dt>Native lands</dt><dd>Shawnee (Shawanwaki) · Miami · Adena and Hopewell cultures (500 BCE-500 CE); Little Miami River corridor a major Shawnee territory; Shawnee ceded Ohio lands via Treaty of Greene Ville 1795.</dd>
-      <dt>Displacement & Tenure</dt><dd>Cession 11: Treaty of Greene Ville (1795); Clifton Gorge corridor industrialized through the 19th century as a water-power district with textile mills, gristmills, and sawmills; John Bryan purchased 335 acres as Riverside Farm in 1896 and bequeathed it to the State of Ohio in 1918 for use as a forestry, botanic, and wildlife reserve; designated a state forest park in 1925.</dd>
-      <dt>Shadow History</dt><dd>The Little Miami River corridor through Clifton Gorge supported at least six mills within one mile by the early 19th century, including a woolen mill, sawmill, paper mill, barrel mill, and two grist mills, all operating before workplace safety or child labor laws; most were abandoned by the late 19th century as water power became uneconomical; no records of worker injuries or labor litigation from the Clifton mill district appear in accessible archives, though the pre-regulatory context makes the absence of documentation unsurprising.</dd>
-      <dt>Ecology</dt><dd>Gorge microclimate supporting relict northern plant communities; Canadian yew, white cedar, walking fern ; species absent from surrounding landscape; National Natural Landmark.</dd>
-      <dt>Hydrology</dt><dd>Little Miami River (Ohio State Scenic River; National Wild & Scenic River); Yellow Spring iron-rich seep; Jacoby Creek tributary.</dd>
-      <dt>Acreage</dt><dd>752 acres (park); 268 acres (Clifton Gorge SNP)</dd>
-      <dt>GPS</dt><dd><a class="gps-link" href="https://maps.google.com/?q=39.796,-83.831" target="_blank" rel="noopener">39.7960° N, 83.8310° W</a></dd>
-    </dl>
-  </aside>
-  <div class="site-images">
-    <figure class="site-figure">
-      <a href="../img/full/john-bryan-state-park/_DSF0446.tif" download title="Download _DSF0446.jpg">
-        <img src="../img/jpg/john-bryan-state-park/_DSF0446.jpg" alt="John Bryan State Park 1" loading="lazy"/>
+  <aside class="site-record">
+<div class="rec-section"><div class="rec-label">Geology</div><p class="geo-prose">~430-420 million years ago (bedrock); gorge carved ~12,000-14,000 years ago.</p></div><div class="rec-section"><div class="rec-label">Epoch</div><p>Silurian period (Llandovery-Wenlock); dolomite formed in shallow tropical sea; gorge incised during Late Pleistocene and early Holocene by glacial meltwater drainage.</p></div><div class="rec-section"><div class="rec-label">Native lands</div><p>Shawnee (Shawanwaki) · Miami · Adena and Hopewell cultures (500 BCE-500 CE); Little Miami River corridor a major Shawnee territory; Shawnee ceded Ohio lands via Treaty of Greene Ville 1795.</p></div><div class="rec-section"><div class="rec-label">Displacement &amp; Tenure</div><p>Cession 11: Treaty of Greene Ville (1795); Clifton Gorge corridor industrialized through the 19th century as a water-power district with textile mills, gristmills, and sawmills; John Bryan purchased 335 acres as Riverside Farm in 1896 and bequeathed it to the State of Ohio in 1918 for use as a forestry, botanic, and wildlife reserve; designated a state forest park in 1925.</p></div><div class="rec-section"><div class="rec-label">Shadow History</div><p>The Little Miami River corridor through Clifton Gorge supported at least six mills within one mile by the early 19th century, including a woolen mill, sawmill, paper mill, barrel mill, and two grist mills, all operating before workplace safety or child labor laws; most were abandoned by the late 19th century as water power became uneconomical; no records of worker injuries or labor litigation from the Clifton mill district appear in accessible archives, though the pre-regulatory context makes the absence of documentation unsurprising.</p></div><div class="rec-section"><div class="rec-label">Ecology</div><p>Gorge microclimate supporting relict northern plant communities; Canadian yew, white cedar, walking fern ; species absent from surrounding landscape; National Natural Landmark.</p></div><div class="rec-section"><div class="rec-label">Hydrology</div><p>Little Miami River (Ohio State Scenic River; National Wild & Scenic River); Yellow Spring iron-rich seep; Jacoby Creek tributary.</p></div><div class="rec-section"><div class="rec-label">Acreage</div><p>752 acres (park); 268 acres (Clifton Gorge SNP)</p></div><div class="rec-section"><div class="rec-label">GPS</div><p><a class="gps-link" href="https://maps.google.com/?q=39.796,-83.831" target="_blank" rel="noopener">39.7960° N, 83.8310° W</a></p></div>  </aside>
+  <div class="photo-grid">
+    <figure class="ph">
+      <a href="../img/full/john-bryan-state-park/_DSF0446.tif" download title="John Bryan State Park 1">
+        <img src="../thumbs/john-bryan-state-park/_DSF0446.jpg" data-full="../img/jpg/john-bryan-state-park/_DSF0446.jpg" alt="John Bryan State Park 1" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">John Bryan State Park 1 &middot; 2025-12-05</span>
         <span class="caption-filename">_DSF0446.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/john-bryan-state-park/_DSF0467.tif" download title="Download _DSF0467.jpg">
-        <img src="../img/jpg/john-bryan-state-park/_DSF0467.jpg" alt="John Bryan State Park 2" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/john-bryan-state-park/_DSF0467.tif" download title="John Bryan State Park 2">
+        <img src="../thumbs/john-bryan-state-park/_DSF0467.jpg" data-full="../img/jpg/john-bryan-state-park/_DSF0467.jpg" alt="John Bryan State Park 2" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">John Bryan State Park 2 &middot; 2025-12-05</span>
         <span class="caption-filename">_DSF0467.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/john-bryan-state-park/_DSF0470.tif" download title="Download _DSF0470.jpg">
-        <img src="../img/jpg/john-bryan-state-park/_DSF0470.jpg" alt="John Bryan State Park 3" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/john-bryan-state-park/_DSF0470.tif" download title="John Bryan State Park 3">
+        <img src="../thumbs/john-bryan-state-park/_DSF0470.jpg" data-full="../img/jpg/john-bryan-state-park/_DSF0470.jpg" alt="John Bryan State Park 3" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">John Bryan State Park 3 &middot; 2025-12-05</span>
         <span class="caption-filename">_DSF0470.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/john-bryan-state-park/_DSF0472.tif" download title="Download _DSF0472.jpg">
-        <img src="../img/jpg/john-bryan-state-park/_DSF0472.jpg" alt="John Bryan State Park 4" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/john-bryan-state-park/_DSF0472.tif" download title="John Bryan State Park 4">
+        <img src="../thumbs/john-bryan-state-park/_DSF0472.jpg" data-full="../img/jpg/john-bryan-state-park/_DSF0472.jpg" alt="John Bryan State Park 4" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">John Bryan State Park 4 &middot; 2025-12-05</span>
         <span class="caption-filename">_DSF0472.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/john-bryan-state-park/_DSF0488.tif" download title="Download _DSF0488.jpg">
-        <img src="../img/jpg/john-bryan-state-park/_DSF0488.jpg" alt="John Bryan State Park 5" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/john-bryan-state-park/_DSF0488.tif" download title="John Bryan State Park 5">
+        <img src="../thumbs/john-bryan-state-park/_DSF0488.jpg" data-full="../img/jpg/john-bryan-state-park/_DSF0488.jpg" alt="John Bryan State Park 5" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">John Bryan State Park 5 &middot; 2025-12-05</span>
         <span class="caption-filename">_DSF0488.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/john-bryan-state-park/_DSF0494.tif" download title="Download _DSF0494.jpg">
-        <img src="../img/jpg/john-bryan-state-park/_DSF0494.jpg" alt="John Bryan State Park 6" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/john-bryan-state-park/_DSF0494.tif" download title="John Bryan State Park 6">
+        <img src="../thumbs/john-bryan-state-park/_DSF0494.jpg" data-full="../img/jpg/john-bryan-state-park/_DSF0494.jpg" alt="John Bryan State Park 6" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">John Bryan State Park 6 &middot; 2025-12-05</span>
         <span class="caption-filename">_DSF0494.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/john-bryan-state-park/_DSF0497.tif" download title="Download _DSF0497.jpg">
-        <img src="../img/jpg/john-bryan-state-park/_DSF0497.jpg" alt="John Bryan State Park 7" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/john-bryan-state-park/_DSF0497.tif" download title="John Bryan State Park 7">
+        <img src="../thumbs/john-bryan-state-park/_DSF0497.jpg" data-full="../img/jpg/john-bryan-state-park/_DSF0497.jpg" alt="John Bryan State Park 7" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">John Bryan State Park 7 &middot; 2025-12-05</span>
         <span class="caption-filename">_DSF0497.jpg</span>
       </figcaption>
     </figure>
-    <button class="pli-view-all" data-index="0">View all 7 images</button>
   </div>
 </div>
 <nav class="site-nav">
@@ -327,47 +297,5 @@
 </footer>
 </div>
 <script src="../js/lightbox.js"></script>
-<script>
-(function () {
-  if (!window.matchMedia('(max-width: 480px)').matches) return;
-  var figures = Array.from(document.querySelectorAll('.site-figure'));
-  if (!figures.length) return;
-  var cur = 0;
-  figures[0].classList.add('carousel-active');
-  if (figures.length < 2) return;
-  var container = document.querySelector('.site-images');
-  var counter = document.createElement('div');
-  counter.className = 'carousel-counter';
-  counter.style.cssText = 'position:absolute;bottom:8px;right:8px;font-size:10px;font-family:monospace;color:var(--muted);letter-spacing:0.1em;pointer-events:none;z-index:3;';
-  counter.textContent = '1 / ' + figures.length;
-  container.appendChild(counter);
-  var btnPrev = document.createElement('button');
-  btnPrev.style.cssText = 'position:absolute;top:0;left:0;width:35%;height:100%;background:transparent;border:none;cursor:pointer;z-index:2;opacity:0;';
-  btnPrev.setAttribute('aria-label', 'Previous image');
-  container.appendChild(btnPrev);
-  var btnNext = document.createElement('button');
-  btnNext.style.cssText = 'position:absolute;top:0;right:0;width:35%;height:100%;background:transparent;border:none;cursor:pointer;z-index:2;opacity:0;';
-  btnNext.setAttribute('aria-label', 'Next image');
-  container.appendChild(btnNext);
-  function show(i) {
-    figures[cur].classList.remove('carousel-active');
-    cur = (i + figures.length) % figures.length;
-    figures[cur].classList.add('carousel-active');
-    counter.textContent = (cur + 1) + ' / ' + figures.length;
-  }
-  btnPrev.addEventListener('click', function () { show(cur - 1); });
-  btnNext.addEventListener('click', function () { show(cur + 1); });
-  var sx, sy;
-  container.addEventListener('touchstart', function (e) {
-    sx = e.touches[0].clientX;
-    sy = e.touches[0].clientY;
-  }, { passive: true });
-  container.addEventListener('touchend', function (e) {
-    var dx = e.changedTouches[0].clientX - sx;
-    var dy = e.changedTouches[0].clientY - sy;
-    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) show(dx < 0 ? cur + 1 : cur - 1);
-  }, { passive: true });
-})();
-</script>
 </body>
 </html>

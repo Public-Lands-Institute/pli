@@ -96,16 +96,17 @@
     margin: -11px 0;
   }
   .gps-link:hover { text-decoration: underline; }
-  .site-header { margin-bottom: 24px; }
+  .site-header { margin-bottom: 28px; }
   .site-header h1 {
-    font-size: 20px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.16em;
-    margin-bottom: 2px;
+    font-size: 26px;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin-bottom: 4px;
   }
   .site-header .state {
     font-size: 11px;
+    font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.2em;
     color: var(--muted);
@@ -115,59 +116,53 @@
     grid-template-columns: 1fr;
     gap: 32px;
   }
-  .site-data {
-    display: grid;
-    grid-template-columns: 148px 1fr;
-    font-size: 11px;
-    line-height: 1.55;
+  .site-record { align-content: start; }
+  .rec-section {
     border-top: 1px solid var(--border);
-    padding-top: 8px;
-    align-items: baseline;
+    padding-top: 14px;
+    margin-bottom: 18px;
+  }
+  .rec-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .rec-section p {
+    font-size: 13.5px;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+  .geo-era-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .geo-swatch { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .geo-era-name { font-size: 14px; font-weight: 300; }
+  .geo-mya { font-size: 11px; font-weight: 300; color: var(--muted); margin-left: auto; letter-spacing: 0.04em; }
+  .geo-bar-wrap { position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }
+  .geo-bar-fill { position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }
+  .geo-prose { color: var(--fg); }
+  .photo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
     align-content: start;
   }
-  .site-data dt {
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    font-size: 10px;
-    padding: 4px 0;
+  .ph { background: #1f1f1f; aspect-ratio: 1 / 1; overflow: hidden; }
+  .ph a { display: block; width: 100%; height: 100%; }
+  .ph img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    filter: grayscale(100%);
+    opacity: 0.92;
+    transition: opacity 0.15s;
   }
-  .site-data dd {
-    color: var(--fg);
-    padding: 4px 0 4px 12px;
-    margin: 0;
-  }
-  .site-images { display: flex; flex-direction: column; gap: 14px; }
-  .site-figure { border: 1px solid var(--border); background: #1f1f1f; }
-  .site-figure img { width: 100%; height: auto; display: block; filter: grayscale(100%); }
-  .site-figure figcaption {
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: var(--muted);
-    padding: 6px 8px;
-    border-top: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    gap: 8px;
-  }
-  .caption-filename {
-    color: var(--muted);
-    font-size: 9px;
-    letter-spacing: 0.08em;
-    flex-shrink: 0;
-    font-family: monospace;
-  }
+  .ph:hover img { opacity: 1; }
+  .ph figcaption { display: none; }
   .obs-header {
-    border-top: 1px solid var(--border);
+    grid-column: 1 / -1;
     padding: 10px 0 4px 0;
-    margin-top: 6px;
   }
-  .obs-header:first-child {
-    border-top: none;
-    padding-top: 0;
-    margin-top: 0;
-  }
+  .obs-header:first-child { padding-top: 0; }
   .obs-date {
     font-size: 10px;
     text-transform: uppercase;
@@ -176,21 +171,12 @@
     display: block;
   }
   .obs-notes {
-    font-size: 11px;
+    font-size: 12px;
+    font-weight: 300;
     color: var(--fg);
     margin-top: 4px;
-    line-height: 1.5;
+    line-height: 1.6;
   }
-  .pli-img-extra { display: none; }
-  .pli-view-all {
-    display: block; width: 100%; padding: 10px 0;
-    font-family: system-ui, sans-serif; font-size: 10px;
-    text-transform: uppercase; letter-spacing: 0.16em;
-    color: var(--muted); background: transparent;
-    border: 1px solid var(--border); cursor: pointer;
-    margin-top: 4px;
-  }
-  .pli-view-all:hover { color: var(--fg); }
   .site-nav {
     margin-top: 40px;
     padding-top: 12px;
@@ -205,19 +191,15 @@
     gap: 8px;
   }
   @media (min-width: 720px) {
-    .site-layout { grid-template-columns: 350px 1fr; gap: 48px; align-items: start; }
-    .site-data { position: sticky; top: 24px; }
+    .site-layout { grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
+    .site-record { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }
   }
   @media (min-width: 1148px) {
     .site-layout { grid-template-columns: 7fr 15fr; }
+    .photo-grid { grid-template-columns: 1fr 1fr 1fr; }
   }
-  @media (max-width: 480px) {
-    .site-data { grid-template-columns: 110px 1fr; }
-    .site-images { order: -1; position: relative; }
-    .site-data { order: 0; }
-    .site-figure { display: none; }
-    .site-figure.carousel-active { display: block; }
-    .obs-header { display: none; }
+  @media (max-width: 719px) {
+    .photo-grid { order: -1; }
   }
 </style>
 </head>
@@ -237,66 +219,54 @@
   <div class="state">KY</div>
 </div>
 <div class="site-layout">
-  <aside>
-    <dl class="site-data">
-      <dt>Geological age</dt><dd>~450 Mya Ordovician limestone and shale.</dd>
-      <dt>Epoch</dt><dd>Late Ordovician (Cincinnatian Series); Kope, Fairview, and Bull Fork formations.</dd>
-      <dt>Native lands</dt><dd>Adena culture (500 BCE-200 CE) · Shawnee (Shawanwaki) · Cherokee (Tsalagi); Adena moundbuilding culture occupied the Ohio River valley with documented sites in Boone County; Kentucky's interior served as contested hunting ground at the time of European contact; Iroquois Confederacy ceded their Ohio River corridor claim to the British Crown via Treaty of Fort Stanwix 1768; Cherokee ceded approximately 20 million acres including present-day Kentucky to the Transylvania Company via Treaty of Sycamore Shoals March 1775, opposed by Cherokee leader Dragging Canoe who called the cession a betrayal and withdrew to form the Chickamauga; Shawnee recognized the Ohio River as their southern boundary under Treaty of Camp Charlotte 1774, though many Shawnee rejected this cession; Shawnee and allied nations formally ceded remaining Ohio Valley claims via Treaty of Greenville 1795.</dd>
-      <dt>Displacement & Tenure</dt><dd>Shawnee territory recognized as south of the Ohio River under Treaty of Camp Charlotte (1774), though many Shawnee rejected this cession; Cherokee claim extinguished via Henderson Purchase (Treaty of Sycamore Shoals, 1775), voided by Virginia 1778; Iroquois claim to the Ohio River valley ceded to the British Crown via Treaty of Fort Stanwix 1768; northern Kentucky distributed as Virginia military bounty land grants prior to Kentucky statehood 1792; no federal Royce cession applies; the Dinsmore Woods parcel was part of approximately 700 acres purchased by James and Martha Dinsmore in 1839; Martha Munro Ferguson Breasted, a Dinsmore descendant, donated 107 acres to The Nature Conservancy in 1985; dedicated as a Kentucky State Nature Preserve May 16, 1990; Boone County purchased the preserve from the Conservancy using Kentucky Heritage Land Conservation Fund proceeds in November 2010.</dd>
-      <dt>Shadow History</dt><dd>The 107-acre nature preserve is the forested portion of the original Dinsmore farm, a working plantation on which enslaved people lived and labored from 1842 onward. James Dinsmore brought approximately ten to fifteen enslaved individuals from his Mississippi and Louisiana holdings to Kentucky upon completing Dinsmore Homestead in 1842. Those documented by name include: Coah (ca. 1790-1862), born in West Africa and previously enslaved in Mississippi and Louisiana; Nancy McGruder (ca. 1809-1906), purchased by Dinsmore ca. 1825 in Mississippi; Sally Taylor (ca. 1810-?) and her children John, Daniel, David, Nannette, Judy, Angeline, and Isaac. Jilson Hawkins (ca. 1811-1879) and Eliza Hawkins (ca. 1819-1903) remained in Louisiana until approximately 1862-63, joining the Kentucky farm during the Civil War. Nancy McGruder left the farm after the Civil War's end, then returned to work as a free person, living on the property until her death in 1906. The Dinsmore Homestead, listed on the National Register of Historic Places, installed interpretive panels documenting the African American experience on the farm from 1840 through 1865. The woodland tract that became the nature preserve was inseparable from this farm landscape; no public interpretation at the preserve connects the old-growth forest to the labor history of the people who lived among it.</dd>
-      <dt>Ecology</dt><dd>Old-growth mixed hardwood forest unlogged since at least the 1830s, dominated by sugar maple, white oak, hackberry, and walnut; understory of pawpaw thickets and rich spring ephemerals including trillium, bloodroot, dwarf larkspur, wood poppy, and trout lily on deep glacially influenced soils.</dd>
-      <dt>Hydrology</dt><dd>Ridgetop and slope site draining to Middle Creek, a direct tributary of the Ohio River; glacial outwash deposits underlie the site, producing deep, moisture-retentive soils unusual for Kentucky; Ohio River basin.</dd>
-      <dt>Acreage</dt><dd>107</dd>
-      <dt>GPS</dt><dd><a class="gps-link" href="https://maps.google.com/?q=38.9989,-84.8153" target="_blank" rel="noopener">38.9989° N, 84.8153° W</a></dd>
-    </dl>
-  </aside>
-  <div class="site-images">
-    <figure class="site-figure">
-      <a href="../img/full/dinsmore-woods/_DSF1233.tif" download title="Download _DSF1233.jpg">
-        <img src="../img/jpg/dinsmore-woods/_DSF1233.jpg" alt="Dinsmore Woods State Nature Preserve 1" loading="lazy"/>
+  <aside class="site-record">
+<div class="rec-section"><div class="rec-label">Geology</div><div class="geo-era-row"><div class="geo-swatch" style="background:#c8a86e"></div><span class="geo-era-name">Ordovician</span><span class="geo-mya">450 Mya</span></div><div class="geo-bar-wrap"><div class="geo-bar-fill" style="width:90%;background:#c8a86e;opacity:0.55"></div></div><p class="geo-prose">~450 Mya Ordovician limestone and shale.</p></div><div class="rec-section"><div class="rec-label">Epoch</div><p>Late Ordovician (Cincinnatian Series); Kope, Fairview, and Bull Fork formations.</p></div><div class="rec-section"><div class="rec-label">Native lands</div><p>Adena culture (500 BCE-200 CE) · Shawnee (Shawanwaki) · Cherokee (Tsalagi); Adena moundbuilding culture occupied the Ohio River valley with documented sites in Boone County; Kentucky's interior served as contested hunting ground at the time of European contact; Iroquois Confederacy ceded their Ohio River corridor claim to the British Crown via Treaty of Fort Stanwix 1768; Cherokee ceded approximately 20 million acres including present-day Kentucky to the Transylvania Company via Treaty of Sycamore Shoals March 1775, opposed by Cherokee leader Dragging Canoe who called the cession a betrayal and withdrew to form the Chickamauga; Shawnee recognized the Ohio River as their southern boundary under Treaty of Camp Charlotte 1774, though many Shawnee rejected this cession; Shawnee and allied nations formally ceded remaining Ohio Valley claims via Treaty of Greenville 1795.</p></div><div class="rec-section"><div class="rec-label">Displacement &amp; Tenure</div><p>Shawnee territory recognized as south of the Ohio River under Treaty of Camp Charlotte (1774), though many Shawnee rejected this cession; Cherokee claim extinguished via Henderson Purchase (Treaty of Sycamore Shoals, 1775), voided by Virginia 1778; Iroquois claim to the Ohio River valley ceded to the British Crown via Treaty of Fort Stanwix 1768; northern Kentucky distributed as Virginia military bounty land grants prior to Kentucky statehood 1792; no federal Royce cession applies; the Dinsmore Woods parcel was part of approximately 700 acres purchased by James and Martha Dinsmore in 1839; Martha Munro Ferguson Breasted, a Dinsmore descendant, donated 107 acres to The Nature Conservancy in 1985; dedicated as a Kentucky State Nature Preserve May 16, 1990; Boone County purchased the preserve from the Conservancy using Kentucky Heritage Land Conservation Fund proceeds in November 2010.</p></div><div class="rec-section"><div class="rec-label">Shadow History</div><p>The 107-acre nature preserve is the forested portion of the original Dinsmore farm, a working plantation on which enslaved people lived and labored from 1842 onward. James Dinsmore brought approximately ten to fifteen enslaved individuals from his Mississippi and Louisiana holdings to Kentucky upon completing Dinsmore Homestead in 1842. Those documented by name include: Coah (ca. 1790-1862), born in West Africa and previously enslaved in Mississippi and Louisiana; Nancy McGruder (ca. 1809-1906), purchased by Dinsmore ca. 1825 in Mississippi; Sally Taylor (ca. 1810-?) and her children John, Daniel, David, Nannette, Judy, Angeline, and Isaac. Jilson Hawkins (ca. 1811-1879) and Eliza Hawkins (ca. 1819-1903) remained in Louisiana until approximately 1862-63, joining the Kentucky farm during the Civil War. Nancy McGruder left the farm after the Civil War's end, then returned to work as a free person, living on the property until her death in 1906. The Dinsmore Homestead, listed on the National Register of Historic Places, installed interpretive panels documenting the African American experience on the farm from 1840 through 1865. The woodland tract that became the nature preserve was inseparable from this farm landscape; no public interpretation at the preserve connects the old-growth forest to the labor history of the people who lived among it.</p></div><div class="rec-section"><div class="rec-label">Ecology</div><p>Old-growth mixed hardwood forest unlogged since at least the 1830s, dominated by sugar maple, white oak, hackberry, and walnut; understory of pawpaw thickets and rich spring ephemerals including trillium, bloodroot, dwarf larkspur, wood poppy, and trout lily on deep glacially influenced soils.</p></div><div class="rec-section"><div class="rec-label">Hydrology</div><p>Ridgetop and slope site draining to Middle Creek, a direct tributary of the Ohio River; glacial outwash deposits underlie the site, producing deep, moisture-retentive soils unusual for Kentucky; Ohio River basin.</p></div><div class="rec-section"><div class="rec-label">Acreage</div><p>107</p></div><div class="rec-section"><div class="rec-label">GPS</div><p><a class="gps-link" href="https://maps.google.com/?q=38.9989,-84.8153" target="_blank" rel="noopener">38.9989° N, 84.8153° W</a></p></div>  </aside>
+  <div class="photo-grid">
+    <figure class="ph">
+      <a href="../img/full/dinsmore-woods/_DSF1233.tif" download title="Dinsmore Woods State Nature Preserve 1">
+        <img src="../thumbs/dinsmore-woods/_DSF1233.jpg" data-full="../img/jpg/dinsmore-woods/_DSF1233.jpg" alt="Dinsmore Woods State Nature Preserve 1" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Dinsmore Woods State Nature Preserve 1 &middot; 2026-04-08</span>
         <span class="caption-filename">_DSF1233.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/dinsmore-woods/_DSF1235.tif" download title="Download _DSF1235.jpg">
-        <img src="../img/jpg/dinsmore-woods/_DSF1235.jpg" alt="Dinsmore Woods State Nature Preserve 2" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/dinsmore-woods/_DSF1235.tif" download title="Dinsmore Woods State Nature Preserve 2">
+        <img src="../thumbs/dinsmore-woods/_DSF1235.jpg" data-full="../img/jpg/dinsmore-woods/_DSF1235.jpg" alt="Dinsmore Woods State Nature Preserve 2" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Dinsmore Woods State Nature Preserve 2 &middot; 2026-04-08</span>
         <span class="caption-filename">_DSF1235.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/dinsmore-woods/_DSF1236.tif" download title="Download _DSF1236.jpg">
-        <img src="../img/jpg/dinsmore-woods/_DSF1236.jpg" alt="Dinsmore Woods State Nature Preserve 3" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/dinsmore-woods/_DSF1236.tif" download title="Dinsmore Woods State Nature Preserve 3">
+        <img src="../thumbs/dinsmore-woods/_DSF1236.jpg" data-full="../img/jpg/dinsmore-woods/_DSF1236.jpg" alt="Dinsmore Woods State Nature Preserve 3" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Dinsmore Woods State Nature Preserve 3 &middot; 2026-04-08</span>
         <span class="caption-filename">_DSF1236.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/dinsmore-woods/_DSF1243.tif" download title="Download _DSF1243.jpg">
-        <img src="../img/jpg/dinsmore-woods/_DSF1243.jpg" alt="Dinsmore Woods State Nature Preserve 4" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/dinsmore-woods/_DSF1243.tif" download title="Dinsmore Woods State Nature Preserve 4">
+        <img src="../thumbs/dinsmore-woods/_DSF1243.jpg" data-full="../img/jpg/dinsmore-woods/_DSF1243.jpg" alt="Dinsmore Woods State Nature Preserve 4" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Dinsmore Woods State Nature Preserve 4 &middot; 2026-04-08</span>
         <span class="caption-filename">_DSF1243.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/dinsmore-woods/_DSF1255.tif" download title="Download _DSF1255.jpg">
-        <img src="../img/jpg/dinsmore-woods/_DSF1255.jpg" alt="Dinsmore Woods State Nature Preserve 5" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/dinsmore-woods/_DSF1255.tif" download title="Dinsmore Woods State Nature Preserve 5">
+        <img src="../thumbs/dinsmore-woods/_DSF1255.jpg" data-full="../img/jpg/dinsmore-woods/_DSF1255.jpg" alt="Dinsmore Woods State Nature Preserve 5" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Dinsmore Woods State Nature Preserve 5 &middot; 2026-04-08</span>
         <span class="caption-filename">_DSF1255.jpg</span>
       </figcaption>
     </figure>
-    <button class="pli-view-all" data-index="0">View all 5 images</button>
   </div>
 </div>
 <nav class="site-nav">
@@ -309,47 +279,5 @@
 </footer>
 </div>
 <script src="../js/lightbox.js"></script>
-<script>
-(function () {
-  if (!window.matchMedia('(max-width: 480px)').matches) return;
-  var figures = Array.from(document.querySelectorAll('.site-figure'));
-  if (!figures.length) return;
-  var cur = 0;
-  figures[0].classList.add('carousel-active');
-  if (figures.length < 2) return;
-  var container = document.querySelector('.site-images');
-  var counter = document.createElement('div');
-  counter.className = 'carousel-counter';
-  counter.style.cssText = 'position:absolute;bottom:8px;right:8px;font-size:10px;font-family:monospace;color:var(--muted);letter-spacing:0.1em;pointer-events:none;z-index:3;';
-  counter.textContent = '1 / ' + figures.length;
-  container.appendChild(counter);
-  var btnPrev = document.createElement('button');
-  btnPrev.style.cssText = 'position:absolute;top:0;left:0;width:35%;height:100%;background:transparent;border:none;cursor:pointer;z-index:2;opacity:0;';
-  btnPrev.setAttribute('aria-label', 'Previous image');
-  container.appendChild(btnPrev);
-  var btnNext = document.createElement('button');
-  btnNext.style.cssText = 'position:absolute;top:0;right:0;width:35%;height:100%;background:transparent;border:none;cursor:pointer;z-index:2;opacity:0;';
-  btnNext.setAttribute('aria-label', 'Next image');
-  container.appendChild(btnNext);
-  function show(i) {
-    figures[cur].classList.remove('carousel-active');
-    cur = (i + figures.length) % figures.length;
-    figures[cur].classList.add('carousel-active');
-    counter.textContent = (cur + 1) + ' / ' + figures.length;
-  }
-  btnPrev.addEventListener('click', function () { show(cur - 1); });
-  btnNext.addEventListener('click', function () { show(cur + 1); });
-  var sx, sy;
-  container.addEventListener('touchstart', function (e) {
-    sx = e.touches[0].clientX;
-    sy = e.touches[0].clientY;
-  }, { passive: true });
-  container.addEventListener('touchend', function (e) {
-    var dx = e.changedTouches[0].clientX - sx;
-    var dy = e.changedTouches[0].clientY - sy;
-    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) show(dx < 0 ? cur + 1 : cur - 1);
-  }, { passive: true });
-})();
-</script>
 </body>
 </html>

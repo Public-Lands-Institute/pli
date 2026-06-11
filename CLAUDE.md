@@ -231,19 +231,19 @@ Do not write generic statements. Be specific about which nations, which events, 
 
 ---
 
-## Lightbox and mobile layout
+## Lightbox and site page layout
+Site pages mirror the map panel: a sticky record column (geology block with era
+swatch and timeline bar, then uppercase-labeled sections) beside a square photo
+grid. Grid cells use thumbs/<slug>/<filename> when available (falling back to
+img/jpg), with the full JPG in a data-full attribute.
+
 Site pages load js/lightbox.js at the bottom of <body>. It intercepts clicks on
 figure download links and opens a fullscreen lightbox viewer instead of triggering
 a download. The download TIFF button lives inside the lightbox. Do not add onclick
 handlers or image interaction logic anywhere in the page template -- lightbox.js
 reads the existing figure structure automatically via .caption-title and
-.caption-filename. No changes to sites.json are needed.
+.caption-filename (kept in a hidden figcaption) and prefers img data-full for the
+viewer image. No changes to sites.json are needed.
 
-On mobile (max-width: 480px), CSS order properties cause .site-images to render
-above .site-data, so photographs appear before the metadata fields. The desktop
-two-column layout (min-width: 720px) is unaffected.
-
-On mobile, lightbox.js also caps visible images at 4. Sites with more than 4
-images show a "Show N more" button after the fourth figure; tapping it reveals
-the rest. This is handled entirely in JS — no changes to the page template or
-sites.json are needed. Sites with 4 or fewer images are unaffected.
+On mobile (max-width: 719px), CSS order places the photo grid above the record
+column. The desktop two-column layout (min-width: 720px) is unaffected.

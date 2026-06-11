@@ -395,6 +395,38 @@ SHARED_CSS = '''  :root {
   }
   .gps-link:hover { text-decoration: underline; }'''
 
+# Paleozoic-and-later eras matched against geological_age text; color + onset Mya
+GEO_TIMESCALE = [
+    ('Cambrian', '#a0522d', 541), ('Ordovician', '#c8a86e', 485),
+    ('Silurian', '#7ecfc0', 444), ('Devonian', '#4aaa78', 419),
+    ('Mississippian', '#3d7fbf', 359), ('Pennsylvanian', '#5d5abf', 323),
+    ('Permian', '#9b59b6', 299), ('Triassic', '#e07050', 252),
+    ('Jurassic', '#c8a840', 201), ('Cretaceous', '#d4b840', 145),
+    ('Paleogene', '#d4704a', 66), ('Neogene', '#c85a8a', 23),
+    ('Quaternary', '#8c8c8c', 2.6), ('Pleistocene', '#8c8c8c', 2.6),
+]
+EARTH_TIMELINE_MYA = 541
+
+def make_geo_block(geo_text):
+    """Era swatch + timeline bar + full geological_age prose, mirroring the map panel."""
+    if not geo_text:
+        return ''
+    g = geo_text.lower()
+    matched = [(e, c, o) for e, c, o in GEO_TIMESCALE if e.lower() in g]
+    era_row = ''
+    bar = ''
+    if matched:
+        era, color, oldest = max(matched, key=lambda t: t[2])
+        m = re.search(r'~?([\d,]+(?:-[\d,]+)?)\s*[Mm]ya', geo_text)
+        mya = f'<span class="geo-mya">{m.group(1).replace(",", "")} Mya</span>' if m else ''
+        pct = min(100, round(oldest / EARTH_TIMELINE_MYA * 100))
+        era_row = (f'<div class="geo-era-row"><div class="geo-swatch" style="background:{color}"></div>'
+                   f'<span class="geo-era-name">{era}</span>{mya}</div>')
+        bar = (f'<div class="geo-bar-wrap"><div class="geo-bar-fill" '
+               f'style="width:{pct}%;background:{color};opacity:0.55"></div></div>')
+    return (f'<div class="rec-section"><div class="rec-label">Geology</div>'
+            f'{era_row}{bar}<p class="geo-prose">{geo_text}</p></div>')
+
 def make_site_page(site, all_sites):
     slug  = site['slug']
     name  = site['name']
@@ -405,56 +437,51 @@ def make_site_page(site, all_sites):
     prev_site = all_sites[idx - 1] if idx > 0 else None
     next_site = all_sites[idx + 1] if idx < len(all_sites) - 1 else None
 
-    nav_prev = f'<a href="{prev_site["slug"]}.html">\u2190 {prev_site["name"]}</a>' if prev_site else '<span></span>'
-    nav_next = f'<a href="{next_site["slug"]}.html">{next_site["name"]} \u2192</a>' if next_site else '<span></span>'
+    nav_prev = f'<a href="{prev_site["slug"]}.html">← {prev_site["name"]}</a>' if prev_site else '<span></span>'
+    nav_next = f'<a href="{next_site["slug"]}.html">{next_site["name"]} →</a>' if next_site else '<span></span>'
 
-    # Build fields
-    GEO_KEYS = {'geological_age', 'epoch'}
-    REMAINING_KEYS = {'native_lands', 'displacement_tenure', 'ecology', 'hydrology', 'acreage', 'gps', 'shadow_history'}
+    def sec(label, val):
+        if not val:
+            return ''
+        return f'<div class="rec-section"><div class="rec-label">{label}</div><p>{val}</p></div>'
 
-    fields_html = ''
-    for key, label in FIELDS:
-        if key in GEO_KEYS:
-            val = site.get(key, '')
-            if val:
-                fields_html += f'      <dt>{label}</dt><dd>{val}</dd>\n'
+    gps_val = ''
+    if site.get('gps'):
+        lat = site.get('lat', '')
+        lng = site.get('lng', '')
+        gps_val = f'<a class="gps-link" href="https://maps.google.com/?q={lat},{lng}" target="_blank" rel="noopener">{site["gps"]}</a>'
 
-    for key, label in FIELDS:
-        if key in REMAINING_KEYS:
-            val = site.get(key, '')
-            if val:
-                if key == 'gps':
-                    lat = site.get('lat', '')
-                    lng = site.get('lng', '')
-                    val = f'<a class="gps-link" href="https://maps.google.com/?q={lat},{lng}" target="_blank" rel="noopener">{val}</a>'
-                fields_html += f'      <dt>{label}</dt><dd>{val}</dd>\n'
+    sections = make_geo_block(site.get('geological_age', ''))
+    sections += sec('Epoch', site.get('epoch', ''))
+    sections += sec('Native lands', site.get('native_lands', ''))
+    sections += sec('Displacement &amp; Tenure', site.get('displacement_tenure', ''))
+    sections += sec('Shadow History', site.get('shadow_history', ''))
+    sections += sec('Ecology', site.get('ecology', ''))
+    sections += sec('Hydrology', site.get('hydrology', ''))
+    sections += sec('Acreage', site.get('acreage', ''))
+    sections += sec('GPS', gps_val)
 
     show_obs_headers = len(observations) > 1 or any(obs.get('notes') for obs in observations)
-    total_images = sum(len(obs['images']) for obs in observations)
     images_html = ''
-    first_image_done = False
     for obs in observations:
         if show_obs_headers:
             label = format_obs_date(obs['date']) if obs['date'] else 'Undated'
-            notes_html = f'\n      <p class="obs-notes">{obs["notes"]}</p>' if obs.get('notes') else ''
-            extra_cls = ' pli-img-extra' if first_image_done else ''
-            images_html += f'    <div class="obs-header{extra_cls}">\n      <span class="obs-date">{label}</span>{notes_html}\n    </div>\n'
+            notes_html = f'<p class="obs-notes">{obs["notes"]}</p>' if obs.get('notes') else ''
+            images_html += f'    <div class="obs-header"><span class="obs-date">{label}</span>{notes_html}</div>\n'
         for img in obs['images']:
             caption = f'{name} {img["caption_index"]}'
             date_str = f' &middot; {img["date"]}' if img['date'] else ''
-            extra_cls = ' pli-img-extra' if first_image_done else ''
-            images_html += f'''    <figure class="site-figure{extra_cls}">
-      <a href="../{img["tif"]}" download title="Download {img["camera_filename"]}">
-        <img src="../{img["jpg"]}" alt="{caption}" loading="lazy"/>
+            thumb_local = os.path.join('thumbs', slug, img['camera_filename'])
+            grid_src = f'thumbs/{slug}/{img["camera_filename"]}' if os.path.exists(thumb_local) else img['jpg']
+            images_html += f'''    <figure class="ph">
+      <a href="../{img["tif"]}" download title="{caption}">
+        <img src="../{grid_src}" data-full="../{img["jpg"]}" alt="{caption}" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">{caption}{date_str}</span>
         <span class="caption-filename">{img["camera_filename"]}</span>
       </figcaption>
     </figure>\n'''
-            first_image_done = True
-    if total_images > 1:
-        images_html += f'    <button class="pli-view-all" data-index="0">View all {total_images} images</button>\n'
 
     return f'''<!DOCTYPE html>
 <html lang="en">
@@ -468,11 +495,11 @@ def make_site_page(site, all_sites):
   gtag('config', 'G-TMR79M95R4');
 </script>
 <meta charset="utf-8"/>
-<title>{name} \u2014 Public Lands Institute</title>
+<title>{name} — Public Lands Institute</title>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="index, follow" name="robots"/>
 <meta content="{name}. Public Lands Institute photographic index. CC0 Public Domain." name="description"/>
-<meta property="og:title" content="{name} \u2014 Public Lands Institute"/>
+<meta property="og:title" content="{name} — Public Lands Institute"/>
 <meta property="og:description" content="{name}. An ongoing photographic index and open-access archive of American public lands. CC0 Public Domain."/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://publiclandsinstitute.net/sites/{slug}.html"/>
@@ -484,16 +511,17 @@ def make_site_page(site, all_sites):
 {FONT_LINKS}
 <style>
 {SHARED_CSS}
-  .site-header {{ margin-bottom: 24px; }}
+  .site-header {{ margin-bottom: 28px; }}
   .site-header h1 {{
-    font-size: 20px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.16em;
-    margin-bottom: 2px;
+    font-size: 26px;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin-bottom: 4px;
   }}
   .site-header .state {{
     font-size: 11px;
+    font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.2em;
     color: var(--muted);
@@ -503,59 +531,53 @@ def make_site_page(site, all_sites):
     grid-template-columns: 1fr;
     gap: 32px;
   }}
-  .site-data {{
-    display: grid;
-    grid-template-columns: 148px 1fr;
-    font-size: 11px;
-    line-height: 1.55;
+  .site-record {{ align-content: start; }}
+  .rec-section {{
     border-top: 1px solid var(--border);
-    padding-top: 8px;
-    align-items: baseline;
+    padding-top: 14px;
+    margin-bottom: 18px;
+  }}
+  .rec-label {{
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }}
+  .rec-section p {{
+    font-size: 13.5px;
+    font-weight: 300;
+    line-height: 1.7;
+  }}
+  .geo-era-row {{ display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }}
+  .geo-swatch {{ width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }}
+  .geo-era-name {{ font-size: 14px; font-weight: 300; }}
+  .geo-mya {{ font-size: 11px; font-weight: 300; color: var(--muted); margin-left: auto; letter-spacing: 0.04em; }}
+  .geo-bar-wrap {{ position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }}
+  .geo-bar-fill {{ position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }}
+  .geo-prose {{ color: var(--fg); }}
+  .photo-grid {{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
     align-content: start;
   }}
-  .site-data dt {{
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    font-size: 10px;
-    padding: 4px 0;
+  .ph {{ background: #1f1f1f; aspect-ratio: 1 / 1; overflow: hidden; }}
+  .ph a {{ display: block; width: 100%; height: 100%; }}
+  .ph img {{
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    filter: grayscale(100%);
+    opacity: 0.92;
+    transition: opacity 0.15s;
   }}
-  .site-data dd {{
-    color: var(--fg);
-    padding: 4px 0 4px 12px;
-    margin: 0;
-  }}
-  .site-images {{ display: flex; flex-direction: column; gap: 14px; }}
-  .site-figure {{ border: 1px solid var(--border); background: #1f1f1f; }}
-  .site-figure img {{ width: 100%; height: auto; display: block; filter: grayscale(100%); }}
-  .site-figure figcaption {{
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: var(--muted);
-    padding: 6px 8px;
-    border-top: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    gap: 8px;
-  }}
-  .caption-filename {{
-    color: var(--muted);
-    font-size: 9px;
-    letter-spacing: 0.08em;
-    flex-shrink: 0;
-    font-family: monospace;
-  }}
+  .ph:hover img {{ opacity: 1; }}
+  .ph figcaption {{ display: none; }}
   .obs-header {{
-    border-top: 1px solid var(--border);
+    grid-column: 1 / -1;
     padding: 10px 0 4px 0;
-    margin-top: 6px;
   }}
-  .obs-header:first-child {{
-    border-top: none;
-    padding-top: 0;
-    margin-top: 0;
-  }}
+  .obs-header:first-child {{ padding-top: 0; }}
   .obs-date {{
     font-size: 10px;
     text-transform: uppercase;
@@ -564,21 +586,12 @@ def make_site_page(site, all_sites):
     display: block;
   }}
   .obs-notes {{
-    font-size: 11px;
+    font-size: 12px;
+    font-weight: 300;
     color: var(--fg);
     margin-top: 4px;
-    line-height: 1.5;
+    line-height: 1.6;
   }}
-  .pli-img-extra {{ display: none; }}
-  .pli-view-all {{
-    display: block; width: 100%; padding: 10px 0;
-    font-family: system-ui, sans-serif; font-size: 10px;
-    text-transform: uppercase; letter-spacing: 0.16em;
-    color: var(--muted); background: transparent;
-    border: 1px solid var(--border); cursor: pointer;
-    margin-top: 4px;
-  }}
-  .pli-view-all:hover {{ color: var(--fg); }}
   .site-nav {{
     margin-top: 40px;
     padding-top: 12px;
@@ -593,19 +606,15 @@ def make_site_page(site, all_sites):
     gap: 8px;
   }}
   @media (min-width: 720px) {{
-    .site-layout {{ grid-template-columns: 350px 1fr; gap: 48px; align-items: start; }}
-    .site-data {{ position: sticky; top: 24px; }}
+    .site-layout {{ grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }}
+    .site-record {{ position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }}
   }}
   @media (min-width: 1148px) {{
     .site-layout {{ grid-template-columns: 7fr 15fr; }}
+    .photo-grid {{ grid-template-columns: 1fr 1fr 1fr; }}
   }}
-  @media (max-width: 480px) {{
-    .site-data {{ grid-template-columns: 110px 1fr; }}
-    .site-images {{ order: -1; position: relative; }}
-    .site-data {{ order: 0; }}
-    .site-figure {{ display: none; }}
-    .site-figure.carousel-active {{ display: block; }}
-    .obs-header {{ display: none; }}
+  @media (max-width: 719px) {{
+    .photo-grid {{ order: -1; }}
   }}
 </style>
 </head>
@@ -625,11 +634,9 @@ def make_site_page(site, all_sites):
   <div class="state">{state}</div>
 </div>
 <div class="site-layout">
-  <aside>
-    <dl class="site-data">
-{fields_html}    </dl>
-  </aside>
-  <div class="site-images">
+  <aside class="site-record">
+{sections}  </aside>
+  <div class="photo-grid">
 {images_html}  </div>
 </div>
 <nav class="site-nav">
@@ -637,53 +644,11 @@ def make_site_page(site, all_sites):
   {nav_next}
 </nav>
 <footer>
-  <span>Public Lands Institute \u2014 ongoing project</span>
+  <span>Public Lands Institute — ongoing project</span>
   <span>CC0 Public Domain</span>
 </footer>
 </div>
 <script src="../js/lightbox.js"></script>
-<script>
-(function () {{
-  if (!window.matchMedia('(max-width: 480px)').matches) return;
-  var figures = Array.from(document.querySelectorAll('.site-figure'));
-  if (!figures.length) return;
-  var cur = 0;
-  figures[0].classList.add('carousel-active');
-  if (figures.length < 2) return;
-  var container = document.querySelector('.site-images');
-  var counter = document.createElement('div');
-  counter.className = 'carousel-counter';
-  counter.style.cssText = 'position:absolute;bottom:8px;right:8px;font-size:10px;font-family:monospace;color:var(--muted);letter-spacing:0.1em;pointer-events:none;z-index:3;';
-  counter.textContent = '1 / ' + figures.length;
-  container.appendChild(counter);
-  var btnPrev = document.createElement('button');
-  btnPrev.style.cssText = 'position:absolute;top:0;left:0;width:35%;height:100%;background:transparent;border:none;cursor:pointer;z-index:2;opacity:0;';
-  btnPrev.setAttribute('aria-label', 'Previous image');
-  container.appendChild(btnPrev);
-  var btnNext = document.createElement('button');
-  btnNext.style.cssText = 'position:absolute;top:0;right:0;width:35%;height:100%;background:transparent;border:none;cursor:pointer;z-index:2;opacity:0;';
-  btnNext.setAttribute('aria-label', 'Next image');
-  container.appendChild(btnNext);
-  function show(i) {{
-    figures[cur].classList.remove('carousel-active');
-    cur = (i + figures.length) % figures.length;
-    figures[cur].classList.add('carousel-active');
-    counter.textContent = (cur + 1) + ' / ' + figures.length;
-  }}
-  btnPrev.addEventListener('click', function () {{ show(cur - 1); }});
-  btnNext.addEventListener('click', function () {{ show(cur + 1); }});
-  var sx, sy;
-  container.addEventListener('touchstart', function (e) {{
-    sx = e.touches[0].clientX;
-    sy = e.touches[0].clientY;
-  }}, {{ passive: true }});
-  container.addEventListener('touchend', function (e) {{
-    var dx = e.changedTouches[0].clientX - sx;
-    var dy = e.changedTouches[0].clientY - sy;
-    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) show(dx < 0 ? cur + 1 : cur - 1);
-  }}, {{ passive: true }});
-}})();
-</script>
 </body>
 </html>'''
 

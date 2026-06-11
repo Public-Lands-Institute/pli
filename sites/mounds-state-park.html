@@ -96,16 +96,17 @@
     margin: -11px 0;
   }
   .gps-link:hover { text-decoration: underline; }
-  .site-header { margin-bottom: 24px; }
+  .site-header { margin-bottom: 28px; }
   .site-header h1 {
-    font-size: 20px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.16em;
-    margin-bottom: 2px;
+    font-size: 26px;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin-bottom: 4px;
   }
   .site-header .state {
     font-size: 11px;
+    font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.2em;
     color: var(--muted);
@@ -115,59 +116,53 @@
     grid-template-columns: 1fr;
     gap: 32px;
   }
-  .site-data {
-    display: grid;
-    grid-template-columns: 148px 1fr;
-    font-size: 11px;
-    line-height: 1.55;
+  .site-record { align-content: start; }
+  .rec-section {
     border-top: 1px solid var(--border);
-    padding-top: 8px;
-    align-items: baseline;
+    padding-top: 14px;
+    margin-bottom: 18px;
+  }
+  .rec-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .rec-section p {
+    font-size: 13.5px;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+  .geo-era-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .geo-swatch { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .geo-era-name { font-size: 14px; font-weight: 300; }
+  .geo-mya { font-size: 11px; font-weight: 300; color: var(--muted); margin-left: auto; letter-spacing: 0.04em; }
+  .geo-bar-wrap { position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }
+  .geo-bar-fill { position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }
+  .geo-prose { color: var(--fg); }
+  .photo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
     align-content: start;
   }
-  .site-data dt {
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    font-size: 10px;
-    padding: 4px 0;
+  .ph { background: #1f1f1f; aspect-ratio: 1 / 1; overflow: hidden; }
+  .ph a { display: block; width: 100%; height: 100%; }
+  .ph img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    filter: grayscale(100%);
+    opacity: 0.92;
+    transition: opacity 0.15s;
   }
-  .site-data dd {
-    color: var(--fg);
-    padding: 4px 0 4px 12px;
-    margin: 0;
-  }
-  .site-images { display: flex; flex-direction: column; gap: 14px; }
-  .site-figure { border: 1px solid var(--border); background: #1f1f1f; }
-  .site-figure img { width: 100%; height: auto; display: block; filter: grayscale(100%); }
-  .site-figure figcaption {
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: var(--muted);
-    padding: 6px 8px;
-    border-top: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    gap: 8px;
-  }
-  .caption-filename {
-    color: var(--muted);
-    font-size: 9px;
-    letter-spacing: 0.08em;
-    flex-shrink: 0;
-    font-family: monospace;
-  }
+  .ph:hover img { opacity: 1; }
+  .ph figcaption { display: none; }
   .obs-header {
-    border-top: 1px solid var(--border);
+    grid-column: 1 / -1;
     padding: 10px 0 4px 0;
-    margin-top: 6px;
   }
-  .obs-header:first-child {
-    border-top: none;
-    padding-top: 0;
-    margin-top: 0;
-  }
+  .obs-header:first-child { padding-top: 0; }
   .obs-date {
     font-size: 10px;
     text-transform: uppercase;
@@ -176,21 +171,12 @@
     display: block;
   }
   .obs-notes {
-    font-size: 11px;
+    font-size: 12px;
+    font-weight: 300;
     color: var(--fg);
     margin-top: 4px;
-    line-height: 1.5;
+    line-height: 1.6;
   }
-  .pli-img-extra { display: none; }
-  .pli-view-all {
-    display: block; width: 100%; padding: 10px 0;
-    font-family: system-ui, sans-serif; font-size: 10px;
-    text-transform: uppercase; letter-spacing: 0.16em;
-    color: var(--muted); background: transparent;
-    border: 1px solid var(--border); cursor: pointer;
-    margin-top: 4px;
-  }
-  .pli-view-all:hover { color: var(--fg); }
   .site-nav {
     margin-top: 40px;
     padding-top: 12px;
@@ -205,19 +191,15 @@
     gap: 8px;
   }
   @media (min-width: 720px) {
-    .site-layout { grid-template-columns: 350px 1fr; gap: 48px; align-items: start; }
-    .site-data { position: sticky; top: 24px; }
+    .site-layout { grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
+    .site-record { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }
   }
   @media (min-width: 1148px) {
     .site-layout { grid-template-columns: 7fr 15fr; }
+    .photo-grid { grid-template-columns: 1fr 1fr 1fr; }
   }
-  @media (max-width: 480px) {
-    .site-data { grid-template-columns: 110px 1fr; }
-    .site-images { order: -1; position: relative; }
-    .site-data { order: 0; }
-    .site-figure { display: none; }
-    .site-figure.carousel-active { display: block; }
-    .obs-header { display: none; }
+  @media (max-width: 719px) {
+    .photo-grid { order: -1; }
   }
 </style>
 </head>
@@ -237,111 +219,99 @@
   <div class="state">IN</div>
 </div>
 <div class="site-layout">
-  <aside>
-    <dl class="site-data">
-      <dt>Geological age</dt><dd>~420 Mya Silurian dolomite and limestone forming bedrock subcrop; Pleistocene Wisconsinan glacial till (Tipton Till Plain) blankets the upland surface; limestone bluffs exposed along the White River valley</dd>
-      <dt>Epoch</dt><dd>Late Silurian; Pleistocene (Wisconsinan) surficial landscape</dd>
-      <dt>Native lands</dt><dd>Adena culture (c. 250 BCE-50 CE) and Hopewell tradition (c. 100 BCE-500 CE) constructed and used the 10 earthworks; evidence of human occupation at the site from c. 8000 BCE through 1400 CE; a New Castle Phase affiliated Hopewell group built earthworks throughout the West Fork White River watershed; Delaware (Lenape; Lenapehoking) held the White River corridor as primary territory; Kikthawenund (Chief William Anderson, c. 1740-1831), Unalatchgo Lenape leader whose name means "creaking boughs," lived in what is now Madison County and signed the Treaty of Greenville (1795) as one of 14 Lenape leaders; the city of Anderson is named for him; Miami (Myaamiaki) jointly held the White River drainage; Delaware and Miami ceded Indiana lands via Treaty with the Delawares (October 3, 1818) and Treaty of St. Mary's (October 6, 1818), both encompassed within the New Purchase; Delaware reserved occupancy for three additional years, with Kikthawenund relocating approximately 1,350 Lenape to the Current River, Missouri in 1821</dd>
-      <dt>Displacement & Tenure</dt><dd>Treaty with the Delawares (October 3, 1818) ceded all Delaware Indiana claims including the White River corridor, incorporated within Royce Cession 15 (the New Purchase) ceded by the Miami October 6, 1818; Delaware reserved occupancy for three years, removing to Current River, Missouri by 1821; Bronnenberg family held and farmed more than 600 acres from the 1840s, protecting the southern enclosures from agricultural cultivation; Union Traction Company developed a 40-acre amusement park on the property beginning 1897, accessed by Interurban streetcar from Anderson; park closed 1929; Madison County Historical Society acquired the property and transferred it to the State of Indiana; established as Mounds State Park October 7, 1930</dd>
-      <dt>Shadow History</dt><dd>Union Traction's amusement park (1897-1929) operated directly on the earthwork complex; attractions included the roller coaster "Leap the Dips" (opened 1908), a skating rink, merry-go-round, and a section of the White River dammed for canoe rides, with the Great Mound serving as a visual landmark for the rides; Ball State University conducted multiple archaeological excavations at the site, including work in 1968-69 on the Great Mound that revealed three successive clay floors with ash layers indicating repeated ceremonial use; two human burials were recovered, a 50-year-old adult male and the redeposited partial remains of a cremated individual, along with copper beads, mica, obsidian, seashells, a limestone platform pipe, deer bone awls, and pottery; disposition and repatriation status of recovered remains and artifacts under NAGPRA has not been confirmed in publicly available records</dd>
-      <dt>Ecology</dt><dd>Mixed hardwood upland forest with spring wildflower communities; limestone bluffs and riparian woodland along the White River; diverse songbird populations and waterfowl; 10 miles of trails through varied woodland habitat</dd>
-      <dt>Hydrology</dt><dd>West Fork of the White River flows along the park's southern boundary, forming limestone bluffs; spring-fed creeks drain the interior woodland; artesian wells documented within the park; part of the West Fork White River sub-watershed draining central Indiana</dd>
-      <dt>Acreage</dt><dd>290</dd>
-      <dt>GPS</dt><dd><a class="gps-link" href="https://maps.google.com/?q=40.0958,-85.6201" target="_blank" rel="noopener">40.0958° N, 85.6201° W</a></dd>
-    </dl>
-  </aside>
-  <div class="site-images">
-    <figure class="site-figure">
-      <a href="../img/full/mounds-state-park/_DSF2411.tif" download title="Download _DSF2411.jpg">
-        <img src="../img/jpg/mounds-state-park/_DSF2411.jpg" alt="Mounds State Park 1" loading="lazy"/>
+  <aside class="site-record">
+<div class="rec-section"><div class="rec-label">Geology</div><div class="geo-era-row"><div class="geo-swatch" style="background:#7ecfc0"></div><span class="geo-era-name">Silurian</span><span class="geo-mya">420 Mya</span></div><div class="geo-bar-wrap"><div class="geo-bar-fill" style="width:82%;background:#7ecfc0;opacity:0.55"></div></div><p class="geo-prose">~420 Mya Silurian dolomite and limestone forming bedrock subcrop; Pleistocene Wisconsinan glacial till (Tipton Till Plain) blankets the upland surface; limestone bluffs exposed along the White River valley</p></div><div class="rec-section"><div class="rec-label">Epoch</div><p>Late Silurian; Pleistocene (Wisconsinan) surficial landscape</p></div><div class="rec-section"><div class="rec-label">Native lands</div><p>Adena culture (c. 250 BCE-50 CE) and Hopewell tradition (c. 100 BCE-500 CE) constructed and used the 10 earthworks; evidence of human occupation at the site from c. 8000 BCE through 1400 CE; a New Castle Phase affiliated Hopewell group built earthworks throughout the West Fork White River watershed; Delaware (Lenape; Lenapehoking) held the White River corridor as primary territory; Kikthawenund (Chief William Anderson, c. 1740-1831), Unalatchgo Lenape leader whose name means "creaking boughs," lived in what is now Madison County and signed the Treaty of Greenville (1795) as one of 14 Lenape leaders; the city of Anderson is named for him; Miami (Myaamiaki) jointly held the White River drainage; Delaware and Miami ceded Indiana lands via Treaty with the Delawares (October 3, 1818) and Treaty of St. Mary's (October 6, 1818), both encompassed within the New Purchase; Delaware reserved occupancy for three additional years, with Kikthawenund relocating approximately 1,350 Lenape to the Current River, Missouri in 1821</p></div><div class="rec-section"><div class="rec-label">Displacement &amp; Tenure</div><p>Treaty with the Delawares (October 3, 1818) ceded all Delaware Indiana claims including the White River corridor, incorporated within Royce Cession 15 (the New Purchase) ceded by the Miami October 6, 1818; Delaware reserved occupancy for three years, removing to Current River, Missouri by 1821; Bronnenberg family held and farmed more than 600 acres from the 1840s, protecting the southern enclosures from agricultural cultivation; Union Traction Company developed a 40-acre amusement park on the property beginning 1897, accessed by Interurban streetcar from Anderson; park closed 1929; Madison County Historical Society acquired the property and transferred it to the State of Indiana; established as Mounds State Park October 7, 1930</p></div><div class="rec-section"><div class="rec-label">Shadow History</div><p>Union Traction's amusement park (1897-1929) operated directly on the earthwork complex; attractions included the roller coaster "Leap the Dips" (opened 1908), a skating rink, merry-go-round, and a section of the White River dammed for canoe rides, with the Great Mound serving as a visual landmark for the rides; Ball State University conducted multiple archaeological excavations at the site, including work in 1968-69 on the Great Mound that revealed three successive clay floors with ash layers indicating repeated ceremonial use; two human burials were recovered, a 50-year-old adult male and the redeposited partial remains of a cremated individual, along with copper beads, mica, obsidian, seashells, a limestone platform pipe, deer bone awls, and pottery; disposition and repatriation status of recovered remains and artifacts under NAGPRA has not been confirmed in publicly available records</p></div><div class="rec-section"><div class="rec-label">Ecology</div><p>Mixed hardwood upland forest with spring wildflower communities; limestone bluffs and riparian woodland along the White River; diverse songbird populations and waterfowl; 10 miles of trails through varied woodland habitat</p></div><div class="rec-section"><div class="rec-label">Hydrology</div><p>West Fork of the White River flows along the park's southern boundary, forming limestone bluffs; spring-fed creeks drain the interior woodland; artesian wells documented within the park; part of the West Fork White River sub-watershed draining central Indiana</p></div><div class="rec-section"><div class="rec-label">Acreage</div><p>290</p></div><div class="rec-section"><div class="rec-label">GPS</div><p><a class="gps-link" href="https://maps.google.com/?q=40.0958,-85.6201" target="_blank" rel="noopener">40.0958° N, 85.6201° W</a></p></div>  </aside>
+  <div class="photo-grid">
+    <figure class="ph">
+      <a href="../img/full/mounds-state-park/_DSF2411.tif" download title="Mounds State Park 1">
+        <img src="../thumbs/mounds-state-park/_DSF2411.jpg" data-full="../img/jpg/mounds-state-park/_DSF2411.jpg" alt="Mounds State Park 1" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mounds State Park 1 &middot; 2026-05-22</span>
         <span class="caption-filename">_DSF2411.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/mounds-state-park/_DSF2419.tif" download title="Download _DSF2419.jpg">
-        <img src="../img/jpg/mounds-state-park/_DSF2419.jpg" alt="Mounds State Park 2" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/mounds-state-park/_DSF2419.tif" download title="Mounds State Park 2">
+        <img src="../thumbs/mounds-state-park/_DSF2419.jpg" data-full="../img/jpg/mounds-state-park/_DSF2419.jpg" alt="Mounds State Park 2" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mounds State Park 2 &middot; 2026-05-22</span>
         <span class="caption-filename">_DSF2419.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/mounds-state-park/_DSF2421.tif" download title="Download _DSF2421.jpg">
-        <img src="../img/jpg/mounds-state-park/_DSF2421.jpg" alt="Mounds State Park 3" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/mounds-state-park/_DSF2421.tif" download title="Mounds State Park 3">
+        <img src="../thumbs/mounds-state-park/_DSF2421.jpg" data-full="../img/jpg/mounds-state-park/_DSF2421.jpg" alt="Mounds State Park 3" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mounds State Park 3 &middot; 2026-05-22</span>
         <span class="caption-filename">_DSF2421.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/mounds-state-park/_DSF2426.tif" download title="Download _DSF2426.jpg">
-        <img src="../img/jpg/mounds-state-park/_DSF2426.jpg" alt="Mounds State Park 4" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/mounds-state-park/_DSF2426.tif" download title="Mounds State Park 4">
+        <img src="../thumbs/mounds-state-park/_DSF2426.jpg" data-full="../img/jpg/mounds-state-park/_DSF2426.jpg" alt="Mounds State Park 4" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mounds State Park 4 &middot; 2026-05-22</span>
         <span class="caption-filename">_DSF2426.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/mounds-state-park/_DSF2432.tif" download title="Download _DSF2432.jpg">
-        <img src="../img/jpg/mounds-state-park/_DSF2432.jpg" alt="Mounds State Park 5" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/mounds-state-park/_DSF2432.tif" download title="Mounds State Park 5">
+        <img src="../thumbs/mounds-state-park/_DSF2432.jpg" data-full="../img/jpg/mounds-state-park/_DSF2432.jpg" alt="Mounds State Park 5" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mounds State Park 5 &middot; 2026-05-22</span>
         <span class="caption-filename">_DSF2432.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/mounds-state-park/_DSF2437.tif" download title="Download _DSF2437.jpg">
-        <img src="../img/jpg/mounds-state-park/_DSF2437.jpg" alt="Mounds State Park 6" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/mounds-state-park/_DSF2437.tif" download title="Mounds State Park 6">
+        <img src="../thumbs/mounds-state-park/_DSF2437.jpg" data-full="../img/jpg/mounds-state-park/_DSF2437.jpg" alt="Mounds State Park 6" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mounds State Park 6 &middot; 2026-05-22</span>
         <span class="caption-filename">_DSF2437.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/mounds-state-park/_DSF2443.tif" download title="Download _DSF2443.jpg">
-        <img src="../img/jpg/mounds-state-park/_DSF2443.jpg" alt="Mounds State Park 7" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/mounds-state-park/_DSF2443.tif" download title="Mounds State Park 7">
+        <img src="../thumbs/mounds-state-park/_DSF2443.jpg" data-full="../img/jpg/mounds-state-park/_DSF2443.jpg" alt="Mounds State Park 7" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mounds State Park 7 &middot; 2026-05-22</span>
         <span class="caption-filename">_DSF2443.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/mounds-state-park/_DSF2445.tif" download title="Download _DSF2445.jpg">
-        <img src="../img/jpg/mounds-state-park/_DSF2445.jpg" alt="Mounds State Park 8" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/mounds-state-park/_DSF2445.tif" download title="Mounds State Park 8">
+        <img src="../thumbs/mounds-state-park/_DSF2445.jpg" data-full="../img/jpg/mounds-state-park/_DSF2445.jpg" alt="Mounds State Park 8" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mounds State Park 8 &middot; 2026-05-22</span>
         <span class="caption-filename">_DSF2445.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/mounds-state-park/_DSF2449.tif" download title="Download _DSF2449.jpg">
-        <img src="../img/jpg/mounds-state-park/_DSF2449.jpg" alt="Mounds State Park 9" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/mounds-state-park/_DSF2449.tif" download title="Mounds State Park 9">
+        <img src="../thumbs/mounds-state-park/_DSF2449.jpg" data-full="../img/jpg/mounds-state-park/_DSF2449.jpg" alt="Mounds State Park 9" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mounds State Park 9 &middot; 2026-05-22</span>
         <span class="caption-filename">_DSF2449.jpg</span>
       </figcaption>
     </figure>
-    <figure class="site-figure pli-img-extra">
-      <a href="../img/full/mounds-state-park/_DSF2454.tif" download title="Download _DSF2454.jpg">
-        <img src="../img/jpg/mounds-state-park/_DSF2454.jpg" alt="Mounds State Park 10" loading="lazy"/>
+    <figure class="ph">
+      <a href="../img/full/mounds-state-park/_DSF2454.tif" download title="Mounds State Park 10">
+        <img src="../thumbs/mounds-state-park/_DSF2454.jpg" data-full="../img/jpg/mounds-state-park/_DSF2454.jpg" alt="Mounds State Park 10" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mounds State Park 10 &middot; 2026-05-22</span>
         <span class="caption-filename">_DSF2454.jpg</span>
       </figcaption>
     </figure>
-    <button class="pli-view-all" data-index="0">View all 10 images</button>
   </div>
 </div>
 <nav class="site-nav">
@@ -354,47 +324,5 @@
 </footer>
 </div>
 <script src="../js/lightbox.js"></script>
-<script>
-(function () {
-  if (!window.matchMedia('(max-width: 480px)').matches) return;
-  var figures = Array.from(document.querySelectorAll('.site-figure'));
-  if (!figures.length) return;
-  var cur = 0;
-  figures[0].classList.add('carousel-active');
-  if (figures.length < 2) return;
-  var container = document.querySelector('.site-images');
-  var counter = document.createElement('div');
-  counter.className = 'carousel-counter';
-  counter.style.cssText = 'position:absolute;bottom:8px;right:8px;font-size:10px;font-family:monospace;color:var(--muted);letter-spacing:0.1em;pointer-events:none;z-index:3;';
-  counter.textContent = '1 / ' + figures.length;
-  container.appendChild(counter);
-  var btnPrev = document.createElement('button');
-  btnPrev.style.cssText = 'position:absolute;top:0;left:0;width:35%;height:100%;background:transparent;border:none;cursor:pointer;z-index:2;opacity:0;';
-  btnPrev.setAttribute('aria-label', 'Previous image');
-  container.appendChild(btnPrev);
-  var btnNext = document.createElement('button');
-  btnNext.style.cssText = 'position:absolute;top:0;right:0;width:35%;height:100%;background:transparent;border:none;cursor:pointer;z-index:2;opacity:0;';
-  btnNext.setAttribute('aria-label', 'Next image');
-  container.appendChild(btnNext);
-  function show(i) {
-    figures[cur].classList.remove('carousel-active');
-    cur = (i + figures.length) % figures.length;
-    figures[cur].classList.add('carousel-active');
-    counter.textContent = (cur + 1) + ' / ' + figures.length;
-  }
-  btnPrev.addEventListener('click', function () { show(cur - 1); });
-  btnNext.addEventListener('click', function () { show(cur + 1); });
-  var sx, sy;
-  container.addEventListener('touchstart', function (e) {
-    sx = e.touches[0].clientX;
-    sy = e.touches[0].clientY;
-  }, { passive: true });
-  container.addEventListener('touchend', function (e) {
-    var dx = e.changedTouches[0].clientX - sx;
-    var dy = e.changedTouches[0].clientY - sy;
-    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) show(dx < 0 ? cur + 1 : cur - 1);
-  }, { passive: true });
-})();
-</script>
 </body>
 </html>
