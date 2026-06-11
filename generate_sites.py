@@ -1467,7 +1467,20 @@ with open('about.html', 'w') as f:
     f.write(make_about_page(sites))
 print('  about.html')
 
-print(f'\nDone \u2014 {len(sites)} site pages + archive + map index + about.')
+print('\nGenerating sitemap.xml...')
+BASE_URL = 'https://publiclandsinstitute.net'
+_today = _dt.date.today().isoformat()
+_urls = [f'{BASE_URL}/', f'{BASE_URL}/archive.html', f'{BASE_URL}/about.html']
+_urls += [f'{BASE_URL}/sites/{s["slug"]}.html' for s in sites]
+with open('sitemap.xml', 'w') as f:
+    f.write('<?xml version="1.0" encoding="UTF-8"?>\n')
+    f.write('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n')
+    for u in _urls:
+        f.write(f'  <url><loc>{u}</loc><lastmod>{_today}</lastmod></url>\n')
+    f.write('</urlset>\n')
+print(f'  sitemap.xml ({len(_urls)} URLs)')
+
+print(f'\nDone \u2014 {len(sites)} site pages + archive + map index + about + sitemap.')
 
 import subprocess as _sp
 _backup = os.path.expanduser(
