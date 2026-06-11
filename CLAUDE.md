@@ -51,6 +51,11 @@ Then deploy (two-phase — image uploads are handled separately by the "update" 
     --exclude '.git/' --exclude '.env' --exclude '.claude/' \
     --exclude 'Archive/' --exclude '__pycache__/' --exclude '*.pyc' \
     --exclude '*.py' --exclude 'img/' \
+    --exclude 'CLAUDE.md' --exclude 'PLI-*' --exclude '*.bak*' \
+    --exclude '*.docx' --exclude 'banner.html' --exclude 'index2.html' \
+    --exclude 'archive2.html' --exclude 'Draft*' --exclude 'Database Style/' \
+    --exclude 'no image/' --exclude 'single image/' --exclude 'deploy.sh' \
+    --exclude '.gitignore' --exclude '.DS_Store' \
     -e "ssh -o StrictHostKeyChecking=no -o PubkeyAuthentication=no -o ControlMaster=auto -o ControlPath=/tmp/pli_ssh_mux -o ControlPersist=300 -o ServerAliveInterval=60 -o ServerAliveCountMax=3" \
     . "$DREAMHOST_USER@$DREAMHOST_HOST:$DREAMHOST_REMOTE_PATH/"
   # Phase 3: Fix permissions on existing files — rsync --chmod only applies to files transferred in that run
@@ -187,6 +192,11 @@ sshpass -p "$DREAMHOST_PASS" rsync -avz --checksum --delete \
   --exclude '.git/' --exclude '.env' --exclude '.claude/' \
   --exclude 'Archive/' --exclude '__pycache__/' --exclude '*.pyc' \
   --exclude '*.py' --exclude 'img/' \
+  --exclude 'CLAUDE.md' --exclude 'PLI-*' --exclude '*.bak*' \
+  --exclude '*.docx' --exclude 'banner.html' --exclude 'index2.html' \
+  --exclude 'archive2.html' --exclude 'Draft*' --exclude 'Database Style/' \
+  --exclude 'no image/' --exclude 'single image/' --exclude 'deploy.sh' \
+  --exclude '.gitignore' --exclude '.DS_Store' \
   -e "ssh -o StrictHostKeyChecking=no -o PubkeyAuthentication=no -o ControlMaster=auto -o ControlPath=/tmp/pli_ssh_mux -o ControlPersist=300 -o ServerAliveInterval=60 -o ServerAliveCountMax=3" \
   . "$DREAMHOST_USER@$DREAMHOST_HOST:$DREAMHOST_REMOTE_PATH/"
 sshpass -p "$DREAMHOST_PASS" ssh \
