@@ -610,6 +610,7 @@ def make_site_page(site, all_sites):
   <nav class="header-nav">
     <a href="../sites.html">Sites</a>
     <a href="../archive.html">Archive</a>
+    <a href="../about.html">About</a>
   </nav>
 </header>
 <div class="divider"></div>
@@ -783,6 +784,7 @@ def make_archive_page(all_sites):
   <nav class="header-nav">
     <a href="sites.html">Sites</a>
     <a href="archive.html" class="active">Archive</a>
+    <a href="about.html">About</a>
   </nav>
 </header>
 <div class="divider"></div>
@@ -790,6 +792,88 @@ def make_archive_page(all_sites):
 {rows}
 <footer>
   <span>Public Lands Institute \u2014 ongoing project</span>
+  <span>CC0 Public Domain</span>
+</footer>
+</div>
+</body>
+</html>'''
+
+
+def make_about_page(all_sites):
+    total_images = sum(len(get_all_images_for_site(s)) for s in all_sites)
+    n_states = len({s['state'] for s in all_sites})
+
+    return f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TMR79M95R4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){{dataLayer.push(arguments);}}
+  gtag('js', new Date());
+  gtag('config', 'G-TMR79M95R4');
+</script>
+<meta charset="utf-8"/>
+<title>About — Public Lands Institute</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="index, follow" name="robots"/>
+<meta content="About the Public Lands Institute: an ongoing photographic index and open-access archive of American public lands. CC0 Public Domain." name="description"/>
+<meta property="og:title" content="About — Public Lands Institute"/>
+<meta property="og:description" content="About the Public Lands Institute: an ongoing photographic index and open-access archive of American public lands. CC0 Public Domain."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://publiclandsinstitute.net/about.html"/>
+<meta property="og:site_name" content="Public Lands Institute"/>
+<link href="https://publiclandsinstitute.net/about.html" rel="canonical"/>
+<link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
+<style>
+{SHARED_CSS}
+  .about-body {{
+    max-width: 620px;
+  }}
+  .about-body h2 {{
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+    margin: 36px 0 10px 0;
+  }}
+  .about-body h2:first-child {{ margin-top: 0; }}
+  .about-body p {{
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 14px;
+  }}
+  .about-body a {{ border-bottom: 1px solid var(--border); }}
+  .about-body a:hover {{ text-decoration: none; border-bottom-color: var(--fg); }}
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="logotype"><a href="index.html">Public Lands Institute</a></div>
+  <nav class="header-nav">
+    <a href="sites.html">Sites</a>
+    <a href="archive.html">Archive</a>
+    <a href="about.html" class="active">About</a>
+  </nav>
+</header>
+<div class="divider"></div>
+<div class="about-body">
+  <h2>The project</h2>
+  <p>The Public Lands Institute is an ongoing photographic index and open-access archive of American public lands. The project pairs field photography with structured documentation, treating each site as a subject with multiple layers of recorded history rather than as scenic landscape. The index currently holds {len(all_sites)} sites across {n_states} states, documented in {total_images} photographs, all dedicated to the public domain.</p>
+
+  <h2>Sources</h2>
+  <p>Site records draw on primary repositories: EPA Superfund and cleanup databases; National Park Service administrative histories; National Archives Civilian Conservation Corps records; Library of Congress Chronicling America; federal and state court records; Royce cession maps and treaty texts; <a href="https://native-land.ca" target="_blank" rel="noopener">native-land.ca</a> territory data; and <a href="https://www.inaturalist.org" target="_blank" rel="noopener">iNaturalist</a> research grade observations. Travel writing, tourism copy, and managing agency press releases are not accepted as sources.</p>
+
+  <h2>Public domain</h2>
+  <p>Every photograph is dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">Creative Commons CC0 1.0 Universal</a>. Full resolution TIFF and RAW files are freely downloadable from the <a href="archive.html">archive</a> and from <a href="https://commons.wikimedia.org/w/index.php?title=Special:MediaSearch&search=Public+Lands+Institute" target="_blank" rel="noopener">Wikimedia Commons</a>. No attribution is required and no permission is needed for any use. The intent is infrastructural: imagery and research about public land should be public in the same way the land is.</p>
+</div>
+<footer>
+  <span>Public Lands Institute — ongoing project</span>
   <span>CC0 Public Domain</span>
 </footer>
 </div>
@@ -1960,6 +2044,7 @@ def make_index_page(all_sites, meta):
   <nav class="header-nav">
     <a href="#" class="active">Sites</a>
     <a href="archive.html">Archive</a>
+    <a href="about.html">About</a>
   </nav>
 </header>
 <div class="divider"></div>
@@ -2490,6 +2575,11 @@ print('\nGenerating sites.html...')
 with open('sites.html', 'w') as f:
     f.write(make_index_page(sites, SITES_META))
 print('  sites.html')
+
+print('\nGenerating about.html...')
+with open('about.html', 'w') as f:
+    f.write(make_about_page(sites))
+print('  about.html')
 
 print(f'\nDone \u2014 {len(sites)} site pages + archive + index + sites index.')
 
