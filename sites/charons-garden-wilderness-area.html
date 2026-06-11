@@ -142,24 +142,40 @@
   .geo-bar-wrap { position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }
   .geo-bar-fill { position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }
   .geo-prose { color: var(--fg); }
-  .photo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    align-content: start;
+  .photo-pane { min-width: 0; }
+  .photo-scroll {
+    display: flex; flex-direction: column; gap: 4px;
+    overflow-y: auto; min-height: 0; flex: 1;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.18) transparent;
   }
-  .ph { background: #1f1f1f; aspect-ratio: 1 / 1; overflow: hidden; }
-  .ph a { display: block; width: 100%; height: 100%; }
+  .photo-scroll::-webkit-scrollbar { width: 6px; }
+  .photo-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); }
+  .ph { background: #1f1f1f; flex-shrink: 0; }
+  .ph a { display: block; width: 100%; }
   .ph img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
+    width: 100%; height: auto; display: block;
     filter: grayscale(100%);
     opacity: 0.92;
     transition: opacity 0.15s;
   }
   .ph:hover img { opacity: 1; }
   .ph figcaption { display: none; }
+  .photo-foot {
+    flex-shrink: 0;
+    padding-top: 12px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+  }
+  .plb-view-all {
+    font-family: inherit; font-size: 10px; font-weight: 400;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); background: none; border: none;
+    cursor: pointer; padding: 0;
+  }
+  .plb-view-all:hover { color: var(--fg); }
   .obs-header {
-    grid-column: 1 / -1;
     padding: 10px 0 4px 0;
   }
   .obs-header:first-child { padding-top: 0; }
@@ -192,14 +208,14 @@
   }
   @media (min-width: 720px) {
     .site-layout { grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
-    .site-record { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }
+    .photo-pane { position: sticky; top: 24px; height: calc(100vh - 48px); display: flex; flex-direction: column; }
   }
   @media (min-width: 1148px) {
     .site-layout { grid-template-columns: 7fr 15fr; }
-    .photo-grid { grid-template-columns: 1fr 1fr 1fr; }
   }
   @media (max-width: 719px) {
-    .photo-grid { order: -1; }
+    .photo-pane { order: -1; display: flex; flex-direction: column; }
+    .photo-scroll { max-height: 70vh; }
   }
 </style>
 </head>
@@ -221,43 +237,48 @@
 <div class="site-layout">
   <aside class="site-record">
 <div class="rec-section"><div class="rec-label">Geology</div><p class="geo-prose">~525 million years ago (bedrock).</p></div><div class="rec-section"><div class="rec-label">Epoch</div><p>Cambrian period; Furongian epoch; among the oldest exposed rock in the southern Great Plains; basement exhumed through erosion of overlying Paleozoic and Mesozoic cover.</p></div><div class="rec-section"><div class="rec-label">Native lands</div><p>Comanche (Nʉmʉnʉʉ) · Kiowa · Wichita (Kitikiti'sh) · Apache; Wichita Mountains used as refuge and gathering ground; Comanche and Kiowa held this territory until Kiowa-Comanche-Apache Reservation established 1867.</p></div><div class="rec-section"><div class="rec-label">Displacement &amp; Tenure</div><p>Cession 510: Treaty with the Kiowa, Comanche, and Apache (Medicine Lodge Creek, 1867); Cession 485: Agreement with the Comanche, Kiowa, and Apache (Jerome Agreement, 1892, ratified 1900); Congress carved 61,500 acres directly out of the Kiowa-Comanche-Apache Reservation as the Wichita Forest Reserve on July 4, 1901; the 5,723-acre wilderness was designated under the Wilderness Act of 1964; the broader 8,570-acre Wichita Mountains Wilderness designated by Congress in 1970.</p></div><div class="rec-section"><div class="rec-label">Shadow History</div><p>The Wichita Mountains formed the core of Comancheria; after the Red River War of 1874-75, in which Colonel Ranald Mackenzie destroyed the last major Comanche winter camp at Palo Duro Canyon (September 28, 1874) and slaughtered approximately 1,400 horses, all surviving Comanche bands were confined to the Kiowa-Comanche-Apache Reservation surrounding Fort Sill; Quanah Parker's band, among the last holdouts, surrendered June 2, 1875; 74 men identified as war leaders were imprisoned at Fort Marion, Florida; the Jerome Agreement (negotiated 1892, ratified June 6, 1900) extracted approximately 2.5 million acres of KCA surplus lands over sustained Kiowa opposition; on July 4, 1901 -- the same day President McKinley proclaimed the KCA surplus land lottery open -- McKinley issued Proclamation 459 establishing the 57,120-acre Wichita Forest Reserve on those ceded lands, making the conservation of these mountains directly contingent on the dispossession of the Comanche and Kiowa. Charon's Garden Wilderness Area was established by Public Law 91-504 (October 23, 1970), making it one of the first wilderness areas designated within a National Wildlife Refuge under the FWS system; a companion North Mountain Unit was designated simultaneously but carries heavily restricted public access.</p></div><div class="rec-section"><div class="rec-label">Ecology</div><p>Mixed-grass prairie; post oak savanna; granite outcrop community; federally listed black-capped vireo habitat; no mechanized access.</p></div><div class="rec-section"><div class="rec-label">Hydrology</div><p>Ephemeral streams draining granite uplands; vernal pools in boulder depressions; no permanent surface water.</p></div><div class="rec-section"><div class="rec-label">Acreage</div><p>5,723 acres</p></div><div class="rec-section"><div class="rec-label">GPS</div><p><a class="gps-link" href="https://maps.google.com/?q=34.726,-98.688" target="_blank" rel="noopener">34.7260° N, 98.6880° W</a></p></div>  </aside>
-  <div class="photo-grid">
-    <figure class="ph">
+  <div class="photo-pane">
+    <div class="photo-scroll">
+    <figure class="ph" data-raw="../img/RAW/_DSF0602.RAF" data-xmp="../img/RAW/_DSF0602.xmp">
       <a href="../img/full/charons-garden-wilderness-area/_DSF0602.tif" download title="Charon's Garden Wilderness Area 1">
-        <img src="../thumbs/charons-garden-wilderness-area/_DSF0602.jpg" data-full="../img/jpg/charons-garden-wilderness-area/_DSF0602.jpg" alt="Charon's Garden Wilderness Area 1" loading="lazy"/>
+        <img src="../img/jpg/charons-garden-wilderness-area/_DSF0602.jpg" alt="Charon's Garden Wilderness Area 1" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Charon's Garden Wilderness Area 1 &middot; 2026-01-07</span>
         <span class="caption-filename">_DSF0602.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0607.RAF" data-xmp="../img/RAW/_DSF0607.xmp">
       <a href="../img/full/charons-garden-wilderness-area/_DSF0607.tif" download title="Charon's Garden Wilderness Area 2">
-        <img src="../thumbs/charons-garden-wilderness-area/_DSF0607.jpg" data-full="../img/jpg/charons-garden-wilderness-area/_DSF0607.jpg" alt="Charon's Garden Wilderness Area 2" loading="lazy"/>
+        <img src="../img/jpg/charons-garden-wilderness-area/_DSF0607.jpg" alt="Charon's Garden Wilderness Area 2" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Charon's Garden Wilderness Area 2 &middot; 2026-01-07</span>
         <span class="caption-filename">_DSF0607.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0615.RAF" data-xmp="../img/RAW/_DSF0615.xmp">
       <a href="../img/full/charons-garden-wilderness-area/_DSF0615.tif" download title="Charon's Garden Wilderness Area 3">
-        <img src="../thumbs/charons-garden-wilderness-area/_DSF0615.jpg" data-full="../img/jpg/charons-garden-wilderness-area/_DSF0615.jpg" alt="Charon's Garden Wilderness Area 3" loading="lazy"/>
+        <img src="../img/jpg/charons-garden-wilderness-area/_DSF0615.jpg" alt="Charon's Garden Wilderness Area 3" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Charon's Garden Wilderness Area 3 &middot; 2026-01-07</span>
         <span class="caption-filename">_DSF0615.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0620.RAF" data-xmp="../img/RAW/_DSF0620.xmp">
       <a href="../img/full/charons-garden-wilderness-area/_DSF0620.tif" download title="Charon's Garden Wilderness Area 4">
-        <img src="../thumbs/charons-garden-wilderness-area/_DSF0620.jpg" data-full="../img/jpg/charons-garden-wilderness-area/_DSF0620.jpg" alt="Charon's Garden Wilderness Area 4" loading="lazy"/>
+        <img src="../img/jpg/charons-garden-wilderness-area/_DSF0620.jpg" alt="Charon's Garden Wilderness Area 4" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Charon's Garden Wilderness Area 4 &middot; 2026-01-07</span>
         <span class="caption-filename">_DSF0620.jpg</span>
       </figcaption>
     </figure>
+    </div>
+    <div class="photo-foot">
+      <button class="plb-view-all">View all 4 images →</button>
+    </div>
   </div>
 </div>
 <nav class="site-nav">

@@ -142,24 +142,40 @@
   .geo-bar-wrap { position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }
   .geo-bar-fill { position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }
   .geo-prose { color: var(--fg); }
-  .photo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    align-content: start;
+  .photo-pane { min-width: 0; }
+  .photo-scroll {
+    display: flex; flex-direction: column; gap: 4px;
+    overflow-y: auto; min-height: 0; flex: 1;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.18) transparent;
   }
-  .ph { background: #1f1f1f; aspect-ratio: 1 / 1; overflow: hidden; }
-  .ph a { display: block; width: 100%; height: 100%; }
+  .photo-scroll::-webkit-scrollbar { width: 6px; }
+  .photo-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); }
+  .ph { background: #1f1f1f; flex-shrink: 0; }
+  .ph a { display: block; width: 100%; }
   .ph img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
+    width: 100%; height: auto; display: block;
     filter: grayscale(100%);
     opacity: 0.92;
     transition: opacity 0.15s;
   }
   .ph:hover img { opacity: 1; }
   .ph figcaption { display: none; }
+  .photo-foot {
+    flex-shrink: 0;
+    padding-top: 12px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+  }
+  .plb-view-all {
+    font-family: inherit; font-size: 10px; font-weight: 400;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); background: none; border: none;
+    cursor: pointer; padding: 0;
+  }
+  .plb-view-all:hover { color: var(--fg); }
   .obs-header {
-    grid-column: 1 / -1;
     padding: 10px 0 4px 0;
   }
   .obs-header:first-child { padding-top: 0; }
@@ -192,14 +208,14 @@
   }
   @media (min-width: 720px) {
     .site-layout { grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
-    .site-record { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }
+    .photo-pane { position: sticky; top: 24px; height: calc(100vh - 48px); display: flex; flex-direction: column; }
   }
   @media (min-width: 1148px) {
     .site-layout { grid-template-columns: 7fr 15fr; }
-    .photo-grid { grid-template-columns: 1fr 1fr 1fr; }
   }
   @media (max-width: 719px) {
-    .photo-grid { order: -1; }
+    .photo-pane { order: -1; display: flex; flex-direction: column; }
+    .photo-scroll { max-height: 70vh; }
   }
 </style>
 </head>
@@ -221,259 +237,264 @@
 <div class="site-layout">
   <aside class="site-record">
 <div class="rec-section"><div class="rec-label">Geology</div><p class="geo-prose">~340 million years ago (limestone bedrock); cave passages formed over last 10 million years.</p></div><div class="rec-section"><div class="rec-label">Epoch</div><p>Mississippian period; St. Louis and Ste. Genevieve limestone formations; karst dissolution ongoing since Pliocene.</p></div><div class="rec-section"><div class="rec-label">Native lands</div><p>Shawnee (Shawanwaki) · Cherokee · Chickasaw · Osage; cave known to indigenous peoples 4,000+ years; mummified remains recovered from deep passages; forced removal from Kentucky by early 19th century.</p></div><div class="rec-section"><div class="rec-label">Displacement &amp; Tenure</div><p>Cherokee, Shawnee, and Yuchi territory; no federal cession treaty identified for this location; saltpeter mined by enslaved African American men, many leased from neighboring states, under ownership of Charles Wilkins and Fleming Gatewood during the War of 1812 era, producing approximately 115,000 pounds of saltpeter in 1814; Stephen Bishop, Mat Bransford, and Nicholas Bransford, all enslaved, served as the cave's primary guides beginning in 1838, mapping its passages and building its national reputation; Congress authorized the park in 1926, triggering eminent domain proceedings against more than 600 farming families; park formally established July 1, 1941.</p></div><div class="rec-section"><div class="rec-label">Shadow History</div><p>In 1842, cave owner Dr. John Croghan moved 16 tuberculosis patients into the cave believing its constant temperature would cure consumption; enslaved workers built two stone cottages and eight wooden huts inside the cave; five patients died inside the cave, their bodies laid on what became known as Corpse Rock; Croghan died of tuberculosis in 1849; CCC Company 510, an all-Black company and the first CCC camp established in Kentucky (May 22, 1933), was placed at Mammoth Cave specifically because of its remoteness from white communities; when the Decree of Eminent Domain was issued against 507 families on 54,000 acres, Black families who had lived and worked the land were displaced without provision for resettlement, while white men retained their positions as guides; landowners widely reported receiving below-market compensation, and more than 70 cemeteries remain within park boundaries today; a pre-Columbian man now called Lost John was displayed publicly in the cave until the mid-1970s; a mummified woman known as Fawn Hoof, recovered in 1811, was exhibited at the 1876 and 1893 World's Fairs and transferred to the Smithsonian where the remains are held today.</p></div><div class="rec-section"><div class="rec-label">Ecology</div><p>Temperate deciduous forest above; cave ecosystem with endemic troglobitic species; endangered Indiana bat and Kentucky cave shrimp; Green River corridor.</p></div><div class="rec-section"><div class="rec-label">Hydrology</div><p>Green River and Nolin River; vast karst aquifer; 400+ miles of surveyed passages; Echo River flows underground.</p></div><div class="rec-section"><div class="rec-label">Acreage</div><p>54,012 acres</p></div><div class="rec-section"><div class="rec-label">GPS</div><p><a class="gps-link" href="https://maps.google.com/?q=37.1877,-86.1" target="_blank" rel="noopener">37.1877° N, 86.1000° W</a></p></div>  </aside>
-  <div class="photo-grid">
-    <figure class="ph">
+  <div class="photo-pane">
+    <div class="photo-scroll">
+    <figure class="ph" data-raw="../img/RAW/_DSC1366.NEF" data-xmp="../img/RAW/_DSC1366.xmp">
       <a href="../img/full/mammoth-cave-national-park/_DSC1366.tif" download title="Mammoth Cave National Park 1">
-        <img src="../thumbs/mammoth-cave-national-park/_DSC1366.jpg" data-full="../img/jpg/mammoth-cave-national-park/_DSC1366.jpg" alt="Mammoth Cave National Park 1" loading="lazy"/>
+        <img src="../img/jpg/mammoth-cave-national-park/_DSC1366.jpg" alt="Mammoth Cave National Park 1" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park 1 &middot; 2026-03-07</span>
         <span class="caption-filename">_DSC1366.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSC1393.NEF" data-xmp="../img/RAW/_DSC1393.xmp">
       <a href="../img/full/mammoth-cave-national-park/_DSC1393.tif" download title="Mammoth Cave National Park 2">
-        <img src="../thumbs/mammoth-cave-national-park/_DSC1393.jpg" data-full="../img/jpg/mammoth-cave-national-park/_DSC1393.jpg" alt="Mammoth Cave National Park 2" loading="lazy"/>
+        <img src="../img/jpg/mammoth-cave-national-park/_DSC1393.jpg" alt="Mammoth Cave National Park 2" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park 2 &middot; 2026-03-07</span>
         <span class="caption-filename">_DSC1393.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSC1446.NEF" data-xmp="../img/RAW/_DSC1446.xmp">
       <a href="../img/full/mammoth-cave-national-park/_DSC1446.tif" download title="Mammoth Cave National Park 3">
-        <img src="../thumbs/mammoth-cave-national-park/_DSC1446.jpg" data-full="../img/jpg/mammoth-cave-national-park/_DSC1446.jpg" alt="Mammoth Cave National Park 3" loading="lazy"/>
+        <img src="../img/jpg/mammoth-cave-national-park/_DSC1446.jpg" alt="Mammoth Cave National Park 3" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park 3 &middot; 2026-03-07</span>
         <span class="caption-filename">_DSC1446.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSC1449.NEF" data-xmp="../img/RAW/_DSC1449.xmp">
       <a href="../img/full/mammoth-cave-national-park/_DSC1449.tif" download title="Mammoth Cave National Park 4">
-        <img src="../thumbs/mammoth-cave-national-park/_DSC1449.jpg" data-full="../img/jpg/mammoth-cave-national-park/_DSC1449.jpg" alt="Mammoth Cave National Park 4" loading="lazy"/>
+        <img src="../img/jpg/mammoth-cave-national-park/_DSC1449.jpg" alt="Mammoth Cave National Park 4" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park 4 &middot; 2026-03-07</span>
         <span class="caption-filename">_DSC1449.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSC1455.NEF" data-xmp="../img/RAW/_DSC1455.xmp">
       <a href="../img/full/mammoth-cave-national-park/_DSC1455.tif" download title="Mammoth Cave National Park 5">
-        <img src="../thumbs/mammoth-cave-national-park/_DSC1455.jpg" data-full="../img/jpg/mammoth-cave-national-park/_DSC1455.jpg" alt="Mammoth Cave National Park 5" loading="lazy"/>
+        <img src="../img/jpg/mammoth-cave-national-park/_DSC1455.jpg" alt="Mammoth Cave National Park 5" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park 5 &middot; 2026-03-07</span>
         <span class="caption-filename">_DSC1455.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0822.RAF" data-xmp="../img/RAW/_DSF0822.xmp">
       <a href="../img/full/mammoth-cave-national-park/_DSF0822.tif" download title="Mammoth Cave National Park 6">
-        <img src="../thumbs/mammoth-cave-national-park/_DSF0822.jpg" data-full="../img/jpg/mammoth-cave-national-park/_DSF0822.jpg" alt="Mammoth Cave National Park 6" loading="lazy"/>
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0822.jpg" alt="Mammoth Cave National Park 6" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park 6 &middot; 2026-03-06</span>
         <span class="caption-filename">_DSF0822.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0830.RAF" data-xmp="../img/RAW/_DSF0830.xmp">
       <a href="../img/full/mammoth-cave-national-park/_DSF0830.tif" download title="Mammoth Cave National Park 7">
-        <img src="../thumbs/mammoth-cave-national-park/_DSF0830.jpg" data-full="../img/jpg/mammoth-cave-national-park/_DSF0830.jpg" alt="Mammoth Cave National Park 7" loading="lazy"/>
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0830.jpg" alt="Mammoth Cave National Park 7" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park 7 &middot; 2026-03-06</span>
         <span class="caption-filename">_DSF0830.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0843.RAF" data-xmp="../img/RAW/_DSF0843.xmp">
       <a href="../img/full/mammoth-cave-national-park/_DSF0843.tif" download title="Mammoth Cave National Park 8">
-        <img src="../thumbs/mammoth-cave-national-park/_DSF0843.jpg" data-full="../img/jpg/mammoth-cave-national-park/_DSF0843.jpg" alt="Mammoth Cave National Park 8" loading="lazy"/>
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0843.jpg" alt="Mammoth Cave National Park 8" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park 8 &middot; 2026-03-06</span>
         <span class="caption-filename">_DSF0843.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0844.RAF" data-xmp="../img/RAW/_DSF0844.xmp">
       <a href="../img/full/mammoth-cave-national-park/_DSF0844.tif" download title="Mammoth Cave National Park 9">
-        <img src="../thumbs/mammoth-cave-national-park/_DSF0844.jpg" data-full="../img/jpg/mammoth-cave-national-park/_DSF0844.jpg" alt="Mammoth Cave National Park 9" loading="lazy"/>
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0844.jpg" alt="Mammoth Cave National Park 9" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park 9 &middot; 2026-03-06</span>
         <span class="caption-filename">_DSF0844.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0847.RAF" data-xmp="../img/RAW/_DSF0847.xmp">
       <a href="../img/full/mammoth-cave-national-park/_DSF0847.tif" download title="Mammoth Cave National Park 10">
-        <img src="../thumbs/mammoth-cave-national-park/_DSF0847.jpg" data-full="../img/jpg/mammoth-cave-national-park/_DSF0847.jpg" alt="Mammoth Cave National Park 10" loading="lazy"/>
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0847.jpg" alt="Mammoth Cave National Park 10" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park 10 &middot; 2026-03-06</span>
         <span class="caption-filename">_DSF0847.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0851.RAF" data-xmp="../img/RAW/_DSF0851.xmp">
       <a href="../img/full/mammoth-cave-national-park/_DSF0851.tif" download title="Mammoth Cave National Park 11">
-        <img src="../thumbs/mammoth-cave-national-park/_DSF0851.jpg" data-full="../img/jpg/mammoth-cave-national-park/_DSF0851.jpg" alt="Mammoth Cave National Park 11" loading="lazy"/>
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0851.jpg" alt="Mammoth Cave National Park 11" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park 11 &middot; 2026-03-06</span>
         <span class="caption-filename">_DSF0851.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0856.RAF" data-xmp="../img/RAW/_DSF0856.xmp">
       <a href="../img/full/mammoth-cave-national-park/_DSF0856.tif" download title="Mammoth Cave National Park 12">
-        <img src="../thumbs/mammoth-cave-national-park/_DSF0856.jpg" data-full="../img/jpg/mammoth-cave-national-park/_DSF0856.jpg" alt="Mammoth Cave National Park 12" loading="lazy"/>
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0856.jpg" alt="Mammoth Cave National Park 12" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park 12 &middot; 2026-03-06</span>
         <span class="caption-filename">_DSF0856.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0864.RAF" data-xmp="../img/RAW/_DSF0864.xmp">
       <a href="../img/full/mammoth-cave-national-park/_DSF0864.tif" download title="Mammoth Cave National Park 13">
-        <img src="../thumbs/mammoth-cave-national-park/_DSF0864.jpg" data-full="../img/jpg/mammoth-cave-national-park/_DSF0864.jpg" alt="Mammoth Cave National Park 13" loading="lazy"/>
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0864.jpg" alt="Mammoth Cave National Park 13" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park 13 &middot; 2026-03-06</span>
         <span class="caption-filename">_DSF0864.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0865.RAF" data-xmp="../img/RAW/_DSF0865.xmp">
       <a href="../img/full/mammoth-cave-national-park/_DSF0865.tif" download title="Mammoth Cave National Park 14">
-        <img src="../thumbs/mammoth-cave-national-park/_DSF0865.jpg" data-full="../img/jpg/mammoth-cave-national-park/_DSF0865.jpg" alt="Mammoth Cave National Park 14" loading="lazy"/>
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0865.jpg" alt="Mammoth Cave National Park 14" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park 14 &middot; 2026-03-06</span>
         <span class="caption-filename">_DSF0865.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0868.RAF" data-xmp="../img/RAW/_DSF0868.xmp">
       <a href="../img/full/mammoth-cave-national-park/_DSF0868.tif" download title="Mammoth Cave National Park 15">
-        <img src="../thumbs/mammoth-cave-national-park/_DSF0868.jpg" data-full="../img/jpg/mammoth-cave-national-park/_DSF0868.jpg" alt="Mammoth Cave National Park 15" loading="lazy"/>
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0868.jpg" alt="Mammoth Cave National Park 15" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park 15 &middot; 2026-03-06</span>
         <span class="caption-filename">_DSF0868.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0870.RAF" data-xmp="../img/RAW/_DSF0870.xmp">
       <a href="../img/full/mammoth-cave-national-park/_DSF0870.tif" download title="Mammoth Cave National Park 16">
-        <img src="../thumbs/mammoth-cave-national-park/_DSF0870.jpg" data-full="../img/jpg/mammoth-cave-national-park/_DSF0870.jpg" alt="Mammoth Cave National Park 16" loading="lazy"/>
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0870.jpg" alt="Mammoth Cave National Park 16" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park 16 &middot; 2026-03-06</span>
         <span class="caption-filename">_DSF0870.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0875.RAF" data-xmp="../img/RAW/_DSF0875.xmp">
       <a href="../img/full/mammoth-cave-national-park/_DSF0875.tif" download title="Mammoth Cave National Park 17">
-        <img src="../thumbs/mammoth-cave-national-park/_DSF0875.jpg" data-full="../img/jpg/mammoth-cave-national-park/_DSF0875.jpg" alt="Mammoth Cave National Park 17" loading="lazy"/>
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0875.jpg" alt="Mammoth Cave National Park 17" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park 17 &middot; 2026-03-06</span>
         <span class="caption-filename">_DSF0875.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0898.RAF" data-xmp="../img/RAW/_DSF0898.xmp">
       <a href="../img/full/mammoth-cave-national-park/_DSF0898.tif" download title="Mammoth Cave National Park 18">
-        <img src="../thumbs/mammoth-cave-national-park/_DSF0898.jpg" data-full="../img/jpg/mammoth-cave-national-park/_DSF0898.jpg" alt="Mammoth Cave National Park 18" loading="lazy"/>
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0898.jpg" alt="Mammoth Cave National Park 18" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park 18 &middot; 2026-03-06</span>
         <span class="caption-filename">_DSF0898.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0914.RAF" data-xmp="../img/RAW/_DSF0914.xmp">
       <a href="../img/full/mammoth-cave-national-park/_DSF0914.tif" download title="Mammoth Cave National Park 19">
-        <img src="../thumbs/mammoth-cave-national-park/_DSF0914.jpg" data-full="../img/jpg/mammoth-cave-national-park/_DSF0914.jpg" alt="Mammoth Cave National Park 19" loading="lazy"/>
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0914.jpg" alt="Mammoth Cave National Park 19" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park 19 &middot; 2026-03-06</span>
         <span class="caption-filename">_DSF0914.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0919.RAF" data-xmp="../img/RAW/_DSF0919.xmp">
       <a href="../img/full/mammoth-cave-national-park/_DSF0919.tif" download title="Mammoth Cave National Park 20">
-        <img src="../thumbs/mammoth-cave-national-park/_DSF0919.jpg" data-full="../img/jpg/mammoth-cave-national-park/_DSF0919.jpg" alt="Mammoth Cave National Park 20" loading="lazy"/>
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0919.jpg" alt="Mammoth Cave National Park 20" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park 20 &middot; 2026-03-07</span>
         <span class="caption-filename">_DSF0919.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0923.RAF" data-xmp="../img/RAW/_DSF0923.xmp">
       <a href="../img/full/mammoth-cave-national-park/_DSF0923.tif" download title="Mammoth Cave National Park 21">
-        <img src="../thumbs/mammoth-cave-national-park/_DSF0923.jpg" data-full="../img/jpg/mammoth-cave-national-park/_DSF0923.jpg" alt="Mammoth Cave National Park 21" loading="lazy"/>
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0923.jpg" alt="Mammoth Cave National Park 21" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park 21 &middot; 2026-03-07</span>
         <span class="caption-filename">_DSF0923.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0929.RAF" data-xmp="../img/RAW/_DSF0929.xmp">
       <a href="../img/full/mammoth-cave-national-park/_DSF0929.tif" download title="Mammoth Cave National Park 22">
-        <img src="../thumbs/mammoth-cave-national-park/_DSF0929.jpg" data-full="../img/jpg/mammoth-cave-national-park/_DSF0929.jpg" alt="Mammoth Cave National Park 22" loading="lazy"/>
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0929.jpg" alt="Mammoth Cave National Park 22" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park 22 &middot; 2026-03-07</span>
         <span class="caption-filename">_DSF0929.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0937.RAF" data-xmp="../img/RAW/_DSF0937.xmp">
       <a href="../img/full/mammoth-cave-national-park/_DSF0937.tif" download title="Mammoth Cave National Park 23">
-        <img src="../thumbs/mammoth-cave-national-park/_DSF0937.jpg" data-full="../img/jpg/mammoth-cave-national-park/_DSF0937.jpg" alt="Mammoth Cave National Park 23" loading="lazy"/>
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0937.jpg" alt="Mammoth Cave National Park 23" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park 23 &middot; 2026-03-08</span>
         <span class="caption-filename">_DSF0937.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0946.RAF" data-xmp="../img/RAW/_DSF0946.xmp">
       <a href="../img/full/mammoth-cave-national-park/_DSF0946.tif" download title="Mammoth Cave National Park 24">
-        <img src="../thumbs/mammoth-cave-national-park/_DSF0946.jpg" data-full="../img/jpg/mammoth-cave-national-park/_DSF0946.jpg" alt="Mammoth Cave National Park 24" loading="lazy"/>
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0946.jpg" alt="Mammoth Cave National Park 24" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park 24 &middot; 2026-03-08</span>
         <span class="caption-filename">_DSF0946.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0971.RAF" data-xmp="../img/RAW/_DSF0971.xmp">
       <a href="../img/full/mammoth-cave-national-park/_DSF0971.tif" download title="Mammoth Cave National Park 25">
-        <img src="../thumbs/mammoth-cave-national-park/_DSF0971.jpg" data-full="../img/jpg/mammoth-cave-national-park/_DSF0971.jpg" alt="Mammoth Cave National Park 25" loading="lazy"/>
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0971.jpg" alt="Mammoth Cave National Park 25" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park 25 &middot; 2026-03-08</span>
         <span class="caption-filename">_DSF0971.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0982.RAF" data-xmp="../img/RAW/_DSF0982.xmp">
       <a href="../img/full/mammoth-cave-national-park/_DSF0982.tif" download title="Mammoth Cave National Park 26">
-        <img src="../thumbs/mammoth-cave-national-park/_DSF0982.jpg" data-full="../img/jpg/mammoth-cave-national-park/_DSF0982.jpg" alt="Mammoth Cave National Park 26" loading="lazy"/>
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0982.jpg" alt="Mammoth Cave National Park 26" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park 26 &middot; 2026-03-08</span>
         <span class="caption-filename">_DSF0982.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0988.RAF" data-xmp="../img/RAW/_DSF0988.xmp">
       <a href="../img/full/mammoth-cave-national-park/_DSF0988.tif" download title="Mammoth Cave National Park 27">
-        <img src="../thumbs/mammoth-cave-national-park/_DSF0988.jpg" data-full="../img/jpg/mammoth-cave-national-park/_DSF0988.jpg" alt="Mammoth Cave National Park 27" loading="lazy"/>
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0988.jpg" alt="Mammoth Cave National Park 27" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park 27 &middot; 2026-03-08</span>
         <span class="caption-filename">_DSF0988.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0989.RAF" data-xmp="../img/RAW/_DSF0989.xmp">
       <a href="../img/full/mammoth-cave-national-park/_DSF0989.tif" download title="Mammoth Cave National Park 28">
-        <img src="../thumbs/mammoth-cave-national-park/_DSF0989.jpg" data-full="../img/jpg/mammoth-cave-national-park/_DSF0989.jpg" alt="Mammoth Cave National Park 28" loading="lazy"/>
+        <img src="../img/jpg/mammoth-cave-national-park/_DSF0989.jpg" alt="Mammoth Cave National Park 28" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Mammoth Cave National Park 28 &middot; 2026-03-08</span>
         <span class="caption-filename">_DSF0989.jpg</span>
       </figcaption>
     </figure>
+    </div>
+    <div class="photo-foot">
+      <button class="plb-view-all">View all 28 images →</button>
+    </div>
   </div>
 </div>
 <nav class="site-nav">

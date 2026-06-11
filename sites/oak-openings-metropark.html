@@ -142,24 +142,40 @@
   .geo-bar-wrap { position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }
   .geo-bar-fill { position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }
   .geo-prose { color: var(--fg); }
-  .photo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    align-content: start;
+  .photo-pane { min-width: 0; }
+  .photo-scroll {
+    display: flex; flex-direction: column; gap: 4px;
+    overflow-y: auto; min-height: 0; flex: 1;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.18) transparent;
   }
-  .ph { background: #1f1f1f; aspect-ratio: 1 / 1; overflow: hidden; }
-  .ph a { display: block; width: 100%; height: 100%; }
+  .photo-scroll::-webkit-scrollbar { width: 6px; }
+  .photo-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); }
+  .ph { background: #1f1f1f; flex-shrink: 0; }
+  .ph a { display: block; width: 100%; }
   .ph img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
+    width: 100%; height: auto; display: block;
     filter: grayscale(100%);
     opacity: 0.92;
     transition: opacity 0.15s;
   }
   .ph:hover img { opacity: 1; }
   .ph figcaption { display: none; }
+  .photo-foot {
+    flex-shrink: 0;
+    padding-top: 12px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+  }
+  .plb-view-all {
+    font-family: inherit; font-size: 10px; font-weight: 400;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); background: none; border: none;
+    cursor: pointer; padding: 0;
+  }
+  .plb-view-all:hover { color: var(--fg); }
   .obs-header {
-    grid-column: 1 / -1;
     padding: 10px 0 4px 0;
   }
   .obs-header:first-child { padding-top: 0; }
@@ -192,14 +208,14 @@
   }
   @media (min-width: 720px) {
     .site-layout { grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
-    .site-record { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }
+    .photo-pane { position: sticky; top: 24px; height: calc(100vh - 48px); display: flex; flex-direction: column; }
   }
   @media (min-width: 1148px) {
     .site-layout { grid-template-columns: 7fr 15fr; }
-    .photo-grid { grid-template-columns: 1fr 1fr 1fr; }
   }
   @media (max-width: 719px) {
-    .photo-grid { order: -1; }
+    .photo-pane { order: -1; display: flex; flex-direction: column; }
+    .photo-scroll { max-height: 70vh; }
   }
 </style>
 </head>
@@ -221,88 +237,93 @@
 <div class="site-layout">
   <aside class="site-record">
 <div class="rec-section"><div class="rec-label">Geology</div><div class="geo-era-row"><div class="geo-swatch" style="background:#4aaa78"></div><span class="geo-era-name">Devonian</span><span class="geo-mya">390 Mya</span></div><div class="geo-bar-wrap"><div class="geo-bar-fill" style="width:77%;background:#4aaa78;opacity:0.55"></div></div><p class="geo-prose">~390 Mya Middle Devonian dolomite and limestone (Lucas Dolomite, Silica Formation) buried beneath Pleistocene glacial drift; surface dominated by glacial outwash sand deposited from glacial Lake Warren (~13,000 ya) and aeolian dune formation 13,000-8,000 ya.</p></div><div class="rec-section"><div class="rec-label">Epoch</div><p>Middle Devonian; surface Pleistocene (Late Wisconsinan).</p></div><div class="rec-section"><div class="rec-label">Native lands</div><p>Wyandot (Wendat/Tionnontate), Ottawa (Odawa/Anishinaabe), Potawatomi (Bodwéwadmi), Shawnee (Šawanwaki), Miami (Myaamia), Kaskaskia, Kickapoo (Kiiakapoi), and Meškwahki (Fox); lower Maumee River valley a principal corridor between Lake Erie and interior Ohio; Wyandot and Ottawa held the Maumee territory; Treaty of Greene Ville (August 3, 1795) ceded northwestern Ohio; Treaty with the Wyandot et al. (September 29, 1817) secured remaining Maumee valley land reservations; Wyandot community departed Sandusky, Ohio July 20, 1843 in final forced removal to Wyandot County, Kansas, then relocated to Oklahoma Indian Territory.</p></div><div class="rec-section"><div class="rec-label">Displacement &amp; Tenure</div><p>Ceded via Treaty of Greene Ville (1795, Article 3); additional cession via Treaty of September 29, 1817; Lucas County organized 1835; land entered private agricultural and industrial ownership through 19th century; oak savanna ecosystem reduced from ~130 sq mi regional extent to scattered remnants through logging, agricultural conversion, fire suppression, and sand mining; Metroparks Toledo established core preserve in the 1930s-1940s and expanded to current ~5,000-acre Metropark through ongoing acquisitions; Kitty Todd Nature Preserve (The Nature Conservancy, 1,017 acres) and additional Metroparks parcels form ~1,900-acre Oak Openings Corridor in adjacent Fulton and Henry counties.</p></div><div class="rec-section"><div class="rec-label">Shadow History</div><p>Oak savanna ecosystem reduced from historic regional extent of approximately 130 square miles to fewer than 300 high-quality remnant acres through 19th- and 20th-century logging, agricultural conversion, and decades of fire suppression; silica sand mining at the Toledo Stone and Glass Sand Quarry in adjacent Sylvania Township extracted the distinctive glacial outwash deposits that define the ecosystem; Civilian Conservation Corps conducted work at Oak Openings during the Depression era (1933-1942); Maumee Area of Concern (AOC) designated by U.S. EPA and IJC in 1985 covering the Maumee River corridor, citing sediment contamination by PCBs, PAHs, and heavy metals from industrial discharges by Toledo-area refineries, foundries, and chemical plants; prescribed fire restoration of oak savanna began 1988 after decades of suppression degraded understory composition.</p></div><div class="rec-section"><div class="rec-label">Ecology</div><p>Globally rare oak savanna and Midwest sand barren with more than 1,200 native plant species; dominant communities include black oak savanna, twig-rush wet prairie, and tallgrass sand prairie with little bluestem (Schizachyrium scoparium), big bluestem (Andropogon gerardii), and Pennsylvania sedge (Carex pensylvanica); wild lupine (Lupinus perennis), obligate larval host of the federally endangered Karner blue butterfly, documented in significant colonies; one-third of Ohio's endangered plant species occur in the region.</p></div><div class="rec-section"><div class="rec-label">Hydrology</div><p>Maumee River watershed (8,316 sq mi); Oak Openings sits on a glacial lake plain between Maumee tributaries; Tiffin River to the north; Swan Creek drains through the Toledo urban area to the Maumee; historic glacial Lake Warren deposited the outwash sands ~13,000 ya and drained northeast through what is now the Lake Erie basin.</p></div><div class="rec-section"><div class="rec-label">Acreage</div><p>5,000</p></div><div class="rec-section"><div class="rec-label">GPS</div><p><a class="gps-link" href="https://maps.google.com/?q=41.5545,-83.8518" target="_blank" rel="noopener">41.5545° N, 83.8518° W</a></p></div>  </aside>
-  <div class="photo-grid">
-    <figure class="ph">
+  <div class="photo-pane">
+    <div class="photo-scroll">
+    <figure class="ph" data-raw="../img/RAW/_DSF1723.RAF" data-xmp="../img/RAW/_DSF1723.xmp">
       <a href="../img/full/oak-openings-metropark/_DSF1723.tif" download title="Oak Openings Metropark 1">
-        <img src="../thumbs/oak-openings-metropark/_DSF1723.jpg" data-full="../img/jpg/oak-openings-metropark/_DSF1723.jpg" alt="Oak Openings Metropark 1" loading="lazy"/>
+        <img src="../img/jpg/oak-openings-metropark/_DSF1723.jpg" alt="Oak Openings Metropark 1" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Oak Openings Metropark 1 &middot; 2026-05-06</span>
         <span class="caption-filename">_DSF1723.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1732.RAF" data-xmp="../img/RAW/_DSF1732.xmp">
       <a href="../img/full/oak-openings-metropark/_DSF1732.tif" download title="Oak Openings Metropark 2">
-        <img src="../thumbs/oak-openings-metropark/_DSF1732.jpg" data-full="../img/jpg/oak-openings-metropark/_DSF1732.jpg" alt="Oak Openings Metropark 2" loading="lazy"/>
+        <img src="../img/jpg/oak-openings-metropark/_DSF1732.jpg" alt="Oak Openings Metropark 2" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Oak Openings Metropark 2 &middot; 2026-05-06</span>
         <span class="caption-filename">_DSF1732.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1736.RAF" data-xmp="../img/RAW/_DSF1736.xmp">
       <a href="../img/full/oak-openings-metropark/_DSF1736.tif" download title="Oak Openings Metropark 3">
-        <img src="../thumbs/oak-openings-metropark/_DSF1736.jpg" data-full="../img/jpg/oak-openings-metropark/_DSF1736.jpg" alt="Oak Openings Metropark 3" loading="lazy"/>
+        <img src="../img/jpg/oak-openings-metropark/_DSF1736.jpg" alt="Oak Openings Metropark 3" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Oak Openings Metropark 3 &middot; 2026-05-06</span>
         <span class="caption-filename">_DSF1736.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1742.RAF" data-xmp="../img/RAW/_DSF1742.xmp">
       <a href="../img/full/oak-openings-metropark/_DSF1742.tif" download title="Oak Openings Metropark 4">
-        <img src="../thumbs/oak-openings-metropark/_DSF1742.jpg" data-full="../img/jpg/oak-openings-metropark/_DSF1742.jpg" alt="Oak Openings Metropark 4" loading="lazy"/>
+        <img src="../img/jpg/oak-openings-metropark/_DSF1742.jpg" alt="Oak Openings Metropark 4" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Oak Openings Metropark 4 &middot; 2026-05-06</span>
         <span class="caption-filename">_DSF1742.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1750.RAF" data-xmp="../img/RAW/_DSF1750.xmp">
       <a href="../img/full/oak-openings-metropark/_DSF1750.tif" download title="Oak Openings Metropark 5">
-        <img src="../thumbs/oak-openings-metropark/_DSF1750.jpg" data-full="../img/jpg/oak-openings-metropark/_DSF1750.jpg" alt="Oak Openings Metropark 5" loading="lazy"/>
+        <img src="../img/jpg/oak-openings-metropark/_DSF1750.jpg" alt="Oak Openings Metropark 5" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Oak Openings Metropark 5 &middot; 2026-05-06</span>
         <span class="caption-filename">_DSF1750.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1758.RAF" data-xmp="../img/RAW/_DSF1758.xmp">
       <a href="../img/full/oak-openings-metropark/_DSF1758.tif" download title="Oak Openings Metropark 6">
-        <img src="../thumbs/oak-openings-metropark/_DSF1758.jpg" data-full="../img/jpg/oak-openings-metropark/_DSF1758.jpg" alt="Oak Openings Metropark 6" loading="lazy"/>
+        <img src="../img/jpg/oak-openings-metropark/_DSF1758.jpg" alt="Oak Openings Metropark 6" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Oak Openings Metropark 6 &middot; 2026-05-06</span>
         <span class="caption-filename">_DSF1758.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1766.RAF" data-xmp="../img/RAW/_DSF1766.xmp">
       <a href="../img/full/oak-openings-metropark/_DSF1766.tif" download title="Oak Openings Metropark 7">
-        <img src="../thumbs/oak-openings-metropark/_DSF1766.jpg" data-full="../img/jpg/oak-openings-metropark/_DSF1766.jpg" alt="Oak Openings Metropark 7" loading="lazy"/>
+        <img src="../img/jpg/oak-openings-metropark/_DSF1766.jpg" alt="Oak Openings Metropark 7" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Oak Openings Metropark 7 &middot; 2026-05-06</span>
         <span class="caption-filename">_DSF1766.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1772.RAF" data-xmp="../img/RAW/_DSF1772.xmp">
       <a href="../img/full/oak-openings-metropark/_DSF1772.tif" download title="Oak Openings Metropark 8">
-        <img src="../thumbs/oak-openings-metropark/_DSF1772.jpg" data-full="../img/jpg/oak-openings-metropark/_DSF1772.jpg" alt="Oak Openings Metropark 8" loading="lazy"/>
+        <img src="../img/jpg/oak-openings-metropark/_DSF1772.jpg" alt="Oak Openings Metropark 8" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Oak Openings Metropark 8 &middot; 2026-05-06</span>
         <span class="caption-filename">_DSF1772.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1779.RAF" data-xmp="../img/RAW/_DSF1779.xmp">
       <a href="../img/full/oak-openings-metropark/_DSF1779.tif" download title="Oak Openings Metropark 9">
-        <img src="../thumbs/oak-openings-metropark/_DSF1779.jpg" data-full="../img/jpg/oak-openings-metropark/_DSF1779.jpg" alt="Oak Openings Metropark 9" loading="lazy"/>
+        <img src="../img/jpg/oak-openings-metropark/_DSF1779.jpg" alt="Oak Openings Metropark 9" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Oak Openings Metropark 9 &middot; 2026-05-06</span>
         <span class="caption-filename">_DSF1779.jpg</span>
       </figcaption>
     </figure>
+    </div>
+    <div class="photo-foot">
+      <button class="plb-view-all">View all 9 images →</button>
+    </div>
   </div>
 </div>
 <nav class="site-nav">

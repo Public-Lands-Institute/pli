@@ -142,24 +142,40 @@
   .geo-bar-wrap { position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }
   .geo-bar-fill { position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }
   .geo-prose { color: var(--fg); }
-  .photo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    align-content: start;
+  .photo-pane { min-width: 0; }
+  .photo-scroll {
+    display: flex; flex-direction: column; gap: 4px;
+    overflow-y: auto; min-height: 0; flex: 1;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.18) transparent;
   }
-  .ph { background: #1f1f1f; aspect-ratio: 1 / 1; overflow: hidden; }
-  .ph a { display: block; width: 100%; height: 100%; }
+  .photo-scroll::-webkit-scrollbar { width: 6px; }
+  .photo-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); }
+  .ph { background: #1f1f1f; flex-shrink: 0; }
+  .ph a { display: block; width: 100%; }
   .ph img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
+    width: 100%; height: auto; display: block;
     filter: grayscale(100%);
     opacity: 0.92;
     transition: opacity 0.15s;
   }
   .ph:hover img { opacity: 1; }
   .ph figcaption { display: none; }
+  .photo-foot {
+    flex-shrink: 0;
+    padding-top: 12px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+  }
+  .plb-view-all {
+    font-family: inherit; font-size: 10px; font-weight: 400;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); background: none; border: none;
+    cursor: pointer; padding: 0;
+  }
+  .plb-view-all:hover { color: var(--fg); }
   .obs-header {
-    grid-column: 1 / -1;
     padding: 10px 0 4px 0;
   }
   .obs-header:first-child { padding-top: 0; }
@@ -192,14 +208,14 @@
   }
   @media (min-width: 720px) {
     .site-layout { grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
-    .site-record { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }
+    .photo-pane { position: sticky; top: 24px; height: calc(100vh - 48px); display: flex; flex-direction: column; }
   }
   @media (min-width: 1148px) {
     .site-layout { grid-template-columns: 7fr 15fr; }
-    .photo-grid { grid-template-columns: 1fr 1fr 1fr; }
   }
   @media (max-width: 719px) {
-    .photo-grid { order: -1; }
+    .photo-pane { order: -1; display: flex; flex-direction: column; }
+    .photo-scroll { max-height: 70vh; }
   }
 </style>
 </head>
@@ -221,88 +237,93 @@
 <div class="site-layout">
   <aside class="site-record">
 <div class="rec-section"><div class="rec-label">Geology</div><div class="geo-era-row"><div class="geo-swatch" style="background:#4aaa78"></div><span class="geo-era-name">Devonian</span><span class="geo-mya">375 Mya</span></div><div class="geo-bar-wrap"><div class="geo-bar-fill" style="width:77%;background:#4aaa78;opacity:0.55"></div></div><p class="geo-prose">~375 Mya Devonian shale (Ohio Shale, Olentangy Shale); earthworks built on Pleistocene glacial outwash terraces.</p></div><div class="rec-section"><div class="rec-label">Epoch</div><p>Late Devonian.</p></div><div class="rec-section"><div class="rec-label">Native lands</div><p>Adena (c. 1000 BC-100 AD) and Hopewell (c. 1 CE-400 AD) cultures constructed the Mound City earthworks; no direct genealogical link between Hopewell builders and any historically documented tribe has been established; Chalahgawtha (principal-town) division of the Shawandasse Tula (Shawanwaki/Shawnee) returned to the Scioto valley c. 1738 following Haudenosaunee dispersal of Shawnee from the region in the 1670s-80s; the Scioto River Chalahgawtha town (c. 1758-1787) stood on the Scioto west bank near Paint Creek approximately 2-3 miles from Mound City, housing approximately 1,200 people including Tecumseh (b. 1768); Chillicothe, meaning principal town of the Chalahgawtha sept, was the moving political capital of the Shawnee nation with multiple documented locations across southern Ohio; Myaamia (Miami) held the Miami River valleys to the west; Shawnee and Miami lands ceded via Treaty of Greene Ville (August 3, 1795), Article 3 boundary and Article 4 relinquishment, with Shawnee receiving $1,000 annual annuity goods; remaining Shawnee removed west via Treaty with the Shawnee 1831 under Indian Removal Act 1830.</p></div><div class="rec-section"><div class="rec-label">Displacement &amp; Tenure</div><p>Ceded via Treaty of Greene Ville (1795, Article 3); Mound City tract entered Virginia Military District ownership c. 1796-1798 when frontier land speculator Nathaniel Massie surveyed and acquired the land; Shriver family held title from 1832; Civil War militia used the site as Camp Logan drill ground in 1861; woodland cleared beginning c. 1856 and smaller mounds plowed under during agricultural use; U.S. Army purchased the land in 1917 and established Camp Sherman (construction began June 21, 1917), a 9,700-acre WWI training cantonment built over and around the earthworks, with more than 120,000 soldiers passing through before decommissioning 1921; Ohio Historical Society advocacy resulted in designation as Mound City Group National Monument via Proclamation 1653 (President Warren G. Harding, March 2, 1923) under the Antiquities Act (34 Stat. 225); Hopeton Earthworks added via Public Law 96-607 (1980); redesignated Hopewell Culture National Historical Park via Public Law 102-294 (May 27, 1992), adding Hopewell Mound Group, High Bank Works, and Seip Earthworks; inscribed UNESCO World Heritage Site as Hopewell Ceremonial Earthworks (list no. 1689, criteria i and iii) September 19, 2023.</p></div><div class="rec-section"><div class="rec-label">Shadow History</div><p>Squier and Davis opened mounds at Mound City in 1846, recovering approximately 200 stone effigy cremation pipes from Mound 8 (Mound of Pipes), the majority of the collection sent to the British Museum in London where it remains today; Warren K. Moorehead excavated the Hopewell Mound Group using horses and scrapers 1891-1892, obliterating stratigraphic context to collect artifacts for display at the 1893 World's Columbian Exposition in Chicago, artifacts distributed among the Field Museum, the Robert S. Peabody Institute of Archaeology, and other institutions; U.S. Army construction at Camp Sherman 1917 demolished virtually all mounds at Mound City except the large central Mound 7 to grade barracks, roads, pipelines, and railroad lines; mounds #13 and #23 were specifically cut down; excavation of the destroyed Mound 13 base in 1921 recovered cremated remains of 20 Hopewell individuals and a mica-lined grave representing only what was preserved at the base level, with all upper-context material permanently destroyed; artifacts unearthed during Army construction were taken as military souvenirs; the 813th Pioneer Infantry and other African American segregated units of the 92nd Division trained at Camp Sherman under white officers per Army policy; 1,777 soldiers died of influenza at Camp Sherman during the 1918 pandemic, with 125 deaths in a single day on October 8, 1918, and approximately 60% of Chillicothe's civilian population infected; all leveled mounds were reconstructed by Ohio Historical Society from the 1846 Squier-Davis survey maps, the original fill and artifact context permanently destroyed.</p></div><div class="rec-section"><div class="rec-label">Ecology</div><p>Mixed-grass meadow and early successional floodplain woodland on Scioto River glacial outwash terraces; Mound City unit comprises approximately 40 acres managed hay field, 40 acres mixed mesophytic forest, and reconstructed earthworks on managed turf; 438 vascular plant species in 281 genera and 93 families documented across all park units (17% of Ohio's total flora; 65 new county records); habitat for Henslow's Sparrow (species of conservation concern in Eastern Tallgrass Prairie region); Ohio state-listed Spiranthes ovalis (oval ladies'-tresses) and Eleocharis ovata (ovate spike-rush) documented within park.</p></div><div class="rec-section"><div class="rec-label">Hydrology</div><p>Scioto River watershed; Mound City Group on the west bank of the Scioto River north of Chillicothe, situated on Pleistocene glacial outwash terraces; Scioto River drains approximately 7,956 sq mi of central Ohio to the Ohio River; park units span Scioto River and Paint Creek drainages across Ross County.</p></div><div class="rec-section"><div class="rec-label">Acreage</div><p>1,170</p></div><div class="rec-section"><div class="rec-label">GPS</div><p><a class="gps-link" href="https://maps.google.com/?q=39.3758,-83.0064" target="_blank" rel="noopener">39.3758° N, 83.0064° W</a></p></div>  </aside>
-  <div class="photo-grid">
-    <figure class="ph">
+  <div class="photo-pane">
+    <div class="photo-scroll">
+    <figure class="ph" data-raw="../img/RAW/_DSF1437.RAF" data-xmp="../img/RAW/_DSF1437.xmp">
       <a href="../img/full/hopewell-culture-national-historical-park/_DSF1437.tif" download title="Hopewell Culture National Historical Park 1">
-        <img src="../thumbs/hopewell-culture-national-historical-park/_DSF1437.jpg" data-full="../img/jpg/hopewell-culture-national-historical-park/_DSF1437.jpg" alt="Hopewell Culture National Historical Park 1" loading="lazy"/>
+        <img src="../img/jpg/hopewell-culture-national-historical-park/_DSF1437.jpg" alt="Hopewell Culture National Historical Park 1" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Hopewell Culture National Historical Park 1 &middot; 2026-04-20</span>
         <span class="caption-filename">_DSF1437.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1444.RAF" data-xmp="../img/RAW/_DSF1444.xmp">
       <a href="../img/full/hopewell-culture-national-historical-park/_DSF1444.tif" download title="Hopewell Culture National Historical Park 2">
-        <img src="../thumbs/hopewell-culture-national-historical-park/_DSF1444.jpg" data-full="../img/jpg/hopewell-culture-national-historical-park/_DSF1444.jpg" alt="Hopewell Culture National Historical Park 2" loading="lazy"/>
+        <img src="../img/jpg/hopewell-culture-national-historical-park/_DSF1444.jpg" alt="Hopewell Culture National Historical Park 2" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Hopewell Culture National Historical Park 2 &middot; 2026-04-20</span>
         <span class="caption-filename">_DSF1444.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1451.RAF" data-xmp="../img/RAW/_DSF1451.xmp">
       <a href="../img/full/hopewell-culture-national-historical-park/_DSF1451.tif" download title="Hopewell Culture National Historical Park 3">
-        <img src="../thumbs/hopewell-culture-national-historical-park/_DSF1451.jpg" data-full="../img/jpg/hopewell-culture-national-historical-park/_DSF1451.jpg" alt="Hopewell Culture National Historical Park 3" loading="lazy"/>
+        <img src="../img/jpg/hopewell-culture-national-historical-park/_DSF1451.jpg" alt="Hopewell Culture National Historical Park 3" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Hopewell Culture National Historical Park 3 &middot; 2026-04-20</span>
         <span class="caption-filename">_DSF1451.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1452.RAF" data-xmp="../img/RAW/_DSF1452.xmp">
       <a href="../img/full/hopewell-culture-national-historical-park/_DSF1452.tif" download title="Hopewell Culture National Historical Park 4">
-        <img src="../thumbs/hopewell-culture-national-historical-park/_DSF1452.jpg" data-full="../img/jpg/hopewell-culture-national-historical-park/_DSF1452.jpg" alt="Hopewell Culture National Historical Park 4" loading="lazy"/>
+        <img src="../img/jpg/hopewell-culture-national-historical-park/_DSF1452.jpg" alt="Hopewell Culture National Historical Park 4" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Hopewell Culture National Historical Park 4 &middot; 2026-04-20</span>
         <span class="caption-filename">_DSF1452.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1455.RAF" data-xmp="../img/RAW/_DSF1455.xmp">
       <a href="../img/full/hopewell-culture-national-historical-park/_DSF1455.tif" download title="Hopewell Culture National Historical Park 5">
-        <img src="../thumbs/hopewell-culture-national-historical-park/_DSF1455.jpg" data-full="../img/jpg/hopewell-culture-national-historical-park/_DSF1455.jpg" alt="Hopewell Culture National Historical Park 5" loading="lazy"/>
+        <img src="../img/jpg/hopewell-culture-national-historical-park/_DSF1455.jpg" alt="Hopewell Culture National Historical Park 5" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Hopewell Culture National Historical Park 5 &middot; 2026-04-20</span>
         <span class="caption-filename">_DSF1455.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1458.RAF" data-xmp="../img/RAW/_DSF1458.xmp">
       <a href="../img/full/hopewell-culture-national-historical-park/_DSF1458.tif" download title="Hopewell Culture National Historical Park 6">
-        <img src="../thumbs/hopewell-culture-national-historical-park/_DSF1458.jpg" data-full="../img/jpg/hopewell-culture-national-historical-park/_DSF1458.jpg" alt="Hopewell Culture National Historical Park 6" loading="lazy"/>
+        <img src="../img/jpg/hopewell-culture-national-historical-park/_DSF1458.jpg" alt="Hopewell Culture National Historical Park 6" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Hopewell Culture National Historical Park 6 &middot; 2026-04-20</span>
         <span class="caption-filename">_DSF1458.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1467.RAF" data-xmp="../img/RAW/_DSF1467.xmp">
       <a href="../img/full/hopewell-culture-national-historical-park/_DSF1467.tif" download title="Hopewell Culture National Historical Park 7">
-        <img src="../thumbs/hopewell-culture-national-historical-park/_DSF1467.jpg" data-full="../img/jpg/hopewell-culture-national-historical-park/_DSF1467.jpg" alt="Hopewell Culture National Historical Park 7" loading="lazy"/>
+        <img src="../img/jpg/hopewell-culture-national-historical-park/_DSF1467.jpg" alt="Hopewell Culture National Historical Park 7" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Hopewell Culture National Historical Park 7 &middot; 2026-04-20</span>
         <span class="caption-filename">_DSF1467.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1469.RAF" data-xmp="../img/RAW/_DSF1469.xmp">
       <a href="../img/full/hopewell-culture-national-historical-park/_DSF1469.tif" download title="Hopewell Culture National Historical Park 8">
-        <img src="../thumbs/hopewell-culture-national-historical-park/_DSF1469.jpg" data-full="../img/jpg/hopewell-culture-national-historical-park/_DSF1469.jpg" alt="Hopewell Culture National Historical Park 8" loading="lazy"/>
+        <img src="../img/jpg/hopewell-culture-national-historical-park/_DSF1469.jpg" alt="Hopewell Culture National Historical Park 8" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Hopewell Culture National Historical Park 8 &middot; 2026-04-20</span>
         <span class="caption-filename">_DSF1469.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1471.RAF" data-xmp="../img/RAW/_DSF1471.xmp">
       <a href="../img/full/hopewell-culture-national-historical-park/_DSF1471.tif" download title="Hopewell Culture National Historical Park 9">
-        <img src="../thumbs/hopewell-culture-national-historical-park/_DSF1471.jpg" data-full="../img/jpg/hopewell-culture-national-historical-park/_DSF1471.jpg" alt="Hopewell Culture National Historical Park 9" loading="lazy"/>
+        <img src="../img/jpg/hopewell-culture-national-historical-park/_DSF1471.jpg" alt="Hopewell Culture National Historical Park 9" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Hopewell Culture National Historical Park 9 &middot; 2026-04-20</span>
         <span class="caption-filename">_DSF1471.jpg</span>
       </figcaption>
     </figure>
+    </div>
+    <div class="photo-foot">
+      <button class="plb-view-all">View all 9 images →</button>
+    </div>
   </div>
 </div>
 <nav class="site-nav">

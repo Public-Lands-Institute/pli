@@ -142,24 +142,40 @@
   .geo-bar-wrap { position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }
   .geo-bar-fill { position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }
   .geo-prose { color: var(--fg); }
-  .photo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    align-content: start;
+  .photo-pane { min-width: 0; }
+  .photo-scroll {
+    display: flex; flex-direction: column; gap: 4px;
+    overflow-y: auto; min-height: 0; flex: 1;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.18) transparent;
   }
-  .ph { background: #1f1f1f; aspect-ratio: 1 / 1; overflow: hidden; }
-  .ph a { display: block; width: 100%; height: 100%; }
+  .photo-scroll::-webkit-scrollbar { width: 6px; }
+  .photo-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); }
+  .ph { background: #1f1f1f; flex-shrink: 0; }
+  .ph a { display: block; width: 100%; }
   .ph img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
+    width: 100%; height: auto; display: block;
     filter: grayscale(100%);
     opacity: 0.92;
     transition: opacity 0.15s;
   }
   .ph:hover img { opacity: 1; }
   .ph figcaption { display: none; }
+  .photo-foot {
+    flex-shrink: 0;
+    padding-top: 12px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+  }
+  .plb-view-all {
+    font-family: inherit; font-size: 10px; font-weight: 400;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); background: none; border: none;
+    cursor: pointer; padding: 0;
+  }
+  .plb-view-all:hover { color: var(--fg); }
   .obs-header {
-    grid-column: 1 / -1;
     padding: 10px 0 4px 0;
   }
   .obs-header:first-child { padding-top: 0; }
@@ -192,14 +208,14 @@
   }
   @media (min-width: 720px) {
     .site-layout { grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
-    .site-record { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }
+    .photo-pane { position: sticky; top: 24px; height: calc(100vh - 48px); display: flex; flex-direction: column; }
   }
   @media (min-width: 1148px) {
     .site-layout { grid-template-columns: 7fr 15fr; }
-    .photo-grid { grid-template-columns: 1fr 1fr 1fr; }
   }
   @media (max-width: 719px) {
-    .photo-grid { order: -1; }
+    .photo-pane { order: -1; display: flex; flex-direction: column; }
+    .photo-scroll { max-height: 70vh; }
   }
 </style>
 </head>
@@ -221,124 +237,129 @@
 <div class="site-layout">
   <aside class="site-record">
 <div class="rec-section"><div class="rec-label">Geology</div><p class="geo-prose">~34-23 Mya Oligocene-Eocene White River Group (Chadron, Brule, Sharps Formations)</p></div><div class="rec-section"><div class="rec-label">Epoch</div><p>Late Eocene to Late Oligocene</p></div><div class="rec-section"><div class="rec-label">Native lands</div><p>Oceti Sakowin (Great Sioux Nation, Seven Council Fires), specifically Oglala Lakota (Oglala Lakhota, "They Scatter Their Own"); the Stronghold Unit (South Unit) lies entirely within the Pine Ridge Indian Reservation on land owned by the Oglala Sioux Tribe and co-managed with the National Park Service under formal agreement; Stronghold Table was the site of one of the last Ghost Dance ceremonies in 1890, shortly before the Wounded Knee Massacre</p></div><div class="rec-section"><div class="rec-label">Displacement &amp; Tenure</div><p>Treaty of Fort Laramie (1868) guaranteed the Great Sioux Reservation, including the Badlands region, "forever" to the Oceti Sakowin; following the discovery of gold in the Black Hills, Congress unilaterally seized the Black Hills in the Act of February 28, 1877 (the "Black Hills Act"), a taking the U.S. Supreme Court ruled unconstitutional in United States v. Sioux Nation of Indians (1980), awarding compensation the Oceti Sakowin have refused, holding out for return of the land; the Sioux Act of 1889 broke the Great Sioux Reservation into five smaller reservations including Pine Ridge; in 1942 the U.S. Army Air Force seized 341,726 acres of the Pine Ridge Reservation by eminent domain for the Badlands Aerial Gunnery Range, condemning the homes of 150 to 250 Oglala Lakota families (paying as little as $8 per acre) and forcibly relocating roughly 125 families; in 1968 Congress returned 202,357 acres to the Oglala Sioux Tribe and designated 136,882 acres as Badlands National Monument, renamed Badlands National Park in 1978</p></div><div class="rec-section"><div class="rec-label">Shadow History</div><p>The Badlands Bombing Range and Pine Ridge Gunnery Range operated from 1942 to 1968 for air-to-air and air-to-ground gunnery practice, precision and demolition bombing exercises, a postwar Army National Guard range, and a Cold War Radar Bomb Scoring site; the range displaced 150 to 250 Oglala Lakota families from their homes and ranches under eminent domain; live and unexploded ordnance (UXO) contamination remains a persistent hazard across the former range, with a 2023 federal risk assessment still listing the site as "medium risk" and UXO regularly reported decades after military use ended; cleanup remains incomplete</p></div><div class="rec-section"><div class="rec-label">Ecology</div><p>The largest protected expanse of mixed grass prairie in the United States, supporting more than 400 plant species; home to American bison, the U.S. national mammal, and a reintroduced population of black footed ferrets, among the world's most endangered mammals, with roughly 120 individuals in the park.</p></div><div class="rec-section"><div class="rec-label">Hydrology</div><p>Lies within the White River drainage; the prairie grasslands south of the Badlands Wall are drained by tributaries of the White River, which shapes the park's badland erosion and supports migratory wildlife corridors across the Great Plains.</p></div><div class="rec-section"><div class="rec-label">Acreage</div><p>242,756</p></div><div class="rec-section"><div class="rec-label">GPS</div><p><a class="gps-link" href="https://maps.google.com/?q=43.8554,-102.3397" target="_blank" rel="noopener">43.8554° N, 102.3397° W</a></p></div>  </aside>
-  <div class="photo-grid">
-    <figure class="ph">
+  <div class="photo-pane">
+    <div class="photo-scroll">
+    <figure class="ph" data-raw="../img/RAW/_DSF2703.RAF" data-xmp="../img/RAW/_DSF2703.xmp">
       <a href="../img/full/badlands-national-park/_DSF2703.tif" download title="Badlands National Park 1">
-        <img src="../thumbs/badlands-national-park/_DSF2703.jpg" data-full="../img/jpg/badlands-national-park/_DSF2703.jpg" alt="Badlands National Park 1" loading="lazy"/>
+        <img src="../img/jpg/badlands-national-park/_DSF2703.jpg" alt="Badlands National Park 1" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Badlands National Park 1 &middot; 2026-06-07</span>
         <span class="caption-filename">_DSF2703.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2708.RAF" data-xmp="../img/RAW/_DSF2708.xmp">
       <a href="../img/full/badlands-national-park/_DSF2708.tif" download title="Badlands National Park 2">
-        <img src="../thumbs/badlands-national-park/_DSF2708.jpg" data-full="../img/jpg/badlands-national-park/_DSF2708.jpg" alt="Badlands National Park 2" loading="lazy"/>
+        <img src="../img/jpg/badlands-national-park/_DSF2708.jpg" alt="Badlands National Park 2" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Badlands National Park 2 &middot; 2026-06-07</span>
         <span class="caption-filename">_DSF2708.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2720.RAF" data-xmp="../img/RAW/_DSF2720.xmp">
       <a href="../img/full/badlands-national-park/_DSF2720.tif" download title="Badlands National Park 3">
-        <img src="../thumbs/badlands-national-park/_DSF2720.jpg" data-full="../img/jpg/badlands-national-park/_DSF2720.jpg" alt="Badlands National Park 3" loading="lazy"/>
+        <img src="../img/jpg/badlands-national-park/_DSF2720.jpg" alt="Badlands National Park 3" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Badlands National Park 3 &middot; 2026-06-07</span>
         <span class="caption-filename">_DSF2720.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2731.RAF" data-xmp="../img/RAW/_DSF2731.xmp">
       <a href="../img/full/badlands-national-park/_DSF2731.tif" download title="Badlands National Park 4">
-        <img src="../thumbs/badlands-national-park/_DSF2731.jpg" data-full="../img/jpg/badlands-national-park/_DSF2731.jpg" alt="Badlands National Park 4" loading="lazy"/>
+        <img src="../img/jpg/badlands-national-park/_DSF2731.jpg" alt="Badlands National Park 4" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Badlands National Park 4 &middot; 2026-06-07</span>
         <span class="caption-filename">_DSF2731.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2739.RAF" data-xmp="../img/RAW/_DSF2739.xmp">
       <a href="../img/full/badlands-national-park/_DSF2739.tif" download title="Badlands National Park 5">
-        <img src="../thumbs/badlands-national-park/_DSF2739.jpg" data-full="../img/jpg/badlands-national-park/_DSF2739.jpg" alt="Badlands National Park 5" loading="lazy"/>
+        <img src="../img/jpg/badlands-national-park/_DSF2739.jpg" alt="Badlands National Park 5" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Badlands National Park 5 &middot; 2026-06-07</span>
         <span class="caption-filename">_DSF2739.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2742.RAF" data-xmp="../img/RAW/_DSF2742.xmp">
       <a href="../img/full/badlands-national-park/_DSF2742.tif" download title="Badlands National Park 6">
-        <img src="../thumbs/badlands-national-park/_DSF2742.jpg" data-full="../img/jpg/badlands-national-park/_DSF2742.jpg" alt="Badlands National Park 6" loading="lazy"/>
+        <img src="../img/jpg/badlands-national-park/_DSF2742.jpg" alt="Badlands National Park 6" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Badlands National Park 6 &middot; 2026-06-07</span>
         <span class="caption-filename">_DSF2742.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2743.RAF" data-xmp="../img/RAW/_DSF2743.xmp">
       <a href="../img/full/badlands-national-park/_DSF2743.tif" download title="Badlands National Park 7">
-        <img src="../thumbs/badlands-national-park/_DSF2743.jpg" data-full="../img/jpg/badlands-national-park/_DSF2743.jpg" alt="Badlands National Park 7" loading="lazy"/>
+        <img src="../img/jpg/badlands-national-park/_DSF2743.jpg" alt="Badlands National Park 7" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Badlands National Park 7 &middot; 2026-06-07</span>
         <span class="caption-filename">_DSF2743.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2762.RAF" data-xmp="../img/RAW/_DSF2762.xmp">
       <a href="../img/full/badlands-national-park/_DSF2762.tif" download title="Badlands National Park 8">
-        <img src="../thumbs/badlands-national-park/_DSF2762.jpg" data-full="../img/jpg/badlands-national-park/_DSF2762.jpg" alt="Badlands National Park 8" loading="lazy"/>
+        <img src="../img/jpg/badlands-national-park/_DSF2762.jpg" alt="Badlands National Park 8" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Badlands National Park 8 &middot; 2026-06-07</span>
         <span class="caption-filename">_DSF2762.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2770.RAF" data-xmp="../img/RAW/_DSF2770.xmp">
       <a href="../img/full/badlands-national-park/_DSF2770.tif" download title="Badlands National Park 9">
-        <img src="../thumbs/badlands-national-park/_DSF2770.jpg" data-full="../img/jpg/badlands-national-park/_DSF2770.jpg" alt="Badlands National Park 9" loading="lazy"/>
+        <img src="../img/jpg/badlands-national-park/_DSF2770.jpg" alt="Badlands National Park 9" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Badlands National Park 9 &middot; 2026-06-07</span>
         <span class="caption-filename">_DSF2770.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2781.RAF" data-xmp="../img/RAW/_DSF2781.xmp">
       <a href="../img/full/badlands-national-park/_DSF2781.tif" download title="Badlands National Park 10">
-        <img src="../thumbs/badlands-national-park/_DSF2781.jpg" data-full="../img/jpg/badlands-national-park/_DSF2781.jpg" alt="Badlands National Park 10" loading="lazy"/>
+        <img src="../img/jpg/badlands-national-park/_DSF2781.jpg" alt="Badlands National Park 10" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Badlands National Park 10 &middot; 2026-06-07</span>
         <span class="caption-filename">_DSF2781.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2782.RAF" data-xmp="../img/RAW/_DSF2782.xmp">
       <a href="../img/full/badlands-national-park/_DSF2782.tif" download title="Badlands National Park 11">
-        <img src="../thumbs/badlands-national-park/_DSF2782.jpg" data-full="../img/jpg/badlands-national-park/_DSF2782.jpg" alt="Badlands National Park 11" loading="lazy"/>
+        <img src="../img/jpg/badlands-national-park/_DSF2782.jpg" alt="Badlands National Park 11" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Badlands National Park 11 &middot; 2026-06-07</span>
         <span class="caption-filename">_DSF2782.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2783.RAF" data-xmp="../img/RAW/_DSF2783.xmp">
       <a href="../img/full/badlands-national-park/_DSF2783.tif" download title="Badlands National Park 12">
-        <img src="../thumbs/badlands-national-park/_DSF2783.jpg" data-full="../img/jpg/badlands-national-park/_DSF2783.jpg" alt="Badlands National Park 12" loading="lazy"/>
+        <img src="../img/jpg/badlands-national-park/_DSF2783.jpg" alt="Badlands National Park 12" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Badlands National Park 12 &middot; 2026-06-07</span>
         <span class="caption-filename">_DSF2783.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2795.RAF" data-xmp="../img/RAW/_DSF2795.xmp">
       <a href="../img/full/badlands-national-park/_DSF2795.tif" download title="Badlands National Park 13">
-        <img src="../thumbs/badlands-national-park/_DSF2795.jpg" data-full="../img/jpg/badlands-national-park/_DSF2795.jpg" alt="Badlands National Park 13" loading="lazy"/>
+        <img src="../img/jpg/badlands-national-park/_DSF2795.jpg" alt="Badlands National Park 13" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Badlands National Park 13 &middot; 2026-06-07</span>
         <span class="caption-filename">_DSF2795.jpg</span>
       </figcaption>
     </figure>
+    </div>
+    <div class="photo-foot">
+      <button class="plb-view-all">View all 13 images →</button>
+    </div>
   </div>
 </div>
 <nav class="site-nav">

@@ -142,24 +142,40 @@
   .geo-bar-wrap { position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }
   .geo-bar-fill { position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }
   .geo-prose { color: var(--fg); }
-  .photo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    align-content: start;
+  .photo-pane { min-width: 0; }
+  .photo-scroll {
+    display: flex; flex-direction: column; gap: 4px;
+    overflow-y: auto; min-height: 0; flex: 1;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.18) transparent;
   }
-  .ph { background: #1f1f1f; aspect-ratio: 1 / 1; overflow: hidden; }
-  .ph a { display: block; width: 100%; height: 100%; }
+  .photo-scroll::-webkit-scrollbar { width: 6px; }
+  .photo-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); }
+  .ph { background: #1f1f1f; flex-shrink: 0; }
+  .ph a { display: block; width: 100%; }
   .ph img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
+    width: 100%; height: auto; display: block;
     filter: grayscale(100%);
     opacity: 0.92;
     transition: opacity 0.15s;
   }
   .ph:hover img { opacity: 1; }
   .ph figcaption { display: none; }
+  .photo-foot {
+    flex-shrink: 0;
+    padding-top: 12px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+  }
+  .plb-view-all {
+    font-family: inherit; font-size: 10px; font-weight: 400;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); background: none; border: none;
+    cursor: pointer; padding: 0;
+  }
+  .plb-view-all:hover { color: var(--fg); }
   .obs-header {
-    grid-column: 1 / -1;
     padding: 10px 0 4px 0;
   }
   .obs-header:first-child { padding-top: 0; }
@@ -192,14 +208,14 @@
   }
   @media (min-width: 720px) {
     .site-layout { grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
-    .site-record { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }
+    .photo-pane { position: sticky; top: 24px; height: calc(100vh - 48px); display: flex; flex-direction: column; }
   }
   @media (min-width: 1148px) {
     .site-layout { grid-template-columns: 7fr 15fr; }
-    .photo-grid { grid-template-columns: 1fr 1fr 1fr; }
   }
   @media (max-width: 719px) {
-    .photo-grid { order: -1; }
+    .photo-pane { order: -1; display: flex; flex-direction: column; }
+    .photo-scroll { max-height: 70vh; }
   }
 </style>
 </head>
@@ -221,70 +237,75 @@
 <div class="site-layout">
   <aside class="site-record">
 <div class="rec-section"><div class="rec-label">Geology</div><p class="geo-prose">~430-420 million years ago (bedrock); gorge carved ~12,000-14,000 years ago.</p></div><div class="rec-section"><div class="rec-label">Epoch</div><p>Silurian period (Llandovery-Wenlock); dolomite formed in shallow tropical sea; gorge incised during Late Pleistocene and early Holocene by glacial meltwater drainage.</p></div><div class="rec-section"><div class="rec-label">Native lands</div><p>Shawnee (Shawanwaki) · Miami · Adena and Hopewell cultures (500 BCE-500 CE); Little Miami River corridor a major Shawnee territory; Shawnee ceded Ohio lands via Treaty of Greene Ville 1795.</p></div><div class="rec-section"><div class="rec-label">Displacement &amp; Tenure</div><p>Cession 11: Treaty of Greene Ville (1795); Clifton Gorge corridor industrialized through the 19th century as a water-power district with textile mills, gristmills, and sawmills; John Bryan purchased 335 acres as Riverside Farm in 1896 and bequeathed it to the State of Ohio in 1918 for use as a forestry, botanic, and wildlife reserve; designated a state forest park in 1925.</p></div><div class="rec-section"><div class="rec-label">Shadow History</div><p>The Little Miami River corridor through Clifton Gorge supported at least six mills within one mile by the early 19th century, including a woolen mill, sawmill, paper mill, barrel mill, and two grist mills, all operating before workplace safety or child labor laws; most were abandoned by the late 19th century as water power became uneconomical; no records of worker injuries or labor litigation from the Clifton mill district appear in accessible archives, though the pre-regulatory context makes the absence of documentation unsurprising.</p></div><div class="rec-section"><div class="rec-label">Ecology</div><p>Gorge microclimate supporting relict northern plant communities; Canadian yew, white cedar, walking fern ; species absent from surrounding landscape; National Natural Landmark.</p></div><div class="rec-section"><div class="rec-label">Hydrology</div><p>Little Miami River (Ohio State Scenic River; National Wild & Scenic River); Yellow Spring iron-rich seep; Jacoby Creek tributary.</p></div><div class="rec-section"><div class="rec-label">Acreage</div><p>752 acres (park); 268 acres (Clifton Gorge SNP)</p></div><div class="rec-section"><div class="rec-label">GPS</div><p><a class="gps-link" href="https://maps.google.com/?q=39.796,-83.831" target="_blank" rel="noopener">39.7960° N, 83.8310° W</a></p></div>  </aside>
-  <div class="photo-grid">
-    <figure class="ph">
+  <div class="photo-pane">
+    <div class="photo-scroll">
+    <figure class="ph" data-raw="../img/RAW/_DSF0446.RAF" data-xmp="../img/RAW/_DSF0446.xmp">
       <a href="../img/full/john-bryan-state-park/_DSF0446.tif" download title="John Bryan State Park 1">
-        <img src="../thumbs/john-bryan-state-park/_DSF0446.jpg" data-full="../img/jpg/john-bryan-state-park/_DSF0446.jpg" alt="John Bryan State Park 1" loading="lazy"/>
+        <img src="../img/jpg/john-bryan-state-park/_DSF0446.jpg" alt="John Bryan State Park 1" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">John Bryan State Park 1 &middot; 2025-12-05</span>
         <span class="caption-filename">_DSF0446.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0467.RAF" data-xmp="../img/RAW/_DSF0467.xmp">
       <a href="../img/full/john-bryan-state-park/_DSF0467.tif" download title="John Bryan State Park 2">
-        <img src="../thumbs/john-bryan-state-park/_DSF0467.jpg" data-full="../img/jpg/john-bryan-state-park/_DSF0467.jpg" alt="John Bryan State Park 2" loading="lazy"/>
+        <img src="../img/jpg/john-bryan-state-park/_DSF0467.jpg" alt="John Bryan State Park 2" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">John Bryan State Park 2 &middot; 2025-12-05</span>
         <span class="caption-filename">_DSF0467.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0470.RAF" data-xmp="../img/RAW/_DSF0470.xmp">
       <a href="../img/full/john-bryan-state-park/_DSF0470.tif" download title="John Bryan State Park 3">
-        <img src="../thumbs/john-bryan-state-park/_DSF0470.jpg" data-full="../img/jpg/john-bryan-state-park/_DSF0470.jpg" alt="John Bryan State Park 3" loading="lazy"/>
+        <img src="../img/jpg/john-bryan-state-park/_DSF0470.jpg" alt="John Bryan State Park 3" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">John Bryan State Park 3 &middot; 2025-12-05</span>
         <span class="caption-filename">_DSF0470.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0472.RAF" data-xmp="../img/RAW/_DSF0472.xmp">
       <a href="../img/full/john-bryan-state-park/_DSF0472.tif" download title="John Bryan State Park 4">
-        <img src="../thumbs/john-bryan-state-park/_DSF0472.jpg" data-full="../img/jpg/john-bryan-state-park/_DSF0472.jpg" alt="John Bryan State Park 4" loading="lazy"/>
+        <img src="../img/jpg/john-bryan-state-park/_DSF0472.jpg" alt="John Bryan State Park 4" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">John Bryan State Park 4 &middot; 2025-12-05</span>
         <span class="caption-filename">_DSF0472.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0488.RAF" data-xmp="../img/RAW/_DSF0488.xmp">
       <a href="../img/full/john-bryan-state-park/_DSF0488.tif" download title="John Bryan State Park 5">
-        <img src="../thumbs/john-bryan-state-park/_DSF0488.jpg" data-full="../img/jpg/john-bryan-state-park/_DSF0488.jpg" alt="John Bryan State Park 5" loading="lazy"/>
+        <img src="../img/jpg/john-bryan-state-park/_DSF0488.jpg" alt="John Bryan State Park 5" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">John Bryan State Park 5 &middot; 2025-12-05</span>
         <span class="caption-filename">_DSF0488.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0494.RAF" data-xmp="../img/RAW/_DSF0494.xmp">
       <a href="../img/full/john-bryan-state-park/_DSF0494.tif" download title="John Bryan State Park 6">
-        <img src="../thumbs/john-bryan-state-park/_DSF0494.jpg" data-full="../img/jpg/john-bryan-state-park/_DSF0494.jpg" alt="John Bryan State Park 6" loading="lazy"/>
+        <img src="../img/jpg/john-bryan-state-park/_DSF0494.jpg" alt="John Bryan State Park 6" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">John Bryan State Park 6 &middot; 2025-12-05</span>
         <span class="caption-filename">_DSF0494.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0497.RAF" data-xmp="../img/RAW/_DSF0497.xmp">
       <a href="../img/full/john-bryan-state-park/_DSF0497.tif" download title="John Bryan State Park 7">
-        <img src="../thumbs/john-bryan-state-park/_DSF0497.jpg" data-full="../img/jpg/john-bryan-state-park/_DSF0497.jpg" alt="John Bryan State Park 7" loading="lazy"/>
+        <img src="../img/jpg/john-bryan-state-park/_DSF0497.jpg" alt="John Bryan State Park 7" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">John Bryan State Park 7 &middot; 2025-12-05</span>
         <span class="caption-filename">_DSF0497.jpg</span>
       </figcaption>
     </figure>
+    </div>
+    <div class="photo-foot">
+      <button class="plb-view-all">View all 7 images →</button>
+    </div>
   </div>
 </div>
 <nav class="site-nav">

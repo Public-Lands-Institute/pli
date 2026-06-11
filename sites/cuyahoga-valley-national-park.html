@@ -142,24 +142,40 @@
   .geo-bar-wrap { position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }
   .geo-bar-fill { position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }
   .geo-prose { color: var(--fg); }
-  .photo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    align-content: start;
+  .photo-pane { min-width: 0; }
+  .photo-scroll {
+    display: flex; flex-direction: column; gap: 4px;
+    overflow-y: auto; min-height: 0; flex: 1;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.18) transparent;
   }
-  .ph { background: #1f1f1f; aspect-ratio: 1 / 1; overflow: hidden; }
-  .ph a { display: block; width: 100%; height: 100%; }
+  .photo-scroll::-webkit-scrollbar { width: 6px; }
+  .photo-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); }
+  .ph { background: #1f1f1f; flex-shrink: 0; }
+  .ph a { display: block; width: 100%; }
   .ph img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
+    width: 100%; height: auto; display: block;
     filter: grayscale(100%);
     opacity: 0.92;
     transition: opacity 0.15s;
   }
   .ph:hover img { opacity: 1; }
   .ph figcaption { display: none; }
+  .photo-foot {
+    flex-shrink: 0;
+    padding-top: 12px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+  }
+  .plb-view-all {
+    font-family: inherit; font-size: 10px; font-weight: 400;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); background: none; border: none;
+    cursor: pointer; padding: 0;
+  }
+  .plb-view-all:hover { color: var(--fg); }
   .obs-header {
-    grid-column: 1 / -1;
     padding: 10px 0 4px 0;
   }
   .obs-header:first-child { padding-top: 0; }
@@ -192,14 +208,14 @@
   }
   @media (min-width: 720px) {
     .site-layout { grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
-    .site-record { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }
+    .photo-pane { position: sticky; top: 24px; height: calc(100vh - 48px); display: flex; flex-direction: column; }
   }
   @media (min-width: 1148px) {
     .site-layout { grid-template-columns: 7fr 15fr; }
-    .photo-grid { grid-template-columns: 1fr 1fr 1fr; }
   }
   @media (max-width: 719px) {
-    .photo-grid { order: -1; }
+    .photo-pane { order: -1; display: flex; flex-direction: column; }
+    .photo-scroll { max-height: 70vh; }
   }
 </style>
 </head>
@@ -221,79 +237,84 @@
 <div class="site-layout">
   <aside class="site-record">
 <div class="rec-section"><div class="rec-label">Geology</div><div class="geo-era-row"><div class="geo-swatch" style="background:#4aaa78"></div><span class="geo-era-name">Devonian</span><span class="geo-mya">360 Mya</span></div><div class="geo-bar-wrap"><div class="geo-bar-fill" style="width:77%;background:#4aaa78;opacity:0.55"></div></div><p class="geo-prose">~360 Mya Upper Devonian shale and sandstone (Bedford Shale, Berea Sandstone, Chagrin Shale, Ohio Shale); overlain by Mississippian Cuyahoga Formation and Pennsylvanian Sharon Conglomerate; valley carved by Pleistocene glaciation with glacial drift to 400-foot depth.</p></div><div class="rec-section"><div class="rec-label">Epoch</div><p>Upper Devonian (Famennian) to early Mississippian.</p></div><div class="rec-section"><div class="rec-label">Native lands</div><p>Hopewell culture (c. 100 BC-500 AD) constructed burial mounds within current park boundaries, including the Everett Mound in northern Summit County; Erie (Eriehronon), an Iroquoian-speaking nation, held the region before the Beaver Wars (1640s-1650s) dispersed the Erie confederacy; Wendat (Wyandot/Huron) confederacy, incorporating survivors of the Erie and Petun (Tionontati) nations, designated the Cuyahoga Valley as communal hunting ground shared among nations; Lenape (Delaware; Lenapehoking) held refugee presence in the 18th century; Shawandasse Tula (Shawnee) and Haudenosaunee Seneca held shared hunting access; Treaty of Fort McIntosh (January 21, 1785) defined the Cuyahoga River mouth as the eastern boundary of Indian territory; Treaty of Greenville (August 3, 1795) ceded all land south and east of the Cuyahoga River following the Battle of Fallen Timbers (August 20, 1794); Seneca removed November 1831 via steamboat from Cincinnati, suffering starvation and disease en route to Kansas; Shawnee ceded Ohio lands and removed to Kansas 1831; Wyandot, the last nation in Ohio, resisted removal until 1843; approximately 664 Wyandot removed to Kansas July 1843 via Treaty with the Wyandots (1842), arriving to find no land available and forced to purchase 44,000 acres from the Delaware; Wyandotte Nation now headquartered in Wyandotte, Oklahoma.</p></div><div class="rec-section"><div class="rec-label">Displacement &amp; Tenure</div><p>Treaty of Greenville (1795) extinguished Indigenous title; Cuyahoga County organized 1808 and entered private ownership; the Ohio and Erie Canal (1827-1913) corridor runs through the valley; 19th and 20th century industrial and agricultural use heavily degraded the Cuyahoga River; President Gerald Ford signed legislation establishing Cuyahoga Valley National Recreation Area December 27, 1974, as direct legislative response to the 1969 Cuyahoga River fire and the national environmental movement; redesignated Cuyahoga Valley National Park October 11, 2000.</p></div><div class="rec-section"><div class="rec-label">Shadow History</div><p>The Cuyahoga River caught fire at least 13 documented times between 1868 and 1969; the June 22, 1969 fire, ignited by a train flare on an oil slick trapped under railroad bridges near Republic Steel, burned for less than 30 minutes causing approximately $100,000 in damage to railroad bridges; the 1952 fire caused more than $1 million in damage; by 1951 the Ohio Department of Natural Resources documented the river as biologically dead from petroleum derivatives, solvents, and industrial effluent discharged by steel mills, rubber plants, and paint factories in Akron and Cleveland; the 1969 fire catalyzed passage of the Clean Water Act amendments (1972), the Great Lakes Water Quality Agreement (1972), and the establishment of the U.S. EPA (1970) and Ohio EPA (1971); the Krejci Dump, a private hazardous waste facility operating 1948-1980 on 47 acres within current park boundaries in Boston Township, was acquired by NPS in 1985 as a routine junkyard purchase, with contamination discovered only after a person fell ill collecting scrap in 1986; the Everett Mound (Hopewell) was destructively excavated during schoolhouse construction in 1856 before professional salvage by archaeologist David Brose in 1974; the Phillis Wheatley Association operated Camp Mueller in the Cuyahoga Valley in the 1930s to provide African American children access to overnight camping, excluded by segregation from white-only recreational facilities including Euclid Beach Park; racial exclusion from Cuyahoga Valley communities continued through restrictive covenants and mortgage redlining from the 1920s through the 1960s.</p></div><div class="rec-section"><div class="rec-label">Ecology</div><p>Mixed deciduous forest with American beech and sugar maple dominant on upland ridges; eastern hemlock and yellow birch in cool north-facing ravines; cottonwood, sycamore, and black walnut in Cuyahoga River floodplain; more than 900 plant species; approximately 1,700 acres of wetlands in 1,500 discrete patches; bald eagle, peregrine falcon, river otter, and beaver reestablished through habitat restoration.</p></div><div class="rec-section"><div class="rec-label">Hydrology</div><p>Cuyahoga River 26-mile corridor through park, dropping 600 feet between Akron and Cleveland and creating steep ravines and waterfalls including Brandywine Falls (65 ft); Berea Sandstone caprock over softer Bedford Shale creates differential erosion waterfalls throughout the valley; glacial drift fills valley to 400-foot depth; approximately 1,700 acres of wetlands in 1,500 discrete patches provide significant water filtration and flood attenuation; river largely recovered from industrial contamination following Clean Water Act enforcement.</p></div><div class="rec-section"><div class="rec-label">Acreage</div><p>32,950</p></div><div class="rec-section"><div class="rec-label">GPS</div><p><a class="gps-link" href="https://maps.google.com/?q=41.2417,-81.5497" target="_blank" rel="noopener">41.2417° N, 81.5497° W</a></p></div>  </aside>
-  <div class="photo-grid">
-    <figure class="ph">
+  <div class="photo-pane">
+    <div class="photo-scroll">
+    <figure class="ph" data-raw="../img/RAW/_DSF2130.RAF" data-xmp="../img/RAW/_DSF2130.xmp">
       <a href="../img/full/cuyahoga-valley-national-park/_DSF2130.tif" download title="Cuyahoga Valley National Park 1">
-        <img src="../thumbs/cuyahoga-valley-national-park/_DSF2130.jpg" data-full="../img/jpg/cuyahoga-valley-national-park/_DSF2130.jpg" alt="Cuyahoga Valley National Park 1" loading="lazy"/>
+        <img src="../img/jpg/cuyahoga-valley-national-park/_DSF2130.jpg" alt="Cuyahoga Valley National Park 1" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Cuyahoga Valley National Park 1 &middot; 2026-05-13</span>
         <span class="caption-filename">_DSF2130.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2131.RAF" data-xmp="../img/RAW/_DSF2131.xmp">
       <a href="../img/full/cuyahoga-valley-national-park/_DSF2131.tif" download title="Cuyahoga Valley National Park 2">
-        <img src="../thumbs/cuyahoga-valley-national-park/_DSF2131.jpg" data-full="../img/jpg/cuyahoga-valley-national-park/_DSF2131.jpg" alt="Cuyahoga Valley National Park 2" loading="lazy"/>
+        <img src="../img/jpg/cuyahoga-valley-national-park/_DSF2131.jpg" alt="Cuyahoga Valley National Park 2" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Cuyahoga Valley National Park 2 &middot; 2026-05-13</span>
         <span class="caption-filename">_DSF2131.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2144.RAF" data-xmp="../img/RAW/_DSF2144.xmp">
       <a href="../img/full/cuyahoga-valley-national-park/_DSF2144.tif" download title="Cuyahoga Valley National Park 3">
-        <img src="../thumbs/cuyahoga-valley-national-park/_DSF2144.jpg" data-full="../img/jpg/cuyahoga-valley-national-park/_DSF2144.jpg" alt="Cuyahoga Valley National Park 3" loading="lazy"/>
+        <img src="../img/jpg/cuyahoga-valley-national-park/_DSF2144.jpg" alt="Cuyahoga Valley National Park 3" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Cuyahoga Valley National Park 3 &middot; 2026-05-13</span>
         <span class="caption-filename">_DSF2144.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2152.RAF" data-xmp="../img/RAW/_DSF2152.xmp">
       <a href="../img/full/cuyahoga-valley-national-park/_DSF2152.tif" download title="Cuyahoga Valley National Park 4">
-        <img src="../thumbs/cuyahoga-valley-national-park/_DSF2152.jpg" data-full="../img/jpg/cuyahoga-valley-national-park/_DSF2152.jpg" alt="Cuyahoga Valley National Park 4" loading="lazy"/>
+        <img src="../img/jpg/cuyahoga-valley-national-park/_DSF2152.jpg" alt="Cuyahoga Valley National Park 4" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Cuyahoga Valley National Park 4 &middot; 2026-05-13</span>
         <span class="caption-filename">_DSF2152.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2170.RAF" data-xmp="../img/RAW/_DSF2170.xmp">
       <a href="../img/full/cuyahoga-valley-national-park/_DSF2170.tif" download title="Cuyahoga Valley National Park 5">
-        <img src="../thumbs/cuyahoga-valley-national-park/_DSF2170.jpg" data-full="../img/jpg/cuyahoga-valley-national-park/_DSF2170.jpg" alt="Cuyahoga Valley National Park 5" loading="lazy"/>
+        <img src="../img/jpg/cuyahoga-valley-national-park/_DSF2170.jpg" alt="Cuyahoga Valley National Park 5" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Cuyahoga Valley National Park 5 &middot; 2026-05-13</span>
         <span class="caption-filename">_DSF2170.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2176.RAF" data-xmp="../img/RAW/_DSF2176.xmp">
       <a href="../img/full/cuyahoga-valley-national-park/_DSF2176.tif" download title="Cuyahoga Valley National Park 6">
-        <img src="../thumbs/cuyahoga-valley-national-park/_DSF2176.jpg" data-full="../img/jpg/cuyahoga-valley-national-park/_DSF2176.jpg" alt="Cuyahoga Valley National Park 6" loading="lazy"/>
+        <img src="../img/jpg/cuyahoga-valley-national-park/_DSF2176.jpg" alt="Cuyahoga Valley National Park 6" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Cuyahoga Valley National Park 6 &middot; 2026-05-13</span>
         <span class="caption-filename">_DSF2176.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2178.RAF" data-xmp="../img/RAW/_DSF2178.xmp">
       <a href="../img/full/cuyahoga-valley-national-park/_DSF2178.tif" download title="Cuyahoga Valley National Park 7">
-        <img src="../thumbs/cuyahoga-valley-national-park/_DSF2178.jpg" data-full="../img/jpg/cuyahoga-valley-national-park/_DSF2178.jpg" alt="Cuyahoga Valley National Park 7" loading="lazy"/>
+        <img src="../img/jpg/cuyahoga-valley-national-park/_DSF2178.jpg" alt="Cuyahoga Valley National Park 7" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Cuyahoga Valley National Park 7 &middot; 2026-05-13</span>
         <span class="caption-filename">_DSF2178.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2201.RAF" data-xmp="../img/RAW/_DSF2201.xmp">
       <a href="../img/full/cuyahoga-valley-national-park/_DSF2201.tif" download title="Cuyahoga Valley National Park 8">
-        <img src="../thumbs/cuyahoga-valley-national-park/_DSF2201.jpg" data-full="../img/jpg/cuyahoga-valley-national-park/_DSF2201.jpg" alt="Cuyahoga Valley National Park 8" loading="lazy"/>
+        <img src="../img/jpg/cuyahoga-valley-national-park/_DSF2201.jpg" alt="Cuyahoga Valley National Park 8" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Cuyahoga Valley National Park 8 &middot; 2026-05-13</span>
         <span class="caption-filename">_DSF2201.jpg</span>
       </figcaption>
     </figure>
+    </div>
+    <div class="photo-foot">
+      <button class="plb-view-all">View all 8 images →</button>
+    </div>
   </div>
 </div>
 <nav class="site-nav">

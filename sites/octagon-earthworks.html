@@ -142,24 +142,40 @@
   .geo-bar-wrap { position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }
   .geo-bar-fill { position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }
   .geo-prose { color: var(--fg); }
-  .photo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    align-content: start;
+  .photo-pane { min-width: 0; }
+  .photo-scroll {
+    display: flex; flex-direction: column; gap: 4px;
+    overflow-y: auto; min-height: 0; flex: 1;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.18) transparent;
   }
-  .ph { background: #1f1f1f; aspect-ratio: 1 / 1; overflow: hidden; }
-  .ph a { display: block; width: 100%; height: 100%; }
+  .photo-scroll::-webkit-scrollbar { width: 6px; }
+  .photo-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); }
+  .ph { background: #1f1f1f; flex-shrink: 0; }
+  .ph a { display: block; width: 100%; }
   .ph img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
+    width: 100%; height: auto; display: block;
     filter: grayscale(100%);
     opacity: 0.92;
     transition: opacity 0.15s;
   }
   .ph:hover img { opacity: 1; }
   .ph figcaption { display: none; }
+  .photo-foot {
+    flex-shrink: 0;
+    padding-top: 12px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+  }
+  .plb-view-all {
+    font-family: inherit; font-size: 10px; font-weight: 400;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); background: none; border: none;
+    cursor: pointer; padding: 0;
+  }
+  .plb-view-all:hover { color: var(--fg); }
   .obs-header {
-    grid-column: 1 / -1;
     padding: 10px 0 4px 0;
   }
   .obs-header:first-child { padding-top: 0; }
@@ -192,14 +208,14 @@
   }
   @media (min-width: 720px) {
     .site-layout { grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
-    .site-record { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }
+    .photo-pane { position: sticky; top: 24px; height: calc(100vh - 48px); display: flex; flex-direction: column; }
   }
   @media (min-width: 1148px) {
     .site-layout { grid-template-columns: 7fr 15fr; }
-    .photo-grid { grid-template-columns: 1fr 1fr 1fr; }
   }
   @media (max-width: 719px) {
-    .photo-grid { order: -1; }
+    .photo-pane { order: -1; display: flex; flex-direction: column; }
+    .photo-scroll { max-height: 70vh; }
   }
 </style>
 </head>
@@ -221,43 +237,48 @@
 <div class="site-layout">
   <aside class="site-record">
 <div class="rec-section"><div class="rec-label">Geology</div><div class="geo-era-row"><div class="geo-swatch" style="background:#4aaa78"></div><span class="geo-era-name">Devonian</span><span class="geo-mya">385 Mya</span></div><div class="geo-bar-wrap"><div class="geo-bar-fill" style="width:77%;background:#4aaa78;opacity:0.55"></div></div><p class="geo-prose">~385 Mya Devonian limestone (Columbus Limestone, Delaware Limestone); earthworks constructed on Pleistocene glacial outwash terraces above the Licking River system.</p></div><div class="rec-section"><div class="rec-label">Epoch</div><p>Middle to Late Devonian.</p></div><div class="rec-section"><div class="rec-label">Native lands</div><p>Hopewell culture (c. 100 BC-500 AD) constructed the Octagon Earthworks as a precision lunar observatory; eight walls are aligned to all eight lunar standstill moonrise and moonset extremes of the 18.6-year lunar cycle, demonstrated by Earlham College physicists Hively and Horn (1982) with Monte Carlo analysis placing the odds of accidental alignment at less than 1 in 40 million; the Octagon and its attached Observatory Circle together comprise the largest geometric earthwork in the Americas by enclosed area; Lenape (Delaware; Lenapehoking), Shawandasse Tula (Shawanwaki/Shawnee), Myaamia (Miami), Wyandot, Ottawa, and Ojibwe held the Ohio Valley in the historic period; Treaty of Greenville (August 3, 1795) extinguished Indigenous title to Licking County.</p></div><div class="rec-section"><div class="rec-label">Displacement &amp; Tenure</div><p>Treaty of Greenville (1795) extinguished Indigenous title; lands passed to private ownership in the early 19th century; Ohio Historical Society acquired the deed in 1933 while the Moundbuilders Country Club lease (established 1910) remained in force; the 18-hole golf course was completed in 1923; Ohio History Connection initiated legal action to terminate the lease 2018; Ohio Supreme Court affirmed eminent domain authority December 2022; settlement reached August 1, 2024 (terms confidential); Octagon Earthworks opened to full public access January 1, 2025.</p></div><div class="rec-section"><div class="rec-label">Shadow History</div><p>The Moundbuilders Country Club operated a private golf course on the Octagon Earthworks from 1910 to 2025, blocking public and scholarly access to the largest geometric earthwork in the Americas for 115 years; Tom Bendelow designed the original nine-hole course, which opened June 1911 and expanded to 18 holes by 1923; decades of golf course maintenance required repeated applications of pesticides, herbicides, fungicides, and arsenic-based compounds on the earthwork surfaces; Ohio History Connection began removal of sand traps, tee boxes, cart paths, and golf infrastructure beginning January 2025, with multi-year soil remediation required; UNESCO World Heritage inscription criteria required unrestricted public access to the site, making termination of the golf lease a prerequisite to the 2023 inscription; the 1982 discovery of the Octagon's precise lunar alignments came more than 70 years after the golf course was established over them.</p></div><div class="rec-section"><div class="rec-label">Ecology</div><p>Former golf course turf undergoing active restoration; Ohio History Connection converting fairways and roughs to native grassland and prairie species beginning 2025; pre-contact vegetation was oak-hickory forest on upland terraces adjacent to the Raccoon Creek floodplain.</p></div><div class="rec-section"><div class="rec-label">Hydrology</div><p>Raccoon Creek drainage, Licking River basin; earthworks positioned on glacial outwash terrace; groundwater and soil conditions impacted by decades of golf course maintenance chemical applications.</p></div><div class="rec-section"><div class="rec-label">Acreage</div><p>70</p></div><div class="rec-section"><div class="rec-label">GPS</div><p><a class="gps-link" href="https://maps.google.com/?q=40.0403,-82.4278" target="_blank" rel="noopener">40.0403° N, 82.4278° W</a></p></div>  </aside>
-  <div class="photo-grid">
-    <figure class="ph">
+  <div class="photo-pane">
+    <div class="photo-scroll">
+    <figure class="ph" data-raw="../img/RAW/_DSF2041.RAF" data-xmp="../img/RAW/_DSF2041.xmp">
       <a href="../img/full/octagon-earthworks/_DSF2041.tif" download title="Octagon Earthworks 1">
-        <img src="../thumbs/octagon-earthworks/_DSF2041.jpg" data-full="../img/jpg/octagon-earthworks/_DSF2041.jpg" alt="Octagon Earthworks 1" loading="lazy"/>
+        <img src="../img/jpg/octagon-earthworks/_DSF2041.jpg" alt="Octagon Earthworks 1" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Octagon Earthworks 1 &middot; 2026-05-13</span>
         <span class="caption-filename">_DSF2041.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2048.RAF" data-xmp="../img/RAW/_DSF2048.xmp">
       <a href="../img/full/octagon-earthworks/_DSF2048.tif" download title="Octagon Earthworks 2">
-        <img src="../thumbs/octagon-earthworks/_DSF2048.jpg" data-full="../img/jpg/octagon-earthworks/_DSF2048.jpg" alt="Octagon Earthworks 2" loading="lazy"/>
+        <img src="../img/jpg/octagon-earthworks/_DSF2048.jpg" alt="Octagon Earthworks 2" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Octagon Earthworks 2 &middot; 2026-05-13</span>
         <span class="caption-filename">_DSF2048.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2050.RAF" data-xmp="../img/RAW/_DSF2050.xmp">
       <a href="../img/full/octagon-earthworks/_DSF2050.tif" download title="Octagon Earthworks 3">
-        <img src="../thumbs/octagon-earthworks/_DSF2050.jpg" data-full="../img/jpg/octagon-earthworks/_DSF2050.jpg" alt="Octagon Earthworks 3" loading="lazy"/>
+        <img src="../img/jpg/octagon-earthworks/_DSF2050.jpg" alt="Octagon Earthworks 3" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Octagon Earthworks 3 &middot; 2026-05-13</span>
         <span class="caption-filename">_DSF2050.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2052.RAF" data-xmp="../img/RAW/_DSF2052.xmp">
       <a href="../img/full/octagon-earthworks/_DSF2052.tif" download title="Octagon Earthworks 4">
-        <img src="../thumbs/octagon-earthworks/_DSF2052.jpg" data-full="../img/jpg/octagon-earthworks/_DSF2052.jpg" alt="Octagon Earthworks 4" loading="lazy"/>
+        <img src="../img/jpg/octagon-earthworks/_DSF2052.jpg" alt="Octagon Earthworks 4" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Octagon Earthworks 4 &middot; 2026-05-13</span>
         <span class="caption-filename">_DSF2052.jpg</span>
       </figcaption>
     </figure>
+    </div>
+    <div class="photo-foot">
+      <button class="plb-view-all">View all 4 images →</button>
+    </div>
   </div>
 </div>
 <nav class="site-nav">

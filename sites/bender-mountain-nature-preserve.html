@@ -142,24 +142,40 @@
   .geo-bar-wrap { position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }
   .geo-bar-fill { position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }
   .geo-prose { color: var(--fg); }
-  .photo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    align-content: start;
+  .photo-pane { min-width: 0; }
+  .photo-scroll {
+    display: flex; flex-direction: column; gap: 4px;
+    overflow-y: auto; min-height: 0; flex: 1;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.18) transparent;
   }
-  .ph { background: #1f1f1f; aspect-ratio: 1 / 1; overflow: hidden; }
-  .ph a { display: block; width: 100%; height: 100%; }
+  .photo-scroll::-webkit-scrollbar { width: 6px; }
+  .photo-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); }
+  .ph { background: #1f1f1f; flex-shrink: 0; }
+  .ph a { display: block; width: 100%; }
   .ph img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
+    width: 100%; height: auto; display: block;
     filter: grayscale(100%);
     opacity: 0.92;
     transition: opacity 0.15s;
   }
   .ph:hover img { opacity: 1; }
   .ph figcaption { display: none; }
+  .photo-foot {
+    flex-shrink: 0;
+    padding-top: 12px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+  }
+  .plb-view-all {
+    font-family: inherit; font-size: 10px; font-weight: 400;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); background: none; border: none;
+    cursor: pointer; padding: 0;
+  }
+  .plb-view-all:hover { color: var(--fg); }
   .obs-header {
-    grid-column: 1 / -1;
     padding: 10px 0 4px 0;
   }
   .obs-header:first-child { padding-top: 0; }
@@ -192,14 +208,14 @@
   }
   @media (min-width: 720px) {
     .site-layout { grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
-    .site-record { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }
+    .photo-pane { position: sticky; top: 24px; height: calc(100vh - 48px); display: flex; flex-direction: column; }
   }
   @media (min-width: 1148px) {
     .site-layout { grid-template-columns: 7fr 15fr; }
-    .photo-grid { grid-template-columns: 1fr 1fr 1fr; }
   }
   @media (max-width: 719px) {
-    .photo-grid { order: -1; }
+    .photo-pane { order: -1; display: flex; flex-direction: column; }
+    .photo-scroll { max-height: 70vh; }
   }
 </style>
 </head>
@@ -221,61 +237,66 @@
 <div class="site-layout">
   <aside class="site-record">
 <div class="rec-section"><div class="rec-label">Geology</div><div class="geo-era-row"><div class="geo-swatch" style="background:#c8a86e"></div><span class="geo-era-name">Ordovician</span></div><div class="geo-bar-wrap"><div class="geo-bar-fill" style="width:90%;background:#c8a86e;opacity:0.55"></div></div><p class="geo-prose">~450 million years ago (Ordovician bedrock); ridge morphology shaped by Illinoian glaciation ~400,000 years ago.</p></div><div class="rec-section"><div class="rec-label">Epoch</div><p>Ordovician period (Cincinnatian); Ohio River rerouted during Illinoian glaciation created oversteepened valley walls; Pleistocene colluvium mantles bedrock slopes.</p></div><div class="rec-section"><div class="rec-label">Native lands</div><p>Shawnee (Shawanwaki) · earlier Adena and Hopewell peoples; Ohio River ridge a known travel and hunting corridor; Shawnee ceded Hamilton County lands via Treaty of Greene Ville 1795.</p></div><div class="rec-section"><div class="rec-label">Displacement &amp; Tenure</div><p>Cession 11: Treaty of Greene Ville (1795); established in 2003 through Clean Ohio conservation program funds and Great Parks of Hamilton County ForeverGreen funding; in 2023 the Sisters of Charity of Cincinnati donated 73 acres to the Western Wildlife Corridor, the largest single gift in that organization's history.</p></div><div class="rec-section"><div class="rec-label">Shadow History</div><p>Prior land use included grazing, hog foraging, fruit growing, and selective logging; no quarrying, industrial use, or documented forced removal has been identified for this Ohio River bluff site in accessible records; the Western Wildlife Corridor began managing the site in 2003 and describes it as degraded agricultural and silvicultural land undergoing active restoration.</p></div><div class="rec-section"><div class="rec-label">Ecology</div><p>Mixed mesophytic forest; steep south-facing Ohio River bluff; 390+ vascular plant species; described as best site in Hamilton County for native wildflowers; invasive honeysuckle removal ongoing since 2003.</p></div><div class="rec-section"><div class="rec-label">Hydrology</div><p>Rapid Run Creek drainage to the north; Ohio River corridor to the south; steep slope hydrology with seasonal seeps.</p></div><div class="rec-section"><div class="rec-label">Acreage</div><p>130+ acres</p></div><div class="rec-section"><div class="rec-label">GPS</div><p><a class="gps-link" href="https://maps.google.com/?q=39.11,-84.62" target="_blank" rel="noopener">39.1100° N, 84.6200° W</a></p></div>  </aside>
-  <div class="photo-grid">
-    <figure class="ph">
+  <div class="photo-pane">
+    <div class="photo-scroll">
+    <figure class="ph" data-raw="../img/RAW/_DSC0346.NEF" data-xmp="../img/RAW/_DSC0346.xmp">
       <a href="../img/full/bender-mountain-nature-preserve/_DSC0346.tif" download title="Bender Mountain Nature Preserve 1">
-        <img src="../thumbs/bender-mountain-nature-preserve/_DSC0346.jpg" data-full="../img/jpg/bender-mountain-nature-preserve/_DSC0346.jpg" alt="Bender Mountain Nature Preserve 1" loading="lazy"/>
+        <img src="../img/jpg/bender-mountain-nature-preserve/_DSC0346.jpg" alt="Bender Mountain Nature Preserve 1" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Bender Mountain Nature Preserve 1 &middot; 2025-09-15</span>
         <span class="caption-filename">_DSC0346.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSC0348.NEF" data-xmp="../img/RAW/_DSC0348.xmp">
       <a href="../img/full/bender-mountain-nature-preserve/_DSC0348.tif" download title="Bender Mountain Nature Preserve 2">
-        <img src="../thumbs/bender-mountain-nature-preserve/_DSC0348.jpg" data-full="../img/jpg/bender-mountain-nature-preserve/_DSC0348.jpg" alt="Bender Mountain Nature Preserve 2" loading="lazy"/>
+        <img src="../img/jpg/bender-mountain-nature-preserve/_DSC0348.jpg" alt="Bender Mountain Nature Preserve 2" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Bender Mountain Nature Preserve 2 &middot; 2025-09-15</span>
         <span class="caption-filename">_DSC0348.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSC0358.NEF" data-xmp="../img/RAW/_DSC0358.xmp">
       <a href="../img/full/bender-mountain-nature-preserve/_DSC0358.tif" download title="Bender Mountain Nature Preserve 3">
-        <img src="../thumbs/bender-mountain-nature-preserve/_DSC0358.jpg" data-full="../img/jpg/bender-mountain-nature-preserve/_DSC0358.jpg" alt="Bender Mountain Nature Preserve 3" loading="lazy"/>
+        <img src="../img/jpg/bender-mountain-nature-preserve/_DSC0358.jpg" alt="Bender Mountain Nature Preserve 3" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Bender Mountain Nature Preserve 3 &middot; 2025-09-15</span>
         <span class="caption-filename">_DSC0358.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSC0359.NEF" data-xmp="../img/RAW/_DSC0359.xmp">
       <a href="../img/full/bender-mountain-nature-preserve/_DSC0359.tif" download title="Bender Mountain Nature Preserve 4">
-        <img src="../thumbs/bender-mountain-nature-preserve/_DSC0359.jpg" data-full="../img/jpg/bender-mountain-nature-preserve/_DSC0359.jpg" alt="Bender Mountain Nature Preserve 4" loading="lazy"/>
+        <img src="../img/jpg/bender-mountain-nature-preserve/_DSC0359.jpg" alt="Bender Mountain Nature Preserve 4" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Bender Mountain Nature Preserve 4 &middot; 2025-09-15</span>
         <span class="caption-filename">_DSC0359.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSC0366.NEF" data-xmp="../img/RAW/_DSC0366.xmp">
       <a href="../img/full/bender-mountain-nature-preserve/_DSC0366.tif" download title="Bender Mountain Nature Preserve 5">
-        <img src="../thumbs/bender-mountain-nature-preserve/_DSC0366.jpg" data-full="../img/jpg/bender-mountain-nature-preserve/_DSC0366.jpg" alt="Bender Mountain Nature Preserve 5" loading="lazy"/>
+        <img src="../img/jpg/bender-mountain-nature-preserve/_DSC0366.jpg" alt="Bender Mountain Nature Preserve 5" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Bender Mountain Nature Preserve 5 &middot; 2025-09-15</span>
         <span class="caption-filename">_DSC0366.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSC0368.NEF" data-xmp="../img/RAW/_DSC0368.xmp">
       <a href="../img/full/bender-mountain-nature-preserve/_DSC0368.tif" download title="Bender Mountain Nature Preserve 6">
-        <img src="../thumbs/bender-mountain-nature-preserve/_DSC0368.jpg" data-full="../img/jpg/bender-mountain-nature-preserve/_DSC0368.jpg" alt="Bender Mountain Nature Preserve 6" loading="lazy"/>
+        <img src="../img/jpg/bender-mountain-nature-preserve/_DSC0368.jpg" alt="Bender Mountain Nature Preserve 6" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Bender Mountain Nature Preserve 6 &middot; 2025-09-15</span>
         <span class="caption-filename">_DSC0368.jpg</span>
       </figcaption>
     </figure>
+    </div>
+    <div class="photo-foot">
+      <button class="plb-view-all">View all 6 images →</button>
+    </div>
   </div>
 </div>
 <nav class="site-nav">

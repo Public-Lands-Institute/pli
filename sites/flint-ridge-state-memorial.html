@@ -142,24 +142,40 @@
   .geo-bar-wrap { position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }
   .geo-bar-fill { position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }
   .geo-prose { color: var(--fg); }
-  .photo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    align-content: start;
+  .photo-pane { min-width: 0; }
+  .photo-scroll {
+    display: flex; flex-direction: column; gap: 4px;
+    overflow-y: auto; min-height: 0; flex: 1;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.18) transparent;
   }
-  .ph { background: #1f1f1f; aspect-ratio: 1 / 1; overflow: hidden; }
-  .ph a { display: block; width: 100%; height: 100%; }
+  .photo-scroll::-webkit-scrollbar { width: 6px; }
+  .photo-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); }
+  .ph { background: #1f1f1f; flex-shrink: 0; }
+  .ph a { display: block; width: 100%; }
   .ph img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
+    width: 100%; height: auto; display: block;
     filter: grayscale(100%);
     opacity: 0.92;
     transition: opacity 0.15s;
   }
   .ph:hover img { opacity: 1; }
   .ph figcaption { display: none; }
+  .photo-foot {
+    flex-shrink: 0;
+    padding-top: 12px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+  }
+  .plb-view-all {
+    font-family: inherit; font-size: 10px; font-weight: 400;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); background: none; border: none;
+    cursor: pointer; padding: 0;
+  }
+  .plb-view-all:hover { color: var(--fg); }
   .obs-header {
-    grid-column: 1 / -1;
     padding: 10px 0 4px 0;
   }
   .obs-header:first-child { padding-top: 0; }
@@ -192,14 +208,14 @@
   }
   @media (min-width: 720px) {
     .site-layout { grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
-    .site-record { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }
+    .photo-pane { position: sticky; top: 24px; height: calc(100vh - 48px); display: flex; flex-direction: column; }
   }
   @media (min-width: 1148px) {
     .site-layout { grid-template-columns: 7fr 15fr; }
-    .photo-grid { grid-template-columns: 1fr 1fr 1fr; }
   }
   @media (max-width: 719px) {
-    .photo-grid { order: -1; }
+    .photo-pane { order: -1; display: flex; flex-direction: column; }
+    .photo-scroll { max-height: 70vh; }
   }
 </style>
 </head>
@@ -221,43 +237,48 @@
 <div class="site-layout">
   <aside class="site-record">
 <div class="rec-section"><div class="rec-label">Geology</div><div class="geo-era-row"><div class="geo-swatch" style="background:#5d5abf"></div><span class="geo-era-name">Pennsylvanian</span><span class="geo-mya">320 Mya</span></div><div class="geo-bar-wrap"><div class="geo-bar-fill" style="width:60%;background:#5d5abf;opacity:0.55"></div></div><p class="geo-prose">~320 Mya Pennsylvanian Vanport chert (Vanport Limestone Member, Allegheny Group); cryptocrystalline quartz (SiO2) formed through secondary silicification of a marine limestone by sponge-derived silica-rich fluids.</p></div><div class="rec-section"><div class="rec-label">Epoch</div><p>Desmoinesian stage, Middle Pennsylvanian.</p></div><div class="rec-section"><div class="rec-label">Native lands</div><p>Archaic cultures quarried Flint Ridge chert beginning approximately 12,000 years ago; Adena culture (c. 500 BC-100 AD, Early Woodland) actively quarried and shaped tools here; Hopewell culture (c. 100 BC-500 AD, Middle Woodland) exploited Flint Ridge as a primary long-distance trade commodity, distributing the multicolored chert across the Hopewell Interaction Sphere as far west as present-day Kansas and Missouri, south to the Gulf Coast, and east to the Carolinas, exchanging flint for Michigan copper, Appalachian mica, and Gulf Coast marine shells; Flint Ridge served as a multi-tribal gathering and extraction place for millennia; Wyandot, Lenape (Delaware), Shawandasse Tula (Shawnee), Myaamia (Miami), Ottawa, Ojibwe, and Potawatomi held the Licking and Muskingum County region and were signatories to the Treaty of Greenville (August 3, 1795), which extinguished Indigenous title to this portion of Ohio.</p></div><div class="rec-section"><div class="rec-label">Displacement &amp; Tenure</div><p>Treaty of Greenville (August 3, 1795) extinguished Indigenous title to Licking and Muskingum Counties; lands entered private agricultural ownership in the early 19th century; European settlers mined Flint Ridge commercially from the late 18th century through approximately 1840 for gunflints, whetstones, and millstones; Ohio Historical Society established Flint Ridge State Memorial in 1933; listed on the National Register of Historic Places 1970; Ohio flint designated official state gemstone 1965; managed by Ohio History Connection, successor to the Ohio Historical Society.</p></div><div class="rec-section"><div class="rec-label">Shadow History</div><p>European settlers extracted Flint Ridge chert commercially from the late 18th century through approximately 1840 for gunflints, whetstones, and millstones, constituting unregulated exploitation of a 12,000-year-old Indigenous quarry landscape; the first formal study of the site appeared in the 1884 Smithsonian Institution annual report; William C. Mills, Curator of Archaeology at the Ohio Historical Society, conducted extensive excavations in 1920, removing artifacts from the quarry pits to institutional collections in Columbus; the Gilbert W. Dilley Museum was constructed in 1968 directly over an original quarry pit; uncontrolled 19th and 20th century artifact collection removed unknowable quantities of material from the surface and quarry pits; the broader Flint Ridge quarry complex spans more than 2,000 acres across Licking and Muskingum Counties, the vast majority outside memorial boundaries and unprotected from agricultural disturbance.</p></div><div class="rec-section"><div class="rec-label">Ecology</div><p>Mature beech-maple-oak mixed hardwood forest; the Vanport chert layer 3-5 feet below the surface influences local drainage and root systems; approximately 14,000 years of quarrying activity has permanently altered local soil structure; ancient quarry pits have evolved into vernal pools supporting diverse amphibian and wetland plant communities; among the finest remaining examples of mature hardwood forest in Licking County.</p></div><div class="rec-section"><div class="rec-label">Hydrology</div><p>South Fork Licking River drainage basin, Muskingum River watershed; local drainage influenced by the impermeable Vanport chert layer; ancient quarry pits function as vernal pools and seasonal wetlands; broader landscape affected by agricultural tile drainage.</p></div><div class="rec-section"><div class="rec-label">Acreage</div><p>533</p></div><div class="rec-section"><div class="rec-label">GPS</div><p><a class="gps-link" href="https://maps.google.com/?q=39.9848,-82.2095" target="_blank" rel="noopener">39.9848° N, 82.2095° W</a></p></div>  </aside>
-  <div class="photo-grid">
-    <figure class="ph">
+  <div class="photo-pane">
+    <div class="photo-scroll">
+    <figure class="ph" data-raw="../img/RAW/_DSF2066.RAF" data-xmp="../img/RAW/_DSF2066.xmp">
       <a href="../img/full/flint-ridge-state-memorial/_DSF2066.tif" download title="Flint Ridge State Memorial 1">
-        <img src="../thumbs/flint-ridge-state-memorial/_DSF2066.jpg" data-full="../img/jpg/flint-ridge-state-memorial/_DSF2066.jpg" alt="Flint Ridge State Memorial 1" loading="lazy"/>
+        <img src="../img/jpg/flint-ridge-state-memorial/_DSF2066.jpg" alt="Flint Ridge State Memorial 1" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Flint Ridge State Memorial 1 &middot; 2026-05-13</span>
         <span class="caption-filename">_DSF2066.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2071.RAF" data-xmp="../img/RAW/_DSF2071.xmp">
       <a href="../img/full/flint-ridge-state-memorial/_DSF2071.tif" download title="Flint Ridge State Memorial 2">
-        <img src="../thumbs/flint-ridge-state-memorial/_DSF2071.jpg" data-full="../img/jpg/flint-ridge-state-memorial/_DSF2071.jpg" alt="Flint Ridge State Memorial 2" loading="lazy"/>
+        <img src="../img/jpg/flint-ridge-state-memorial/_DSF2071.jpg" alt="Flint Ridge State Memorial 2" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Flint Ridge State Memorial 2 &middot; 2026-05-13</span>
         <span class="caption-filename">_DSF2071.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2074.RAF" data-xmp="../img/RAW/_DSF2074.xmp">
       <a href="../img/full/flint-ridge-state-memorial/_DSF2074.tif" download title="Flint Ridge State Memorial 3">
-        <img src="../thumbs/flint-ridge-state-memorial/_DSF2074.jpg" data-full="../img/jpg/flint-ridge-state-memorial/_DSF2074.jpg" alt="Flint Ridge State Memorial 3" loading="lazy"/>
+        <img src="../img/jpg/flint-ridge-state-memorial/_DSF2074.jpg" alt="Flint Ridge State Memorial 3" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Flint Ridge State Memorial 3 &middot; 2026-05-13</span>
         <span class="caption-filename">_DSF2074.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2079.RAF" data-xmp="../img/RAW/_DSF2079.xmp">
       <a href="../img/full/flint-ridge-state-memorial/_DSF2079.tif" download title="Flint Ridge State Memorial 4">
-        <img src="../thumbs/flint-ridge-state-memorial/_DSF2079.jpg" data-full="../img/jpg/flint-ridge-state-memorial/_DSF2079.jpg" alt="Flint Ridge State Memorial 4" loading="lazy"/>
+        <img src="../img/jpg/flint-ridge-state-memorial/_DSF2079.jpg" alt="Flint Ridge State Memorial 4" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Flint Ridge State Memorial 4 &middot; 2026-05-13</span>
         <span class="caption-filename">_DSF2079.jpg</span>
       </figcaption>
     </figure>
+    </div>
+    <div class="photo-foot">
+      <button class="plb-view-all">View all 4 images →</button>
+    </div>
   </div>
 </div>
 <nav class="site-nav">

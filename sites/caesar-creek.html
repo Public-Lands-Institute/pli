@@ -142,24 +142,40 @@
   .geo-bar-wrap { position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }
   .geo-bar-fill { position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }
   .geo-prose { color: var(--fg); }
-  .photo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    align-content: start;
+  .photo-pane { min-width: 0; }
+  .photo-scroll {
+    display: flex; flex-direction: column; gap: 4px;
+    overflow-y: auto; min-height: 0; flex: 1;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.18) transparent;
   }
-  .ph { background: #1f1f1f; aspect-ratio: 1 / 1; overflow: hidden; }
-  .ph a { display: block; width: 100%; height: 100%; }
+  .photo-scroll::-webkit-scrollbar { width: 6px; }
+  .photo-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); }
+  .ph { background: #1f1f1f; flex-shrink: 0; }
+  .ph a { display: block; width: 100%; }
   .ph img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
+    width: 100%; height: auto; display: block;
     filter: grayscale(100%);
     opacity: 0.92;
     transition: opacity 0.15s;
   }
   .ph:hover img { opacity: 1; }
   .ph figcaption { display: none; }
+  .photo-foot {
+    flex-shrink: 0;
+    padding-top: 12px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+  }
+  .plb-view-all {
+    font-family: inherit; font-size: 10px; font-weight: 400;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); background: none; border: none;
+    cursor: pointer; padding: 0;
+  }
+  .plb-view-all:hover { color: var(--fg); }
   .obs-header {
-    grid-column: 1 / -1;
     padding: 10px 0 4px 0;
   }
   .obs-header:first-child { padding-top: 0; }
@@ -192,14 +208,14 @@
   }
   @media (min-width: 720px) {
     .site-layout { grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
-    .site-record { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }
+    .photo-pane { position: sticky; top: 24px; height: calc(100vh - 48px); display: flex; flex-direction: column; }
   }
   @media (min-width: 1148px) {
     .site-layout { grid-template-columns: 7fr 15fr; }
-    .photo-grid { grid-template-columns: 1fr 1fr 1fr; }
   }
   @media (max-width: 719px) {
-    .photo-grid { order: -1; }
+    .photo-pane { order: -1; display: flex; flex-direction: column; }
+    .photo-scroll { max-height: 70vh; }
   }
 </style>
 </head>
@@ -221,43 +237,48 @@
 <div class="site-layout">
   <aside class="site-record">
 <div class="rec-section"><div class="rec-label">Geology</div><div class="geo-era-row"><div class="geo-swatch" style="background:#c8a86e"></div><span class="geo-era-name">Ordovician</span><span class="geo-mya">447 Mya</span></div><div class="geo-bar-wrap"><div class="geo-bar-fill" style="width:90%;background:#c8a86e;opacity:0.55"></div></div><p class="geo-prose">~447 Mya Ordovician limestone and shale.</p></div><div class="rec-section"><div class="rec-label">Epoch</div><p>Late Ordovician (Cincinnatian Series); Waynesville, Liberty, and Whitewater formations.</p></div><div class="rec-section"><div class="rec-label">Native lands</div><p>Shawnee (Shawanwaki) · Myaamia (Miami) · Hopewell culture (300 BCE-600 CE) · Fort Ancient culture (1200-1600 CE); Fort Ancient Earthworks, a UNESCO World Heritage Site, located in Warren County; creek named for Caesar, an enslaved Virginian who escaped bondage c. 1774, was adopted by the Shawnee, and used the valley as hunting grounds; Shawnee and Miami ceded southern Ohio via Treaty of Greenville 1795; remaining Ohio Shawnee removed west via Treaty of Wapakoneta 1831.</p></div><div class="rec-section"><div class="rec-label">Displacement &amp; Tenure</div><p>Cession 11: Treaty of Greenville (1795); U.S. Army Corps of Engineers began acquiring Caesar Creek Valley land in the mid-1960s under eminent domain authority of the Flood Control Act of 1938; construction started 1971, dam completed 1978; village of New Burlington condemned and inundated, approximately 300 residents displaced involuntarily; last resident departed April 20, 1973; state park opened 1978, managed by Ohio DNR under lease from the Army Corps.</p></div><div class="rec-section"><div class="rec-label">Shadow History</div><p>The creation of Caesar Creek Lake required the forced inundation of New Burlington, a functioning rural community straddling the Warren/Clinton County line at the confluence of Caesar Creek and Anderson Fork. Approximately 300 residents were displaced beginning in the mid-1960s when the Army Corps of Engineers began acquiring land under eminent domain; the last resident, 87-year-old Lawrence Mitchner, departed April 20, 1973, after refusing to meet with Corps appraisers. The community included a post office, Quaker meetinghouse, school, churches, a Masonic lodge, and farms. John Baskin documented the displacement in New Burlington: The Life and Death of an American Village (1976). The Caesar's Creek Quaker Meetinghouse was relocated rather than demolished. A 1976 archaeological reconnaissance conducted prior to inundation documented pre-contact sites in the reservoir footprint; earlier surveys had recorded a Hopewell-era village of 60-70 acres near the creek, featuring burial mounds up to 8 feet high with 79 documented burials; these and other sites were permanently inundated without preservation. The creek's name carries an additional layer: it memorializes Caesar, an enslaved Virginian who escaped bondage c. 1774 and was adopted into the Shawnee nation, a detail absent from most park signage.</p></div><div class="rec-section"><div class="rec-label">Ecology</div><p>Oak-hickory and beech-maple upland forests with northern floodplain forest in creek valleys; restored native prairie and wetland complexes support grassland-dependent birds including grasshopper sparrow, Eastern meadowlark, bald eagle, and osprey; over 200 bird species recorded.</p></div><div class="rec-section"><div class="rec-label">Hydrology</div><p>Caesar Creek is a tributary of the Little Miami River (a National Wild and Scenic River), draining a 237-square-mile watershed in Warren, Clinton, and Greene counties; the U.S. Army Corps of Engineers dam (completed 1978) impounds a 2,830-acre reservoir; Anderson Fork converges with Caesar Creek at the former site of New Burlington.</p></div><div class="rec-section"><div class="rec-label">Acreage</div><p>7,530</p></div><div class="rec-section"><div class="rec-label">GPS</div><p><a class="gps-link" href="https://maps.google.com/?q=39.5146,-84.0365" target="_blank" rel="noopener">39.5146° N, 84.0365° W</a></p></div>  </aside>
-  <div class="photo-grid">
-    <figure class="ph">
+  <div class="photo-pane">
+    <div class="photo-scroll">
+    <figure class="ph" data-raw="../img/RAW/_DSF0419.RAF" data-xmp="../img/RAW/_DSF0419.xmp">
       <a href="../img/full/caesar-creek/_DSF0419.tif" download title="Caesar Creek State Park 1">
-        <img src="../thumbs/caesar-creek/_DSF0419.jpg" data-full="../img/jpg/caesar-creek/_DSF0419.jpg" alt="Caesar Creek State Park 1" loading="lazy"/>
+        <img src="../img/jpg/caesar-creek/_DSF0419.jpg" alt="Caesar Creek State Park 1" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Caesar Creek State Park 1 &middot; 2025-11-17</span>
         <span class="caption-filename">_DSF0419.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0426.RAF" data-xmp="../img/RAW/_DSF0426.xmp">
       <a href="../img/full/caesar-creek/_DSF0426.tif" download title="Caesar Creek State Park 2">
-        <img src="../thumbs/caesar-creek/_DSF0426.jpg" data-full="../img/jpg/caesar-creek/_DSF0426.jpg" alt="Caesar Creek State Park 2" loading="lazy"/>
+        <img src="../img/jpg/caesar-creek/_DSF0426.jpg" alt="Caesar Creek State Park 2" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Caesar Creek State Park 2 &middot; 2025-11-17</span>
         <span class="caption-filename">_DSF0426.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0428.RAF" data-xmp="../img/RAW/_DSF0428.xmp">
       <a href="../img/full/caesar-creek/_DSF0428.tif" download title="Caesar Creek State Park 3">
-        <img src="../thumbs/caesar-creek/_DSF0428.jpg" data-full="../img/jpg/caesar-creek/_DSF0428.jpg" alt="Caesar Creek State Park 3" loading="lazy"/>
+        <img src="../img/jpg/caesar-creek/_DSF0428.jpg" alt="Caesar Creek State Park 3" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Caesar Creek State Park 3 &middot; 2025-11-17</span>
         <span class="caption-filename">_DSF0428.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0438.RAF" data-xmp="../img/RAW/_DSF0438.xmp">
       <a href="../img/full/caesar-creek/_DSF0438.tif" download title="Caesar Creek State Park 4">
-        <img src="../thumbs/caesar-creek/_DSF0438.jpg" data-full="../img/jpg/caesar-creek/_DSF0438.jpg" alt="Caesar Creek State Park 4" loading="lazy"/>
+        <img src="../img/jpg/caesar-creek/_DSF0438.jpg" alt="Caesar Creek State Park 4" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Caesar Creek State Park 4 &middot; 2025-11-17</span>
         <span class="caption-filename">_DSF0438.jpg</span>
       </figcaption>
     </figure>
+    </div>
+    <div class="photo-foot">
+      <button class="plb-view-all">View all 4 images →</button>
+    </div>
   </div>
 </div>
 <nav class="site-nav">

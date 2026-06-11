@@ -142,24 +142,40 @@
   .geo-bar-wrap { position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }
   .geo-bar-fill { position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }
   .geo-prose { color: var(--fg); }
-  .photo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    align-content: start;
+  .photo-pane { min-width: 0; }
+  .photo-scroll {
+    display: flex; flex-direction: column; gap: 4px;
+    overflow-y: auto; min-height: 0; flex: 1;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.18) transparent;
   }
-  .ph { background: #1f1f1f; aspect-ratio: 1 / 1; overflow: hidden; }
-  .ph a { display: block; width: 100%; height: 100%; }
+  .photo-scroll::-webkit-scrollbar { width: 6px; }
+  .photo-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); }
+  .ph { background: #1f1f1f; flex-shrink: 0; }
+  .ph a { display: block; width: 100%; }
   .ph img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
+    width: 100%; height: auto; display: block;
     filter: grayscale(100%);
     opacity: 0.92;
     transition: opacity 0.15s;
   }
   .ph:hover img { opacity: 1; }
   .ph figcaption { display: none; }
+  .photo-foot {
+    flex-shrink: 0;
+    padding-top: 12px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+  }
+  .plb-view-all {
+    font-family: inherit; font-size: 10px; font-weight: 400;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); background: none; border: none;
+    cursor: pointer; padding: 0;
+  }
+  .plb-view-all:hover { color: var(--fg); }
   .obs-header {
-    grid-column: 1 / -1;
     padding: 10px 0 4px 0;
   }
   .obs-header:first-child { padding-top: 0; }
@@ -192,14 +208,14 @@
   }
   @media (min-width: 720px) {
     .site-layout { grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
-    .site-record { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }
+    .photo-pane { position: sticky; top: 24px; height: calc(100vh - 48px); display: flex; flex-direction: column; }
   }
   @media (min-width: 1148px) {
     .site-layout { grid-template-columns: 7fr 15fr; }
-    .photo-grid { grid-template-columns: 1fr 1fr 1fr; }
   }
   @media (max-width: 719px) {
-    .photo-grid { order: -1; }
+    .photo-pane { order: -1; display: flex; flex-direction: column; }
+    .photo-scroll { max-height: 70vh; }
   }
 </style>
 </head>
@@ -221,70 +237,75 @@
 <div class="site-layout">
   <aside class="site-record">
 <div class="rec-section"><div class="rec-label">Geology</div><p class="geo-prose">~1.47 billion years ago (bedrock).</p></div><div class="rec-section"><div class="rec-label">Epoch</div><p>Proterozoic eon; Rhyacian period; St. Francois Mountains rhyolite and granite among the oldest exposed rock in Missouri; river incision Quaternary.</p></div><div class="rec-section"><div class="rec-label">Native lands</div><p>Osage Nation (Wazhazhe) · earlier Paleo-Indian peoples; Osage hunted throughout the St. Francois Mountains; ceded territory via 1808 treaty under duress.</p></div><div class="rec-section"><div class="rec-label">Displacement &amp; Tenure</div><p>Cession 67: Treaty with the Osage (1808); on December 14, 2005, the Taum Sauk upper reservoir owned by AmerenUE failed, releasing approximately 1.4 billion gallons of water that destroyed the lower park; AmerenUE pled no contest to a federal Clean Water Act violation; a 2009 settlement awarded $102.3 million for park restoration, completed in 2010.</p></div><div class="rec-section"><div class="rec-label">Shadow History</div><p>The park was assembled over 17 years by Joseph Desloge, heir to a St. Louis lead-mining family whose wealth derived from mineral extraction in the same regional belt as the park's Precambrian geology, and donated to the state in 1955; a 2006 to 2007 USGS study following the 2005 reservoir breach documented elevated turbidity, dissolved aluminum, dissolved iron, and a blue-green surface coloration in the East Fork Black River attributed to rock flour and an alum-based flocculant used by AmerenUE; the East Fork Black River corridor has documented Paleo-Indian occupation extending to approximately 12,000 years BP, and whether the flood disturbed intact subsurface deposits has not been publicly assessed.</p></div><div class="rec-section"><div class="rec-label">Ecology</div><p>Ozark Highland; dolomite glades; dry chert woodland; rare endemic species in igneous glade communities.</p></div><div class="rec-section"><div class="rec-label">Hydrology</div><p>East Fork Black River; Taum Sauk Reservoir (upstream); shut-in pools and cascades; 2005 reservoir breach reshaped lower park terrain.</p></div><div class="rec-section"><div class="rec-label">Acreage</div><p>8,916 acres</p></div><div class="rec-section"><div class="rec-label">GPS</div><p><a class="gps-link" href="https://maps.google.com/?q=37.553,-90.848" target="_blank" rel="noopener">37.5530° N, 90.8480° W</a></p></div>  </aside>
-  <div class="photo-grid">
-    <figure class="ph">
+  <div class="photo-pane">
+    <div class="photo-scroll">
+    <figure class="ph" data-raw="../img/RAW/_DSF0552.RAF" data-xmp="../img/RAW/_DSF0552.xmp">
       <a href="../img/full/johnsons-shut-ins-state-park/_DSF0552.tif" download title="Johnson's Shut-Ins State Park 1">
-        <img src="../thumbs/johnsons-shut-ins-state-park/_DSF0552.jpg" data-full="../img/jpg/johnsons-shut-ins-state-park/_DSF0552.jpg" alt="Johnson's Shut-Ins State Park 1" loading="lazy"/>
+        <img src="../img/jpg/johnsons-shut-ins-state-park/_DSF0552.jpg" alt="Johnson's Shut-Ins State Park 1" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Johnson's Shut-Ins State Park 1 &middot; 2026-01-06</span>
         <span class="caption-filename">_DSF0552.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0566.RAF" data-xmp="../img/RAW/_DSF0566.xmp">
       <a href="../img/full/johnsons-shut-ins-state-park/_DSF0566.tif" download title="Johnson's Shut-Ins State Park 2">
-        <img src="../thumbs/johnsons-shut-ins-state-park/_DSF0566.jpg" data-full="../img/jpg/johnsons-shut-ins-state-park/_DSF0566.jpg" alt="Johnson's Shut-Ins State Park 2" loading="lazy"/>
+        <img src="../img/jpg/johnsons-shut-ins-state-park/_DSF0566.jpg" alt="Johnson's Shut-Ins State Park 2" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Johnson's Shut-Ins State Park 2 &middot; 2026-01-06</span>
         <span class="caption-filename">_DSF0566.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0569.RAF" data-xmp="../img/RAW/_DSF0569.xmp">
       <a href="../img/full/johnsons-shut-ins-state-park/_DSF0569.tif" download title="Johnson's Shut-Ins State Park 3">
-        <img src="../thumbs/johnsons-shut-ins-state-park/_DSF0569.jpg" data-full="../img/jpg/johnsons-shut-ins-state-park/_DSF0569.jpg" alt="Johnson's Shut-Ins State Park 3" loading="lazy"/>
+        <img src="../img/jpg/johnsons-shut-ins-state-park/_DSF0569.jpg" alt="Johnson's Shut-Ins State Park 3" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Johnson's Shut-Ins State Park 3 &middot; 2026-01-06</span>
         <span class="caption-filename">_DSF0569.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0571.RAF" data-xmp="../img/RAW/_DSF0571.xmp">
       <a href="../img/full/johnsons-shut-ins-state-park/_DSF0571.tif" download title="Johnson's Shut-Ins State Park 4">
-        <img src="../thumbs/johnsons-shut-ins-state-park/_DSF0571.jpg" data-full="../img/jpg/johnsons-shut-ins-state-park/_DSF0571.jpg" alt="Johnson's Shut-Ins State Park 4" loading="lazy"/>
+        <img src="../img/jpg/johnsons-shut-ins-state-park/_DSF0571.jpg" alt="Johnson's Shut-Ins State Park 4" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Johnson's Shut-Ins State Park 4 &middot; 2026-01-06</span>
         <span class="caption-filename">_DSF0571.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0572.RAF" data-xmp="../img/RAW/_DSF0572.xmp">
       <a href="../img/full/johnsons-shut-ins-state-park/_DSF0572.tif" download title="Johnson's Shut-Ins State Park 5">
-        <img src="../thumbs/johnsons-shut-ins-state-park/_DSF0572.jpg" data-full="../img/jpg/johnsons-shut-ins-state-park/_DSF0572.jpg" alt="Johnson's Shut-Ins State Park 5" loading="lazy"/>
+        <img src="../img/jpg/johnsons-shut-ins-state-park/_DSF0572.jpg" alt="Johnson's Shut-Ins State Park 5" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Johnson's Shut-Ins State Park 5 &middot; 2026-01-06</span>
         <span class="caption-filename">_DSF0572.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0580.RAF" data-xmp="../img/RAW/_DSF0580.xmp">
       <a href="../img/full/johnsons-shut-ins-state-park/_DSF0580.tif" download title="Johnson's Shut-Ins State Park 6">
-        <img src="../thumbs/johnsons-shut-ins-state-park/_DSF0580.jpg" data-full="../img/jpg/johnsons-shut-ins-state-park/_DSF0580.jpg" alt="Johnson's Shut-Ins State Park 6" loading="lazy"/>
+        <img src="../img/jpg/johnsons-shut-ins-state-park/_DSF0580.jpg" alt="Johnson's Shut-Ins State Park 6" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Johnson's Shut-Ins State Park 6 &middot; 2026-01-06</span>
         <span class="caption-filename">_DSF0580.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0586.RAF" data-xmp="../img/RAW/_DSF0586.xmp">
       <a href="../img/full/johnsons-shut-ins-state-park/_DSF0586.tif" download title="Johnson's Shut-Ins State Park 7">
-        <img src="../thumbs/johnsons-shut-ins-state-park/_DSF0586.jpg" data-full="../img/jpg/johnsons-shut-ins-state-park/_DSF0586.jpg" alt="Johnson's Shut-Ins State Park 7" loading="lazy"/>
+        <img src="../img/jpg/johnsons-shut-ins-state-park/_DSF0586.jpg" alt="Johnson's Shut-Ins State Park 7" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Johnson's Shut-Ins State Park 7 &middot; 2026-01-06</span>
         <span class="caption-filename">_DSF0586.jpg</span>
       </figcaption>
     </figure>
+    </div>
+    <div class="photo-foot">
+      <button class="plb-view-all">View all 7 images →</button>
+    </div>
   </div>
 </div>
 <nav class="site-nav">

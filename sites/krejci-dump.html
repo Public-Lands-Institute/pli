@@ -142,24 +142,40 @@
   .geo-bar-wrap { position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }
   .geo-bar-fill { position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }
   .geo-prose { color: var(--fg); }
-  .photo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    align-content: start;
+  .photo-pane { min-width: 0; }
+  .photo-scroll {
+    display: flex; flex-direction: column; gap: 4px;
+    overflow-y: auto; min-height: 0; flex: 1;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.18) transparent;
   }
-  .ph { background: #1f1f1f; aspect-ratio: 1 / 1; overflow: hidden; }
-  .ph a { display: block; width: 100%; height: 100%; }
+  .photo-scroll::-webkit-scrollbar { width: 6px; }
+  .photo-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); }
+  .ph { background: #1f1f1f; flex-shrink: 0; }
+  .ph a { display: block; width: 100%; }
   .ph img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
+    width: 100%; height: auto; display: block;
     filter: grayscale(100%);
     opacity: 0.92;
     transition: opacity 0.15s;
   }
   .ph:hover img { opacity: 1; }
   .ph figcaption { display: none; }
+  .photo-foot {
+    flex-shrink: 0;
+    padding-top: 12px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+  }
+  .plb-view-all {
+    font-family: inherit; font-size: 10px; font-weight: 400;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); background: none; border: none;
+    cursor: pointer; padding: 0;
+  }
+  .plb-view-all:hover { color: var(--fg); }
   .obs-header {
-    grid-column: 1 / -1;
     padding: 10px 0 4px 0;
   }
   .obs-header:first-child { padding-top: 0; }
@@ -192,14 +208,14 @@
   }
   @media (min-width: 720px) {
     .site-layout { grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
-    .site-record { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }
+    .photo-pane { position: sticky; top: 24px; height: calc(100vh - 48px); display: flex; flex-direction: column; }
   }
   @media (min-width: 1148px) {
     .site-layout { grid-template-columns: 7fr 15fr; }
-    .photo-grid { grid-template-columns: 1fr 1fr 1fr; }
   }
   @media (max-width: 719px) {
-    .photo-grid { order: -1; }
+    .photo-pane { order: -1; display: flex; flex-direction: column; }
+    .photo-scroll { max-height: 70vh; }
   }
 </style>
 </head>
@@ -221,52 +237,57 @@
 <div class="site-layout">
   <aside class="site-record">
 <div class="rec-section"><div class="rec-label">Geology</div><div class="geo-era-row"><div class="geo-swatch" style="background:#4aaa78"></div><span class="geo-era-name">Devonian</span><span class="geo-mya">360 Mya</span></div><div class="geo-bar-wrap"><div class="geo-bar-fill" style="width:77%;background:#4aaa78;opacity:0.55"></div></div><p class="geo-prose">~360 Mya Upper Devonian shale (Bedford Shale, Ohio Shale, Cleveland Shale); overlain by Pleistocene glacial till and clay deposits of the Wisconsinan glaciation.</p></div><div class="rec-section"><div class="rec-label">Epoch</div><p>Upper Devonian (Famennian).</p></div><div class="rec-section"><div class="rec-label">Native lands</div><p>Wendat (Wyandot/Huron), Lenape (Delaware), Shawandasse Tula (Shawnee), Erie (Eriehronon), and Haudenosaunee Seneca nations held the Cuyahoga Valley and Boston Township; Treaty of Fort McIntosh (January 21, 1785) defined the Cuyahoga River mouth as the eastern boundary of Indian territory; Treaty of Greenville (August 3, 1795) extinguished Indigenous title to Summit County; final Wyandot removal to Kansas July 1843.</p></div><div class="rec-section"><div class="rec-label">Displacement &amp; Tenure</div><p>Treaty of Greenville (1795) extinguished Indigenous title to Summit County; Boston Township organized c. 1810; the Krejci family opened a junkyard and waste disposal facility on the property in 1948, accepting industrial waste from Ford, General Motors, Chrysler, 3M, Chevron, and others through 1980; NPS acquired the 234-acre property in 1985 as part of Cuyahoga Valley National Recreation Area land assembly; redesignated Cuyahoga Valley National Park October 11, 2000; CERCLA remediation certified complete December 2020; 200-acre restored reserve opened to public access December 2020.</p></div><div class="rec-section"><div class="rec-label">Shadow History</div><p>The Krejci family operated an unregulated hazardous waste disposal facility on 47 acres in Boston Township from 1948 to 1980, accepting industrial waste from Ford Motor Company, General Motors, Chrysler, 3M, Chevron (Kewanee Industries), Federal Metal Company, and Waste Management of Ohio; waste was burned in open pits and buried in unlined trenches, allowing PCBs, dioxins, polyaromatic hydrocarbons, arsenic, cadmium, lead, benzene, and thousands of drums of 3M printing inks, solvents, and photographic emulsions to migrate into soil and groundwater; NPS acquired the property in 1985 as a routine junkyard purchase; contamination was discovered only after a person fell ill collecting scrap on the site in 1986; the site supported almost no life during the contamination period; the U.S. Department of Justice filed CERCLA suit against the responsible corporations in 1997; 3M refused settlement and went to trial, was found jointly and severally liable September 2001, and ordered to pay $15.5 million February 2002; Ford Motor Company served as lead remediation contractor under a 2002 settlement, removing 77,000 cubic yards of contaminated soil; total cleanup cost approximately $50 million, removing approximately 375,000-400,000 tons of contaminated material to depths of up to 20 feet; the site consists of two parcels separated by I-271, a 28-acre eastern parcel and a 19-acre western parcel comprising the 47-acre contaminated core; cleanup certified complete December 2020; 3.5 acres of seasonal wetland and wet meadow restored and opened to public access.</p></div><div class="rec-section"><div class="rec-label">Ecology</div><p>Restored seasonal wetland and wet meadow habitat; 3.5 acres of native sedge, grass, and wildflower communities established post-remediation; Jefferson salamander (Ambystoma jeffersonianum), American toad, woodcock, and diverse migratory birds documented; site classified as NPS Sentinel Wetland within the Lower Cuyahoga wetlands monitoring program in partnership with The Nature Conservancy; site supported almost no life during active contamination.</p></div><div class="rec-section"><div class="rec-label">Hydrology</div><p>Cuyahoga River tributary drainage in Boston Township, Summit County; Pleistocene glacial till and clay deposits create layered hydrogeological conditions above Devonian shale bedrock; remediation included hydrological management systems to prevent residual contaminant migration; seasonal wetland hydrology restored post-cleanup.</p></div><div class="rec-section"><div class="rec-label">Acreage</div><p>200</p></div><div class="rec-section"><div class="rec-label">GPS</div><p><a class="gps-link" href="https://maps.google.com/?q=41.272,-81.5449" target="_blank" rel="noopener">41.2720° N, 81.5449° W</a></p></div>  </aside>
-  <div class="photo-grid">
-    <figure class="ph">
+  <div class="photo-pane">
+    <div class="photo-scroll">
+    <figure class="ph" data-raw="../img/RAW/_DSF2098.RAF" data-xmp="../img/RAW/_DSF2098.xmp">
       <a href="../img/full/krejci-dump/_DSF2098.tif" download title="Krejci Dump, Cuyahoga Valley National Park 1">
-        <img src="../thumbs/krejci-dump/_DSF2098.jpg" data-full="../img/jpg/krejci-dump/_DSF2098.jpg" alt="Krejci Dump, Cuyahoga Valley National Park 1" loading="lazy"/>
+        <img src="../img/jpg/krejci-dump/_DSF2098.jpg" alt="Krejci Dump, Cuyahoga Valley National Park 1" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Krejci Dump, Cuyahoga Valley National Park 1 &middot; 2026-05-13</span>
         <span class="caption-filename">_DSF2098.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2102.RAF" data-xmp="../img/RAW/_DSF2102.xmp">
       <a href="../img/full/krejci-dump/_DSF2102.tif" download title="Krejci Dump, Cuyahoga Valley National Park 2">
-        <img src="../thumbs/krejci-dump/_DSF2102.jpg" data-full="../img/jpg/krejci-dump/_DSF2102.jpg" alt="Krejci Dump, Cuyahoga Valley National Park 2" loading="lazy"/>
+        <img src="../img/jpg/krejci-dump/_DSF2102.jpg" alt="Krejci Dump, Cuyahoga Valley National Park 2" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Krejci Dump, Cuyahoga Valley National Park 2 &middot; 2026-05-13</span>
         <span class="caption-filename">_DSF2102.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2105.RAF" data-xmp="../img/RAW/_DSF2105.xmp">
       <a href="../img/full/krejci-dump/_DSF2105.tif" download title="Krejci Dump, Cuyahoga Valley National Park 3">
-        <img src="../thumbs/krejci-dump/_DSF2105.jpg" data-full="../img/jpg/krejci-dump/_DSF2105.jpg" alt="Krejci Dump, Cuyahoga Valley National Park 3" loading="lazy"/>
+        <img src="../img/jpg/krejci-dump/_DSF2105.jpg" alt="Krejci Dump, Cuyahoga Valley National Park 3" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Krejci Dump, Cuyahoga Valley National Park 3 &middot; 2026-05-13</span>
         <span class="caption-filename">_DSF2105.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2109.RAF" data-xmp="../img/RAW/_DSF2109.xmp">
       <a href="../img/full/krejci-dump/_DSF2109.tif" download title="Krejci Dump, Cuyahoga Valley National Park 4">
-        <img src="../thumbs/krejci-dump/_DSF2109.jpg" data-full="../img/jpg/krejci-dump/_DSF2109.jpg" alt="Krejci Dump, Cuyahoga Valley National Park 4" loading="lazy"/>
+        <img src="../img/jpg/krejci-dump/_DSF2109.jpg" alt="Krejci Dump, Cuyahoga Valley National Park 4" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Krejci Dump, Cuyahoga Valley National Park 4 &middot; 2026-05-13</span>
         <span class="caption-filename">_DSF2109.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2110.RAF" data-xmp="../img/RAW/_DSF2110.xmp">
       <a href="../img/full/krejci-dump/_DSF2110.tif" download title="Krejci Dump, Cuyahoga Valley National Park 5">
-        <img src="../thumbs/krejci-dump/_DSF2110.jpg" data-full="../img/jpg/krejci-dump/_DSF2110.jpg" alt="Krejci Dump, Cuyahoga Valley National Park 5" loading="lazy"/>
+        <img src="../img/jpg/krejci-dump/_DSF2110.jpg" alt="Krejci Dump, Cuyahoga Valley National Park 5" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Krejci Dump, Cuyahoga Valley National Park 5 &middot; 2026-05-13</span>
         <span class="caption-filename">_DSF2110.jpg</span>
       </figcaption>
     </figure>
+    </div>
+    <div class="photo-foot">
+      <button class="plb-view-all">View all 5 images →</button>
+    </div>
   </div>
 </div>
 <nav class="site-nav">

@@ -142,24 +142,40 @@
   .geo-bar-wrap { position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }
   .geo-bar-fill { position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }
   .geo-prose { color: var(--fg); }
-  .photo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    align-content: start;
+  .photo-pane { min-width: 0; }
+  .photo-scroll {
+    display: flex; flex-direction: column; gap: 4px;
+    overflow-y: auto; min-height: 0; flex: 1;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.18) transparent;
   }
-  .ph { background: #1f1f1f; aspect-ratio: 1 / 1; overflow: hidden; }
-  .ph a { display: block; width: 100%; height: 100%; }
+  .photo-scroll::-webkit-scrollbar { width: 6px; }
+  .photo-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); }
+  .ph { background: #1f1f1f; flex-shrink: 0; }
+  .ph a { display: block; width: 100%; }
   .ph img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
+    width: 100%; height: auto; display: block;
     filter: grayscale(100%);
     opacity: 0.92;
     transition: opacity 0.15s;
   }
   .ph:hover img { opacity: 1; }
   .ph figcaption { display: none; }
+  .photo-foot {
+    flex-shrink: 0;
+    padding-top: 12px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+  }
+  .plb-view-all {
+    font-family: inherit; font-size: 10px; font-weight: 400;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); background: none; border: none;
+    cursor: pointer; padding: 0;
+  }
+  .plb-view-all:hover { color: var(--fg); }
   .obs-header {
-    grid-column: 1 / -1;
     padding: 10px 0 4px 0;
   }
   .obs-header:first-child { padding-top: 0; }
@@ -192,14 +208,14 @@
   }
   @media (min-width: 720px) {
     .site-layout { grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
-    .site-record { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }
+    .photo-pane { position: sticky; top: 24px; height: calc(100vh - 48px); display: flex; flex-direction: column; }
   }
   @media (min-width: 1148px) {
     .site-layout { grid-template-columns: 7fr 15fr; }
-    .photo-grid { grid-template-columns: 1fr 1fr 1fr; }
   }
   @media (max-width: 719px) {
-    .photo-grid { order: -1; }
+    .photo-pane { order: -1; display: flex; flex-direction: column; }
+    .photo-scroll { max-height: 70vh; }
   }
 </style>
 </head>
@@ -221,70 +237,75 @@
 <div class="site-layout">
   <aside class="site-record">
 <div class="rec-section"><div class="rec-label">Geology</div><div class="geo-era-row"><div class="geo-swatch" style="background:#4aaa78"></div><span class="geo-era-name">Devonian</span><span class="geo-mya">385 Mya</span></div><div class="geo-bar-wrap"><div class="geo-bar-fill" style="width:77%;background:#4aaa78;opacity:0.55"></div></div><p class="geo-prose">~385 Mya Middle Devonian dolomite and limestone (Detroit River Group); bedrock overlain by Pleistocene Wisconsin glacial clay, silt, and sand deposits.</p></div><div class="rec-section"><div class="rec-label">Epoch</div><p>Middle Devonian (Eifelian).</p></div><div class="rec-section"><div class="rec-label">Native lands</div><p>Ottawa (Odawa/Anishinaabek), Potawatomi (Bodéwadmik), Wyandot (Wendat/Huron), and Ojibwe (Anishinaabek); Sandy Creek mouth and Lake Erie shore a key corridor in the Great Lakes Anishinaabe territory; Treaty of Detroit (November 17, 1807) ceded approximately 5.6 million acres of southeastern Michigan including Monroe County to the United States, signed by Ottawa, Chippewa, Wyandot, and Potawatomi; Potawatomi received $400 annual annuity and separate payments for communities on the River Raisin and Lake Erie tributaries; Odawa forced removal to Iowa then Kansas 1830s-1840s, more than 300 of approximately 600 Odawa dying within two years of resettlement; Wyandot removed to Kansas via treaty 1842-1843.</p></div><div class="rec-section"><div class="rec-label">Displacement &amp; Tenure</div><p>Ceded via Treaty of Detroit (November 17, 1807); Monroe County organized 1817; land entered private agricultural ownership through 19th century; park proposed by Monroe citizens and dedicated as Sterling State Park in 1934 as a 115-acre preserve north of the River Raisin mouth, named for William C. Sterling (d. 1924), Monroe County civic leader; expanded over decades to current 1,300 acres; incorporated as southern anchor of Detroit River International Wildlife Refuge (USFWS) in 2001, enabling a $12 million federal-state restoration partnership.</p></div><div class="rec-section"><div class="rec-label">Shadow History</div><p>Monroe Power Plant (DTE Energy, commissioned 1970-1974, four coal-fired units, ~3,300 MW), located approximately 5 miles north of the park on Lake Erie, withdraws approximately 600 million gallons per day via once-through cooling causing large-scale fish larval entrainment and impingement; produces more than 800,000 tons per year of coal combustion residuals containing arsenic, mercury, lead, and selenium; 2025 data identified Monroe as the highest-discharging U.S. power plant for arsenic; EPA issued Notice of Violation June 2010; DOJ filed civil enforcement action 2013 over unpermitted Unit 2 modifications; River Raisin designated a TMDL-impaired waterbody due to agricultural runoff, failing Home Sewage Treatment Systems, and elevated E. coli concentrations; piping plover breeding absent from Lake Erie from 1977 until 2017 re-colonization, in part due to regional shoreline disturbance; 106,000 cubic yards of PCB-contaminated sediment dredged from the River Raisin mouth (2012-2013) permanently disposed in a Confined Disposal Facility within park boundaries.</p></div><div class="rec-section"><div class="rec-label">Ecology</div><p>Great Lakes emergent and submergent marsh, restored lake plain prairie, and Lake Erie sandy beach habitat; dominant vegetation includes narrow-leaved cattail (Typha angustifolia), arrowhead (Sagittaria latifolia), and pondweeds in four managed lagoons; restored prairie community established on former agricultural land; American lotus (Nelumbo lutea) found in selected Lake Erie embayments; common reed (Phragmites australis) actively managed as invasive species; only Michigan state park on Lake Erie.</p></div><div class="rec-section"><div class="rec-label">Hydrology</div><p>Lake Erie shoreline (southeastern Michigan); Sandy Creek (18.5-mile Lake Erie tributary, rises London Township, Monroe County, drains to Lake Erie at park entrance in Frenchtown Charter Township); River Raisin (135-mile Lake Erie tributary, 1,072 sq mi drainage basin) enters Lake Erie approximately 3 miles north at Monroe; four man-made lagoons within park provide sheltered aquatic habitat.</p></div><div class="rec-section"><div class="rec-label">Acreage</div><p>1,300</p></div><div class="rec-section"><div class="rec-label">GPS</div><p><a class="gps-link" href="https://maps.google.com/?q=41.9156,-83.3335" target="_blank" rel="noopener">41.9156° N, 83.3335° W</a></p></div>  </aside>
-  <div class="photo-grid">
-    <figure class="ph">
+  <div class="photo-pane">
+    <div class="photo-scroll">
+    <figure class="ph" data-raw="../img/RAW/_DSF1864.RAF" data-xmp="../img/RAW/_DSF1864.xmp">
       <a href="../img/full/william-c-sterling-state-park/_DSF1864.tif" download title="William C. Sterling State Park 1">
-        <img src="../thumbs/william-c-sterling-state-park/_DSF1864.jpg" data-full="../img/jpg/william-c-sterling-state-park/_DSF1864.jpg" alt="William C. Sterling State Park 1" loading="lazy"/>
+        <img src="../img/jpg/william-c-sterling-state-park/_DSF1864.jpg" alt="William C. Sterling State Park 1" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">William C. Sterling State Park 1 &middot; 2026-05-06</span>
         <span class="caption-filename">_DSF1864.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1885.RAF" data-xmp="../img/RAW/_DSF1885.xmp">
       <a href="../img/full/william-c-sterling-state-park/_DSF1885.tif" download title="William C. Sterling State Park 2">
-        <img src="../thumbs/william-c-sterling-state-park/_DSF1885.jpg" data-full="../img/jpg/william-c-sterling-state-park/_DSF1885.jpg" alt="William C. Sterling State Park 2" loading="lazy"/>
+        <img src="../img/jpg/william-c-sterling-state-park/_DSF1885.jpg" alt="William C. Sterling State Park 2" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">William C. Sterling State Park 2 &middot; 2026-05-06</span>
         <span class="caption-filename">_DSF1885.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1888.RAF" data-xmp="../img/RAW/_DSF1888.xmp">
       <a href="../img/full/william-c-sterling-state-park/_DSF1888.tif" download title="William C. Sterling State Park 3">
-        <img src="../thumbs/william-c-sterling-state-park/_DSF1888.jpg" data-full="../img/jpg/william-c-sterling-state-park/_DSF1888.jpg" alt="William C. Sterling State Park 3" loading="lazy"/>
+        <img src="../img/jpg/william-c-sterling-state-park/_DSF1888.jpg" alt="William C. Sterling State Park 3" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">William C. Sterling State Park 3 &middot; 2026-05-06</span>
         <span class="caption-filename">_DSF1888.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1897.RAF" data-xmp="../img/RAW/_DSF1897.xmp">
       <a href="../img/full/william-c-sterling-state-park/_DSF1897.tif" download title="William C. Sterling State Park 4">
-        <img src="../thumbs/william-c-sterling-state-park/_DSF1897.jpg" data-full="../img/jpg/william-c-sterling-state-park/_DSF1897.jpg" alt="William C. Sterling State Park 4" loading="lazy"/>
+        <img src="../img/jpg/william-c-sterling-state-park/_DSF1897.jpg" alt="William C. Sterling State Park 4" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">William C. Sterling State Park 4 &middot; 2026-05-06</span>
         <span class="caption-filename">_DSF1897.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1902.RAF" data-xmp="../img/RAW/_DSF1902.xmp">
       <a href="../img/full/william-c-sterling-state-park/_DSF1902.tif" download title="William C. Sterling State Park 5">
-        <img src="../thumbs/william-c-sterling-state-park/_DSF1902.jpg" data-full="../img/jpg/william-c-sterling-state-park/_DSF1902.jpg" alt="William C. Sterling State Park 5" loading="lazy"/>
+        <img src="../img/jpg/william-c-sterling-state-park/_DSF1902.jpg" alt="William C. Sterling State Park 5" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">William C. Sterling State Park 5 &middot; 2026-05-06</span>
         <span class="caption-filename">_DSF1902.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1906.RAF" data-xmp="../img/RAW/_DSF1906.xmp">
       <a href="../img/full/william-c-sterling-state-park/_DSF1906.tif" download title="William C. Sterling State Park 6">
-        <img src="../thumbs/william-c-sterling-state-park/_DSF1906.jpg" data-full="../img/jpg/william-c-sterling-state-park/_DSF1906.jpg" alt="William C. Sterling State Park 6" loading="lazy"/>
+        <img src="../img/jpg/william-c-sterling-state-park/_DSF1906.jpg" alt="William C. Sterling State Park 6" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">William C. Sterling State Park 6 &middot; 2026-05-06</span>
         <span class="caption-filename">_DSF1906.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1941.RAF" data-xmp="../img/RAW/_DSF1941.xmp">
       <a href="../img/full/william-c-sterling-state-park/_DSF1941.tif" download title="William C. Sterling State Park 7">
-        <img src="../thumbs/william-c-sterling-state-park/_DSF1941.jpg" data-full="../img/jpg/william-c-sterling-state-park/_DSF1941.jpg" alt="William C. Sterling State Park 7" loading="lazy"/>
+        <img src="../img/jpg/william-c-sterling-state-park/_DSF1941.jpg" alt="William C. Sterling State Park 7" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">William C. Sterling State Park 7 &middot; 2026-05-06</span>
         <span class="caption-filename">_DSF1941.jpg</span>
       </figcaption>
     </figure>
+    </div>
+    <div class="photo-foot">
+      <button class="plb-view-all">View all 7 images →</button>
+    </div>
   </div>
 </div>
 <nav class="site-nav">

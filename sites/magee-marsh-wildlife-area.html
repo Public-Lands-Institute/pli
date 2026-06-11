@@ -142,24 +142,40 @@
   .geo-bar-wrap { position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }
   .geo-bar-fill { position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }
   .geo-prose { color: var(--fg); }
-  .photo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    align-content: start;
+  .photo-pane { min-width: 0; }
+  .photo-scroll {
+    display: flex; flex-direction: column; gap: 4px;
+    overflow-y: auto; min-height: 0; flex: 1;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.18) transparent;
   }
-  .ph { background: #1f1f1f; aspect-ratio: 1 / 1; overflow: hidden; }
-  .ph a { display: block; width: 100%; height: 100%; }
+  .photo-scroll::-webkit-scrollbar { width: 6px; }
+  .photo-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); }
+  .ph { background: #1f1f1f; flex-shrink: 0; }
+  .ph a { display: block; width: 100%; }
   .ph img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
+    width: 100%; height: auto; display: block;
     filter: grayscale(100%);
     opacity: 0.92;
     transition: opacity 0.15s;
   }
   .ph:hover img { opacity: 1; }
   .ph figcaption { display: none; }
+  .photo-foot {
+    flex-shrink: 0;
+    padding-top: 12px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+  }
+  .plb-view-all {
+    font-family: inherit; font-size: 10px; font-weight: 400;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); background: none; border: none;
+    cursor: pointer; padding: 0;
+  }
+  .plb-view-all:hover { color: var(--fg); }
   .obs-header {
-    grid-column: 1 / -1;
     padding: 10px 0 4px 0;
   }
   .obs-header:first-child { padding-top: 0; }
@@ -192,14 +208,14 @@
   }
   @media (min-width: 720px) {
     .site-layout { grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
-    .site-record { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }
+    .photo-pane { position: sticky; top: 24px; height: calc(100vh - 48px); display: flex; flex-direction: column; }
   }
   @media (min-width: 1148px) {
     .site-layout { grid-template-columns: 7fr 15fr; }
-    .photo-grid { grid-template-columns: 1fr 1fr 1fr; }
   }
   @media (max-width: 719px) {
-    .photo-grid { order: -1; }
+    .photo-pane { order: -1; display: flex; flex-direction: column; }
+    .photo-scroll { max-height: 70vh; }
   }
 </style>
 </head>
@@ -221,79 +237,84 @@
 <div class="site-layout">
   <aside class="site-record">
 <div class="rec-section"><div class="rec-label">Geology</div><div class="geo-era-row"><div class="geo-swatch" style="background:#4aaa78"></div><span class="geo-era-name">Devonian</span><span class="geo-mya">380 Mya</span></div><div class="geo-bar-wrap"><div class="geo-bar-fill" style="width:77%;background:#4aaa78;opacity:0.55"></div></div><p class="geo-prose">~380 Mya Middle Devonian limestone (Columbus Limestone, Delaware Limestone); bedrock overlain by Pleistocene glacial lake plain deposits from proglacial Lake Maumee (~14,000 ya).</p></div><div class="rec-section"><div class="rec-label">Epoch</div><p>Middle Devonian (Eifelian/Givetian); surface Pleistocene (Late Wisconsinan).</p></div><div class="rec-section"><div class="rec-label">Native lands</div><p>Ottawa (Odawa/Anishinaabe), Wyandot (Wendat), Potawatomi (Bodéwadmi), and Erie (Eriehronon); Ottawa County named for the Odawa nation who held the Lake Erie shore from the Maumee to the Cuyahoga; Roche de Boeuf and Wolf Rapids on the Maumee River served as principal Ottawa settlement sites; Erie nation dispersed by Haudenosaunee after 1656; Treaty of Greene Ville (August 3, 1795) ceded northwestern Ohio including Ottawa County; Treaty of Maumee Rapids (September 29, 1817) forced additional Wyandot cessions; Treaty with the Ottawa (February 18, 1833) extinguished remaining Ottawa title in Ohio; Ottawa of the Roche de Boeuf and Wolf Rapids bands relocated west 1833-1837, approximately 300 of 600 Odawa dying within two years of Kansas resettlement; Wyandot removed to Kansas July 1843 in final forced removal from Upper Sandusky.</p></div><div class="rec-section"><div class="rec-label">Displacement &amp; Tenure</div><p>Ceded via Treaty of Greene Ville (1795, Article 3); private shooting clubs leased and purchased the 30,000-acre Lake Erie marsh complex from Toledo to Sandusky through the late 19th and early 20th centuries, restricting public access to the entire southwestern Lake Erie wetland system during peak waterfowl harvest era; Ohio Division of Wildlife purchased 2,202 acres in August 1951 from private club ownership, establishing the state wildlife area; Ottawa National Wildlife Refuge (USFWS) established 1961 to protect adjacent wetland and beach ridge habitat.</p></div><div class="rec-section"><div class="rec-label">Shadow History</div><p>The Great Black Swamp, a 5,000+ square mile glacial wetland complex occupying the Maumee valley and southwestern Lake Erie plain, was systematically drained for agriculture between the 1850s and 1920s using hand-dug ditches and subsurface tile drainage; elimination of this wetland complex destroyed the filtration and water retention function of the largest coastal marsh on Lake Erie, contributing directly to the western basin hypoxia and algal bloom crises of the 1950s-1970s; before state acquisition in 1951, the entire 30,000-acre Lake Erie marsh from Toledo to Sandusky was held by private hunting clubs, excluding public access and permitting intensive unregulated waterfowl harvest that severely depleted breeding and migratory populations; Davis-Besse Nuclear Power Station, located approximately 10 miles southwest on the Lake Erie shore in Oak Harbor (Ottawa County), was commissioned in 1977 and in March 2002 was found to have a football-sized void in its reactor pressure vessel head caused by boric acid corrosion from a decade-long borated water leak, the most severe corrosion damage to a U.S. nuclear reactor pressure vessel head ever recorded; thermal discharge from the plant affects near-shore Lake Erie temperature regimes adjacent to the wildlife area.</p></div><div class="rec-section"><div class="rec-label">Ecology</div><p>Coastal Lake Erie emergent freshwater marsh, beach ridge woodland, and submergent aquatic habitat; dominant communities include cattail (Typha spp.), bulrush (Schoenoplectus spp.), arrowhead (Sagittaria latifolia), and pickerelweed (Pontederia cordata) in the marsh, with oak-hickory beach ridge woodland on elevated sandy ridges; the 1.3-mile boardwalk through beach ridge and marsh edge is among the world's premier spring warbler migration watchpoints, with 26+ warbler species recorded during late April-early May migration; piping plover and bald eagle documented nesting on adjacent Lake Erie beaches.</p></div><div class="rec-section"><div class="rec-label">Hydrology</div><p>Lake Erie (southwestern shore, Ottawa County); Crane Creek drains through the wildlife area to Lake Erie; Ottawa River and Portage River drain adjacent watershed; site occupies the lake plain of proglacial Lake Maumee, which preceded Lake Erie and deposited clay-rich glacial till forming the water-retaining substrate of the coastal marsh complex; Maumee River (largest tributary of Lake Erie by discharge, draining 6,620 sq mi across Ohio, Indiana, and Michigan) enters Lake Erie approximately 20 miles west at Toledo.</p></div><div class="rec-section"><div class="rec-label">Acreage</div><p>2,202</p></div><div class="rec-section"><div class="rec-label">GPS</div><p><a class="gps-link" href="https://maps.google.com/?q=41.5039,-82.8395" target="_blank" rel="noopener">41.5039° N, 82.8395° W</a></p></div>  </aside>
-  <div class="photo-grid">
-    <figure class="ph">
+  <div class="photo-pane">
+    <div class="photo-scroll">
+    <figure class="ph" data-raw="../img/RAW/_DSF1947.RAF" data-xmp="../img/RAW/_DSF1947.xmp">
       <a href="../img/full/magee-marsh-wildlife-area/_DSF1947.tif" download title="Magee Marsh Wildlife Area 1">
-        <img src="../thumbs/magee-marsh-wildlife-area/_DSF1947.jpg" data-full="../img/jpg/magee-marsh-wildlife-area/_DSF1947.jpg" alt="Magee Marsh Wildlife Area 1" loading="lazy"/>
+        <img src="../img/jpg/magee-marsh-wildlife-area/_DSF1947.jpg" alt="Magee Marsh Wildlife Area 1" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Magee Marsh Wildlife Area 1 &middot; 2026-05-07</span>
         <span class="caption-filename">_DSF1947.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1954.RAF" data-xmp="../img/RAW/_DSF1954.xmp">
       <a href="../img/full/magee-marsh-wildlife-area/_DSF1954.tif" download title="Magee Marsh Wildlife Area 2">
-        <img src="../thumbs/magee-marsh-wildlife-area/_DSF1954.jpg" data-full="../img/jpg/magee-marsh-wildlife-area/_DSF1954.jpg" alt="Magee Marsh Wildlife Area 2" loading="lazy"/>
+        <img src="../img/jpg/magee-marsh-wildlife-area/_DSF1954.jpg" alt="Magee Marsh Wildlife Area 2" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Magee Marsh Wildlife Area 2 &middot; 2026-05-07</span>
         <span class="caption-filename">_DSF1954.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1962.RAF" data-xmp="../img/RAW/_DSF1962.xmp">
       <a href="../img/full/magee-marsh-wildlife-area/_DSF1962.tif" download title="Magee Marsh Wildlife Area 3">
-        <img src="../thumbs/magee-marsh-wildlife-area/_DSF1962.jpg" data-full="../img/jpg/magee-marsh-wildlife-area/_DSF1962.jpg" alt="Magee Marsh Wildlife Area 3" loading="lazy"/>
+        <img src="../img/jpg/magee-marsh-wildlife-area/_DSF1962.jpg" alt="Magee Marsh Wildlife Area 3" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Magee Marsh Wildlife Area 3 &middot; 2026-05-07</span>
         <span class="caption-filename">_DSF1962.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1965.RAF" data-xmp="../img/RAW/_DSF1965.xmp">
       <a href="../img/full/magee-marsh-wildlife-area/_DSF1965.tif" download title="Magee Marsh Wildlife Area 4">
-        <img src="../thumbs/magee-marsh-wildlife-area/_DSF1965.jpg" data-full="../img/jpg/magee-marsh-wildlife-area/_DSF1965.jpg" alt="Magee Marsh Wildlife Area 4" loading="lazy"/>
+        <img src="../img/jpg/magee-marsh-wildlife-area/_DSF1965.jpg" alt="Magee Marsh Wildlife Area 4" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Magee Marsh Wildlife Area 4 &middot; 2026-05-07</span>
         <span class="caption-filename">_DSF1965.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1968.RAF" data-xmp="../img/RAW/_DSF1968.xmp">
       <a href="../img/full/magee-marsh-wildlife-area/_DSF1968.tif" download title="Magee Marsh Wildlife Area 5">
-        <img src="../thumbs/magee-marsh-wildlife-area/_DSF1968.jpg" data-full="../img/jpg/magee-marsh-wildlife-area/_DSF1968.jpg" alt="Magee Marsh Wildlife Area 5" loading="lazy"/>
+        <img src="../img/jpg/magee-marsh-wildlife-area/_DSF1968.jpg" alt="Magee Marsh Wildlife Area 5" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Magee Marsh Wildlife Area 5 &middot; 2026-05-07</span>
         <span class="caption-filename">_DSF1968.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1973.RAF" data-xmp="../img/RAW/_DSF1973.xmp">
       <a href="../img/full/magee-marsh-wildlife-area/_DSF1973.tif" download title="Magee Marsh Wildlife Area 6">
-        <img src="../thumbs/magee-marsh-wildlife-area/_DSF1973.jpg" data-full="../img/jpg/magee-marsh-wildlife-area/_DSF1973.jpg" alt="Magee Marsh Wildlife Area 6" loading="lazy"/>
+        <img src="../img/jpg/magee-marsh-wildlife-area/_DSF1973.jpg" alt="Magee Marsh Wildlife Area 6" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Magee Marsh Wildlife Area 6 &middot; 2026-05-07</span>
         <span class="caption-filename">_DSF1973.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1976.RAF" data-xmp="../img/RAW/_DSF1976.xmp">
       <a href="../img/full/magee-marsh-wildlife-area/_DSF1976.tif" download title="Magee Marsh Wildlife Area 7">
-        <img src="../thumbs/magee-marsh-wildlife-area/_DSF1976.jpg" data-full="../img/jpg/magee-marsh-wildlife-area/_DSF1976.jpg" alt="Magee Marsh Wildlife Area 7" loading="lazy"/>
+        <img src="../img/jpg/magee-marsh-wildlife-area/_DSF1976.jpg" alt="Magee Marsh Wildlife Area 7" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Magee Marsh Wildlife Area 7 &middot; 2026-05-07</span>
         <span class="caption-filename">_DSF1976.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1977.RAF" data-xmp="../img/RAW/_DSF1977.xmp">
       <a href="../img/full/magee-marsh-wildlife-area/_DSF1977.tif" download title="Magee Marsh Wildlife Area 8">
-        <img src="../thumbs/magee-marsh-wildlife-area/_DSF1977.jpg" data-full="../img/jpg/magee-marsh-wildlife-area/_DSF1977.jpg" alt="Magee Marsh Wildlife Area 8" loading="lazy"/>
+        <img src="../img/jpg/magee-marsh-wildlife-area/_DSF1977.jpg" alt="Magee Marsh Wildlife Area 8" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Magee Marsh Wildlife Area 8 &middot; 2026-05-07</span>
         <span class="caption-filename">_DSF1977.jpg</span>
       </figcaption>
     </figure>
+    </div>
+    <div class="photo-foot">
+      <button class="plb-view-all">View all 8 images →</button>
+    </div>
   </div>
 </div>
 <nav class="site-nav">

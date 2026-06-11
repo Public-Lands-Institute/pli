@@ -142,24 +142,40 @@
   .geo-bar-wrap { position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }
   .geo-bar-fill { position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }
   .geo-prose { color: var(--fg); }
-  .photo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    align-content: start;
+  .photo-pane { min-width: 0; }
+  .photo-scroll {
+    display: flex; flex-direction: column; gap: 4px;
+    overflow-y: auto; min-height: 0; flex: 1;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.18) transparent;
   }
-  .ph { background: #1f1f1f; aspect-ratio: 1 / 1; overflow: hidden; }
-  .ph a { display: block; width: 100%; height: 100%; }
+  .photo-scroll::-webkit-scrollbar { width: 6px; }
+  .photo-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); }
+  .ph { background: #1f1f1f; flex-shrink: 0; }
+  .ph a { display: block; width: 100%; }
   .ph img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
+    width: 100%; height: auto; display: block;
     filter: grayscale(100%);
     opacity: 0.92;
     transition: opacity 0.15s;
   }
   .ph:hover img { opacity: 1; }
   .ph figcaption { display: none; }
+  .photo-foot {
+    flex-shrink: 0;
+    padding-top: 12px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+  }
+  .plb-view-all {
+    font-family: inherit; font-size: 10px; font-weight: 400;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); background: none; border: none;
+    cursor: pointer; padding: 0;
+  }
+  .plb-view-all:hover { color: var(--fg); }
   .obs-header {
-    grid-column: 1 / -1;
     padding: 10px 0 4px 0;
   }
   .obs-header:first-child { padding-top: 0; }
@@ -192,14 +208,14 @@
   }
   @media (min-width: 720px) {
     .site-layout { grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
-    .site-record { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }
+    .photo-pane { position: sticky; top: 24px; height: calc(100vh - 48px); display: flex; flex-direction: column; }
   }
   @media (min-width: 1148px) {
     .site-layout { grid-template-columns: 7fr 15fr; }
-    .photo-grid { grid-template-columns: 1fr 1fr 1fr; }
   }
   @media (max-width: 719px) {
-    .photo-grid { order: -1; }
+    .photo-pane { order: -1; display: flex; flex-direction: column; }
+    .photo-scroll { max-height: 70vh; }
   }
 </style>
 </head>
@@ -221,124 +237,129 @@
 <div class="site-layout">
   <aside class="site-record">
 <div class="rec-section"><div class="rec-label">Geology</div><div class="geo-era-row"><div class="geo-swatch" style="background:#4aaa78"></div><span class="geo-era-name">Devonian</span><span class="geo-mya">375 Mya</span></div><div class="geo-bar-wrap"><div class="geo-bar-fill" style="width:77%;background:#4aaa78;opacity:0.55"></div></div><p class="geo-prose">~375 Mya Late Devonian shale and carbonate (Famennian); bedrock overlain by Pleistocene Wisconsin glacial and lacustrine deposits; site occupies the Lake Erie lake plain formed by the drainage of glacial Lake Maumee ~14,500 ya.</p></div><div class="rec-section"><div class="rec-label">Epoch</div><p>Late Devonian (Famennian).</p></div><div class="rec-section"><div class="rec-label">Native lands</div><p>Ottawa (Odawa/Anishinaabek), Potawatomi (Bodéwadmik), Wyandot (Wendat/Huron), and Ojibwe (Anishinaabek); Lake Erie shore and Huron River mouth a key resource corridor in Anishinaabe territory; Treaty of Detroit (November 17, 1807) ceded ~5.6 million acres of southeastern Michigan including Monroe County; Potawatomi received $400 annual annuity for communities on River Raisin and Lake Erie tributaries; Potawatomi removed via Treaty of Chicago (1833) and forced relocation 1838-1840 (Potawatomi Trail of Death); Wyandot ceded remaining Michigan and Ohio lands via treaty 1842, removed to Kansas 1843.</p></div><div class="rec-section"><div class="rec-label">Displacement &amp; Tenure</div><p>Ceded via Treaty of Detroit (November 17, 1807); land entered private agricultural ownership through 19th century; coastal wetlands drained for agriculture and reduced from historic extent; site held as a private hunting club through early 20th century; State of Michigan acquired land in 1945, establishing Pointe Mouillee State Game Area; U.S. Army Corps of Engineers and Michigan DNR agreed in 1974 to establish the Confined Disposal Facility at Pointe Mouillee for containment of polluted dredge material from the Detroit and Rouge rivers; CDF dike structure (Big Banana) constructed 1974-1979; marsh restoration initiated in cooperation with Army Corps and USFWS.</p></div><div class="rec-section"><div class="rec-label">Shadow History</div><p>U.S. Army Corps of Engineers Confined Disposal Facility (Big Banana), a 700-acre crescent-shaped dike structure 3.5 miles long and 1,400 feet wide constructed 1974-1979, contains contaminated dredge spoil from the Detroit River and Rouge River carrying PCBs, heavy metals, and PAHs; designed to replace open-lake dredge disposal that spread industrial pollutants across Lake Erie sediments; facility projected to reach capacity by 2029 with no replacement site identified as of 2025; historic loss of approximately 95% of western Lake Erie emergent marsh through 19th- and 20th-century agricultural drainage; Huron River dam disrupted natural hydrology and required mechanical pumping to restore wetland water levels; invasive hybrid cattail (Typha x glauca) has colonized large portions of the managed marsh, reducing fish diversity and suppressing native plant communities.</p></div><div class="rec-section"><div class="rec-label">Ecology</div><p>One of the largest freshwater coastal marsh restoration projects in the Great Lakes; managed diked cell system supporting emergent cattail (Typha spp.) marsh, open water impoundments, wet meadow, and shrub swamp; more than 295 bird species documented with up to 300,000 diving ducks during fall migration; designated International Shorebird Importance Area (2001) supporting 10,000-20,000 shorebirds annually including globally significant concentrations of Lesser Yellowlegs and Short-billed Dowitcher; bald eagle, osprey, sandhill crane, black-crowned night heron, glossy ibis, and whimbrel regularly observed.</p></div><div class="rec-section"><div class="rec-label">Hydrology</div><p>Western Lake Erie basin, Monroe and Wayne counties; Huron River (126-mile main stem, 908 sq mi watershed draining Oakland, Livingston, Washtenaw, Wayne, and Monroe counties) enters Lake Erie at the northern margin; River Raisin enters Lake Erie approximately 8 miles southwest; mechanical pump system with artificial dike cells controls water levels across discrete marsh units, replacing natural hydrologic cycling disrupted by Huron River dam and lake level management.</p></div><div class="rec-section"><div class="rec-label">Acreage</div><p>4,040</p></div><div class="rec-section"><div class="rec-label">GPS</div><p><a class="gps-link" href="https://maps.google.com/?q=42.0117,-83.198" target="_blank" rel="noopener">42.0117° N, 83.1980° W</a></p></div>  </aside>
-  <div class="photo-grid">
-    <figure class="ph">
+  <div class="photo-pane">
+    <div class="photo-scroll">
+    <figure class="ph" data-raw="../img/RAW/_DSF1797.RAF" data-xmp="../img/RAW/_DSF1797.xmp">
       <a href="../img/full/pointe-mouillee-state-game-area/_DSF1797.tif" download title="Pointe Mouillee State Game Area 1">
-        <img src="../thumbs/pointe-mouillee-state-game-area/_DSF1797.jpg" data-full="../img/jpg/pointe-mouillee-state-game-area/_DSF1797.jpg" alt="Pointe Mouillee State Game Area 1" loading="lazy"/>
+        <img src="../img/jpg/pointe-mouillee-state-game-area/_DSF1797.jpg" alt="Pointe Mouillee State Game Area 1" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Pointe Mouillee State Game Area 1 &middot; 2026-05-06</span>
         <span class="caption-filename">_DSF1797.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1798.RAF" data-xmp="../img/RAW/_DSF1798.xmp">
       <a href="../img/full/pointe-mouillee-state-game-area/_DSF1798.tif" download title="Pointe Mouillee State Game Area 2">
-        <img src="../thumbs/pointe-mouillee-state-game-area/_DSF1798.jpg" data-full="../img/jpg/pointe-mouillee-state-game-area/_DSF1798.jpg" alt="Pointe Mouillee State Game Area 2" loading="lazy"/>
+        <img src="../img/jpg/pointe-mouillee-state-game-area/_DSF1798.jpg" alt="Pointe Mouillee State Game Area 2" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Pointe Mouillee State Game Area 2 &middot; 2026-05-06</span>
         <span class="caption-filename">_DSF1798.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1813.RAF" data-xmp="../img/RAW/_DSF1813.xmp">
       <a href="../img/full/pointe-mouillee-state-game-area/_DSF1813.tif" download title="Pointe Mouillee State Game Area 3">
-        <img src="../img/jpg/pointe-mouillee-state-game-area/_DSF1813.jpg" data-full="../img/jpg/pointe-mouillee-state-game-area/_DSF1813.jpg" alt="Pointe Mouillee State Game Area 3" loading="lazy"/>
+        <img src="../img/jpg/pointe-mouillee-state-game-area/_DSF1813.jpg" alt="Pointe Mouillee State Game Area 3" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Pointe Mouillee State Game Area 3 &middot; 2026-05-06</span>
         <span class="caption-filename">_DSF1813.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1814.RAF" data-xmp="../img/RAW/_DSF1814.xmp">
       <a href="../img/full/pointe-mouillee-state-game-area/_DSF1814.tif" download title="Pointe Mouillee State Game Area 4">
-        <img src="../thumbs/pointe-mouillee-state-game-area/_DSF1814.jpg" data-full="../img/jpg/pointe-mouillee-state-game-area/_DSF1814.jpg" alt="Pointe Mouillee State Game Area 4" loading="lazy"/>
+        <img src="../img/jpg/pointe-mouillee-state-game-area/_DSF1814.jpg" alt="Pointe Mouillee State Game Area 4" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Pointe Mouillee State Game Area 4 &middot; 2026-05-06</span>
         <span class="caption-filename">_DSF1814.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1815.RAF" data-xmp="../img/RAW/_DSF1815.xmp">
       <a href="../img/full/pointe-mouillee-state-game-area/_DSF1815.tif" download title="Pointe Mouillee State Game Area 5">
-        <img src="../thumbs/pointe-mouillee-state-game-area/_DSF1815.jpg" data-full="../img/jpg/pointe-mouillee-state-game-area/_DSF1815.jpg" alt="Pointe Mouillee State Game Area 5" loading="lazy"/>
+        <img src="../img/jpg/pointe-mouillee-state-game-area/_DSF1815.jpg" alt="Pointe Mouillee State Game Area 5" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Pointe Mouillee State Game Area 5 &middot; 2026-05-06</span>
         <span class="caption-filename">_DSF1815.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1831.RAF" data-xmp="../img/RAW/_DSF1831.xmp">
       <a href="../img/full/pointe-mouillee-state-game-area/_DSF1831.tif" download title="Pointe Mouillee State Game Area 6">
-        <img src="../thumbs/pointe-mouillee-state-game-area/_DSF1831.jpg" data-full="../img/jpg/pointe-mouillee-state-game-area/_DSF1831.jpg" alt="Pointe Mouillee State Game Area 6" loading="lazy"/>
+        <img src="../img/jpg/pointe-mouillee-state-game-area/_DSF1831.jpg" alt="Pointe Mouillee State Game Area 6" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Pointe Mouillee State Game Area 6 &middot; 2026-05-06</span>
         <span class="caption-filename">_DSF1831.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1837.RAF" data-xmp="../img/RAW/_DSF1837.xmp">
       <a href="../img/full/pointe-mouillee-state-game-area/_DSF1837.tif" download title="Pointe Mouillee State Game Area 7">
-        <img src="../thumbs/pointe-mouillee-state-game-area/_DSF1837.jpg" data-full="../img/jpg/pointe-mouillee-state-game-area/_DSF1837.jpg" alt="Pointe Mouillee State Game Area 7" loading="lazy"/>
+        <img src="../img/jpg/pointe-mouillee-state-game-area/_DSF1837.jpg" alt="Pointe Mouillee State Game Area 7" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Pointe Mouillee State Game Area 7 &middot; 2026-05-06</span>
         <span class="caption-filename">_DSF1837.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1844.RAF" data-xmp="../img/RAW/_DSF1844.xmp">
       <a href="../img/full/pointe-mouillee-state-game-area/_DSF1844.tif" download title="Pointe Mouillee State Game Area 8">
-        <img src="../thumbs/pointe-mouillee-state-game-area/_DSF1844.jpg" data-full="../img/jpg/pointe-mouillee-state-game-area/_DSF1844.jpg" alt="Pointe Mouillee State Game Area 8" loading="lazy"/>
+        <img src="../img/jpg/pointe-mouillee-state-game-area/_DSF1844.jpg" alt="Pointe Mouillee State Game Area 8" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Pointe Mouillee State Game Area 8 &middot; 2026-05-06</span>
         <span class="caption-filename">_DSF1844.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1846.RAF" data-xmp="../img/RAW/_DSF1846.xmp">
       <a href="../img/full/pointe-mouillee-state-game-area/_DSF1846.tif" download title="Pointe Mouillee State Game Area 9">
-        <img src="../thumbs/pointe-mouillee-state-game-area/_DSF1846.jpg" data-full="../img/jpg/pointe-mouillee-state-game-area/_DSF1846.jpg" alt="Pointe Mouillee State Game Area 9" loading="lazy"/>
+        <img src="../img/jpg/pointe-mouillee-state-game-area/_DSF1846.jpg" alt="Pointe Mouillee State Game Area 9" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Pointe Mouillee State Game Area 9 &middot; 2026-05-06</span>
         <span class="caption-filename">_DSF1846.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1849.RAF" data-xmp="../img/RAW/_DSF1849.xmp">
       <a href="../img/full/pointe-mouillee-state-game-area/_DSF1849.tif" download title="Pointe Mouillee State Game Area 10">
-        <img src="../thumbs/pointe-mouillee-state-game-area/_DSF1849.jpg" data-full="../img/jpg/pointe-mouillee-state-game-area/_DSF1849.jpg" alt="Pointe Mouillee State Game Area 10" loading="lazy"/>
+        <img src="../img/jpg/pointe-mouillee-state-game-area/_DSF1849.jpg" alt="Pointe Mouillee State Game Area 10" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Pointe Mouillee State Game Area 10 &middot; 2026-05-06</span>
         <span class="caption-filename">_DSF1849.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1851.RAF" data-xmp="../img/RAW/_DSF1851.xmp">
       <a href="../img/full/pointe-mouillee-state-game-area/_DSF1851.tif" download title="Pointe Mouillee State Game Area 11">
-        <img src="../thumbs/pointe-mouillee-state-game-area/_DSF1851.jpg" data-full="../img/jpg/pointe-mouillee-state-game-area/_DSF1851.jpg" alt="Pointe Mouillee State Game Area 11" loading="lazy"/>
+        <img src="../img/jpg/pointe-mouillee-state-game-area/_DSF1851.jpg" alt="Pointe Mouillee State Game Area 11" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Pointe Mouillee State Game Area 11 &middot; 2026-05-06</span>
         <span class="caption-filename">_DSF1851.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1853.RAF" data-xmp="../img/RAW/_DSF1853.xmp">
       <a href="../img/full/pointe-mouillee-state-game-area/_DSF1853.tif" download title="Pointe Mouillee State Game Area 12">
-        <img src="../thumbs/pointe-mouillee-state-game-area/_DSF1853.jpg" data-full="../img/jpg/pointe-mouillee-state-game-area/_DSF1853.jpg" alt="Pointe Mouillee State Game Area 12" loading="lazy"/>
+        <img src="../img/jpg/pointe-mouillee-state-game-area/_DSF1853.jpg" alt="Pointe Mouillee State Game Area 12" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Pointe Mouillee State Game Area 12 &middot; 2026-05-06</span>
         <span class="caption-filename">_DSF1853.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1855.RAF" data-xmp="../img/RAW/_DSF1855.xmp">
       <a href="../img/full/pointe-mouillee-state-game-area/_DSF1855.tif" download title="Pointe Mouillee State Game Area 13">
-        <img src="../thumbs/pointe-mouillee-state-game-area/_DSF1855.jpg" data-full="../img/jpg/pointe-mouillee-state-game-area/_DSF1855.jpg" alt="Pointe Mouillee State Game Area 13" loading="lazy"/>
+        <img src="../img/jpg/pointe-mouillee-state-game-area/_DSF1855.jpg" alt="Pointe Mouillee State Game Area 13" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Pointe Mouillee State Game Area 13 &middot; 2026-05-06</span>
         <span class="caption-filename">_DSF1855.jpg</span>
       </figcaption>
     </figure>
+    </div>
+    <div class="photo-foot">
+      <button class="plb-view-all">View all 13 images →</button>
+    </div>
   </div>
 </div>
 <nav class="site-nav">

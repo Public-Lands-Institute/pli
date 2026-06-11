@@ -142,24 +142,40 @@
   .geo-bar-wrap { position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }
   .geo-bar-fill { position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }
   .geo-prose { color: var(--fg); }
-  .photo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    align-content: start;
+  .photo-pane { min-width: 0; }
+  .photo-scroll {
+    display: flex; flex-direction: column; gap: 4px;
+    overflow-y: auto; min-height: 0; flex: 1;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.18) transparent;
   }
-  .ph { background: #1f1f1f; aspect-ratio: 1 / 1; overflow: hidden; }
-  .ph a { display: block; width: 100%; height: 100%; }
+  .photo-scroll::-webkit-scrollbar { width: 6px; }
+  .photo-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); }
+  .ph { background: #1f1f1f; flex-shrink: 0; }
+  .ph a { display: block; width: 100%; }
   .ph img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
+    width: 100%; height: auto; display: block;
     filter: grayscale(100%);
     opacity: 0.92;
     transition: opacity 0.15s;
   }
   .ph:hover img { opacity: 1; }
   .ph figcaption { display: none; }
+  .photo-foot {
+    flex-shrink: 0;
+    padding-top: 12px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+  }
+  .plb-view-all {
+    font-family: inherit; font-size: 10px; font-weight: 400;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); background: none; border: none;
+    cursor: pointer; padding: 0;
+  }
+  .plb-view-all:hover { color: var(--fg); }
   .obs-header {
-    grid-column: 1 / -1;
     padding: 10px 0 4px 0;
   }
   .obs-header:first-child { padding-top: 0; }
@@ -192,14 +208,14 @@
   }
   @media (min-width: 720px) {
     .site-layout { grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
-    .site-record { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }
+    .photo-pane { position: sticky; top: 24px; height: calc(100vh - 48px); display: flex; flex-direction: column; }
   }
   @media (min-width: 1148px) {
     .site-layout { grid-template-columns: 7fr 15fr; }
-    .photo-grid { grid-template-columns: 1fr 1fr 1fr; }
   }
   @media (max-width: 719px) {
-    .photo-grid { order: -1; }
+    .photo-pane { order: -1; display: flex; flex-direction: column; }
+    .photo-scroll { max-height: 70vh; }
   }
 </style>
 </head>
@@ -221,124 +237,129 @@
 <div class="site-layout">
   <aside class="site-record">
 <div class="rec-section"><div class="rec-label">Geology</div><div class="geo-era-row"><div class="geo-swatch" style="background:#3d7fbf"></div><span class="geo-era-name">Mississippian</span><span class="geo-mya">310 Mya</span></div><div class="geo-bar-wrap"><div class="geo-bar-fill" style="width:66%;background:#3d7fbf;opacity:0.55"></div></div><p class="geo-prose">~310 Mya Pennsylvanian sandstone over ~340 Mya Mississippian Borden Group siltstone and limestone; deep sandstone ravines carved by Sugar Creek drainage</p></div><div class="rec-section"><div class="rec-label">Epoch</div><p>Pennsylvanian (upper); Mississippian (lower, Borden Group)</p></div><div class="rec-section"><div class="rec-label">Native lands</div><p>Miami (Myaamiaki) and Wea held the west-central Indiana Sugar Creek corridor; Wea settled along the middle Wabash near present-day Lafayette; Sugar Creek is a Wabash tributary draining the park; Shawnee bands present in the region prior to European contact; Potawatomi oral tradition documents a battle between Potawatomi and Miami in the Pine Hills canyons in the 1770s during conflict over control of the Wabash Valley; Treaty of Grouseland (August 21, 1805, Royce Cession 56) ceded Miami, Eel River, and Wea southern Indiana lands; Treaty with the Miami (October 6, 1818, St. Mary's, Royce Cession 15) ceded central Indiana south of the Wabash, covering the Shades area; Treaty with the Wea (October 2, 1818) ceded all remaining Wea Indiana claims; Wea removed west to Missouri after 1820; Miami largely removed to Kansas in October 1846</p></div><div class="rec-section"><div class="rec-label">Displacement &amp; Tenure</div><p>Royce Cession 56: Treaty of Grouseland (August 21, 1805) ceded Miami, Eel River, and Wea southern Indiana lands; Royce Cession 15: Treaty with the Miami (October 6, 1818, St. Mary's) ceded the New Purchase, covering the Shades area; Wea final reserve ceded August 11, 1820; steep terrain resisted farming and remained in private hands; operated as a resort in the 1890s; naturalist Joseph Frisz acquired the property in the 1930s to protect it; following Frisz's death (1939) a civic Save the Shades campaign raised $255,000 in 1947; Indianapolis businessman Arthur Baxter purchased the land from the Frisz heirs and transferred it to the State of Indiana; dedicated as Indiana's 15th state park July 18, 1948</p></div><div class="rec-section"><div class="rec-label">Shadow History</div><p>Government surveys in the early 1800s documented the Sugar Creek springs, and by the late 19th century the Garland Dells Mineral Springs Association had acquired the land and built a 40-room inn in 1887, operating it as a health resort called The Shades; the wellness commerce model (mineral springs, curative air, outdoor exposure) preceded and enabled the eventual conservation purchase; Joseph Frisz acquired the resort property in the 1930s to protect it from timber interests, and CCC enrollees built shelter houses and trail infrastructure on the land during this period while it was still privately held; the park was not formally state-owned until 1948, placing it outside the Indiana DNR's official CCC company assignment records despite documented CCC presence on site; the specific CCC company designation has not been located in publicly available records</p></div><div class="rec-section"><div class="rec-label">Ecology</div><p>Old-growth and second-growth beech-maple and oak-hickory hardwood forest covers the uplands; relict populations of eastern hemlock, white pine, and Canada yew on north-facing canyon walls and ravine floors; rare ferns and wildflowers on shaded cliff faces throughout the Sugar Creek ravine system</p></div><div class="rec-section"><div class="rec-label">Hydrology</div><p>Sugar Creek, a 93-mile Wabash River tributary, runs the length of the park; Indian Creek drains the northern ravines before joining Sugar Creek within the park; numerous named ravines including Frisz, Kintz, Pearl, and Red Fox carry seasonal flows; Silver Cascade waterfall; abundant springs where Pennsylvanian and Mississippian bedrock layers meet; park lies within the Deer Creek-Sugar Creek sub-watershed of the Upper Wabash River basin</p></div><div class="rec-section"><div class="rec-label">Acreage</div><p>3,082</p></div><div class="rec-section"><div class="rec-label">GPS</div><p><a class="gps-link" href="https://maps.google.com/?q=39.9326,-87.0748" target="_blank" rel="noopener">39.9326° N, 87.0748° W</a></p></div>  </aside>
-  <div class="photo-grid">
-    <figure class="ph">
+  <div class="photo-pane">
+    <div class="photo-scroll">
+    <figure class="ph" data-raw="../img/RAW/_DSF2249.RAF" data-xmp="../img/RAW/_DSF2249.xmp">
       <a href="../img/full/shades-state-park/_DSF2249.tif" download title="Shades State Park 1">
-        <img src="../thumbs/shades-state-park/_DSF2249.jpg" data-full="../img/jpg/shades-state-park/_DSF2249.jpg" alt="Shades State Park 1" loading="lazy"/>
+        <img src="../img/jpg/shades-state-park/_DSF2249.jpg" alt="Shades State Park 1" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Shades State Park 1 &middot; 2026-05-21</span>
         <span class="caption-filename">_DSF2249.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2255.RAF" data-xmp="../img/RAW/_DSF2255.xmp">
       <a href="../img/full/shades-state-park/_DSF2255.tif" download title="Shades State Park 2">
-        <img src="../thumbs/shades-state-park/_DSF2255.jpg" data-full="../img/jpg/shades-state-park/_DSF2255.jpg" alt="Shades State Park 2" loading="lazy"/>
+        <img src="../img/jpg/shades-state-park/_DSF2255.jpg" alt="Shades State Park 2" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Shades State Park 2 &middot; 2026-05-21</span>
         <span class="caption-filename">_DSF2255.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2258.RAF" data-xmp="../img/RAW/_DSF2258.xmp">
       <a href="../img/full/shades-state-park/_DSF2258.tif" download title="Shades State Park 3">
-        <img src="../thumbs/shades-state-park/_DSF2258.jpg" data-full="../img/jpg/shades-state-park/_DSF2258.jpg" alt="Shades State Park 3" loading="lazy"/>
+        <img src="../img/jpg/shades-state-park/_DSF2258.jpg" alt="Shades State Park 3" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Shades State Park 3 &middot; 2026-05-21</span>
         <span class="caption-filename">_DSF2258.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2259.RAF" data-xmp="../img/RAW/_DSF2259.xmp">
       <a href="../img/full/shades-state-park/_DSF2259.tif" download title="Shades State Park 4">
-        <img src="../thumbs/shades-state-park/_DSF2259.jpg" data-full="../img/jpg/shades-state-park/_DSF2259.jpg" alt="Shades State Park 4" loading="lazy"/>
+        <img src="../img/jpg/shades-state-park/_DSF2259.jpg" alt="Shades State Park 4" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Shades State Park 4 &middot; 2026-05-21</span>
         <span class="caption-filename">_DSF2259.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2263.RAF" data-xmp="../img/RAW/_DSF2263.xmp">
       <a href="../img/full/shades-state-park/_DSF2263.tif" download title="Shades State Park 5">
-        <img src="../thumbs/shades-state-park/_DSF2263.jpg" data-full="../img/jpg/shades-state-park/_DSF2263.jpg" alt="Shades State Park 5" loading="lazy"/>
+        <img src="../img/jpg/shades-state-park/_DSF2263.jpg" alt="Shades State Park 5" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Shades State Park 5 &middot; 2026-05-21</span>
         <span class="caption-filename">_DSF2263.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2264.RAF" data-xmp="../img/RAW/_DSF2264.xmp">
       <a href="../img/full/shades-state-park/_DSF2264.tif" download title="Shades State Park 6">
-        <img src="../thumbs/shades-state-park/_DSF2264.jpg" data-full="../img/jpg/shades-state-park/_DSF2264.jpg" alt="Shades State Park 6" loading="lazy"/>
+        <img src="../img/jpg/shades-state-park/_DSF2264.jpg" alt="Shades State Park 6" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Shades State Park 6 &middot; 2026-05-21</span>
         <span class="caption-filename">_DSF2264.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2269.RAF" data-xmp="../img/RAW/_DSF2269.xmp">
       <a href="../img/full/shades-state-park/_DSF2269.tif" download title="Shades State Park 7">
-        <img src="../thumbs/shades-state-park/_DSF2269.jpg" data-full="../img/jpg/shades-state-park/_DSF2269.jpg" alt="Shades State Park 7" loading="lazy"/>
+        <img src="../img/jpg/shades-state-park/_DSF2269.jpg" alt="Shades State Park 7" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Shades State Park 7 &middot; 2026-05-21</span>
         <span class="caption-filename">_DSF2269.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2270.RAF" data-xmp="../img/RAW/_DSF2270.xmp">
       <a href="../img/full/shades-state-park/_DSF2270.tif" download title="Shades State Park 8">
-        <img src="../thumbs/shades-state-park/_DSF2270.jpg" data-full="../img/jpg/shades-state-park/_DSF2270.jpg" alt="Shades State Park 8" loading="lazy"/>
+        <img src="../img/jpg/shades-state-park/_DSF2270.jpg" alt="Shades State Park 8" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Shades State Park 8 &middot; 2026-05-21</span>
         <span class="caption-filename">_DSF2270.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2271.RAF" data-xmp="../img/RAW/_DSF2271.xmp">
       <a href="../img/full/shades-state-park/_DSF2271.tif" download title="Shades State Park 9">
-        <img src="../thumbs/shades-state-park/_DSF2271.jpg" data-full="../img/jpg/shades-state-park/_DSF2271.jpg" alt="Shades State Park 9" loading="lazy"/>
+        <img src="../img/jpg/shades-state-park/_DSF2271.jpg" alt="Shades State Park 9" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Shades State Park 9 &middot; 2026-05-21</span>
         <span class="caption-filename">_DSF2271.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2275.RAF" data-xmp="../img/RAW/_DSF2275.xmp">
       <a href="../img/full/shades-state-park/_DSF2275.tif" download title="Shades State Park 10">
-        <img src="../thumbs/shades-state-park/_DSF2275.jpg" data-full="../img/jpg/shades-state-park/_DSF2275.jpg" alt="Shades State Park 10" loading="lazy"/>
+        <img src="../img/jpg/shades-state-park/_DSF2275.jpg" alt="Shades State Park 10" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Shades State Park 10 &middot; 2026-05-21</span>
         <span class="caption-filename">_DSF2275.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2279.RAF" data-xmp="../img/RAW/_DSF2279.xmp">
       <a href="../img/full/shades-state-park/_DSF2279.tif" download title="Shades State Park 11">
-        <img src="../thumbs/shades-state-park/_DSF2279.jpg" data-full="../img/jpg/shades-state-park/_DSF2279.jpg" alt="Shades State Park 11" loading="lazy"/>
+        <img src="../img/jpg/shades-state-park/_DSF2279.jpg" alt="Shades State Park 11" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Shades State Park 11 &middot; 2026-05-21</span>
         <span class="caption-filename">_DSF2279.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2280.RAF" data-xmp="../img/RAW/_DSF2280.xmp">
       <a href="../img/full/shades-state-park/_DSF2280.tif" download title="Shades State Park 12">
-        <img src="../thumbs/shades-state-park/_DSF2280.jpg" data-full="../img/jpg/shades-state-park/_DSF2280.jpg" alt="Shades State Park 12" loading="lazy"/>
+        <img src="../img/jpg/shades-state-park/_DSF2280.jpg" alt="Shades State Park 12" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Shades State Park 12 &middot; 2026-05-21</span>
         <span class="caption-filename">_DSF2280.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2284.RAF" data-xmp="../img/RAW/_DSF2284.xmp">
       <a href="../img/full/shades-state-park/_DSF2284.tif" download title="Shades State Park 13">
-        <img src="../thumbs/shades-state-park/_DSF2284.jpg" data-full="../img/jpg/shades-state-park/_DSF2284.jpg" alt="Shades State Park 13" loading="lazy"/>
+        <img src="../img/jpg/shades-state-park/_DSF2284.jpg" alt="Shades State Park 13" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Shades State Park 13 &middot; 2026-05-21</span>
         <span class="caption-filename">_DSF2284.jpg</span>
       </figcaption>
     </figure>
+    </div>
+    <div class="photo-foot">
+      <button class="plb-view-all">View all 13 images →</button>
+    </div>
   </div>
 </div>
 <nav class="site-nav">

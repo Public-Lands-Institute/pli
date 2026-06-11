@@ -142,24 +142,40 @@
   .geo-bar-wrap { position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }
   .geo-bar-fill { position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }
   .geo-prose { color: var(--fg); }
-  .photo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    align-content: start;
+  .photo-pane { min-width: 0; }
+  .photo-scroll {
+    display: flex; flex-direction: column; gap: 4px;
+    overflow-y: auto; min-height: 0; flex: 1;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.18) transparent;
   }
-  .ph { background: #1f1f1f; aspect-ratio: 1 / 1; overflow: hidden; }
-  .ph a { display: block; width: 100%; height: 100%; }
+  .photo-scroll::-webkit-scrollbar { width: 6px; }
+  .photo-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); }
+  .ph { background: #1f1f1f; flex-shrink: 0; }
+  .ph a { display: block; width: 100%; }
   .ph img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
+    width: 100%; height: auto; display: block;
     filter: grayscale(100%);
     opacity: 0.92;
     transition: opacity 0.15s;
   }
   .ph:hover img { opacity: 1; }
   .ph figcaption { display: none; }
+  .photo-foot {
+    flex-shrink: 0;
+    padding-top: 12px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+  }
+  .plb-view-all {
+    font-family: inherit; font-size: 10px; font-weight: 400;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); background: none; border: none;
+    cursor: pointer; padding: 0;
+  }
+  .plb-view-all:hover { color: var(--fg); }
   .obs-header {
-    grid-column: 1 / -1;
     padding: 10px 0 4px 0;
   }
   .obs-header:first-child { padding-top: 0; }
@@ -192,14 +208,14 @@
   }
   @media (min-width: 720px) {
     .site-layout { grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
-    .site-record { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }
+    .photo-pane { position: sticky; top: 24px; height: calc(100vh - 48px); display: flex; flex-direction: column; }
   }
   @media (min-width: 1148px) {
     .site-layout { grid-template-columns: 7fr 15fr; }
-    .photo-grid { grid-template-columns: 1fr 1fr 1fr; }
   }
   @media (max-width: 719px) {
-    .photo-grid { order: -1; }
+    .photo-pane { order: -1; display: flex; flex-direction: column; }
+    .photo-scroll { max-height: 70vh; }
   }
 </style>
 </head>
@@ -221,106 +237,111 @@
 <div class="site-layout">
   <aside class="site-record">
 <div class="rec-section"><div class="rec-label">Geology</div><p class="geo-prose">~299-2.6 million years ago (surface strata).</p></div><div class="rec-section"><div class="rec-label">Epoch</div><p>Permian through Pliocene; Quartermaster Formation (Permian, ~280 Mya); caliche caprock (Pliocene, ~5 Mya).</p></div><div class="rec-section"><div class="rec-label">Native lands</div><p>Comanche (Nʉmʉnʉʉ) · Kiowa · Apache; territory of the Comancheria; Caprock Canyons part of the southern Comanche range; forced removal to Oklahoma reservations 1874-75.</p></div><div class="rec-section"><div class="rec-label">Displacement &amp; Tenure</div><p>Cession 478: Treaty with the Comanche and Kiowa (Little Arkansas Treaty, 1865); Cession 511: Agreement with the Comanche, Kiowa, and Apache (Jerome Agreement, 1892, ratified 1900); Comanche and Kiowa bands used the canyon breaks as a refuge until Col. Ranald Mackenzie's Fifth Cavalry swept through during the Red River War campaign of 1874, forcing their return to the Fort Sill reservation; state purchased approximately 13,961 acres from the estate of rancher Theodore Geisler in May 1975; the park opened in 1982.</p></div><div class="rec-section"><div class="rec-label">Shadow History</div><p>The Texas State Bison Herd at Caprock Canyons descends from calves captured by Charles Goodnight beginning in 1878, immediately after the systematic extermination campaign of 1874 to 1878 reduced the southern plains bison population from an estimated tens of millions to fewer than 1,000 animals continent-wide; Folsom- and Archaic-period archaeological sites are documented throughout the canyon, and Texas Parks and Wildlife acknowledges that most have been disturbed, with many artifacts removed, though no specific prosecution for looting at this site appears in public records.</p></div><div class="rec-section"><div class="rec-label">Ecology</div><p>Shortgrass prairie; canyon riparian; home to the official Texas State Bison Herd ; last free-ranging southern plains bison lineage.</p></div><div class="rec-section"><div class="rec-label">Hydrology</div><p>South Prong Little Red River; Lake Theo (reservoir); playa lakes; intermittent canyon streams.</p></div><div class="rec-section"><div class="rec-label">Acreage</div><p>15,313 acres</p></div><div class="rec-section"><div class="rec-label">GPS</div><p><a class="gps-link" href="https://maps.google.com/?q=33.9778,-101.0578" target="_blank" rel="noopener">33.9778° N, 101.0578° W</a></p></div>  </aside>
-  <div class="photo-grid">
-    <figure class="ph">
+  <div class="photo-pane">
+    <div class="photo-scroll">
+    <figure class="ph" data-raw="../img/RAW/_DSF0725.RAF" data-xmp="../img/RAW/_DSF0725.xmp">
       <a href="../img/full/caprock-canyon/_DSF0725.tif" download title="Caprock Canyon State Park 1">
-        <img src="../thumbs/caprock-canyon/_DSF0725.jpg" data-full="../img/jpg/caprock-canyon/_DSF0725.jpg" alt="Caprock Canyon State Park 1" loading="lazy"/>
+        <img src="../img/jpg/caprock-canyon/_DSF0725.jpg" alt="Caprock Canyon State Park 1" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Caprock Canyon State Park 1 &middot; 2026-01-08</span>
         <span class="caption-filename">_DSF0725.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0729.RAF" data-xmp="../img/RAW/_DSF0729.xmp">
       <a href="../img/full/caprock-canyon/_DSF0729.tif" download title="Caprock Canyon State Park 2">
-        <img src="../thumbs/caprock-canyon/_DSF0729.jpg" data-full="../img/jpg/caprock-canyon/_DSF0729.jpg" alt="Caprock Canyon State Park 2" loading="lazy"/>
+        <img src="../img/jpg/caprock-canyon/_DSF0729.jpg" alt="Caprock Canyon State Park 2" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Caprock Canyon State Park 2 &middot; 2026-01-08</span>
         <span class="caption-filename">_DSF0729.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0731.RAF" data-xmp="../img/RAW/_DSF0731.xmp">
       <a href="../img/full/caprock-canyon/_DSF0731.tif" download title="Caprock Canyon State Park 3">
-        <img src="../thumbs/caprock-canyon/_DSF0731.jpg" data-full="../img/jpg/caprock-canyon/_DSF0731.jpg" alt="Caprock Canyon State Park 3" loading="lazy"/>
+        <img src="../img/jpg/caprock-canyon/_DSF0731.jpg" alt="Caprock Canyon State Park 3" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Caprock Canyon State Park 3 &middot; 2026-01-08</span>
         <span class="caption-filename">_DSF0731.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0733.RAF" data-xmp="../img/RAW/_DSF0733.xmp">
       <a href="../img/full/caprock-canyon/_DSF0733.tif" download title="Caprock Canyon State Park 4">
-        <img src="../thumbs/caprock-canyon/_DSF0733.jpg" data-full="../img/jpg/caprock-canyon/_DSF0733.jpg" alt="Caprock Canyon State Park 4" loading="lazy"/>
+        <img src="../img/jpg/caprock-canyon/_DSF0733.jpg" alt="Caprock Canyon State Park 4" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Caprock Canyon State Park 4 &middot; 2026-01-08</span>
         <span class="caption-filename">_DSF0733.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0739.RAF" data-xmp="../img/RAW/_DSF0739.xmp">
       <a href="../img/full/caprock-canyon/_DSF0739.tif" download title="Caprock Canyon State Park 5">
-        <img src="../thumbs/caprock-canyon/_DSF0739.jpg" data-full="../img/jpg/caprock-canyon/_DSF0739.jpg" alt="Caprock Canyon State Park 5" loading="lazy"/>
+        <img src="../img/jpg/caprock-canyon/_DSF0739.jpg" alt="Caprock Canyon State Park 5" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Caprock Canyon State Park 5 &middot; 2026-01-08</span>
         <span class="caption-filename">_DSF0739.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0744.RAF" data-xmp="../img/RAW/_DSF0744.xmp">
       <a href="../img/full/caprock-canyon/_DSF0744.tif" download title="Caprock Canyon State Park 6">
-        <img src="../thumbs/caprock-canyon/_DSF0744.jpg" data-full="../img/jpg/caprock-canyon/_DSF0744.jpg" alt="Caprock Canyon State Park 6" loading="lazy"/>
+        <img src="../img/jpg/caprock-canyon/_DSF0744.jpg" alt="Caprock Canyon State Park 6" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Caprock Canyon State Park 6 &middot; 2026-01-08</span>
         <span class="caption-filename">_DSF0744.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0746.RAF" data-xmp="../img/RAW/_DSF0746.xmp">
       <a href="../img/full/caprock-canyon/_DSF0746.tif" download title="Caprock Canyon State Park 7">
-        <img src="../thumbs/caprock-canyon/_DSF0746.jpg" data-full="../img/jpg/caprock-canyon/_DSF0746.jpg" alt="Caprock Canyon State Park 7" loading="lazy"/>
+        <img src="../img/jpg/caprock-canyon/_DSF0746.jpg" alt="Caprock Canyon State Park 7" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Caprock Canyon State Park 7 &middot; 2026-01-08</span>
         <span class="caption-filename">_DSF0746.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0751.RAF" data-xmp="../img/RAW/_DSF0751.xmp">
       <a href="../img/full/caprock-canyon/_DSF0751.tif" download title="Caprock Canyon State Park 8">
-        <img src="../thumbs/caprock-canyon/_DSF0751.jpg" data-full="../img/jpg/caprock-canyon/_DSF0751.jpg" alt="Caprock Canyon State Park 8" loading="lazy"/>
+        <img src="../img/jpg/caprock-canyon/_DSF0751.jpg" alt="Caprock Canyon State Park 8" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Caprock Canyon State Park 8 &middot; 2026-01-08</span>
         <span class="caption-filename">_DSF0751.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0753.RAF" data-xmp="../img/RAW/_DSF0753.xmp">
       <a href="../img/full/caprock-canyon/_DSF0753.tif" download title="Caprock Canyon State Park 9">
-        <img src="../thumbs/caprock-canyon/_DSF0753.jpg" data-full="../img/jpg/caprock-canyon/_DSF0753.jpg" alt="Caprock Canyon State Park 9" loading="lazy"/>
+        <img src="../img/jpg/caprock-canyon/_DSF0753.jpg" alt="Caprock Canyon State Park 9" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Caprock Canyon State Park 9 &middot; 2026-01-08</span>
         <span class="caption-filename">_DSF0753.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0757.RAF" data-xmp="../img/RAW/_DSF0757.xmp">
       <a href="../img/full/caprock-canyon/_DSF0757.tif" download title="Caprock Canyon State Park 10">
-        <img src="../thumbs/caprock-canyon/_DSF0757.jpg" data-full="../img/jpg/caprock-canyon/_DSF0757.jpg" alt="Caprock Canyon State Park 10" loading="lazy"/>
+        <img src="../img/jpg/caprock-canyon/_DSF0757.jpg" alt="Caprock Canyon State Park 10" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Caprock Canyon State Park 10 &middot; 2026-01-08</span>
         <span class="caption-filename">_DSF0757.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0758.RAF" data-xmp="../img/RAW/_DSF0758.xmp">
       <a href="../img/full/caprock-canyon/_DSF0758.tif" download title="Caprock Canyon State Park 11">
-        <img src="../thumbs/caprock-canyon/_DSF0758.jpg" data-full="../img/jpg/caprock-canyon/_DSF0758.jpg" alt="Caprock Canyon State Park 11" loading="lazy"/>
+        <img src="../img/jpg/caprock-canyon/_DSF0758.jpg" alt="Caprock Canyon State Park 11" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Caprock Canyon State Park 11 &middot; 2026-01-08</span>
         <span class="caption-filename">_DSF0758.jpg</span>
       </figcaption>
     </figure>
+    </div>
+    <div class="photo-foot">
+      <button class="plb-view-all">View all 11 images →</button>
+    </div>
   </div>
 </div>
 <nav class="site-nav">

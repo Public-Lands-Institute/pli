@@ -142,24 +142,40 @@
   .geo-bar-wrap { position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }
   .geo-bar-fill { position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }
   .geo-prose { color: var(--fg); }
-  .photo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    align-content: start;
+  .photo-pane { min-width: 0; }
+  .photo-scroll {
+    display: flex; flex-direction: column; gap: 4px;
+    overflow-y: auto; min-height: 0; flex: 1;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.18) transparent;
   }
-  .ph { background: #1f1f1f; aspect-ratio: 1 / 1; overflow: hidden; }
-  .ph a { display: block; width: 100%; height: 100%; }
+  .photo-scroll::-webkit-scrollbar { width: 6px; }
+  .photo-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); }
+  .ph { background: #1f1f1f; flex-shrink: 0; }
+  .ph a { display: block; width: 100%; }
   .ph img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
+    width: 100%; height: auto; display: block;
     filter: grayscale(100%);
     opacity: 0.92;
     transition: opacity 0.15s;
   }
   .ph:hover img { opacity: 1; }
   .ph figcaption { display: none; }
+  .photo-foot {
+    flex-shrink: 0;
+    padding-top: 12px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+  }
+  .plb-view-all {
+    font-family: inherit; font-size: 10px; font-weight: 400;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); background: none; border: none;
+    cursor: pointer; padding: 0;
+  }
+  .plb-view-all:hover { color: var(--fg); }
   .obs-header {
-    grid-column: 1 / -1;
     padding: 10px 0 4px 0;
   }
   .obs-header:first-child { padding-top: 0; }
@@ -192,14 +208,14 @@
   }
   @media (min-width: 720px) {
     .site-layout { grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
-    .site-record { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }
+    .photo-pane { position: sticky; top: 24px; height: calc(100vh - 48px); display: flex; flex-direction: column; }
   }
   @media (min-width: 1148px) {
     .site-layout { grid-template-columns: 7fr 15fr; }
-    .photo-grid { grid-template-columns: 1fr 1fr 1fr; }
   }
   @media (max-width: 719px) {
-    .photo-grid { order: -1; }
+    .photo-pane { order: -1; display: flex; flex-direction: column; }
+    .photo-scroll { max-height: 70vh; }
   }
 </style>
 </head>
@@ -221,43 +237,48 @@
 <div class="site-layout">
   <aside class="site-record">
 <div class="rec-section"><div class="rec-label">Geology</div><div class="geo-era-row"><div class="geo-swatch" style="background:#4aaa78"></div><span class="geo-era-name">Devonian</span><span class="geo-mya">390 Mya</span></div><div class="geo-bar-wrap"><div class="geo-bar-fill" style="width:77%;background:#4aaa78;opacity:0.55"></div></div><p class="geo-prose">~390 Mya Middle Devonian limestone (Columbus Limestone); bedrock overlain by Pleistocene glacial till and outwash from the Wisconsin glaciation.</p></div><div class="rec-section"><div class="rec-label">Epoch</div><p>Middle Devonian (Eifelian/Givetian); surface Pleistocene (Wisconsinan).</p></div><div class="rec-section"><div class="rec-label">Native lands</div><p>Wyandot (Wendat/waⁿdát), Shawnee (Šawanwaki), and Delaware (Lenape); Wyandot County named for the Wyandot nation who held the Sandusky Plains and upper Sandusky River corridor; Cranberry Swamp at Broken Sword Creek, a named Wyandot wetland outside the current wildlife area boundary, was reserved as a 1 square-mile parcel in Article 4 of the Treaty of Maumee Rapids (September 29, 1817); Treaty of Greene Ville (August 3, 1795) ceded northwestern Ohio including Wyandot County; Treaty of Maumee Rapids (1817) ceded 4.6 million acres of northwestern Ohio and Indiana while reserving 12 square miles at Upper Sandusky and the Cranberry Swamp parcel on Broken Sword Creek; Wyandot signed 19 treaties with the United States before final removal; more than 600 Wyandot departed Upper Sandusky on foot in July 1843, traveling to Cincinnati then by steamboat west, arriving in Kansas to find no land available, and subsequently removed again to Oklahoma Indian Territory.</p></div><div class="rec-section"><div class="rec-label">Displacement &amp; Tenure</div><p>Ceded via Treaty of Greene Ville (1795, Article 3) and Treaty of Maumee Rapids (September 29, 1817), extinguishing Wyandot, Shawnee, and Delaware title to Wyandot County; Cranberry Swamp reserve on Broken Sword Creek extinguished by subsequent cessions; Wyandot County organized 1845 following final removal; Sandusky Plains wet prairie drained and converted to agricultural row crop production through the second half of the 19th century; Ohio Division of Wildlife began acquiring farmland parcels in 1952, assembling the current 9,054-acre wildlife area through purchases completed by 2007; wetland and grassland restoration ongoing since acquisition.</p></div><div class="rec-section"><div class="rec-label">Shadow History</div><p>Cranberry Swamp at Broken Sword Creek, reserved by Article 4 of the Treaty of Maumee Rapids (1817) as a named Wyandot wetland parcel of 1 square mile, was extinguished by subsequent treaty cessions and converted to agricultural use following the forced removal of the Wyandot nation in July 1843; the July 1843 removal from Upper Sandusky of more than 600 Wyandot -- the last American Indian nation to leave Ohio -- was precipitated by sustained pressure from Ohio settlers and state government despite the Wyandot being among the most acculturated nations in the region; arriving in Kansas to find their promised lands unavailable, the Wyandot were subsequently removed again to Oklahoma; Killdeer Plains lies within the former 30,000-acre Sandusky Plains wet prairie, which was systematically drained for agriculture between the 1850s and 1880s through hand-dug ditches and clay tile drainage; land was farmed as row crops through the mid-20th century before state acquisition beginning in 1952; legacy agricultural tile drainage infrastructure was largely reversed during wetland restoration, but Broken Sword Creek (82.6% agricultural land use in watershed) remains designated as impaired under Ohio EPA criteria.</p></div><div class="rec-section"><div class="rec-label">Ecology</div><p>Restored wetland and native grassland complex on former Sandusky Plains wet prairie; habitat mosaic includes managed impoundments (over 100 ponds from less than 1 acre to 50 acres), a 360-acre green tree reservoir, native grasslands, grain crop fields maintained for wildlife, and oak-hickory woodlands; one of the premier sandhill crane (Antigone canadensis) migration staging areas in Ohio with 10,000+ cranes observed in fall as part of the mid-continent population of 660,000+; 275 documented bird species including grassland breeders bobolink (Dolichonyx oryzivorus), dickcissel (Spiza americana), upland sandpiper (Bartramia longicauda), Henslow's sparrow (Centronyx henslowii), and loggerhead shrike (Lanius ludovicianus); northern harrier and short-eared owl regular in fall migration.</p></div><div class="rec-section"><div class="rec-label">Hydrology</div><p>Sandusky River watershed (1,825+ sq mi drainage); Broken Sword Creek (95 sq mi drainage, 82.6% agricultural land use) primary stream corridor through the wildlife area; over 100 managed ponds and impoundments provide shallow water habitat for migratory shorebirds and waterfowl; legacy agricultural tile drainage systems partially removed during restoration; historically part of the 30,000-acre Sandusky Plains wet prairie drained 1850s-1880s.</p></div><div class="rec-section"><div class="rec-label">Acreage</div><p>9,054</p></div><div class="rec-section"><div class="rec-label">GPS</div><p><a class="gps-link" href="https://maps.google.com/?q=40.7158,-83.315" target="_blank" rel="noopener">40.7158° N, 83.3150° W</a></p></div>  </aside>
-  <div class="photo-grid">
-    <figure class="ph">
+  <div class="photo-pane">
+    <div class="photo-scroll">
+    <figure class="ph" data-raw="../img/RAW/_DSF1982.RAF" data-xmp="../img/RAW/_DSF1982.xmp">
       <a href="../img/full/killdeer-plains-wildlife-area/_DSF1982.tif" download title="Killdeer Plains Wildlife Area 1">
-        <img src="../thumbs/killdeer-plains-wildlife-area/_DSF1982.jpg" data-full="../img/jpg/killdeer-plains-wildlife-area/_DSF1982.jpg" alt="Killdeer Plains Wildlife Area 1" loading="lazy"/>
+        <img src="../img/jpg/killdeer-plains-wildlife-area/_DSF1982.jpg" alt="Killdeer Plains Wildlife Area 1" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Killdeer Plains Wildlife Area 1 &middot; 2026-05-07</span>
         <span class="caption-filename">_DSF1982.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1983.RAF" data-xmp="../img/RAW/_DSF1983.xmp">
       <a href="../img/full/killdeer-plains-wildlife-area/_DSF1983.tif" download title="Killdeer Plains Wildlife Area 2">
-        <img src="../thumbs/killdeer-plains-wildlife-area/_DSF1983.jpg" data-full="../img/jpg/killdeer-plains-wildlife-area/_DSF1983.jpg" alt="Killdeer Plains Wildlife Area 2" loading="lazy"/>
+        <img src="../img/jpg/killdeer-plains-wildlife-area/_DSF1983.jpg" alt="Killdeer Plains Wildlife Area 2" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Killdeer Plains Wildlife Area 2 &middot; 2026-05-07</span>
         <span class="caption-filename">_DSF1983.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1995.RAF" data-xmp="../img/RAW/_DSF1995.xmp">
       <a href="../img/full/killdeer-plains-wildlife-area/_DSF1995.tif" download title="Killdeer Plains Wildlife Area 3">
-        <img src="../thumbs/killdeer-plains-wildlife-area/_DSF1995.jpg" data-full="../img/jpg/killdeer-plains-wildlife-area/_DSF1995.jpg" alt="Killdeer Plains Wildlife Area 3" loading="lazy"/>
+        <img src="../img/jpg/killdeer-plains-wildlife-area/_DSF1995.jpg" alt="Killdeer Plains Wildlife Area 3" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Killdeer Plains Wildlife Area 3 &middot; 2026-05-07</span>
         <span class="caption-filename">_DSF1995.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1999.RAF" data-xmp="../img/RAW/_DSF1999.xmp">
       <a href="../img/full/killdeer-plains-wildlife-area/_DSF1999.tif" download title="Killdeer Plains Wildlife Area 4">
-        <img src="../thumbs/killdeer-plains-wildlife-area/_DSF1999.jpg" data-full="../img/jpg/killdeer-plains-wildlife-area/_DSF1999.jpg" alt="Killdeer Plains Wildlife Area 4" loading="lazy"/>
+        <img src="../img/jpg/killdeer-plains-wildlife-area/_DSF1999.jpg" alt="Killdeer Plains Wildlife Area 4" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Killdeer Plains Wildlife Area 4 &middot; 2026-05-07</span>
         <span class="caption-filename">_DSF1999.jpg</span>
       </figcaption>
     </figure>
+    </div>
+    <div class="photo-foot">
+      <button class="plb-view-all">View all 4 images →</button>
+    </div>
   </div>
 </div>
 <nav class="site-nav">

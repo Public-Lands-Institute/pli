@@ -142,24 +142,40 @@
   .geo-bar-wrap { position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }
   .geo-bar-fill { position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }
   .geo-prose { color: var(--fg); }
-  .photo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    align-content: start;
+  .photo-pane { min-width: 0; }
+  .photo-scroll {
+    display: flex; flex-direction: column; gap: 4px;
+    overflow-y: auto; min-height: 0; flex: 1;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.18) transparent;
   }
-  .ph { background: #1f1f1f; aspect-ratio: 1 / 1; overflow: hidden; }
-  .ph a { display: block; width: 100%; height: 100%; }
+  .photo-scroll::-webkit-scrollbar { width: 6px; }
+  .photo-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); }
+  .ph { background: #1f1f1f; flex-shrink: 0; }
+  .ph a { display: block; width: 100%; }
   .ph img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
+    width: 100%; height: auto; display: block;
     filter: grayscale(100%);
     opacity: 0.92;
     transition: opacity 0.15s;
   }
   .ph:hover img { opacity: 1; }
   .ph figcaption { display: none; }
+  .photo-foot {
+    flex-shrink: 0;
+    padding-top: 12px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+  }
+  .plb-view-all {
+    font-family: inherit; font-size: 10px; font-weight: 400;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); background: none; border: none;
+    cursor: pointer; padding: 0;
+  }
+  .plb-view-all:hover { color: var(--fg); }
   .obs-header {
-    grid-column: 1 / -1;
     padding: 10px 0 4px 0;
   }
   .obs-header:first-child { padding-top: 0; }
@@ -192,14 +208,14 @@
   }
   @media (min-width: 720px) {
     .site-layout { grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
-    .site-record { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }
+    .photo-pane { position: sticky; top: 24px; height: calc(100vh - 48px); display: flex; flex-direction: column; }
   }
   @media (min-width: 1148px) {
     .site-layout { grid-template-columns: 7fr 15fr; }
-    .photo-grid { grid-template-columns: 1fr 1fr 1fr; }
   }
   @media (max-width: 719px) {
-    .photo-grid { order: -1; }
+    .photo-pane { order: -1; display: flex; flex-direction: column; }
+    .photo-scroll { max-height: 70vh; }
   }
 </style>
 </head>
@@ -221,79 +237,84 @@
 <div class="site-layout">
   <aside class="site-record">
 <div class="rec-section"><div class="rec-label">Geology</div><div class="geo-era-row"><div class="geo-swatch" style="background:#c8a86e"></div><span class="geo-era-name">Ordovician</span><span class="geo-mya">485-444 Mya</span></div><div class="geo-bar-wrap"><div class="geo-bar-fill" style="width:90%;background:#c8a86e;opacity:0.55"></div></div><p class="geo-prose">~2.84 billion years (Archean) granite-gneiss core (Bighorn Batholith); ~485-444 Mya Ordovician Bighorn Dolomite</p></div><div class="rec-section"><div class="rec-label">Epoch</div><p>Archean (basement) / Late Ordovician (Bighorn Dolomite)</p></div><div class="rec-section"><div class="rec-label">Native lands</div><p>Crow (Apsaalooke); Eastern Shoshone; Cheyenne (Tsitsistas); Arapaho (Hinono'eino); Lakota/Sioux; the Bighorn Mountains and Powder River Basin were contested hunting grounds, with Cheyenne ranging through Clear Creek Valley and the Powder/Bighorn/Tongue River country, Arapaho moving through the Bighorns alongside the Black Hills and Medicine Bow Range, and Lakota expanding west into Crow, Cheyenne, Arapaho, and Shoshone territory by the 1850s, dominating the Powder River Basin by mid-century; Treaty of Fort Laramie 1851 (Horse Creek Treaty) recognized roughly 38 million acres of Crow (Apsaalooke) territory including the Bighorns; Second Treaty of Fort Laramie 1868 reduced Crow recognized territory to about 8 million acres and established the Crow Indian Reservation in eastern Montana, while Crow leaders retained off-reservation hunting rights on ceded lands (affirmed in Herrera v. Wyoming, 2019); Eastern Shoshone settled on the Wind River Reservation per treaties of 1863 and 1868, later sharing it with the Northern Arapaho (1878); Medicine Wheel/Medicine Mountain, within the forest, remains a sacred ceremonial site for at least 16 tribal nations</p></div><div class="rec-section"><div class="rec-label">Displacement &amp; Tenure</div><p>Treaty of Fort Laramie 1851 (Horse Creek Treaty) recognized approximately 38 million acres of Crow (Apsaalooke) territory encompassing the Bighorn Mountains; Second Treaty of Fort Laramie 1868 reduced Crow lands to roughly 8 million acres and established the Crow Indian Reservation south of the Yellowstone River in present-day Montana, removing the Bighorns from recognized tribal territory while Crow leaders retained hunting rights on ceded land; Eastern Shoshone ceded claims via treaties of 1863 and 1868 establishing the Wind River Reservation; Bighorn National Forest established February 22, 1897 from these ceded lands</p></div><div class="rec-section"><div class="rec-label">Shadow History</div><p>Medicine Wheel/Medicine Mountain National Historic Landmark, sacred to many Plains nations, became the focus of access disputes beginning in 1988 when the Forest Service proposed tourism-oriented changes; over two decades of negotiation among federal and state agencies and traditional elders representing 16 tribes produced a Historic Preservation Plan in September 1996 establishing a 23,000-acre area of consultation and restricting vehicle access to 1.5 miles on foot, with renewed disputes over road access in recent years</p></div><div class="rec-section"><div class="rec-label">Ecology</div><p>Lodgepole pine, subalpine fir, and Engelmann spruce dominate higher elevations, transitioning to ponderosa pine, Douglas fir, and aspen at lower elevations; alpine tundra, meadows, and lakes occur above treeline; wildlife includes elk, mule deer, moose, pronghorn, mountain lion, and a remnant population of bighorn sheep, the forest's namesake, though numbers have declined sharply due to disease transmission from domestic sheep grazing.</p></div><div class="rec-section"><div class="rec-label">Hydrology</div><p>Headwaters of the Tongue River, fed by snowpack and spring groundwater, draining north into the Yellowstone River system; the forest also forms the divide between the Bighorn River drainage to the west and the Powder River drainage to the east, with the Tongue, Bighorn, and Powder Rivers all ultimately tributary to the Yellowstone River.</p></div><div class="rec-section"><div class="rec-label">Acreage</div><p>1,115,171</p></div><div class="rec-section"><div class="rec-label">GPS</div><p><a class="gps-link" href="https://maps.google.com/?q=44.7878,-107.5081" target="_blank" rel="noopener">44.7878° N, 107.5081° W</a></p></div>  </aside>
-  <div class="photo-grid">
-    <figure class="ph">
+  <div class="photo-pane">
+    <div class="photo-scroll">
+    <figure class="ph" data-raw="../img/RAW/_DSF2909.RAF" data-xmp="../img/RAW/_DSF2909.xmp">
       <a href="../img/full/bighorn-national-forest/_DSF2909.tif" download title="Bighorn National Forest 1">
-        <img src="../thumbs/bighorn-national-forest/_DSF2909.jpg" data-full="../img/jpg/bighorn-national-forest/_DSF2909.jpg" alt="Bighorn National Forest 1" loading="lazy"/>
+        <img src="../img/jpg/bighorn-national-forest/_DSF2909.jpg" alt="Bighorn National Forest 1" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Bighorn National Forest 1 &middot; 2026-06-09</span>
         <span class="caption-filename">_DSF2909.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2917.RAF" data-xmp="../img/RAW/_DSF2917.xmp">
       <a href="../img/full/bighorn-national-forest/_DSF2917.tif" download title="Bighorn National Forest 2">
-        <img src="../thumbs/bighorn-national-forest/_DSF2917.jpg" data-full="../img/jpg/bighorn-national-forest/_DSF2917.jpg" alt="Bighorn National Forest 2" loading="lazy"/>
+        <img src="../img/jpg/bighorn-national-forest/_DSF2917.jpg" alt="Bighorn National Forest 2" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Bighorn National Forest 2 &middot; 2026-06-09</span>
         <span class="caption-filename">_DSF2917.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2922.RAF" data-xmp="../img/RAW/_DSF2922.xmp">
       <a href="../img/full/bighorn-national-forest/_DSF2922.tif" download title="Bighorn National Forest 3">
-        <img src="../thumbs/bighorn-national-forest/_DSF2922.jpg" data-full="../img/jpg/bighorn-national-forest/_DSF2922.jpg" alt="Bighorn National Forest 3" loading="lazy"/>
+        <img src="../img/jpg/bighorn-national-forest/_DSF2922.jpg" alt="Bighorn National Forest 3" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Bighorn National Forest 3 &middot; 2026-06-09</span>
         <span class="caption-filename">_DSF2922.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2924.RAF" data-xmp="../img/RAW/_DSF2924.xmp">
       <a href="../img/full/bighorn-national-forest/_DSF2924.tif" download title="Bighorn National Forest 4">
-        <img src="../thumbs/bighorn-national-forest/_DSF2924.jpg" data-full="../img/jpg/bighorn-national-forest/_DSF2924.jpg" alt="Bighorn National Forest 4" loading="lazy"/>
+        <img src="../img/jpg/bighorn-national-forest/_DSF2924.jpg" alt="Bighorn National Forest 4" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Bighorn National Forest 4 &middot; 2026-06-09</span>
         <span class="caption-filename">_DSF2924.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2927.RAF" data-xmp="../img/RAW/_DSF2927.xmp">
       <a href="../img/full/bighorn-national-forest/_DSF2927.tif" download title="Bighorn National Forest 5">
-        <img src="../thumbs/bighorn-national-forest/_DSF2927.jpg" data-full="../img/jpg/bighorn-national-forest/_DSF2927.jpg" alt="Bighorn National Forest 5" loading="lazy"/>
+        <img src="../img/jpg/bighorn-national-forest/_DSF2927.jpg" alt="Bighorn National Forest 5" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Bighorn National Forest 5 &middot; 2026-06-09</span>
         <span class="caption-filename">_DSF2927.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2929.RAF" data-xmp="../img/RAW/_DSF2929.xmp">
       <a href="../img/full/bighorn-national-forest/_DSF2929.tif" download title="Bighorn National Forest 6">
-        <img src="../thumbs/bighorn-national-forest/_DSF2929.jpg" data-full="../img/jpg/bighorn-national-forest/_DSF2929.jpg" alt="Bighorn National Forest 6" loading="lazy"/>
+        <img src="../img/jpg/bighorn-national-forest/_DSF2929.jpg" alt="Bighorn National Forest 6" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Bighorn National Forest 6 &middot; 2026-06-09</span>
         <span class="caption-filename">_DSF2929.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2931.RAF" data-xmp="../img/RAW/_DSF2931.xmp">
       <a href="../img/full/bighorn-national-forest/_DSF2931.tif" download title="Bighorn National Forest 7">
-        <img src="../thumbs/bighorn-national-forest/_DSF2931.jpg" data-full="../img/jpg/bighorn-national-forest/_DSF2931.jpg" alt="Bighorn National Forest 7" loading="lazy"/>
+        <img src="../img/jpg/bighorn-national-forest/_DSF2931.jpg" alt="Bighorn National Forest 7" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Bighorn National Forest 7 &middot; 2026-06-09</span>
         <span class="caption-filename">_DSF2931.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2940.RAF" data-xmp="../img/RAW/_DSF2940.xmp">
       <a href="../img/full/bighorn-national-forest/_DSF2940.tif" download title="Bighorn National Forest 8">
-        <img src="../thumbs/bighorn-national-forest/_DSF2940.jpg" data-full="../img/jpg/bighorn-national-forest/_DSF2940.jpg" alt="Bighorn National Forest 8" loading="lazy"/>
+        <img src="../img/jpg/bighorn-national-forest/_DSF2940.jpg" alt="Bighorn National Forest 8" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Bighorn National Forest 8 &middot; 2026-06-09</span>
         <span class="caption-filename">_DSF2940.jpg</span>
       </figcaption>
     </figure>
+    </div>
+    <div class="photo-foot">
+      <button class="plb-view-all">View all 8 images →</button>
+    </div>
   </div>
 </div>
 <nav class="site-nav">

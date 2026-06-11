@@ -142,24 +142,40 @@
   .geo-bar-wrap { position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }
   .geo-bar-fill { position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }
   .geo-prose { color: var(--fg); }
-  .photo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    align-content: start;
+  .photo-pane { min-width: 0; }
+  .photo-scroll {
+    display: flex; flex-direction: column; gap: 4px;
+    overflow-y: auto; min-height: 0; flex: 1;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.18) transparent;
   }
-  .ph { background: #1f1f1f; aspect-ratio: 1 / 1; overflow: hidden; }
-  .ph a { display: block; width: 100%; height: 100%; }
+  .photo-scroll::-webkit-scrollbar { width: 6px; }
+  .photo-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); }
+  .ph { background: #1f1f1f; flex-shrink: 0; }
+  .ph a { display: block; width: 100%; }
   .ph img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
+    width: 100%; height: auto; display: block;
     filter: grayscale(100%);
     opacity: 0.92;
     transition: opacity 0.15s;
   }
   .ph:hover img { opacity: 1; }
   .ph figcaption { display: none; }
+  .photo-foot {
+    flex-shrink: 0;
+    padding-top: 12px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+  }
+  .plb-view-all {
+    font-family: inherit; font-size: 10px; font-weight: 400;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); background: none; border: none;
+    cursor: pointer; padding: 0;
+  }
+  .plb-view-all:hover { color: var(--fg); }
   .obs-header {
-    grid-column: 1 / -1;
     padding: 10px 0 4px 0;
   }
   .obs-header:first-child { padding-top: 0; }
@@ -192,14 +208,14 @@
   }
   @media (min-width: 720px) {
     .site-layout { grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
-    .site-record { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }
+    .photo-pane { position: sticky; top: 24px; height: calc(100vh - 48px); display: flex; flex-direction: column; }
   }
   @media (min-width: 1148px) {
     .site-layout { grid-template-columns: 7fr 15fr; }
-    .photo-grid { grid-template-columns: 1fr 1fr 1fr; }
   }
   @media (max-width: 719px) {
-    .photo-grid { order: -1; }
+    .photo-pane { order: -1; display: flex; flex-direction: column; }
+    .photo-scroll { max-height: 70vh; }
   }
 </style>
 </head>
@@ -221,52 +237,57 @@
 <div class="site-layout">
   <aside class="site-record">
 <div class="rec-section"><div class="rec-label">Geology</div><p class="geo-prose">~445-430 million years ago (bedrock); gorge carved ~15,000 years ago.</p></div><div class="rec-section"><div class="rec-label">Epoch</div><p>Silurian period (Llandovery-Wenlock); Cedarville Dolomite, Springfield Dolomite, and interbedded shale; gorge cut by Wisconsin glacial meltwater; National Natural Landmark 1968.</p></div><div class="rec-section"><div class="rec-label">Native lands</div><p>Shawnee (Shawanwaki) · Miami · Adena and Hopewell cultures; Little Miami River a principal Shawnee waterway and travel corridor; Shawnee ceded Ohio lands via Treaty of Greene Ville 1795.</p></div><div class="rec-section"><div class="rec-label">Displacement &amp; Tenure</div><p>Cession 11: Treaty of Greene Ville (1795); core land donated to the State of Ohio in 1937 by Hugh Taylor Birch, who acquired approximately 160 acres adjacent to John Bryan State Park; upper gorge designated a State Nature Preserve in 1973; eight acres listed as a National Natural Landmark in 1967.</p></div><div class="rec-section"><div class="rec-label">Shadow History</div><p>The gorge corridor supported six operating mills within one mile by the early 19th century, all functioning before child labor and workplace safety laws; Hugh Taylor Birch, who donated 160 acres to the state in 1937 and also donated the initial parcel of Glen Helen to Antioch College in 1929, was an attorney and real estate speculator who assembled multiple large tracts in the Little Miami corridor; no records of displaced tenants in either acquisition appear in accessible archives.</p></div><div class="rec-section"><div class="rec-label">Ecology</div><p>Gorge microclimate; relict northern flora including red baneberry, walking fern, Canadian yew; old-growth forest remnants; cool moist conditions maintain species absent from surrounding landscape.</p></div><div class="rec-section"><div class="rec-label">Hydrology</div><p>Little Miami River (Ohio’s first State Scenic River, 1968; National Wild & Scenic River); cascading falls and rapids through dolomite narrows; Steamboat Rock slump block; slump cave.</p></div><div class="rec-section"><div class="rec-label">Acreage</div><p>268 acres</p></div><div class="rec-section"><div class="rec-label">GPS</div><p><a class="gps-link" href="https://maps.google.com/?q=39.7993,-83.8328" target="_blank" rel="noopener">39.7993° N, 83.8328° W</a></p></div>  </aside>
-  <div class="photo-grid">
-    <figure class="ph">
+  <div class="photo-pane">
+    <div class="photo-scroll">
+    <figure class="ph" data-raw="../img/RAW/_DSC0372.NEF" data-xmp="../img/RAW/_DSC0372.xmp">
       <a href="../img/full/clifton-gorge-state-nature-preserve/_DSC0372.tif" download title="Clifton Gorge State Nature Preserve 1">
-        <img src="../thumbs/clifton-gorge-state-nature-preserve/_DSC0372.jpg" data-full="../img/jpg/clifton-gorge-state-nature-preserve/_DSC0372.jpg" alt="Clifton Gorge State Nature Preserve 1" loading="lazy"/>
+        <img src="../img/jpg/clifton-gorge-state-nature-preserve/_DSC0372.jpg" alt="Clifton Gorge State Nature Preserve 1" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Clifton Gorge State Nature Preserve 1 &middot; 2025-09-17</span>
         <span class="caption-filename">_DSC0372.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSC0396.NEF" data-xmp="../img/RAW/_DSC0396.xmp">
       <a href="../img/full/clifton-gorge-state-nature-preserve/_DSC0396.tif" download title="Clifton Gorge State Nature Preserve 2">
-        <img src="../thumbs/clifton-gorge-state-nature-preserve/_DSC0396.jpg" data-full="../img/jpg/clifton-gorge-state-nature-preserve/_DSC0396.jpg" alt="Clifton Gorge State Nature Preserve 2" loading="lazy"/>
+        <img src="../img/jpg/clifton-gorge-state-nature-preserve/_DSC0396.jpg" alt="Clifton Gorge State Nature Preserve 2" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Clifton Gorge State Nature Preserve 2 &middot; 2025-09-17</span>
         <span class="caption-filename">_DSC0396.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSC0397.NEF" data-xmp="../img/RAW/_DSC0397.xmp">
       <a href="../img/full/clifton-gorge-state-nature-preserve/_DSC0397.tif" download title="Clifton Gorge State Nature Preserve 3">
-        <img src="../thumbs/clifton-gorge-state-nature-preserve/_DSC0397.jpg" data-full="../img/jpg/clifton-gorge-state-nature-preserve/_DSC0397.jpg" alt="Clifton Gorge State Nature Preserve 3" loading="lazy"/>
+        <img src="../img/jpg/clifton-gorge-state-nature-preserve/_DSC0397.jpg" alt="Clifton Gorge State Nature Preserve 3" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Clifton Gorge State Nature Preserve 3 &middot; 2025-09-17</span>
         <span class="caption-filename">_DSC0397.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSC0405.NEF" data-xmp="../img/RAW/_DSC0405.xmp">
       <a href="../img/full/clifton-gorge-state-nature-preserve/_DSC0405.tif" download title="Clifton Gorge State Nature Preserve 4">
-        <img src="../thumbs/clifton-gorge-state-nature-preserve/_DSC0405.jpg" data-full="../img/jpg/clifton-gorge-state-nature-preserve/_DSC0405.jpg" alt="Clifton Gorge State Nature Preserve 4" loading="lazy"/>
+        <img src="../img/jpg/clifton-gorge-state-nature-preserve/_DSC0405.jpg" alt="Clifton Gorge State Nature Preserve 4" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Clifton Gorge State Nature Preserve 4 &middot; 2025-09-17</span>
         <span class="caption-filename">_DSC0405.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSC0408.NEF" data-xmp="../img/RAW/_DSC0408.xmp">
       <a href="../img/full/clifton-gorge-state-nature-preserve/_DSC0408.tif" download title="Clifton Gorge State Nature Preserve 5">
-        <img src="../thumbs/clifton-gorge-state-nature-preserve/_DSC0408.jpg" data-full="../img/jpg/clifton-gorge-state-nature-preserve/_DSC0408.jpg" alt="Clifton Gorge State Nature Preserve 5" loading="lazy"/>
+        <img src="../img/jpg/clifton-gorge-state-nature-preserve/_DSC0408.jpg" alt="Clifton Gorge State Nature Preserve 5" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Clifton Gorge State Nature Preserve 5 &middot; 2025-09-17</span>
         <span class="caption-filename">_DSC0408.jpg</span>
       </figcaption>
     </figure>
+    </div>
+    <div class="photo-foot">
+      <button class="plb-view-all">View all 5 images →</button>
+    </div>
   </div>
 </div>
 <nav class="site-nav">

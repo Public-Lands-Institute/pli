@@ -142,24 +142,40 @@
   .geo-bar-wrap { position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }
   .geo-bar-fill { position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }
   .geo-prose { color: var(--fg); }
-  .photo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    align-content: start;
+  .photo-pane { min-width: 0; }
+  .photo-scroll {
+    display: flex; flex-direction: column; gap: 4px;
+    overflow-y: auto; min-height: 0; flex: 1;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.18) transparent;
   }
-  .ph { background: #1f1f1f; aspect-ratio: 1 / 1; overflow: hidden; }
-  .ph a { display: block; width: 100%; height: 100%; }
+  .photo-scroll::-webkit-scrollbar { width: 6px; }
+  .photo-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); }
+  .ph { background: #1f1f1f; flex-shrink: 0; }
+  .ph a { display: block; width: 100%; }
   .ph img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
+    width: 100%; height: auto; display: block;
     filter: grayscale(100%);
     opacity: 0.92;
     transition: opacity 0.15s;
   }
   .ph:hover img { opacity: 1; }
   .ph figcaption { display: none; }
+  .photo-foot {
+    flex-shrink: 0;
+    padding-top: 12px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+  }
+  .plb-view-all {
+    font-family: inherit; font-size: 10px; font-weight: 400;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); background: none; border: none;
+    cursor: pointer; padding: 0;
+  }
+  .plb-view-all:hover { color: var(--fg); }
   .obs-header {
-    grid-column: 1 / -1;
     padding: 10px 0 4px 0;
   }
   .obs-header:first-child { padding-top: 0; }
@@ -192,14 +208,14 @@
   }
   @media (min-width: 720px) {
     .site-layout { grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
-    .site-record { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }
+    .photo-pane { position: sticky; top: 24px; height: calc(100vh - 48px); display: flex; flex-direction: column; }
   }
   @media (min-width: 1148px) {
     .site-layout { grid-template-columns: 7fr 15fr; }
-    .photo-grid { grid-template-columns: 1fr 1fr 1fr; }
   }
   @media (max-width: 719px) {
-    .photo-grid { order: -1; }
+    .photo-pane { order: -1; display: flex; flex-direction: column; }
+    .photo-scroll { max-height: 70vh; }
   }
 </style>
 </head>
@@ -221,106 +237,111 @@
 <div class="site-layout">
   <aside class="site-record">
 <div class="rec-section"><div class="rec-label">Geology</div><div class="geo-era-row"><div class="geo-swatch" style="background:#5d5abf"></div><span class="geo-era-name">Pennsylvanian</span><span class="geo-mya">310 Mya</span></div><div class="geo-bar-wrap"><div class="geo-bar-fill" style="width:60%;background:#5d5abf;opacity:0.55"></div></div><p class="geo-prose">~310 Mya Pennsylvanian Corbin Sandstone (Grundy Formation, Pottsville Escarpment); deposited in marine and deltaic river delta environments beginning ~340 Mya; prominent iron-oxide Liesegang banding; over 100 natural sandstone arches, highest concentration east of the Mississippi River.</p></div><div class="rec-section"><div class="rec-label">Epoch</div><p>Early Pennsylvanian (Morrowan).</p></div><div class="rec-section"><div class="rec-label">Native lands</div><p>Paleoindian peoples first documented in gorge rock shelters c. 10,000 BC; continuous occupation through Archaic and Woodland periods (~12,000 years total); 664 known prehistoric and historic sites including some of the earliest evidence of plant domestication in eastern North America; Tsalagi (Cherokee) held eastern Kentucky as territorial range in the historic period; Shawandasse Tula (Shawanwaki/Shawnee) ranged throughout central Kentucky as a shared hunting corridor; Kentucky was contested hunting ground, not permanently settled by any single nation in the historic period; Cherokee ceded eastern Kentucky via Treaty of Hard Labor (October 1768) and Treaty of Lochaber (October 18, 1770); Shawnee resistance continued through the 1790s, with territorial claims extinguished via Treaty of Greene Ville (August 3, 1795).</p></div><div class="rec-section"><div class="rec-label">Displacement &amp; Tenure</div><p>Eastern Kentucky is outside the federal-domain Royce cession system. Cherokee ceded eastern Kentucky via Treaty of Hard Labor (October 1768) and Treaty of Lochaber (October 18, 1770), extending the colonial boundary to the Kentucky River; Henderson's Transylvania Purchase (March 17, 1775) from Overhill Cherokee chiefs at Sycamore Shoals asserted private title but was voided by Virginia (1778) and North Carolina; Virginia created Kentucky County 1776 and enacted the Virginia Land Act 1779, opening eastern Kentucky to land warrants and grants; Kentucky statehood 1792; Daniel Boone National Forest lands assembled by USFS via purchase under the Weeks Act beginning 1916; Red River Gorge Geological Area designated by the USFS 1974.</p></div><div class="rec-section"><div class="rec-label">Shadow History</div><p>Congress authorized an Army Corps of Engineers dam project on the Red River in 1962 following that year's Great Flood of Clay City; the proposed dam would have flooded 2,100 acres, covering two-thirds of the gorge and destroying more than half of its plant and animal life; Sierra Club-organized opposition mounted a November 18, 1967 Dam Protest Hike through Clifty Wilderness led by Supreme Court Justice William O. Douglas with over 600 participants that drew national press coverage; two separate dam sites were proposed over the following decades; archaeological looting of rock shelters throughout the 20th century destroyed stratigraphic context at sites containing some of the earliest evidence of plant domestication in eastern North America; by 1990 all rock shelters in the gorge containing both white-haired goldenrod and Indian artifacts had been pillaged by looters; Solidago albopilosa was federally listed as threatened in part because looting-related disturbance uprooted the plant's stolons and seeds; the logging-era Nada Tunnel (1910-1912), a 900-foot passage blasted through sandstone for a narrow-gauge railroad, killed at least one worker during construction; the dam controversy concluded December 3, 1993 when President Clinton signed the Red River into the National Wild and Scenic River system.</p></div><div class="rec-section"><div class="rec-label">Ecology</div><p>Mixed mesophytic forest on Pennsylvanian sandstone with diverse rock shelter microhabitats; Solidago albopilosa (white-haired goldenrod), an endemic found nowhere else on Earth, grows exclusively on sandstone ledges and rock shelter floors within the gorge; Canadian-origin relict flora in sheltered canyons includes purple fringed orchid (Platanthera grandiflora), Canada yew (Taxus canadensis), and Canada lily (Lilium canadense); black bear, timber rattlesnake (Crotalus horridus), and copperhead documented.</p></div><div class="rec-section"><div class="rec-label">Hydrology</div><p>Red River drains the gorge through Powell, Wolfe, and Menifee counties before joining the Kentucky River; 19.4-mile section designated National Wild and Scenic River (December 3, 1993) and Kentucky Wild River; Swift Camp Creek and unnamed tributaries upstream of the gorge listed as impaired by Kentucky Division of Water due to sedimentation and loss of riparian vegetation.</p></div><div class="rec-section"><div class="rec-label">Acreage</div><p>29,000</p></div><div class="rec-section"><div class="rec-label">GPS</div><p><a class="gps-link" href="https://maps.google.com/?q=37.8339,-83.6078" target="_blank" rel="noopener">37.8339° N, 83.6078° W</a></p></div>  </aside>
-  <div class="photo-grid">
-    <figure class="ph">
+  <div class="photo-pane">
+    <div class="photo-scroll">
+    <figure class="ph" data-raw="../img/RAW/_DSF1505.RAF" data-xmp="../img/RAW/_DSF1505.xmp">
       <a href="../img/full/red-river-gorge-geological-area/_DSF1505.tif" download title="Red River Gorge Geological Area 1">
-        <img src="../thumbs/red-river-gorge-geological-area/_DSF1505.jpg" data-full="../img/jpg/red-river-gorge-geological-area/_DSF1505.jpg" alt="Red River Gorge Geological Area 1" loading="lazy"/>
+        <img src="../img/jpg/red-river-gorge-geological-area/_DSF1505.jpg" alt="Red River Gorge Geological Area 1" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Red River Gorge Geological Area 1 &middot; 2026-04-28</span>
         <span class="caption-filename">_DSF1505.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1542.RAF" data-xmp="../img/RAW/_DSF1542.xmp">
       <a href="../img/full/red-river-gorge-geological-area/_DSF1542.tif" download title="Red River Gorge Geological Area 2">
-        <img src="../thumbs/red-river-gorge-geological-area/_DSF1542.jpg" data-full="../img/jpg/red-river-gorge-geological-area/_DSF1542.jpg" alt="Red River Gorge Geological Area 2" loading="lazy"/>
+        <img src="../img/jpg/red-river-gorge-geological-area/_DSF1542.jpg" alt="Red River Gorge Geological Area 2" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Red River Gorge Geological Area 2 &middot; 2026-04-28</span>
         <span class="caption-filename">_DSF1542.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1564.RAF" data-xmp="../img/RAW/_DSF1564.xmp">
       <a href="../img/full/red-river-gorge-geological-area/_DSF1564.tif" download title="Red River Gorge Geological Area 3">
-        <img src="../thumbs/red-river-gorge-geological-area/_DSF1564.jpg" data-full="../img/jpg/red-river-gorge-geological-area/_DSF1564.jpg" alt="Red River Gorge Geological Area 3" loading="lazy"/>
+        <img src="../img/jpg/red-river-gorge-geological-area/_DSF1564.jpg" alt="Red River Gorge Geological Area 3" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Red River Gorge Geological Area 3 &middot; 2026-04-28</span>
         <span class="caption-filename">_DSF1564.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1569.RAF" data-xmp="../img/RAW/_DSF1569.xmp">
       <a href="../img/full/red-river-gorge-geological-area/_DSF1569.tif" download title="Red River Gorge Geological Area 4">
-        <img src="../thumbs/red-river-gorge-geological-area/_DSF1569.jpg" data-full="../img/jpg/red-river-gorge-geological-area/_DSF1569.jpg" alt="Red River Gorge Geological Area 4" loading="lazy"/>
+        <img src="../img/jpg/red-river-gorge-geological-area/_DSF1569.jpg" alt="Red River Gorge Geological Area 4" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Red River Gorge Geological Area 4 &middot; 2026-04-28</span>
         <span class="caption-filename">_DSF1569.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1573.RAF" data-xmp="../img/RAW/_DSF1573.xmp">
       <a href="../img/full/red-river-gorge-geological-area/_DSF1573.tif" download title="Red River Gorge Geological Area 5">
-        <img src="../thumbs/red-river-gorge-geological-area/_DSF1573.jpg" data-full="../img/jpg/red-river-gorge-geological-area/_DSF1573.jpg" alt="Red River Gorge Geological Area 5" loading="lazy"/>
+        <img src="../img/jpg/red-river-gorge-geological-area/_DSF1573.jpg" alt="Red River Gorge Geological Area 5" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Red River Gorge Geological Area 5 &middot; 2026-04-28</span>
         <span class="caption-filename">_DSF1573.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1580.RAF" data-xmp="../img/RAW/_DSF1580.xmp">
       <a href="../img/full/red-river-gorge-geological-area/_DSF1580.tif" download title="Red River Gorge Geological Area 6">
-        <img src="../thumbs/red-river-gorge-geological-area/_DSF1580.jpg" data-full="../img/jpg/red-river-gorge-geological-area/_DSF1580.jpg" alt="Red River Gorge Geological Area 6" loading="lazy"/>
+        <img src="../img/jpg/red-river-gorge-geological-area/_DSF1580.jpg" alt="Red River Gorge Geological Area 6" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Red River Gorge Geological Area 6 &middot; 2026-04-28</span>
         <span class="caption-filename">_DSF1580.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1588.RAF" data-xmp="../img/RAW/_DSF1588.xmp">
       <a href="../img/full/red-river-gorge-geological-area/_DSF1588.tif" download title="Red River Gorge Geological Area 7">
-        <img src="../thumbs/red-river-gorge-geological-area/_DSF1588.jpg" data-full="../img/jpg/red-river-gorge-geological-area/_DSF1588.jpg" alt="Red River Gorge Geological Area 7" loading="lazy"/>
+        <img src="../img/jpg/red-river-gorge-geological-area/_DSF1588.jpg" alt="Red River Gorge Geological Area 7" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Red River Gorge Geological Area 7 &middot; 2026-04-28</span>
         <span class="caption-filename">_DSF1588.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1590.RAF" data-xmp="../img/RAW/_DSF1590.xmp">
       <a href="../img/full/red-river-gorge-geological-area/_DSF1590.tif" download title="Red River Gorge Geological Area 8">
-        <img src="../thumbs/red-river-gorge-geological-area/_DSF1590.jpg" data-full="../img/jpg/red-river-gorge-geological-area/_DSF1590.jpg" alt="Red River Gorge Geological Area 8" loading="lazy"/>
+        <img src="../img/jpg/red-river-gorge-geological-area/_DSF1590.jpg" alt="Red River Gorge Geological Area 8" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Red River Gorge Geological Area 8 &middot; 2026-04-28</span>
         <span class="caption-filename">_DSF1590.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1595.RAF" data-xmp="../img/RAW/_DSF1595.xmp">
       <a href="../img/full/red-river-gorge-geological-area/_DSF1595.tif" download title="Red River Gorge Geological Area 9">
-        <img src="../thumbs/red-river-gorge-geological-area/_DSF1595.jpg" data-full="../img/jpg/red-river-gorge-geological-area/_DSF1595.jpg" alt="Red River Gorge Geological Area 9" loading="lazy"/>
+        <img src="../img/jpg/red-river-gorge-geological-area/_DSF1595.jpg" alt="Red River Gorge Geological Area 9" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Red River Gorge Geological Area 9 &middot; 2026-04-28</span>
         <span class="caption-filename">_DSF1595.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1603.RAF" data-xmp="../img/RAW/_DSF1603.xmp">
       <a href="../img/full/red-river-gorge-geological-area/_DSF1603.tif" download title="Red River Gorge Geological Area 10">
-        <img src="../thumbs/red-river-gorge-geological-area/_DSF1603.jpg" data-full="../img/jpg/red-river-gorge-geological-area/_DSF1603.jpg" alt="Red River Gorge Geological Area 10" loading="lazy"/>
+        <img src="../img/jpg/red-river-gorge-geological-area/_DSF1603.jpg" alt="Red River Gorge Geological Area 10" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Red River Gorge Geological Area 10 &middot; 2026-04-28</span>
         <span class="caption-filename">_DSF1603.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1606.RAF" data-xmp="../img/RAW/_DSF1606.xmp">
       <a href="../img/full/red-river-gorge-geological-area/_DSF1606.tif" download title="Red River Gorge Geological Area 11">
-        <img src="../thumbs/red-river-gorge-geological-area/_DSF1606.jpg" data-full="../img/jpg/red-river-gorge-geological-area/_DSF1606.jpg" alt="Red River Gorge Geological Area 11" loading="lazy"/>
+        <img src="../img/jpg/red-river-gorge-geological-area/_DSF1606.jpg" alt="Red River Gorge Geological Area 11" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Red River Gorge Geological Area 11 &middot; 2026-04-28</span>
         <span class="caption-filename">_DSF1606.jpg</span>
       </figcaption>
     </figure>
+    </div>
+    <div class="photo-foot">
+      <button class="plb-view-all">View all 11 images →</button>
+    </div>
   </div>
 </div>
 <nav class="site-nav">

@@ -142,24 +142,40 @@
   .geo-bar-wrap { position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }
   .geo-bar-fill { position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }
   .geo-prose { color: var(--fg); }
-  .photo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    align-content: start;
+  .photo-pane { min-width: 0; }
+  .photo-scroll {
+    display: flex; flex-direction: column; gap: 4px;
+    overflow-y: auto; min-height: 0; flex: 1;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.18) transparent;
   }
-  .ph { background: #1f1f1f; aspect-ratio: 1 / 1; overflow: hidden; }
-  .ph a { display: block; width: 100%; height: 100%; }
+  .photo-scroll::-webkit-scrollbar { width: 6px; }
+  .photo-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); }
+  .ph { background: #1f1f1f; flex-shrink: 0; }
+  .ph a { display: block; width: 100%; }
   .ph img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
+    width: 100%; height: auto; display: block;
     filter: grayscale(100%);
     opacity: 0.92;
     transition: opacity 0.15s;
   }
   .ph:hover img { opacity: 1; }
   .ph figcaption { display: none; }
+  .photo-foot {
+    flex-shrink: 0;
+    padding-top: 12px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+  }
+  .plb-view-all {
+    font-family: inherit; font-size: 10px; font-weight: 400;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); background: none; border: none;
+    cursor: pointer; padding: 0;
+  }
+  .plb-view-all:hover { color: var(--fg); }
   .obs-header {
-    grid-column: 1 / -1;
     padding: 10px 0 4px 0;
   }
   .obs-header:first-child { padding-top: 0; }
@@ -192,14 +208,14 @@
   }
   @media (min-width: 720px) {
     .site-layout { grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
-    .site-record { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }
+    .photo-pane { position: sticky; top: 24px; height: calc(100vh - 48px); display: flex; flex-direction: column; }
   }
   @media (min-width: 1148px) {
     .site-layout { grid-template-columns: 7fr 15fr; }
-    .photo-grid { grid-template-columns: 1fr 1fr 1fr; }
   }
   @media (max-width: 719px) {
-    .photo-grid { order: -1; }
+    .photo-pane { order: -1; display: flex; flex-direction: column; }
+    .photo-scroll { max-height: 70vh; }
   }
 </style>
 </head>
@@ -221,52 +237,57 @@
 <div class="site-layout">
   <aside class="site-record">
 <div class="rec-section"><div class="rec-label">Geology</div><div class="geo-era-row"><div class="geo-swatch" style="background:#4aaa78"></div><span class="geo-era-name">Devonian</span><span class="geo-mya">375 Mya</span></div><div class="geo-bar-wrap"><div class="geo-bar-fill" style="width:77%;background:#4aaa78;opacity:0.55"></div></div><p class="geo-prose">~375 Mya Middle to Late Devonian limestone and dolomite</p></div><div class="rec-section"><div class="rec-label">Epoch</div><p>Middle to Late Devonian (Givetian-Frasnian)</p></div><div class="rec-section"><div class="rec-label">Native lands</div><p>Wahpekute (Wahpahkoota, "Shooters Among the Leaves"), the southernmost band of the Dakota (Oceti Sakowin), held the Albert Lea lakes region as core homeland, with at least 9,000 years of documented continuous Indigenous occupation; Sisseton (Sisitunwan, "People of the Boggy Ground") territory also extended into southern Minnesota; Lt. Albert Miller Lea led the first documented Euro-American military survey of Freeborn County in 1835, at that time still unambiguously Dakota land; Wahpekute and Mdewakanton bands ceded all of southern Minnesota including Freeborn County under the Treaty of Mendota (August 5, 1851) for $1,410,000 and relocation to a narrow Minnesota River reservation; following the U.S.-Dakota War (1862), Congress passed the Sioux Removal Act (March 3, 1863) banishing all Dakota bands from Minnesota; hundreds of Dakota women, children, and elders died in a winter internment camp on Pike Island before mass exile to Nebraska and Dakota Territory</p></div><div class="rec-section"><div class="rec-label">Displacement &amp; Tenure</div><p>Treaty of Mendota (August 5, 1851): Mdewakanton and Wahpekute bands ceded approximately 24 million acres across southern Minnesota for $1,410,000; Freeborn County included in cession; reservation land along the Minnesota River assigned but never fully honored; U.S.-Dakota War (August-September 1862) followed by Congress voiding all Dakota treaties and passing the Sioux Removal Act (1863), expelling all Dakota from Minnesota; park land passed into federal public domain and opened to Euro-American settlement by 1855; Minnesota DNR established the park in 1947 as Big Island State Park, renamed Helmer Myre State Park, then renamed Myre-Big Island State Park in 1990</p></div><div class="rec-section"><div class="rec-label">Shadow History</div><p>Owen Johnson, a local amateur archaeologist, conducted extensive surface collection of Native American artifacts around Albert Lea Lake through the 1940s and donated the collection to the state park in 1972; it is held in the Owen Johnson Interpretive Center and available for research but not publicly displayed; Lloyd Wilford of the University of Minnesota conducted field-checking of archaeological site records around Albert Lea Lake in 1945; a formal archaeological reconnaissance survey conducted during park development documented thirteen excavation test units in the development area, indicating construction proceeded on Dakota-era occupation sites (Minnesota Legislative Reference Library document 811650)</p></div><div class="rec-section"><div class="rec-label">Ecology</div><p>Oak savanna, wet lowlands, and glacially deposited esker ridges characterize the mainland; the 116-acre Big Island supports a rare remnant of old-growth sugar maple and basswood forest, one of the few remaining in southern Minnesota; Albert Lea Lake draws large concentrations of American white pelicans and waterfowl during spring and fall migration; prairie and wetland restoration via controlled burns is ongoing.</p></div><div class="rec-section"><div class="rec-label">Hydrology</div><p>Albert Lea Lake (2,669 acres, mean depth 3.5 ft), a glacially formed moraine-dammed lake, borders the park on its eastern edge; the Shell Rock River originates at the Albert Lea Lake outlet and flows 113 miles south into Iowa, joining the Cedar River and then the Mississippi; total upland drainage to Albert Lea Lake is approximately 89,500 acres; the lake has experienced chronic phosphorus loading and algae blooms, with an electric fish barrier and water control structure installed to manage invasive carp.</p></div><div class="rec-section"><div class="rec-label">Acreage</div><p>1,578</p></div><div class="rec-section"><div class="rec-label">GPS</div><p><a class="gps-link" href="https://maps.google.com/?q=43.6372,-93.3089" target="_blank" rel="noopener">43.6372° N, 93.3089° W</a></p></div>  </aside>
-  <div class="photo-grid">
-    <figure class="ph">
+  <div class="photo-pane">
+    <div class="photo-scroll">
+    <figure class="ph" data-raw="../img/RAW/_DSF2573.RAF" data-xmp="../img/RAW/_DSF2573.xmp">
       <a href="../img/full/myre-big-island-state-park/_DSF2573.tif" download title="Myre-Big Island State Park 1">
-        <img src="../thumbs/myre-big-island-state-park/_DSF2573.jpg" data-full="../img/jpg/myre-big-island-state-park/_DSF2573.jpg" alt="Myre-Big Island State Park 1" loading="lazy"/>
+        <img src="../img/jpg/myre-big-island-state-park/_DSF2573.jpg" alt="Myre-Big Island State Park 1" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Myre-Big Island State Park 1 &middot; 2026-06-05</span>
         <span class="caption-filename">_DSF2573.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2577.RAF" data-xmp="../img/RAW/_DSF2577.xmp">
       <a href="../img/full/myre-big-island-state-park/_DSF2577.tif" download title="Myre-Big Island State Park 2">
-        <img src="../thumbs/myre-big-island-state-park/_DSF2577.jpg" data-full="../img/jpg/myre-big-island-state-park/_DSF2577.jpg" alt="Myre-Big Island State Park 2" loading="lazy"/>
+        <img src="../img/jpg/myre-big-island-state-park/_DSF2577.jpg" alt="Myre-Big Island State Park 2" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Myre-Big Island State Park 2 &middot; 2026-06-05</span>
         <span class="caption-filename">_DSF2577.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2579.RAF" data-xmp="../img/RAW/_DSF2579.xmp">
       <a href="../img/full/myre-big-island-state-park/_DSF2579.tif" download title="Myre-Big Island State Park 3">
-        <img src="../thumbs/myre-big-island-state-park/_DSF2579.jpg" data-full="../img/jpg/myre-big-island-state-park/_DSF2579.jpg" alt="Myre-Big Island State Park 3" loading="lazy"/>
+        <img src="../img/jpg/myre-big-island-state-park/_DSF2579.jpg" alt="Myre-Big Island State Park 3" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Myre-Big Island State Park 3 &middot; 2026-06-05</span>
         <span class="caption-filename">_DSF2579.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2609.RAF" data-xmp="../img/RAW/_DSF2609.xmp">
       <a href="../img/full/myre-big-island-state-park/_DSF2609.tif" download title="Myre-Big Island State Park 4">
-        <img src="../thumbs/myre-big-island-state-park/_DSF2609.jpg" data-full="../img/jpg/myre-big-island-state-park/_DSF2609.jpg" alt="Myre-Big Island State Park 4" loading="lazy"/>
+        <img src="../img/jpg/myre-big-island-state-park/_DSF2609.jpg" alt="Myre-Big Island State Park 4" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Myre-Big Island State Park 4 &middot; 2026-06-05</span>
         <span class="caption-filename">_DSF2609.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2617.RAF" data-xmp="../img/RAW/_DSF2617.xmp">
       <a href="../img/full/myre-big-island-state-park/_DSF2617.tif" download title="Myre-Big Island State Park 5">
-        <img src="../thumbs/myre-big-island-state-park/_DSF2617.jpg" data-full="../img/jpg/myre-big-island-state-park/_DSF2617.jpg" alt="Myre-Big Island State Park 5" loading="lazy"/>
+        <img src="../img/jpg/myre-big-island-state-park/_DSF2617.jpg" alt="Myre-Big Island State Park 5" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Myre-Big Island State Park 5 &middot; 2026-06-05</span>
         <span class="caption-filename">_DSF2617.jpg</span>
       </figcaption>
     </figure>
+    </div>
+    <div class="photo-foot">
+      <button class="plb-view-all">View all 5 images →</button>
+    </div>
   </div>
 </div>
 <nav class="site-nav">

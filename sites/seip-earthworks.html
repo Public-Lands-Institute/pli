@@ -142,24 +142,40 @@
   .geo-bar-wrap { position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }
   .geo-bar-fill { position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }
   .geo-prose { color: var(--fg); }
-  .photo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    align-content: start;
+  .photo-pane { min-width: 0; }
+  .photo-scroll {
+    display: flex; flex-direction: column; gap: 4px;
+    overflow-y: auto; min-height: 0; flex: 1;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.18) transparent;
   }
-  .ph { background: #1f1f1f; aspect-ratio: 1 / 1; overflow: hidden; }
-  .ph a { display: block; width: 100%; height: 100%; }
+  .photo-scroll::-webkit-scrollbar { width: 6px; }
+  .photo-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); }
+  .ph { background: #1f1f1f; flex-shrink: 0; }
+  .ph a { display: block; width: 100%; }
   .ph img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
+    width: 100%; height: auto; display: block;
     filter: grayscale(100%);
     opacity: 0.92;
     transition: opacity 0.15s;
   }
   .ph:hover img { opacity: 1; }
   .ph figcaption { display: none; }
+  .photo-foot {
+    flex-shrink: 0;
+    padding-top: 12px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+  }
+  .plb-view-all {
+    font-family: inherit; font-size: 10px; font-weight: 400;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); background: none; border: none;
+    cursor: pointer; padding: 0;
+  }
+  .plb-view-all:hover { color: var(--fg); }
   .obs-header {
-    grid-column: 1 / -1;
     padding: 10px 0 4px 0;
   }
   .obs-header:first-child { padding-top: 0; }
@@ -192,14 +208,14 @@
   }
   @media (min-width: 720px) {
     .site-layout { grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
-    .site-record { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }
+    .photo-pane { position: sticky; top: 24px; height: calc(100vh - 48px); display: flex; flex-direction: column; }
   }
   @media (min-width: 1148px) {
     .site-layout { grid-template-columns: 7fr 15fr; }
-    .photo-grid { grid-template-columns: 1fr 1fr 1fr; }
   }
   @media (max-width: 719px) {
-    .photo-grid { order: -1; }
+    .photo-pane { order: -1; display: flex; flex-direction: column; }
+    .photo-scroll { max-height: 70vh; }
   }
 </style>
 </head>
@@ -221,79 +237,84 @@
 <div class="site-layout">
   <aside class="site-record">
 <div class="rec-section"><div class="rec-label">Geology</div><div class="geo-era-row"><div class="geo-swatch" style="background:#7ecfc0"></div><span class="geo-era-name">Silurian</span><span class="geo-mya">425 Mya</span></div><div class="geo-bar-wrap"><div class="geo-bar-fill" style="width:82%;background:#7ecfc0;opacity:0.55"></div></div><p class="geo-prose">~425 Mya Silurian dolomite (Peebles Dolomite, Tymochtee Dolomite); earthworks constructed on Pleistocene glacial outwash terrace above Paint Creek at the maximum extent of both the Illinoian and Wisconsinan glacial advances.</p></div><div class="rec-section"><div class="rec-label">Epoch</div><p>Late Silurian (Ludlovian).</p></div><div class="rec-section"><div class="rec-label">Native lands</div><p>Adena (c. 1000 BC-100 AD) and Hopewell (c. 200 BC-500 AD) cultures; Seip lies within the densest 20-mile corridor of Hopewell monumental earthworks on the continent, running from Bainbridge to Chillicothe along the Paint Valley; Chalahgawtha (principal-town) division of the Shawandasse Tula (Shawanwaki/Shawnee) held the Paint Creek valley as the principal Shawnee territorial corridor; documented Chalahgawtha town at Frankfort on Paint Creek in Ross County; Myaamia (Miami) co-held south-central Ohio; Shawnee and Miami lands ceded via Treaty of Greene Ville (August 3, 1795), Article 3 boundary and Article 4 relinquishment; Shawnee removed west via Treaty with the Shawnee 1831 under Indian Removal Act 1830.</p></div><div class="rec-section"><div class="rec-label">Displacement &amp; Tenure</div><p>Ceded via Treaty of Greene Ville (1795); Paxton Township lands entered private agricultural ownership under the Virginia Military District land grant system; site farmed throughout the 19th century and embankment walls leveled to approximately 10% of their original extent by agricultural plowing; Ohio Historical Society archaeologist William Mills excavated 1906-1909 under agreement with the private landowner; site donated to Ohio Historical Society by landowner James Seip 1923; added as an authorized unit of Hopewell Culture National Historical Park via Public Law 102-294 (May 27, 1992); full deed transferred to National Park Service September 3, 2014.</p></div><div class="rec-section"><div class="rec-label">Shadow History</div><p>William Mills (Ohio Historical Society) excavated three conjoined mounds at Seip 1906-1909, removing 48 burials and artifacts including copper, mica, bone, shell, and pearl objects to the Ohio State Museum in Columbus; Henry Shetrone and Emerson Greenman (Ohio Historical Society) excavated the main Seip Mound over three field seasons 1925-1928, removing 122 burials and elaborate grave goods including Isle Royale copper objects, Carolina mica sheets, five Tennessee effigy pipes known as the Great Pipes, woven milkweed-fiber textiles with preserved geometric designs, and thousands of freshwater pearl beads from a log-lined crypt, all transferred to museum collections in Columbus; farming throughout the 19th and early 20th centuries leveled embankment walls to approximately 10% of their original height before Ohio Historical Society acquisition; earthworks not under full federal protection until NPS deed transfer in 2014; LiDAR analysis has documented old stream channels cutting into original earthwork boundaries, indicating centuries of unmitigated flood erosion.</p></div><div class="rec-section"><div class="rec-label">Ecology</div><p>Restored native tallgrass prairie within earthwork enclosures featuring big bluestem (Andropogon gerardii), switchgrass (Panicum virgatum), and Indiangrass (Sorghastrum nutans); reconstructed mound maintained as managed turf; riparian floodplain woodland edge along Paint Creek; 438 vascular plant species in 281 genera and 93 families documented across Hopewell Culture NHP units, representing 17% of Ohio's total flora; Ohio state-listed Spiranthes ovalis (oval ladies'-tresses) and Eleocharis ovata (ovate spike-rush) documented within the park.</p></div><div class="rec-section"><div class="rec-label">Hydrology</div><p>North bank of Paint Creek, a 94.7-mile tributary of the Scioto River draining 1,143 sq mi of south-central Ohio; site situated on Pleistocene glacial outwash terrace immediately adjacent to the Paint Creek floodplain near Bainbridge in Paxton Township, Ross County; LiDAR analysis has documented erosion of earthwork boundaries by old Paint Creek channels; Paint Creek Lake upstream moderates downstream flooding; Paint Creek and Rocky Fork Creek designated Ohio State Scenic Rivers 2021.</p></div><div class="rec-section"><div class="rec-label">Acreage</div><p>121</p></div><div class="rec-section"><div class="rec-label">GPS</div><p><a class="gps-link" href="https://maps.google.com/?q=39.2417,-83.2214" target="_blank" rel="noopener">39.2417° N, 83.2214° W</a></p></div>  </aside>
-  <div class="photo-grid">
-    <figure class="ph">
+  <div class="photo-pane">
+    <div class="photo-scroll">
+    <figure class="ph" data-raw="../img/RAW/_DSF1388.RAF" data-xmp="../img/RAW/_DSF1388.xmp">
       <a href="../img/full/seip-earthworks/_DSF1388.tif" download title="Seip Earthworks 1">
-        <img src="../thumbs/seip-earthworks/_DSF1388.jpg" data-full="../img/jpg/seip-earthworks/_DSF1388.jpg" alt="Seip Earthworks 1" loading="lazy"/>
+        <img src="../img/jpg/seip-earthworks/_DSF1388.jpg" alt="Seip Earthworks 1" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Seip Earthworks 1 &middot; 2026-04-20</span>
         <span class="caption-filename">_DSF1388.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1394.RAF" data-xmp="../img/RAW/_DSF1394.xmp">
       <a href="../img/full/seip-earthworks/_DSF1394.tif" download title="Seip Earthworks 2">
-        <img src="../thumbs/seip-earthworks/_DSF1394.jpg" data-full="../img/jpg/seip-earthworks/_DSF1394.jpg" alt="Seip Earthworks 2" loading="lazy"/>
+        <img src="../img/jpg/seip-earthworks/_DSF1394.jpg" alt="Seip Earthworks 2" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Seip Earthworks 2 &middot; 2026-04-20</span>
         <span class="caption-filename">_DSF1394.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1399.RAF" data-xmp="../img/RAW/_DSF1399.xmp">
       <a href="../img/full/seip-earthworks/_DSF1399.tif" download title="Seip Earthworks 3">
-        <img src="../thumbs/seip-earthworks/_DSF1399.jpg" data-full="../img/jpg/seip-earthworks/_DSF1399.jpg" alt="Seip Earthworks 3" loading="lazy"/>
+        <img src="../img/jpg/seip-earthworks/_DSF1399.jpg" alt="Seip Earthworks 3" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Seip Earthworks 3 &middot; 2026-04-20</span>
         <span class="caption-filename">_DSF1399.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1411.RAF" data-xmp="../img/RAW/_DSF1411.xmp">
       <a href="../img/full/seip-earthworks/_DSF1411.tif" download title="Seip Earthworks 4">
-        <img src="../thumbs/seip-earthworks/_DSF1411.jpg" data-full="../img/jpg/seip-earthworks/_DSF1411.jpg" alt="Seip Earthworks 4" loading="lazy"/>
+        <img src="../img/jpg/seip-earthworks/_DSF1411.jpg" alt="Seip Earthworks 4" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Seip Earthworks 4 &middot; 2026-04-20</span>
         <span class="caption-filename">_DSF1411.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1416.RAF" data-xmp="../img/RAW/_DSF1416.xmp">
       <a href="../img/full/seip-earthworks/_DSF1416.tif" download title="Seip Earthworks 5">
-        <img src="../thumbs/seip-earthworks/_DSF1416.jpg" data-full="../img/jpg/seip-earthworks/_DSF1416.jpg" alt="Seip Earthworks 5" loading="lazy"/>
+        <img src="../img/jpg/seip-earthworks/_DSF1416.jpg" alt="Seip Earthworks 5" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Seip Earthworks 5 &middot; 2026-04-20</span>
         <span class="caption-filename">_DSF1416.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1420.RAF" data-xmp="../img/RAW/_DSF1420.xmp">
       <a href="../img/full/seip-earthworks/_DSF1420.tif" download title="Seip Earthworks 6">
-        <img src="../thumbs/seip-earthworks/_DSF1420.jpg" data-full="../img/jpg/seip-earthworks/_DSF1420.jpg" alt="Seip Earthworks 6" loading="lazy"/>
+        <img src="../img/jpg/seip-earthworks/_DSF1420.jpg" alt="Seip Earthworks 6" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Seip Earthworks 6 &middot; 2026-04-20</span>
         <span class="caption-filename">_DSF1420.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1423.RAF" data-xmp="../img/RAW/_DSF1423.xmp">
       <a href="../img/full/seip-earthworks/_DSF1423.tif" download title="Seip Earthworks 7">
-        <img src="../thumbs/seip-earthworks/_DSF1423.jpg" data-full="../img/jpg/seip-earthworks/_DSF1423.jpg" alt="Seip Earthworks 7" loading="lazy"/>
+        <img src="../img/jpg/seip-earthworks/_DSF1423.jpg" alt="Seip Earthworks 7" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Seip Earthworks 7 &middot; 2026-04-20</span>
         <span class="caption-filename">_DSF1423.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1426.RAF" data-xmp="../img/RAW/_DSF1426.xmp">
       <a href="../img/full/seip-earthworks/_DSF1426.tif" download title="Seip Earthworks 8">
-        <img src="../thumbs/seip-earthworks/_DSF1426.jpg" data-full="../img/jpg/seip-earthworks/_DSF1426.jpg" alt="Seip Earthworks 8" loading="lazy"/>
+        <img src="../img/jpg/seip-earthworks/_DSF1426.jpg" alt="Seip Earthworks 8" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Seip Earthworks 8 &middot; 2026-04-20</span>
         <span class="caption-filename">_DSF1426.jpg</span>
       </figcaption>
     </figure>
+    </div>
+    <div class="photo-foot">
+      <button class="plb-view-all">View all 8 images →</button>
+    </div>
   </div>
 </div>
 <nav class="site-nav">

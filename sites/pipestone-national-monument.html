@@ -142,24 +142,40 @@
   .geo-bar-wrap { position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }
   .geo-bar-fill { position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }
   .geo-prose { color: var(--fg); }
-  .photo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    align-content: start;
+  .photo-pane { min-width: 0; }
+  .photo-scroll {
+    display: flex; flex-direction: column; gap: 4px;
+    overflow-y: auto; min-height: 0; flex: 1;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.18) transparent;
   }
-  .ph { background: #1f1f1f; aspect-ratio: 1 / 1; overflow: hidden; }
-  .ph a { display: block; width: 100%; height: 100%; }
+  .photo-scroll::-webkit-scrollbar { width: 6px; }
+  .photo-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); }
+  .ph { background: #1f1f1f; flex-shrink: 0; }
+  .ph a { display: block; width: 100%; }
   .ph img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
+    width: 100%; height: auto; display: block;
     filter: grayscale(100%);
     opacity: 0.92;
     transition: opacity 0.15s;
   }
   .ph:hover img { opacity: 1; }
   .ph figcaption { display: none; }
+  .photo-foot {
+    flex-shrink: 0;
+    padding-top: 12px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+  }
+  .plb-view-all {
+    font-family: inherit; font-size: 10px; font-weight: 400;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); background: none; border: none;
+    cursor: pointer; padding: 0;
+  }
+  .plb-view-all:hover { color: var(--fg); }
   .obs-header {
-    grid-column: 1 / -1;
     padding: 10px 0 4px 0;
   }
   .obs-header:first-child { padding-top: 0; }
@@ -192,14 +208,14 @@
   }
   @media (min-width: 720px) {
     .site-layout { grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
-    .site-record { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }
+    .photo-pane { position: sticky; top: 24px; height: calc(100vh - 48px); display: flex; flex-direction: column; }
   }
   @media (min-width: 1148px) {
     .site-layout { grid-template-columns: 7fr 15fr; }
-    .photo-grid { grid-template-columns: 1fr 1fr 1fr; }
   }
   @media (max-width: 719px) {
-    .photo-grid { order: -1; }
+    .photo-pane { order: -1; display: flex; flex-direction: column; }
+    .photo-scroll { max-height: 70vh; }
   }
 </style>
 </head>
@@ -221,88 +237,93 @@
 <div class="site-layout">
   <aside class="site-record">
 <div class="rec-section"><div class="rec-label">Geology</div><p class="geo-prose">~1,700 Mya Paleoproterozoic Sioux quartzite (catlinite/pipestone argillite interbeds)</p></div><div class="rec-section"><div class="rec-label">Epoch</div><p>Paleoproterozoic</p></div><div class="rec-section"><div class="rec-label">Native lands</div><p>Oceti Sakowin (Great Sioux Nation, Seven Council Fires); the quarries were treated as neutral ground where rival Plains nations peacefully extracted pipestone for ceremonial calumets across more than 3,000 years; Yankton Dakota (Ihanktunwan) maintained the traditional role of caretakers of the quarry; under the Yankton Treaty (1858), Article 8, Yankton chief Struck-by-the-Ree (Pan Tanka Sapa Wicasa) secured a one-mile-square reserved tract around the quarry for continued Dakota quarrying use even as surrounding land was ceded; the U.S. government attempted to seize the tract in 1899, and the Yankton Sioux Tribe won restitution at the U.S. Supreme Court in 1926; the reserved tract became the core of Pipestone National Monument, established 1937, today administered in consultation with 23 federally affiliated tribal nations who retain free quarry permit rights</p></div><div class="rec-section"><div class="rec-label">Displacement &amp; Tenure</div><p>Cession 289: Treaty of Traverse des Sioux (1851); Sisseton and Wahpeton Dakota ceded roughly 21 million acres of southern Minnesota, though the cession map erroneously swept in Yankton territory around the Pipestone quarry that the Sisseton did not control. Yankton Treaty (1858), Article 8, separately reserved a one-mile-square tract around the quarry for Yankton Dakota quarrying despite the surrounding Yankton Sioux Reservation cession; the U.S. attempted to seize the reserved tract in 1899, overturned by the U.S. Supreme Court in 1926, which ordered compensation; the tract became Pipestone National Monument in 1937</p></div><div class="rec-section"><div class="rec-label">Shadow History</div><p>The Pipestone Indian Training School, a federal Bureau of Indian Affairs off reservation boarding school, operated on the monument grounds and adjacent reservation land from 1893 to roughly 1953, one of the last such schools to close; it forcibly enrolled Dakota, Anishinaabe (Ojibwe), Oneida, Pottawatomi (Bodewadmi), Arikara, and Sac and Fox (Meskwaki) children from across the Midwest; a campus cemetery holds the graves of children who died there, including a five year old non-English-speaking child who died ten days after arrival; the National Park Service is now partnering with the Pipestone Human Rights Commission and the American Indian Movement to research the cemetery and identify the children buried there</p></div><div class="rec-section"><div class="rec-label">Ecology</div><p>Tallgrass prairie, including sections never plowed, supports more than 500 plant species, roughly 100 bird species, 25 mammal species, 26 fish species, and 45 macroinvertebrate species within the Coteau des Prairies.</p></div><div class="rec-section"><div class="rec-label">Hydrology</div><p>Pipestone Creek runs through the monument and drops over Winnewissa Falls along the three-quarter-mile Circle Trail; the catlinite quarry pits sit immediately along the creek within outcrops of Sioux quartzite.</p></div><div class="rec-section"><div class="rec-label">Acreage</div><p>301</p></div><div class="rec-section"><div class="rec-label">GPS</div><p><a class="gps-link" href="https://maps.google.com/?q=44.0133,-96.325" target="_blank" rel="noopener">44.0133° N, 96.3250° W</a></p></div>  </aside>
-  <div class="photo-grid">
-    <figure class="ph">
+  <div class="photo-pane">
+    <div class="photo-scroll">
+    <figure class="ph" data-raw="../img/RAW/_DSF2629.RAF" data-xmp="../img/RAW/_DSF2629.xmp">
       <a href="../img/full/pipestone-national-monument/_DSF2629.tif" download title="Pipestone National Monument 1">
-        <img src="../thumbs/pipestone-national-monument/_DSF2629.jpg" data-full="../img/jpg/pipestone-national-monument/_DSF2629.jpg" alt="Pipestone National Monument 1" loading="lazy"/>
+        <img src="../img/jpg/pipestone-national-monument/_DSF2629.jpg" alt="Pipestone National Monument 1" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Pipestone National Monument 1 &middot; 2026-06-06</span>
         <span class="caption-filename">_DSF2629.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2633.RAF" data-xmp="../img/RAW/_DSF2633.xmp">
       <a href="../img/full/pipestone-national-monument/_DSF2633.tif" download title="Pipestone National Monument 2">
-        <img src="../thumbs/pipestone-national-monument/_DSF2633.jpg" data-full="../img/jpg/pipestone-national-monument/_DSF2633.jpg" alt="Pipestone National Monument 2" loading="lazy"/>
+        <img src="../img/jpg/pipestone-national-monument/_DSF2633.jpg" alt="Pipestone National Monument 2" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Pipestone National Monument 2 &middot; 2026-06-06</span>
         <span class="caption-filename">_DSF2633.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2635.RAF" data-xmp="../img/RAW/_DSF2635.xmp">
       <a href="../img/full/pipestone-national-monument/_DSF2635.tif" download title="Pipestone National Monument 3">
-        <img src="../thumbs/pipestone-national-monument/_DSF2635.jpg" data-full="../img/jpg/pipestone-national-monument/_DSF2635.jpg" alt="Pipestone National Monument 3" loading="lazy"/>
+        <img src="../img/jpg/pipestone-national-monument/_DSF2635.jpg" alt="Pipestone National Monument 3" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Pipestone National Monument 3 &middot; 2026-06-06</span>
         <span class="caption-filename">_DSF2635.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2636.RAF" data-xmp="../img/RAW/_DSF2636.xmp">
       <a href="../img/full/pipestone-national-monument/_DSF2636.tif" download title="Pipestone National Monument 4">
-        <img src="../thumbs/pipestone-national-monument/_DSF2636.jpg" data-full="../img/jpg/pipestone-national-monument/_DSF2636.jpg" alt="Pipestone National Monument 4" loading="lazy"/>
+        <img src="../img/jpg/pipestone-national-monument/_DSF2636.jpg" alt="Pipestone National Monument 4" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Pipestone National Monument 4 &middot; 2026-06-06</span>
         <span class="caption-filename">_DSF2636.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2638.RAF" data-xmp="../img/RAW/_DSF2638.xmp">
       <a href="../img/full/pipestone-national-monument/_DSF2638.tif" download title="Pipestone National Monument 5">
-        <img src="../thumbs/pipestone-national-monument/_DSF2638.jpg" data-full="../img/jpg/pipestone-national-monument/_DSF2638.jpg" alt="Pipestone National Monument 5" loading="lazy"/>
+        <img src="../img/jpg/pipestone-national-monument/_DSF2638.jpg" alt="Pipestone National Monument 5" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Pipestone National Monument 5 &middot; 2026-06-06</span>
         <span class="caption-filename">_DSF2638.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2640.RAF" data-xmp="../img/RAW/_DSF2640.xmp">
       <a href="../img/full/pipestone-national-monument/_DSF2640.tif" download title="Pipestone National Monument 6">
-        <img src="../thumbs/pipestone-national-monument/_DSF2640.jpg" data-full="../img/jpg/pipestone-national-monument/_DSF2640.jpg" alt="Pipestone National Monument 6" loading="lazy"/>
+        <img src="../img/jpg/pipestone-national-monument/_DSF2640.jpg" alt="Pipestone National Monument 6" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Pipestone National Monument 6 &middot; 2026-06-06</span>
         <span class="caption-filename">_DSF2640.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2642.RAF" data-xmp="../img/RAW/_DSF2642.xmp">
       <a href="../img/full/pipestone-national-monument/_DSF2642.tif" download title="Pipestone National Monument 7">
-        <img src="../thumbs/pipestone-national-monument/_DSF2642.jpg" data-full="../img/jpg/pipestone-national-monument/_DSF2642.jpg" alt="Pipestone National Monument 7" loading="lazy"/>
+        <img src="../img/jpg/pipestone-national-monument/_DSF2642.jpg" alt="Pipestone National Monument 7" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Pipestone National Monument 7 &middot; 2026-06-06</span>
         <span class="caption-filename">_DSF2642.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2651.RAF" data-xmp="../img/RAW/_DSF2651.xmp">
       <a href="../img/full/pipestone-national-monument/_DSF2651.tif" download title="Pipestone National Monument 8">
-        <img src="../thumbs/pipestone-national-monument/_DSF2651.jpg" data-full="../img/jpg/pipestone-national-monument/_DSF2651.jpg" alt="Pipestone National Monument 8" loading="lazy"/>
+        <img src="../img/jpg/pipestone-national-monument/_DSF2651.jpg" alt="Pipestone National Monument 8" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Pipestone National Monument 8 &middot; 2026-06-06</span>
         <span class="caption-filename">_DSF2651.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2653.RAF" data-xmp="../img/RAW/_DSF2653.xmp">
       <a href="../img/full/pipestone-national-monument/_DSF2653.tif" download title="Pipestone National Monument 9">
-        <img src="../thumbs/pipestone-national-monument/_DSF2653.jpg" data-full="../img/jpg/pipestone-national-monument/_DSF2653.jpg" alt="Pipestone National Monument 9" loading="lazy"/>
+        <img src="../img/jpg/pipestone-national-monument/_DSF2653.jpg" alt="Pipestone National Monument 9" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Pipestone National Monument 9 &middot; 2026-06-06</span>
         <span class="caption-filename">_DSF2653.jpg</span>
       </figcaption>
     </figure>
+    </div>
+    <div class="photo-foot">
+      <button class="plb-view-all">View all 9 images →</button>
+    </div>
   </div>
 </div>
 <nav class="site-nav">

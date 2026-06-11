@@ -244,10 +244,17 @@ def _make_image_entry(slug, filename, caption_idx):
         if os.path.exists(candidate):
             raw_path = candidate.replace('\\', '/')
             break
+    xmp_path = None
+    for xmp_ext in ('.xmp', '.XMP'):
+        candidate = os.path.join('img', 'RAW', stem + xmp_ext)
+        if os.path.exists(candidate):
+            xmp_path = candidate.replace('\\', '/')
+            break
     return {
         'jpg': jpg_path,
         'tif': tif_path,
         'raw': raw_path,
+        'xmp': xmp_path,
         'camera_filename': filename,
         'caption_index': str(caption_idx + 1),
         'date': get_exif_date(jpg_path),
@@ -462,6 +469,8 @@ def make_site_page(site, all_sites):
     sections += sec('GPS', gps_val)
 
     show_obs_headers = len(observations) > 1 or any(obs.get('notes') for obs in observations)
+    total_images = sum(len(obs['images']) for obs in observations)
+    view_all_label = f'View all {total_images} images →' if total_images > 1 else 'Open viewer →'
     images_html = ''
     for obs in observations:
         if show_obs_headers:
@@ -471,11 +480,11 @@ def make_site_page(site, all_sites):
         for img in obs['images']:
             caption = f'{name} {img["caption_index"]}'
             date_str = f' &middot; {img["date"]}' if img['date'] else ''
-            thumb_local = os.path.join('thumbs', slug, img['camera_filename'])
-            grid_src = f'thumbs/{slug}/{img["camera_filename"]}' if os.path.exists(thumb_local) else img['jpg']
-            images_html += f'''    <figure class="ph">
+            raw_attr = f' data-raw="../{img["raw"]}"' if img['raw'] else ''
+            xmp_attr = f' data-xmp="../{img["xmp"]}"' if img['xmp'] else ''
+            images_html += f'''    <figure class="ph"{raw_attr}{xmp_attr}>
       <a href="../{img["tif"]}" download title="{caption}">
-        <img src="../{grid_src}" data-full="../{img["jpg"]}" alt="{caption}" loading="lazy"/>
+        <img src="../{img["jpg"]}" alt="{caption}" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">{caption}{date_str}</span>
@@ -557,24 +566,40 @@ def make_site_page(site, all_sites):
   .geo-bar-wrap {{ position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }}
   .geo-bar-fill {{ position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }}
   .geo-prose {{ color: var(--fg); }}
-  .photo-grid {{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    align-content: start;
+  .photo-pane {{ min-width: 0; }}
+  .photo-scroll {{
+    display: flex; flex-direction: column; gap: 4px;
+    overflow-y: auto; min-height: 0; flex: 1;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.18) transparent;
   }}
-  .ph {{ background: #1f1f1f; aspect-ratio: 1 / 1; overflow: hidden; }}
-  .ph a {{ display: block; width: 100%; height: 100%; }}
+  .photo-scroll::-webkit-scrollbar {{ width: 6px; }}
+  .photo-scroll::-webkit-scrollbar-thumb {{ background: rgba(255,255,255,0.18); }}
+  .ph {{ background: #1f1f1f; flex-shrink: 0; }}
+  .ph a {{ display: block; width: 100%; }}
   .ph img {{
-    width: 100%; height: 100%; object-fit: cover; display: block;
+    width: 100%; height: auto; display: block;
     filter: grayscale(100%);
     opacity: 0.92;
     transition: opacity 0.15s;
   }}
   .ph:hover img {{ opacity: 1; }}
   .ph figcaption {{ display: none; }}
+  .photo-foot {{
+    flex-shrink: 0;
+    padding-top: 12px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+  }}
+  .plb-view-all {{
+    font-family: inherit; font-size: 10px; font-weight: 400;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); background: none; border: none;
+    cursor: pointer; padding: 0;
+  }}
+  .plb-view-all:hover {{ color: var(--fg); }}
   .obs-header {{
-    grid-column: 1 / -1;
     padding: 10px 0 4px 0;
   }}
   .obs-header:first-child {{ padding-top: 0; }}
@@ -607,14 +632,14 @@ def make_site_page(site, all_sites):
   }}
   @media (min-width: 720px) {{
     .site-layout {{ grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }}
-    .site-record {{ position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }}
+    .photo-pane {{ position: sticky; top: 24px; height: calc(100vh - 48px); display: flex; flex-direction: column; }}
   }}
   @media (min-width: 1148px) {{
     .site-layout {{ grid-template-columns: 7fr 15fr; }}
-    .photo-grid {{ grid-template-columns: 1fr 1fr 1fr; }}
   }}
   @media (max-width: 719px) {{
-    .photo-grid {{ order: -1; }}
+    .photo-pane {{ order: -1; display: flex; flex-direction: column; }}
+    .photo-scroll {{ max-height: 70vh; }}
   }}
 </style>
 </head>
@@ -636,8 +661,13 @@ def make_site_page(site, all_sites):
 <div class="site-layout">
   <aside class="site-record">
 {sections}  </aside>
-  <div class="photo-grid">
-{images_html}  </div>
+  <div class="photo-pane">
+    <div class="photo-scroll">
+{images_html}    </div>
+    <div class="photo-foot">
+      <button class="plb-view-all">{view_all_label}</button>
+    </div>
+  </div>
 </div>
 <nav class="site-nav">
   {nav_prev}
@@ -672,6 +702,10 @@ def make_archive_page(all_sites):
                 rows += f'    <a class="archive-download" href="{img["raw"]}" download>Download RAW</a>\n'
             else:
                 rows += f'    <span class="archive-download" style="visibility:hidden">Download RAW</span>\n'
+            if img['xmp']:
+                rows += f'    <a class="archive-download" href="{img["xmp"]}" download>XML</a>\n'
+            else:
+                rows += f'    <span class="archive-download" style="visibility:hidden">XML</span>\n'
             rows += f'  </div>\n'
         rows += '</div>\n'
 
@@ -722,7 +756,7 @@ def make_archive_page(all_sites):
   }}
   .archive-item {{
     display: grid;
-    grid-template-columns: 1fr max-content max-content max-content;
+    grid-template-columns: 1fr max-content max-content max-content max-content;
     gap: 24px;
     align-items: baseline;
     padding: 4px 0;
@@ -744,7 +778,7 @@ def make_archive_page(all_sites):
     white-space: nowrap;
   }}
   @media (max-width: 540px) {{
-    .archive-item {{ grid-template-columns: 1fr max-content max-content; }}
+    .archive-item {{ grid-template-columns: 1fr max-content max-content max-content; }}
     .archive-filename {{ display: none; }}
   }}
 </style>
@@ -1209,7 +1243,13 @@ function buildDotFeatures() {{
 const map = new maplibregl.Map({{
   container:'map',
   style:{{ version:8, sources:{{ base:{{ type:'raster', tiles:['https://basemaps.cartocdn.com/dark_all/{{z}}/{{x}}/{{y}}@2x.png'], tileSize:256, attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>' }} }}, layers:[{{id:'bg',type:'raster',source:'base'}}] }},
-  center:[-89,38.5], zoom:4.4, minZoom:2, maxZoom:18,
+  bounds:(() => {{
+    const lngs = SITES.features.map(f => f.geometry.coordinates[0]);
+    const lats = SITES.features.map(f => f.geometry.coordinates[1]);
+    return [[Math.min(...lngs), Math.min(...lats)], [Math.max(...lngs), Math.max(...lats)]];
+  }})(),
+  fitBoundsOptions:{{ padding: window.innerWidth < 640 ? {{top:70,bottom:130,left:30,right:30}} : {{top:90,bottom:120,left:70,right:70}} }},
+  minZoom:2, maxZoom:18,
 }});
 document.getElementById('site-count').textContent = SITES.features.length+' sites';
 map.on('load', () => {{

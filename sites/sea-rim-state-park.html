@@ -142,24 +142,40 @@
   .geo-bar-wrap { position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }
   .geo-bar-fill { position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }
   .geo-prose { color: var(--fg); }
-  .photo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    align-content: start;
+  .photo-pane { min-width: 0; }
+  .photo-scroll {
+    display: flex; flex-direction: column; gap: 4px;
+    overflow-y: auto; min-height: 0; flex: 1;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.18) transparent;
   }
-  .ph { background: #1f1f1f; aspect-ratio: 1 / 1; overflow: hidden; }
-  .ph a { display: block; width: 100%; height: 100%; }
+  .photo-scroll::-webkit-scrollbar { width: 6px; }
+  .photo-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); }
+  .ph { background: #1f1f1f; flex-shrink: 0; }
+  .ph a { display: block; width: 100%; }
   .ph img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
+    width: 100%; height: auto; display: block;
     filter: grayscale(100%);
     opacity: 0.92;
     transition: opacity 0.15s;
   }
   .ph:hover img { opacity: 1; }
   .ph figcaption { display: none; }
+  .photo-foot {
+    flex-shrink: 0;
+    padding-top: 12px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+  }
+  .plb-view-all {
+    font-family: inherit; font-size: 10px; font-weight: 400;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); background: none; border: none;
+    cursor: pointer; padding: 0;
+  }
+  .plb-view-all:hover { color: var(--fg); }
   .obs-header {
-    grid-column: 1 / -1;
     padding: 10px 0 4px 0;
   }
   .obs-header:first-child { padding-top: 0; }
@@ -192,14 +208,14 @@
   }
   @media (min-width: 720px) {
     .site-layout { grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
-    .site-record { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }
+    .photo-pane { position: sticky; top: 24px; height: calc(100vh - 48px); display: flex; flex-direction: column; }
   }
   @media (min-width: 1148px) {
     .site-layout { grid-template-columns: 7fr 15fr; }
-    .photo-grid { grid-template-columns: 1fr 1fr 1fr; }
   }
   @media (max-width: 719px) {
-    .photo-grid { order: -1; }
+    .photo-pane { order: -1; display: flex; flex-direction: column; }
+    .photo-scroll { max-height: 70vh; }
   }
 </style>
 </head>
@@ -221,43 +237,48 @@
 <div class="site-layout">
   <aside class="site-record">
 <div class="rec-section"><div class="rec-label">Geology</div><p class="geo-prose">~11,700 years ago - present.</p></div><div class="rec-section"><div class="rec-label">Epoch</div><p>Holocene (Meghalayan age); Quaternary period.</p></div><div class="rec-section"><div class="rec-label">Native lands</div><p>Ishak (Atakapa-Ishak) · Akokisa (Eastern Atakapa) peoples; Gulf coastal territory occupied continuously since the end of the last Ice Age.</p></div><div class="rec-section"><div class="rec-label">Displacement &amp; Tenure</div><p>No federal cession treaty identified for Atakapa-Ishak territory in coastal southeast Texas; the Atakapa-Ishak hold no ratified treaty with the United States and are not federally recognized; park site purchased by the State of Texas in 1972 from the Planet Oil and Mineral Corporation and Horizon Sales Corporation; the park opened in 1977 and was closed following Hurricane Rita (2005) and Hurricane Ike (2008), reopening in 2010.</p></div><div class="rec-section"><div class="rec-label">Shadow History</div><p>The park was purchased in 1972 from the Planet Oil and Mineral Corporation; active oil rigs remain visible from the park beach, and the site lies within Jefferson County, where the Spindletop salt dome discovery of 1901 launched the modern petroleum industry; the park's tidal marsh system is hydrologically connected to multiple federal hazardous waste sites in the Port Arthur-Beaumont corridor, including the Star Lake Canal Superfund site and contaminated wetlands from a former Chevron refinery; Hurricane Rita (2005) closed the park for nearly five years -- Hurricane Ike (2008) struck during the closure, compounding damage -- with the park partially reopening April 2010 and reaching full restoration by June 2014; during the closure, regional refinery and tank farm spills totaling approximately 8 million gallons contaminated the coastal zone; the site was formally designated as experiencing natural resource damages from the 2010 Deepwater Horizon blowout, receiving NOAA Gulf Spill Restoration funding for coastal dune restoration as a documented injured resource.</p></div><div class="rec-section"><div class="rec-label">Ecology</div><p>Tidal salt marsh; chenier ridge; Gulf beach; critical migratory bird corridor (Central Flyway).</p></div><div class="rec-section"><div class="rec-label">Hydrology</div><p>Gulf of Mexico shoreline; Sabine Lake; Intracoastal Waterway; tidal marsh drainage.</p></div><div class="rec-section"><div class="rec-label">Acreage</div><p>15,109 acres</p></div><div class="rec-section"><div class="rec-label">GPS</div><p><a class="gps-link" href="https://maps.google.com/?q=29.6776,-93.9308" target="_blank" rel="noopener">29.6776° N, 93.9308° W</a></p></div>  </aside>
-  <div class="photo-grid">
-    <figure class="ph">
+  <div class="photo-pane">
+    <div class="photo-scroll">
+    <figure class="ph" data-raw="../img/RAW/_DSF0763.RAF" data-xmp="../img/RAW/_DSF0763.xmp">
       <a href="../img/full/sea-rim-state-park/_DSF0763.tif" download title="Sea Rim State Park 1">
-        <img src="../thumbs/sea-rim-state-park/_DSF0763.jpg" data-full="../img/jpg/sea-rim-state-park/_DSF0763.jpg" alt="Sea Rim State Park 1" loading="lazy"/>
+        <img src="../img/jpg/sea-rim-state-park/_DSF0763.jpg" alt="Sea Rim State Park 1" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Sea Rim State Park 1 &middot; 2026-01-09</span>
         <span class="caption-filename">_DSF0763.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0775.RAF" data-xmp="../img/RAW/_DSF0775.xmp">
       <a href="../img/full/sea-rim-state-park/_DSF0775.tif" download title="Sea Rim State Park 2">
-        <img src="../thumbs/sea-rim-state-park/_DSF0775.jpg" data-full="../img/jpg/sea-rim-state-park/_DSF0775.jpg" alt="Sea Rim State Park 2" loading="lazy"/>
+        <img src="../img/jpg/sea-rim-state-park/_DSF0775.jpg" alt="Sea Rim State Park 2" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Sea Rim State Park 2 &middot; 2026-01-09</span>
         <span class="caption-filename">_DSF0775.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0780.RAF" data-xmp="../img/RAW/_DSF0780.xmp">
       <a href="../img/full/sea-rim-state-park/_DSF0780.tif" download title="Sea Rim State Park 3">
-        <img src="../thumbs/sea-rim-state-park/_DSF0780.jpg" data-full="../img/jpg/sea-rim-state-park/_DSF0780.jpg" alt="Sea Rim State Park 3" loading="lazy"/>
+        <img src="../img/jpg/sea-rim-state-park/_DSF0780.jpg" alt="Sea Rim State Park 3" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Sea Rim State Park 3 &middot; 2026-01-09</span>
         <span class="caption-filename">_DSF0780.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0782.RAF" data-xmp="../img/RAW/_DSF0782.xmp">
       <a href="../img/full/sea-rim-state-park/_DSF0782.tif" download title="Sea Rim State Park 4">
-        <img src="../thumbs/sea-rim-state-park/_DSF0782.jpg" data-full="../img/jpg/sea-rim-state-park/_DSF0782.jpg" alt="Sea Rim State Park 4" loading="lazy"/>
+        <img src="../img/jpg/sea-rim-state-park/_DSF0782.jpg" alt="Sea Rim State Park 4" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Sea Rim State Park 4 &middot; 2026-01-09</span>
         <span class="caption-filename">_DSF0782.jpg</span>
       </figcaption>
     </figure>
+    </div>
+    <div class="photo-foot">
+      <button class="plb-view-all">View all 4 images →</button>
+    </div>
   </div>
 </div>
 <nav class="site-nav">

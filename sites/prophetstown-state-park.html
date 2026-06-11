@@ -142,24 +142,40 @@
   .geo-bar-wrap { position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }
   .geo-bar-fill { position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }
   .geo-prose { color: var(--fg); }
-  .photo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    align-content: start;
+  .photo-pane { min-width: 0; }
+  .photo-scroll {
+    display: flex; flex-direction: column; gap: 4px;
+    overflow-y: auto; min-height: 0; flex: 1;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.18) transparent;
   }
-  .ph { background: #1f1f1f; aspect-ratio: 1 / 1; overflow: hidden; }
-  .ph a { display: block; width: 100%; height: 100%; }
+  .photo-scroll::-webkit-scrollbar { width: 6px; }
+  .photo-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); }
+  .ph { background: #1f1f1f; flex-shrink: 0; }
+  .ph a { display: block; width: 100%; }
   .ph img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
+    width: 100%; height: auto; display: block;
     filter: grayscale(100%);
     opacity: 0.92;
     transition: opacity 0.15s;
   }
   .ph:hover img { opacity: 1; }
   .ph figcaption { display: none; }
+  .photo-foot {
+    flex-shrink: 0;
+    padding-top: 12px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+  }
+  .plb-view-all {
+    font-family: inherit; font-size: 10px; font-weight: 400;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); background: none; border: none;
+    cursor: pointer; padding: 0;
+  }
+  .plb-view-all:hover { color: var(--fg); }
   .obs-header {
-    grid-column: 1 / -1;
     padding: 10px 0 4px 0;
   }
   .obs-header:first-child { padding-top: 0; }
@@ -192,14 +208,14 @@
   }
   @media (min-width: 720px) {
     .site-layout { grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
-    .site-record { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }
+    .photo-pane { position: sticky; top: 24px; height: calc(100vh - 48px); display: flex; flex-direction: column; }
   }
   @media (min-width: 1148px) {
     .site-layout { grid-template-columns: 7fr 15fr; }
-    .photo-grid { grid-template-columns: 1fr 1fr 1fr; }
   }
   @media (max-width: 719px) {
-    .photo-grid { order: -1; }
+    .photo-pane { order: -1; display: flex; flex-direction: column; }
+    .photo-scroll { max-height: 70vh; }
   }
 </style>
 </head>
@@ -221,70 +237,75 @@
 <div class="site-layout">
   <aside class="site-record">
 <div class="rec-section"><div class="rec-label">Geology</div><div class="geo-era-row"><div class="geo-swatch" style="background:#4aaa78"></div><span class="geo-era-name">Devonian</span><span class="geo-mya">375 Mya</span></div><div class="geo-bar-wrap"><div class="geo-bar-fill" style="width:77%;background:#4aaa78;opacity:0.55"></div></div><p class="geo-prose">~375 Mya Devonian New Albany Shale and Mississippian Borden Group siltstone and crinoidal limestone forming the bedrock subcrop; landscape sculpted by Pleistocene Wabash Torrent (~14,000 BP) as glacial Lake Maumee breached the Fort Wayne moraine, depositing glacial outwash terraces above the Wabash-Tippecanoe confluence</p></div><div class="rec-section"><div class="rec-label">Epoch</div><p>Late Devonian to early Mississippian (Famennian to Kinderhookian); surficial landscape Pleistocene (Wisconsinan)</p></div><div class="rec-section"><div class="rec-label">Native lands</div><p>Miami (Myaamiaki) and Wea held the Wabash-Tippecanoe confluence as core territory; Potawatomi (Neshnabe) occupied lands north of the Wabash; Shawnee (Shawanwaki) brothers Tecumseh and Tenskwatawa established Prophetstown at the confluence in 1808 as a multiethnic confederacy stronghold drawing Potawatomi, Kickapoo, Lenape (Delaware), Winnebago (Ho-Chunk), Wea, Wyandot, Ottawa, Ojibwe, Menominee, Sauk, Fox, Creek, and an estimated 14 nations totaling up to 3,000 people; Woodland-period peoples occupied the river terraces at least 3,000 years prior; Harrison's forces burned Prophetstown November 8, 1811 following the Battle of Tippecanoe (November 7, 1811); Tecumseh continued organizing until his death at the Battle of the Thames (October 5, 1813)</p></div><div class="rec-section"><div class="rec-label">Displacement &amp; Tenure</div><p>Treaty of Fort Wayne (September 30, 1809): Delaware, Miami, Eel River Miami, and Potawatomi ceded approximately 3 million acres along the Wabash north of Vincennes in three tracts (Royce Cessions 9, 10, 11); Wea concurrence by separate treaty October 26, 1809; cession encompassed the Wabash-Tippecanoe confluence and directly provoked Tecumseh's War; Battle of Tippecanoe November 7, 1811 and burning of Prophetstown November 8, 1811; Treaty of St. Mary's (October 6, 1818) extinguished remaining Miami and Potawatomi claims south of the Wabash; Potawatomi removed via Trail of Death (September 1838, 40+ deaths en route to Kansas); Miami partially removed 1846, many returning under individual allotment protections; Indiana DNR established Prophetstown State Park 2004</p></div><div class="rec-section"><div class="rec-label">Shadow History</div><p>Tenskwatawa (Lalawethika, The Prophet) launched a pan-Indian spiritual revival beginning in 1805 and in April 1808 led his followers from Greenville, Ohio to the Tippecanoe-Wabash confluence, establishing Prophetstown on land claimed by the Miami and Wea over the explicit objection of Miami war chief Little Turtle; his brother Tecumseh (Crouching Tiger) transformed the religious movement into a political and military confederacy, recruiting an estimated 14 nations including Potawatomi, Kickapoo, Lenape, Winnebago, Wyandot, Ottawa, Ojibwe, Menominee, Sauk, Fox, and Creek; at its peak Prophetstown was the largest multi-tribal settlement in the Great Lakes region, housing an estimated 3,000 people; Harrison's forces burned Prophetstown on November 8, 1811, one day after the Battle of Tippecanoe, destroying the village and stored provisions after non-combatants had evacuated across the Wabash; the village's precise location remained unknown for nearly two centuries and was not archaeologically documented at park establishment in 2004; investigations at Site 12-T-59 and adjacent locations recovered 3,000-year-old flake tools, stone points, and shell-reinforced potsherds; archaeologist Christopher Moore (University of Indianapolis) identified multiple dispersed occupation zones separated by cornfields rather than a single centralized village; documentation of tribal consultation in early excavations is absent from public record</p></div><div class="rec-section"><div class="rec-label">Ecology</div><p>Restored tallgrass prairie dominated by big bluestem (Andropogon gerardii), Indian grass (Sorghastrum nutans), little bluestem (Schizachyrium scoparium), and sideoats grama with forbs including black-eyed Susan; wetland fens fed by hillside seeps, bottomland sycamore and cottonwood forest along the Wabash and Tippecanoe floodplains, and open woodland savanna; over 180 bird species documented including state-significant Henslow's sparrow</p></div><div class="rec-section"><div class="rec-label">Hydrology</div><p>Wabash River drainage; Tippecanoe River (180 miles, watershed 1,947 sq mi) confluences with the Wabash within the park near Battle Ground; Harrison Creek flows through the park interior forming fen ponds; park occupies three Wabash terraces shaped by the Pleistocene Wabash Torrent; 317-acre wetland restoration zone adjacent to the confluence; Tippecanoe River supports the most diverse mussel fauna in Indiana including eight federally listed species</p></div><div class="rec-section"><div class="rec-label">Acreage</div><p>2,000</p></div><div class="rec-section"><div class="rec-label">GPS</div><p><a class="gps-link" href="https://maps.google.com/?q=40.4973,-86.8425" target="_blank" rel="noopener">40.4973° N, 86.8425° W</a></p></div>  </aside>
-  <div class="photo-grid">
-    <figure class="ph">
+  <div class="photo-pane">
+    <div class="photo-scroll">
+    <figure class="ph" data-raw="../img/RAW/_DSF2330.RAF" data-xmp="../img/RAW/_DSF2330.xmp">
       <a href="../img/full/prophetstown-state-park/_DSF2330.tif" download title="Prophetstown State Park 1">
-        <img src="../thumbs/prophetstown-state-park/_DSF2330.jpg" data-full="../img/jpg/prophetstown-state-park/_DSF2330.jpg" alt="Prophetstown State Park 1" loading="lazy"/>
+        <img src="../img/jpg/prophetstown-state-park/_DSF2330.jpg" alt="Prophetstown State Park 1" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Prophetstown State Park 1 &middot; 2026-05-21</span>
         <span class="caption-filename">_DSF2330.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2353.RAF" data-xmp="../img/RAW/_DSF2353.xmp">
       <a href="../img/full/prophetstown-state-park/_DSF2353.tif" download title="Prophetstown State Park 2">
-        <img src="../thumbs/prophetstown-state-park/_DSF2353.jpg" data-full="../img/jpg/prophetstown-state-park/_DSF2353.jpg" alt="Prophetstown State Park 2" loading="lazy"/>
+        <img src="../img/jpg/prophetstown-state-park/_DSF2353.jpg" alt="Prophetstown State Park 2" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Prophetstown State Park 2 &middot; 2026-05-21</span>
         <span class="caption-filename">_DSF2353.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2370.RAF" data-xmp="../img/RAW/_DSF2370.xmp">
       <a href="../img/full/prophetstown-state-park/_DSF2370.tif" download title="Prophetstown State Park 3">
-        <img src="../thumbs/prophetstown-state-park/_DSF2370.jpg" data-full="../img/jpg/prophetstown-state-park/_DSF2370.jpg" alt="Prophetstown State Park 3" loading="lazy"/>
+        <img src="../img/jpg/prophetstown-state-park/_DSF2370.jpg" alt="Prophetstown State Park 3" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Prophetstown State Park 3 &middot; 2026-05-21</span>
         <span class="caption-filename">_DSF2370.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2375.RAF" data-xmp="../img/RAW/_DSF2375.xmp">
       <a href="../img/full/prophetstown-state-park/_DSF2375.tif" download title="Prophetstown State Park 4">
-        <img src="../thumbs/prophetstown-state-park/_DSF2375.jpg" data-full="../img/jpg/prophetstown-state-park/_DSF2375.jpg" alt="Prophetstown State Park 4" loading="lazy"/>
+        <img src="../img/jpg/prophetstown-state-park/_DSF2375.jpg" alt="Prophetstown State Park 4" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Prophetstown State Park 4 &middot; 2026-05-21</span>
         <span class="caption-filename">_DSF2375.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2387.RAF" data-xmp="../img/RAW/_DSF2387.xmp">
       <a href="../img/full/prophetstown-state-park/_DSF2387.tif" download title="Prophetstown State Park 5">
-        <img src="../thumbs/prophetstown-state-park/_DSF2387.jpg" data-full="../img/jpg/prophetstown-state-park/_DSF2387.jpg" alt="Prophetstown State Park 5" loading="lazy"/>
+        <img src="../img/jpg/prophetstown-state-park/_DSF2387.jpg" alt="Prophetstown State Park 5" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Prophetstown State Park 5 &middot; 2026-05-21</span>
         <span class="caption-filename">_DSF2387.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2390.RAF" data-xmp="../img/RAW/_DSF2390.xmp">
       <a href="../img/full/prophetstown-state-park/_DSF2390.tif" download title="Prophetstown State Park 6">
-        <img src="../thumbs/prophetstown-state-park/_DSF2390.jpg" data-full="../img/jpg/prophetstown-state-park/_DSF2390.jpg" alt="Prophetstown State Park 6" loading="lazy"/>
+        <img src="../img/jpg/prophetstown-state-park/_DSF2390.jpg" alt="Prophetstown State Park 6" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Prophetstown State Park 6 &middot; 2026-05-21</span>
         <span class="caption-filename">_DSF2390.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2406.RAF" data-xmp="../img/RAW/_DSF2406.xmp">
       <a href="../img/full/prophetstown-state-park/_DSF2406.tif" download title="Prophetstown State Park 7">
-        <img src="../thumbs/prophetstown-state-park/_DSF2406.jpg" data-full="../img/jpg/prophetstown-state-park/_DSF2406.jpg" alt="Prophetstown State Park 7" loading="lazy"/>
+        <img src="../img/jpg/prophetstown-state-park/_DSF2406.jpg" alt="Prophetstown State Park 7" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Prophetstown State Park 7 &middot; 2026-05-21</span>
         <span class="caption-filename">_DSF2406.jpg</span>
       </figcaption>
     </figure>
+    </div>
+    <div class="photo-foot">
+      <button class="plb-view-all">View all 7 images →</button>
+    </div>
   </div>
 </div>
 <nav class="site-nav">

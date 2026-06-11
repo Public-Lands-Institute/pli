@@ -232,18 +232,26 @@ Do not write generic statements. Be specific about which nations, which events, 
 ---
 
 ## Lightbox and site page layout
-Site pages mirror the map panel: a sticky record column (geology block with era
-swatch and timeline bar, then uppercase-labeled sections) beside a square photo
-grid. Grid cells use thumbs/<slug>/<filename> when available (falling back to
-img/jpg), with the full JPG in a data-full attribute.
+Site pages mirror the map panel: the record column (geology block with era
+swatch and timeline bar, then uppercase-labeled sections) flows with the page,
+beside a sticky photo pane (height 100vh minus margins) holding a single-column
+image scroll (.photo-scroll) with a "View all N images" viewer button pinned
+beneath it (.photo-foot). Images are full pane width at natural aspect and load
+the full img/jpg files directly (lazy loaded); thumbs/ are used only by the map
+index panel. RAW/XMP sidecar paths ride on the figure as data-raw / data-xmp.
+If a map thumbnail is missing, generate it from the JPG with PIL (400px q82
+thumb, 1200px q88 lg_ prefix) into thumbs/<slug>/ before generating.
 
-Site pages load js/lightbox.js at the bottom of <body>. It intercepts clicks on
-figure download links and opens a fullscreen lightbox viewer instead of triggering
-a download. The download TIFF button lives inside the lightbox. Do not add onclick
-handlers or image interaction logic anywhere in the page template -- lightbox.js
-reads the existing figure structure automatically via .caption-title and
-.caption-filename (kept in a hidden figcaption) and prefers img data-full for the
-viewer image. No changes to sites.json are needed.
+Site pages load js/lightbox.js at the bottom of <body>. It is the same viewer
+design as the map index lightbox (counter top center, close top right, side
+arrows, bottom meta bar) with Download TIFF / RAW File / XML actions reading the
+figure hrefs and data attributes. It intercepts clicks on figure download links;
+lightbox.js reads .caption-title and .caption-filename from the hidden figcaption
+and prefers img data-full for the viewer image. Do not add onclick handlers or
+image interaction logic to the page template. No changes to sites.json needed.
+
+The archive page lists Download TIFF, Download RAW, and XML (the .xmp sidecar
+from img/RAW/) per image.
 
 On mobile (max-width: 719px), CSS order places the photo grid above the record
 column. The desktop two-column layout (min-width: 720px) is unaffected.

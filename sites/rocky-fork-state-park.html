@@ -142,24 +142,40 @@
   .geo-bar-wrap { position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }
   .geo-bar-fill { position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }
   .geo-prose { color: var(--fg); }
-  .photo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    align-content: start;
+  .photo-pane { min-width: 0; }
+  .photo-scroll {
+    display: flex; flex-direction: column; gap: 4px;
+    overflow-y: auto; min-height: 0; flex: 1;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.18) transparent;
   }
-  .ph { background: #1f1f1f; aspect-ratio: 1 / 1; overflow: hidden; }
-  .ph a { display: block; width: 100%; height: 100%; }
+  .photo-scroll::-webkit-scrollbar { width: 6px; }
+  .photo-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); }
+  .ph { background: #1f1f1f; flex-shrink: 0; }
+  .ph a { display: block; width: 100%; }
   .ph img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
+    width: 100%; height: auto; display: block;
     filter: grayscale(100%);
     opacity: 0.92;
     transition: opacity 0.15s;
   }
   .ph:hover img { opacity: 1; }
   .ph figcaption { display: none; }
+  .photo-foot {
+    flex-shrink: 0;
+    padding-top: 12px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+  }
+  .plb-view-all {
+    font-family: inherit; font-size: 10px; font-weight: 400;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); background: none; border: none;
+    cursor: pointer; padding: 0;
+  }
+  .plb-view-all:hover { color: var(--fg); }
   .obs-header {
-    grid-column: 1 / -1;
     padding: 10px 0 4px 0;
   }
   .obs-header:first-child { padding-top: 0; }
@@ -192,14 +208,14 @@
   }
   @media (min-width: 720px) {
     .site-layout { grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
-    .site-record { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }
+    .photo-pane { position: sticky; top: 24px; height: calc(100vh - 48px); display: flex; flex-direction: column; }
   }
   @media (min-width: 1148px) {
     .site-layout { grid-template-columns: 7fr 15fr; }
-    .photo-grid { grid-template-columns: 1fr 1fr 1fr; }
   }
   @media (max-width: 719px) {
-    .photo-grid { order: -1; }
+    .photo-pane { order: -1; display: flex; flex-direction: column; }
+    .photo-scroll { max-height: 70vh; }
   }
 </style>
 </head>
@@ -221,52 +237,57 @@
 <div class="site-layout">
   <aside class="site-record">
 <div class="rec-section"><div class="rec-label">Geology</div><div class="geo-era-row"><div class="geo-swatch" style="background:#7ecfc0"></div><span class="geo-era-name">Silurian</span><span class="geo-mya">425 Mya</span></div><div class="geo-bar-wrap"><div class="geo-bar-fill" style="width:82%;background:#7ecfc0;opacity:0.55"></div></div><p class="geo-prose">~425 Mya Silurian dolomite (Peebles Dolomite, Ludlovian); 75-ft gorge incised more than 12,000 years ago when retreating Wisconsin glacier ice blocked Rocky Fork Creek's original drainage outlet, reversing stream flow direction and rapidly cutting through dolomite bedrock; carbonate dissolution formed cave systems in the gorge walls; collapsed cave ceilings visible as large slump blocks in the streambed.</p></div><div class="rec-section"><div class="rec-label">Epoch</div><p>Middle Silurian (Wenlockian/Ludlovian).</p></div><div class="rec-section"><div class="rec-label">Native lands</div><p>Hopewell culture (c. 200 BC-500 AD) constructed at least two ceremonial earthwork complexes within current park boundaries: Rocky Fork Park Site (NRHP 73001479), a double-concentric circular enclosure with gateways on its eastern side, and the Rocky Fork Park Group (NRHP listed 1973), a separate mound group on an adjacent hilledge; both sites were never plowed, preserving their original earthwork profiles; Chalahgawtha (principal-town) division of the Shawandasse Tula (Shawanwaki/Shawnee) used the Paint Creek and Rocky Fork Creek corridors as principal travel routes and considered the Paint Valley home territory; Myaamia (Miami) co-held southern Ohio; Shawnee lands ceded via Treaty of Greene Ville (August 3, 1795), Article 3; remaining Shawnee removed west via Treaty with the Shawnee 1831 under Indian Removal Act 1830.</p></div><div class="rec-section"><div class="rec-label">Displacement &amp; Tenure</div><p>Ceded via Treaty of Greene Ville (1795, Article 3), extinguishing Shawnee and Miami title to Highland County; county organized 1805 and entered private agricultural ownership; Rocky Fork Creek valley acquired by Ohio Division of Conservation and Natural Resources for reservoir and recreation development; Rocky Fork State Park established 1950; dam construction began 1951, water first impounded April 1953; Rocky Fork Lake (2,080 acres, 31-mile shoreline, dam 74 ft high and 380 ft long, 30,000 cubic yards of concrete) was constructed strictly for recreational purposes, not flood control; condemnation and flooding of valley-floor agricultural land required displacement of farm families.</p></div><div class="rec-section"><div class="rec-label">Shadow History</div><p>Rocky Fork Lake impounded 1951-1953, flooding the Rocky Fork Creek bottomland and requiring condemnation of valley-floor farm properties; the Blue Ribbon Road covered bridge was among the structures inundated; McCoppin's Mill (in continuous operation since 1829 using water turbines) survived — the dam was built upstream — and operated until the 1970s; Rocky Fork Gorge State Nature Preserve (86 acres, Miller Nature Sanctuary), the only state nature preserve in Highland County, was not dedicated until 1982, leaving the gorge corridor without formal protection for nearly 30 years after park establishment; two Hopewell earthwork complexes within park boundaries, Rocky Fork Park Site and Rocky Fork Park Group (NRHP listed 1973), remain without dedicated on-site archaeological interpretation; Rocky Fork Creek biological communities have performed as badly as or worse than at any time since the initial Ohio EPA study in 1991, impaired by agricultural runoff, failing Home Sewage Treatment Systems, and elevated E. coli concentrations.</p></div><div class="rec-section"><div class="rec-label">Ecology</div><p>Mixed mesophytic forest on Silurian dolomite uplands, with alkaline-loving rare plant communities on gorge cliff faces; Sullivantia sullivantii (Sullivant's coolwort, Saxifragaceae) grows profusely on moist seeping dolomite cliffs in the gorge, blooming mid-summer; extremely rare in Ohio and known from only ten midwestern states; snow trillium (Trillium nivale), American Columbo (Frasera caroliniensis, requiring up to 30 years to produce its 5-ft flowering stalk), royal catchfly, queen-of-the-prairie, and prairie dock documented at the gorge preserve; fine-rayed pocketbook mussel (Ohio state-threatened) and 118 fish species documented in the Rocky Fork and Paint Creek watershed; river otter, bald eagle, osprey, cerulean warbler, and Louisiana waterthrush among 230+ bird species; Rocky Fork Creek and Paint Creek jointly rated Exceptional Warmwater Habitat by Ohio EPA.</p></div><div class="rec-section"><div class="rec-label">Hydrology</div><p>Rocky Fork Creek drains 70,399 acres (~110 sq mi) before impoundment by Rocky Fork Lake; tributary of Paint Creek, which drains 1,143 sq mi to the Scioto River; gorge reach below the dam runs approximately 7.5 miles to confluence with Paint Creek near Bainbridge; Rocky Fork Creek reversed drainage direction approximately 25,000 years ago during Wisconsin glaciation; Rocky Fork Lake shoreline 31 miles, average depth approximately 15 ft, maximum depth approximately 40 ft; dam classified Class I by ODNR Division of Engineering; Paint Creek and Rocky Fork Creek proposed for Ohio State Scenic River designation (approximately 81.7 miles).</p></div><div class="rec-section"><div class="rec-label">Acreage</div><p>3,464</p></div><div class="rec-section"><div class="rec-label">GPS</div><p><a class="gps-link" href="https://maps.google.com/?q=39.1861,-83.472" target="_blank" rel="noopener">39.1861° N, 83.4720° W</a></p></div>  </aside>
-  <div class="photo-grid">
-    <figure class="ph">
+  <div class="photo-pane">
+    <div class="photo-scroll">
+    <figure class="ph" data-raw="../img/RAW/_DSF1473.RAF" data-xmp="../img/RAW/_DSF1473.xmp">
       <a href="../img/full/rocky-fork-state-park/_DSF1473.tif" download title="Rocky Fork State Park 1">
-        <img src="../thumbs/rocky-fork-state-park/_DSF1473.jpg" data-full="../img/jpg/rocky-fork-state-park/_DSF1473.jpg" alt="Rocky Fork State Park 1" loading="lazy"/>
+        <img src="../img/jpg/rocky-fork-state-park/_DSF1473.jpg" alt="Rocky Fork State Park 1" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Rocky Fork State Park 1 &middot; 2026-04-20</span>
         <span class="caption-filename">_DSF1473.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1479.RAF" data-xmp="../img/RAW/_DSF1479.xmp">
       <a href="../img/full/rocky-fork-state-park/_DSF1479.tif" download title="Rocky Fork State Park 2">
-        <img src="../thumbs/rocky-fork-state-park/_DSF1479.jpg" data-full="../img/jpg/rocky-fork-state-park/_DSF1479.jpg" alt="Rocky Fork State Park 2" loading="lazy"/>
+        <img src="../img/jpg/rocky-fork-state-park/_DSF1479.jpg" alt="Rocky Fork State Park 2" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Rocky Fork State Park 2 &middot; 2026-04-20</span>
         <span class="caption-filename">_DSF1479.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1480.RAF" data-xmp="../img/RAW/_DSF1480.xmp">
       <a href="../img/full/rocky-fork-state-park/_DSF1480.tif" download title="Rocky Fork State Park 3">
-        <img src="../thumbs/rocky-fork-state-park/_DSF1480.jpg" data-full="../img/jpg/rocky-fork-state-park/_DSF1480.jpg" alt="Rocky Fork State Park 3" loading="lazy"/>
+        <img src="../img/jpg/rocky-fork-state-park/_DSF1480.jpg" alt="Rocky Fork State Park 3" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Rocky Fork State Park 3 &middot; 2026-04-20</span>
         <span class="caption-filename">_DSF1480.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1482.RAF" data-xmp="../img/RAW/_DSF1482.xmp">
       <a href="../img/full/rocky-fork-state-park/_DSF1482.tif" download title="Rocky Fork State Park 4">
-        <img src="../thumbs/rocky-fork-state-park/_DSF1482.jpg" data-full="../img/jpg/rocky-fork-state-park/_DSF1482.jpg" alt="Rocky Fork State Park 4" loading="lazy"/>
+        <img src="../img/jpg/rocky-fork-state-park/_DSF1482.jpg" alt="Rocky Fork State Park 4" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Rocky Fork State Park 4 &middot; 2026-04-20</span>
         <span class="caption-filename">_DSF1482.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1483.RAF" data-xmp="../img/RAW/_DSF1483.xmp">
       <a href="../img/full/rocky-fork-state-park/_DSF1483.tif" download title="Rocky Fork State Park 5">
-        <img src="../thumbs/rocky-fork-state-park/_DSF1483.jpg" data-full="../img/jpg/rocky-fork-state-park/_DSF1483.jpg" alt="Rocky Fork State Park 5" loading="lazy"/>
+        <img src="../img/jpg/rocky-fork-state-park/_DSF1483.jpg" alt="Rocky Fork State Park 5" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Rocky Fork State Park 5 &middot; 2026-04-20</span>
         <span class="caption-filename">_DSF1483.jpg</span>
       </figcaption>
     </figure>
+    </div>
+    <div class="photo-foot">
+      <button class="plb-view-all">View all 5 images →</button>
+    </div>
   </div>
 </div>
 <nav class="site-nav">

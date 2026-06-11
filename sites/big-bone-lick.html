@@ -142,24 +142,40 @@
   .geo-bar-wrap { position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }
   .geo-bar-fill { position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }
   .geo-prose { color: var(--fg); }
-  .photo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    align-content: start;
+  .photo-pane { min-width: 0; }
+  .photo-scroll {
+    display: flex; flex-direction: column; gap: 4px;
+    overflow-y: auto; min-height: 0; flex: 1;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.18) transparent;
   }
-  .ph { background: #1f1f1f; aspect-ratio: 1 / 1; overflow: hidden; }
-  .ph a { display: block; width: 100%; height: 100%; }
+  .photo-scroll::-webkit-scrollbar { width: 6px; }
+  .photo-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); }
+  .ph { background: #1f1f1f; flex-shrink: 0; }
+  .ph a { display: block; width: 100%; }
   .ph img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
+    width: 100%; height: auto; display: block;
     filter: grayscale(100%);
     opacity: 0.92;
     transition: opacity 0.15s;
   }
   .ph:hover img { opacity: 1; }
   .ph figcaption { display: none; }
+  .photo-foot {
+    flex-shrink: 0;
+    padding-top: 12px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+  }
+  .plb-view-all {
+    font-family: inherit; font-size: 10px; font-weight: 400;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); background: none; border: none;
+    cursor: pointer; padding: 0;
+  }
+  .plb-view-all:hover { color: var(--fg); }
   .obs-header {
-    grid-column: 1 / -1;
     padding: 10px 0 4px 0;
   }
   .obs-header:first-child { padding-top: 0; }
@@ -192,14 +208,14 @@
   }
   @media (min-width: 720px) {
     .site-layout { grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
-    .site-record { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }
+    .photo-pane { position: sticky; top: 24px; height: calc(100vh - 48px); display: flex; flex-direction: column; }
   }
   @media (min-width: 1148px) {
     .site-layout { grid-template-columns: 7fr 15fr; }
-    .photo-grid { grid-template-columns: 1fr 1fr 1fr; }
   }
   @media (max-width: 719px) {
-    .photo-grid { order: -1; }
+    .photo-pane { order: -1; display: flex; flex-direction: column; }
+    .photo-scroll { max-height: 70vh; }
   }
 </style>
 </head>
@@ -221,79 +237,84 @@
 <div class="site-layout">
   <aside class="site-record">
 <div class="rec-section"><div class="rec-label">Geology</div><div class="geo-era-row"><div class="geo-swatch" style="background:#c8a86e"></div><span class="geo-era-name">Ordovician</span><span class="geo-mya">450 Mya</span></div><div class="geo-bar-wrap"><div class="geo-bar-fill" style="width:90%;background:#c8a86e;opacity:0.55"></div></div><p class="geo-prose">~450 Mya Ordovician limestone and shale (Kope Formation); Pleistocene fossil-bearing bog deposits (25,000-12,000 BP).</p></div><div class="rec-section"><div class="rec-label">Epoch</div><p>Late Ordovician (Cincinnatian Series); late Pleistocene (Wisconsinan Glaciation).</p></div><div class="rec-section"><div class="rec-label">Native lands</div><p>Paleoindians from at least ~12,000 BP · Shawnee (Shawanwaki) · Delaware (Lenape); the salt springs drew Indigenous hunters for millennia; Shawnee used the lick as a salt source and hunting ground; Mary Draper Ingles, captured by Shawnee in 1755, was brought to Big Bone Lick and put to work boiling brine; Iroquois Confederacy ceded their Ohio River corridor claim to the British Crown via Treaty of Fort Stanwix 1768, a transaction the Shawnee disputed; Shawnee ceded rights south of the Ohio under duress via Treaty of Camp Charlotte 1774 ending Lord Dunmore's War; Cherokee ceded overlapping claims via Treaty of Sycamore Shoals 1775, a private purchase nullified by Virginia 1778; two prehistoric burial mounds and a cemetery documented by the 1932 Webb-Funkhouser survey; 2008 excavation found possible cut marks on Pleistocene bones suggesting Paleoindian butchering.</p></div><div class="rec-section"><div class="rec-label">Displacement &amp; Tenure</div><p>Kentucky was organized as a Virginia county in 1776 and was never part of the federal public domain; no federal Royce cession applies; Iroquois Confederacy ceded British Crown claim to lands south of the Ohio via Treaty of Fort Stanwix (1768), disputed by the Shawnee; Shawnee ceded rights south of the Ohio via Treaty of Camp Charlotte (1774); Cherokee claim extinguished via Treaty of Sycamore Shoals (1775), voided by Virginia 1778; Kentucky distributed as Virginia military bounty land grants prior to statehood 1792; the Big Bone Lick Historical Association purchased 16.66 acres and deeded them to the Kentucky State Commissioner for conservation, with the park formally established July 2, 1960.</p></div><div class="rec-section"><div class="rec-label">Shadow History</div><p>Big Bone Lick has been systematically stripped of paleontological material for nearly 300 years. In 1739, French-Canadian military commander Charles Le Moyne de Longueuil collected a tusk, femur, and molars and shipped them to Paris, where they entered Louis XV's Cabinet du Roi under Buffon's direction, initiating the first scientific attention to North American Pleistocene megafauna. In 1765-66, British Indian agent George Croghan extracted specimens on two expeditions; one collection was seized during an attack; the second was presented by Benjamin Franklin to the Royal Society of London. By the late 18th century, hundreds and possibly thousands of bones had been removed by collectors. President Thomas Jefferson, fixated on the site as a rebuttal to Buffon's theory of American animal degeneracy, dispatched Meriwether Lewis in October 1803 to collect specimens; those bones were loaded onto a keelboat and shipped south by river in early 1804 and the boat sank near Natchez, Mississippi, losing the entire collection. Jefferson then commissioned William Clark, who conducted a three-week excavation in fall 1807 with a ten-man crew, removing over 300 bones and teeth; Jefferson divided the collection among the Paris Museum of Natural History, the American Philosophical Society, and Monticello, where specimens were displayed in the Entrance Hall. Clark's 11-page description allowed naturalists to distinguish mammoths from mastodons for the first time, making this the first funded paleontological field excavation in North America. In 1962-67, University of Nebraska paleontologists recovered over 2,000 specimens now held at the University of Nebraska State Museum; four species were formally named from Big Bone Lick material. James Colquohoun operated a salt works at the site from approximately 1795 until 1812; Kentucky salt works of the era routinely used enslaved labor, and the 1800 Boone County census recorded 325 enslaved persons (21% of the county population), though direct documentary evidence tying enslaved workers to Colquohoun's operation has not yet been confirmed in available records. The Clay House hotel opened at Big Bone Lick in 1815 and operated until approximately 1845, serving planter families including the Clays and Breckinridges for mineral spring bathing; enslaved domestic service workers almost certainly staffed the operation, but no named records have been located.</p></div><div class="rec-section"><div class="rec-label">Ecology</div><p>Mixed mesophytic forest with oak-hickory overstory on surrounding uplands; active sulphur spring and mineralized salt lick complex creating a distinctive halophytic microhabitat; native grassland and savanna remnants along Discovery Trail; wetland and bog habitat in the spring-fed lowland supports running buffalo clover (Trifolium stoloniferum, delisted 2021) and rare bats.</p></div><div class="rec-section"><div class="rec-label">Hydrology</div><p>Big Bone Creek drainage, a tributary of the Ohio River; sulphur-bearing mineral springs emerge from the Ordovician bedrock and discharge into the creek floodplain, forming the historic salt lick; Pleistocene fossil record owes its preservation to glacial meltwater drainage from the Laurentide ice sheet during the Wisconsinan Glaciation, which created standing-water conditions that trapped megafauna; Ohio River basin.</p></div><div class="rec-section"><div class="rec-label">Acreage</div><p>525</p></div><div class="rec-section"><div class="rec-label">GPS</div><p><a class="gps-link" href="https://maps.google.com/?q=38.8838,-84.7474" target="_blank" rel="noopener">38.8838° N, 84.7474° W</a></p></div>  </aside>
-  <div class="photo-grid">
-    <figure class="ph">
+  <div class="photo-pane">
+    <div class="photo-scroll">
+    <figure class="ph" data-raw="../img/RAW/_DSF1203.RAF" data-xmp="../img/RAW/_DSF1203.xmp">
       <a href="../img/full/big-bone-lick/_DSF1203.tif" download title="Big Bone Lick State Historic Site 1">
-        <img src="../thumbs/big-bone-lick/_DSF1203.jpg" data-full="../img/jpg/big-bone-lick/_DSF1203.jpg" alt="Big Bone Lick State Historic Site 1" loading="lazy"/>
+        <img src="../img/jpg/big-bone-lick/_DSF1203.jpg" alt="Big Bone Lick State Historic Site 1" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Big Bone Lick State Historic Site 1 &middot; 2026-04-08</span>
         <span class="caption-filename">_DSF1203.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1204.RAF" data-xmp="../img/RAW/_DSF1204.xmp">
       <a href="../img/full/big-bone-lick/_DSF1204.tif" download title="Big Bone Lick State Historic Site 2">
-        <img src="../thumbs/big-bone-lick/_DSF1204.jpg" data-full="../img/jpg/big-bone-lick/_DSF1204.jpg" alt="Big Bone Lick State Historic Site 2" loading="lazy"/>
+        <img src="../img/jpg/big-bone-lick/_DSF1204.jpg" alt="Big Bone Lick State Historic Site 2" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Big Bone Lick State Historic Site 2 &middot; 2026-04-08</span>
         <span class="caption-filename">_DSF1204.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1215.RAF" data-xmp="../img/RAW/_DSF1215.xmp">
       <a href="../img/full/big-bone-lick/_DSF1215.tif" download title="Big Bone Lick State Historic Site 3">
-        <img src="../thumbs/big-bone-lick/_DSF1215.jpg" data-full="../img/jpg/big-bone-lick/_DSF1215.jpg" alt="Big Bone Lick State Historic Site 3" loading="lazy"/>
+        <img src="../img/jpg/big-bone-lick/_DSF1215.jpg" alt="Big Bone Lick State Historic Site 3" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Big Bone Lick State Historic Site 3 &middot; 2026-04-08</span>
         <span class="caption-filename">_DSF1215.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1223.RAF" data-xmp="../img/RAW/_DSF1223.xmp">
       <a href="../img/full/big-bone-lick/_DSF1223.tif" download title="Big Bone Lick State Historic Site 4">
-        <img src="../thumbs/big-bone-lick/_DSF1223.jpg" data-full="../img/jpg/big-bone-lick/_DSF1223.jpg" alt="Big Bone Lick State Historic Site 4" loading="lazy"/>
+        <img src="../img/jpg/big-bone-lick/_DSF1223.jpg" alt="Big Bone Lick State Historic Site 4" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Big Bone Lick State Historic Site 4 &middot; 2026-04-08</span>
         <span class="caption-filename">_DSF1223.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1227.RAF" data-xmp="../img/RAW/_DSF1227.xmp">
       <a href="../img/full/big-bone-lick/_DSF1227.tif" download title="Big Bone Lick State Historic Site 5">
-        <img src="../thumbs/big-bone-lick/_DSF1227.jpg" data-full="../img/jpg/big-bone-lick/_DSF1227.jpg" alt="Big Bone Lick State Historic Site 5" loading="lazy"/>
+        <img src="../img/jpg/big-bone-lick/_DSF1227.jpg" alt="Big Bone Lick State Historic Site 5" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Big Bone Lick State Historic Site 5 &middot; 2026-04-08</span>
         <span class="caption-filename">_DSF1227.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1228.RAF" data-xmp="../img/RAW/_DSF1228.xmp">
       <a href="../img/full/big-bone-lick/_DSF1228.tif" download title="Big Bone Lick State Historic Site 6">
-        <img src="../thumbs/big-bone-lick/_DSF1228.jpg" data-full="../img/jpg/big-bone-lick/_DSF1228.jpg" alt="Big Bone Lick State Historic Site 6" loading="lazy"/>
+        <img src="../img/jpg/big-bone-lick/_DSF1228.jpg" alt="Big Bone Lick State Historic Site 6" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Big Bone Lick State Historic Site 6 &middot; 2026-04-08</span>
         <span class="caption-filename">_DSF1228.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1229.RAF" data-xmp="../img/RAW/_DSF1229.xmp">
       <a href="../img/full/big-bone-lick/_DSF1229.tif" download title="Big Bone Lick State Historic Site 7">
-        <img src="../thumbs/big-bone-lick/_DSF1229.jpg" data-full="../img/jpg/big-bone-lick/_DSF1229.jpg" alt="Big Bone Lick State Historic Site 7" loading="lazy"/>
+        <img src="../img/jpg/big-bone-lick/_DSF1229.jpg" alt="Big Bone Lick State Historic Site 7" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Big Bone Lick State Historic Site 7 &middot; 2026-04-08</span>
         <span class="caption-filename">_DSF1229.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF1232.RAF" data-xmp="../img/RAW/_DSF1232.xmp">
       <a href="../img/full/big-bone-lick/_DSF1232.tif" download title="Big Bone Lick State Historic Site 8">
-        <img src="../thumbs/big-bone-lick/_DSF1232.jpg" data-full="../img/jpg/big-bone-lick/_DSF1232.jpg" alt="Big Bone Lick State Historic Site 8" loading="lazy"/>
+        <img src="../img/jpg/big-bone-lick/_DSF1232.jpg" alt="Big Bone Lick State Historic Site 8" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Big Bone Lick State Historic Site 8 &middot; 2026-04-08</span>
         <span class="caption-filename">_DSF1232.jpg</span>
       </figcaption>
     </figure>
+    </div>
+    <div class="photo-foot">
+      <button class="plb-view-all">View all 8 images →</button>
+    </div>
   </div>
 </div>
 <nav class="site-nav">

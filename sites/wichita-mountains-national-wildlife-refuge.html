@@ -142,24 +142,40 @@
   .geo-bar-wrap { position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }
   .geo-bar-fill { position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }
   .geo-prose { color: var(--fg); }
-  .photo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    align-content: start;
+  .photo-pane { min-width: 0; }
+  .photo-scroll {
+    display: flex; flex-direction: column; gap: 4px;
+    overflow-y: auto; min-height: 0; flex: 1;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.18) transparent;
   }
-  .ph { background: #1f1f1f; aspect-ratio: 1 / 1; overflow: hidden; }
-  .ph a { display: block; width: 100%; height: 100%; }
+  .photo-scroll::-webkit-scrollbar { width: 6px; }
+  .photo-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); }
+  .ph { background: #1f1f1f; flex-shrink: 0; }
+  .ph a { display: block; width: 100%; }
   .ph img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
+    width: 100%; height: auto; display: block;
     filter: grayscale(100%);
     opacity: 0.92;
     transition: opacity 0.15s;
   }
   .ph:hover img { opacity: 1; }
   .ph figcaption { display: none; }
+  .photo-foot {
+    flex-shrink: 0;
+    padding-top: 12px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+  }
+  .plb-view-all {
+    font-family: inherit; font-size: 10px; font-weight: 400;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); background: none; border: none;
+    cursor: pointer; padding: 0;
+  }
+  .plb-view-all:hover { color: var(--fg); }
   .obs-header {
-    grid-column: 1 / -1;
     padding: 10px 0 4px 0;
   }
   .obs-header:first-child { padding-top: 0; }
@@ -192,14 +208,14 @@
   }
   @media (min-width: 720px) {
     .site-layout { grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
-    .site-record { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }
+    .photo-pane { position: sticky; top: 24px; height: calc(100vh - 48px); display: flex; flex-direction: column; }
   }
   @media (min-width: 1148px) {
     .site-layout { grid-template-columns: 7fr 15fr; }
-    .photo-grid { grid-template-columns: 1fr 1fr 1fr; }
   }
   @media (max-width: 719px) {
-    .photo-grid { order: -1; }
+    .photo-pane { order: -1; display: flex; flex-direction: column; }
+    .photo-scroll { max-height: 70vh; }
   }
 </style>
 </head>
@@ -221,142 +237,147 @@
 <div class="site-layout">
   <aside class="site-record">
 <div class="rec-section"><div class="rec-label">Geology</div><p class="geo-prose">~525 million years ago (bedrock); mountains re-exhumed ~300 Mya.</p></div><div class="rec-section"><div class="rec-label">Epoch</div><p>Cambrian bedrock (Furongian); Wichita Mountains uplifted during Pennsylvanian Ouachita Orogeny (~300 Mya), then buried and re-exhumed ; one of the most geologically complex mountain histories in the U.S.</p></div><div class="rec-section"><div class="rec-label">Native lands</div><p>Comanche (Nʉmʉnʉʉ) · Kiowa · Wichita (Kitikiti'sh) · Apache · Fort Sill Apache; Quanah Parker (Comanche) called the Wichitas home; mountains set aside from Kiowa-Comanche-Apache Reservation lands in 1901.</p></div><div class="rec-section"><div class="rec-label">Displacement &amp; Tenure</div><p>Cession 510: Treaty with the Kiowa, Comanche, and Apache (Medicine Lodge Creek, 1867); Cession 485: Agreement with the Comanche, Kiowa, and Apache (Jerome Agreement, 1892, ratified 1900); Congress carved 61,500 acres directly out of the Kiowa-Comanche-Apache Reservation and proclaimed the Wichita Forest Reserve on July 4, 1901; President Roosevelt redesignated the area a game preserve in 1905; the New York Zoological Park shipped fifteen bison by rail to the refuge on October 10, 1907, at the invitation of Quanah Parker's Comanche delegation; retitled Wichita Mountains Wildlife Refuge in 1936.</p></div><div class="rec-section"><div class="rec-label">Shadow History</div><p>The refuge occupies land ceded by the Kiowa-Comanche-Apache under the Jerome Agreement (negotiated 1892, ratified June 6, 1900), which extracted approximately 2.5 million acres of KCA surplus lands over sustained Kiowa opposition; President McKinley established the Wichita Forest Reserve on those ceded lands by Proclamation 459 on July 4, 1901 -- the same day he opened the KCA land lottery; the refuge was reorganized under the FWS in 1936. Three CCC camps and multiple WPA projects operated at the refuge through the 1930s; by March 1938, CCC labor had constructed 46 concrete dams, 14 rubble masonry dams, 50 miles of improved roads, 46 miles of big-game fencing, and a hydroelectric system; the WPA built the Holy City of the Wichitas between 1935 and 1936 at a cost of $147,000; Roosevelt's April 1905 wolf hunt in the adjacent Big Pasture, which included Quanah Parker as a participant, is documented as a direct political catalyst for the congressional appropriation that created the preserve; the Quanah Artillery Range (15,850 acres) has been operational along the refuge's southern boundary since 1957, with a 3,800-acre strip between the refuge and Fort Sill closed to the public.</p></div><div class="rec-section"><div class="rec-label">Ecology</div><p>Mixed-grass and shortgrass prairie; cross timbers; American bison herd (reintroduced 1907, ~650 animals); longhorn cattle; Rocky Mountain elk; prairie dogs.</p></div><div class="rec-section"><div class="rec-label">Hydrology</div><p>Parallel streams draining east; Lake Elmer Thomas; Quanah Parker Lake; Comanche County watershed.</p></div><div class="rec-section"><div class="rec-label">Acreage</div><p>59,020 acres</p></div><div class="rec-section"><div class="rec-label">GPS</div><p><a class="gps-link" href="https://maps.google.com/?q=34.769,-98.673" target="_blank" rel="noopener">34.7690° N, 98.6730° W</a></p></div>  </aside>
-  <div class="photo-grid">
-    <figure class="ph">
+  <div class="photo-pane">
+    <div class="photo-scroll">
+    <figure class="ph" data-raw="../img/RAW/_DSF0630.RAF" data-xmp="../img/RAW/_DSF0630.xmp">
       <a href="../img/full/wichita-mountains-national-wildlife-refuge/_DSF0630.tif" download title="Wichita Mountains National Wildlife Refuge 1">
-        <img src="../thumbs/wichita-mountains-national-wildlife-refuge/_DSF0630.jpg" data-full="../img/jpg/wichita-mountains-national-wildlife-refuge/_DSF0630.jpg" alt="Wichita Mountains National Wildlife Refuge 1" loading="lazy"/>
+        <img src="../img/jpg/wichita-mountains-national-wildlife-refuge/_DSF0630.jpg" alt="Wichita Mountains National Wildlife Refuge 1" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Wichita Mountains National Wildlife Refuge 1 &middot; 2026-01-07</span>
         <span class="caption-filename">_DSF0630.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0635.RAF" data-xmp="../img/RAW/_DSF0635.xmp">
       <a href="../img/full/wichita-mountains-national-wildlife-refuge/_DSF0635.tif" download title="Wichita Mountains National Wildlife Refuge 2">
-        <img src="../thumbs/wichita-mountains-national-wildlife-refuge/_DSF0635.jpg" data-full="../img/jpg/wichita-mountains-national-wildlife-refuge/_DSF0635.jpg" alt="Wichita Mountains National Wildlife Refuge 2" loading="lazy"/>
+        <img src="../img/jpg/wichita-mountains-national-wildlife-refuge/_DSF0635.jpg" alt="Wichita Mountains National Wildlife Refuge 2" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Wichita Mountains National Wildlife Refuge 2 &middot; 2026-01-07</span>
         <span class="caption-filename">_DSF0635.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0636.RAF" data-xmp="../img/RAW/_DSF0636.xmp">
       <a href="../img/full/wichita-mountains-national-wildlife-refuge/_DSF0636.tif" download title="Wichita Mountains National Wildlife Refuge 3">
-        <img src="../thumbs/wichita-mountains-national-wildlife-refuge/_DSF0636.jpg" data-full="../img/jpg/wichita-mountains-national-wildlife-refuge/_DSF0636.jpg" alt="Wichita Mountains National Wildlife Refuge 3" loading="lazy"/>
+        <img src="../img/jpg/wichita-mountains-national-wildlife-refuge/_DSF0636.jpg" alt="Wichita Mountains National Wildlife Refuge 3" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Wichita Mountains National Wildlife Refuge 3 &middot; 2026-01-07</span>
         <span class="caption-filename">_DSF0636.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0638.RAF" data-xmp="../img/RAW/_DSF0638.xmp">
       <a href="../img/full/wichita-mountains-national-wildlife-refuge/_DSF0638.tif" download title="Wichita Mountains National Wildlife Refuge 4">
-        <img src="../thumbs/wichita-mountains-national-wildlife-refuge/_DSF0638.jpg" data-full="../img/jpg/wichita-mountains-national-wildlife-refuge/_DSF0638.jpg" alt="Wichita Mountains National Wildlife Refuge 4" loading="lazy"/>
+        <img src="../img/jpg/wichita-mountains-national-wildlife-refuge/_DSF0638.jpg" alt="Wichita Mountains National Wildlife Refuge 4" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Wichita Mountains National Wildlife Refuge 4 &middot; 2026-01-07</span>
         <span class="caption-filename">_DSF0638.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0639.RAF" data-xmp="../img/RAW/_DSF0639.xmp">
       <a href="../img/full/wichita-mountains-national-wildlife-refuge/_DSF0639.tif" download title="Wichita Mountains National Wildlife Refuge 5">
-        <img src="../thumbs/wichita-mountains-national-wildlife-refuge/_DSF0639.jpg" data-full="../img/jpg/wichita-mountains-national-wildlife-refuge/_DSF0639.jpg" alt="Wichita Mountains National Wildlife Refuge 5" loading="lazy"/>
+        <img src="../img/jpg/wichita-mountains-national-wildlife-refuge/_DSF0639.jpg" alt="Wichita Mountains National Wildlife Refuge 5" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Wichita Mountains National Wildlife Refuge 5 &middot; 2026-01-07</span>
         <span class="caption-filename">_DSF0639.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0652.RAF" data-xmp="../img/RAW/_DSF0652.xmp">
       <a href="../img/full/wichita-mountains-national-wildlife-refuge/_DSF0652.tif" download title="Wichita Mountains National Wildlife Refuge 6">
-        <img src="../thumbs/wichita-mountains-national-wildlife-refuge/_DSF0652.jpg" data-full="../img/jpg/wichita-mountains-national-wildlife-refuge/_DSF0652.jpg" alt="Wichita Mountains National Wildlife Refuge 6" loading="lazy"/>
+        <img src="../img/jpg/wichita-mountains-national-wildlife-refuge/_DSF0652.jpg" alt="Wichita Mountains National Wildlife Refuge 6" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Wichita Mountains National Wildlife Refuge 6 &middot; 2026-01-07</span>
         <span class="caption-filename">_DSF0652.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0653.RAF" data-xmp="../img/RAW/_DSF0653.xmp">
       <a href="../img/full/wichita-mountains-national-wildlife-refuge/_DSF0653.tif" download title="Wichita Mountains National Wildlife Refuge 7">
-        <img src="../thumbs/wichita-mountains-national-wildlife-refuge/_DSF0653.jpg" data-full="../img/jpg/wichita-mountains-national-wildlife-refuge/_DSF0653.jpg" alt="Wichita Mountains National Wildlife Refuge 7" loading="lazy"/>
+        <img src="../img/jpg/wichita-mountains-national-wildlife-refuge/_DSF0653.jpg" alt="Wichita Mountains National Wildlife Refuge 7" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Wichita Mountains National Wildlife Refuge 7 &middot; 2026-01-07</span>
         <span class="caption-filename">_DSF0653.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0655.RAF" data-xmp="../img/RAW/_DSF0655.xmp">
       <a href="../img/full/wichita-mountains-national-wildlife-refuge/_DSF0655.tif" download title="Wichita Mountains National Wildlife Refuge 8">
-        <img src="../thumbs/wichita-mountains-national-wildlife-refuge/_DSF0655.jpg" data-full="../img/jpg/wichita-mountains-national-wildlife-refuge/_DSF0655.jpg" alt="Wichita Mountains National Wildlife Refuge 8" loading="lazy"/>
+        <img src="../img/jpg/wichita-mountains-national-wildlife-refuge/_DSF0655.jpg" alt="Wichita Mountains National Wildlife Refuge 8" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Wichita Mountains National Wildlife Refuge 8 &middot; 2026-01-07</span>
         <span class="caption-filename">_DSF0655.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0656.RAF" data-xmp="../img/RAW/_DSF0656.xmp">
       <a href="../img/full/wichita-mountains-national-wildlife-refuge/_DSF0656.tif" download title="Wichita Mountains National Wildlife Refuge 9">
-        <img src="../thumbs/wichita-mountains-national-wildlife-refuge/_DSF0656.jpg" data-full="../img/jpg/wichita-mountains-national-wildlife-refuge/_DSF0656.jpg" alt="Wichita Mountains National Wildlife Refuge 9" loading="lazy"/>
+        <img src="../img/jpg/wichita-mountains-national-wildlife-refuge/_DSF0656.jpg" alt="Wichita Mountains National Wildlife Refuge 9" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Wichita Mountains National Wildlife Refuge 9 &middot; 2026-01-07</span>
         <span class="caption-filename">_DSF0656.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0664.RAF" data-xmp="../img/RAW/_DSF0664.xmp">
       <a href="../img/full/wichita-mountains-national-wildlife-refuge/_DSF0664.tif" download title="Wichita Mountains National Wildlife Refuge 10">
-        <img src="../thumbs/wichita-mountains-national-wildlife-refuge/_DSF0664.jpg" data-full="../img/jpg/wichita-mountains-national-wildlife-refuge/_DSF0664.jpg" alt="Wichita Mountains National Wildlife Refuge 10" loading="lazy"/>
+        <img src="../img/jpg/wichita-mountains-national-wildlife-refuge/_DSF0664.jpg" alt="Wichita Mountains National Wildlife Refuge 10" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Wichita Mountains National Wildlife Refuge 10 &middot; 2026-01-07</span>
         <span class="caption-filename">_DSF0664.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0666.RAF" data-xmp="../img/RAW/_DSF0666.xmp">
       <a href="../img/full/wichita-mountains-national-wildlife-refuge/_DSF0666.tif" download title="Wichita Mountains National Wildlife Refuge 11">
-        <img src="../thumbs/wichita-mountains-national-wildlife-refuge/_DSF0666.jpg" data-full="../img/jpg/wichita-mountains-national-wildlife-refuge/_DSF0666.jpg" alt="Wichita Mountains National Wildlife Refuge 11" loading="lazy"/>
+        <img src="../img/jpg/wichita-mountains-national-wildlife-refuge/_DSF0666.jpg" alt="Wichita Mountains National Wildlife Refuge 11" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Wichita Mountains National Wildlife Refuge 11 &middot; 2026-01-07</span>
         <span class="caption-filename">_DSF0666.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0668.RAF" data-xmp="../img/RAW/_DSF0668.xmp">
       <a href="../img/full/wichita-mountains-national-wildlife-refuge/_DSF0668.tif" download title="Wichita Mountains National Wildlife Refuge 12">
-        <img src="../thumbs/wichita-mountains-national-wildlife-refuge/_DSF0668.jpg" data-full="../img/jpg/wichita-mountains-national-wildlife-refuge/_DSF0668.jpg" alt="Wichita Mountains National Wildlife Refuge 12" loading="lazy"/>
+        <img src="../img/jpg/wichita-mountains-national-wildlife-refuge/_DSF0668.jpg" alt="Wichita Mountains National Wildlife Refuge 12" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Wichita Mountains National Wildlife Refuge 12 &middot; 2026-01-07</span>
         <span class="caption-filename">_DSF0668.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0669.RAF" data-xmp="../img/RAW/_DSF0669.xmp">
       <a href="../img/full/wichita-mountains-national-wildlife-refuge/_DSF0669.tif" download title="Wichita Mountains National Wildlife Refuge 13">
-        <img src="../thumbs/wichita-mountains-national-wildlife-refuge/_DSF0669.jpg" data-full="../img/jpg/wichita-mountains-national-wildlife-refuge/_DSF0669.jpg" alt="Wichita Mountains National Wildlife Refuge 13" loading="lazy"/>
+        <img src="../img/jpg/wichita-mountains-national-wildlife-refuge/_DSF0669.jpg" alt="Wichita Mountains National Wildlife Refuge 13" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Wichita Mountains National Wildlife Refuge 13 &middot; 2026-01-07</span>
         <span class="caption-filename">_DSF0669.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0670.RAF" data-xmp="../img/RAW/_DSF0670.xmp">
       <a href="../img/full/wichita-mountains-national-wildlife-refuge/_DSF0670.tif" download title="Wichita Mountains National Wildlife Refuge 14">
-        <img src="../thumbs/wichita-mountains-national-wildlife-refuge/_DSF0670.jpg" data-full="../img/jpg/wichita-mountains-national-wildlife-refuge/_DSF0670.jpg" alt="Wichita Mountains National Wildlife Refuge 14" loading="lazy"/>
+        <img src="../img/jpg/wichita-mountains-national-wildlife-refuge/_DSF0670.jpg" alt="Wichita Mountains National Wildlife Refuge 14" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Wichita Mountains National Wildlife Refuge 14 &middot; 2026-01-07</span>
         <span class="caption-filename">_DSF0670.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF0673.RAF" data-xmp="../img/RAW/_DSF0673.xmp">
       <a href="../img/full/wichita-mountains-national-wildlife-refuge/_DSF0673.tif" download title="Wichita Mountains National Wildlife Refuge 15">
-        <img src="../thumbs/wichita-mountains-national-wildlife-refuge/_DSF0673.jpg" data-full="../img/jpg/wichita-mountains-national-wildlife-refuge/_DSF0673.jpg" alt="Wichita Mountains National Wildlife Refuge 15" loading="lazy"/>
+        <img src="../img/jpg/wichita-mountains-national-wildlife-refuge/_DSF0673.jpg" alt="Wichita Mountains National Wildlife Refuge 15" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Wichita Mountains National Wildlife Refuge 15 &middot; 2026-01-07</span>
         <span class="caption-filename">_DSF0673.jpg</span>
       </figcaption>
     </figure>
+    </div>
+    <div class="photo-foot">
+      <button class="plb-view-all">View all 15 images →</button>
+    </div>
   </div>
 </div>
 <nav class="site-nav">

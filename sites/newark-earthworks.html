@@ -142,24 +142,40 @@
   .geo-bar-wrap { position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }
   .geo-bar-fill { position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }
   .geo-prose { color: var(--fg); }
-  .photo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    align-content: start;
+  .photo-pane { min-width: 0; }
+  .photo-scroll {
+    display: flex; flex-direction: column; gap: 4px;
+    overflow-y: auto; min-height: 0; flex: 1;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.18) transparent;
   }
-  .ph { background: #1f1f1f; aspect-ratio: 1 / 1; overflow: hidden; }
-  .ph a { display: block; width: 100%; height: 100%; }
+  .photo-scroll::-webkit-scrollbar { width: 6px; }
+  .photo-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); }
+  .ph { background: #1f1f1f; flex-shrink: 0; }
+  .ph a { display: block; width: 100%; }
   .ph img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
+    width: 100%; height: auto; display: block;
     filter: grayscale(100%);
     opacity: 0.92;
     transition: opacity 0.15s;
   }
   .ph:hover img { opacity: 1; }
   .ph figcaption { display: none; }
+  .photo-foot {
+    flex-shrink: 0;
+    padding-top: 12px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+  }
+  .plb-view-all {
+    font-family: inherit; font-size: 10px; font-weight: 400;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); background: none; border: none;
+    cursor: pointer; padding: 0;
+  }
+  .plb-view-all:hover { color: var(--fg); }
   .obs-header {
-    grid-column: 1 / -1;
     padding: 10px 0 4px 0;
   }
   .obs-header:first-child { padding-top: 0; }
@@ -192,14 +208,14 @@
   }
   @media (min-width: 720px) {
     .site-layout { grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
-    .site-record { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; }
+    .photo-pane { position: sticky; top: 24px; height: calc(100vh - 48px); display: flex; flex-direction: column; }
   }
   @media (min-width: 1148px) {
     .site-layout { grid-template-columns: 7fr 15fr; }
-    .photo-grid { grid-template-columns: 1fr 1fr 1fr; }
   }
   @media (max-width: 719px) {
-    .photo-grid { order: -1; }
+    .photo-pane { order: -1; display: flex; flex-direction: column; }
+    .photo-scroll { max-height: 70vh; }
   }
 </style>
 </head>
@@ -221,88 +237,93 @@
 <div class="site-layout">
   <aside class="site-record">
 <div class="rec-section"><div class="rec-label">Geology</div><div class="geo-era-row"><div class="geo-swatch" style="background:#4aaa78"></div><span class="geo-era-name">Devonian</span><span class="geo-mya">385 Mya</span></div><div class="geo-bar-wrap"><div class="geo-bar-fill" style="width:77%;background:#4aaa78;opacity:0.55"></div></div><p class="geo-prose">~385 Mya Devonian limestone (Columbus Limestone, Delaware Limestone) and shale (Olentangy Shale, Ohio Shale); earthworks constructed on Pleistocene glacial outwash terraces above the Licking River system.</p></div><div class="rec-section"><div class="rec-label">Epoch</div><p>Middle to Late Devonian.</p></div><div class="rec-section"><div class="rec-label">Native lands</div><p>Hopewell culture (c. 100 BC-500 AD) constructed the Newark Earthworks complex; the original complex covered more than 4 square miles and included interconnected geometric enclosures, parallel-walled roads, and ceremonial plazas; the Hopewell Interaction Sphere distributed Newark flint and prestige goods from this site across North America from the Great Lakes to the Gulf Coast; Lenape (Delaware; Lenapehoking), Shawandasse Tula (Shawanwaki/Shawnee), Myaamia (Miami), Wyandot, Ottawa, and Ojibwe held the Ohio Valley in the historic period; Treaty of Greenville (August 3, 1795) extinguished Indigenous title to Licking County, displacing Delaware, Shawnee, Wyandot, Miami, and allied nations; Indian Removal Act (1830) forced remaining Delaware, Shawnee, Seneca, and Ottawa west of the Mississippi.</p></div><div class="rec-section"><div class="rec-label">Displacement &amp; Tenure</div><p>Treaty of Greenville (1795) extinguished Indigenous title to Licking County; lands entered private agricultural and commercial ownership in the early 19th century; Ohio Canal construction, urban development in Newark, and agricultural clearing destroyed more than 90% of the original complex by 1900; Ohio Historical Society acquired the Great Circle in 1933; Wright Earthworks fragment donated 1934; Moundbuilders Country Club held lease on the Octagon Earthworks from 1910, blocking public access; Ohio History Connection filed eminent domain action 2018; Ohio Supreme Court affirmed authority December 2022; settlement reached August 1, 2024; Octagon Earthworks opened to full public access January 1, 2025; inscribed UNESCO World Heritage Site (Hopewell Ceremonial Earthworks, list no. 1689, criteria i and iii, September 19, 2023).</p></div><div class="rec-section"><div class="rec-label">Shadow History</div><p>The original Newark Earthworks complex covered more than 4 square miles; 19th-century canal construction, railroad development, urban expansion, and agricultural clearing destroyed more than 90% of the complex, reducing it to three surviving fragments; in 1827, workers excavating an Ohio and Erie Canal lock destroyed a mound of the Cherry Valley Ellipse and found 14 human skeletons buried with large quantities of mica, one completely covered in mica sheets and described as carbonized; the remains were dispersed or lost during construction and never repatriated; the canal and Central Ohio Railroad construction (1852-1855) destroyed the entire Cherry Valley Ellipse, which originally contained 11 conical burial mounds and a large central mound, and the railroad bisected the pond north of the Great Circle and leveled eastern embankment structures; the Wright Earthworks, originally a geometrically precise square enclosure of approximately 20 acres, was almost entirely destroyed by canal construction, railroad grading, and Newark street and residential development before surviving fragments were donated to the Ohio Historical Society in 1934; Licking County Agricultural Society purchased the Great Circle in 1853 and used it as county fairgrounds for 80 years; Bureau of American Ethnology director W.H. Holmes warned in 1892 that continued fairground use would cause practical demolition within a few generations; the warning was ignored for another 40 years; the Great Circle was converted to Idlewilde Park in 1897, with a Ferris wheel, roller coaster, casino, racetrack, and recreational facilities installed inside the earthwork walls; Idlewilde Park operated until 1924; Squier and Davis surveyed the full complex for the Smithsonian Institution in the 1840s and published their findings in Ancient Monuments of the Mississippi Valley (1848), documenting that the scale of destruction already underway was irreversible; Emerson Greenman excavated Eagle Mound at the Great Circle in 1928, recovering copper ornaments and mica fragments; in 1860, Licking County surveyor David Wyrick excavated burial mounds at Newark and produced the disputed Newark Holy Stones, inscribed stones bearing Hebrew text allegedly found in Hopewell context, which most scholars consider 19th-century fabrications but which generated decades of fraudulent claims about pre-Columbian Hebrew presence in Ohio.</p></div><div class="rec-section"><div class="rec-label">Ecology</div><p>Artificially maintained open grassland within earthwork enclosures, dominated by non-native turfgrass from former golf course management; Ohio History Connection implementing transition to native prairie species beginning 2025; pollen evidence indicates pre-contact oak-hickory climax forest on surrounding uplands; riparian corridors along Raccoon Creek support native floodplain woodland.</p></div><div class="rec-section"><div class="rec-label">Hydrology</div><p>Licking River drainage basin; Raccoon Creek (683 sq mi watershed) and tributaries flow adjacent to the earthwork complex; earthworks positioned on elevated glacial outwash terraces above the Raccoon Creek floodplain in Licking County; rapid urban development in northwestern Licking County has increased flood frequency and impervious surface runoff.</p></div><div class="rec-section"><div class="rec-label">Acreage</div><p>206</p></div><div class="rec-section"><div class="rec-label">GPS</div><p><a class="gps-link" href="https://maps.google.com/?q=40.0422,-82.4301" target="_blank" rel="noopener">40.0422° N, 82.4301° W</a></p></div>  </aside>
-  <div class="photo-grid">
-    <figure class="ph">
+  <div class="photo-pane">
+    <div class="photo-scroll">
+    <figure class="ph" data-raw="../img/RAW/_DSF2000.RAF" data-xmp="../img/RAW/_DSF2000.xmp">
       <a href="../img/full/newark-earthworks/_DSF2000.tif" download title="Newark Earthworks 1">
-        <img src="../thumbs/newark-earthworks/_DSF2000.jpg" data-full="../img/jpg/newark-earthworks/_DSF2000.jpg" alt="Newark Earthworks 1" loading="lazy"/>
+        <img src="../img/jpg/newark-earthworks/_DSF2000.jpg" alt="Newark Earthworks 1" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Newark Earthworks 1 &middot; 2026-05-13</span>
         <span class="caption-filename">_DSF2000.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2001.RAF" data-xmp="../img/RAW/_DSF2001.xmp">
       <a href="../img/full/newark-earthworks/_DSF2001.tif" download title="Newark Earthworks 2">
-        <img src="../thumbs/newark-earthworks/_DSF2001.jpg" data-full="../img/jpg/newark-earthworks/_DSF2001.jpg" alt="Newark Earthworks 2" loading="lazy"/>
+        <img src="../img/jpg/newark-earthworks/_DSF2001.jpg" alt="Newark Earthworks 2" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Newark Earthworks 2 &middot; 2026-05-13</span>
         <span class="caption-filename">_DSF2001.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2002.RAF" data-xmp="../img/RAW/_DSF2002.xmp">
       <a href="../img/full/newark-earthworks/_DSF2002.tif" download title="Newark Earthworks 3">
-        <img src="../thumbs/newark-earthworks/_DSF2002.jpg" data-full="../img/jpg/newark-earthworks/_DSF2002.jpg" alt="Newark Earthworks 3" loading="lazy"/>
+        <img src="../img/jpg/newark-earthworks/_DSF2002.jpg" alt="Newark Earthworks 3" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Newark Earthworks 3 &middot; 2026-05-13</span>
         <span class="caption-filename">_DSF2002.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2006.RAF" data-xmp="../img/RAW/_DSF2006.xmp">
       <a href="../img/full/newark-earthworks/_DSF2006.tif" download title="Newark Earthworks 4">
-        <img src="../thumbs/newark-earthworks/_DSF2006.jpg" data-full="../img/jpg/newark-earthworks/_DSF2006.jpg" alt="Newark Earthworks 4" loading="lazy"/>
+        <img src="../img/jpg/newark-earthworks/_DSF2006.jpg" alt="Newark Earthworks 4" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Newark Earthworks 4 &middot; 2026-05-13</span>
         <span class="caption-filename">_DSF2006.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2010.RAF" data-xmp="../img/RAW/_DSF2010.xmp">
       <a href="../img/full/newark-earthworks/_DSF2010.tif" download title="Newark Earthworks 5">
-        <img src="../thumbs/newark-earthworks/_DSF2010.jpg" data-full="../img/jpg/newark-earthworks/_DSF2010.jpg" alt="Newark Earthworks 5" loading="lazy"/>
+        <img src="../img/jpg/newark-earthworks/_DSF2010.jpg" alt="Newark Earthworks 5" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Newark Earthworks 5 &middot; 2026-05-13</span>
         <span class="caption-filename">_DSF2010.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2017.RAF" data-xmp="../img/RAW/_DSF2017.xmp">
       <a href="../img/full/newark-earthworks/_DSF2017.tif" download title="Newark Earthworks 6">
-        <img src="../thumbs/newark-earthworks/_DSF2017.jpg" data-full="../img/jpg/newark-earthworks/_DSF2017.jpg" alt="Newark Earthworks 6" loading="lazy"/>
+        <img src="../img/jpg/newark-earthworks/_DSF2017.jpg" alt="Newark Earthworks 6" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Newark Earthworks 6 &middot; 2026-05-13</span>
         <span class="caption-filename">_DSF2017.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2018.RAF" data-xmp="../img/RAW/_DSF2018.xmp">
       <a href="../img/full/newark-earthworks/_DSF2018.tif" download title="Newark Earthworks 7">
-        <img src="../thumbs/newark-earthworks/_DSF2018.jpg" data-full="../img/jpg/newark-earthworks/_DSF2018.jpg" alt="Newark Earthworks 7" loading="lazy"/>
+        <img src="../img/jpg/newark-earthworks/_DSF2018.jpg" alt="Newark Earthworks 7" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Newark Earthworks 7 &middot; 2026-05-13</span>
         <span class="caption-filename">_DSF2018.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2026.RAF" data-xmp="../img/RAW/_DSF2026.xmp">
       <a href="../img/full/newark-earthworks/_DSF2026.tif" download title="Newark Earthworks 8">
-        <img src="../thumbs/newark-earthworks/_DSF2026.jpg" data-full="../img/jpg/newark-earthworks/_DSF2026.jpg" alt="Newark Earthworks 8" loading="lazy"/>
+        <img src="../img/jpg/newark-earthworks/_DSF2026.jpg" alt="Newark Earthworks 8" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Newark Earthworks 8 &middot; 2026-05-13</span>
         <span class="caption-filename">_DSF2026.jpg</span>
       </figcaption>
     </figure>
-    <figure class="ph">
+    <figure class="ph" data-raw="../img/RAW/_DSF2031.RAF" data-xmp="../img/RAW/_DSF2031.xmp">
       <a href="../img/full/newark-earthworks/_DSF2031.tif" download title="Newark Earthworks 9">
-        <img src="../thumbs/newark-earthworks/_DSF2031.jpg" data-full="../img/jpg/newark-earthworks/_DSF2031.jpg" alt="Newark Earthworks 9" loading="lazy"/>
+        <img src="../img/jpg/newark-earthworks/_DSF2031.jpg" alt="Newark Earthworks 9" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">Newark Earthworks 9 &middot; 2026-05-13</span>
         <span class="caption-filename">_DSF2031.jpg</span>
       </figcaption>
     </figure>
+    </div>
+    <div class="photo-foot">
+      <button class="plb-view-all">View all 9 images →</button>
+    </div>
   </div>
 </div>
 <nav class="site-nav">
