@@ -1009,6 +1009,9 @@ def make_sites_index_page(all_sites, meta):
                 'd': img.get('date', '') or '',
                 'thumb': thumb_path if os.path.exists(thumb_path) else '',
                 'large': large_path if os.path.exists(large_path) else '',
+                't': img['tif'],
+                'r': img['raw'] or '',
+                'x': img['xmp'] or '',
             })
         if entries:
             photos_dict[slug] = entries
@@ -1171,8 +1174,9 @@ html, body {{ height: 100%; font-family: 'Inter', sans-serif; background: var(--
       <div id="lb-date"></div>
     </div>
     <div id="lb-actions">
-      <a id="lb-raw" class="lb-action" href="#" target="_blank" rel="noopener">RAW File</a>
-      <a id="lb-xml" class="lb-action" href="#" target="_blank" rel="noopener">XML</a>
+      <a id="lb-tif" class="lb-action" href="#" download>Download TIFF</a>
+      <a id="lb-raw" class="lb-action" href="#" download>RAW File</a>
+      <a id="lb-xml" class="lb-action" href="#" download>XML</a>
       <a id="lb-commons" class="lb-action" href="#" target="_blank" rel="noopener">Commons</a>
     </div>
   </div>
@@ -1423,8 +1427,15 @@ function showLbPhoto(idx) {{
   document.getElementById('lb-date').textContent     = p.d||'';
   const fe = p.f.replace(/ /g,'_');
   document.getElementById('lb-commons').href = 'https://commons.wikimedia.org/wiki/File:'+fe;
-  document.getElementById('lb-raw').href     = 'https://commons.wikimedia.org/wiki/Special:FilePath/'+fe;
-  document.getElementById('lb-xml').href     = 'https://commons.wikimedia.org/wiki/Special:Export/File:'+fe;
+  const lbTif = document.getElementById('lb-tif');
+  const lbRaw = document.getElementById('lb-raw');
+  const lbXml = document.getElementById('lb-xml');
+  lbTif.style.display = p.t ? '' : 'none';
+  if (p.t) lbTif.href = p.t;
+  lbRaw.style.display = p.r ? '' : 'none';
+  if (p.r) lbRaw.href = p.r;
+  lbXml.style.display = p.x ? '' : 'none';
+  if (p.x) lbXml.href = p.x;
   if (p.large) {{
     lbImg.src = p.large;
     lbImg.onload  = () => {{ lbSpinner.style.display='none'; lbImg.classList.add('loaded'); }};
