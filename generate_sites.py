@@ -326,10 +326,10 @@ FONT_LINKS = '''<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">'''
 
 SHARED_CSS = '''  :root {
-    --bg: #1a1a18;
-    --fg: #f2ede6;
-    --muted: #8a8478;
-    --border: rgba(242,237,230,0.16);
+    --bg: #161616;
+    --fg: #e8e8e8;
+    --muted: #8c8c8c;
+    --border: rgba(255,255,255,0.16);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -526,7 +526,7 @@ def make_site_page(site, all_sites):
     margin: 0;
   }}
   .site-images {{ display: flex; flex-direction: column; gap: 14px; }}
-  .site-figure {{ border: 1px solid var(--border); background: #22221f; }}
+  .site-figure {{ border: 1px solid var(--border); background: #1f1f1f; }}
   .site-figure img {{ width: 100%; height: auto; display: block; filter: grayscale(100%); }}
   .site-figure figcaption {{
     font-size: 10px;
@@ -742,7 +742,7 @@ def make_archive_page(all_sites):
     font-size: 13px;
     color: var(--muted);
     margin-bottom: 32px;
-    max-width: 520px;
+    max-width: 640px;
   }}
   .archive-location {{
     border-top: 1px solid var(--border);
@@ -762,7 +762,7 @@ def make_archive_page(all_sites):
     align-items: baseline;
     padding: 4px 0;
     font-size: 11px;
-    border-top: 1px solid rgba(242,237,230,0.07);
+    border-top: 1px solid rgba(255,255,255,0.07);
   }}
   .archive-caption {{ color: var(--fg); letter-spacing: 0.04em; }}
   .archive-filename {{
@@ -839,7 +839,7 @@ def make_about_page(all_sites):
 <style>
 {SHARED_CSS}
   .about-body {{
-    max-width: 620px;
+    max-width: 760px;
   }}
   .about-body h2 {{
     font-size: 11px;
@@ -983,7 +983,7 @@ def make_sites_index_page(all_sites, meta):
             nations_features.append({
                 'type': 'Feature',
                 'geometry': {'type': 'Point', 'coordinates': [lng, lat]},
-                'properties': {'slug': slug, 'nation': n, 'color': nation_colors.get(n, '#8a8478')},
+                'properties': {'slug': slug, 'nation': n, 'color': nation_colors.get(n, '#8c8c8c')},
             })
     nations_gj = json.dumps({'type': 'FeatureCollection', 'features': nations_features}, ensure_ascii=False, separators=(',', ':'))
 
@@ -1045,23 +1045,23 @@ def make_sites_index_page(all_sites, meta):
 <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
 <style>
 *, *::before, *::after {{ box-sizing: border-box; margin: 0; padding: 0; }}
-:root {{ --sand: #f2ede6; --ink: #1a1a18; --moss: #4a5e3a; --stone: #8a8478; --panel-w: 440px; }}
+:root {{ --sand: #e8e8e8; --ink: #161616; --moss: #444444; --stone: #8c8c8c; --panel-w: 440px; }}
 html, body {{ height: 100%; font-family: 'Inter', sans-serif; background: var(--ink); }}
 #map {{ position: fixed; inset: 0; }}
 #wordmark {{ position: fixed; top: 28px; left: 32px; z-index: 10; pointer-events: none; }}
 #wordmark h1 {{ font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sand); opacity: 0.85; line-height: 1; }}
 #topnav {{ position: fixed; top: 28px; right: 32px; z-index: 10; display: flex; gap: 18px; align-items: baseline; }}
-#topnav a {{ color: rgba(242,237,230,0.55); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 300; text-decoration: none; transition: color 0.15s; }}
+#topnav a {{ color: rgba(255,255,255,0.55); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 300; text-decoration: none; transition: color 0.15s; }}
 #topnav a:hover {{ color: var(--sand); }}
-#site-count {{ color: rgba(242,237,230,0.3); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 300; }}
+#site-count {{ color: rgba(255,255,255,0.3); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 300; }}
 #layers {{ position: fixed; bottom: 32px; left: 32px; z-index: 10; display: flex; flex-direction: column; gap: 6px; }}
-.layer-btn {{ background: rgba(26,26,24,0.72); border: 1px solid rgba(242,237,230,0.2); color: var(--sand); font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 12px; cursor: pointer; backdrop-filter: blur(8px); transition: border-color 0.2s; text-align: left; }}
-.layer-btn:hover {{ border-color: rgba(242,237,230,0.5); }}
-.layer-btn.active {{ color: #c8ddb8; border-color: #c8ddb8; background: rgba(26,26,24,0.9); }}
-#legend {{ position: fixed; bottom: 32px; right: 32px; z-index: 10; background: rgba(26,26,24,0.85); backdrop-filter: blur(8px); border: 1px solid rgba(242,237,230,0.15); padding: 14px 16px; min-width: 200px; display: none; }}
+.layer-btn {{ background: rgba(18,18,18,0.72); border: 1px solid rgba(255,255,255,0.2); color: var(--sand); font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 12px; cursor: pointer; backdrop-filter: blur(8px); transition: border-color 0.2s; text-align: left; }}
+.layer-btn:hover {{ border-color: rgba(255,255,255,0.5); }}
+.layer-btn.active {{ color: #ffffff; border-color: #ffffff; background: rgba(18,18,18,0.9); }}
+#legend {{ position: fixed; bottom: 32px; right: 32px; z-index: 10; background: rgba(18,18,18,0.85); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.15); padding: 14px 16px; min-width: 200px; display: none; }}
 #legend.visible {{ display: block; }}
-#legend-title {{ font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(242,237,230,0.45); margin-bottom: 10px; }}
-.legend-item {{ display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-size: 11px; font-weight: 300; color: rgba(242,237,230,0.75); }}
+#legend-title {{ font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 10px; }}
+.legend-item {{ display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-size: 11px; font-weight: 300; color: rgba(255,255,255,0.75); }}
 .legend-dot {{ width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }}
 #panel {{ position: fixed; top: 0; right: 0; width: var(--panel-w); height: 100%; background: var(--sand); z-index: 20; transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.16,1,0.3,1); overflow-y: auto; overflow-x: hidden; }}
 #panel.open {{ transform: translateX(0); }}
@@ -1070,49 +1070,49 @@ html, body {{ height: 100%; font-family: 'Inter', sans-serif; background: var(--
 #panel-close button:hover {{ color: var(--ink); }}
 #panel-body {{ padding: 8px 32px 48px; }}
 .panel-site-name {{ font-family: 'Inter', sans-serif; font-size: 22px; font-weight: 300; letter-spacing: -0.01em; color: var(--ink); line-height: 1.2; margin-bottom: 4px; }}
-.panel-site-name a {{ color: inherit; text-decoration: none; border-bottom: 1px solid rgba(26,26,24,0.25); }}
+.panel-site-name a {{ color: inherit; text-decoration: none; border-bottom: 1px solid rgba(18,18,18,0.25); }}
 .panel-site-name a:hover {{ border-bottom-color: var(--ink); }}
 .panel-page-link {{ font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; margin: 14px 0 0; text-align: right; }}
 .panel-page-link a {{ color: var(--moss); text-decoration: none; border-bottom: 1px solid var(--moss); }}
 .panel-state {{ font-size: 11px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); margin-bottom: 20px; }}
 .photo-grid {{ display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 180px; gap: 3px; margin-bottom: 6px; }}
-.photo-thumb {{ background: #ccc8c0; cursor: pointer; overflow: hidden; }}
+.photo-thumb {{ background: #c8c8c8; cursor: pointer; overflow: hidden; }}
 .photo-thumb img {{ width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0; transition: opacity 0.25s; }}
 .photo-thumb img.loaded {{ opacity: 1; }}
 .photo-thumb:hover img {{ opacity: 0.75; }}
 .photo-grid-more {{ font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--stone); margin-bottom: 20px; text-align: right; }}
 .photo-grid-more a {{ color: var(--moss); text-decoration: none; border-bottom: 1px solid var(--moss); }}
-.panel-section {{ margin-bottom: 20px; border-top: 1px solid rgba(26,26,24,0.12); padding-top: 16px; }}
+.panel-section {{ margin-bottom: 20px; border-top: 1px solid rgba(18,18,18,0.12); padding-top: 16px; }}
 .panel-section-label {{ font-size: 10px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--stone); margin-bottom: 8px; }}
-.panel-section p {{ font-size: 13.5px; font-weight: 300; line-height: 1.7; color: #2e2e2a; }}
-.geo-block {{ margin-bottom: 20px; border-top: 1px solid rgba(26,26,24,0.12); padding-top: 16px; }}
+.panel-section p {{ font-size: 13.5px; font-weight: 300; line-height: 1.7; color: #2a2a2a; }}
+.geo-block {{ margin-bottom: 20px; border-top: 1px solid rgba(18,18,18,0.12); padding-top: 16px; }}
 .geo-label {{ font-size: 10px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--stone); margin-bottom: 10px; }}
 .geo-era-row {{ display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }}
 .geo-swatch {{ width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }}
 .geo-era-name {{ font-size: 14px; font-weight: 300; color: var(--ink); }}
 .geo-mya {{ font-size: 11px; font-weight: 300; color: var(--stone); margin-left: auto; letter-spacing: 0.04em; }}
-.geo-bar-wrap {{ position: relative; height: 3px; background: rgba(26,26,24,0.08); margin-bottom: 8px; border-radius: 2px; }}
+.geo-bar-wrap {{ position: relative; height: 3px; background: rgba(18,18,18,0.08); margin-bottom: 8px; border-radius: 2px; }}
 .geo-bar-fill {{ position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }}
 .geo-prose {{ font-size: 12px; font-weight: 300; line-height: 1.6; color: var(--stone); }}
-#lightbox {{ position: fixed; inset: 0; z-index: 100; background: rgba(14,14,12,0.97); display: none; flex-direction: column; }}
+#lightbox {{ position: fixed; inset: 0; z-index: 100; background: rgba(12,12,12,0.97); display: none; flex-direction: column; }}
 #lightbox.open {{ display: flex; }}
 #lb-img-wrap {{ flex: 1; display: flex; align-items: center; justify-content: center; min-height: 0; padding: 56px 72px 0; position: relative; }}
 #lb-img {{ max-width: 100%; max-height: 100%; object-fit: contain; display: block; opacity: 0; transition: opacity 0.2s; }}
 #lb-img.loaded {{ opacity: 1; }}
-#lb-spinner {{ position: absolute; color: rgba(242,237,230,0.3); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }}
-#lb-bar {{ display: flex; align-items: center; justify-content: space-between; padding: 14px 72px 20px; gap: 24px; flex-shrink: 0; border-top: 1px solid rgba(242,237,230,0.07); }}
+#lb-spinner {{ position: absolute; color: rgba(255,255,255,0.3); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }}
+#lb-bar {{ display: flex; align-items: center; justify-content: space-between; padding: 14px 72px 20px; gap: 24px; flex-shrink: 0; border-top: 1px solid rgba(255,255,255,0.07); }}
 #lb-meta {{ flex: 1; min-width: 0; }}
-#lb-filename {{ font-size: 12px; font-weight: 300; color: rgba(242,237,230,0.55); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 3px; }}
-#lb-date {{ font-size: 11px; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(242,237,230,0.3); }}
+#lb-filename {{ font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.55); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 3px; }}
+#lb-date {{ font-size: 11px; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); }}
 #lb-actions {{ display: flex; gap: 8px; flex-shrink: 0; }}
-.lb-action {{ font-size: 11px; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; padding: 5px 12px; border: 1px solid rgba(242,237,230,0.3); color: rgba(242,237,230,0.65); transition: border-color 0.15s, color 0.15s; white-space: nowrap; }}
-.lb-action:hover {{ border-color: rgba(242,237,230,0.75); color: var(--sand); }}
-#lb-close {{ position: fixed; top: 18px; right: 24px; z-index: 101; background: none; border: none; cursor: pointer; color: rgba(242,237,230,0.4); font-size: 22px; line-height: 1; transition: color 0.15s; }}
+.lb-action {{ font-size: 11px; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; padding: 5px 12px; border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.65); transition: border-color 0.15s, color 0.15s; white-space: nowrap; }}
+.lb-action:hover {{ border-color: rgba(255,255,255,0.75); color: var(--sand); }}
+#lb-close {{ position: fixed; top: 18px; right: 24px; z-index: 101; background: none; border: none; cursor: pointer; color: rgba(255,255,255,0.4); font-size: 22px; line-height: 1; transition: color 0.15s; }}
 #lb-close:hover {{ color: var(--sand); }}
-#lb-prev, #lb-next {{ position: fixed; top: 50%; transform: translateY(-50%); z-index: 101; background: none; border: none; cursor: pointer; color: rgba(242,237,230,0.3); font-size: 36px; padding: 16px; transition: color 0.15s; line-height: 1; }}
+#lb-prev, #lb-next {{ position: fixed; top: 50%; transform: translateY(-50%); z-index: 101; background: none; border: none; cursor: pointer; color: rgba(255,255,255,0.3); font-size: 36px; padding: 16px; transition: color 0.15s; line-height: 1; }}
 #lb-prev {{ left: 8px; }} #lb-next {{ right: 8px; }}
 #lb-prev:hover, #lb-next:hover {{ color: var(--sand); }}
-#lb-counter {{ position: fixed; top: 22px; left: 50%; transform: translateX(-50%); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(242,237,230,0.25); }}
+#lb-counter {{ position: fixed; top: 22px; left: 50%; transform: translateX(-50%); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.25); }}
 .maplibregl-popup-content {{ background: var(--ink); color: var(--sand); font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 300; padding: 8px 12px; border-radius: 0; box-shadow: none; }}
 .maplibregl-popup-tip {{ border-top-color: var(--ink) !important; }}
 .maplibregl-ctrl-attrib {{ font-size: 9px; opacity: 0.4; }}
@@ -1190,27 +1190,27 @@ const GEOLOGY_ERAS = [
   ["Cambrian","#a0522d"],["Ordovician","#c8a86e"],["Silurian","#7ecfc0"],["Devonian","#4aaa78"],
   ["Mississippian","#3d7fbf"],["Pennsylvanian","#5d5abf"],["Permian","#9b59b6"],
   ["Triassic","#e07050"],["Jurassic","#c8a840"],["Cretaceous","#d4b840"],
-  ["Paleogene","#d4704a"],["Neogene","#c85a8a"],["Quaternary","#8a8478"],["Pleistocene","#8a8478"],
+  ["Paleogene","#d4704a"],["Neogene","#c85a8a"],["Quaternary","#8c8c8c"],["Pleistocene","#8c8c8c"],
 ];
 const GEO_TIMESCALE = [
   ["Cambrian","#a0522d",541,485],["Ordovician","#c8a86e",485,444],["Silurian","#7ecfc0",444,419],
   ["Devonian","#4aaa78",419,359],["Mississippian","#3d7fbf",359,323],["Pennsylvanian","#5d5abf",323,299],
   ["Permian","#9b59b6",299,252],["Triassic","#e07050",252,201],["Jurassic","#c8a840",201,145],
   ["Cretaceous","#d4b840",145,66],["Paleogene","#d4704a",66,23],["Neogene","#c85a8a",23,2.6],
-  ["Quaternary","#8a8478",2.6,0],["Pleistocene","#8a8478",2.6,0.01],
+  ["Quaternary","#8c8c8c",2.6,0],["Pleistocene","#8c8c8c",2.6,0.01],
 ];
 const EARTH_AGE = 541;
 const GEOLOGY_LEGEND = [
   ["Ordovician \xb7 485–444 Mya","#c8a86e"],["Silurian \xb7 444–419 Mya","#7ecfc0"],["Devonian \xb7 419–359 Mya","#4aaa78"],
   ["Mississippian \xb7 359–323 Mya","#3d7fbf"],["Pennsylvanian \xb7 323–299 Mya","#5d5abf"],
   ["Permian \xb7 299–252 Mya","#9b59b6"],["Cretaceous \xb7 145–66 Mya","#d4b840"],
-  ["Paleogene \xb7 66–23 Mya","#d4704a"],["Quaternary \xb7 <2.6 Mya","#8a8478"],
+  ["Paleogene \xb7 66–23 Mya","#d4704a"],["Quaternary \xb7 <2.6 Mya","#8c8c8c"],
 ];
 const AGENCY_ENTRIES = [
   ["National Park Service","#5c9e6a"],["U.S. Fish & Wildlife Service","#4a8a9e"],
   ["State Park / Preserve","#9e7a4a"],["Nature Conservancy / Private","#7a5a8a"],["Other","#5a5a52"],
 ];
-const NATIVE_LEGEND = NATION_LIST.map(n => [n, NATION_COLORS[n]||'#8a8478']);
+const NATIVE_LEGEND = NATION_LIST.map(n => [n, NATION_COLORS[n]||'#8c8c8c']);
 const LAYER_LEGENDS = {{
   geology:{{ title:"Geologic Age",          entries:GEOLOGY_LEGEND }},
   agency: {{ title:"Managing Agency",        entries:AGENCY_ENTRIES }},
@@ -1234,9 +1234,9 @@ let activeLayer = null;
 function dotColor(p) {{
   if (activeLayer==='geology') return geologyColor(p.geology);
   if (activeLayer==='agency')  return agencyColor(p.conservation_status);
-  if (activeLayer==='native')  return p.primary_nation ? (NATION_COLORS[p.primary_nation]||'#8a8478') : '#3a3a38';
+  if (activeLayer==='native')  return p.primary_nation ? (NATION_COLORS[p.primary_nation]||'#8c8c8c') : '#3a3a38';
   if (activeLayer==='shadow')  {{ const l=(p.shadow_history||'').length; return l>800?'#c85a2a':l>400?'#c8904a':'#8a6a3a'; }}
-  return '#f2ede6';
+  return '#e8e8e8';
 }}
 function buildDotFeatures() {{
   return {{ ...SITES, features: SITES.features.map(f => ({{...f, properties:{{...f.properties, _color:dotColor(f.properties)}}}}) ) }};
@@ -1254,12 +1254,12 @@ map.on('load', () => {{
     layout:{{ visibility:'none' }},
     paint:{{ 'circle-radius':['interpolate',['linear'],['zoom'],3,4.5,10,8],
             'circle-color':['get','color'], 'circle-opacity':0.85,
-            'circle-stroke-color':'rgba(242,237,230,0.2)','circle-stroke-width':1 }} }});
+            'circle-stroke-color':'rgba(255,255,255,0.2)','circle-stroke-width':1 }} }});
   map.addLayer({{ id:'sites-hit', type:'circle', source:'sites', paint:{{ 'circle-radius':16,'circle-opacity':0,'circle-stroke-width':0 }} }});
   map.addLayer({{ id:'sites-dot', type:'circle', source:'sites',
     paint:{{ 'circle-radius':['interpolate',['linear'],['zoom'],3,4.5,10,8],
             'circle-color':['get','_color'],'circle-opacity':0.88,
-            'circle-stroke-color':'rgba(242,237,230,0.2)','circle-stroke-width':1 }} }});
+            'circle-stroke-color':'rgba(255,255,255,0.2)','circle-stroke-width':1 }} }});
   const popup = new maplibregl.Popup({{closeButton:false,closeOnClick:false,offset:12}});
   let panelOpen = false;
   map.on('mouseenter','sites-hit', e => {{
