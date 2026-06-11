@@ -1,9 +1,9 @@
-Date generated: April 22, 2026
-Total sites: 29
-Total images: 243
-States represented: 8
-State list: IN, KY, MO, OH, OK, TN, TX, WV
-Total acreage represented: 415,952
-Managing agencies represented: 13
+Date generated: June 10, 2026
+Total sites: 57
+Total images: 477
+States represented: 14
+State list: IA, IL, IN, KY, MI, MN, MO, OH, OK, SD, TN, TX, WV, WY
+Total acreage represented: 3,147,628
+Managing agencies represented: 24
 Total Wikimedia Commons uploads: 0
 Total Wikimedia Commons file views: check manually

@@ -1,5 +1,220 @@
 [
   {
+    "slug": "bighorn-national-forest",
+    "name": "Bighorn National Forest",
+    "state": "WY",
+    "geological_age": "~2.84 billion years (Archean) granite-gneiss core (Bighorn Batholith); ~485-444 Mya Ordovician Bighorn Dolomite",
+    "epoch": "Archean (basement) / Late Ordovician (Bighorn Dolomite)",
+    "native_lands": "Crow (Apsaalooke); Eastern Shoshone; Cheyenne (Tsitsistas); Arapaho (Hinono'eino); Lakota/Sioux; the Bighorn Mountains and Powder River Basin were contested hunting grounds, with Cheyenne ranging through Clear Creek Valley and the Powder/Bighorn/Tongue River country, Arapaho moving through the Bighorns alongside the Black Hills and Medicine Bow Range, and Lakota expanding west into Crow, Cheyenne, Arapaho, and Shoshone territory by the 1850s, dominating the Powder River Basin by mid-century; Treaty of Fort Laramie 1851 (Horse Creek Treaty) recognized roughly 38 million acres of Crow (Apsaalooke) territory including the Bighorns; Second Treaty of Fort Laramie 1868 reduced Crow recognized territory to about 8 million acres and established the Crow Indian Reservation in eastern Montana, while Crow leaders retained off-reservation hunting rights on ceded lands (affirmed in Herrera v. Wyoming, 2019); Eastern Shoshone settled on the Wind River Reservation per treaties of 1863 and 1868, later sharing it with the Northern Arapaho (1878); Medicine Wheel/Medicine Mountain, within the forest, remains a sacred ceremonial site for at least 16 tribal nations",
+    "displacement_tenure": "Treaty of Fort Laramie 1851 (Horse Creek Treaty) recognized approximately 38 million acres of Crow (Apsaalooke) territory encompassing the Bighorn Mountains; Second Treaty of Fort Laramie 1868 reduced Crow lands to roughly 8 million acres and established the Crow Indian Reservation south of the Yellowstone River in present-day Montana, removing the Bighorns from recognized tribal territory while Crow leaders retained hunting rights on ceded land; Eastern Shoshone ceded claims via treaties of 1863 and 1868 establishing the Wind River Reservation; Bighorn National Forest established February 22, 1897 from these ceded lands",
+    "shadow_history": "Medicine Wheel/Medicine Mountain National Historic Landmark, sacred to many Plains nations, became the focus of access disputes beginning in 1988 when the Forest Service proposed tourism-oriented changes; over two decades of negotiation among federal and state agencies and traditional elders representing 16 tribes produced a Historic Preservation Plan in September 1996 establishing a 23,000-acre area of consultation and restricting vehicle access to 1.5 miles on foot, with renewed disputes over road access in recent years",
+    "ecology": "Lodgepole pine, subalpine fir, and Engelmann spruce dominate higher elevations, transitioning to ponderosa pine, Douglas fir, and aspen at lower elevations; alpine tundra, meadows, and lakes occur above treeline; wildlife includes elk, mule deer, moose, pronghorn, mountain lion, and a remnant population of bighorn sheep, the forest's namesake, though numbers have declined sharply due to disease transmission from domestic sheep grazing.",
+    "hydrology": "Headwaters of the Tongue River, fed by snowpack and spring groundwater, draining north into the Yellowstone River system; the forest also forms the divide between the Bighorn River drainage to the west and the Powder River drainage to the east, with the Tongue, Bighorn, and Powder Rivers all ultimately tributary to the Yellowstone River.",
+    "acreage": "1,115,171",
+    "conservation_status": "National Forest (established February 22, 1897, one of the first national forests); Cloud Peak Wilderness (designated 1984, ~189,000 acres); Medicine Wheel/Medicine Mountain National Historic Landmark",
+    "endangered_species": "Canada lynx (Lynx canadensis, federally Threatened)",
+    "gps": "44.7878\u00b0 N, 107.5081\u00b0 W",
+    "lat": 44.7878,
+    "lng": -107.5081,
+    "inat_radius_km": 10,
+    "native_lands_api": [
+      "Aps\u00e1alooke (Crow)",
+      "Ts\u00e9ts\u0117h\u00e9st\u0227hese/Tsitsistas/S\u00f3'taeo'o (Cheyenne)",
+      "O\u010dh\u00e9thi \u0160ak\u00f3wi\u014b"
+    ]
+  },
+  {
+    "slug": "mount-rushmore-national-memorial",
+    "name": "Mount Rushmore National Memorial",
+    "state": "SD",
+    "geological_age": "~1,715 Mya Paleoproterozoic Harney Peak leucogranite",
+    "epoch": "Paleoproterozoic",
+    "native_lands": "Lakota (Thitunwan Oyate), specifically the Oceti Sakowin (Seven Council Fires): Oglala, Sicangu (Brule), Miniconjou, Hunkpapa, Sans Arc, Oohenunpa, and Sihasapa bands; Cheyenne (Tsitsistas); Arapaho (Hinono'eino); the Black Hills are He Sapa / Paha Sapa (heart of everything that is) in Lakota cosmology; the mountain carved as Mt. Rushmore was known as Tunkasila Sakpe Paha (Six Grandfathers) and was a sacred destination for vision quests; Treaty of Fort Laramie (1868) guaranteed the Great Sioux Reservation, including the Black Hills, for exclusive Sioux use; the U.S. coerced a defective agreement from roughly 10% of adult male Sioux (the Manypenny Agreement) and Congress unilaterally abrogated the 1868 treaty via the Act of February 28, 1877 (19 Stat. 254); in United States v. Sioux Nation of Indians (1980) the Supreme Court ruled the taking was an unconstitutional Fifth Amendment violation; the Lakota declined over $1 billion in compensation and continue to assert land rights",
+    "displacement_tenure": "Royce Cession 597: Treaty of Fort Laramie (April 29, 1868) established the Great Sioux Reservation, guaranteeing the Black Hills to the Oceti Sakowin in perpetuity, with valid cession requiring three-fourths adult male Sioux consent; the Manypenny Commission obtained signatures from approximately 10% of adult males in 1876; Congress implemented this defective agreement via the Act of February 28, 1877 (19 Stat. 254), abrogating the 1868 treaty and seizing the Black Hills without lawful cession; the U.S. Supreme Court ruled in United States v. Sioux Nation of Indians (1980) that the taking violated the Fifth Amendment; the Lakota have declined the monetary award and preserved their land claim",
+    "shadow_history": "Gutzon Borglum, commissioned as sculptor in 1927, had documented ties to the Ku Klux Klan through his earlier Stone Mountain, Georgia commission (begun 1915); he attended Klan rallies, served on Klan committees, and agreed to incorporate a KKK altar into the Stone Mountain design at the request of United Daughters of the Confederacy president Helen Plane; he corresponded with D.C. Stephenson, the Grand Dragon later convicted of rape and murder; biographers Howard and Audrey Karl Shaff documented that his public denials of Klan membership were \"for public consumption\"; Borglum's letters express alarm at the \"mongrel horde\" threatening \"Nordic\" racial purity; the carving of Tunkasila Sakpe Paha (Six Grandfathers), a sacred Lakota vision quest site, was carried out without tribal consent on land the Supreme Court later ruled was illegally taken; Civilian Conservation Corps workers from nearby camps contributed labor to the memorial from 1935 onward, hauling debris and erecting support structures",
+    "ecology": "Ponderosa pine (Pinus ponderosa) forest dominates, including one of the largest concentrations of old-growth ponderosa pine in the Black Hills; quaking aspen in drainages, Douglas fir on north-facing slopes; wildlife includes mule deer, mountain goat, yellow-bellied marmot, turkey vulture, and woodpeckers; bat species monitored in Starling Basin wetland complex.",
+    "hydrology": "Drains via Starling Basin, Lafferty Gulch, and East Boundary basins to Rapid Creek, a tributary of the Cheyenne River in the Missouri River basin; Starling Basin is the principal surface-water contributor and supports a wetland complex.",
+    "acreage": "1,278",
+    "conservation_status": "NPS National Memorial",
+    "endangered_species": "none documented",
+    "gps": "43.8791\u00b0 N, 103.4595\u00b0 W",
+    "lat": 43.8791,
+    "lng": -103.4595,
+    "inat_radius_km": 5,
+    "native_lands_api": [
+      "Ts\u00e9ts\u0117h\u00e9st\u0227hese/Tsitsistas/S\u00f3'taeo'o (Cheyenne)",
+      "O\u010dh\u00e9thi \u0160ak\u00f3wi\u014b"
+    ]
+  },
+  {
+    "slug": "black-hills-national-forest",
+    "name": "Black Hills National Forest",
+    "state": "SD",
+    "geological_age": "~1,715 Mya Paleoproterozoic Harney Peak granite at the core; ~2,500 Mya Precambrian schist and quartzite; encircled by Paleozoic limestone and Cretaceous shale",
+    "epoch": "Paleoproterozoic",
+    "native_lands": "Lakota (Thitunwan Oyate), the seven bands of the Oceti Sakowin: Oglala, Sicangu (Brule), Miniconjou, Hunkpapa, Sans Arc, Oohenunpa, and Sihasapa; Cheyenne (Tsitsistas/Suhtai); Arapaho (Hinono'eino); earlier presence of Crow, Kiowa, and Arikara; the Black Hills are Paha Sapa / He Sapa (heart of everything that is) to the Lakota, central to spirituality, ceremony, and subsistence; the Treaty of Fort Laramie (1868) guaranteed the Black Hills and all of present South Dakota west of the Missouri River for exclusive Sioux occupation; gold discovered during the 1874 Custer Expedition triggered an illegal invasion; the Act of February 28, 1877 stripped the Black Hills from the Sioux without the required three-fourths adult male consent; United States v. Sioux Nation of Indians (1980) ruled this an unconstitutional taking; the Sioux declined over $1 billion in compensation and continue to demand land return",
+    "displacement_tenure": "Treaty of Fort Laramie (April 29, 1868): Black Hills included in the Great Sioux Reservation, reserved for exclusive Sioux use; Act of February 28, 1877 (19 Stat. 254): Congress unilaterally seized approximately 7.3 million acres including the Black Hills, ratified by fewer than 10% of adult male Sioux in direct violation of the 1868 treaty's three-fourths consent requirement; United States v. Sioux Nation of Indians, 448 U.S. 371 (1980): Supreme Court held the 1877 Act constituted an unconstitutional Fifth Amendment taking; $105 million award declined by the Sioux",
+    "shadow_history": "Homestake Gold Mine (Lead, SD) operated 1876-2002; by 1971 EPA documented the mine discharging 312 lbs of cyanide, 240 lbs of zinc, and 721 lbs of copper daily into Gold Run Creek; an estimated 75 million tons of tailings containing 270,000 tons of arsenic were discharged into Whitewood Creek across an 18-mile stretch; EPA listed Whitewood Creek on the National Priorities List in 1983, delisted 1996 after residential soil remediation; the Gilt Edge Mine, a former open-pit gold and cyanide heap-leach operation east of Lead, was listed on the NPL in 2000 after the operator abandoned it, leaving three open pit lakes with 150 million gallons of acidic heavy-metal water generating approximately 95 million gallons of acid rock drainage annually, with EPA spending roughly $120 million on cleanup through 2024; approximately 170 abandoned uranium mines in Custer and Fall River counties, remnants of the 1950s-1970s federal nuclear weapons program, leach radioactive material into the Cheyenne River watershed with disproportionate impact on communities near Pine Ridge Reservation; Homestake Mining Company was the dominant timber consumer in the Hills from the late 19th century onward, with 30 sawmills operating by 1900 and sustained high-volume harvest significantly altering forest structure for over a century",
+    "ecology": "Ponderosa pine (Pinus ponderosa) forest covers lower to mid elevations; white spruce at higher elevations; aspen, bur oak, and paper birch in riparian zones; mixed-grass prairie at lower margins; wildlife includes elk, mule deer, pronghorn, bighorn sheep, mountain goat, black bear, cougar, bald eagle, peregrine falcon, and approximately 200 bird species; prairie dog towns within the forest support black-footed ferret reintroduction efforts.",
+    "hydrology": "The Black Hills form the headwaters divide between the Cheyenne River (southern and eastern drainages) and the Belle Fourche River (northern drainage), both Missouri River tributaries; principal streams include Spearfish Creek, Rapid Creek, French Creek, and Beaver Creek; 11 stocked reservoirs; the Madison and Minnelusa aquifers are recharged within the Black Hills and provide the primary regional water supply for western South Dakota; karst springs at limestone formation bases produce unusually stable base flow.",
+    "acreage": "1,253,308",
+    "conservation_status": "National Forest (proclaimed 1897 as Black Hills Forest Reserve); Black Elk Wilderness (13,541 acres, designated 1980); Norbeck Wildlife Preserve (46,096 acres, designated 1920)",
+    "endangered_species": "Black-footed ferret (Mustela nigripes, federally Endangered, reintroduced adjacent populations); Canada lynx (Lynx canadensis, federally Threatened)",
+    "gps": "44.4197\u00b0 N, 103.8072\u00b0 W",
+    "lat": 44.4197,
+    "lng": -103.8072,
+    "inat_radius_km": 10,
+    "native_lands_api": [
+      "Aps\u00e1alooke (Crow)",
+      "Ts\u00e9ts\u0117h\u00e9st\u0227hese/Tsitsistas/S\u00f3'taeo'o (Cheyenne)",
+      "O\u010dh\u00e9thi \u0160ak\u00f3wi\u014b"
+    ]
+  },
+  {
+    "slug": "badlands-national-park",
+    "name": "Badlands National Park",
+    "state": "SD",
+    "geological_age": "~34-23 Mya Oligocene-Eocene White River Group (Chadron, Brule, Sharps Formations)",
+    "epoch": "Late Eocene to Late Oligocene",
+    "native_lands": "Oceti Sakowin (Great Sioux Nation, Seven Council Fires), specifically Oglala Lakota (Oglala Lakhota, \"They Scatter Their Own\"); the Stronghold Unit (South Unit) lies entirely within the Pine Ridge Indian Reservation on land owned by the Oglala Sioux Tribe and co-managed with the National Park Service under formal agreement; Stronghold Table was the site of one of the last Ghost Dance ceremonies in 1890, shortly before the Wounded Knee Massacre",
+    "displacement_tenure": "Treaty of Fort Laramie (1868) guaranteed the Great Sioux Reservation, including the Badlands region, \"forever\" to the Oceti Sakowin; following the discovery of gold in the Black Hills, Congress unilaterally seized the Black Hills in the Act of February 28, 1877 (the \"Black Hills Act\"), a taking the U.S. Supreme Court ruled unconstitutional in United States v. Sioux Nation of Indians (1980), awarding compensation the Oceti Sakowin have refused, holding out for return of the land; the Sioux Act of 1889 broke the Great Sioux Reservation into five smaller reservations including Pine Ridge; in 1942 the U.S. Army Air Force seized 341,726 acres of the Pine Ridge Reservation by eminent domain for the Badlands Aerial Gunnery Range, condemning the homes of 150 to 250 Oglala Lakota families (paying as little as $8 per acre) and forcibly relocating roughly 125 families; in 1968 Congress returned 202,357 acres to the Oglala Sioux Tribe and designated 136,882 acres as Badlands National Monument, renamed Badlands National Park in 1978",
+    "shadow_history": "The Badlands Bombing Range and Pine Ridge Gunnery Range operated from 1942 to 1968 for air-to-air and air-to-ground gunnery practice, precision and demolition bombing exercises, a postwar Army National Guard range, and a Cold War Radar Bomb Scoring site; the range displaced 150 to 250 Oglala Lakota families from their homes and ranches under eminent domain; live and unexploded ordnance (UXO) contamination remains a persistent hazard across the former range, with a 2023 federal risk assessment still listing the site as \"medium risk\" and UXO regularly reported decades after military use ended; cleanup remains incomplete",
+    "ecology": "The largest protected expanse of mixed grass prairie in the United States, supporting more than 400 plant species; home to American bison, the U.S. national mammal, and a reintroduced population of black footed ferrets, among the world's most endangered mammals, with roughly 120 individuals in the park.",
+    "hydrology": "Lies within the White River drainage; the prairie grasslands south of the Badlands Wall are drained by tributaries of the White River, which shapes the park's badland erosion and supports migratory wildlife corridors across the Great Plains.",
+    "acreage": "242,756",
+    "conservation_status": "National Park (established as Badlands National Monument 1939, redesignated Badlands National Park 1978, NPS); includes the Badlands Wilderness Area, one of the first NPS wilderness designations (1976)",
+    "endangered_species": "Black-footed ferret (Mustela nigripes, federally Endangered, reintroduced population)",
+    "gps": "43.8554\u00b0 N, 102.3397\u00b0 W",
+    "lat": 43.8554,
+    "lng": -102.3397,
+    "inat_radius_km": 10,
+    "native_lands_api": [
+      "Ts\u00e9ts\u0117h\u00e9st\u0227hese/Tsitsistas/S\u00f3'taeo'o (Cheyenne)",
+      "Mnicoujou",
+      "O\u010dh\u00e9thi \u0160ak\u00f3wi\u014b"
+    ]
+  },
+  {
+    "slug": "pipestone-national-monument",
+    "name": "Pipestone National Monument",
+    "state": "MN",
+    "geological_age": "~1,700 Mya Paleoproterozoic Sioux quartzite (catlinite/pipestone argillite interbeds)",
+    "epoch": "Paleoproterozoic",
+    "native_lands": "Oceti Sakowin (Great Sioux Nation, Seven Council Fires); the quarries were treated as neutral ground where rival Plains nations peacefully extracted pipestone for ceremonial calumets across more than 3,000 years; Yankton Dakota (Ihanktunwan) maintained the traditional role of caretakers of the quarry; under the Yankton Treaty (1858), Article 8, Yankton chief Struck-by-the-Ree (Pan Tanka Sapa Wicasa) secured a one-mile-square reserved tract around the quarry for continued Dakota quarrying use even as surrounding land was ceded; the U.S. government attempted to seize the tract in 1899, and the Yankton Sioux Tribe won restitution at the U.S. Supreme Court in 1926; the reserved tract became the core of Pipestone National Monument, established 1937, today administered in consultation with 23 federally affiliated tribal nations who retain free quarry permit rights",
+    "displacement_tenure": "Cession 289: Treaty of Traverse des Sioux (1851); Sisseton and Wahpeton Dakota ceded roughly 21 million acres of southern Minnesota, though the cession map erroneously swept in Yankton territory around the Pipestone quarry that the Sisseton did not control. Yankton Treaty (1858), Article 8, separately reserved a one-mile-square tract around the quarry for Yankton Dakota quarrying despite the surrounding Yankton Sioux Reservation cession; the U.S. attempted to seize the reserved tract in 1899, overturned by the U.S. Supreme Court in 1926, which ordered compensation; the tract became Pipestone National Monument in 1937",
+    "shadow_history": "The Pipestone Indian Training School, a federal Bureau of Indian Affairs off reservation boarding school, operated on the monument grounds and adjacent reservation land from 1893 to roughly 1953, one of the last such schools to close; it forcibly enrolled Dakota, Anishinaabe (Ojibwe), Oneida, Pottawatomi (Bodewadmi), Arikara, and Sac and Fox (Meskwaki) children from across the Midwest; a campus cemetery holds the graves of children who died there, including a five year old non-English-speaking child who died ten days after arrival; the National Park Service is now partnering with the Pipestone Human Rights Commission and the American Indian Movement to research the cemetery and identify the children buried there",
+    "ecology": "Tallgrass prairie, including sections never plowed, supports more than 500 plant species, roughly 100 bird species, 25 mammal species, 26 fish species, and 45 macroinvertebrate species within the Coteau des Prairies.",
+    "hydrology": "Pipestone Creek runs through the monument and drops over Winnewissa Falls along the three-quarter-mile Circle Trail; the catlinite quarry pits sit immediately along the creek within outcrops of Sioux quartzite.",
+    "acreage": "301",
+    "conservation_status": "National Monument (established 1937, NPS); listed on the National Register of Historic Places; associated with the Pipestone Quarries National Historic Landmark designation",
+    "endangered_species": "Topeka shiner (Notropis topeka, federally Endangered) documented in Pipestone Creek; western prairie fringed orchid (Platanthera praeclara, federally Threatened)",
+    "gps": "44.0133\u00b0 N, 96.3250\u00b0 W",
+    "lat": 44.0133,
+    "lng": -96.325,
+    "inat_radius_km": 10,
+    "native_lands_api": [
+      "Yankton",
+      "O\u010dh\u00e9thi \u0160ak\u00f3wi\u014b"
+    ]
+  },
+  {
+    "slug": "palisades-state-park",
+    "name": "Palisades State Park",
+    "state": "SD",
+    "geological_age": "~1,700 Mya Paleoproterozoic Sioux quartzite",
+    "epoch": "Paleoproterozoic",
+    "native_lands": "Oceti Sakowin (Great Sioux Nation, Seven Council Fires); the Big Sioux River and Split Rock Creek corridor lay along the boundary between Sisseton-Wahpeton Dakota territory to the east and Yankton Dakota territory to the south and west; Sisseton and Wahpeton Dakota ceded lands extending west to the Big Sioux River under the Treaty of Traverse des Sioux (1851), while Yankton Dakota retained competing claims to portions of this country until the Yankton Treaty of 1858 established the Yankton Sioux Reservation and extinguished Yankton title to the ceded lands to its east",
+    "displacement_tenure": "Cession 289: Treaty of Traverse des Sioux (1851); Sisseton and Wahpeton Dakota ceded lands reaching west to the Big Sioux River, encompassing the Split Rock Creek country near present-day Garretson; Yankton Dakota's competing claims to portions of this region were not resolved until the Yankton Treaty (1858), which established the Yankton Sioux Reservation and formally extinguished Yankton title to lands ceded east of the reservation",
+    "shadow_history": "A quartzite quarry opened near Garretson in the early 1890s, drawing on the same Sioux quartzite formation sacred to Dakota quarrying traditions at Pipestone, and supplied stone for the town's banks, opera house, and stores; Split Rock Park, the predecessor to Palisades State Park, began as a Works Progress Administration project in the 1930s, when laborers built a dam, bathhouse, and bridge from quarried quartzite that remain in the park today; a brief 1886 silver rush drew nearly 300 mining claims before collapsing when the ore proved low grade",
+    "ecology": "Native tallgrass prairie and woodland border Split Rock Creek's quartzite gorge; a 2018-19 expansion added riparian habitat and woody plantings along the creek corridor.",
+    "hydrology": "Split Rock Creek, part of the Big Sioux River watershed, runs through a gorge cut into Sioux quartzite, forming palisades and shelf cliffs up to 50 feet tall.",
+    "acreage": "435",
+    "conservation_status": "South Dakota State Park (established 1970 as Split Rock Park; managed by South Dakota Game, Fish and Parks)",
+    "endangered_species": "none documented",
+    "gps": "43.6900\u00b0 N, 96.5140\u00b0 W",
+    "lat": 43.69,
+    "lng": -96.514,
+    "inat_radius_km": 5,
+    "native_lands_api": [
+      "Yankton",
+      "O\u010dh\u00e9thi \u0160ak\u00f3wi\u014b"
+    ]
+  },
+  {
+    "slug": "myre-big-island-state-park",
+    "name": "Myre-Big Island State Park",
+    "state": "MN",
+    "geological_age": "~375 Mya Middle to Late Devonian limestone and dolomite",
+    "epoch": "Middle to Late Devonian (Givetian-Frasnian)",
+    "native_lands": "Wahpekute (Wahpahkoota, \"Shooters Among the Leaves\"), the southernmost band of the Dakota (Oceti Sakowin), held the Albert Lea lakes region as core homeland, with at least 9,000 years of documented continuous Indigenous occupation; Sisseton (Sisitunwan, \"People of the Boggy Ground\") territory also extended into southern Minnesota; Lt. Albert Miller Lea led the first documented Euro-American military survey of Freeborn County in 1835, at that time still unambiguously Dakota land; Wahpekute and Mdewakanton bands ceded all of southern Minnesota including Freeborn County under the Treaty of Mendota (August 5, 1851) for $1,410,000 and relocation to a narrow Minnesota River reservation; following the U.S.-Dakota War (1862), Congress passed the Sioux Removal Act (March 3, 1863) banishing all Dakota bands from Minnesota; hundreds of Dakota women, children, and elders died in a winter internment camp on Pike Island before mass exile to Nebraska and Dakota Territory",
+    "displacement_tenure": "Treaty of Mendota (August 5, 1851): Mdewakanton and Wahpekute bands ceded approximately 24 million acres across southern Minnesota for $1,410,000; Freeborn County included in cession; reservation land along the Minnesota River assigned but never fully honored; U.S.-Dakota War (August-September 1862) followed by Congress voiding all Dakota treaties and passing the Sioux Removal Act (1863), expelling all Dakota from Minnesota; park land passed into federal public domain and opened to Euro-American settlement by 1855; Minnesota DNR established the park in 1947 as Big Island State Park, renamed Helmer Myre State Park, then renamed Myre-Big Island State Park in 1990",
+    "shadow_history": "Owen Johnson, a local amateur archaeologist, conducted extensive surface collection of Native American artifacts around Albert Lea Lake through the 1940s and donated the collection to the state park in 1972; it is held in the Owen Johnson Interpretive Center and available for research but not publicly displayed; Lloyd Wilford of the University of Minnesota conducted field-checking of archaeological site records around Albert Lea Lake in 1945; a formal archaeological reconnaissance survey conducted during park development documented thirteen excavation test units in the development area, indicating construction proceeded on Dakota-era occupation sites (Minnesota Legislative Reference Library document 811650)",
+    "ecology": "Oak savanna, wet lowlands, and glacially deposited esker ridges characterize the mainland; the 116-acre Big Island supports a rare remnant of old-growth sugar maple and basswood forest, one of the few remaining in southern Minnesota; Albert Lea Lake draws large concentrations of American white pelicans and waterfowl during spring and fall migration; prairie and wetland restoration via controlled burns is ongoing.",
+    "hydrology": "Albert Lea Lake (2,669 acres, mean depth 3.5 ft), a glacially formed moraine-dammed lake, borders the park on its eastern edge; the Shell Rock River originates at the Albert Lea Lake outlet and flows 113 miles south into Iowa, joining the Cedar River and then the Mississippi; total upland drainage to Albert Lea Lake is approximately 89,500 acres; the lake has experienced chronic phosphorus loading and algae blooms, with an electric fish barrier and water control structure installed to manage invasive carp.",
+    "acreage": "1,578",
+    "conservation_status": "Minnesota State Park (established 1947 as Big Island State Park; renamed Myre-Big Island State Park 1990)",
+    "endangered_species": "none confirmed; regal fritillary (Speyeria idalia) historically present in southern Minnesota oak savanna, likely extirpated from the state",
+    "gps": "43.6372\u00b0 N, 93.3089\u00b0 W",
+    "lat": 43.6372,
+    "lng": -93.3089,
+    "inat_radius_km": 5,
+    "native_lands_api": [
+      "Wahpeton",
+      "O\u010dh\u00e9thi \u0160ak\u00f3wi\u014b"
+    ]
+  },
+  {
+    "slug": "maquoketa-caves-state-park",
+    "name": "Maquoketa Caves State Park",
+    "state": "IA",
+    "geological_age": "~430 Mya Silurian dolomite (Hopkinton and Scotch Grove formations) overlying Late Ordovician Maquoketa Formation limestone and shale",
+    "epoch": "Early Silurian (Llandovery-Wenlock); Late Ordovician strata below",
+    "native_lands": "B\u00e1xoje (Ioway, \"grey snow people\") held the Mississippi River corridor and Iowa River drainage as core territory; Sauk (Ozaakiiwaki) and Meskwaki (Meshkwahkihaki, \"Red-Earths people\") moved into eastern Iowa during the 18th century after conflicts with French colonists and by 1800 claimed the eastern Iowa strip including the Maquoketa River valley; the river name derives from the Meskwaki Maquaw-Autaw, meaning \"Bear River\"; Ho-Chunk (Hochungra) were placed in the Neutral Ground of northeast Iowa after 1832 as a buffer between Sauk-Meskwaki and Dakota peoples; Woodland-period peoples used the caves as winter shelter, leaving pottery, stone tools, and projectile points; Sauk and Meskwaki ceded the eastern Iowa strip under the Black Hawk Purchase, Treaty with the Sauk and Foxes (September 21, 1832, Royce Cession 175), with Black Hawk held prisoner during signing; remaining Iowa claims were extinguished by treaties in 1836, 1837, and 1842, with final removal west of the Missouri River completed by 1846; a Meskwaki band purchased land and returned to Iowa in 1856, remaining at the Meskwaki Settlement in Tama County",
+    "displacement_tenure": "Royce Cession 175: Treaty with the Sauk and Foxes (September 21, 1832) -- the Black Hawk Purchase -- ceded a strip approximately 50 miles wide along the west bank of the Mississippi River from the Missouri state line north to the Upper Iowa River, encompassing the Maquoketa Caves area in Jackson County; cession covered roughly 6 million acres and was extracted as a punitive condition of Black Hawk's defeat, with Black Hawk held prisoner during signing; second Black Hawk Purchase (October 21, 1837) ceded 1.25 million acres immediately west; Treaty with the Sauk and Foxes (October 11, 1842) extinguished all remaining Sauk and Meskwaki Iowa claims; forced removal west of the Missouri River completed by 1846; Iowa Federation of Women's Clubs purchased approximately 17 acres including the main caves in 1921; the 111-acre core was dedicated as a state park in 1933",
+    "shadow_history": "Woodland-period pottery, stone tools, and projectile points recovered from the caves are held in collections, though no NAGPRA compliance documentation is available in public records for these materials",
+    "ecology": "Mixed hardwood forest of upland white oak, red oak, and sugar maple on ridgetops and slopes; shaded ravines and dolomite bluff faces support rare species including yellow lady's slipper orchid, leatherwood, and gromwell; the park sits in the Driftless Area, unglaciated during the Pleistocene, and contains more caves than any other Iowa state park.",
+    "hydrology": "Drains to the North Fork Maquoketa River, a tributary of the Maquoketa River (approximately 150 miles long), which flows southeast to the Mississippi; within the Maquoketa River HUC 07060006 watershed (~1,895 sq mi); classic karst hydrology with sinkholes, underground streams, and natural bridges formed by groundwater dissolution of Silurian dolomite over an estimated 500,000 years.",
+    "acreage": "370",
+    "conservation_status": "Iowa State Park (dedicated 1933; Iowa DNR); Maquoketa Caves State Park Historic District listed on the National Register of Historic Places (1991, NRHP #91001843)",
+    "endangered_species": "Indiana bat (Myotis sodalis, federally Endangered); northern long-eared bat (Myotis septentrionalis, federally Endangered); caves closed November 15 through April 1 annually as hibernacula; white-nose syndrome monitoring in place",
+    "gps": "42.1203\u00b0 N, 90.7678\u00b0 W",
+    "lat": 42.1203,
+    "lng": -90.7678,
+    "inat_radius_km": 5,
+    "native_lands_api": [
+      "o\u03b8aakiiwaki\u2027hina\u2027ki (Sauk) & Me\u0161kwahki\u00b7a\u0161a\u00b7hina (Fox)",
+      "Kiikaapoi (Kickapoo)",
+      "O\u010dh\u00e9thi \u0160ak\u00f3wi\u014b"
+    ]
+  },
+  {
+    "slug": "mississippi-palisades-state-park",
+    "name": "Mississippi Palisades State Park",
+    "state": "IL",
+    "geological_age": "~425 Mya Silurian dolomite",
+    "epoch": "Late Silurian (Wenlock-Ludlow)",
+    "native_lands": "Ho-Chunk (Hochungra) and Sauk (Ozaakiiwaki) held the Mississippi-Rock River corridor of northwestern Illinois; Meskwaki (Meshkwahkihaki) allied with the Sauk and claimed the eastern Iowa and western Illinois strip from roughly 1722; Woodland and Hopewell cultures documented in rock shelters and burial mounds throughout Carroll County; Apple River Fort, 15 miles from the park, was attacked by Black Hawk (Ma-ka-tai-me-she-kia-kiak) and approximately 200 warriors on June 24, 1832, during the Black Hawk War; Ho-Chunk ceded their northwestern Illinois lands by Treaty with the Winnebago (September 15, 1832, Fort Armstrong) and were removed to Iowa; Sauk and Meskwaki ceded all lands east of the Mississippi by Treaty with the Sauk and Foxes (September 21, 1832, Fort Armstrong) following their defeat in the Black Hawk War; both nations relocated to Iowa under federal removal policy",
+    "displacement_tenure": "Treaty with the Winnebago (September 15, 1832): Ho-Chunk ceded northwestern Illinois lands and were removed to Iowa; Treaty with the Sauk and Foxes (September 21, 1832): Sauk and Meskwaki ceded all Illinois lands east of the Mississippi following the Black Hawk War [Royce cession number for this Illinois east-bank cession unconfirmed; Cession 175 refers to the Iowa west-bank Black Hawk Purchase strip]; Carroll County lands entered the federal public domain in the mid-1830s under the Public Land Survey System; Illinois acquired park lands progressively through the 20th century",
+    "shadow_history": "The Savanna Army Depot Activity (EPA Superfund ID 0501174) operated 7 miles north of the park from 1917 to 1995, with its southern boundary at the Apple River, which flows through the park and into the Mississippi at the park's western edge; the depot's abandoned landfill on the Apple River bank is documented by EPA as leaching TNT residues, PCBs, lead (soil concentrations up to 110,000 mg/kg), DDT, TCE, and mustard agent demilitarization residues into the Apple River and adjacent Mississippi River; the site was listed on the National Priorities List in 1989 and closed under BRAC in 2000; 9,404 acres were transferred to become the Lost Mound Unit of the Upper Mississippi River National Wildlife and Fish Refuge, immediately adjacent to the park; contamination monitoring at multiple on-depot sites is required through 2066",
+    "ecology": "Oak-hickory forest dominates the uplands of this unglaciated Driftless Area landscape, transitioning to sugar maple and basswood in moist north-facing ravines; dolomite bluff faces and karst sinkholes support relict fern communities and calciphilic wildflowers including yellow lady's slipper orchid, Virginia bluebells, bloodroot, and wild ginger.",
+    "hydrology": "Located at the confluence of the Apple River and the Mississippi River in the Upper Mississippi watershed; ravines drain west to the Mississippi; karst topography produces sinkholes and vertical caves within the park.",
+    "acreage": "2,500",
+    "conservation_status": "Illinois State Park; National Natural Landmark (designated 1973)",
+    "endangered_species": "Higgins eye pearlymussel (Lampsilis higginsii, federally Endangered); Indiana bat (Myotis sodalis, federally Endangered) in Driftless Area range; northern long-eared bat (Myotis septentrionalis, federally Endangered) in range",
+    "gps": "42.1384\u00b0 N, 90.1590\u00b0 W",
+    "lat": 42.1384,
+    "lng": -90.159,
+    "inat_radius_km": 5,
+    "native_lands_api": [
+      "Peoria",
+      "o\u03b8aakiiwaki\u2027hina\u2027ki (Sauk) & Me\u0161kwahki\u00b7a\u0161a\u00b7hina (Fox)",
+      "Hooc\u0105k (Ho-Chunk)",
+      "Kiikaapoi (Kickapoo)",
+      "Myaamia",
+      "O\u010dh\u00e9thi \u0160ak\u00f3wi\u014b"
+    ]
+  },
+  {
     "slug": "mounds-state-park",
     "name": "Mounds State Park",
     "state": "IN",
@@ -810,7 +1025,7 @@
       "Karankawa",
       "Ishak (Atakapa)"
     ],
-    "shadow_history": "The park was purchased in 1972 from the Planet Oil and Mineral Corporation; active oil rigs remain visible from the park beach, and the site lies within Jefferson County, where the Spindletop salt dome discovery of 1901 launched the modern petroleum industry; the park's tidal marsh system is hydrologically connected to multiple federal hazardous waste sites in the Port Arthur-Beaumont corridor, including the Star Lake Canal Superfund site and contaminated wetlands from a former Chevron refinery; Hurricanes Rita (2005) and Ike (2008) drove refinery and tank farm spills totaling approximately 8 million gallons across the region before the park reopened in 2010."
+    "shadow_history": "The park was purchased in 1972 from the Planet Oil and Mineral Corporation; active oil rigs remain visible from the park beach, and the site lies within Jefferson County, where the Spindletop salt dome discovery of 1901 launched the modern petroleum industry; the park's tidal marsh system is hydrologically connected to multiple federal hazardous waste sites in the Port Arthur-Beaumont corridor, including the Star Lake Canal Superfund site and contaminated wetlands from a former Chevron refinery; Hurricane Rita (2005) closed the park for nearly five years -- Hurricane Ike (2008) struck during the closure, compounding damage -- with the park partially reopening April 2010 and reaching full restoration by June 2014; during the closure, regional refinery and tank farm spills totaling approximately 8 million gallons contaminated the coastal zone; the site was formally designated as experiencing natural resource damages from the 2010 Deepwater Horizon blowout, receiving NOAA Gulf Spill Restoration funding for coastal dune restoration as a documented injured resource."
   },
   {
     "slug": "caprock-canyon",
@@ -937,7 +1152,7 @@
       "Kiowa-Comanche-Apache (Oklahoma)",
       "Kiikaapoi (Kickapoo)"
     ],
-    "shadow_history": "Charon's Garden Wilderness Area was established by Public Law 91-504 (October 23, 1970), making it one of the first wilderness areas designated within a National Wildlife Refuge under the FWS system; a companion North Mountain Unit was designated simultaneously but carries heavily restricted public access. Rock climbing on the weathered granite tors drew visitors in the 1960s and 70s, and subsequent FWS restrictions on fixed-anchor placement produced a documented access conflict serious enough that climbers organized formally \u2014 resulting in the Wichita Mountains Climbers Coalition and an Advisory Bolting Committee with ongoing permit authority over the granite faces. A 2018 University of North Texas ethnographic thesis (Lukins, \u201cUntrammeled by Man?\u201d) examined how FWS wilderness management discourse at this specific unit shaped and constrained recreation, making Charon\u2019s Garden a case study in the tension between wilderness ideology and managed use within NWR wilderness."
+    "shadow_history": "The Wichita Mountains formed the core of Comancheria; after the Red River War of 1874-75, in which Colonel Ranald Mackenzie destroyed the last major Comanche winter camp at Palo Duro Canyon (September 28, 1874) and slaughtered approximately 1,400 horses, all surviving Comanche bands were confined to the Kiowa-Comanche-Apache Reservation surrounding Fort Sill; Quanah Parker's band, among the last holdouts, surrendered June 2, 1875; 74 men identified as war leaders were imprisoned at Fort Marion, Florida; the Jerome Agreement (negotiated 1892, ratified June 6, 1900) extracted approximately 2.5 million acres of KCA surplus lands over sustained Kiowa opposition; on July 4, 1901 -- the same day President McKinley proclaimed the KCA surplus land lottery open -- McKinley issued Proclamation 459 establishing the 57,120-acre Wichita Forest Reserve on those ceded lands, making the conservation of these mountains directly contingent on the dispossession of the Comanche and Kiowa. Charon's Garden Wilderness Area was established by Public Law 91-504 (October 23, 1970), making it one of the first wilderness areas designated within a National Wildlife Refuge under the FWS system; a companion North Mountain Unit was designated simultaneously but carries heavily restricted public access."
   },
   {
     "slug": "wichita-mountains-national-wildlife-refuge",
@@ -965,7 +1180,7 @@
       "Kiowa-Comanche-Apache (Oklahoma)",
       "Kiikaapoi (Kickapoo)"
     ],
-    "shadow_history": "Three CCC camps and multiple WPA projects operated at the refuge through the 1930s; by March 1938, CCC labor had constructed 46 concrete dams, 14 rubble masonry dams, 50 miles of improved roads, 46 miles of big-game fencing, and a hydroelectric system; the WPA built the Holy City of the Wichitas between 1935 and 1936 at a cost of $147,000; Roosevelt's April 1905 wolf hunt in the adjacent Big Pasture, which included Quanah Parker as a participant, is documented as a direct political catalyst for the congressional appropriation that created the preserve; the Quanah Artillery Range (15,850 acres) has been operational along the refuge's southern boundary since 1957, with a 3,800-acre strip between the refuge and Fort Sill closed to the public."
+    "shadow_history": "The refuge occupies land ceded by the Kiowa-Comanche-Apache under the Jerome Agreement (negotiated 1892, ratified June 6, 1900), which extracted approximately 2.5 million acres of KCA surplus lands over sustained Kiowa opposition; President McKinley established the Wichita Forest Reserve on those ceded lands by Proclamation 459 on July 4, 1901 -- the same day he opened the KCA land lottery; the refuge was reorganized under the FWS in 1936. Three CCC camps and multiple WPA projects operated at the refuge through the 1930s; by March 1938, CCC labor had constructed 46 concrete dams, 14 rubble masonry dams, 50 miles of improved roads, 46 miles of big-game fencing, and a hydroelectric system; the WPA built the Holy City of the Wichitas between 1935 and 1936 at a cost of $147,000; Roosevelt's April 1905 wolf hunt in the adjacent Big Pasture, which included Quanah Parker as a participant, is documented as a direct political catalyst for the congressional appropriation that created the preserve; the Quanah Artillery Range (15,850 acres) has been operational along the refuge's southern boundary since 1957, with a 3,800-acre strip between the refuge and Fort Sill closed to the public."
   },
   {
     "slug": "john-bryan-state-park",

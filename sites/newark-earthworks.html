@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TMR79M95R4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-TMR79M95R4');
+</script>
+<meta charset="utf-8"/>
+<title>Newark Earthworks — Public Lands Institute</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="index, follow" name="robots"/>
+<meta content="Newark Earthworks. Public Lands Institute photographic index. CC0 Public Domain." name="description"/>
+<meta property="og:title" content="Newark Earthworks — Public Lands Institute"/>
+<meta property="og:description" content="Newark Earthworks. An ongoing photographic index and open-access archive of American public lands. CC0 Public Domain."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://publiclandsinstitute.net/sites/newark-earthworks.html"/>
+<meta property="og:site_name" content="Public Lands Institute"/>
+<link href="https://publiclandsinstitute.net/sites/newark-earthworks.html" rel="canonical"/>
+<link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
+<style>
+  :root {
+    --bg: #f5f5f5;
+    --fg: #111111;
+    --muted: #777777;
+    --border: #dddddd;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+  }
+  a { color: inherit; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .page {
+    max-width: 1500px;
+    margin: 24px auto 56px auto;
+    padding: 0 18px;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 28px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .logotype {
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .header-nav {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+    display: flex;
+    gap: 16px;
+  }
+  .header-nav a.active { color: var(--fg); }
+  .divider { border-bottom: 1px solid var(--border); margin: 0 0 28px 0; }
+  footer {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  @media (min-width: 720px) {
+    .page { margin-top: 40px; padding: 0 24px; }
+    header { margin-bottom: 40px; }
+  }
+  .gps-link {
+    color: inherit;
+    text-decoration: none;
+    display: inline-block;
+    padding: 11px 0;
+    margin: -11px 0;
+  }
+  .gps-link:hover { text-decoration: underline; }
+  .site-header { margin-bottom: 24px; }
+  .site-header h1 {
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    margin-bottom: 2px;
+  }
+  .site-header .state {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+  }
+  .site-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .site-data {
+    display: grid;
+    grid-template-columns: 148px 1fr;
+    font-size: 11px;
+    line-height: 1.55;
+    border-top: 1px solid var(--border);
+    padding-top: 8px;
+    align-items: baseline;
+    align-content: start;
+  }
+  .site-data dt {
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 10px;
+    padding: 4px 0;
+  }
+  .site-data dd {
+    color: var(--fg);
+    padding: 4px 0 4px 12px;
+    margin: 0;
+  }
+  .site-images { display: flex; flex-direction: column; gap: 14px; }
+  .site-figure { border: 1px solid var(--border); background: #e1e1e1; }
+  .site-figure img { width: 100%; height: auto; display: block; filter: grayscale(100%); }
+  .site-figure figcaption {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    padding: 6px 8px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .caption-filename {
+    color: var(--muted);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    flex-shrink: 0;
+    font-family: monospace;
+  }
+  .obs-header {
+    border-top: 1px solid var(--border);
+    padding: 10px 0 4px 0;
+    margin-top: 6px;
+  }
+  .obs-header:first-child {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+  }
+  .obs-date {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    display: block;
+  }
+  .obs-notes {
+    font-size: 11px;
+    color: var(--fg);
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+  .pli-img-extra { display: none; }
+  .pli-view-all {
+    display: block; width: 100%; padding: 10px 0;
+    font-family: system-ui, sans-serif; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.16em;
+    color: var(--muted); background: transparent;
+    border: 1px solid var(--border); cursor: pointer;
+    margin-top: 4px;
+  }
+  .pli-view-all:hover { color: var(--fg); }
+  .site-nav {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  @media (min-width: 720px) {
+    .site-layout { grid-template-columns: 350px 1fr; gap: 48px; align-items: start; }
+    .site-data { position: sticky; top: 24px; }
+  }
+  @media (min-width: 1148px) {
+    .site-layout { grid-template-columns: 7fr 15fr; }
+  }
+  @media (max-width: 480px) {
+    .site-data { grid-template-columns: 110px 1fr; }
+    .site-images { order: -1; position: relative; }
+    .site-data { order: 0; }
+    .site-figure { display: none; }
+    .site-figure.carousel-active { display: block; }
+    .obs-header { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="logotype"><a href="../index.html">Public Lands Institute</a></div>
+  <nav class="header-nav">
+    <a href="../sites.html">Sites</a>
+    <a href="../archive.html">Archive</a>
+  </nav>
+</header>
+<div class="divider"></div>
+<div class="site-header">
+  <h1>Newark Earthworks</h1>
+  <div class="state">OH</div>
+</div>
+<div class="site-layout">
+  <aside>
+    <dl class="site-data">
+      <dt>Geological age</dt><dd>~385 Mya Devonian limestone (Columbus Limestone, Delaware Limestone) and shale (Olentangy Shale, Ohio Shale); earthworks constructed on Pleistocene glacial outwash terraces above the Licking River system.</dd>
+      <dt>Epoch</dt><dd>Middle to Late Devonian.</dd>
+      <dt>Native lands</dt><dd>Hopewell culture (c. 100 BC-500 AD) constructed the Newark Earthworks complex; the original complex covered more than 4 square miles and included interconnected geometric enclosures, parallel-walled roads, and ceremonial plazas; the Hopewell Interaction Sphere distributed Newark flint and prestige goods from this site across North America from the Great Lakes to the Gulf Coast; Lenape (Delaware; Lenapehoking), Shawandasse Tula (Shawanwaki/Shawnee), Myaamia (Miami), Wyandot, Ottawa, and Ojibwe held the Ohio Valley in the historic period; Treaty of Greenville (August 3, 1795) extinguished Indigenous title to Licking County, displacing Delaware, Shawnee, Wyandot, Miami, and allied nations; Indian Removal Act (1830) forced remaining Delaware, Shawnee, Seneca, and Ottawa west of the Mississippi.</dd>
+      <dt>Displacement & Tenure</dt><dd>Treaty of Greenville (1795) extinguished Indigenous title to Licking County; lands entered private agricultural and commercial ownership in the early 19th century; Ohio Canal construction, urban development in Newark, and agricultural clearing destroyed more than 90% of the original complex by 1900; Ohio Historical Society acquired the Great Circle in 1933; Wright Earthworks fragment donated 1934; Moundbuilders Country Club held lease on the Octagon Earthworks from 1910, blocking public access; Ohio History Connection filed eminent domain action 2018; Ohio Supreme Court affirmed authority December 2022; settlement reached August 1, 2024; Octagon Earthworks opened to full public access January 1, 2025; inscribed UNESCO World Heritage Site (Hopewell Ceremonial Earthworks, list no. 1689, criteria i and iii, September 19, 2023).</dd>
+      <dt>Shadow History</dt><dd>The original Newark Earthworks complex covered more than 4 square miles; 19th-century canal construction, railroad development, urban expansion, and agricultural clearing destroyed more than 90% of the complex, reducing it to three surviving fragments; in 1827, workers excavating an Ohio and Erie Canal lock destroyed a mound of the Cherry Valley Ellipse and found 14 human skeletons buried with large quantities of mica, one completely covered in mica sheets and described as carbonized; the remains were dispersed or lost during construction and never repatriated; the canal and Central Ohio Railroad construction (1852-1855) destroyed the entire Cherry Valley Ellipse, which originally contained 11 conical burial mounds and a large central mound, and the railroad bisected the pond north of the Great Circle and leveled eastern embankment structures; the Wright Earthworks, originally a geometrically precise square enclosure of approximately 20 acres, was almost entirely destroyed by canal construction, railroad grading, and Newark street and residential development before surviving fragments were donated to the Ohio Historical Society in 1934; Licking County Agricultural Society purchased the Great Circle in 1853 and used it as county fairgrounds for 80 years; Bureau of American Ethnology director W.H. Holmes warned in 1892 that continued fairground use would cause practical demolition within a few generations; the warning was ignored for another 40 years; the Great Circle was converted to Idlewilde Park in 1897, with a Ferris wheel, roller coaster, casino, racetrack, and recreational facilities installed inside the earthwork walls; Idlewilde Park operated until 1924; Squier and Davis surveyed the full complex for the Smithsonian Institution in the 1840s and published their findings in Ancient Monuments of the Mississippi Valley (1848), documenting that the scale of destruction already underway was irreversible; Emerson Greenman excavated Eagle Mound at the Great Circle in 1928, recovering copper ornaments and mica fragments; in 1860, Licking County surveyor David Wyrick excavated burial mounds at Newark and produced the disputed Newark Holy Stones, inscribed stones bearing Hebrew text allegedly found in Hopewell context, which most scholars consider 19th-century fabrications but which generated decades of fraudulent claims about pre-Columbian Hebrew presence in Ohio.</dd>
+      <dt>Ecology</dt><dd>Artificially maintained open grassland within earthwork enclosures, dominated by non-native turfgrass from former golf course management; Ohio History Connection implementing transition to native prairie species beginning 2025; pollen evidence indicates pre-contact oak-hickory climax forest on surrounding uplands; riparian corridors along Raccoon Creek support native floodplain woodland.</dd>
+      <dt>Hydrology</dt><dd>Licking River drainage basin; Raccoon Creek (683 sq mi watershed) and tributaries flow adjacent to the earthwork complex; earthworks positioned on elevated glacial outwash terraces above the Raccoon Creek floodplain in Licking County; rapid urban development in northwestern Licking County has increased flood frequency and impervious surface runoff.</dd>
+      <dt>Acreage</dt><dd>206</dd>
+      <dt>GPS</dt><dd><a class="gps-link" href="https://maps.google.com/?q=40.0422,-82.4301" target="_blank" rel="noopener">40.0422° N, 82.4301° W</a></dd>
+    </dl>
+  </aside>
+  <div class="site-images">
+    <figure class="site-figure">
+      <a href="../img/full/newark-earthworks/_DSF2000.tif" download title="Download _DSF2000.jpg">
+        <img src="../img/jpg/newark-earthworks/_DSF2000.jpg" alt="Newark Earthworks 1" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Newark Earthworks 1 &middot; 2026-05-13</span>
+        <span class="caption-filename">_DSF2000.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/newark-earthworks/_DSF2001.tif" download title="Download _DSF2001.jpg">
+        <img src="../img/jpg/newark-earthworks/_DSF2001.jpg" alt="Newark Earthworks 2" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Newark Earthworks 2 &middot; 2026-05-13</span>
+        <span class="caption-filename">_DSF2001.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/newark-earthworks/_DSF2002.tif" download title="Download _DSF2002.jpg">
+        <img src="../img/jpg/newark-earthworks/_DSF2002.jpg" alt="Newark Earthworks 3" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Newark Earthworks 3 &middot; 2026-05-13</span>
+        <span class="caption-filename">_DSF2002.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/newark-earthworks/_DSF2006.tif" download title="Download _DSF2006.jpg">
+        <img src="../img/jpg/newark-earthworks/_DSF2006.jpg" alt="Newark Earthworks 4" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Newark Earthworks 4 &middot; 2026-05-13</span>
+        <span class="caption-filename">_DSF2006.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/newark-earthworks/_DSF2010.tif" download title="Download _DSF2010.jpg">
+        <img src="../img/jpg/newark-earthworks/_DSF2010.jpg" alt="Newark Earthworks 5" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Newark Earthworks 5 &middot; 2026-05-13</span>
+        <span class="caption-filename">_DSF2010.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/newark-earthworks/_DSF2017.tif" download title="Download _DSF2017.jpg">
+        <img src="../img/jpg/newark-earthworks/_DSF2017.jpg" alt="Newark Earthworks 6" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Newark Earthworks 6 &middot; 2026-05-13</span>
+        <span class="caption-filename">_DSF2017.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/newark-earthworks/_DSF2018.tif" download title="Download _DSF2018.jpg">
+        <img src="../img/jpg/newark-earthworks/_DSF2018.jpg" alt="Newark Earthworks 7" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Newark Earthworks 7 &middot; 2026-05-13</span>
+        <span class="caption-filename">_DSF2018.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/newark-earthworks/_DSF2026.tif" download title="Download _DSF2026.jpg">
+        <img src="../img/jpg/newark-earthworks/_DSF2026.jpg" alt="Newark Earthworks 8" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Newark Earthworks 8 &middot; 2026-05-13</span>
+        <span class="caption-filename">_DSF2026.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/newark-earthworks/_DSF2031.tif" download title="Download _DSF2031.jpg">
+        <img src="../img/jpg/newark-earthworks/_DSF2031.jpg" alt="Newark Earthworks 9" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Newark Earthworks 9 &middot; 2026-05-13</span>
+        <span class="caption-filename">_DSF2031.jpg</span>
+      </figcaption>
+    </figure>
+    <button class="pli-view-all" data-index="0">View all 9 images</button>
+  </div>
+</div>
+<nav class="site-nav">
+  <a href="octagon-earthworks.html">← Octagon Earthworks</a>
+  <a href="magee-marsh-wildlife-area.html">Magee Marsh Wildlife Area →</a>
+</nav>
+<footer>
+  <span>Public Lands Institute — ongoing project</span>
+  <span>CC0 Public Domain</span>
+</footer>
+</div>
+<script src="../js/lightbox.js"></script>
+<script>
+(function () {
+  if (!window.matchMedia('(max-width: 480px)').matches) return;
+  var figures = Array.from(document.querySelectorAll('.site-figure'));
+  if (!figures.length) return;
+  var cur = 0;
+  figures[0].classList.add('carousel-active');
+  if (figures.length < 2) return;
+  var container = document.querySelector('.site-images');
+  var counter = document.createElement('div');
+  counter.className = 'carousel-counter';
+  counter.style.cssText = 'position:absolute;bottom:8px;right:8px;font-size:10px;font-family:monospace;color:var(--muted);letter-spacing:0.1em;pointer-events:none;z-index:3;';
+  counter.textContent = '1 / ' + figures.length;
+  container.appendChild(counter);
+  var btnPrev = document.createElement('button');
+  btnPrev.style.cssText = 'position:absolute;top:0;left:0;width:35%;height:100%;background:transparent;border:none;cursor:pointer;z-index:2;opacity:0;';
+  btnPrev.setAttribute('aria-label', 'Previous image');
+  container.appendChild(btnPrev);
+  var btnNext = document.createElement('button');
+  btnNext.style.cssText = 'position:absolute;top:0;right:0;width:35%;height:100%;background:transparent;border:none;cursor:pointer;z-index:2;opacity:0;';
+  btnNext.setAttribute('aria-label', 'Next image');
+  container.appendChild(btnNext);
+  function show(i) {
+    figures[cur].classList.remove('carousel-active');
+    cur = (i + figures.length) % figures.length;
+    figures[cur].classList.add('carousel-active');
+    counter.textContent = (cur + 1) + ' / ' + figures.length;
+  }
+  btnPrev.addEventListener('click', function () { show(cur - 1); });
+  btnNext.addEventListener('click', function () { show(cur + 1); });
+  var sx, sy;
+  container.addEventListener('touchstart', function (e) {
+    sx = e.touches[0].clientX;
+    sy = e.touches[0].clientY;
+  }, { passive: true });
+  container.addEventListener('touchend', function (e) {
+    var dx = e.changedTouches[0].clientX - sx;
+    var dy = e.changedTouches[0].clientY - sy;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) show(dx < 0 ? cur + 1 : cur - 1);
+  }, { passive: true });
+})();
+</script>
+</body>
+</html>

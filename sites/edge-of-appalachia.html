@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TMR79M95R4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-TMR79M95R4');
+</script>
+<meta charset="utf-8"/>
+<title>Edge of Appalachia Preserve — Public Lands Institute</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="index, follow" name="robots"/>
+<meta content="Edge of Appalachia Preserve. Public Lands Institute photographic index. CC0 Public Domain." name="description"/>
+<meta property="og:title" content="Edge of Appalachia Preserve — Public Lands Institute"/>
+<meta property="og:description" content="Edge of Appalachia Preserve. An ongoing photographic index and open-access archive of American public lands. CC0 Public Domain."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://publiclandsinstitute.net/sites/edge-of-appalachia.html"/>
+<meta property="og:site_name" content="Public Lands Institute"/>
+<link href="https://publiclandsinstitute.net/sites/edge-of-appalachia.html" rel="canonical"/>
+<link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
+<style>
+  :root {
+    --bg: #f5f5f5;
+    --fg: #111111;
+    --muted: #777777;
+    --border: #dddddd;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+  }
+  a { color: inherit; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .page {
+    max-width: 1500px;
+    margin: 24px auto 56px auto;
+    padding: 0 18px;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 28px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .logotype {
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .header-nav {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+    display: flex;
+    gap: 16px;
+  }
+  .header-nav a.active { color: var(--fg); }
+  .divider { border-bottom: 1px solid var(--border); margin: 0 0 28px 0; }
+  footer {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  @media (min-width: 720px) {
+    .page { margin-top: 40px; padding: 0 24px; }
+    header { margin-bottom: 40px; }
+  }
+  .gps-link {
+    color: inherit;
+    text-decoration: none;
+    display: inline-block;
+    padding: 11px 0;
+    margin: -11px 0;
+  }
+  .gps-link:hover { text-decoration: underline; }
+  .site-header { margin-bottom: 24px; }
+  .site-header h1 {
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    margin-bottom: 2px;
+  }
+  .site-header .state {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+  }
+  .site-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .site-data {
+    display: grid;
+    grid-template-columns: 148px 1fr;
+    font-size: 11px;
+    line-height: 1.55;
+    border-top: 1px solid var(--border);
+    padding-top: 8px;
+    align-items: baseline;
+    align-content: start;
+  }
+  .site-data dt {
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 10px;
+    padding: 4px 0;
+  }
+  .site-data dd {
+    color: var(--fg);
+    padding: 4px 0 4px 12px;
+    margin: 0;
+  }
+  .site-images { display: flex; flex-direction: column; gap: 14px; }
+  .site-figure { border: 1px solid var(--border); background: #e1e1e1; }
+  .site-figure img { width: 100%; height: auto; display: block; filter: grayscale(100%); }
+  .site-figure figcaption {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    padding: 6px 8px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .caption-filename {
+    color: var(--muted);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    flex-shrink: 0;
+    font-family: monospace;
+  }
+  .obs-header {
+    border-top: 1px solid var(--border);
+    padding: 10px 0 4px 0;
+    margin-top: 6px;
+  }
+  .obs-header:first-child {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+  }
+  .obs-date {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    display: block;
+  }
+  .obs-notes {
+    font-size: 11px;
+    color: var(--fg);
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+  .pli-img-extra { display: none; }
+  .pli-view-all {
+    display: block; width: 100%; padding: 10px 0;
+    font-family: system-ui, sans-serif; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.16em;
+    color: var(--muted); background: transparent;
+    border: 1px solid var(--border); cursor: pointer;
+    margin-top: 4px;
+  }
+  .pli-view-all:hover { color: var(--fg); }
+  .site-nav {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  @media (min-width: 720px) {
+    .site-layout { grid-template-columns: 350px 1fr; gap: 48px; align-items: start; }
+    .site-data { position: sticky; top: 24px; }
+  }
+  @media (min-width: 1148px) {
+    .site-layout { grid-template-columns: 7fr 15fr; }
+  }
+  @media (max-width: 480px) {
+    .site-data { grid-template-columns: 110px 1fr; }
+    .site-images { order: -1; position: relative; }
+    .site-data { order: 0; }
+    .site-figure { display: none; }
+    .site-figure.carousel-active { display: block; }
+    .obs-header { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="logotype"><a href="../index.html">Public Lands Institute</a></div>
+  <nav class="header-nav">
+    <a href="../sites.html">Sites</a>
+    <a href="../archive.html">Archive</a>
+  </nav>
+</header>
+<div class="divider"></div>
+<div class="site-header">
+  <h1>Edge of Appalachia Preserve</h1>
+  <div class="state">OH</div>
+</div>
+<div class="site-layout">
+  <aside>
+    <dl class="site-data">
+      <dt>Geological age</dt><dd>~430 Mya Silurian dolomite (Peebles Dolomite, Wenlockian stage); underlying Ordovician shale and limestone exposed in stream valley bottoms</dd>
+      <dt>Epoch</dt><dd>Middle Silurian (Wenlockian)</dd>
+      <dt>Native lands</dt><dd>Adena (c. 1000 BC-AD 100) and Hopewell (c. 200 BC-500 AD) cultures with sustained presence in Adams County; Serpent Mound, a 1,348-foot effigy mound whose authorship is debated between Adena (~300 BCE, radiocarbon 2014/2019) and Fort Ancient (c. AD 1000-1550, charcoal 1991), sits on a bluff directly above Ohio Brush Creek 7 miles northeast of the preserve; both the Shawnee Tribe and Eastern Shawnee Tribe of Oklahoma hold formal ancestral connection to the site; the Warrior's Path, a major north-south Indigenous corridor linking the Great Lakes to the Carolinas, passed through the Ohio River corridor here; Shawandasse Tula (Shawanwaki/Shawnee) and Myaamia (Miami) held south-central Ohio; ceded via Treaty of Greene Ville (August 3, 1795); remaining Ohio Shawnee removed west via Treaty with the Shawnee 1831</dd>
+      <dt>Displacement & Tenure</dt><dd>Adams County lies entirely within the Virginia Military District, opened to Virginia Continental Army land warrants beginning 1794 under metes-and-bounds survey; Indigenous title extinguished via Treaty of Greene Ville (August 3, 1795), whose Article 3 boundary placed Adams County fully within the ceded territory; approximately 25% of the Virginia Military District was subsequently acquired by 25 individuals through warrant speculation; Adams County organized 1797; The Nature Conservancy began acquiring preserve lands in 1959</dd>
+      <dt>Shadow History</dt><dd>Killen Generating Station (closed 2018), situated within the Ohio Brush Creek drainage basin upstream from the Ohio River confluence, discharged coal ash slurry directly into the Ohio River during 2020 ash pond dewatering in more than 30 documented incidents; unlined ash ponds at Killen and J.M. Stuart Station continue to leach arsenic, boron, cobalt, lithium, and molybdenum into the regional aquifer above drinking-water standards; a 1977-79 archaeological survey documented prehistoric occupation at the Ohio Brush Creek-Ohio River confluence at the Killen site before the area was committed to ash disposal</dd>
+      <dt>Ecology</dt><dd>Mixed mesophytic forest, dry limestone prairies, and cedar barrens on thin Silurian dolomite soils along the Appalachian Escarpment; 30 ecological communities, 8 globally rare; over 1,200 plant species including American bluehearts (Buchnera americana), rattlesnake master (Eryngium yuccifolium), and gladecress; holds the only Allegheny woodrat (Neotoma magister) population in Ohio; green salamander (Aneides aeneus, Ohio-listed Endangered) documented; among the most biologically diverse areas in the Midwestern United States</dd>
+      <dt>Hydrology</dt><dd>Ohio Brush Creek watershed; Ohio Brush Creek, a 59.9-mile tributary of the Ohio River draining 435 square miles, flows through the preserve with canoe access at Creek's Bend; Cedar Run gorge feeds Cedar Falls, a 15-foot waterfall over Silurian limestone ledges</dd>
+      <dt>Acreage</dt><dd>21,000</dd>
+      <dt>GPS</dt><dd><a class="gps-link" href="https://maps.google.com/?q=38.7924,-83.384" target="_blank" rel="noopener">38.7924° N, 83.3840° W</a></dd>
+    </dl>
+  </aside>
+  <div class="site-images">
+    <figure class="site-figure">
+      <a href="../img/full/edge-of-appalachia/_DSF1641.tif" download title="Download _DSF1641.jpg">
+        <img src="../img/jpg/edge-of-appalachia/_DSF1641.jpg" alt="Edge of Appalachia Preserve 1" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Edge of Appalachia Preserve 1 &middot; 2026-05-01</span>
+        <span class="caption-filename">_DSF1641.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/edge-of-appalachia/_DSF1644.tif" download title="Download _DSF1644.jpg">
+        <img src="../img/jpg/edge-of-appalachia/_DSF1644.jpg" alt="Edge of Appalachia Preserve 2" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Edge of Appalachia Preserve 2 &middot; 2026-05-01</span>
+        <span class="caption-filename">_DSF1644.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/edge-of-appalachia/_DSF1651.tif" download title="Download _DSF1651.jpg">
+        <img src="../img/jpg/edge-of-appalachia/_DSF1651.jpg" alt="Edge of Appalachia Preserve 3" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Edge of Appalachia Preserve 3 &middot; 2026-05-01</span>
+        <span class="caption-filename">_DSF1651.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/edge-of-appalachia/_DSF1659.tif" download title="Download _DSF1659.jpg">
+        <img src="../img/jpg/edge-of-appalachia/_DSF1659.jpg" alt="Edge of Appalachia Preserve 4" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Edge of Appalachia Preserve 4 &middot; 2026-05-01</span>
+        <span class="caption-filename">_DSF1659.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/edge-of-appalachia/_DSF1661.tif" download title="Download _DSF1661.jpg">
+        <img src="../img/jpg/edge-of-appalachia/_DSF1661.jpg" alt="Edge of Appalachia Preserve 5" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Edge of Appalachia Preserve 5 &middot; 2026-05-01</span>
+        <span class="caption-filename">_DSF1661.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/edge-of-appalachia/_DSF1667.tif" download title="Download _DSF1667.jpg">
+        <img src="../img/jpg/edge-of-appalachia/_DSF1667.jpg" alt="Edge of Appalachia Preserve 6" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Edge of Appalachia Preserve 6 &middot; 2026-05-01</span>
+        <span class="caption-filename">_DSF1667.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/edge-of-appalachia/_DSF1671.tif" download title="Download _DSF1671.jpg">
+        <img src="../img/jpg/edge-of-appalachia/_DSF1671.jpg" alt="Edge of Appalachia Preserve 7" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Edge of Appalachia Preserve 7 &middot; 2026-05-01</span>
+        <span class="caption-filename">_DSF1671.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/edge-of-appalachia/_DSF1674.tif" download title="Download _DSF1674.jpg">
+        <img src="../img/jpg/edge-of-appalachia/_DSF1674.jpg" alt="Edge of Appalachia Preserve 8" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Edge of Appalachia Preserve 8 &middot; 2026-05-01</span>
+        <span class="caption-filename">_DSF1674.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/edge-of-appalachia/_DSF1677.tif" download title="Download _DSF1677.jpg">
+        <img src="../img/jpg/edge-of-appalachia/_DSF1677.jpg" alt="Edge of Appalachia Preserve 9" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Edge of Appalachia Preserve 9 &middot; 2026-05-01</span>
+        <span class="caption-filename">_DSF1677.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/edge-of-appalachia/_DSF1679.tif" download title="Download _DSF1679.jpg">
+        <img src="../img/jpg/edge-of-appalachia/_DSF1679.jpg" alt="Edge of Appalachia Preserve 10" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Edge of Appalachia Preserve 10 &middot; 2026-05-01</span>
+        <span class="caption-filename">_DSF1679.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/edge-of-appalachia/_DSF1680.tif" download title="Download _DSF1680.jpg">
+        <img src="../img/jpg/edge-of-appalachia/_DSF1680.jpg" alt="Edge of Appalachia Preserve 11" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Edge of Appalachia Preserve 11 &middot; 2026-05-01</span>
+        <span class="caption-filename">_DSF1680.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/edge-of-appalachia/_DSF1681.tif" download title="Download _DSF1681.jpg">
+        <img src="../img/jpg/edge-of-appalachia/_DSF1681.jpg" alt="Edge of Appalachia Preserve 12" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Edge of Appalachia Preserve 12 &middot; 2026-05-01</span>
+        <span class="caption-filename">_DSF1681.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/edge-of-appalachia/_DSF1687.tif" download title="Download _DSF1687.jpg">
+        <img src="../img/jpg/edge-of-appalachia/_DSF1687.jpg" alt="Edge of Appalachia Preserve 13" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Edge of Appalachia Preserve 13 &middot; 2026-05-01</span>
+        <span class="caption-filename">_DSF1687.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/edge-of-appalachia/_DSF1690.tif" download title="Download _DSF1690.jpg">
+        <img src="../img/jpg/edge-of-appalachia/_DSF1690.jpg" alt="Edge of Appalachia Preserve 14" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Edge of Appalachia Preserve 14 &middot; 2026-05-01</span>
+        <span class="caption-filename">_DSF1690.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/edge-of-appalachia/_DSF1691.tif" download title="Download _DSF1691.jpg">
+        <img src="../img/jpg/edge-of-appalachia/_DSF1691.jpg" alt="Edge of Appalachia Preserve 15" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Edge of Appalachia Preserve 15 &middot; 2026-05-01</span>
+        <span class="caption-filename">_DSF1691.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="site-figure pli-img-extra">
+      <a href="../img/full/edge-of-appalachia/_DSF1693.tif" download title="Download _DSF1693.jpg">
+        <img src="../img/jpg/edge-of-appalachia/_DSF1693.jpg" alt="Edge of Appalachia Preserve 16" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Edge of Appalachia Preserve 16 &middot; 2026-05-01</span>
+        <span class="caption-filename">_DSF1693.jpg</span>
+      </figcaption>
+    </figure>
+    <button class="pli-view-all" data-index="0">View all 16 images</button>
+  </div>
+</div>
+<nav class="site-nav">
+  <a href="pointe-mouillee-state-game-area.html">← Pointe Mouillee State Game Area</a>
+  <a href="st-annes-woods-and-wetlands.html">St. Anne's Woods and Wetlands →</a>
+</nav>
+<footer>
+  <span>Public Lands Institute — ongoing project</span>
+  <span>CC0 Public Domain</span>
+</footer>
+</div>
+<script src="../js/lightbox.js"></script>
+<script>
+(function () {
+  if (!window.matchMedia('(max-width: 480px)').matches) return;
+  var figures = Array.from(document.querySelectorAll('.site-figure'));
+  if (!figures.length) return;
+  var cur = 0;
+  figures[0].classList.add('carousel-active');
+  if (figures.length < 2) return;
+  var container = document.querySelector('.site-images');
+  var counter = document.createElement('div');
+  counter.className = 'carousel-counter';
+  counter.style.cssText = 'position:absolute;bottom:8px;right:8px;font-size:10px;font-family:monospace;color:var(--muted);letter-spacing:0.1em;pointer-events:none;z-index:3;';
+  counter.textContent = '1 / ' + figures.length;
+  container.appendChild(counter);
+  var btnPrev = document.createElement('button');
+  btnPrev.style.cssText = 'position:absolute;top:0;left:0;width:35%;height:100%;background:transparent;border:none;cursor:pointer;z-index:2;opacity:0;';
+  btnPrev.setAttribute('aria-label', 'Previous image');
+  container.appendChild(btnPrev);
+  var btnNext = document.createElement('button');
+  btnNext.style.cssText = 'position:absolute;top:0;right:0;width:35%;height:100%;background:transparent;border:none;cursor:pointer;z-index:2;opacity:0;';
+  btnNext.setAttribute('aria-label', 'Next image');
+  container.appendChild(btnNext);
+  function show(i) {
+    figures[cur].classList.remove('carousel-active');
+    cur = (i + figures.length) % figures.length;
+    figures[cur].classList.add('carousel-active');
+    counter.textContent = (cur + 1) + ' / ' + figures.length;
+  }
+  btnPrev.addEventListener('click', function () { show(cur - 1); });
+  btnNext.addEventListener('click', function () { show(cur + 1); });
+  var sx, sy;
+  container.addEventListener('touchstart', function (e) {
+    sx = e.touches[0].clientX;
+    sy = e.touches[0].clientY;
+  }, { passive: true });
+  container.addEventListener('touchend', function (e) {
+    var dx = e.changedTouches[0].clientX - sx;
+    var dy = e.changedTouches[0].clientY - sy;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) show(dx < 0 ? cur + 1 : cur - 1);
+  }, { passive: true });
+})();
+</script>
+</body>
+</html>

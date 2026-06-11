@@ -1,4 +1,282 @@
 {
+  "bighorn-national-forest": {
+    "agency": "USDA Forest Service",
+    "agency_type": "USFS",
+    "territory": [
+      "Crow (Apsaalooke)",
+      "Eastern Shoshone",
+      "Cheyenne",
+      "Arapaho",
+      "Oceti Sakowin (Sioux)"
+    ]
+  },
+  "mount-rushmore-national-memorial": {
+    "agency": "National Park Service",
+    "agency_type": "NPS",
+    "territory": [
+      "Oceti Sakowin (Sioux)",
+      "Cheyenne",
+      "Arapaho"
+    ]
+  },
+  "black-hills-national-forest": {
+    "agency": "USDA Forest Service",
+    "agency_type": "USFS",
+    "territory": [
+      "Oceti Sakowin (Sioux)",
+      "Cheyenne",
+      "Arapaho"
+    ]
+  },
+  "badlands-national-park": {
+    "agency": "National Park Service",
+    "agency_type": "NPS",
+    "territory": [
+      "Oglala Lakota",
+      "Oceti Sakowin (Sioux)"
+    ]
+  },
+  "pipestone-national-monument": {
+    "agency": "National Park Service",
+    "agency_type": "NPS",
+    "territory": [
+      "Oceti Sakowin (Sioux)",
+      "Yankton Dakota"
+    ]
+  },
+  "palisades-state-park": {
+    "agency": "South Dakota Game, Fish and Parks",
+    "agency_type": "State park",
+    "territory": [
+      "Oceti Sakowin (Sioux)",
+      "Yankton Dakota",
+      "Sisseton-Wahpeton Dakota"
+    ]
+  },
+  "myre-big-island-state-park": {
+    "agency": "Minnesota DNR",
+    "agency_type": "State park",
+    "territory": [
+      "Wahpekute Dakota",
+      "Sisseton Dakota"
+    ]
+  },
+  "maquoketa-caves-state-park": {
+    "agency": "Iowa DNR",
+    "agency_type": "State park",
+    "territory": [
+      "Báxoje (Ioway)",
+      "Sauk",
+      "Meskwaki",
+      "Ho-Chunk"
+    ]
+  },
+  "mississippi-palisades-state-park": {
+    "agency": "Illinois DNR",
+    "agency_type": "State park",
+    "territory": [
+      "Ho-Chunk",
+      "Sauk",
+      "Meskwaki"
+    ]
+  },
+  "mounds-state-park": {
+    "agency": "Indiana DNR",
+    "agency_type": "State park",
+    "territory": [
+      "Lenape",
+      "Miami"
+    ]
+  },
+  "pine-hills-nature-preserve": {
+    "agency": "Indiana DNR",
+    "agency_type": "State nature preserve",
+    "territory": [
+      "Miami",
+      "Wea",
+      "Potawatomi",
+      "Shawnee"
+    ]
+  },
+  "prophetstown-state-park": {
+    "agency": "Indiana DNR",
+    "agency_type": "State park",
+    "territory": [
+      "Miami",
+      "Potawatomi",
+      "Shawnee",
+      "Wea",
+      "Kickapoo",
+      "Lenape (Delaware)"
+    ]
+  },
+  "shades-state-park": {
+    "agency": "Indiana DNR",
+    "agency_type": "State park",
+    "territory": [
+      "Miami",
+      "Wea",
+      "Shawnee",
+      "Potawatomi"
+    ]
+  },
+  "fort-hill-state-memorial": {
+    "agency": "Ohio History Connection",
+    "agency_type": "State historic site",
+    "territory": [
+      "Hopewell",
+      "Adena",
+      "Shawnee"
+    ]
+  },
+  "newark-earthworks": {
+    "agency": "Ohio History Connection",
+    "agency_type": "State historic site",
+    "territory": [
+      "Hopewell",
+      "Lenape (Delaware)",
+      "Shawnee",
+      "Wyandot",
+      "Myaamia"
+    ]
+  },
+  "octagon-earthworks": {
+    "agency": "Ohio History Connection",
+    "agency_type": "State historic site",
+    "territory": [
+      "Hopewell",
+      "Lenape (Delaware)",
+      "Shawnee",
+      "Wyandot",
+      "Myaamia"
+    ]
+  },
+  "cuyahoga-valley-national-park": {
+    "agency": "National Park Service",
+    "agency_type": "NPS",
+    "territory": [
+      "Hopewell",
+      "Erie",
+      "Wyandot",
+      "Lenape (Delaware)",
+      "Shawnee",
+      "Seneca"
+    ]
+  },
+  "krejci-dump": {
+    "agency": "National Park Service",
+    "agency_type": "NPS",
+    "territory": [
+      "Wyandot",
+      "Lenape (Delaware)",
+      "Shawnee",
+      "Erie",
+      "Seneca"
+    ]
+  },
+  "flint-ridge-state-memorial": {
+    "agency": "Ohio History Connection",
+    "agency_type": "State historic site",
+    "territory": [
+      "Hopewell",
+      "Adena",
+      "Wyandot",
+      "Lenape (Delaware)",
+      "Shawnee",
+      "Myaamia"
+    ]
+  },
+  "killdeer-plains-wildlife-area": {
+    "agency": "Ohio DNR",
+    "agency_type": "State wildlife area",
+    "territory": [
+      "Wyandot",
+      "Shawnee",
+      "Delaware (Lenape)"
+    ]
+  },
+  "magee-marsh-wildlife-area": {
+    "agency": "Ohio DNR",
+    "agency_type": "State wildlife area",
+    "territory": [
+      "Ottawa (Odawa)",
+      "Wyandot",
+      "Potawatomi",
+      "Erie"
+    ]
+  },
+  "oak-openings-metropark": {
+    "agency": "Metroparks Toledo",
+    "agency_type": "County park",
+    "territory": [
+      "Wyandot",
+      "Ottawa",
+      "Potawatomi",
+      "Shawnee",
+      "Myaamia"
+    ]
+  },
+  "ford-marsh-unit": {
+    "agency": "U.S. Fish and Wildlife Service",
+    "agency_type": "USFWS",
+    "territory": [
+      "Ottawa (Odawa)",
+      "Potawatomi",
+      "Wyandot",
+      "Ojibwe"
+    ]
+  },
+  "william-c-sterling-state-park": {
+    "agency": "Michigan DNR",
+    "agency_type": "State park",
+    "territory": [
+      "Ottawa (Odawa)",
+      "Potawatomi",
+      "Wyandot",
+      "Ojibwe"
+    ]
+  },
+  "pointe-mouillee-state-game-area": {
+    "agency": "Michigan DNR",
+    "agency_type": "State game area",
+    "territory": [
+      "Ottawa (Odawa)",
+      "Potawatomi",
+      "Wyandot",
+      "Ojibwe"
+    ]
+  },
+  "edge-of-appalachia": {
+    "agency": "The Nature Conservancy / Cincinnati Museum Center",
+    "agency_type": "Private preserve",
+    "territory": [
+      "Adena",
+      "Hopewell",
+      "Fort Ancient culture",
+      "Shawnee",
+      "Myaamia"
+    ]
+  },
+  "st-annes-woods-and-wetlands": {
+    "agency": "Campbell County Conservation District",
+    "agency_type": "Conservation district",
+    "territory": [
+      "Adena",
+      "Hopewell",
+      "Fort Ancient culture",
+      "Shawnee"
+    ]
+  },
+  "red-river-gorge-geological-area": {
+    "agency": "USDA Forest Service (Daniel Boone National Forest)",
+    "agency_type": "USFS",
+    "territory": [
+      "Cherokee",
+      "Shawnee",
+      "Paleoindian",
+      "Adena"
+    ]
+  },
   "rocky-fork-state-park": {
     "agency": "Ohio DNR",
     "agency_type": "State park",
@@ -52,7 +330,7 @@
       "Shawnee",
       "Myaamia",
       "Hopewell",
-      "Fort Ancient"
+      "Fort Ancient culture"
     ]
   },
   "shawnee-lookout": {
@@ -62,7 +340,7 @@
       "Shawnee",
       "Myaamia",
       "Hopewell",
-      "Fort Ancient"
+      "Fort Ancient culture"
     ]
   },
   "fernald-preserve": {

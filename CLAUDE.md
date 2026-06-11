@@ -43,27 +43,20 @@ for e in entries[:-2]:
     except ValueError:
         pass
 "
-Then deploy (three-phase — images go first so they exist before HTML references them):
+Then deploy (two-phase — image uploads are handled separately by the "update" workflow):
   source .env
-  # Phase 1: Images — skip existing (images are immutable once uploaded, never re-checksum)
-  # Images upload first so they are on the server before HTML is updated to reference them.
-  # No -z: JPGs are already compressed; TIFs are large binaries — compression adds CPU overhead with no benefit
-  sshpass -p "$DREAMHOST_PASS" rsync -av --ignore-existing \
-    --chmod=Du=rwx,Dgo=rx,Fu=rw,Fgo=r \
-    -e "ssh -o StrictHostKeyChecking=no -o PubkeyAuthentication=no -o ServerAliveInterval=60 -o ServerAliveCountMax=3" \
-    img/ "$DREAMHOST_USER@$DREAMHOST_HOST:$DREAMHOST_REMOTE_PATH/img/"
   # Phase 2: HTML/JS/JSON/text files — checksum-accurate, deletes removed files, skips images
   sshpass -p "$DREAMHOST_PASS" rsync -avz --checksum --delete \
     --chmod=Du=rwx,Dgo=rx,Fu=rw,Fgo=r \
     --exclude '.git/' --exclude '.env' --exclude '.claude/' \
     --exclude 'Archive/' --exclude '__pycache__/' --exclude '*.pyc' \
     --exclude '*.py' --exclude 'img/' \
-    -e "ssh -o StrictHostKeyChecking=no -o PubkeyAuthentication=no -o ServerAliveInterval=60 -o ServerAliveCountMax=3" \
+    -e "ssh -o StrictHostKeyChecking=no -o PubkeyAuthentication=no -o ControlMaster=auto -o ControlPath=/tmp/pli_ssh_mux -o ControlPersist=300 -o ServerAliveInterval=60 -o ServerAliveCountMax=3" \
     . "$DREAMHOST_USER@$DREAMHOST_HOST:$DREAMHOST_REMOTE_PATH/"
   # Phase 3: Fix permissions on existing files — rsync --chmod only applies to files transferred in that run
   # Use + (not \;) to batch chmod calls — much faster on large image libraries
   sshpass -p "$DREAMHOST_PASS" ssh \
-    -o StrictHostKeyChecking=no -o PubkeyAuthentication=no -o ServerAliveInterval=60 -o ServerAliveCountMax=3 \
+    -o StrictHostKeyChecking=no -o PubkeyAuthentication=no -o ControlMaster=auto -o ControlPath=/tmp/pli_ssh_mux -o ControlPersist=300 -o ServerAliveInterval=60 -o ServerAliveCountMax=3 \
     "$DREAMHOST_USER@$DREAMHOST_HOST" \
     "find $DREAMHOST_REMOTE_PATH -type d -exec chmod 755 {} + && find $DREAMHOST_REMOTE_PATH -type f -exec chmod 644 {} +"
 
@@ -95,7 +88,7 @@ Safe to re-run; skips already-populated entries. Complex sites (Mammoth Cave, et
 ## Writing rules
 - Never use em dashes or en dashes anywhere in output or field values
 - Never add an "images" count field to sites.json
-- Roman numeral captions I through L
+- Plain numeric captions (1, 2, 3...), not roman numerals
 - Always run generator after any change and confirm output before finishing
 - Always deploy after generating unless told otherwise
 
@@ -178,14 +171,39 @@ If shadow_history is non-empty, add a new section at the top of shadow_history_b
 
 ### Step 4: Generate and deploy
 
-Run python3 generate_sites.py and confirm the new .html file appears in the output list. Then deploy (archive first per deploy protocol above).
+Output the following terminal block for the user to paste and run themselves. Do not run it:
+
+```bash
+cd "/Users/jordan/Library/CloudStorage/OneDrive-UniversityofCincinnati/pli"
+python3 generate_sites.py
+STAMP=$(date +%Y-%m-%d_%H-%M)
+mkdir -p Archive/$STAMP/sites
+cp *.html Archive/$STAMP/ 2>/dev/null || true
+cp sites/*.html Archive/$STAMP/sites/ 2>/dev/null || true
+cp sites.json sites_meta.json nativeland_cache.json shadow_history_bibliography.txt shadow_history_methodology.txt Archive/$STAMP/ 2>/dev/null || true
+source .env
+sshpass -p "$DREAMHOST_PASS" rsync -avz --checksum --delete \
+  --chmod=Du=rwx,Dgo=rx,Fu=rw,Fgo=r \
+  --exclude '.git/' --exclude '.env' --exclude '.claude/' \
+  --exclude 'Archive/' --exclude '__pycache__/' --exclude '*.pyc' \
+  --exclude '*.py' --exclude 'img/' \
+  -e "ssh -o StrictHostKeyChecking=no -o PubkeyAuthentication=no -o ControlMaster=auto -o ControlPath=/tmp/pli_ssh_mux -o ControlPersist=300 -o ServerAliveInterval=60 -o ServerAliveCountMax=3" \
+  . "$DREAMHOST_USER@$DREAMHOST_HOST:$DREAMHOST_REMOTE_PATH/"
+sshpass -p "$DREAMHOST_PASS" ssh \
+  -o StrictHostKeyChecking=no -o PubkeyAuthentication=no -o ControlMaster=auto -o ControlPath=/tmp/pli_ssh_mux -o ControlPersist=300 -o ServerAliveInterval=60 -o ServerAliveCountMax=3 \
+  "$DREAMHOST_USER@$DREAMHOST_HOST" \
+  "find $DREAMHOST_REMOTE_PATH -type d -exec chmod 755 {} + && find $DREAMHOST_REMOTE_PATH -type f -exec chmod 644 {} +"
+```
 
 ### Step 5: Generate metrics and archive metadata
 
-After deploy completes, run both:
+Output the following terminal block for the user to paste and run themselves. Do not run it:
 
-  python3 generate_metrics.py
-  python3 generate_metadata.py
+```bash
+cd "/Users/jordan/Library/CloudStorage/OneDrive-UniversityofCincinnati/pli"
+python3 generate_metrics.py
+python3 generate_metadata.py
+```
 
 generate_metrics.py overwrites PLI-Project-Metrics.txt with current counts: total sites, total images, states represented, total acreage, and managing agencies.
 generate_metadata.py overwrites archive-metadata/archive.csv with a full metadata export for archival use.

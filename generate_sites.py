@@ -12,7 +12,7 @@ Also writes archive.html — the plain-text download index.
 Add new images by dropping them into the location's image folder and re-running.
 """
 
-import json, os, glob, time, urllib.request, urllib.parse
+import json, os, glob, re, time, urllib.request, urllib.parse
 from dotenv import load_dotenv
 load_dotenv()
 from PIL import Image
@@ -207,12 +207,6 @@ FIELDS = [
     ('gps',                 'GPS'),
 ]
 
-ROMAN = ['I','II','III','IV','V','VI','VII','VIII','IX','X',
-         'XI','XII','XIII','XIV','XV','XVI','XVII','XVIII','XIX','XX',
-         'XXI','XXII','XXIII','XXIV','XXV','XXVI','XXVII','XXVIII','XXIX','XXX',
-         'XXXI','XXXII','XXXIII','XXXIV','XXXV','XXXVI','XXXVII','XXXVIII','XXXIX','XL',
-         'XLI','XLII','XLIII','XLIV','XLV','XLVI','XLVII','XLVIII','XLIX','L']
-
 def get_exif_date(jpg_path):
     """Return date string from EXIF DateTimeOriginal, or empty string if unavailable."""
     try:
@@ -255,7 +249,7 @@ def _make_image_entry(slug, filename, caption_idx):
         'tif': tif_path,
         'raw': raw_path,
         'camera_filename': filename,
-        'caption_index': ROMAN[caption_idx] if caption_idx < len(ROMAN) else str(caption_idx + 1),
+        'caption_index': str(caption_idx + 1),
         'date': get_exif_date(jpg_path),
     }
 
@@ -370,6 +364,7 @@ SHARED_CSS = '''  :root {
     display: flex;
     gap: 16px;
   }
+  .header-nav a.active { color: var(--fg); }
   .divider { border-bottom: 1px solid var(--border); margin: 0 0 28px 0; }
   footer {
     margin-top: 40px;
@@ -459,6 +454,14 @@ def make_site_page(site, all_sites):
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TMR79M95R4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){{dataLayer.push(arguments);}}
+  gtag('js', new Date());
+  gtag('config', 'G-TMR79M95R4');
+</script>
 <meta charset="utf-8"/>
 <title>{name} \u2014 Public Lands Institute</title>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
@@ -471,6 +474,8 @@ def make_site_page(site, all_sites):
 <meta property="og:site_name" content="Public Lands Institute"/>
 <link href="https://publiclandsinstitute.net/sites/{slug}.html" rel="canonical"/>
 <link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
 <style>
 {SHARED_CSS}
   .site-header {{ margin-bottom: 24px; }}
@@ -590,7 +595,7 @@ def make_site_page(site, all_sites):
   }}
   @media (max-width: 480px) {{
     .site-data {{ grid-template-columns: 110px 1fr; }}
-    .site-images {{ order: -1; }}
+    .site-images {{ order: -1; position: relative; }}
     .site-data {{ order: 0; }}
     .site-figure {{ display: none; }}
     .site-figure.carousel-active {{ display: block; }}
@@ -603,7 +608,7 @@ def make_site_page(site, all_sites):
 <header>
   <div class="logotype"><a href="../index.html">Public Lands Institute</a></div>
   <nav class="header-nav">
-    <a href="../index.html">Index</a>
+    <a href="../sites.html">Sites</a>
     <a href="../archive.html">Archive</a>
   </nav>
 </header>
@@ -638,12 +643,28 @@ def make_site_page(site, all_sites):
   var cur = 0;
   figures[0].classList.add('carousel-active');
   if (figures.length < 2) return;
+  var container = document.querySelector('.site-images');
+  var counter = document.createElement('div');
+  counter.className = 'carousel-counter';
+  counter.style.cssText = 'position:absolute;bottom:8px;right:8px;font-size:10px;font-family:monospace;color:var(--muted);letter-spacing:0.1em;pointer-events:none;z-index:3;';
+  counter.textContent = '1 / ' + figures.length;
+  container.appendChild(counter);
+  var btnPrev = document.createElement('button');
+  btnPrev.style.cssText = 'position:absolute;top:0;left:0;width:35%;height:100%;background:transparent;border:none;cursor:pointer;z-index:2;opacity:0;';
+  btnPrev.setAttribute('aria-label', 'Previous image');
+  container.appendChild(btnPrev);
+  var btnNext = document.createElement('button');
+  btnNext.style.cssText = 'position:absolute;top:0;right:0;width:35%;height:100%;background:transparent;border:none;cursor:pointer;z-index:2;opacity:0;';
+  btnNext.setAttribute('aria-label', 'Next image');
+  container.appendChild(btnNext);
   function show(i) {{
     figures[cur].classList.remove('carousel-active');
     cur = (i + figures.length) % figures.length;
     figures[cur].classList.add('carousel-active');
+    counter.textContent = (cur + 1) + ' / ' + figures.length;
   }}
-  var container = document.querySelector('.site-images');
+  btnPrev.addEventListener('click', function () {{ show(cur - 1); }});
+  btnNext.addEventListener('click', function () {{ show(cur + 1); }});
   var sx, sy;
   container.addEventListener('touchstart', function (e) {{
     sx = e.touches[0].clientX;
@@ -685,12 +706,28 @@ def make_archive_page(all_sites):
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TMR79M95R4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){{dataLayer.push(arguments);}}
+  gtag('js', new Date());
+  gtag('config', 'G-TMR79M95R4');
+</script>
 <meta charset="utf-8"/>
 <title>Archive \u2014 Public Lands Institute</title>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="index, follow" name="robots"/>
+<meta content="Full-resolution TIFFs and RAW files from the Public Lands Institute photographic archive. CC0 Public Domain." name="description"/>
+<meta property="og:title" content="Archive \u2014 Public Lands Institute"/>
+<meta property="og:description" content="Full-resolution TIFFs and RAW files from the Public Lands Institute photographic archive. CC0 Public Domain."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://publiclandsinstitute.net/archive.html"/>
+<meta property="og:site_name" content="Public Lands Institute"/>
 <link href="https://publiclandsinstitute.net/archive.html" rel="canonical"/>
 <link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
 <style>
 {SHARED_CSS}
   .archive-intro {{
@@ -744,7 +781,8 @@ def make_archive_page(all_sites):
 <header>
   <div class="logotype"><a href="index.html">Public Lands Institute</a></div>
   <nav class="header-nav">
-    <a href="index.html">Index</a>
+    <a href="sites.html">Sites</a>
+    <a href="archive.html" class="active">Archive</a>
   </nav>
 </header>
 <div class="divider"></div>
@@ -785,9 +823,7 @@ GEOLOGY_PERIODS = [
     'Pliocene', 'Miocene', 'Oligocene', 'Eocene', 'Paleocene', 'Quaternary',
 ]
 
-SITES_INDEX_CSS = '''  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap');
-
-  *, *::before, *::after {
+SITES_INDEX_CSS = '''  *, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -802,61 +838,66 @@ SITES_INDEX_CSS = '''  @import url('https://fonts.googleapis.com/css2?family=EB+
     --gray-400: #a3a3a3;
     --gray-500: #737373;
     --gray-600: #525252;
-    --font-serif: 'EB Garamond', 'Georgia', serif;
+    --font-serif: system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif;
     --font-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Mono', monospace;
   }
 
   html {
-    font-size: 16px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   body {
     font-family: var(--font-serif);
+    font-size: 13px;
     color: var(--black);
-    background: var(--white);
-    line-height: 1.6;
+    background: var(--gray-100);
+    line-height: 1.5;
+    letter-spacing: 0.01em;
   }
 
   a { color: var(--black); text-decoration: none; }
   a:hover { text-decoration: underline; }
 
   .header {
-    padding: 3rem 2rem 1.5rem;
-    max-width: 1200px;
+    padding: 40px 24px 28px;
+    max-width: 1500px;
     margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
   }
 
-  .header h1 {
+  .logotype {
     font-family: var(--font-serif);
-    font-size: 1.5rem;
-    font-weight: 400;
-    letter-spacing: 0.08em;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.24em;
     text-transform: uppercase;
-    margin-bottom: 0.25rem;
   }
 
-  .header h1 a { text-decoration: none; }
+  .logotype a { text-decoration: none; }
 
-  .header nav {
+  .header-nav {
     font-family: var(--font-serif);
-    font-size: 0.875rem;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
     color: var(--gray-500);
-    margin-top: 0.5rem;
+    display: flex;
+    gap: 16px;
   }
 
-  .header nav a {
-    color: var(--gray-500);
-    margin-right: 1.5rem;
-  }
+  .header-nav a { color: var(--gray-500); }
 
-  .header nav a:hover { color: var(--black); }
-  .header nav a.active { color: var(--black); }
+  .header-nav a:hover { color: var(--black); }
+  .header-nav a.active { color: var(--black); }
 
   .filters {
-    padding: 1.5rem 2rem;
-    max-width: 1200px;
+    padding: 20px 24px;
+    max-width: 1500px;
     margin: 0 auto;
     border-top: 1px solid var(--gray-200);
     border-bottom: 1px solid var(--gray-200);
@@ -873,8 +914,8 @@ SITES_INDEX_CSS = '''  @import url('https://fonts.googleapis.com/css2?family=EB+
 
   .filter-label {
     font-family: var(--font-mono);
-    font-size: 0.6875rem;
-    letter-spacing: 0.06em;
+    font-size: 10px;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--gray-500);
     margin-bottom: 0.5rem;
@@ -884,7 +925,7 @@ SITES_INDEX_CSS = '''  @import url('https://fonts.googleapis.com/css2?family=EB+
   .filter-select {
     width: 100%;
     font-family: var(--font-serif);
-    font-size: 0.9375rem;
+    font-size: 13px;
     padding: 0.4rem 0;
     border: none;
     border-bottom: 1px solid var(--gray-300);
@@ -903,8 +944,8 @@ SITES_INDEX_CSS = '''  @import url('https://fonts.googleapis.com/css2?family=EB+
   .filter-select:focus { outline: none; border-bottom-color: var(--black); }
 
   .results-bar {
-    padding: 1rem 2rem;
-    max-width: 1200px;
+    padding: 12px 24px;
+    max-width: 1500px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -913,14 +954,14 @@ SITES_INDEX_CSS = '''  @import url('https://fonts.googleapis.com/css2?family=EB+
 
   .results-count {
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: 11px;
     color: var(--gray-500);
     letter-spacing: 0.04em;
   }
 
   .clear-filters {
     font-family: var(--font-mono);
-    font-size: 0.6875rem;
+    font-size: 10px;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--gray-400);
@@ -935,18 +976,18 @@ SITES_INDEX_CSS = '''  @import url('https://fonts.googleapis.com/css2?family=EB+
   .clear-filters.visible { display: block; }
 
   .index-table {
-    max-width: 1200px;
+    max-width: 1500px;
     margin: 0 auto;
-    padding: 0 2rem 4rem;
+    padding: 0 24px 56px;
   }
 
   table { width: 100%; border-collapse: collapse; }
 
   thead th {
     font-family: var(--font-mono);
-    font-size: 0.6875rem;
+    font-size: 10px;
     font-weight: 400;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--gray-500);
     text-align: left;
@@ -978,7 +1019,7 @@ SITES_INDEX_CSS = '''  @import url('https://fonts.googleapis.com/css2?family=EB+
 
   tbody td {
     font-family: var(--font-serif);
-    font-size: 0.9375rem;
+    font-size: 13px;
     padding: 0.75rem 1rem 0.75rem 0;
     vertical-align: top;
   }
@@ -994,25 +1035,25 @@ SITES_INDEX_CSS = '''  @import url('https://fonts.googleapis.com/css2?family=EB+
 
   td.state {
     font-family: var(--font-mono);
-    font-size: 0.8125rem;
+    font-size: 11px;
     letter-spacing: 0.02em;
     color: var(--gray-600);
     white-space: nowrap;
   }
 
-  td.agency { font-size: 0.875rem; color: var(--gray-600); }
-  td.geology { font-size: 0.875rem; color: var(--gray-600); }
+  td.agency { font-size: 11px; color: var(--gray-600); }
+  td.geology { font-size: 11px; color: var(--gray-600); }
 
   td.acreage {
     font-family: var(--font-mono);
-    font-size: 0.8125rem;
+    font-size: 11px;
     color: var(--gray-600);
     text-align: right;
     white-space: nowrap;
   }
 
   td.native-lands {
-    font-size: 0.875rem;
+    font-size: 11px;
     color: var(--gray-600);
     max-width: 200px;
   }
@@ -1022,17 +1063,17 @@ SITES_INDEX_CSS = '''  @import url('https://fonts.googleapis.com/css2?family=EB+
     padding: 4rem 2rem;
     color: var(--gray-400);
     font-style: italic;
-    font-size: 0.9375rem;
+    font-size: 13px;
     display: none;
   }
 
-  .footer {
-    max-width: 1200px;
+  footer {
+    max-width: 1500px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 12px 24px 40px;
     border-top: 1px solid var(--gray-200);
     font-family: var(--font-mono);
-    font-size: 0.6875rem;
+    font-size: 11px;
     color: var(--gray-400);
     letter-spacing: 0.04em;
   }
@@ -1043,283 +1084,620 @@ SITES_INDEX_CSS = '''  @import url('https://fonts.googleapis.com/css2?family=EB+
   }
 
   @media (max-width: 600px) {
-    .header { padding: 2rem 1.25rem 1rem; }
-    .filters { padding: 1.25rem; }
+    .header { padding: 24px 18px 20px; }
+    .filters { padding: 16px 18px; }
     .filter-row { gap: 1rem; }
     .filter-group { min-width: 100%; }
-    .results-bar { padding: 0.75rem 1.25rem; }
-    .index-table { padding: 0 1.25rem 3rem; overflow-x: auto; }
+    .results-bar { padding: 10px 18px; }
+    .map-wrap { padding: 0 18px 16px; }
+    .index-table { padding: 0 18px 40px; overflow-x: auto; }
     table { min-width: 600px; }
-    .footer { padding: 1.5rem 1.25rem; }
+    footer { padding: 12px 18px 32px; }
+  }
+
+  /* map */
+  .map-wrap {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 24px 20px;
+  }
+  #pli-map {
+    width: 100%;
+    height: 300px;
+    border: 1px solid var(--gray-200);
+  }
+  @media (min-width: 720px) { #pli-map { height: 380px; } }
+  .pli-marker { background: none; border: none; }
+  .pli-dot {
+    width: 9px;
+    height: 9px;
+    background: var(--black);
+    border-radius: 50%;
+    border: 2px solid var(--white);
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.2);
+    cursor: pointer;
+    transition: transform 0.1s;
+  }
+  .pli-marker:hover .pli-dot,
+  .pli-marker.active .pli-dot { transform: scale(1.8); }
+  .leaflet-popup-content-wrapper {
+    border-radius: 2px;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.1);
+    font-family: var(--font-serif);
+  }
+  .leaflet-popup-content {
+    margin: 8px 12px;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  .leaflet-popup-content a { color: var(--black); font-weight: 500; text-decoration: none; }
+  .leaflet-popup-content a:hover { text-decoration: underline; }
+  @keyframes pli-row-flash {
+    0%   { background: var(--gray-200); }
+    100% { background: transparent; }
+  }
+  tr.map-highlight { animation: pli-row-flash 1.2s ease-out forwards; }
+
+  .intro-wrap {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 12px 24px 16px;
+    border-top: 1px solid var(--gray-200);
+  }
+  .intro-text {
+    font-size: 13px;
+    color: var(--gray-500);
+  }
+  @media (max-width: 600px) {
+    .intro-wrap { padding: 10px 18px 12px; }
   }'''
 
 
 def make_sites_index_page(all_sites, meta):
     import re as _re
+    import hashlib
 
-    def geology_period(epoch):
-        for p in GEOLOGY_PERIODS:
-            if p.lower() in epoch.lower():
-                return p
-        return epoch.split(';')[0].split(',')[0].strip()
+    # Deterministic color from nation name
+    def nation_color(name):
+        palette = [
+            '#e8a838','#5b9e6e','#5b8abf','#bf5b7a','#7a5bbf','#c87840','#5bbfbf',
+            '#bf5b5b','#8cbf5b','#4a6ebf','#bf9e5b','#5bbf8c','#bf5b9e','#5b9ebf',
+            '#9ebf5b','#bf6e5b','#8a5bbf','#bfbf5b','#e87c5b','#5be8a8','#c45be8',
+            '#e8c45b','#5bc4e8','#e85b8a','#a8e85b','#c8a050','#6abf9e','#9e6abf',
+        ]
+        idx = int(hashlib.md5(name.encode()).hexdigest(), 16) % len(palette)
+        return palette[idx]
 
-    def acreage_int(s):
-        m = _re.search(r'[\d,]+', str(s))
-        return int(m.group().replace(',', '')) if m else 0
-
-    js_sites = []
+    # Collect all unique nations across all sites
+    all_nations = []
+    seen_nations = set()
     for site in all_sites:
         slug = site['slug']
         m = meta.get(slug, {})
-        js_sites.append({
-            'name': site['name'],
-            'state': STATE_NAMES.get(site['state'], site['state']),
-            'stateAbbr': site['state'],
-            'agency': m.get('agency', ''),
-            'agencyType': m.get('agency_type', ''),
-            'geology': geology_period(site.get('epoch', '')),
-            'geologyDetail': site.get('geological_age', ''),
-            'acreage': acreage_int(site.get('acreage', '0')),
-            'territory': m.get('territory', []),
-            'url': f'https://publiclandsinstitute.net/sites/{slug}.html',
-        })
+        for n in m.get('territory', []):
+            if n not in seen_nations:
+                all_nations.append(n)
+                seen_nations.add(n)
 
-    js_array = json.dumps(js_sites, indent=2, ensure_ascii=False)
+    nation_colors = {n: nation_color(n) for n in all_nations}
+
+    # Build SITES GeoJSON
+    sites_features = []
+    for site in all_sites:
+        slug = site['slug']
+        lat = site.get('lat')
+        lng = site.get('lng')
+        if lat is None or lng is None:
+            continue
+        m = meta.get(slug, {})
+        territory = m.get('territory', [])
+        props = {
+            'slug': slug,
+            'name': site['name'],
+            'state': site['state'],
+            'acreage': site.get('acreage', ''),
+            'geology': site.get('geological_age', ''),
+            'epoch': site.get('epoch', ''),
+            'hydrology': site.get('hydrology', ''),
+            'native_lands': site.get('native_lands', ''),
+            'displacement_tenure': site.get('displacement_tenure', ''),
+            'shadow_history': site.get('shadow_history', ''),
+            'ecology': site.get('ecology', ''),
+            'conservation_status': site.get('conservation_status', ''),
+            'endangered_species': site.get('endangered_species', ''),
+            'gps': site.get('gps', ''),
+            'primary_nation': territory[0] if territory else '',
+            'agency_type': m.get('agency_type', ''),
+        }
+        sites_features.append({
+            'type': 'Feature',
+            'geometry': {'type': 'Point', 'coordinates': [lng, lat]},
+            'properties': props,
+        })
+    sites_gj = json.dumps({'type': 'FeatureCollection', 'features': sites_features}, ensure_ascii=False, separators=(',', ':'))
+
+    # Build NATIONS_GJ — one feature per (site, nation)
+    nations_features = []
+    for site in all_sites:
+        slug = site['slug']
+        lat = site.get('lat')
+        lng = site.get('lng')
+        if lat is None or lng is None:
+            continue
+        m = meta.get(slug, {})
+        for n in m.get('territory', []):
+            nations_features.append({
+                'type': 'Feature',
+                'geometry': {'type': 'Point', 'coordinates': [lng, lat]},
+                'properties': {'slug': slug, 'nation': n, 'color': nation_colors.get(n, '#8a8478')},
+            })
+    nations_gj = json.dumps({'type': 'FeatureCollection', 'features': nations_features}, ensure_ascii=False, separators=(',', ':'))
+
+    # Build PHOTOS dict — slug -> list of {f, d, thumb, large}
+    photos_dict = {}
+    for site in all_sites:
+        slug = site['slug']
+        thumb_dir = os.path.join('thumbs', slug)
+        if not os.path.isdir(thumb_dir):
+            continue
+        images = get_all_images_for_site(site)
+        if not images:
+            continue
+        entries = []
+        for i, img in enumerate(images):
+            cam = img['camera_filename']
+            stem = os.path.splitext(cam)[0]
+            thumb_path = f'thumbs/{slug}/{cam}'
+            large_path = f'thumbs/{slug}/lg_{cam}'
+            # Use archive tif filename for f field (matches Commons naming, which uses zero-padded sequence numbers)
+            archive_name = f'Public Lands Institute - {site["name"]} - {i + 1:03d}.tif'
+            entries.append({
+                'f': archive_name,
+                'd': img.get('date', '') or '',
+                'thumb': thumb_path if os.path.exists(thumb_path) else '',
+                'large': large_path if os.path.exists(large_path) else '',
+            })
+        if entries:
+            photos_dict[slug] = entries
+    photos_json = json.dumps(photos_dict, ensure_ascii=False, separators=(',', ':'))
+
+    nation_colors_json = json.dumps(nation_colors, ensure_ascii=False, separators=(',', ':'))
+    nation_list_json = json.dumps(all_nations, ensure_ascii=False, separators=(',', ':'))
+    state_names_json = json.dumps(STATE_NAMES, ensure_ascii=False, separators=(',', ':'))
 
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TMR79M95R4"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','G-TMR79M95R4');</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Public Lands Institute \u2014 Index</title>
+<title>Public Lands Institute</title>
+<meta name="description" content="An ongoing photographic index and open-access archive of American public lands. CC0 Public Domain.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Public Lands Institute">
+<meta property="og:description" content="An ongoing photographic index and open-access archive of American public lands, with geological, ecological, Indigenous land tenure, and shadow history documentation. CC0 Public Domain.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://publiclandsinstitute.net/">
+<meta property="og:site_name" content="Public Lands Institute">
+<link rel="canonical" href="https://publiclandsinstitute.net/">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/favicon-16.png" sizes="16x16" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
 <style>
-{SITES_INDEX_CSS}
+*, *::before, *::after {{ box-sizing: border-box; margin: 0; padding: 0; }}
+:root {{ --sand: #f2ede6; --ink: #1a1a18; --moss: #4a5e3a; --stone: #8a8478; --panel-w: 440px; }}
+html, body {{ height: 100%; font-family: 'Inter', sans-serif; background: var(--ink); }}
+#map {{ position: fixed; inset: 0; }}
+#wordmark {{ position: fixed; top: 28px; left: 32px; z-index: 10; pointer-events: none; }}
+#wordmark h1 {{ font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sand); opacity: 0.85; line-height: 1; }}
+#site-count {{ position: fixed; top: 28px; right: 32px; z-index: 10; color: rgba(242,237,230,0.3); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 300; }}
+#layers {{ position: fixed; bottom: 32px; left: 32px; z-index: 10; display: flex; flex-direction: column; gap: 6px; }}
+.layer-btn {{ background: rgba(26,26,24,0.72); border: 1px solid rgba(242,237,230,0.2); color: var(--sand); font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 12px; cursor: pointer; backdrop-filter: blur(8px); transition: border-color 0.2s; text-align: left; }}
+.layer-btn:hover {{ border-color: rgba(242,237,230,0.5); }}
+.layer-btn.active {{ color: #c8ddb8; border-color: #c8ddb8; background: rgba(26,26,24,0.9); }}
+#legend {{ position: fixed; bottom: 32px; right: 32px; z-index: 10; background: rgba(26,26,24,0.85); backdrop-filter: blur(8px); border: 1px solid rgba(242,237,230,0.15); padding: 14px 16px; min-width: 200px; display: none; }}
+#legend.visible {{ display: block; }}
+#legend-title {{ font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(242,237,230,0.45); margin-bottom: 10px; }}
+.legend-item {{ display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-size: 11px; font-weight: 300; color: rgba(242,237,230,0.75); }}
+.legend-dot {{ width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }}
+#panel {{ position: fixed; top: 0; right: 0; width: var(--panel-w); height: 100%; background: var(--sand); z-index: 20; transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.16,1,0.3,1); overflow-y: auto; overflow-x: hidden; }}
+#panel.open {{ transform: translateX(0); }}
+#panel-close {{ position: sticky; top: 0; z-index: 5; display: flex; justify-content: flex-end; padding: 16px 20px 0; background: var(--sand); }}
+#panel-close button {{ background: none; border: none; cursor: pointer; color: var(--stone); font-size: 20px; line-height: 1; padding: 4px; }}
+#panel-close button:hover {{ color: var(--ink); }}
+#panel-body {{ padding: 8px 32px 48px; }}
+.panel-site-name {{ font-family: 'Inter', sans-serif; font-size: 22px; font-weight: 300; letter-spacing: -0.01em; color: var(--ink); line-height: 1.2; margin-bottom: 4px; }}
+.panel-state {{ font-size: 11px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); margin-bottom: 20px; }}
+.photo-grid {{ display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 180px; gap: 3px; margin-bottom: 6px; }}
+.photo-thumb {{ background: #ccc8c0; cursor: pointer; overflow: hidden; }}
+.photo-thumb img {{ width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0; transition: opacity 0.25s; }}
+.photo-thumb img.loaded {{ opacity: 1; }}
+.photo-thumb:hover img {{ opacity: 0.75; }}
+.photo-grid-more {{ font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--stone); margin-bottom: 20px; text-align: right; }}
+.photo-grid-more a {{ color: var(--moss); text-decoration: none; border-bottom: 1px solid var(--moss); }}
+.panel-section {{ margin-bottom: 20px; border-top: 1px solid rgba(26,26,24,0.12); padding-top: 16px; }}
+.panel-section-label {{ font-size: 10px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--stone); margin-bottom: 8px; }}
+.panel-section p {{ font-size: 13.5px; font-weight: 300; line-height: 1.7; color: #2e2e2a; }}
+.geo-block {{ margin-bottom: 20px; border-top: 1px solid rgba(26,26,24,0.12); padding-top: 16px; }}
+.geo-label {{ font-size: 10px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--stone); margin-bottom: 10px; }}
+.geo-era-row {{ display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }}
+.geo-swatch {{ width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }}
+.geo-era-name {{ font-size: 14px; font-weight: 300; color: var(--ink); }}
+.geo-mya {{ font-size: 11px; font-weight: 300; color: var(--stone); margin-left: auto; letter-spacing: 0.04em; }}
+.geo-bar-wrap {{ position: relative; height: 3px; background: rgba(26,26,24,0.08); margin-bottom: 8px; border-radius: 2px; }}
+.geo-bar-fill {{ position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }}
+.geo-prose {{ font-size: 12px; font-weight: 300; line-height: 1.6; color: var(--stone); }}
+#lightbox {{ position: fixed; inset: 0; z-index: 100; background: rgba(14,14,12,0.97); display: none; flex-direction: column; }}
+#lightbox.open {{ display: flex; }}
+#lb-img-wrap {{ flex: 1; display: flex; align-items: center; justify-content: center; min-height: 0; padding: 56px 72px 0; position: relative; }}
+#lb-img {{ max-width: 100%; max-height: 100%; object-fit: contain; display: block; opacity: 0; transition: opacity 0.2s; }}
+#lb-img.loaded {{ opacity: 1; }}
+#lb-spinner {{ position: absolute; color: rgba(242,237,230,0.3); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }}
+#lb-bar {{ display: flex; align-items: center; justify-content: space-between; padding: 14px 72px 20px; gap: 24px; flex-shrink: 0; border-top: 1px solid rgba(242,237,230,0.07); }}
+#lb-meta {{ flex: 1; min-width: 0; }}
+#lb-filename {{ font-size: 12px; font-weight: 300; color: rgba(242,237,230,0.55); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 3px; }}
+#lb-date {{ font-size: 11px; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(242,237,230,0.3); }}
+#lb-actions {{ display: flex; gap: 8px; flex-shrink: 0; }}
+.lb-action {{ font-size: 11px; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; padding: 5px 12px; border: 1px solid rgba(242,237,230,0.3); color: rgba(242,237,230,0.65); transition: border-color 0.15s, color 0.15s; white-space: nowrap; }}
+.lb-action:hover {{ border-color: rgba(242,237,230,0.75); color: var(--sand); }}
+#lb-close {{ position: fixed; top: 18px; right: 24px; z-index: 101; background: none; border: none; cursor: pointer; color: rgba(242,237,230,0.4); font-size: 22px; line-height: 1; transition: color 0.15s; }}
+#lb-close:hover {{ color: var(--sand); }}
+#lb-prev, #lb-next {{ position: fixed; top: 50%; transform: translateY(-50%); z-index: 101; background: none; border: none; cursor: pointer; color: rgba(242,237,230,0.3); font-size: 36px; padding: 16px; transition: color 0.15s; line-height: 1; }}
+#lb-prev {{ left: 8px; }} #lb-next {{ right: 8px; }}
+#lb-prev:hover, #lb-next:hover {{ color: var(--sand); }}
+#lb-counter {{ position: fixed; top: 22px; left: 50%; transform: translateX(-50%); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(242,237,230,0.25); }}
+.maplibregl-popup-content {{ background: var(--ink); color: var(--sand); font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 300; padding: 8px 12px; border-radius: 0; box-shadow: none; }}
+.maplibregl-popup-tip {{ border-top-color: var(--ink) !important; }}
+.maplibregl-ctrl-attrib {{ font-size: 9px; opacity: 0.4; }}
+@media (max-width: 640px) {{
+  :root {{ --panel-w: 100%; }}
+  #wordmark {{ top: 16px; left: 16px; }}
+  #wordmark h1 {{ font-size: 11px; }}
+  #site-count {{ top: 16px; right: 16px; font-size: 10px; }}
+  #layers {{ bottom: 16px; left: 16px; right: 16px; }}
+  .layer-btn {{ font-size: 11px; padding: 7px 10px; }}
+  #legend {{ left: 16px; right: 16px; bottom: 84px; min-width: 0; }}
+  #panel {{ width: 100%; }}
+  #panel-body {{ padding: 8px 20px 48px; }}
+  .panel-site-name {{ font-size: 19px; }}
+  .photo-grid {{ grid-template-columns: 1fr 1fr; grid-auto-rows: 130px; }}
+  .panel-section p, .geo-prose {{ word-break: break-word; overflow-wrap: break-word; }}
+  #lb-img-wrap {{ padding: 56px 16px 0; }}
+  #lb-bar {{ padding: 14px 16px 20px; flex-direction: column; align-items: flex-start; gap: 10px; }}
+  #lb-actions {{ flex-wrap: wrap; }}
+  #lb-prev, #lb-next {{ font-size: 28px; padding: 10px; }}
+  #lb-prev {{ left: 0; }} #lb-next {{ right: 0; }}
+}}
 </style>
 </head>
 <body>
-
-<div class="header">
-  <h1><a href="https://publiclandsinstitute.net/">Public Lands Institute</a></h1>
-  <nav>
-    <a href="https://publiclandsinstitute.net/">Sites</a>
-    <a href="https://publiclandsinstitute.net/archive.html">Archive</a>
-    <a href="#" class="active">Index</a>
-  </nav>
+<div id="map"></div>
+<div id="wordmark"><h1>Public Lands Institute</h1></div>
+<div id="site-count"></div>
+<div id="layers">
+  <button class="layer-btn" data-layer="geology">Geologic Age</button>
+  <button class="layer-btn" data-layer="agency">Managing Agency</button>
+  <button class="layer-btn" data-layer="native">Indigenous Territories</button>
+  <button class="layer-btn" data-layer="shadow">Shadow History</button>
 </div>
-
-<div class="filters">
-  <div class="filter-row">
-    <div class="filter-group">
-      <span class="filter-label">State</span>
-      <select class="filter-select" id="filter-state">
-        <option value="">All states</option>
-      </select>
+<div id="legend"><div id="legend-title"></div><div id="legend-items"></div></div>
+<div id="panel">
+  <div id="panel-close"><button>&#x2715;</button></div>
+  <div id="panel-body"></div>
+</div>
+<div id="lightbox">
+  <button id="lb-close">&#x2715;</button>
+  <button id="lb-prev">&#x2039;</button>
+  <button id="lb-next">&#x203a;</button>
+  <div id="lb-counter"></div>
+  <div id="lb-img-wrap">
+    <div id="lb-spinner">Loading</div>
+    <img id="lb-img" src="" alt="">
+  </div>
+  <div id="lb-bar">
+    <div id="lb-meta">
+      <div id="lb-filename"></div>
+      <div id="lb-date"></div>
     </div>
-    <div class="filter-group">
-      <span class="filter-label">Managing agency</span>
-      <select class="filter-select" id="filter-agency">
-        <option value="">All agencies</option>
-      </select>
-    </div>
-    <div class="filter-group">
-      <span class="filter-label">Geological period</span>
-      <select class="filter-select" id="filter-geology">
-        <option value="">All periods</option>
-      </select>
-    </div>
-    <div class="filter-group">
-      <span class="filter-label">Indigenous territory</span>
-      <select class="filter-select" id="filter-territory">
-        <option value="">All territories</option>
-      </select>
+    <div id="lb-actions">
+      <a id="lb-raw" class="lb-action" href="#" target="_blank" rel="noopener">RAW File</a>
+      <a id="lb-xml" class="lb-action" href="#" target="_blank" rel="noopener">XML</a>
+      <a id="lb-commons" class="lb-action" href="#" target="_blank" rel="noopener">Commons</a>
     </div>
   </div>
 </div>
-
-<div class="results-bar">
-  <span class="results-count" id="results-count"></span>
-  <button class="clear-filters" id="clear-filters">Clear filters</button>
-</div>
-
-<div class="index-table">
-  <table>
-    <thead>
-      <tr>
-        <th data-sort="name">Site <span class="sort-indicator">&#9650;</span></th>
-        <th data-sort="state">State <span class="sort-indicator">&#9650;</span></th>
-        <th data-sort="agency">Agency <span class="sort-indicator">&#9650;</span></th>
-        <th data-sort="geology">Geology <span class="sort-indicator">&#9650;</span></th>
-        <th data-sort="acreage">Acreage <span class="sort-indicator">&#9650;</span></th>
-        <th class="native-lands-col" data-sort="territory">Indigenous territory <span class="sort-indicator">&#9650;</span></th>
-      </tr>
-    </thead>
-    <tbody id="site-tbody">
-    </tbody>
-  </table>
-  <div class="empty-state" id="empty-state">No sites match the current filters.</div>
-</div>
-
-<div class="footer">
-  Public Lands Institute &#183; CC0 Public Domain &#183; <a href="https://publiclandsinstitute.net/" style="color: var(--gray-400);">publiclandsinstitute.net</a>
-</div>
-
 <script>
-const sites = {js_array};
+const SITES={sites_gj};
+const NATIONS_GJ={nations_gj};
+const PHOTOS={photos_json};
+const STATE_NAMES={state_names_json};
+const NATION_COLORS={nation_colors_json};
+const NATION_LIST={nation_list_json};
 
-function getUnique(arr, key) {{
-  const vals = new Set();
-  arr.forEach(s => {{
-    if (Array.isArray(s[key])) {{
-      s[key].forEach(v => vals.add(v));
-    }} else if (s[key]) {{
-      vals.add(s[key]);
+const GEOLOGY_ERAS = [
+  ["Cambrian","#a0522d"],["Ordovician","#c8a86e"],["Silurian","#7ecfc0"],["Devonian","#4aaa78"],
+  ["Mississippian","#3d7fbf"],["Pennsylvanian","#5d5abf"],["Permian","#9b59b6"],
+  ["Triassic","#e07050"],["Jurassic","#c8a840"],["Cretaceous","#d4b840"],
+  ["Paleogene","#d4704a"],["Neogene","#c85a8a"],["Quaternary","#8a8478"],["Pleistocene","#8a8478"],
+];
+const GEO_TIMESCALE = [
+  ["Cambrian","#a0522d",541,485],["Ordovician","#c8a86e",485,444],["Silurian","#7ecfc0",444,419],
+  ["Devonian","#4aaa78",419,359],["Mississippian","#3d7fbf",359,323],["Pennsylvanian","#5d5abf",323,299],
+  ["Permian","#9b59b6",299,252],["Triassic","#e07050",252,201],["Jurassic","#c8a840",201,145],
+  ["Cretaceous","#d4b840",145,66],["Paleogene","#d4704a",66,23],["Neogene","#c85a8a",23,2.6],
+  ["Quaternary","#8a8478",2.6,0],["Pleistocene","#8a8478",2.6,0.01],
+];
+const EARTH_AGE = 541;
+const GEOLOGY_LEGEND = [
+  ["Ordovician \xb7 485–444 Mya","#c8a86e"],["Silurian \xb7 444–419 Mya","#7ecfc0"],["Devonian \xb7 419–359 Mya","#4aaa78"],
+  ["Mississippian \xb7 359–323 Mya","#3d7fbf"],["Pennsylvanian \xb7 323–299 Mya","#5d5abf"],
+  ["Permian \xb7 299–252 Mya","#9b59b6"],["Cretaceous \xb7 145–66 Mya","#d4b840"],
+  ["Paleogene \xb7 66–23 Mya","#d4704a"],["Quaternary \xb7 <2.6 Mya","#8a8478"],
+];
+const AGENCY_ENTRIES = [
+  ["National Park Service","#5c9e6a"],["U.S. Fish & Wildlife Service","#4a8a9e"],
+  ["State Park / Preserve","#9e7a4a"],["Nature Conservancy / Private","#7a5a8a"],["Other","#5a5a52"],
+];
+const NATIVE_LEGEND = NATION_LIST.map(n => [n, NATION_COLORS[n]||'#8a8478']);
+const LAYER_LEGENDS = {{
+  geology:{{ title:"Geologic Age",          entries:GEOLOGY_LEGEND }},
+  agency: {{ title:"Managing Agency",        entries:AGENCY_ENTRIES }},
+  native: {{ title:"Indigenous Territories", entries:NATIVE_LEGEND }},
+  shadow: {{ title:"Shadow History",         entries:[["Extensively documented","#c85a2a"],["Documented","#c8904a"],["Brief note","#8a6a3a"]] }},
+}};
+function geologyColor(geo) {{
+  const g=(geo||'').toLowerCase();
+  for (const [era,c] of GEOLOGY_ERAS) if (g.includes(era.toLowerCase())) return c;
+  return '#5a5a52';
+}}
+function agencyColor(s) {{
+  const sl=(s||'').toLowerCase();
+  if (sl.includes('national park')||sl.includes('national seashore')||sl.includes('national river')||sl.includes('national monument')||sl.includes('national recreation')) return '#5c9e6a';
+  if (sl.includes('wildlife refuge')||sl.includes('federal wilderness')) return '#4a8a9e';
+  if (sl.includes('state park')||sl.includes('state nature preserve')||sl.includes('state memorial')||sl.includes('state forest')) return '#9e7a4a';
+  if (sl.includes('nature conservancy')||sl.includes('private')||sl.includes('land trust')) return '#7a5a8a';
+  return '#5a5a52';
+}}
+let activeLayer = null;
+function dotColor(p) {{
+  if (activeLayer==='geology') return geologyColor(p.geology);
+  if (activeLayer==='agency')  return agencyColor(p.conservation_status);
+  if (activeLayer==='native')  return p.primary_nation ? (NATION_COLORS[p.primary_nation]||'#8a8478') : '#3a3a38';
+  if (activeLayer==='shadow')  {{ const l=(p.shadow_history||'').length; return l>800?'#c85a2a':l>400?'#c8904a':'#8a6a3a'; }}
+  return '#f2ede6';
+}}
+function buildDotFeatures() {{
+  return {{ ...SITES, features: SITES.features.map(f => ({{...f, properties:{{...f.properties, _color:dotColor(f.properties)}}}}) ) }};
+}}
+const map = new maplibregl.Map({{
+  container:'map',
+  style:{{ version:8, sources:{{ base:{{ type:'raster', tiles:['https://basemaps.cartocdn.com/dark_all/{{z}}/{{x}}/{{y}}@2x.png'], tileSize:256, attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>' }} }}, layers:[{{id:'bg',type:'raster',source:'base'}}] }},
+  center:[-89,38.5], zoom:4.4, minZoom:2, maxZoom:18,
+}});
+document.getElementById('site-count').textContent = SITES.features.length+' sites';
+map.on('load', () => {{
+  map.addSource('sites', {{ type:'geojson', data:buildDotFeatures() }});
+  map.addSource('nations', {{ type:'geojson', data:NATIONS_GJ }});
+  map.addLayer({{ id:'nations-dot', type:'circle', source:'nations',
+    layout:{{ visibility:'none' }},
+    paint:{{ 'circle-radius':['interpolate',['linear'],['zoom'],3,4.5,10,8],
+            'circle-color':['get','color'], 'circle-opacity':0.85,
+            'circle-stroke-color':'rgba(242,237,230,0.2)','circle-stroke-width':1 }} }});
+  map.addLayer({{ id:'sites-hit', type:'circle', source:'sites', paint:{{ 'circle-radius':16,'circle-opacity':0,'circle-stroke-width':0 }} }});
+  map.addLayer({{ id:'sites-dot', type:'circle', source:'sites',
+    paint:{{ 'circle-radius':['interpolate',['linear'],['zoom'],3,4.5,10,8],
+            'circle-color':['get','_color'],'circle-opacity':0.88,
+            'circle-stroke-color':'rgba(242,237,230,0.2)','circle-stroke-width':1 }} }});
+  const popup = new maplibregl.Popup({{closeButton:false,closeOnClick:false,offset:12}});
+  let panelOpen = false;
+  map.on('mouseenter','sites-hit', e => {{
+    if (panelOpen) return;
+    map.getCanvas().style.cursor='pointer';
+    popup.setLngLat(e.lngLat).setHTML('<span style="letter-spacing:.07em">'+e.features[0].properties.name+'</span>').addTo(map);
+  }});
+  map.on('mouseleave','sites-hit', () => {{
+    if (panelOpen) return;
+    map.getCanvas().style.cursor=''; popup.remove();
+  }});
+  map.on('click','sites-hit', e => {{
+    const props = e.features[0].properties;
+    const coords = e.features[0].geometry.coordinates;
+    map.flyTo({{ center:coords, zoom:Math.max(map.getZoom(),11), duration:900, essential:true }});
+    popup.remove();
+    panelOpen = true;
+    openPanel(props);
+  }});
+  document.querySelectorAll('.layer-btn').forEach(btn => {{
+    btn.addEventListener('click', () => {{
+      const layer = btn.dataset.layer;
+      if (activeLayer===layer) {{ activeLayer=null; btn.classList.remove('active'); hideLegend(); }}
+      else {{ document.querySelectorAll('.layer-btn').forEach(b=>b.classList.remove('active')); activeLayer=layer; btn.classList.add('active'); showLegend(layer); }}
+      const nativeOn = activeLayer === 'native';
+      map.setLayoutProperty('nations-dot', 'visibility', nativeOn ? 'visible' : 'none');
+      map.setLayoutProperty('sites-dot',   'visibility', nativeOn ? 'none'    : 'visible');
+      if (!nativeOn) {{ map.setFilter('nations-dot', null); map.setFilter('sites-dot', null); }}
+      map.getSource('sites').setData(buildDotFeatures());
+    }});
+  }});
+}});
+function showLegend(layer) {{
+  const def = LAYER_LEGENDS[layer];
+  document.getElementById('legend-title').textContent = def.title;
+  document.getElementById('legend-items').innerHTML = def.entries.map(([l,c])=>
+    '<div class="legend-item" data-color="'+c+'" style="cursor:pointer"><div class="legend-dot" style="background:'+c+'"></div><span>'+l+'</span></div>').join('');
+  document.getElementById('legend-items').querySelectorAll('.legend-item').forEach((item, i) => {{
+    item.addEventListener('mouseenter', () => {{
+      if (activeLayer === 'native') map.setFilter('nations-dot', ['==', ['get','nation'], NATION_LIST[i]]);
+      else map.setFilter('sites-dot', ['==', ['get','_color'], item.dataset.color]);
+    }});
+    item.addEventListener('click', () => {{
+      let matching;
+      if (activeLayer === 'native') matching = NATIONS_GJ.features.filter(f => f.properties.nation === NATION_LIST[i]);
+      else matching = SITES.features.filter(f => dotColor(f.properties) === item.dataset.color);
+      if (!matching.length) return;
+      const lngs = matching.map(f => f.geometry.coordinates[0]);
+      const lats = matching.map(f => f.geometry.coordinates[1]);
+      map.fitBounds([[Math.min(...lngs), Math.min(...lats)], [Math.max(...lngs), Math.max(...lats)]],
+        {{ padding:{{ top:80, bottom:180, left:220, right:280 }}, maxZoom:9, duration:800 }});
+    }});
+  }});
+  document.getElementById('legend').addEventListener('mouseleave', () => {{
+    map.setFilter('nations-dot', null); map.setFilter('sites-dot', null);
+  }});
+  document.getElementById('legend').classList.add('visible');
+}}
+function hideLegend() {{
+  map.setFilter('nations-dot', null); map.setFilter('sites-dot', null);
+  document.getElementById('legend').classList.remove('visible');
+}}
+function buildGeoBlock(geoText) {{
+  if (!geoText) return '';
+  const g = geoText.toLowerCase();
+  const matched = GEO_TIMESCALE.filter(([era]) => g.includes(era.toLowerCase()));
+  if (!matched.length) return '';
+  const [eraName, color, oldest] = matched.reduce((a, b) => a[2] > b[2] ? a : b);
+  const myaMatch = geoText.match(/~?([\d,]+(?:-[\d,]+)?)\s*[Mm]ya/);
+  const myaLabel = myaMatch ? myaMatch[1].replace(',','') + ' Mya' : '';
+  const barPct = Math.min(100, Math.round((oldest / EARTH_AGE) * 100));
+  const prose = geoText.split(';')[0].trim();
+  return '<div class="geo-block">' +
+    '<div class="geo-label">Geology</div>' +
+    '<div class="geo-era-row">' +
+      '<div class="geo-swatch" style="background:'+color+'"></div>' +
+      '<span class="geo-era-name">'+eraName+'</span>' +
+      (myaLabel ? '<span class="geo-mya">'+myaLabel+'</span>' : '') +
+    '</div>' +
+    '<div class="geo-bar-wrap"><div class="geo-bar-fill" style="width:'+barPct+'%;background:'+color+';opacity:0.5"></div></div>' +
+    '<p class="geo-prose">'+prose+'</p>' +
+  '</div>';
+}}
+const imgObserver = new IntersectionObserver((entries) => {{
+  entries.forEach(entry => {{
+    if (entry.isIntersecting) {{
+      const img = entry.target;
+      if (img.dataset.src) {{ img.src=img.dataset.src; img.onload=()=>img.classList.add('loaded'); imgObserver.unobserve(img); }}
     }}
   }});
-  return [...vals].sort();
+}}, {{ rootMargin:'120px' }});
+const panel = document.getElementById('panel');
+const panelBody = document.getElementById('panel-body');
+document.getElementById('panel-close').querySelector('button').addEventListener('click', () => {{
+  panel.classList.remove('open'); panelOpen = false; map.getCanvas().style.cursor='';
+}});
+let currentPhotos = [];
+function sec(label, text) {{
+  return text ? '<div class="panel-section"><div class="panel-section-label">'+label+'</div><p>'+text+'</p></div>' : '';
 }}
-
-function populateFilter(selectId, values) {{
-  const select = document.getElementById(selectId);
-  const defaultOption = select.options[0];
-  select.innerHTML = '';
-  select.appendChild(defaultOption);
-  values.forEach(v => {{
-    const opt = document.createElement('option');
-    opt.value = v;
-    opt.textContent = v;
-    select.appendChild(opt);
-  }});
-}}
-
-populateFilter('filter-state', getUnique(sites, 'state'));
-populateFilter('filter-agency', getUnique(sites, 'agency'));
-populateFilter('filter-geology', getUnique(sites, 'geology'));
-populateFilter('filter-territory', getUnique(sites, 'territory'));
-
-let sortKey = 'name';
-let sortAsc = true;
-
-function sortSites(filtered) {{
-  return filtered.sort((a, b) => {{
-    let valA, valB;
-    if (sortKey === 'acreage') {{
-      valA = a.acreage || 0;
-      valB = b.acreage || 0;
-      return sortAsc ? valA - valB : valB - valA;
+function openPanel(props) {{
+  const state   = STATE_NAMES[props.state]||props.state;
+  const acreage = props.acreage
+    ? (/^\d[\d,]*$/.test(props.acreage.trim())
+        ? parseInt(props.acreage.replace(/,/g,'')).toLocaleString()+' acres'
+        : props.acreage)
+    : '';
+  const photos = (PHOTOS[props.slug]||[]).filter(p => p.thumb);
+  currentPhotos = photos;
+  const GRID_MAX = 6;
+  const grid = photos.slice(0, GRID_MAX);
+  let gridHTML = '';
+  if (grid.length) {{
+    gridHTML = '<div class="photo-grid">' +
+      grid.map((p,i) => '<div class="photo-thumb" data-idx="'+i+'"><img data-src="'+p.thumb+'" alt=""></div>').join('') +
+    '</div>';
+    if (photos.length > GRID_MAX) {{
+      const q = encodeURIComponent('Public Lands Institute '+props.name);
+      gridHTML += '<p class="photo-grid-more"><a href="https://commons.wikimedia.org/w/index.php?title=Special:MediaSearch&search='+q+'" target="_blank">View all '+photos.length+' photos →</a></p>';
     }}
-    if (sortKey === 'territory') {{
-      valA = (a.territory || []).join(', ').toLowerCase();
-      valB = (b.territory || []).join(', ').toLowerCase();
-    }} else {{
-      valA = (a[sortKey] || '').toLowerCase();
-      valB = (b[sortKey] || '').toLowerCase();
-    }}
-    if (valA < valB) return sortAsc ? -1 : 1;
-    if (valA > valB) return sortAsc ? 1 : -1;
-    return 0;
-  }});
-}}
-
-function formatAcreage(n) {{
-  if (!n) return '';
-  return n.toLocaleString();
-}}
-
-function render() {{
-  const stateFilter = document.getElementById('filter-state').value;
-  const agencyFilter = document.getElementById('filter-agency').value;
-  const geologyFilter = document.getElementById('filter-geology').value;
-  const territoryFilter = document.getElementById('filter-territory').value;
-
-  let filtered = sites.filter(s => {{
-    if (stateFilter && s.state !== stateFilter) return false;
-    if (agencyFilter && s.agency !== agencyFilter) return false;
-    if (geologyFilter && s.geology !== geologyFilter) return false;
-    if (territoryFilter && !s.territory.includes(territoryFilter)) return false;
-    return true;
-  }});
-
-  filtered = sortSites(filtered);
-
-  const tbody = document.getElementById('site-tbody');
-  tbody.innerHTML = '';
-
-  filtered.forEach(s => {{
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td class="site-name"><a href="${{s.url}}">${{s.name}}</a></td>
-      <td class="state">${{s.stateAbbr}}</td>
-      <td class="agency">${{s.agency}}</td>
-      <td class="geology">${{s.geologyDetail}}</td>
-      <td class="acreage">${{formatAcreage(s.acreage)}}</td>
-      <td class="native-lands">${{s.territory.join(', ')}}</td>
-    `;
-    tbody.appendChild(tr);
-  }});
-
-  const total = sites.length;
-  const shown = filtered.length;
-  const countEl = document.getElementById('results-count');
-  if (shown === total) {{
-    countEl.textContent = `${{total}} sites`;
-  }} else {{
-    countEl.textContent = `${{shown}} of ${{total}} sites`;
   }}
-
-  document.getElementById('empty-state').style.display = shown === 0 ? 'block' : 'none';
-
-  const hasFilters = stateFilter || agencyFilter || geologyFilter || territoryFilter;
-  document.getElementById('clear-filters').classList.toggle('visible', hasFilters);
-
-  document.querySelectorAll('thead th').forEach(th => {{
-    const key = th.dataset.sort;
-    th.classList.toggle('sorted', key === sortKey);
-    const indicator = th.querySelector('.sort-indicator');
-    if (indicator) {{
-      indicator.innerHTML = (key === sortKey && !sortAsc) ? '&#9660;' : '&#9650;';
-    }}
+  let sections = '';
+  sections += buildGeoBlock(props.geology);
+  sections += sec('Epoch', props.epoch);
+  sections += sec('Native Lands', props.native_lands);
+  sections += sec('Displacement & Tenure', props.displacement_tenure);
+  sections += sec('Shadow History', props.shadow_history);
+  sections += sec('Ecology', props.ecology);
+  sections += sec('Hydrology', props.hydrology);
+  sections += sec('Conservation Status', props.conservation_status);
+  sections += sec('Endangered Species', props.endangered_species);
+  sections += sec('Acreage', acreage);
+  sections += sec('GPS', props.gps);
+  panelBody.innerHTML =
+    '<p class="panel-site-name">'+props.name+'</p>'+
+    '<p class="panel-state">'+state+'</p>'+
+    gridHTML+
+    sections;
+  panelBody.querySelectorAll('.photo-thumb img').forEach(img => imgObserver.observe(img));
+  panelBody.querySelectorAll('.photo-thumb').forEach(el => {{
+    el.addEventListener('click', () => openLightbox(parseInt(el.dataset.idx)));
   }});
+  panel.classList.add('open');
 }}
-
-['filter-state', 'filter-agency', 'filter-geology', 'filter-territory'].forEach(id => {{
-  document.getElementById(id).addEventListener('change', render);
+const lightbox  = document.getElementById('lightbox');
+const lbImg     = document.getElementById('lb-img');
+const lbSpinner = document.getElementById('lb-spinner');
+let lbIndex = 0;
+function openLightbox(idx) {{ lbIndex=idx; lightbox.classList.add('open'); showLbPhoto(idx); }}
+function showLbPhoto(idx) {{
+  const p = currentPhotos[idx];
+  if (!p) return;
+  lbImg.classList.remove('loaded'); lbImg.src=''; lbSpinner.style.display='block'; lbSpinner.textContent='Loading';
+  document.getElementById('lb-counter').textContent  = (idx+1)+' / '+currentPhotos.length;
+  document.getElementById('lb-filename').textContent = p.f;
+  document.getElementById('lb-date').textContent     = p.d||'';
+  const fe = p.f.replace(/ /g,'_');
+  document.getElementById('lb-commons').href = 'https://commons.wikimedia.org/wiki/File:'+fe;
+  document.getElementById('lb-raw').href     = 'https://commons.wikimedia.org/wiki/Special:FilePath/'+fe;
+  document.getElementById('lb-xml').href     = 'https://commons.wikimedia.org/wiki/Special:Export/File:'+fe;
+  if (p.large) {{
+    lbImg.src = p.large;
+    lbImg.onload  = () => {{ lbSpinner.style.display='none'; lbImg.classList.add('loaded'); }};
+    lbImg.onerror = () => {{ lbSpinner.textContent='Image unavailable'; }};
+  }} else {{ lbSpinner.textContent='No local image'; }}
+}}
+document.getElementById('lb-close').addEventListener('click', () => {{ lightbox.classList.remove('open'); lbImg.src=''; }});
+document.getElementById('lb-prev').addEventListener('click',  () => {{ lbIndex=(lbIndex-1+currentPhotos.length)%currentPhotos.length; showLbPhoto(lbIndex); }});
+document.getElementById('lb-next').addEventListener('click',  () => {{ lbIndex=(lbIndex+1)%currentPhotos.length; showLbPhoto(lbIndex); }});
+lightbox.addEventListener('click', e => {{ if(e.target===lightbox){{ lightbox.classList.remove('open'); lbImg.src=''; }} }});
+document.addEventListener('keydown', e => {{
+  if (!lightbox.classList.contains('open')) return;
+  if (e.key==='Escape')     {{ lightbox.classList.remove('open'); lbImg.src=''; }}
+  if (e.key==='ArrowLeft')  {{ lbIndex=(lbIndex-1+currentPhotos.length)%currentPhotos.length; showLbPhoto(lbIndex); }}
+  if (e.key==='ArrowRight') {{ lbIndex=(lbIndex+1)%currentPhotos.length; showLbPhoto(lbIndex); }}
 }});
-
-document.getElementById('clear-filters').addEventListener('click', () => {{
-  document.getElementById('filter-state').value = '';
-  document.getElementById('filter-agency').value = '';
-  document.getElementById('filter-geology').value = '';
-  document.getElementById('filter-territory').value = '';
-  render();
-}});
-
-document.querySelectorAll('thead th[data-sort]').forEach(th => {{
-  th.addEventListener('click', () => {{
-    const key = th.dataset.sort;
-    if (sortKey === key) {{
-      sortAsc = !sortAsc;
-    }} else {{
-      sortKey = key;
-      sortAsc = true;
-    }}
-    render();
-  }});
-}});
-
-render();
 </script>
-
 </body>
 </html>'''
 
 
 # ── Index page builder ─────────────────────────────────────────────────────────
 
-def make_index_page(all_sites):
+def make_index_page(all_sites, meta):
+    import re as _re
+
+    def acreage_int(s):
+        m = _re.search(r'[\d,]+', str(s))
+        return int(m.group().replace(',', '')) if m else 0
+
     rows = ''
+    states = set()
+    agency_types = set()
     for site in all_sites:
         images = get_all_images_for_site(site)
+        if not images:
+            continue
         first_img = images[0]['jpg'] if images else None
+        m_data = meta.get(site['slug'], {})
+        agency_type = m_data.get('agency_type', '')
+        acr = acreage_int(site.get('acreage', '0'))
+        states.add(site['state'])
+        if agency_type:
+            agency_types.add(agency_type)
 
         thumb_html = ''
         if first_img:
@@ -1350,10 +1728,15 @@ def make_index_page(all_sites):
 
         toggle_html = '    <button class="site-data-toggle">More</button>\n' if has_extra else ''
 
-        rows += f'''  <div class="location-row">
+        inat_key = f'{site["slug"]}:{site.get("inat_radius_km", 5)}'
+        inat_species = INAT_CACHE.get(inat_key, {}).get('total_species', 0)
+        if inat_species:
+            field_rows += f'<dt>Species observed</dt><dd>{inat_species:,} (iNaturalist)</dd>'
+
+        rows += f'''  <div class="location-row" data-state="{site["state"]}" data-agency-type="{agency_type}" data-acreage="{acr}">
     <div class="location-row-header">
       <span class="loc-name">{site["name"]}<span class="loc-state">{site["state"]}</span></span>
-      <a class="loc-link" href="sites/{site["slug"]}.html">Images</a>
+      <a class="loc-link" href="sites/{site["slug"]}.html">{len(images)} images</a>
     </div>
 {thumb_html}    <dl class="site-data">{field_rows}</dl>
 {toggle_html}  </div>\n'''
@@ -1370,16 +1753,16 @@ def make_index_page(all_sites):
   gtag('config', 'G-TMR79M95R4');
 </script>
 <meta charset="utf-8"/>
-<title>Public Lands Institute</title>
+<title>Sites — Public Lands Institute</title>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="An ongoing photographic index and open-access archive of American public lands. CC0 Public Domain." name="description"/>
 <meta content="index, follow" name="robots"/>
-<meta property="og:title" content="Public Lands Institute"/>
+<meta property="og:title" content="Sites — Public Lands Institute"/>
 <meta property="og:description" content="An ongoing photographic index and open-access archive of American public lands, with geological, ecological, Indigenous land tenure, and shadow history documentation. CC0 Public Domain."/>
 <meta property="og:type" content="website"/>
-<meta property="og:url" content="https://publiclandsinstitute.net/"/>
+<meta property="og:url" content="https://publiclandsinstitute.net/sites.html"/>
 <meta property="og:site_name" content="Public Lands Institute"/>
-<link href="https://publiclandsinstitute.net/" rel="canonical"/>
+<link href="https://publiclandsinstitute.net/sites.html" rel="canonical"/>
 <link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
 <link href="/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/>
 <link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
@@ -1388,15 +1771,57 @@ def make_index_page(all_sites):
   .intro-text {{
     font-size: 13px;
     color: var(--muted);
-    margin-bottom: 32px;
+    margin-bottom: 20px;
   }}
-  .section-label {{
+  .filter-bar {{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 8px 0 12px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 10;
+  }}
+  .sort-btn {{
+    font-family: inherit;
     font-size: 10px;
     text-transform: uppercase;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.14em;
     color: var(--muted);
-    margin-bottom: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
   }}
+  .sort-btn:hover {{ color: var(--fg); }}
+  .filter-count {{
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+  }}
+  .filter-controls {{ display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }}
+  .filter-select-sm {{
+    font-family: inherit;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    padding: 0 1.25rem 0 0;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5'%3E%3Cpath d='M0 0l4 5 4-5z' fill='%23777777'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0 center;
+  }}
+  .filter-select-sm:focus {{ outline: none; }}
   .location-row {{
     border-top: 1px solid var(--border);
     padding: 10px 0 14px 0;
@@ -1493,7 +1918,9 @@ def make_index_page(all_sites):
   .nav-toggle {{ display: none; }}
   .site-nav-mobile {{ display: none; }}
   @media (max-width: 480px) {{
-    .site-data {{ grid-template-columns: 120px 1fr; }}
+    .site-data {{ grid-template-columns: 1fr; }}
+    .site-data dt {{ padding-bottom: 0; }}
+    .site-data dd {{ padding-left: 0; padding-top: 1px; margin-bottom: 6px; }}
   }}
   header {{
     display: flex;
@@ -1529,15 +1956,23 @@ def make_index_page(all_sites):
 <body>
 <div class="page">
 <header>
-  <div class="logotype">Public Lands Institute</div>
+  <div class="logotype"><a href="index.html">Public Lands Institute</a></div>
   <nav class="header-nav">
-    <a href="sites.html">Index</a>
+    <a href="#" class="active">Sites</a>
     <a href="archive.html">Archive</a>
   </nav>
 </header>
 <div class="divider"></div>
-<p class="intro-text">Public Lands Institute is an ongoing photographic index of public lands. All Public Lands Institute images are dedicated to the Public Domain under the Creative Commons CC0 (Public Domain Dedication) license.</p><div class="section-label">Locations</div>
-{rows}
+<div class="filter-bar">
+  <div class="filter-controls">
+    <button class="sort-btn" id="sort-toggle">Alphabetical</button>
+    <select id="filter-state-sites" class="filter-select-sm"><option value="">All states</option></select>
+    <select id="filter-type-sites" class="filter-select-sm"><option value="">All types</option></select>
+  </div>
+  <span class="filter-count" id="filter-count"></span>
+</div>
+<div id="locations-container">
+{rows}</div>
 <footer>
   <span>Public Lands Institute \u2014 ongoing project</span>
   <span>US \u00b7 established MMXXV</span>
@@ -1550,16 +1985,13 @@ def make_index_page(all_sites):
     if (imgs.length < 2) return;
     var idx = 0;
     var img = thumb.querySelector('img');
-    var pos = thumb.querySelector('.loc-img-pos');
     var x0 = 0, y0 = 0, didSwipe = false;
-
     thumb.addEventListener('touchstart', function (e) {{
       if (e.touches.length !== 1) return;
       x0 = e.touches[0].clientX;
       y0 = e.touches[0].clientY;
       didSwipe = false;
     }}, {{ passive: true }});
-
     thumb.addEventListener('touchend', function (e) {{
       if (!e.changedTouches.length) return;
       var dx = e.changedTouches[0].clientX - x0;
@@ -1570,12 +2002,10 @@ def make_index_page(all_sites):
         img.src = imgs[idx];
       }}
     }}, {{ passive: true }});
-
     thumb.addEventListener('click', function (e) {{
       if (didSwipe) {{ e.preventDefault(); didSwipe = false; }}
     }});
   }});
-
   document.querySelectorAll('.site-data-toggle').forEach(function (btn) {{
     btn.addEventListener('click', function () {{
       var dl = btn.previousElementSibling;
@@ -1584,9 +2014,455 @@ def make_index_page(all_sites):
     }});
   }});
 }})();
+
+(function () {{
+  var rows = Array.from(document.querySelectorAll('.location-row'));
+  var originalOrder = rows.slice();
+  var sortMode = 'recent';
+  var btn = document.getElementById('sort-toggle');
+  var countEl = document.getElementById('filter-count');
+  var stateSelect = document.getElementById('filter-state-sites');
+  var typeSelect = document.getElementById('filter-type-sites');
+
+  var states = [], types = [];
+  rows.forEach(function (row) {{
+    var s = row.dataset.state;
+    var t = row.dataset.agencyType;
+    if (s && states.indexOf(s) === -1) states.push(s);
+    if (t && types.indexOf(t) === -1) types.push(t);
+  }});
+  states.sort().forEach(function (s) {{
+    var opt = document.createElement('option');
+    opt.value = s; opt.textContent = s;
+    stateSelect.appendChild(opt);
+  }});
+  types.sort().forEach(function (t) {{
+    var opt = document.createElement('option');
+    opt.value = t; opt.textContent = t;
+    typeSelect.appendChild(opt);
+  }});
+
+  function applyFilters() {{
+    var sv = stateSelect.value;
+    var tv = typeSelect.value;
+    rows.forEach(function (row) {{
+      var match = (!sv || row.dataset.state === sv) && (!tv || row.dataset.agencyType === tv);
+      row.style.display = match ? '' : 'none';
+    }});
+    renderSort();
+  }}
+
+  function renderSort() {{
+    var container = document.getElementById('locations-container');
+    if (!container) return;
+    var visible = rows.filter(function (r) {{ return r.style.display !== 'none'; }});
+    if (sortMode === 'alpha') {{
+      visible.sort(function (a, b) {{
+        var na = a.querySelector('.loc-name').childNodes[0].nodeValue.trim().toLowerCase();
+        var nb = b.querySelector('.loc-name').childNodes[0].nodeValue.trim().toLowerCase();
+        return na < nb ? -1 : na > nb ? 1 : 0;
+      }});
+    }} else {{
+      visible = originalOrder.filter(function (r) {{ return r.style.display !== 'none'; }});
+    }}
+    visible.forEach(function (row) {{ container.appendChild(row); }});
+    countEl.textContent = visible.length + ' sites';
+  }}
+
+  btn.addEventListener('click', function () {{
+    sortMode = sortMode === 'recent' ? 'alpha' : 'recent';
+    btn.textContent = sortMode === 'recent' ? 'Alphabetical' : 'Recent';
+    renderSort();
+  }});
+
+  stateSelect.addEventListener('change', applyFilters);
+  typeSelect.addEventListener('change', applyFilters);
+
+  countEl.textContent = rows.length + ' sites';
+  renderSort();
+}})();
 </script>
 </body>
 </html>'''
+
+
+# ── Combined prototype (index2.html) ───────────────────────────────────────────
+
+def make_combined_page(all_sites, meta):
+    import re as _re
+
+    def acreage_int(s):
+        m = _re.search(r'[\d,]+', str(s))
+        return int(m.group().replace(',', '')) if m else 0
+
+    # JS array for Leaflet map
+    js_sites = []
+    for site in all_sites:
+        slug = site['slug']
+        m = meta.get(slug, {})
+        js_sites.append({
+            'slug': slug,
+            'name': site['name'],
+            'stateAbbr': site['state'],
+            'agencyType': m.get('agency_type', ''),
+            'lat': site.get('lat', None),
+            'lng': site.get('lng', None),
+            'url': f'https://publiclandsinstitute.net/sites/{slug}.html',
+        })
+    js_array = json.dumps(js_sites, indent=2, ensure_ascii=False)
+
+    # Card rows
+    rows = ''
+    for site in all_sites:
+        images = get_all_images_for_site(site)
+        if not images:
+            continue
+        m_data = meta.get(site['slug'], {})
+        agency_type = m_data.get('agency_type', '')
+        acr = acreage_int(site.get('acreage', '0'))
+
+        PRIMARY_KEYS   = {'geological_age', 'acreage'}
+        EXPANDABLE_KEYS = {'epoch', 'ecology', 'native_lands', 'displacement_tenure', 'shadow_history', 'gps'}
+        field_rows = ''
+        for key, label in FIELDS:
+            val = site.get(key, '')
+            if not val:
+                continue
+            if key == 'gps':
+                lat = site.get('lat', '')
+                lng = site.get('lng', '')
+                val = f'<a class="gps-link" href="https://maps.google.com/?q={lat},{lng}" target="_blank" rel="noopener">{val}</a>'
+            if key in PRIMARY_KEYS:
+                field_rows += f'<dt>{label}</dt><dd>{val}</dd>'
+            elif key in EXPANDABLE_KEYS:
+                field_rows += f'<dt class="expandable">{label}</dt><dd class="expandable">{val}</dd>'
+
+        inat_key = f'{site["slug"]}:{site.get("inat_radius_km", 5)}'
+        inat_species = INAT_CACHE.get(inat_key, {}).get('total_species', 0)
+        if inat_species:
+            field_rows += f'<dt class="expandable">Species observed</dt><dd class="expandable">{inat_species:,} (iNaturalist)</dd>'
+
+        rows += f'''  <div class="location-row" data-slug="{site["slug"]}" data-state="{site["state"]}" data-agency-type="{agency_type}" data-acreage="{acr}">
+    <div class="location-row-header">
+      <span class="loc-name">{site["name"]}<span class="loc-state">{site["state"]}</span><span class="expand-ind">+</span></span>
+      <a class="loc-link" href="sites/{site["slug"]}.html">{len(images)} images</a>
+    </div>
+    <dl class="site-data">{field_rows}</dl>
+  </div>\n'''
+
+    return f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TMR79M95R4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){{dataLayer.push(arguments);}}
+  gtag('js', new Date());
+  gtag('config', 'G-TMR79M95R4');
+</script>
+<meta charset="utf-8"/>
+<title>Public Lands Institute</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="An ongoing photographic index and open-access archive of American public lands. CC0 Public Domain." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta property="og:title" content="Public Lands Institute"/>
+<meta property="og:description" content="An ongoing photographic index and open-access archive of American public lands. CC0 Public Domain."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://publiclandsinstitute.net/"/>
+<meta property="og:site_name" content="Public Lands Institute"/>
+<link href="https://publiclandsinstitute.net/" rel="canonical"/>
+<link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<style>
+{SHARED_CSS}
+  /* ── intro ──────────────────────────────────────────────────── */
+  .intro-text {{
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }}
+
+  /* ── map ────────────────────────────────────────────────────── */
+  #pli-map {{
+    width: 100%;
+    height: 240px;
+    border: 1px solid var(--border);
+    margin-bottom: 0;
+  }}
+  @media (min-width: 720px) {{ #pli-map {{ height: 340px; }} }}
+  .pli-marker {{ background: none; border: none; }}
+  .pli-dot {{
+    width: 9px; height: 9px;
+    background: var(--fg);
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.2);
+    cursor: pointer;
+    transition: transform 0.1s;
+  }}
+  .pli-marker:hover .pli-dot,
+  .pli-marker.active .pli-dot {{ transform: scale(1.8); }}
+  .leaflet-popup-content-wrapper {{
+    border-radius: 2px;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.1);
+    font-family: system-ui, sans-serif;
+  }}
+  .leaflet-popup-content {{
+    margin: 8px 12px;
+    font-size: 12px;
+    line-height: 1.4;
+  }}
+  .leaflet-popup-content a {{ color: var(--fg); font-weight: 500; text-decoration: none; }}
+  .leaflet-popup-content a:hover {{ text-decoration: underline; }}
+
+  /* ── filter bar ─────────────────────────────────────────────── */
+  .filter-bar {{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 8px 0 12px;
+    margin-top: 12px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 10;
+  }}
+  .sort-btn {{
+    font-family: inherit;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }}
+  .sort-btn:hover {{ color: var(--fg); }}
+  .filter-count {{
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+  }}
+
+  /* ── cards ──────────────────────────────────────────────────── */
+  @keyframes card-flash {{
+    0%   {{ background: var(--border); }}
+    100% {{ background: transparent; }}
+  }}
+  .location-row {{
+    border-top: 1px solid var(--border);
+    padding: 10px 0 14px 0;
+  }}
+  .location-row.map-highlight {{ animation: card-flash 1.2s ease-out forwards; }}
+  .location-row-header {{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    font-size: 13px;
+    margin-bottom: 8px;
+  }}
+  .loc-name {{ color: var(--fg); font-weight: 500; }}
+  .loc-state {{
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+    margin-left: 6px;
+    font-weight: 400;
+  }}
+  .loc-link {{
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }}
+  .gps-link {{
+    color: inherit;
+    text-decoration: none;
+    display: inline-block;
+    padding: 11px 0;
+    margin: -11px 0;
+  }}
+  .gps-link:hover {{ text-decoration: underline; }}
+  .loc-thumb {{
+    display: block;
+    border: 1px solid var(--border);
+    background: #e1e1e1;
+    overflow: hidden;
+    margin-bottom: 10px;
+    width: 100%;
+  }}
+  .loc-thumb img {{
+    width: 100%;
+    height: 220px;
+    display: block;
+    filter: grayscale(100%);
+    object-fit: cover;
+    object-position: center;
+    transition: opacity 0.2s ease;
+  }}
+  .loc-thumb:hover img {{ opacity: 0.85; }}
+  .site-data {{
+    display: grid;
+    grid-template-columns: 172px 1fr;
+    font-size: 11px;
+    line-height: 1.55;
+    border-top: 1px solid var(--border);
+    padding-top: 8px;
+    align-items: baseline;
+    align-content: start;
+  }}
+  .site-data dt {{
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 10px;
+    padding: 4px 0;
+  }}
+  .site-data dd {{
+    color: var(--fg);
+    padding: 4px 0 4px 12px;
+    margin: 0;
+  }}
+  /* expand behaviour */
+  .site-data .expandable {{ display: none; }}
+  .location-row.open .site-data .expandable {{ display: block; }}
+  .loc-name {{ cursor: pointer; }}
+  .expand-ind {{
+    font-size: 10px;
+    color: var(--muted);
+    margin-left: 6px;
+    font-weight: 400;
+    font-style: normal;
+  }}
+  @media (max-width: 480px) {{
+    .site-data {{ grid-template-columns: 1fr; }}
+    .site-data dt {{ padding-bottom: 0; }}
+    .site-data dd {{ padding-left: 0; padding-top: 1px; margin-bottom: 6px; }}
+  }}
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="logotype"><a href="index2.html">Public Lands Institute</a></div>
+  <nav class="header-nav">
+    <a href="archive2.html">Archive</a>
+  </nav>
+</header>
+<div class="divider"></div>
+<div id="pli-map"></div>
+<div class="filter-bar">
+  <button class="sort-btn" id="sort-toggle">Alphabetical</button>
+  <span class="filter-count" id="filter-count"></span>
+</div>
+<div id="locations-container">
+{rows}</div>
+<footer>
+  <span>Public Lands Institute — ongoing project</span>
+  <span>CC0 Public Domain</span>
+</footer>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+// ── map ───────────────────────────────────────────────────────────────────────
+const sites = {js_array};
+const map = L.map('pli-map', {{ zoomControl: true, scrollWheelZoom: false, tap: false }});
+L.tileLayer('https://{{s}}.basemaps.cartocdn.com/light_all/{{z}}/{{x}}/{{y}}{{r}}.png', {{
+  attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/attributions">CARTO</a>',
+  subdomains: 'abcd',
+  maxZoom: 19
+}}).addTo(map);
+
+const allBounds = [];
+sites.forEach(s => {{
+  if (!s.lat || !s.lng) return;
+  const icon = L.divIcon({{ className: 'pli-marker', html: '<div class="pli-dot"></div>', iconSize: [9, 9], iconAnchor: [4, 4] }});
+  const marker = L.marker([s.lat, s.lng], {{ icon, title: s.name }}).addTo(map);
+  marker.on('click', () => {{
+    const card = document.querySelector(`.location-row[data-slug="${{s.slug}}"]`);
+    if (card) {{
+      card.scrollIntoView({{ behavior: 'smooth', block: 'center' }});
+      card.classList.remove('map-highlight');
+      void card.offsetWidth;
+      card.classList.add('map-highlight');
+    }}
+  }});
+  allBounds.push([s.lat, s.lng]);
+}});
+if (allBounds.length) map.fitBounds(allBounds, {{ padding: [20, 20] }});
+</script>
+<script>
+// ── expand ────────────────────────────────────────────────────────────────────
+(function () {{
+  document.querySelectorAll('.location-row').forEach(function (row) {{
+    var nameEl = row.querySelector('.loc-name');
+    var ind = row.querySelector('.expand-ind');
+    nameEl.addEventListener('click', function (e) {{
+      var open = row.classList.toggle('open');
+      if (ind) ind.textContent = open ? '−' : '+';
+    }});
+  }});
+}})();
+
+// ── sort ──────────────────────────────────────────────────────────────────────
+(function () {{
+  var rows = Array.from(document.querySelectorAll('.location-row'));
+  var originalOrder = rows.slice();
+  var sortMode = 'recent';
+  var btn = document.getElementById('sort-toggle');
+  var countEl = document.getElementById('filter-count');
+
+  function sortRows() {{
+    var container = document.getElementById('locations-container');
+    if (!container) return;
+    if (sortMode === 'alpha') {{
+      rows.slice().sort(function (a, b) {{
+        var na = a.querySelector('.loc-name').childNodes[0].nodeValue.trim().toLowerCase();
+        var nb = b.querySelector('.loc-name').childNodes[0].nodeValue.trim().toLowerCase();
+        return na < nb ? -1 : na > nb ? 1 : 0;
+      }}).forEach(function (row) {{ container.appendChild(row); }});
+    }} else {{
+      originalOrder.forEach(function (row) {{ container.appendChild(row); }});
+    }}
+  }}
+
+  btn.addEventListener('click', function () {{
+    sortMode = sortMode === 'recent' ? 'alpha' : 'recent';
+    btn.textContent = sortMode === 'recent' ? 'Alphabetical' : 'Recent';
+    sortRows();
+  }});
+
+  countEl.textContent = rows.length + ' sites';
+  sortRows();
+}})();
+</script>
+</body>
+</html>'''
+
+
+def make_archive2_page(all_sites):
+    html = make_archive_page(all_sites)
+    return html.replace(
+        '<a href="index.html">Public Lands Institute</a>',
+        '<a href="index2.html">Public Lands Institute</a>'
+    ).replace(
+        '<a href="archive.html" class="active">Archive</a>',
+        '<a href="archive2.html" class="active">Archive</a>'
+    )
 
 
 # ── Generate ───────────────────────────────────────────────────────────────────
@@ -1607,12 +2483,24 @@ print('  archive.html')
 
 print('\nGenerating index.html...')
 with open('index.html', 'w') as f:
-    f.write(make_index_page(sites))
+    f.write(make_sites_index_page(sites, SITES_META))
 print('  index.html')
 
 print('\nGenerating sites.html...')
 with open('sites.html', 'w') as f:
-    f.write(make_sites_index_page(sites, SITES_META))
+    f.write(make_index_page(sites, SITES_META))
 print('  sites.html')
 
 print(f'\nDone \u2014 {len(sites)} site pages + archive + index + sites index.')
+
+import subprocess as _sp
+_backup = os.path.expanduser(
+    '~/Library/CloudStorage/OneDrive-UniversityofCincinnati/pli-commons/backup_to_gdrive.sh'
+)
+if os.path.exists(_backup):
+    print('\nBacking up to Google Drive...')
+    _result = _sp.run(['bash', _backup], capture_output=True, text=True)
+    if _result.returncode == 0:
+        print('Backup complete.')
+    else:
+        print(f'Backup warning: {(_result.stderr or _result.stdout).strip()}')
