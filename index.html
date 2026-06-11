@@ -29,7 +29,10 @@ html, body { height: 100%; font-family: 'Inter', sans-serif; background: var(--i
 #map { position: fixed; inset: 0; }
 #wordmark { position: fixed; top: 28px; left: 32px; z-index: 10; pointer-events: none; }
 #wordmark h1 { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sand); opacity: 0.85; line-height: 1; }
-#site-count { position: fixed; top: 28px; right: 32px; z-index: 10; color: rgba(242,237,230,0.3); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 300; }
+#topnav { position: fixed; top: 28px; right: 32px; z-index: 10; display: flex; gap: 18px; align-items: baseline; }
+#topnav a { color: rgba(242,237,230,0.55); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 300; text-decoration: none; transition: color 0.15s; }
+#topnav a:hover { color: var(--sand); }
+#site-count { color: rgba(242,237,230,0.3); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 300; }
 #layers { position: fixed; bottom: 32px; left: 32px; z-index: 10; display: flex; flex-direction: column; gap: 6px; }
 .layer-btn { background: rgba(26,26,24,0.72); border: 1px solid rgba(242,237,230,0.2); color: var(--sand); font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 12px; cursor: pointer; backdrop-filter: blur(8px); transition: border-color 0.2s; text-align: left; }
 .layer-btn:hover { border-color: rgba(242,237,230,0.5); }
@@ -46,6 +49,10 @@ html, body { height: 100%; font-family: 'Inter', sans-serif; background: var(--i
 #panel-close button:hover { color: var(--ink); }
 #panel-body { padding: 8px 32px 48px; }
 .panel-site-name { font-family: 'Inter', sans-serif; font-size: 22px; font-weight: 300; letter-spacing: -0.01em; color: var(--ink); line-height: 1.2; margin-bottom: 4px; }
+.panel-site-name a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(26,26,24,0.25); }
+.panel-site-name a:hover { border-bottom-color: var(--ink); }
+.panel-page-link { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; margin: 14px 0 0; text-align: right; }
+.panel-page-link a { color: var(--moss); text-decoration: none; border-bottom: 1px solid var(--moss); }
 .panel-state { font-size: 11px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); margin-bottom: 20px; }
 .photo-grid { display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 180px; gap: 3px; margin-bottom: 6px; }
 .photo-thumb { background: #ccc8c0; cursor: pointer; overflow: hidden; }
@@ -92,7 +99,8 @@ html, body { height: 100%; font-family: 'Inter', sans-serif; background: var(--i
   :root { --panel-w: 100%; }
   #wordmark { top: 16px; left: 16px; }
   #wordmark h1 { font-size: 11px; }
-  #site-count { top: 16px; right: 16px; font-size: 10px; }
+  #topnav { top: 16px; right: 16px; gap: 12px; }
+  #topnav a, #site-count { font-size: 10px; }
   #layers { bottom: 16px; left: 16px; right: 16px; }
   .layer-btn { font-size: 11px; padding: 7px 10px; }
   #legend { left: 16px; right: 16px; bottom: 84px; min-width: 0; }
@@ -112,7 +120,11 @@ html, body { height: 100%; font-family: 'Inter', sans-serif; background: var(--i
 <body>
 <div id="map"></div>
 <div id="wordmark"><h1>Public Lands Institute</h1></div>
-<div id="site-count"></div>
+<nav id="topnav">
+  <a href="archive.html">Archive</a>
+  <a href="about.html">About</a>
+  <span id="site-count"></span>
+</nav>
 <div id="layers">
   <button class="layer-btn" data-layer="geology">Geologic Age</button>
   <button class="layer-btn" data-layer="agency">Managing Agency</button>
@@ -344,8 +356,7 @@ function openPanel(props) {
       grid.map((p,i) => '<div class="photo-thumb" data-idx="'+i+'"><img data-src="'+p.thumb+'" alt=""></div>').join('') +
     '</div>';
     if (photos.length > GRID_MAX) {
-      const q = encodeURIComponent('Public Lands Institute '+props.name);
-      gridHTML += '<p class="photo-grid-more"><a href="https://commons.wikimedia.org/w/index.php?title=Special:MediaSearch&search='+q+'" target="_blank">View all '+photos.length+' photos →</a></p>';
+      gridHTML += '<p class="photo-grid-more"><a href="sites/'+props.slug+'.html">View all '+photos.length+' photos →</a></p>';
     }
   }
   let sections = '';
@@ -361,10 +372,11 @@ function openPanel(props) {
   sections += sec('Acreage', acreage);
   sections += sec('GPS', props.gps);
   panelBody.innerHTML =
-    '<p class="panel-site-name">'+props.name+'</p>'+
+    '<p class="panel-site-name"><a href="sites/'+props.slug+'.html">'+props.name+'</a></p>'+
     '<p class="panel-state">'+state+'</p>'+
     gridHTML+
-    sections;
+    sections+
+    '<p class="panel-page-link"><a href="sites/'+props.slug+'.html">Site page · downloads →</a></p>';
   panelBody.querySelectorAll('.photo-thumb img').forEach(img => imgObserver.observe(img));
   panelBody.querySelectorAll('.photo-thumb').forEach(el => {
     el.addEventListener('click', () => openLightbox(parseInt(el.dataset.idx)));

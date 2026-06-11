@@ -321,17 +321,22 @@ def get_all_images_for_site(site):
     """Flat list of all images across observations. Used by archive and index pages."""
     return [img for obs in get_observations_for_site(site) for img in obs['images']]
 
+FONT_LINKS = '''<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">'''
+
 SHARED_CSS = '''  :root {
-    --bg: #f5f5f5;
-    --fg: #111111;
-    --muted: #777777;
-    --border: #dddddd;
+    --bg: #1a1a18;
+    --fg: #f2ede6;
+    --muted: #8a8478;
+    --border: rgba(242,237,230,0.16);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     background: var(--bg);
     color: var(--fg);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif;
+    font-weight: 300;
     line-height: 1.5;
     letter-spacing: 0.01em;
   }
@@ -476,6 +481,7 @@ def make_site_page(site, all_sites):
 <link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
 <link href="/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/>
 <link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
+{FONT_LINKS}
 <style>
 {SHARED_CSS}
   .site-header {{ margin-bottom: 24px; }}
@@ -520,7 +526,7 @@ def make_site_page(site, all_sites):
     margin: 0;
   }}
   .site-images {{ display: flex; flex-direction: column; gap: 14px; }}
-  .site-figure {{ border: 1px solid var(--border); background: #e1e1e1; }}
+  .site-figure {{ border: 1px solid var(--border); background: #22221f; }}
   .site-figure img {{ width: 100%; height: auto; display: block; filter: grayscale(100%); }}
   .site-figure figcaption {{
     font-size: 10px;
@@ -608,7 +614,7 @@ def make_site_page(site, all_sites):
 <header>
   <div class="logotype"><a href="../index.html">Public Lands Institute</a></div>
   <nav class="header-nav">
-    <a href="../sites.html">Sites</a>
+    <a href="../index.html">Map</a>
     <a href="../archive.html">Archive</a>
     <a href="../about.html">About</a>
   </nav>
@@ -729,6 +735,7 @@ def make_archive_page(all_sites):
 <link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
 <link href="/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/>
 <link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
+{FONT_LINKS}
 <style>
 {SHARED_CSS}
   .archive-intro {{
@@ -755,7 +762,7 @@ def make_archive_page(all_sites):
     align-items: baseline;
     padding: 4px 0;
     font-size: 11px;
-    border-top: 1px solid #eeeeee;
+    border-top: 1px solid rgba(242,237,230,0.07);
   }}
   .archive-caption {{ color: var(--fg); letter-spacing: 0.04em; }}
   .archive-filename {{
@@ -782,7 +789,7 @@ def make_archive_page(all_sites):
 <header>
   <div class="logotype"><a href="index.html">Public Lands Institute</a></div>
   <nav class="header-nav">
-    <a href="sites.html">Sites</a>
+    <a href="index.html">Map</a>
     <a href="archive.html" class="active">Archive</a>
     <a href="about.html">About</a>
   </nav>
@@ -828,6 +835,7 @@ def make_about_page(all_sites):
 <link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
 <link href="/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/>
 <link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
+{FONT_LINKS}
 <style>
 {SHARED_CSS}
   .about-body {{
@@ -856,7 +864,7 @@ def make_about_page(all_sites):
 <header>
   <div class="logotype"><a href="index.html">Public Lands Institute</a></div>
   <nav class="header-nav">
-    <a href="sites.html">Sites</a>
+    <a href="index.html">Map</a>
     <a href="archive.html">Archive</a>
     <a href="about.html" class="active">About</a>
   </nav>
@@ -881,7 +889,7 @@ def make_about_page(all_sites):
 </html>'''
 
 
-# ── Sites index page builder (sites.html) ─────────────────────────────────────
+# ── Map index page builder (index.html) ─────────────────────────────────────
 
 STATE_NAMES = {
     'AL': 'Alabama', 'AK': 'Alaska', 'AZ': 'Arizona', 'AR': 'Arkansas',
@@ -898,344 +906,6 @@ STATE_NAMES = {
     'VT': 'Vermont', 'VA': 'Virginia', 'WA': 'Washington', 'WV': 'West Virginia',
     'WI': 'Wisconsin', 'WY': 'Wyoming',
 }
-
-GEOLOGY_PERIODS = [
-    'Hadean', 'Archean', 'Proterozoic', 'Cambrian', 'Ordovician',
-    'Silurian', 'Devonian', 'Mississippian', 'Pennsylvanian',
-    'Permian', 'Triassic', 'Jurassic', 'Cretaceous',
-    'Paleogene', 'Neogene', 'Holocene', 'Pleistocene',
-    'Pliocene', 'Miocene', 'Oligocene', 'Eocene', 'Paleocene', 'Quaternary',
-]
-
-SITES_INDEX_CSS = '''  *, *::before, *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  :root {
-    --black: #111;
-    --white: #fff;
-    --gray-100: #f5f5f5;
-    --gray-200: #e5e5e5;
-    --gray-300: #d4d4d4;
-    --gray-400: #a3a3a3;
-    --gray-500: #737373;
-    --gray-600: #525252;
-    --font-serif: system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif;
-    --font-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Mono', monospace;
-  }
-
-  html {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  body {
-    font-family: var(--font-serif);
-    font-size: 13px;
-    color: var(--black);
-    background: var(--gray-100);
-    line-height: 1.5;
-    letter-spacing: 0.01em;
-  }
-
-  a { color: var(--black); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-
-  .header {
-    padding: 40px 24px 28px;
-    max-width: 1500px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-
-  .logotype {
-    font-family: var(--font-serif);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
-  }
-
-  .logotype a { text-decoration: none; }
-
-  .header-nav {
-    font-family: var(--font-serif);
-    font-size: 11px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--gray-500);
-    display: flex;
-    gap: 16px;
-  }
-
-  .header-nav a { color: var(--gray-500); }
-
-  .header-nav a:hover { color: var(--black); }
-  .header-nav a.active { color: var(--black); }
-
-  .filters {
-    padding: 20px 24px;
-    max-width: 1500px;
-    margin: 0 auto;
-    border-top: 1px solid var(--gray-200);
-    border-bottom: 1px solid var(--gray-200);
-  }
-
-  .filter-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    align-items: flex-start;
-  }
-
-  .filter-group { flex: 1; min-width: 200px; }
-
-  .filter-label {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--gray-500);
-    margin-bottom: 0.5rem;
-    display: block;
-  }
-
-  .filter-select {
-    width: 100%;
-    font-family: var(--font-serif);
-    font-size: 13px;
-    padding: 0.4rem 0;
-    border: none;
-    border-bottom: 1px solid var(--gray-300);
-    background: transparent;
-    color: var(--black);
-    cursor: pointer;
-    appearance: none;
-    -webkit-appearance: none;
-    border-radius: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23737373'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 0 center;
-    padding-right: 1.25rem;
-  }
-
-  .filter-select:focus { outline: none; border-bottom-color: var(--black); }
-
-  .results-bar {
-    padding: 12px 24px;
-    max-width: 1500px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .results-count {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--gray-500);
-    letter-spacing: 0.04em;
-  }
-
-  .clear-filters {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--gray-400);
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    display: none;
-  }
-
-  .clear-filters:hover { color: var(--black); }
-  .clear-filters.visible { display: block; }
-
-  .index-table {
-    max-width: 1500px;
-    margin: 0 auto;
-    padding: 0 24px 56px;
-  }
-
-  table { width: 100%; border-collapse: collapse; }
-
-  thead th {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    font-weight: 400;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--gray-500);
-    text-align: left;
-    padding: 0.75rem 1rem 0.75rem 0;
-    border-bottom: 1px solid var(--gray-300);
-    cursor: pointer;
-    user-select: none;
-    white-space: nowrap;
-  }
-
-  thead th:hover { color: var(--black); }
-
-  thead th .sort-indicator {
-    display: inline-block;
-    margin-left: 0.25rem;
-    opacity: 0;
-    transition: opacity 0.15s;
-  }
-
-  thead th:hover .sort-indicator,
-  thead th.sorted .sort-indicator { opacity: 1; }
-
-  tbody tr {
-    border-bottom: 1px solid var(--gray-100);
-    transition: background 0.1s;
-  }
-
-  tbody tr:hover { background: var(--gray-100); }
-
-  tbody td {
-    font-family: var(--font-serif);
-    font-size: 13px;
-    padding: 0.75rem 1rem 0.75rem 0;
-    vertical-align: top;
-  }
-
-  td.site-name { font-weight: 500; min-width: 220px; }
-
-  td.site-name a { border-bottom: 1px solid transparent; }
-
-  td.site-name a:hover {
-    text-decoration: none;
-    border-bottom-color: var(--black);
-  }
-
-  td.state {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.02em;
-    color: var(--gray-600);
-    white-space: nowrap;
-  }
-
-  td.agency { font-size: 11px; color: var(--gray-600); }
-  td.geology { font-size: 11px; color: var(--gray-600); }
-
-  td.acreage {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--gray-600);
-    text-align: right;
-    white-space: nowrap;
-  }
-
-  td.native-lands {
-    font-size: 11px;
-    color: var(--gray-600);
-    max-width: 200px;
-  }
-
-  .empty-state {
-    text-align: center;
-    padding: 4rem 2rem;
-    color: var(--gray-400);
-    font-style: italic;
-    font-size: 13px;
-    display: none;
-  }
-
-  footer {
-    max-width: 1500px;
-    margin: 0 auto;
-    padding: 12px 24px 40px;
-    border-top: 1px solid var(--gray-200);
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--gray-400);
-    letter-spacing: 0.04em;
-  }
-
-  @media (max-width: 900px) {
-    .filter-group { min-width: 150px; }
-    td.native-lands, th.native-lands-col { display: none; }
-  }
-
-  @media (max-width: 600px) {
-    .header { padding: 24px 18px 20px; }
-    .filters { padding: 16px 18px; }
-    .filter-row { gap: 1rem; }
-    .filter-group { min-width: 100%; }
-    .results-bar { padding: 10px 18px; }
-    .map-wrap { padding: 0 18px 16px; }
-    .index-table { padding: 0 18px 40px; overflow-x: auto; }
-    table { min-width: 600px; }
-    footer { padding: 12px 18px 32px; }
-  }
-
-  /* map */
-  .map-wrap {
-    max-width: 1500px;
-    margin: 0 auto;
-    padding: 0 24px 20px;
-  }
-  #pli-map {
-    width: 100%;
-    height: 300px;
-    border: 1px solid var(--gray-200);
-  }
-  @media (min-width: 720px) { #pli-map { height: 380px; } }
-  .pli-marker { background: none; border: none; }
-  .pli-dot {
-    width: 9px;
-    height: 9px;
-    background: var(--black);
-    border-radius: 50%;
-    border: 2px solid var(--white);
-    box-shadow: 0 0 0 1px rgba(0,0,0,0.2);
-    cursor: pointer;
-    transition: transform 0.1s;
-  }
-  .pli-marker:hover .pli-dot,
-  .pli-marker.active .pli-dot { transform: scale(1.8); }
-  .leaflet-popup-content-wrapper {
-    border-radius: 2px;
-    box-shadow: 0 1px 8px rgba(0,0,0,0.1);
-    font-family: var(--font-serif);
-  }
-  .leaflet-popup-content {
-    margin: 8px 12px;
-    font-size: 12px;
-    line-height: 1.4;
-  }
-  .leaflet-popup-content a { color: var(--black); font-weight: 500; text-decoration: none; }
-  .leaflet-popup-content a:hover { text-decoration: underline; }
-  @keyframes pli-row-flash {
-    0%   { background: var(--gray-200); }
-    100% { background: transparent; }
-  }
-  tr.map-highlight { animation: pli-row-flash 1.2s ease-out forwards; }
-
-  .intro-wrap {
-    max-width: 1500px;
-    margin: 0 auto;
-    padding: 12px 24px 16px;
-    border-top: 1px solid var(--gray-200);
-  }
-  .intro-text {
-    font-size: 13px;
-    color: var(--gray-500);
-  }
-  @media (max-width: 600px) {
-    .intro-wrap { padding: 10px 18px 12px; }
-  }'''
-
 
 def make_sites_index_page(all_sites, meta):
     import re as _re
@@ -1380,7 +1050,10 @@ html, body {{ height: 100%; font-family: 'Inter', sans-serif; background: var(--
 #map {{ position: fixed; inset: 0; }}
 #wordmark {{ position: fixed; top: 28px; left: 32px; z-index: 10; pointer-events: none; }}
 #wordmark h1 {{ font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sand); opacity: 0.85; line-height: 1; }}
-#site-count {{ position: fixed; top: 28px; right: 32px; z-index: 10; color: rgba(242,237,230,0.3); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 300; }}
+#topnav {{ position: fixed; top: 28px; right: 32px; z-index: 10; display: flex; gap: 18px; align-items: baseline; }}
+#topnav a {{ color: rgba(242,237,230,0.55); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 300; text-decoration: none; transition: color 0.15s; }}
+#topnav a:hover {{ color: var(--sand); }}
+#site-count {{ color: rgba(242,237,230,0.3); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 300; }}
 #layers {{ position: fixed; bottom: 32px; left: 32px; z-index: 10; display: flex; flex-direction: column; gap: 6px; }}
 .layer-btn {{ background: rgba(26,26,24,0.72); border: 1px solid rgba(242,237,230,0.2); color: var(--sand); font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 12px; cursor: pointer; backdrop-filter: blur(8px); transition: border-color 0.2s; text-align: left; }}
 .layer-btn:hover {{ border-color: rgba(242,237,230,0.5); }}
@@ -1397,6 +1070,10 @@ html, body {{ height: 100%; font-family: 'Inter', sans-serif; background: var(--
 #panel-close button:hover {{ color: var(--ink); }}
 #panel-body {{ padding: 8px 32px 48px; }}
 .panel-site-name {{ font-family: 'Inter', sans-serif; font-size: 22px; font-weight: 300; letter-spacing: -0.01em; color: var(--ink); line-height: 1.2; margin-bottom: 4px; }}
+.panel-site-name a {{ color: inherit; text-decoration: none; border-bottom: 1px solid rgba(26,26,24,0.25); }}
+.panel-site-name a:hover {{ border-bottom-color: var(--ink); }}
+.panel-page-link {{ font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; margin: 14px 0 0; text-align: right; }}
+.panel-page-link a {{ color: var(--moss); text-decoration: none; border-bottom: 1px solid var(--moss); }}
 .panel-state {{ font-size: 11px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); margin-bottom: 20px; }}
 .photo-grid {{ display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 180px; gap: 3px; margin-bottom: 6px; }}
 .photo-thumb {{ background: #ccc8c0; cursor: pointer; overflow: hidden; }}
@@ -1443,7 +1120,8 @@ html, body {{ height: 100%; font-family: 'Inter', sans-serif; background: var(--
   :root {{ --panel-w: 100%; }}
   #wordmark {{ top: 16px; left: 16px; }}
   #wordmark h1 {{ font-size: 11px; }}
-  #site-count {{ top: 16px; right: 16px; font-size: 10px; }}
+  #topnav {{ top: 16px; right: 16px; gap: 12px; }}
+  #topnav a, #site-count {{ font-size: 10px; }}
   #layers {{ bottom: 16px; left: 16px; right: 16px; }}
   .layer-btn {{ font-size: 11px; padding: 7px 10px; }}
   #legend {{ left: 16px; right: 16px; bottom: 84px; min-width: 0; }}
@@ -1463,7 +1141,11 @@ html, body {{ height: 100%; font-family: 'Inter', sans-serif; background: var(--
 <body>
 <div id="map"></div>
 <div id="wordmark"><h1>Public Lands Institute</h1></div>
-<div id="site-count"></div>
+<nav id="topnav">
+  <a href="archive.html">Archive</a>
+  <a href="about.html">About</a>
+  <span id="site-count"></span>
+</nav>
 <div id="layers">
   <button class="layer-btn" data-layer="geology">Geologic Age</button>
   <button class="layer-btn" data-layer="agency">Managing Agency</button>
@@ -1695,8 +1377,7 @@ function openPanel(props) {{
       grid.map((p,i) => '<div class="photo-thumb" data-idx="'+i+'"><img data-src="'+p.thumb+'" alt=""></div>').join('') +
     '</div>';
     if (photos.length > GRID_MAX) {{
-      const q = encodeURIComponent('Public Lands Institute '+props.name);
-      gridHTML += '<p class="photo-grid-more"><a href="https://commons.wikimedia.org/w/index.php?title=Special:MediaSearch&search='+q+'" target="_blank">View all '+photos.length+' photos →</a></p>';
+      gridHTML += '<p class="photo-grid-more"><a href="sites/'+props.slug+'.html">View all '+photos.length+' photos →</a></p>';
     }}
   }}
   let sections = '';
@@ -1712,10 +1393,11 @@ function openPanel(props) {{
   sections += sec('Acreage', acreage);
   sections += sec('GPS', props.gps);
   panelBody.innerHTML =
-    '<p class="panel-site-name">'+props.name+'</p>'+
+    '<p class="panel-site-name"><a href="sites/'+props.slug+'.html">'+props.name+'</a></p>'+
     '<p class="panel-state">'+state+'</p>'+
     gridHTML+
-    sections;
+    sections+
+    '<p class="panel-page-link"><a href="sites/'+props.slug+'.html">Site page · downloads →</a></p>';
   panelBody.querySelectorAll('.photo-thumb img').forEach(img => imgObserver.observe(img));
   panelBody.querySelectorAll('.photo-thumb').forEach(el => {{
     el.addEventListener('click', () => openLightbox(parseInt(el.dataset.idx)));
@@ -1759,797 +1441,6 @@ document.addEventListener('keydown', e => {{
 </html>'''
 
 
-# ── Index page builder ─────────────────────────────────────────────────────────
-
-def make_index_page(all_sites, meta):
-    import re as _re
-
-    def acreage_int(s):
-        m = _re.search(r'[\d,]+', str(s))
-        return int(m.group().replace(',', '')) if m else 0
-
-    rows = ''
-    states = set()
-    agency_types = set()
-    for site in all_sites:
-        images = get_all_images_for_site(site)
-        if not images:
-            continue
-        first_img = images[0]['jpg'] if images else None
-        m_data = meta.get(site['slug'], {})
-        agency_type = m_data.get('agency_type', '')
-        acr = acreage_int(site.get('acreage', '0'))
-        states.add(site['state'])
-        if agency_type:
-            agency_types.add(agency_type)
-
-        thumb_html = ''
-        if first_img:
-            all_jpgs = json.dumps([img['jpg'] for img in images])
-            thumb_html = f'''    <a class="loc-thumb" href="sites/{site["slug"]}.html" data-images='{all_jpgs}'>
-      <img src="{first_img}" alt="{site["name"]} I" loading="lazy"/>
-    </a>\n'''
-
-        PRIMARY_INDEX = {'geological_age', 'acreage', 'shadow_history', 'gps'}
-        EXTRA_INDEX   = {'epoch', 'native_lands', 'displacement_tenure'}
-        field_rows = ''
-        has_extra  = False
-        for key, label in FIELDS:
-            if key not in PRIMARY_INDEX and key not in EXTRA_INDEX:
-                continue
-            val = site.get(key, '')
-            if not val:
-                continue
-            if key == 'gps':
-                lat = site.get('lat', '')
-                lng = site.get('lng', '')
-                val = f'<a class="gps-link" href="https://maps.google.com/?q={lat},{lng}" target="_blank" rel="noopener">{val}</a>'
-            if key in EXTRA_INDEX:
-                field_rows += f'<dt class="extra">{label}</dt><dd class="extra">{val}</dd>'
-                has_extra = True
-            else:
-                field_rows += f'<dt>{label}</dt><dd>{val}</dd>'
-
-        toggle_html = '    <button class="site-data-toggle">More</button>\n' if has_extra else ''
-
-        inat_key = f'{site["slug"]}:{site.get("inat_radius_km", 5)}'
-        inat_species = INAT_CACHE.get(inat_key, {}).get('total_species', 0)
-        if inat_species:
-            field_rows += f'<dt>Species observed</dt><dd>{inat_species:,} (iNaturalist)</dd>'
-
-        rows += f'''  <div class="location-row" data-state="{site["state"]}" data-agency-type="{agency_type}" data-acreage="{acr}">
-    <div class="location-row-header">
-      <span class="loc-name">{site["name"]}<span class="loc-state">{site["state"]}</span></span>
-      <a class="loc-link" href="sites/{site["slug"]}.html">{len(images)} images</a>
-    </div>
-{thumb_html}    <dl class="site-data">{field_rows}</dl>
-{toggle_html}  </div>\n'''
-
-    return f'''<!DOCTYPE html>
-<html lang="en">
-<head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-TMR79M95R4"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){{dataLayer.push(arguments);}}
-  gtag('js', new Date());
-  gtag('config', 'G-TMR79M95R4');
-</script>
-<meta charset="utf-8"/>
-<title>Sites — Public Lands Institute</title>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="An ongoing photographic index and open-access archive of American public lands. CC0 Public Domain." name="description"/>
-<meta content="index, follow" name="robots"/>
-<meta property="og:title" content="Sites — Public Lands Institute"/>
-<meta property="og:description" content="An ongoing photographic index and open-access archive of American public lands, with geological, ecological, Indigenous land tenure, and shadow history documentation. CC0 Public Domain."/>
-<meta property="og:type" content="website"/>
-<meta property="og:url" content="https://publiclandsinstitute.net/sites.html"/>
-<meta property="og:site_name" content="Public Lands Institute"/>
-<link href="https://publiclandsinstitute.net/sites.html" rel="canonical"/>
-<link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
-<link href="/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/>
-<link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
-<style>
-{SHARED_CSS}
-  .intro-text {{
-    font-size: 13px;
-    color: var(--muted);
-    margin-bottom: 20px;
-  }}
-  .filter-bar {{
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding: 8px 0 12px;
-    margin-bottom: 4px;
-    border-bottom: 1px solid var(--border);
-    position: sticky;
-    top: 0;
-    background: var(--bg);
-    z-index: 10;
-  }}
-  .sort-btn {{
-    font-family: inherit;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: var(--muted);
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-  }}
-  .sort-btn:hover {{ color: var(--fg); }}
-  .filter-count {{
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--muted);
-  }}
-  .filter-controls {{ display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }}
-  .filter-select-sm {{
-    font-family: inherit;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--muted);
-    background: none;
-    border: none;
-    border-bottom: 1px solid var(--border);
-    cursor: pointer;
-    padding: 0 1.25rem 0 0;
-    appearance: none;
-    -webkit-appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5'%3E%3Cpath d='M0 0l4 5 4-5z' fill='%23777777'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 0 center;
-  }}
-  .filter-select-sm:focus {{ outline: none; }}
-  .location-row {{
-    border-top: 1px solid var(--border);
-    padding: 10px 0 14px 0;
-  }}
-  .location-row-header {{
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 12px;
-    font-size: 13px;
-    margin-bottom: 8px;
-  }}
-  .loc-name {{ color: var(--fg); font-weight: 500; }}
-  .loc-state {{
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.16em;
-    color: var(--muted);
-    margin-left: 6px;
-    font-weight: 400;
-  }}
-  .loc-link {{
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.16em;
-    color: var(--muted);
-    white-space: nowrap;
-    flex-shrink: 0;
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-  }}
-  .gps-link {{
-    color: inherit;
-    text-decoration: none;
-    display: inline-block;
-    padding: 11px 0;
-    margin: -11px 0;
-  }}
-  .gps-link:hover {{ text-decoration: underline; }}
-  .loc-thumb {{
-    display: block;
-    border: 1px solid var(--border);
-    background: #e1e1e1;
-    overflow: hidden;
-    margin-bottom: 10px;
-    width: 100%;
-  }}
-  .loc-thumb img {{
-    width: 100%;
-    height: 220px;
-    display: block;
-    filter: grayscale(100%);
-    object-fit: cover;
-    object-position: center;
-    transition: opacity 0.2s ease;
-  }}
-  .loc-thumb:hover img {{ opacity: 0.85; }}
-  .site-data {{
-    display: grid;
-    grid-template-columns: 172px 1fr;
-    font-size: 11px;
-    line-height: 1.55;
-    border-top: 1px solid var(--border);
-    padding-top: 8px;
-    align-items: baseline;
-    align-content: start;
-  }}
-  .site-data dt {{
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    font-size: 10px;
-    padding: 4px 0;
-  }}
-  .site-data dd {{
-    color: var(--fg);
-    padding: 4px 0 4px 12px;
-    margin: 0;
-  }}
-  .nav-toggle {{
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    padding: 4px 10px;
-    background: transparent;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.16em;
-    cursor: pointer;
-  }}
-  .nav-toggle {{ display: none; }}
-  .site-nav-mobile {{ display: none; }}
-  @media (max-width: 480px) {{
-    .site-data {{ grid-template-columns: 1fr; }}
-    .site-data dt {{ padding-bottom: 0; }}
-    .site-data dd {{ padding-left: 0; padding-top: 1px; margin-bottom: 6px; }}
-  }}
-  header {{
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 28px;
-    gap: 12px;
-    flex-wrap: wrap;
-  }}
-  @media (min-width: 720px) {{
-    .site-data {{ grid-template-columns: 172px 1fr; }}
-    header {{ margin-bottom: 40px; }}
-  }}
-  .site-data-toggle {{ display: none; }}
-  @media (max-width: 480px) {{
-    .site-data .extra {{ display: none; }}
-    .site-data.expanded .extra {{ display: block; }}
-    .site-data-toggle {{
-      display: block;
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--muted);
-      background: none;
-      border: none;
-      padding: 4px 0 8px 0;
-      cursor: pointer;
-      font-family: inherit;
-    }}
-  }}
-</style>
-</head>
-<body>
-<div class="page">
-<header>
-  <div class="logotype"><a href="index.html">Public Lands Institute</a></div>
-  <nav class="header-nav">
-    <a href="#" class="active">Sites</a>
-    <a href="archive.html">Archive</a>
-    <a href="about.html">About</a>
-  </nav>
-</header>
-<div class="divider"></div>
-<div class="filter-bar">
-  <div class="filter-controls">
-    <button class="sort-btn" id="sort-toggle">Alphabetical</button>
-    <select id="filter-state-sites" class="filter-select-sm"><option value="">All states</option></select>
-    <select id="filter-type-sites" class="filter-select-sm"><option value="">All types</option></select>
-  </div>
-  <span class="filter-count" id="filter-count"></span>
-</div>
-<div id="locations-container">
-{rows}</div>
-<footer>
-  <span>Public Lands Institute \u2014 ongoing project</span>
-  <span>US \u00b7 established MMXXV</span>
-</footer>
-</div>
-<script>
-(function () {{
-  document.querySelectorAll('.loc-thumb[data-images]').forEach(function (thumb) {{
-    var imgs = JSON.parse(thumb.dataset.images);
-    if (imgs.length < 2) return;
-    var idx = 0;
-    var img = thumb.querySelector('img');
-    var x0 = 0, y0 = 0, didSwipe = false;
-    thumb.addEventListener('touchstart', function (e) {{
-      if (e.touches.length !== 1) return;
-      x0 = e.touches[0].clientX;
-      y0 = e.touches[0].clientY;
-      didSwipe = false;
-    }}, {{ passive: true }});
-    thumb.addEventListener('touchend', function (e) {{
-      if (!e.changedTouches.length) return;
-      var dx = e.changedTouches[0].clientX - x0;
-      var dy = e.changedTouches[0].clientY - y0;
-      if (Math.abs(dx) >= 40 && Math.abs(dx) > Math.abs(dy)) {{
-        didSwipe = true;
-        idx = (idx + (dx < 0 ? 1 : -1) + imgs.length) % imgs.length;
-        img.src = imgs[idx];
-      }}
-    }}, {{ passive: true }});
-    thumb.addEventListener('click', function (e) {{
-      if (didSwipe) {{ e.preventDefault(); didSwipe = false; }}
-    }});
-  }});
-  document.querySelectorAll('.site-data-toggle').forEach(function (btn) {{
-    btn.addEventListener('click', function () {{
-      var dl = btn.previousElementSibling;
-      var expanded = dl.classList.toggle('expanded');
-      btn.textContent = expanded ? 'Less' : 'More';
-    }});
-  }});
-}})();
-
-(function () {{
-  var rows = Array.from(document.querySelectorAll('.location-row'));
-  var originalOrder = rows.slice();
-  var sortMode = 'recent';
-  var btn = document.getElementById('sort-toggle');
-  var countEl = document.getElementById('filter-count');
-  var stateSelect = document.getElementById('filter-state-sites');
-  var typeSelect = document.getElementById('filter-type-sites');
-
-  var states = [], types = [];
-  rows.forEach(function (row) {{
-    var s = row.dataset.state;
-    var t = row.dataset.agencyType;
-    if (s && states.indexOf(s) === -1) states.push(s);
-    if (t && types.indexOf(t) === -1) types.push(t);
-  }});
-  states.sort().forEach(function (s) {{
-    var opt = document.createElement('option');
-    opt.value = s; opt.textContent = s;
-    stateSelect.appendChild(opt);
-  }});
-  types.sort().forEach(function (t) {{
-    var opt = document.createElement('option');
-    opt.value = t; opt.textContent = t;
-    typeSelect.appendChild(opt);
-  }});
-
-  function applyFilters() {{
-    var sv = stateSelect.value;
-    var tv = typeSelect.value;
-    rows.forEach(function (row) {{
-      var match = (!sv || row.dataset.state === sv) && (!tv || row.dataset.agencyType === tv);
-      row.style.display = match ? '' : 'none';
-    }});
-    renderSort();
-  }}
-
-  function renderSort() {{
-    var container = document.getElementById('locations-container');
-    if (!container) return;
-    var visible = rows.filter(function (r) {{ return r.style.display !== 'none'; }});
-    if (sortMode === 'alpha') {{
-      visible.sort(function (a, b) {{
-        var na = a.querySelector('.loc-name').childNodes[0].nodeValue.trim().toLowerCase();
-        var nb = b.querySelector('.loc-name').childNodes[0].nodeValue.trim().toLowerCase();
-        return na < nb ? -1 : na > nb ? 1 : 0;
-      }});
-    }} else {{
-      visible = originalOrder.filter(function (r) {{ return r.style.display !== 'none'; }});
-    }}
-    visible.forEach(function (row) {{ container.appendChild(row); }});
-    countEl.textContent = visible.length + ' sites';
-  }}
-
-  btn.addEventListener('click', function () {{
-    sortMode = sortMode === 'recent' ? 'alpha' : 'recent';
-    btn.textContent = sortMode === 'recent' ? 'Alphabetical' : 'Recent';
-    renderSort();
-  }});
-
-  stateSelect.addEventListener('change', applyFilters);
-  typeSelect.addEventListener('change', applyFilters);
-
-  countEl.textContent = rows.length + ' sites';
-  renderSort();
-}})();
-</script>
-</body>
-</html>'''
-
-
-# ── Combined prototype (index2.html) ───────────────────────────────────────────
-
-def make_combined_page(all_sites, meta):
-    import re as _re
-
-    def acreage_int(s):
-        m = _re.search(r'[\d,]+', str(s))
-        return int(m.group().replace(',', '')) if m else 0
-
-    # JS array for Leaflet map
-    js_sites = []
-    for site in all_sites:
-        slug = site['slug']
-        m = meta.get(slug, {})
-        js_sites.append({
-            'slug': slug,
-            'name': site['name'],
-            'stateAbbr': site['state'],
-            'agencyType': m.get('agency_type', ''),
-            'lat': site.get('lat', None),
-            'lng': site.get('lng', None),
-            'url': f'https://publiclandsinstitute.net/sites/{slug}.html',
-        })
-    js_array = json.dumps(js_sites, indent=2, ensure_ascii=False)
-
-    # Card rows
-    rows = ''
-    for site in all_sites:
-        images = get_all_images_for_site(site)
-        if not images:
-            continue
-        m_data = meta.get(site['slug'], {})
-        agency_type = m_data.get('agency_type', '')
-        acr = acreage_int(site.get('acreage', '0'))
-
-        PRIMARY_KEYS   = {'geological_age', 'acreage'}
-        EXPANDABLE_KEYS = {'epoch', 'ecology', 'native_lands', 'displacement_tenure', 'shadow_history', 'gps'}
-        field_rows = ''
-        for key, label in FIELDS:
-            val = site.get(key, '')
-            if not val:
-                continue
-            if key == 'gps':
-                lat = site.get('lat', '')
-                lng = site.get('lng', '')
-                val = f'<a class="gps-link" href="https://maps.google.com/?q={lat},{lng}" target="_blank" rel="noopener">{val}</a>'
-            if key in PRIMARY_KEYS:
-                field_rows += f'<dt>{label}</dt><dd>{val}</dd>'
-            elif key in EXPANDABLE_KEYS:
-                field_rows += f'<dt class="expandable">{label}</dt><dd class="expandable">{val}</dd>'
-
-        inat_key = f'{site["slug"]}:{site.get("inat_radius_km", 5)}'
-        inat_species = INAT_CACHE.get(inat_key, {}).get('total_species', 0)
-        if inat_species:
-            field_rows += f'<dt class="expandable">Species observed</dt><dd class="expandable">{inat_species:,} (iNaturalist)</dd>'
-
-        rows += f'''  <div class="location-row" data-slug="{site["slug"]}" data-state="{site["state"]}" data-agency-type="{agency_type}" data-acreage="{acr}">
-    <div class="location-row-header">
-      <span class="loc-name">{site["name"]}<span class="loc-state">{site["state"]}</span><span class="expand-ind">+</span></span>
-      <a class="loc-link" href="sites/{site["slug"]}.html">{len(images)} images</a>
-    </div>
-    <dl class="site-data">{field_rows}</dl>
-  </div>\n'''
-
-    return f'''<!DOCTYPE html>
-<html lang="en">
-<head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-TMR79M95R4"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){{dataLayer.push(arguments);}}
-  gtag('js', new Date());
-  gtag('config', 'G-TMR79M95R4');
-</script>
-<meta charset="utf-8"/>
-<title>Public Lands Institute</title>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="An ongoing photographic index and open-access archive of American public lands. CC0 Public Domain." name="description"/>
-<meta content="index, follow" name="robots"/>
-<meta property="og:title" content="Public Lands Institute"/>
-<meta property="og:description" content="An ongoing photographic index and open-access archive of American public lands. CC0 Public Domain."/>
-<meta property="og:type" content="website"/>
-<meta property="og:url" content="https://publiclandsinstitute.net/"/>
-<meta property="og:site_name" content="Public Lands Institute"/>
-<link href="https://publiclandsinstitute.net/" rel="canonical"/>
-<link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
-<link href="/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/>
-<link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-<style>
-{SHARED_CSS}
-  /* ── intro ──────────────────────────────────────────────────── */
-  .intro-text {{
-    font-size: 13px;
-    color: var(--muted);
-    margin-bottom: 20px;
-  }}
-
-  /* ── map ────────────────────────────────────────────────────── */
-  #pli-map {{
-    width: 100%;
-    height: 240px;
-    border: 1px solid var(--border);
-    margin-bottom: 0;
-  }}
-  @media (min-width: 720px) {{ #pli-map {{ height: 340px; }} }}
-  .pli-marker {{ background: none; border: none; }}
-  .pli-dot {{
-    width: 9px; height: 9px;
-    background: var(--fg);
-    border-radius: 50%;
-    border: 2px solid #fff;
-    box-shadow: 0 0 0 1px rgba(0,0,0,0.2);
-    cursor: pointer;
-    transition: transform 0.1s;
-  }}
-  .pli-marker:hover .pli-dot,
-  .pli-marker.active .pli-dot {{ transform: scale(1.8); }}
-  .leaflet-popup-content-wrapper {{
-    border-radius: 2px;
-    box-shadow: 0 1px 8px rgba(0,0,0,0.1);
-    font-family: system-ui, sans-serif;
-  }}
-  .leaflet-popup-content {{
-    margin: 8px 12px;
-    font-size: 12px;
-    line-height: 1.4;
-  }}
-  .leaflet-popup-content a {{ color: var(--fg); font-weight: 500; text-decoration: none; }}
-  .leaflet-popup-content a:hover {{ text-decoration: underline; }}
-
-  /* ── filter bar ─────────────────────────────────────────────── */
-  .filter-bar {{
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding: 8px 0 12px;
-    margin-top: 12px;
-    margin-bottom: 4px;
-    border-bottom: 1px solid var(--border);
-    position: sticky;
-    top: 0;
-    background: var(--bg);
-    z-index: 10;
-  }}
-  .sort-btn {{
-    font-family: inherit;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: var(--muted);
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-  }}
-  .sort-btn:hover {{ color: var(--fg); }}
-  .filter-count {{
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--muted);
-  }}
-
-  /* ── cards ──────────────────────────────────────────────────── */
-  @keyframes card-flash {{
-    0%   {{ background: var(--border); }}
-    100% {{ background: transparent; }}
-  }}
-  .location-row {{
-    border-top: 1px solid var(--border);
-    padding: 10px 0 14px 0;
-  }}
-  .location-row.map-highlight {{ animation: card-flash 1.2s ease-out forwards; }}
-  .location-row-header {{
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 12px;
-    font-size: 13px;
-    margin-bottom: 8px;
-  }}
-  .loc-name {{ color: var(--fg); font-weight: 500; }}
-  .loc-state {{
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.16em;
-    color: var(--muted);
-    margin-left: 6px;
-    font-weight: 400;
-  }}
-  .loc-link {{
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.16em;
-    color: var(--muted);
-    white-space: nowrap;
-    flex-shrink: 0;
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-  }}
-  .gps-link {{
-    color: inherit;
-    text-decoration: none;
-    display: inline-block;
-    padding: 11px 0;
-    margin: -11px 0;
-  }}
-  .gps-link:hover {{ text-decoration: underline; }}
-  .loc-thumb {{
-    display: block;
-    border: 1px solid var(--border);
-    background: #e1e1e1;
-    overflow: hidden;
-    margin-bottom: 10px;
-    width: 100%;
-  }}
-  .loc-thumb img {{
-    width: 100%;
-    height: 220px;
-    display: block;
-    filter: grayscale(100%);
-    object-fit: cover;
-    object-position: center;
-    transition: opacity 0.2s ease;
-  }}
-  .loc-thumb:hover img {{ opacity: 0.85; }}
-  .site-data {{
-    display: grid;
-    grid-template-columns: 172px 1fr;
-    font-size: 11px;
-    line-height: 1.55;
-    border-top: 1px solid var(--border);
-    padding-top: 8px;
-    align-items: baseline;
-    align-content: start;
-  }}
-  .site-data dt {{
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    font-size: 10px;
-    padding: 4px 0;
-  }}
-  .site-data dd {{
-    color: var(--fg);
-    padding: 4px 0 4px 12px;
-    margin: 0;
-  }}
-  /* expand behaviour */
-  .site-data .expandable {{ display: none; }}
-  .location-row.open .site-data .expandable {{ display: block; }}
-  .loc-name {{ cursor: pointer; }}
-  .expand-ind {{
-    font-size: 10px;
-    color: var(--muted);
-    margin-left: 6px;
-    font-weight: 400;
-    font-style: normal;
-  }}
-  @media (max-width: 480px) {{
-    .site-data {{ grid-template-columns: 1fr; }}
-    .site-data dt {{ padding-bottom: 0; }}
-    .site-data dd {{ padding-left: 0; padding-top: 1px; margin-bottom: 6px; }}
-  }}
-</style>
-</head>
-<body>
-<div class="page">
-<header>
-  <div class="logotype"><a href="index2.html">Public Lands Institute</a></div>
-  <nav class="header-nav">
-    <a href="archive2.html">Archive</a>
-  </nav>
-</header>
-<div class="divider"></div>
-<div id="pli-map"></div>
-<div class="filter-bar">
-  <button class="sort-btn" id="sort-toggle">Alphabetical</button>
-  <span class="filter-count" id="filter-count"></span>
-</div>
-<div id="locations-container">
-{rows}</div>
-<footer>
-  <span>Public Lands Institute — ongoing project</span>
-  <span>CC0 Public Domain</span>
-</footer>
-</div>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script>
-// ── map ───────────────────────────────────────────────────────────────────────
-const sites = {js_array};
-const map = L.map('pli-map', {{ zoomControl: true, scrollWheelZoom: false, tap: false }});
-L.tileLayer('https://{{s}}.basemaps.cartocdn.com/light_all/{{z}}/{{x}}/{{y}}{{r}}.png', {{
-  attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/attributions">CARTO</a>',
-  subdomains: 'abcd',
-  maxZoom: 19
-}}).addTo(map);
-
-const allBounds = [];
-sites.forEach(s => {{
-  if (!s.lat || !s.lng) return;
-  const icon = L.divIcon({{ className: 'pli-marker', html: '<div class="pli-dot"></div>', iconSize: [9, 9], iconAnchor: [4, 4] }});
-  const marker = L.marker([s.lat, s.lng], {{ icon, title: s.name }}).addTo(map);
-  marker.on('click', () => {{
-    const card = document.querySelector(`.location-row[data-slug="${{s.slug}}"]`);
-    if (card) {{
-      card.scrollIntoView({{ behavior: 'smooth', block: 'center' }});
-      card.classList.remove('map-highlight');
-      void card.offsetWidth;
-      card.classList.add('map-highlight');
-    }}
-  }});
-  allBounds.push([s.lat, s.lng]);
-}});
-if (allBounds.length) map.fitBounds(allBounds, {{ padding: [20, 20] }});
-</script>
-<script>
-// ── expand ────────────────────────────────────────────────────────────────────
-(function () {{
-  document.querySelectorAll('.location-row').forEach(function (row) {{
-    var nameEl = row.querySelector('.loc-name');
-    var ind = row.querySelector('.expand-ind');
-    nameEl.addEventListener('click', function (e) {{
-      var open = row.classList.toggle('open');
-      if (ind) ind.textContent = open ? '−' : '+';
-    }});
-  }});
-}})();
-
-// ── sort ──────────────────────────────────────────────────────────────────────
-(function () {{
-  var rows = Array.from(document.querySelectorAll('.location-row'));
-  var originalOrder = rows.slice();
-  var sortMode = 'recent';
-  var btn = document.getElementById('sort-toggle');
-  var countEl = document.getElementById('filter-count');
-
-  function sortRows() {{
-    var container = document.getElementById('locations-container');
-    if (!container) return;
-    if (sortMode === 'alpha') {{
-      rows.slice().sort(function (a, b) {{
-        var na = a.querySelector('.loc-name').childNodes[0].nodeValue.trim().toLowerCase();
-        var nb = b.querySelector('.loc-name').childNodes[0].nodeValue.trim().toLowerCase();
-        return na < nb ? -1 : na > nb ? 1 : 0;
-      }}).forEach(function (row) {{ container.appendChild(row); }});
-    }} else {{
-      originalOrder.forEach(function (row) {{ container.appendChild(row); }});
-    }}
-  }}
-
-  btn.addEventListener('click', function () {{
-    sortMode = sortMode === 'recent' ? 'alpha' : 'recent';
-    btn.textContent = sortMode === 'recent' ? 'Alphabetical' : 'Recent';
-    sortRows();
-  }});
-
-  countEl.textContent = rows.length + ' sites';
-  sortRows();
-}})();
-</script>
-</body>
-</html>'''
-
-
-def make_archive2_page(all_sites):
-    html = make_archive_page(all_sites)
-    return html.replace(
-        '<a href="index.html">Public Lands Institute</a>',
-        '<a href="index2.html">Public Lands Institute</a>'
-    ).replace(
-        '<a href="archive.html" class="active">Archive</a>',
-        '<a href="archive2.html" class="active">Archive</a>'
-    )
-
-
 # ── Generate ───────────────────────────────────────────────────────────────────
 
 print('Generating site pages...')
@@ -2571,17 +1462,12 @@ with open('index.html', 'w') as f:
     f.write(make_sites_index_page(sites, SITES_META))
 print('  index.html')
 
-print('\nGenerating sites.html...')
-with open('sites.html', 'w') as f:
-    f.write(make_index_page(sites, SITES_META))
-print('  sites.html')
-
 print('\nGenerating about.html...')
 with open('about.html', 'w') as f:
     f.write(make_about_page(sites))
 print('  about.html')
 
-print(f'\nDone \u2014 {len(sites)} site pages + archive + index + sites index.')
+print(f'\nDone \u2014 {len(sites)} site pages + archive + map index + about.')
 
 import subprocess as _sp
 _backup = os.path.expanduser(

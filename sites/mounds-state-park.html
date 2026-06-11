@@ -23,18 +23,22 @@
 <link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
 <link href="/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/>
 <link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f5f5f5;
-    --fg: #111111;
-    --muted: #777777;
-    --border: #dddddd;
+    --bg: #1a1a18;
+    --fg: #f2ede6;
+    --muted: #8a8478;
+    --border: rgba(242,237,230,0.16);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     background: var(--bg);
     color: var(--fg);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif;
+    font-weight: 300;
     line-height: 1.5;
     letter-spacing: 0.01em;
   }
@@ -134,7 +138,7 @@
     margin: 0;
   }
   .site-images { display: flex; flex-direction: column; gap: 14px; }
-  .site-figure { border: 1px solid var(--border); background: #e1e1e1; }
+  .site-figure { border: 1px solid var(--border); background: #22221f; }
   .site-figure img { width: 100%; height: auto; display: block; filter: grayscale(100%); }
   .site-figure figcaption {
     font-size: 10px;
@@ -222,7 +226,7 @@
 <header>
   <div class="logotype"><a href="../index.html">Public Lands Institute</a></div>
   <nav class="header-nav">
-    <a href="../sites.html">Sites</a>
+    <a href="../index.html">Map</a>
     <a href="../archive.html">Archive</a>
     <a href="../about.html">About</a>
   </nav>

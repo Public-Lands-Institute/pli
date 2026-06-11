@@ -12,7 +12,7 @@ Host: DreamHost (SFTP port 22, credentials in .env)
 ## Key files
 - generate_sites.py — master generator, run with: python3 generate_sites.py
 - sites.json — location metadata (includes lat/lng/inat_radius_km)
-- sites_meta.json — agency, agency_type, territory data used to generate sites.html
+- sites_meta.json — agency, agency_type, territory data used by the map index (index.html)
 - inaturalist_cache.json — iNat API cache, safe to delete entries to force refresh
 - img/jpg/<slug>/ — JPEG images (drive generation)
 - img/full/<slug>/ — TIFF downloads
@@ -70,7 +70,7 @@ geological_age, epoch, native_lands, displacement_tenure, shadow_history, ecolog
 (plus conservation_status, endangered_species, lat, lng, inat_radius_km — kept in JSON, not displayed)
 
 ## shadow_history field
-Documented but underreported history: industrial contamination, forced residential removal, segregated CCC labor, archaeological extraction, institutional labor. Displayed on individual site pages and on the sites index, positioned between displacement_tenure and ecology. Sources tracked in shadow_history_bibliography.txt (archived with each deploy).
+Documented but underreported history: industrial contamination, forced residential removal, segregated CCC labor, archaeological extraction, institutional labor. Displayed on individual site pages and in the map index panel, positioned between displacement_tenure and ecology. Sources tracked in shadow_history_bibliography.txt (archived with each deploy).
 
 ## Observations schema (optional per-site field)
 Add an `observations` array to group images by visit date:
