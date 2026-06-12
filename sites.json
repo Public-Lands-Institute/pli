@@ -1,5 +1,30 @@
 [
   {
+    "slug": "yellowstone-national-park",
+    "name": "Yellowstone National Park",
+    "state": "WY",
+    "geological_age": "~2.8 billion years (Archean) gneiss and granitoid basement exposed in the northern park (Hellroaring and Crevice plutons near the Montana boundary); overlain by Quaternary rhyolitic caldera volcanism, the Lava Creek eruption forming the present Yellowstone Caldera ~631,000 years ago",
+    "epoch": "Archean (basement) / Quaternary (Yellowstone Caldera)",
+    "native_lands": "Tukudika (Mountain Shoshone, the \"Sheep Eaters\"), the only documented year-round inhabitants, who followed and hunted bighorn sheep at high elevation for millennia; Eastern Shoshone; Bannock (Bannakwut); Aps\u00e1alooke (Crow); Blackfeet (Niitsitapi); Niim\u00edipuu (Nez Perce); and Salish, Kiowa, and others among the 27 tribes with ancestral ties; the Treaty of Fort Laramie 1851 recognized Aps\u00e1alooke territory reaching the headwaters of the Yellowstone River; the Treaty of Fort Bridger 1868 placed the Eastern Shoshone and Bannock on reservations while reserving the right to hunt on the \"unoccupied lands of the United States\"; the Bannock Trail crossed the northern park as a major route to the plains bison grounds",
+    "displacement_tenure": "Treaty of Fort Laramie 1851 recognized Aps\u00e1alooke (Crow) territory extending to the upper Yellowstone headwaters; Treaty of Fort Bridger 1868 confined the Eastern Shoshone and Bannock to reservations while reserving off-reservation hunting rights on unoccupied federal land; Yellowstone National Park was established by Act of Congress March 1, 1872 (17 Stat. 32), withdrawing roughly 2.2 million acres from the public domain without any cession by or compensation to the resident and seasonal tribes; the Tukudika were forcibly removed to the Wind River and Fort Hall reservations by about 1880; in Ward v. Race Horse (1896) the Supreme Court held that Wyoming statehood had abrogated the Fort Bridger hunting right, a ruling not overturned until Herrera v. Wyoming (2019)",
+    "shadow_history": "Yellowstone became the template for what scholars call the \"Yellowstone model\" or fortress conservation, the creation of protected wilderness through removal of its Indigenous inhabitants (Mark David Spence, Dispossessing the Wilderness, 1999); the founding narrative of an untouched wild erased thousands of years of occupation. Second superintendent Philetus Norris promoted the claim that Native people feared the geyser basins as supernatural ground, a story used to discourage visitor anxiety and justify exclusion, while he oversaw the removal of the resident Tukudika to the Wind River and Fort Hall reservations by about 1880. In 1895 a Bannock party hunting near Jackson Hole under the Fort Bridger treaty was confronted by a Wyoming posse; one man was killed, and the resulting case, Ward v. Race Horse (1896), held that statehood had voided the treaty hunting right, a precedent that stood until Herrera v. Wyoming (2019). The park's bison, reduced to roughly two dozen animals by poaching by 1902, recovered into the largest public herd in the country, but bison migrating across the northern boundary are still captured and shipped to slaughter under the Interagency Bison Management Plan, justified by a cattle-industry brucellosis concern never documented as a wild bison-to-cattle transmission (a 2020 National Academies review traced all area cattle cases to elk); more than 3,000 bison were removed by slaughter or culling between 2001 and 2010, and over 1,200 in 2017 alone.",
+    "ecology": "Lodgepole pine covers roughly 80 percent of the forested area, with subalpine fir, Engelmann spruce, whitebark pine, and Douglas fir at varying elevations, grading into sagebrush steppe and montane grassland; the park supports the largest concentration of free-ranging megafauna in the lower 48, including grizzly bear, gray wolf (reintroduced 1995), the oldest and largest public bison herd in the country, elk, moose, pronghorn, bighorn sheep, and cougar.",
+    "hydrology": "Straddles the Continental Divide, which runs about 115 miles through the southern park; the Yellowstone River drains north and east via the Missouri to the Gulf of Mexico, while the Snake River rises on the Two Ocean Plateau and flows to the Pacific via the Columbia; the Madison and Gallatin Rivers drain the northwest; Yellowstone Lake, at 7,732 feet, is the largest high-elevation lake in North America.",
+    "acreage": "2,219,791",
+    "conservation_status": "World's first national park (established March 1, 1872); UNESCO World Heritage Site (1978); International Biosphere Reserve (1976)",
+    "endangered_species": "Canada lynx (Lynx canadensis, federally Threatened); grizzly bear (Ursus arctos horribilis, federally Threatened in the lower 48); whitebark pine (Pinus albicaulis, federally Threatened, listed 2022)",
+    "gps": "44.6000\u00b0 N, 110.5000\u00b0 W",
+    "lat": 44.6,
+    "lng": -110.5,
+    "inat_radius_km": 10,
+    "native_lands_api": [
+      "Newe Sogobia (Eastern Shoshone)",
+      "Cayuse, Umatilla and Walla Walla",
+      "Aps\u00e1alooke (Crow)",
+      "Ts\u00e9ts\u0117h\u00e9st\u0227hese/Tsitsistas/S\u00f3'taeo'o (Cheyenne)"
+    ]
+  },
+  {
     "slug": "bighorn-national-forest",
     "name": "Bighorn National Forest",
     "state": "WY",

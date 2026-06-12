@@ -1,4 +1,16 @@
 {
+  "yellowstone-national-park": {
+    "agency": "National Park Service",
+    "agency_type": "NPS",
+    "territory": [
+      "Tukudika (Mountain Shoshone)",
+      "Eastern Shoshone",
+      "Bannock",
+      "Apsáalooke (Crow)",
+      "Blackfeet",
+      "Niimíipuu (Nez Perce)"
+    ]
+  },
   "bighorn-national-forest": {
     "agency": "USDA Forest Service",
     "agency_type": "USFS",

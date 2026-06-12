@@ -250,8 +250,13 @@ lightbox.js reads .caption-title and .caption-filename from the hidden figcaptio
 and prefers img data-full for the viewer image. Do not add onclick handlers or
 image interaction logic to the page template. No changes to sites.json needed.
 
-The archive page lists Download TIFF, Download RAW, and XML (the .xmp sidecar
-from img/RAW/) per image.
+Wikimedia Commons is the canonical source for TIFF downloads. The generator
+reads ../pli-commons/upload_log.json and links Download TIFF (and the Commons
+page action) via Special:FilePath using the exact logged filename; images not
+yet uploaded hide those actions until the next generate after upload. RAW and
+XML (.xmp sidecar) downloads stay on DreamHost under img/RAW/. The archive
+page lists Download TIFF, Download RAW, and XML per image, hiding any that are
+unavailable.
 
 On mobile (max-width: 719px), CSS order places the photo grid above the record
 column. The desktop two-column layout (min-width: 720px) is unaffected.

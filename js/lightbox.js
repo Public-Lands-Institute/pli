@@ -10,7 +10,8 @@
     const img = f.querySelector('img');
     return {
       jpg:      img.dataset.full || img.src,
-      tif:      f.querySelector('a').href,
+      tif:      f.dataset.tif || '',
+      commons:  f.dataset.commons || '',
       raw:      f.dataset.raw || '',
       xmp:      f.dataset.xmp || '',
       caption:  f.querySelector('.caption-title')?.textContent?.trim() || '',
@@ -73,6 +74,7 @@
         <a id="plb-tif" class="plb-action" href="#" download>Download TIFF</a>
         <a id="plb-raw" class="plb-action" href="#" download>RAW File</a>
         <a id="plb-xmp" class="plb-action" href="#" download>XML</a>
+        <a id="plb-commons" class="plb-action" href="#" target="_blank" rel="noopener">Commons</a>
       </div>
     </div>
   `;
@@ -86,6 +88,7 @@
   const elTif      = document.getElementById('plb-tif');
   const elRaw      = document.getElementById('plb-raw');
   const elXmp      = document.getElementById('plb-xmp');
+  const elCommons  = document.getElementById('plb-commons');
 
   let current = 0;
 
@@ -103,8 +106,10 @@
     elCaption.textContent  = img.caption;
     elFilename.textContent = img.filename;
     elCounter.textContent  = (current + 1) + ' / ' + images.length;
-    elTif.href = img.tif;
-    elTif.setAttribute('download', img.filename.replace(/\.jpe?g$/i, '.tif'));
+    elTif.classList.toggle('hidden', !img.tif);
+    if (img.tif) elTif.href = img.tif;
+    elCommons.classList.toggle('hidden', !img.commons);
+    if (img.commons) elCommons.href = img.commons;
     elRaw.classList.toggle('hidden', !img.raw);
     if (img.raw) elRaw.href = img.raw;
     elXmp.classList.toggle('hidden', !img.xmp);

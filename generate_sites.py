@@ -174,6 +174,21 @@ def fetch_nativeland(slug, lat, lng):
 
     return names
 
+# ── Wikimedia Commons upload log ──────────────────────────────────────────────
+# Commons is the canonical source for TIFF downloads. The upload log maps each
+# (slug, camera filename) to its exact Commons filename; images without a log
+# entry hide their TIFF action until uploaded.
+
+COMMONS_LOG_FILE = os.path.expanduser(
+    '~/Library/CloudStorage/OneDrive-UniversityofCincinnati/pli-commons/upload_log.json'
+)
+COMMONS_FILES = {}
+if os.path.exists(COMMONS_LOG_FILE):
+    with open(COMMONS_LOG_FILE, 'r') as f:
+        for entry in json.load(f):
+            stem = os.path.splitext(os.path.basename(entry['source_path']))[0]
+            COMMONS_FILES[(entry['slug'], stem)] = entry['commons_filename']
+
 SITES_META_FILE = 'sites_meta.json'
 SITES_META = {}
 if os.path.exists(SITES_META_FILE):
@@ -250,11 +265,20 @@ def _make_image_entry(slug, filename, caption_idx):
         if os.path.exists(candidate):
             xmp_path = candidate.replace('\\', '/')
             break
+    commons_name = COMMONS_FILES.get((slug, stem))
+    tif_url = None
+    commons_page = None
+    if commons_name:
+        tif_url = 'https://commons.wikimedia.org/wiki/Special:FilePath/' + urllib.parse.quote(commons_name)
+        commons_page = 'https://commons.wikimedia.org/wiki/File:' + urllib.parse.quote(commons_name.replace(' ', '_'))
     return {
         'jpg': jpg_path,
         'tif': tif_path,
         'raw': raw_path,
         'xmp': xmp_path,
+        'commons_name': commons_name,
+        'tif_url': tif_url,
+        'commons_page': commons_page,
         'camera_filename': filename,
         'caption_index': str(caption_idx + 1),
         'date': get_exif_date(jpg_path),
@@ -480,10 +504,12 @@ def make_site_page(site, all_sites):
         for img in obs['images']:
             caption = f'{name} {img["caption_index"]}'
             date_str = f' &middot; {img["date"]}' if img['date'] else ''
+            tif_attr = f' data-tif="{img["tif_url"]}"' if img['tif_url'] else ''
+            commons_attr = f' data-commons="{img["commons_page"]}"' if img['commons_page'] else ''
             raw_attr = f' data-raw="../{img["raw"]}"' if img['raw'] else ''
             xmp_attr = f' data-xmp="../{img["xmp"]}"' if img['xmp'] else ''
-            images_html += f'''    <figure class="ph"{raw_attr}{xmp_attr}>
-      <a href="../{img["tif"]}" download title="{caption}">
+            images_html += f'''    <figure class="ph"{tif_attr}{commons_attr}{raw_attr}{xmp_attr}>
+      <a href="#" download title="{caption}">
         <img src="../{img["jpg"]}" alt="{caption}" loading="lazy"/>
       </a>
       <figcaption>
@@ -697,7 +723,10 @@ def make_archive_page(all_sites):
             rows += f'  <div class="archive-item">\n'
             rows += f'    <span class="archive-caption">{caption}{date_str}</span>\n'
             rows += f'    <span class="archive-filename">{img["camera_filename"]}</span>\n'
-            rows += f'    <a class="archive-download" href="{img["tif"]}" download>Download TIFF</a>\n'
+            if img['tif_url']:
+                rows += f'    <a class="archive-download" href="{img["tif_url"]}" download>Download TIFF</a>\n'
+            else:
+                rows += f'    <span class="archive-download" style="visibility:hidden">Download TIFF</span>\n'
             if img['raw']:
                 rows += f'    <a class="archive-download" href="{img["raw"]}" download>Download RAW</a>\n'
             else:
@@ -1002,16 +1031,15 @@ def make_sites_index_page(all_sites, meta):
             stem = os.path.splitext(cam)[0]
             thumb_path = f'thumbs/{slug}/{cam}'
             large_path = f'thumbs/{slug}/lg_{cam}'
-            # Use archive tif filename for f field (matches Commons naming, which uses zero-padded sequence numbers)
-            archive_name = f'Public Lands Institute - {site["name"]} - {i + 1:03d}.tif'
             entries.append({
-                'f': archive_name,
+                'f': img['commons_name'] or img['camera_filename'],
                 'd': img.get('date', '') or '',
                 'thumb': thumb_path if os.path.exists(thumb_path) else '',
                 'large': large_path if os.path.exists(large_path) else '',
-                't': img['tif'],
+                't': img['tif_url'] or '',
                 'r': img['raw'] or '',
                 'x': img['xmp'] or '',
+                'c': img['commons_page'] or '',
             })
         if entries:
             photos_dict[slug] = entries
@@ -1425,8 +1453,9 @@ function showLbPhoto(idx) {{
   document.getElementById('lb-counter').textContent  = (idx+1)+' / '+currentPhotos.length;
   document.getElementById('lb-filename').textContent = p.f;
   document.getElementById('lb-date').textContent     = p.d||'';
-  const fe = p.f.replace(/ /g,'_');
-  document.getElementById('lb-commons').href = 'https://commons.wikimedia.org/wiki/File:'+fe;
+  const lbCommons = document.getElementById('lb-commons');
+  lbCommons.style.display = p.c ? '' : 'none';
+  if (p.c) lbCommons.href = p.c;
   const lbTif = document.getElementById('lb-tif');
   const lbRaw = document.getElementById('lb-raw');
   const lbXml = document.getElementById('lb-xml');

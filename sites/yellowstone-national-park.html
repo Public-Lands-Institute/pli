@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TMR79M95R4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-TMR79M95R4');
+</script>
+<meta charset="utf-8"/>
+<title>Yellowstone National Park — Public Lands Institute</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="index, follow" name="robots"/>
+<meta content="Yellowstone National Park. Public Lands Institute photographic index. CC0 Public Domain." name="description"/>
+<meta property="og:title" content="Yellowstone National Park — Public Lands Institute"/>
+<meta property="og:description" content="Yellowstone National Park. An ongoing photographic index and open-access archive of American public lands. CC0 Public Domain."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://publiclandsinstitute.net/sites/yellowstone-national-park.html"/>
+<meta property="og:site_name" content="Public Lands Institute"/>
+<link href="https://publiclandsinstitute.net/sites/yellowstone-national-park.html" rel="canonical"/>
+<link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #161616;
+    --fg: #e8e8e8;
+    --muted: #8c8c8c;
+    --border: rgba(255,255,255,0.16);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif;
+    font-weight: 300;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+  }
+  a { color: inherit; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .page {
+    max-width: 1500px;
+    margin: 24px auto 56px auto;
+    padding: 0 18px;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 28px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .logotype {
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .header-nav {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+    display: flex;
+    gap: 16px;
+  }
+  .header-nav a.active { color: var(--fg); }
+  .divider { border-bottom: 1px solid var(--border); margin: 0 0 28px 0; }
+  footer {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  @media (min-width: 720px) {
+    .page { margin-top: 40px; padding: 0 24px; }
+    header { margin-bottom: 40px; }
+  }
+  .gps-link {
+    color: inherit;
+    text-decoration: none;
+    display: inline-block;
+    padding: 11px 0;
+    margin: -11px 0;
+  }
+  .gps-link:hover { text-decoration: underline; }
+  .site-header { margin-bottom: 28px; }
+  .site-header h1 {
+    font-size: 26px;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  .site-header .state {
+    font-size: 11px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+  }
+  .site-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .site-record { align-content: start; }
+  .rec-section {
+    border-top: 1px solid var(--border);
+    padding-top: 14px;
+    margin-bottom: 18px;
+  }
+  .rec-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .rec-section p {
+    font-size: 13.5px;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+  .geo-era-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .geo-swatch { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .geo-era-name { font-size: 14px; font-weight: 300; }
+  .geo-mya { font-size: 11px; font-weight: 300; color: var(--muted); margin-left: auto; letter-spacing: 0.04em; }
+  .geo-bar-wrap { position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }
+  .geo-bar-fill { position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }
+  .geo-prose { color: var(--fg); }
+  .photo-pane { min-width: 0; }
+  .photo-scroll {
+    display: flex; flex-direction: column; gap: 4px;
+    overflow-y: auto; min-height: 0; flex: 1;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.18) transparent;
+  }
+  .photo-scroll::-webkit-scrollbar { width: 6px; }
+  .photo-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); }
+  .ph { background: #1f1f1f; flex-shrink: 0; }
+  .ph a { display: block; width: 100%; }
+  .ph img {
+    width: 100%; height: auto; display: block;
+    filter: grayscale(100%);
+    opacity: 0.92;
+    transition: opacity 0.15s;
+  }
+  .ph:hover img { opacity: 1; }
+  .ph figcaption { display: none; }
+  .photo-foot {
+    flex-shrink: 0;
+    padding-top: 12px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+  }
+  .plb-view-all {
+    font-family: inherit; font-size: 10px; font-weight: 400;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); background: none; border: none;
+    cursor: pointer; padding: 0;
+  }
+  .plb-view-all:hover { color: var(--fg); }
+  .obs-header {
+    padding: 10px 0 4px 0;
+  }
+  .obs-header:first-child { padding-top: 0; }
+  .obs-date {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    display: block;
+  }
+  .obs-notes {
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--fg);
+    margin-top: 4px;
+    line-height: 1.6;
+  }
+  .site-nav {
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  @media (min-width: 720px) {
+    .site-layout { grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }
+    .photo-pane { position: sticky; top: 24px; height: calc(100vh - 48px); display: flex; flex-direction: column; }
+  }
+  @media (min-width: 1148px) {
+    .site-layout { grid-template-columns: 7fr 15fr; }
+  }
+  @media (max-width: 719px) {
+    .photo-pane { order: -1; display: flex; flex-direction: column; }
+    .photo-scroll { max-height: 70vh; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="logotype"><a href="../index.html">Public Lands Institute</a></div>
+  <nav class="header-nav">
+    <a href="../index.html">Map</a>
+    <a href="../archive.html">Archive</a>
+    <a href="../about.html">About</a>
+  </nav>
+</header>
+<div class="divider"></div>
+<div class="site-header">
+  <h1>Yellowstone National Park</h1>
+  <div class="state">WY</div>
+</div>
+<div class="site-layout">
+  <aside class="site-record">
+<div class="rec-section"><div class="rec-label">Geology</div><div class="geo-era-row"><div class="geo-swatch" style="background:#8c8c8c"></div><span class="geo-era-name">Quaternary</span></div><div class="geo-bar-wrap"><div class="geo-bar-fill" style="width:0%;background:#8c8c8c;opacity:0.55"></div></div><p class="geo-prose">~2.8 billion years (Archean) gneiss and granitoid basement exposed in the northern park (Hellroaring and Crevice plutons near the Montana boundary); overlain by Quaternary rhyolitic caldera volcanism, the Lava Creek eruption forming the present Yellowstone Caldera ~631,000 years ago</p></div><div class="rec-section"><div class="rec-label">Epoch</div><p>Archean (basement) / Quaternary (Yellowstone Caldera)</p></div><div class="rec-section"><div class="rec-label">Native lands</div><p>Tukudika (Mountain Shoshone, the "Sheep Eaters"), the only documented year-round inhabitants, who followed and hunted bighorn sheep at high elevation for millennia; Eastern Shoshone; Bannock (Bannakwut); Apsáalooke (Crow); Blackfeet (Niitsitapi); Niimíipuu (Nez Perce); and Salish, Kiowa, and others among the 27 tribes with ancestral ties; the Treaty of Fort Laramie 1851 recognized Apsáalooke territory reaching the headwaters of the Yellowstone River; the Treaty of Fort Bridger 1868 placed the Eastern Shoshone and Bannock on reservations while reserving the right to hunt on the "unoccupied lands of the United States"; the Bannock Trail crossed the northern park as a major route to the plains bison grounds</p></div><div class="rec-section"><div class="rec-label">Displacement &amp; Tenure</div><p>Treaty of Fort Laramie 1851 recognized Apsáalooke (Crow) territory extending to the upper Yellowstone headwaters; Treaty of Fort Bridger 1868 confined the Eastern Shoshone and Bannock to reservations while reserving off-reservation hunting rights on unoccupied federal land; Yellowstone National Park was established by Act of Congress March 1, 1872 (17 Stat. 32), withdrawing roughly 2.2 million acres from the public domain without any cession by or compensation to the resident and seasonal tribes; the Tukudika were forcibly removed to the Wind River and Fort Hall reservations by about 1880; in Ward v. Race Horse (1896) the Supreme Court held that Wyoming statehood had abrogated the Fort Bridger hunting right, a ruling not overturned until Herrera v. Wyoming (2019)</p></div><div class="rec-section"><div class="rec-label">Shadow History</div><p>Yellowstone became the template for what scholars call the "Yellowstone model" or fortress conservation, the creation of protected wilderness through removal of its Indigenous inhabitants (Mark David Spence, Dispossessing the Wilderness, 1999); the founding narrative of an untouched wild erased thousands of years of occupation. Second superintendent Philetus Norris promoted the claim that Native people feared the geyser basins as supernatural ground, a story used to discourage visitor anxiety and justify exclusion, while he oversaw the removal of the resident Tukudika to the Wind River and Fort Hall reservations by about 1880. In 1895 a Bannock party hunting near Jackson Hole under the Fort Bridger treaty was confronted by a Wyoming posse; one man was killed, and the resulting case, Ward v. Race Horse (1896), held that statehood had voided the treaty hunting right, a precedent that stood until Herrera v. Wyoming (2019). The park's bison, reduced to roughly two dozen animals by poaching by 1902, recovered into the largest public herd in the country, but bison migrating across the northern boundary are still captured and shipped to slaughter under the Interagency Bison Management Plan, justified by a cattle-industry brucellosis concern never documented as a wild bison-to-cattle transmission (a 2020 National Academies review traced all area cattle cases to elk); more than 3,000 bison were removed by slaughter or culling between 2001 and 2010, and over 1,200 in 2017 alone.</p></div><div class="rec-section"><div class="rec-label">Ecology</div><p>Lodgepole pine covers roughly 80 percent of the forested area, with subalpine fir, Engelmann spruce, whitebark pine, and Douglas fir at varying elevations, grading into sagebrush steppe and montane grassland; the park supports the largest concentration of free-ranging megafauna in the lower 48, including grizzly bear, gray wolf (reintroduced 1995), the oldest and largest public bison herd in the country, elk, moose, pronghorn, bighorn sheep, and cougar.</p></div><div class="rec-section"><div class="rec-label">Hydrology</div><p>Straddles the Continental Divide, which runs about 115 miles through the southern park; the Yellowstone River drains north and east via the Missouri to the Gulf of Mexico, while the Snake River rises on the Two Ocean Plateau and flows to the Pacific via the Columbia; the Madison and Gallatin Rivers drain the northwest; Yellowstone Lake, at 7,732 feet, is the largest high-elevation lake in North America.</p></div><div class="rec-section"><div class="rec-label">Acreage</div><p>2,219,791</p></div><div class="rec-section"><div class="rec-label">GPS</div><p><a class="gps-link" href="https://maps.google.com/?q=44.6,-110.5" target="_blank" rel="noopener">44.6000° N, 110.5000° W</a></p></div>  </aside>
+  <div class="photo-pane">
+    <div class="photo-scroll">
+    <figure class="ph" data-tif="https://commons.wikimedia.org/wiki/Special:FilePath/Public%20Lands%20Institute%20-%20Yellowstone%20National%20Park%20-%20001.tif" data-commons="https://commons.wikimedia.org/wiki/File:Public_Lands_Institute_-_Yellowstone_National_Park_-_001.tif" data-raw="../img/RAW/_DSF2943.RAF" data-xmp="../img/RAW/_DSF2943.xmp">
+      <a href="#" download title="Yellowstone National Park 1">
+        <img src="../img/jpg/yellowstone-national-park/_DSF2943.jpg" alt="Yellowstone National Park 1" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Yellowstone National Park 1 &middot; 2026-06-09</span>
+        <span class="caption-filename">_DSF2943.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="ph" data-tif="https://commons.wikimedia.org/wiki/Special:FilePath/Public%20Lands%20Institute%20-%20Yellowstone%20National%20Park%20-%20002.tif" data-commons="https://commons.wikimedia.org/wiki/File:Public_Lands_Institute_-_Yellowstone_National_Park_-_002.tif" data-raw="../img/RAW/_DSF2955.RAF" data-xmp="../img/RAW/_DSF2955.xmp">
+      <a href="#" download title="Yellowstone National Park 2">
+        <img src="../img/jpg/yellowstone-national-park/_DSF2955.jpg" alt="Yellowstone National Park 2" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Yellowstone National Park 2 &middot; 2026-06-10</span>
+        <span class="caption-filename">_DSF2955.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="ph" data-tif="https://commons.wikimedia.org/wiki/Special:FilePath/Public%20Lands%20Institute%20-%20Yellowstone%20National%20Park%20-%20003.tif" data-commons="https://commons.wikimedia.org/wiki/File:Public_Lands_Institute_-_Yellowstone_National_Park_-_003.tif" data-raw="../img/RAW/_DSF2971.RAF" data-xmp="../img/RAW/_DSF2971.xmp">
+      <a href="#" download title="Yellowstone National Park 3">
+        <img src="../img/jpg/yellowstone-national-park/_DSF2971.jpg" alt="Yellowstone National Park 3" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Yellowstone National Park 3 &middot; 2026-06-10</span>
+        <span class="caption-filename">_DSF2971.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="ph" data-tif="https://commons.wikimedia.org/wiki/Special:FilePath/Public%20Lands%20Institute%20-%20Yellowstone%20National%20Park%20-%20004.tif" data-commons="https://commons.wikimedia.org/wiki/File:Public_Lands_Institute_-_Yellowstone_National_Park_-_004.tif" data-raw="../img/RAW/_DSF2974.RAF" data-xmp="../img/RAW/_DSF2974.xmp">
+      <a href="#" download title="Yellowstone National Park 4">
+        <img src="../img/jpg/yellowstone-national-park/_DSF2974.jpg" alt="Yellowstone National Park 4" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Yellowstone National Park 4 &middot; 2026-06-10</span>
+        <span class="caption-filename">_DSF2974.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="ph" data-tif="https://commons.wikimedia.org/wiki/Special:FilePath/Public%20Lands%20Institute%20-%20Yellowstone%20National%20Park%20-%20005.tif" data-commons="https://commons.wikimedia.org/wiki/File:Public_Lands_Institute_-_Yellowstone_National_Park_-_005.tif" data-raw="../img/RAW/_DSF2977.RAF" data-xmp="../img/RAW/_DSF2977.xmp">
+      <a href="#" download title="Yellowstone National Park 5">
+        <img src="../img/jpg/yellowstone-national-park/_DSF2977.jpg" alt="Yellowstone National Park 5" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Yellowstone National Park 5 &middot; 2026-06-10</span>
+        <span class="caption-filename">_DSF2977.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="ph" data-tif="https://commons.wikimedia.org/wiki/Special:FilePath/Public%20Lands%20Institute%20-%20Yellowstone%20National%20Park%20-%20006.tif" data-commons="https://commons.wikimedia.org/wiki/File:Public_Lands_Institute_-_Yellowstone_National_Park_-_006.tif" data-raw="../img/RAW/_DSF2981.RAF" data-xmp="../img/RAW/_DSF2981.xmp">
+      <a href="#" download title="Yellowstone National Park 6">
+        <img src="../img/jpg/yellowstone-national-park/_DSF2981.jpg" alt="Yellowstone National Park 6" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Yellowstone National Park 6 &middot; 2026-06-10</span>
+        <span class="caption-filename">_DSF2981.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="ph" data-tif="https://commons.wikimedia.org/wiki/Special:FilePath/Public%20Lands%20Institute%20-%20Yellowstone%20National%20Park%20-%20007.tif" data-commons="https://commons.wikimedia.org/wiki/File:Public_Lands_Institute_-_Yellowstone_National_Park_-_007.tif" data-raw="../img/RAW/_DSF2998.RAF" data-xmp="../img/RAW/_DSF2998.xmp">
+      <a href="#" download title="Yellowstone National Park 7">
+        <img src="../img/jpg/yellowstone-national-park/_DSF2998.jpg" alt="Yellowstone National Park 7" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Yellowstone National Park 7 &middot; 2026-06-10</span>
+        <span class="caption-filename">_DSF2998.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="ph" data-raw="../img/RAW/_DSF3004.RAF" data-xmp="../img/RAW/_DSF3004.xmp">
+      <a href="#" download title="Yellowstone National Park 8">
+        <img src="../img/jpg/yellowstone-national-park/_DSF3004.jpg" alt="Yellowstone National Park 8" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Yellowstone National Park 8 &middot; 2026-06-10</span>
+        <span class="caption-filename">_DSF3004.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="ph" data-raw="../img/RAW/_DSF3006.RAF" data-xmp="../img/RAW/_DSF3006.xmp">
+      <a href="#" download title="Yellowstone National Park 9">
+        <img src="../img/jpg/yellowstone-national-park/_DSF3006.jpg" alt="Yellowstone National Park 9" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Yellowstone National Park 9 &middot; 2026-06-10</span>
+        <span class="caption-filename">_DSF3006.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="ph" data-raw="../img/RAW/_DSF3015.RAF" data-xmp="../img/RAW/_DSF3015.xmp">
+      <a href="#" download title="Yellowstone National Park 10">
+        <img src="../img/jpg/yellowstone-national-park/_DSF3015.jpg" alt="Yellowstone National Park 10" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Yellowstone National Park 10 &middot; 2026-06-10</span>
+        <span class="caption-filename">_DSF3015.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="ph" data-raw="../img/RAW/_DSF3025.RAF" data-xmp="../img/RAW/_DSF3025.xmp">
+      <a href="#" download title="Yellowstone National Park 11">
+        <img src="../img/jpg/yellowstone-national-park/_DSF3025.jpg" alt="Yellowstone National Park 11" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Yellowstone National Park 11 &middot; 2026-06-10</span>
+        <span class="caption-filename">_DSF3025.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="ph" data-raw="../img/RAW/_DSF3027.RAF" data-xmp="../img/RAW/_DSF3027.xmp">
+      <a href="#" download title="Yellowstone National Park 12">
+        <img src="../img/jpg/yellowstone-national-park/_DSF3027.jpg" alt="Yellowstone National Park 12" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Yellowstone National Park 12 &middot; 2026-06-10</span>
+        <span class="caption-filename">_DSF3027.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="ph" data-raw="../img/RAW/_DSF3028.RAF" data-xmp="../img/RAW/_DSF3028.xmp">
+      <a href="#" download title="Yellowstone National Park 13">
+        <img src="../img/jpg/yellowstone-national-park/_DSF3028.jpg" alt="Yellowstone National Park 13" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Yellowstone National Park 13 &middot; 2026-06-10</span>
+        <span class="caption-filename">_DSF3028.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="ph" data-raw="../img/RAW/_DSF3044.RAF" data-xmp="../img/RAW/_DSF3044.xmp">
+      <a href="#" download title="Yellowstone National Park 14">
+        <img src="../img/jpg/yellowstone-national-park/_DSF3044.jpg" alt="Yellowstone National Park 14" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Yellowstone National Park 14 &middot; 2026-06-11</span>
+        <span class="caption-filename">_DSF3044.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="ph" data-raw="../img/RAW/_DSF3078.RAF" data-xmp="../img/RAW/_DSF3078.xmp">
+      <a href="#" download title="Yellowstone National Park 15">
+        <img src="../img/jpg/yellowstone-national-park/_DSF3078.jpg" alt="Yellowstone National Park 15" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Yellowstone National Park 15 &middot; 2026-06-11</span>
+        <span class="caption-filename">_DSF3078.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="ph" data-raw="../img/RAW/_DSF3100.RAF" data-xmp="../img/RAW/_DSF3100.xmp">
+      <a href="#" download title="Yellowstone National Park 16">
+        <img src="../img/jpg/yellowstone-national-park/_DSF3100.jpg" alt="Yellowstone National Park 16" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Yellowstone National Park 16 &middot; 2026-06-11</span>
+        <span class="caption-filename">_DSF3100.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="ph" data-raw="../img/RAW/_DSF3105.RAF" data-xmp="../img/RAW/_DSF3105.xmp">
+      <a href="#" download title="Yellowstone National Park 17">
+        <img src="../img/jpg/yellowstone-national-park/_DSF3105.jpg" alt="Yellowstone National Park 17" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Yellowstone National Park 17 &middot; 2026-06-11</span>
+        <span class="caption-filename">_DSF3105.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="ph" data-raw="../img/RAW/_DSF3109.RAF" data-xmp="../img/RAW/_DSF3109.xmp">
+      <a href="#" download title="Yellowstone National Park 18">
+        <img src="../img/jpg/yellowstone-national-park/_DSF3109.jpg" alt="Yellowstone National Park 18" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Yellowstone National Park 18 &middot; 2026-06-11</span>
+        <span class="caption-filename">_DSF3109.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="ph" data-raw="../img/RAW/_DSF3116.RAF" data-xmp="../img/RAW/_DSF3116.xmp">
+      <a href="#" download title="Yellowstone National Park 19">
+        <img src="../img/jpg/yellowstone-national-park/_DSF3116.jpg" alt="Yellowstone National Park 19" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Yellowstone National Park 19 &middot; 2026-06-11</span>
+        <span class="caption-filename">_DSF3116.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="ph" data-raw="../img/RAW/_DSF3118.RAF" data-xmp="../img/RAW/_DSF3118.xmp">
+      <a href="#" download title="Yellowstone National Park 20">
+        <img src="../img/jpg/yellowstone-national-park/_DSF3118.jpg" alt="Yellowstone National Park 20" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Yellowstone National Park 20 &middot; 2026-06-11</span>
+        <span class="caption-filename">_DSF3118.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="ph" data-raw="../img/RAW/_DSF3120.RAF" data-xmp="../img/RAW/_DSF3120.xmp">
+      <a href="#" download title="Yellowstone National Park 21">
+        <img src="../img/jpg/yellowstone-national-park/_DSF3120.jpg" alt="Yellowstone National Park 21" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Yellowstone National Park 21 &middot; 2026-06-11</span>
+        <span class="caption-filename">_DSF3120.jpg</span>
+      </figcaption>
+    </figure>
+    <figure class="ph" data-raw="../img/RAW/_DSF3127.RAF" data-xmp="../img/RAW/_DSF3127.xmp">
+      <a href="#" download title="Yellowstone National Park 22">
+        <img src="../img/jpg/yellowstone-national-park/_DSF3127.jpg" alt="Yellowstone National Park 22" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">Yellowstone National Park 22 &middot; 2026-06-11</span>
+        <span class="caption-filename">_DSF3127.jpg</span>
+      </figcaption>
+    </figure>
+    </div>
+    <div class="photo-foot">
+      <button class="plb-view-all">View all 22 images →</button>
+    </div>
+  </div>
+</div>
+<nav class="site-nav">
+  <span></span>
+  <a href="bighorn-national-forest.html">Bighorn National Forest →</a>
+</nav>
+<footer>
+  <span>Public Lands Institute — ongoing project</span>
+  <span>CC0 Public Domain</span>
+</footer>
+</div>
+<script src="../js/lightbox.js"></script>
+</body>
+</html>
