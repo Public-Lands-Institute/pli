@@ -464,6 +464,16 @@ def make_site_page(site, all_sites):
     state = site['state']
     observations = get_observations_for_site(site)
 
+    og_image = ''
+    for _obs in observations:
+        if _obs['images']:
+            og_image = 'https://publiclandsinstitute.net/' + _obs['images'][0]['jpg']
+            break
+    og_image_tags = ''
+    if og_image:
+        og_image_tags = (f'<meta property="og:image" content="{og_image}"/>\n'
+                         f'<meta name="twitter:card" content="summary_large_image"/>\n')
+
     idx       = next(i for i, s in enumerate(all_sites) if s['slug'] == slug)
     prev_site = all_sites[idx - 1] if idx > 0 else None
     next_site = all_sites[idx + 1] if idx < len(all_sites) - 1 else None
@@ -539,6 +549,7 @@ def make_site_page(site, all_sites):
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://publiclandsinstitute.net/sites/{slug}.html"/>
 <meta property="og:site_name" content="Public Lands Institute"/>
+{og_image_tags}
 <link href="https://publiclandsinstitute.net/sites/{slug}.html" rel="canonical"/>
 <link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
 <link href="/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/>
@@ -594,7 +605,7 @@ def make_site_page(site, all_sites):
   .geo-prose {{ color: var(--fg); }}
   .photo-pane {{ min-width: 0; }}
   .photo-scroll {{
-    display: flex; flex-direction: column; gap: 4px;
+    display: flex; flex-direction: column; gap: 16px;
     overflow-y: auto; min-height: 0; flex: 1;
     scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.18) transparent;
   }}
@@ -723,10 +734,10 @@ def make_archive_page(all_sites):
             rows += f'  <div class="archive-item">\n'
             rows += f'    <span class="archive-caption">{caption}{date_str}</span>\n'
             rows += f'    <span class="archive-filename">{img["camera_filename"]}</span>\n'
-            if img['tif_url']:
-                rows += f'    <a class="archive-download" href="{img["tif_url"]}" download>Download TIFF</a>\n'
+            if img['commons_page']:
+                rows += f'    <a class="archive-download" href="{img["commons_page"]}" target="_blank" rel="noopener">Commons</a>\n'
             else:
-                rows += f'    <span class="archive-download" style="visibility:hidden">Download TIFF</span>\n'
+                rows += f'    <span class="archive-download" style="visibility:hidden">Commons</span>\n'
             if img['raw']:
                 rows += f'    <a class="archive-download" href="{img["raw"]}" download>Download RAW</a>\n'
             else:
@@ -939,6 +950,20 @@ def make_sites_index_page(all_sites, meta):
     import re as _re
     import hashlib
 
+    # Social card: first image of the most recently added site (top of sites.json)
+    og_image = ''
+    for _site in all_sites:
+        for _obs in get_observations_for_site(_site):
+            if _obs['images']:
+                og_image = 'https://publiclandsinstitute.net/' + _obs['images'][0]['jpg']
+                break
+        if og_image:
+            break
+    og_image_tags = ''
+    if og_image:
+        og_image_tags = (f'<meta property="og:image" content="{og_image}">\n'
+                         f'<meta name="twitter:card" content="summary_large_image">\n')
+
     # Deterministic color from nation name
     def nation_color(name):
         palette = [
@@ -1064,6 +1089,7 @@ def make_sites_index_page(all_sites, meta):
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://publiclandsinstitute.net/">
 <meta property="og:site_name" content="Public Lands Institute">
+{og_image_tags}
 <link rel="canonical" href="https://publiclandsinstitute.net/">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="/favicon-16.png" sizes="16x16" type="image/png">

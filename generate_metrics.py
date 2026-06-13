@@ -24,7 +24,7 @@ IMG_DIR      = PROJECT_ROOT / "img" / "jpg"
 OUTPUT_FILE  = PROJECT_ROOT / "PLI-Project-Metrics.txt"
 
 COMMONS_API  = "https://commons.wikimedia.org/w/api.php"
-COMMONS_USER = "Publiclandsinstitute"
+COMMONS_USER = "Pli-tate"
 
 
 def count_images():
@@ -68,6 +68,7 @@ def query_commons_uploads():
         "action": "query",
         "list": "allimages",
         "aiuser": COMMONS_USER,
+        "aisort": "timestamp",   # required by the API whenever aiuser is set
         "ailimit": "max",   # 500 per page
         "aiprop": "title",
         "format": "json",
