@@ -1,5 +1,29 @@
 [
   {
+    "slug": "bryce-canyon-national-park",
+    "name": "Bryce Canyon National Park",
+    "state": "UT",
+    "geological_age": "~50-40 Mya Eocene Claron Formation: silty limestone, siltstone, dolomite, and mudstone deposited in Paleocene-Eocene lakes; the iron- and manganese-tinted pink and white members erode into the park's hoodoos",
+    "epoch": "Eocene (Claron Formation)",
+    "native_lands": "Southern Paiute (Nuwuvi or Nungwu, \"the people\"), whose bands occupied the high plateaus and the Paria and Sevier drainages; the Paunsaugunt Plateau on whose rim the park sits takes its name from the Paiute for \"home of the beaver,\" and Paria derives from a Paiute word; the Paiute knew the hoodoos as Anka-ku-was-a-wits (\"red painted faces\") and told of the To-when-an-ung-wa, the Legend People, an earlier race turned to stone by Coyote for their misdeeds, a story recorded in 1936 from Kaibab Paiute elder Indian Dick; people occupied the region for at least 10,000 years, with Fremont and Ancestral Puebloan cultures preceding the Paiute; Latter-day Saint colonization of the Paria and Panguitch valleys in the 1860s-1870s displaced the Paiute, largely gone from the immediate area by about 1880; Southern Paiute title in Utah was never ceded by a ratified treaty; descendant communities include the Kaibab Band of Paiute Indians and the five bands of the Paiute Indian Tribe of Utah (Cedar, Indian Peaks, Kanosh, Koosharem, Shivwits)",
+    "displacement_tenure": "No ratified treaty or Royce cession ever extinguished Southern Paiute title to the Bryce Canyon region; the 1865 Treaty of Spanish Fork, which would have removed Utah's native peoples to the Uintah Reservation, was never ratified by the Senate. Dispossession proceeded through Latter-day Saint colonization: church-directed settlement of the Paria and upper Sevier valleys in the 1860s-1870s (Ebenezer Bryce settled the Paria Valley in 1874, relocating to Arizona by 1880) appropriated the springs, farmland, and grazing that sustained the Paiute, who were displaced from the area by about 1880. Federal reservations for the Southern Paiute came late and small, by executive order. The land was set aside from surrounding national forest, then proclaimed Bryce Canyon National Monument (June 8, 1923) and established as Bryce Canyon National Park (February 25, 1928), all carved from this unceded Paiute homeland.",
+    "shadow_history": "Bryce Canyon's scenic-discovery narrative, centered on Ebenezer Bryce and Union Pacific tourism promotion, obscures the federal termination that devastated the region's Paiute descendants. Utah Senator Arthur V. Watkins, the principal architect of the national Indian termination policy, sponsored the Act of September 1, 1954 (Public Law 83-762), which stripped the Paiute Indian Tribe of Utah of federal recognition along with health, education, and tax protections. Unable to pay newly imposed property taxes, the bands lost roughly 15,000 acres of reservation land, and tribal and historical accounts document that nearly half of all tribal members died during the 26 years of termination from lack of health care and income. Federal recognition was restored only on April 3, 1980, and the tribe recovered just 4,800 of the 15,000 lost acres. The standard interpretive story that drought, overgrazing, and flooding simply drove the Paiute out by 1880 likewise softens the active role of church-directed Mormon settlement in appropriating Paiute water and land. The park's built landscape, including the Rim Road (completed 1934) and the first planned campground, was constructed by Civilian Conservation Corps labor in the 1930s.",
+    "ecology": "Three elevational life zones span the Paunsaugunt rim: pinyon-juniper woodland at the lowest elevations, ponderosa pine forest at mid-elevations, and a high spruce-fir and Douglas fir mixed-conifer forest culminating in ancient Great Basin bristlecone pine (some exceeding 1,600 years) near Rainbow Point at 9,105 feet; manzanita, sagebrush, and mountain meadows fill openings; wildlife includes mule deer, pronghorn, elk, coyote, mountain lion, and the reintroduced Utah prairie dog, with more than 175 bird species recorded.",
+    "hydrology": "Straddles the eastern rim of the Paunsaugunt Plateau between two drainages: the East Fork of the Sevier River flows north into the Great Basin, while the steeper Paria River and its tributaries cut headward into the Claron Formation to sculpt the park's amphitheaters before draining southeast to the Colorado River; flow is largely intermittent with short spring-fed perennial reaches, and the bowl-shaped amphitheaters are technically not a canyon, having formed by headward erosion rather than a through-flowing stream.",
+    "acreage": "35,835",
+    "conservation_status": "Bryce Canyon National Monument (June 8, 1923); Bryce Canyon National Park (February 25, 1928); certified Gold Tier International Dark Sky Park (August 13, 2019)",
+    "endangered_species": "Utah prairie dog (Cynomys parvidens, federally Threatened; the park holds the largest protected population and is the only NPS unit where the species occurs); California condor (Gymnogyps californianus, federally Endangered, observed but not nesting); southwestern willow flycatcher (Empidonax traillii extimus, federally Endangered)",
+    "gps": "37.6283\u00b0 N, 112.1677\u00b0 W",
+    "lat": 37.6283,
+    "lng": -112.1677,
+    "inat_radius_km": 10,
+    "native_lands_api": [
+      "Nuwuvi (Southern Paiute)",
+      "Pueblos",
+      "N\u00fau-agha-t\u0289v\u0289-p\u0289\u0331 (Ute)"
+    ]
+  },
+  {
     "slug": "yellowstone-national-park",
     "name": "Yellowstone National Park",
     "state": "WY",

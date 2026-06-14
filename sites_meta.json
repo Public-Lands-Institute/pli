@@ -1,4 +1,14 @@
 {
+  "bryce-canyon-national-park": {
+    "agency": "National Park Service",
+    "agency_type": "NPS",
+    "territory": [
+      "Southern Paiute (Nuwuvi)",
+      "Kaibab Band of Paiute Indians",
+      "Fremont",
+      "Ancestral Puebloan"
+    ]
+  },
   "yellowstone-national-park": {
     "agency": "National Park Service",
     "agency_type": "NPS",
