@@ -686,6 +686,7 @@ def make_site_page(site, all_sites):
   <div class="logotype"><a href="../index.html">Public Lands Institute</a></div>
   <nav class="header-nav">
     <a href="../index.html">Map</a>
+    <a href="../photographs.html">Photographs</a>
     <a href="../archive.html">Archive</a>
     <a href="../about.html">About</a>
   </nav>
@@ -720,13 +721,117 @@ def make_site_page(site, all_sites):
 </html>'''
 
 
+def make_gallery_page(all_sites):
+    """Visual feed of every photograph across all sites, newest first.
+    Reuses js/lightbox.js by emitting the same <figure> markup as site pages."""
+    feed = []
+    for site in all_sites:
+        slug = site['slug']
+        for img in get_all_images_for_site(site):
+            thumb = f'thumbs/{slug}/{img["camera_filename"]}'
+            if not os.path.exists(thumb):
+                continue
+            feed.append({'site': site, 'img': img, 'thumb': thumb})
+    # Newest first; images with no EXIF date sort to the end
+    feed.sort(key=lambda e: e['img'].get('date') or '', reverse=True)
+
+    n_sites = len({e['site']['slug'] for e in feed})
+    items = ''
+    for e in feed:
+        site, img = e['site'], e['img']
+        name, slug = site['name'], site['slug']
+        caption = f'{name} {img["caption_index"]}'
+        date_str = img['date'] or ''
+        meta_caption = caption + (f' · {date_str}' if date_str else '')
+        tif_attr = f' data-tif="{img["tif_url"]}"' if img['tif_url'] else ''
+        commons_attr = f' data-commons="{img["commons_page"]}"' if img['commons_page'] else ''
+        raw_attr = f' data-raw="{img["raw"]}"' if img['raw'] else ''
+        xmp_attr = f' data-xmp="{img["xmp"]}"' if img['xmp'] else ''
+        items += f'''  <figure class="feed-fig"{tif_attr}{commons_attr}{raw_attr}{xmp_attr}>
+    <a class="feed-link" href="{img['jpg']}" download title="{caption}"><img class="feed-img" src="{e['thumb']}" data-full="{img['jpg']}" alt="{caption}" loading="lazy"/></a>
+    <figcaption class="feed-cap">
+      <a class="feed-site" href="sites/{slug}.html">{name}</a>
+      <span class="feed-state">{site['state']}{(' · ' + date_str) if date_str else ''}</span>
+      <span class="caption-title" style="display:none">{meta_caption}</span>
+      <span class="caption-filename" style="display:none">{img['camera_filename']}</span>
+    </figcaption>
+  </figure>
+'''
+    total = len(feed)
+    return f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TMR79M95R4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){{dataLayer.push(arguments);}}
+  gtag('js', new Date());
+  gtag('config', 'G-TMR79M95R4');
+</script>
+<meta charset="utf-8"/>
+<title>Photographs — Public Lands Institute</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="index, follow" name="robots"/>
+<meta content="A photographic feed of American public lands, newest first. CC0 Public Domain." name="description"/>
+<meta property="og:title" content="Photographs — Public Lands Institute"/>
+<meta property="og:description" content="A photographic feed of American public lands, newest first. CC0 Public Domain."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://publiclandsinstitute.net/photographs.html"/>
+<meta property="og:site_name" content="Public Lands Institute"/>
+<link href="https://publiclandsinstitute.net/photographs.html" rel="canonical"/>
+<link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
+{FONT_LINKS}
+<style>
+{SHARED_CSS}
+  .feed-intro {{ font-size: 13px; color: var(--muted); margin-bottom: 24px; max-width: 640px; }}
+  .feed-grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 4px; }}
+  .feed-fig {{ background: #1f1f1f; display: flex; flex-direction: column; }}
+  .feed-link {{ display: block; cursor: zoom-in; }}
+  .feed-img {{ width: 100%; aspect-ratio: 3 / 2; object-fit: cover; display: block; filter: grayscale(100%); opacity: 0.9; transition: opacity 0.2s, filter 0.2s; }}
+  .feed-link:hover .feed-img {{ opacity: 1; filter: grayscale(0%); }}
+  .feed-cap {{ padding: 7px 9px 9px; display: flex; flex-direction: column; gap: 2px; }}
+  .feed-site {{ font-size: 11px; font-weight: 400; letter-spacing: 0.02em; color: var(--fg); }}
+  .feed-state {{ font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }}
+  @media (min-width: 720px) {{ .feed-grid {{ grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }} }}
+  @media (max-width: 540px) {{ .feed-grid {{ grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 3px; }} }}
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="logotype"><a href="index.html">Public Lands Institute</a></div>
+  <nav class="header-nav">
+    <a href="index.html">Map</a>
+    <a href="photographs.html" class="active">Photographs</a>
+    <a href="archive.html">Archive</a>
+    <a href="about.html">About</a>
+  </nav>
+</header>
+<div class="divider"></div>
+<p class="feed-intro">{total} photographs across {n_sites} sites, newest first. Click any image to view full resolution and download. CC0 Public Domain.</p>
+<div class="feed-grid">
+{items}</div>
+<footer>
+  <span>Public Lands Institute — ongoing project</span>
+  <span>CC0 Public Domain</span>
+</footer>
+</div>
+<script src="js/lightbox.js"></script>
+</body>
+</html>'''
+
+
 def make_archive_page(all_sites):
     rows = ''
-    for site in all_sites:
+    for site in sorted(all_sites, key=lambda s: s['name'].lower()):
         images = get_all_images_for_site(site)
         if not images:
             continue
-        rows += f'<div class="archive-location">\n'
+        _search_key = f'{site["name"]} {site["state"]}'.lower()
+        rows += f'<div class="archive-location" data-name="{_search_key}">\n'
         rows += f'  <h2 class="archive-location-name"><a href="sites/{site["slug"]}.html">{site["name"]} \u2014 {site["state"]}</a></h2>\n'
         for img in images:
             caption = f'{site["name"]} {img["caption_index"]}'
@@ -780,9 +885,28 @@ def make_archive_page(all_sites):
   .archive-intro {{
     font-size: 13px;
     color: var(--muted);
-    margin-bottom: 32px;
+    margin-bottom: 20px;
     max-width: 640px;
   }}
+  .archive-search {{
+    width: 100%;
+    max-width: 320px;
+    box-sizing: border-box;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    color: var(--fg);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    padding: 8px 12px;
+    margin-bottom: 28px;
+    outline: none;
+    transition: border-color 0.2s;
+  }}
+  .archive-search::placeholder {{ color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; font-size: 11px; }}
+  .archive-search:focus {{ border-color: rgba(255,255,255,0.45); }}
+  .archive-noresults {{ color: var(--muted); font-size: 12px; padding: 12px 0; display: none; }}
   .archive-location {{
     border-top: 1px solid var(--border);
     padding: 16px 0 8px 0;
@@ -829,18 +953,38 @@ def make_archive_page(all_sites):
   <div class="logotype"><a href="index.html">Public Lands Institute</a></div>
   <nav class="header-nav">
     <a href="index.html">Map</a>
+    <a href="photographs.html">Photographs</a>
     <a href="archive.html" class="active">Archive</a>
     <a href="about.html">About</a>
   </nav>
 </header>
 <div class="divider"></div>
 <p class="archive-intro">All photographs are dedicated to the Public Domain under the Creative Commons CC0 license. Full-resolution TIFFs and RAW files are available for download below.</p>
+<input id="archive-search" class="archive-search" type="text" placeholder="Filter by site or state" autocomplete="off" spellcheck="false">
+<p id="archive-noresults" class="archive-noresults">No sites match your search.</p>
 {rows}
 <footer>
   <span>Public Lands Institute \u2014 ongoing project</span>
   <span>CC0 Public Domain</span>
 </footer>
 </div>
+<script>
+(function() {{
+  var input = document.getElementById('archive-search');
+  var locations = Array.prototype.slice.call(document.querySelectorAll('.archive-location'));
+  var noResults = document.getElementById('archive-noresults');
+  input.addEventListener('input', function() {{
+    var q = input.value.trim().toLowerCase();
+    var shown = 0;
+    locations.forEach(function(loc) {{
+      var match = !q || loc.getAttribute('data-name').indexOf(q) !== -1;
+      loc.style.display = match ? '' : 'none';
+      if (match) shown++;
+    }});
+    noResults.style.display = shown ? 'none' : 'block';
+  }});
+}})();
+</script>
 </body>
 </html>'''
 
@@ -904,6 +1048,7 @@ def make_about_page(all_sites):
   <div class="logotype"><a href="index.html">Public Lands Institute</a></div>
   <nav class="header-nav">
     <a href="index.html">Map</a>
+    <a href="photographs.html">Photographs</a>
     <a href="archive.html">Archive</a>
     <a href="about.html" class="active">About</a>
   </nav>
@@ -1215,6 +1360,7 @@ html, body {{ height: 100%; font-family: 'Inter', sans-serif; background: var(--
   <div id="search-results"></div>
 </div>
 <nav id="topnav">
+  <a href="photographs.html">Photographs</a>
   <a href="archive.html">Archive</a>
   <a href="about.html">About</a>
   <span id="site-count"></span>
@@ -1603,6 +1749,11 @@ with open('index.html', 'w') as f:
     f.write(make_sites_index_page(sites, SITES_META))
 print('  index.html')
 
+print('\nGenerating photographs.html...')
+with open('photographs.html', 'w') as f:
+    f.write(make_gallery_page(sites))
+print('  photographs.html')
+
 print('\nGenerating about.html...')
 with open('about.html', 'w') as f:
     f.write(make_about_page(sites))
@@ -1611,7 +1762,7 @@ print('  about.html')
 print('\nGenerating sitemap.xml...')
 BASE_URL = 'https://publiclandsinstitute.net'
 _today = _dt.date.today().isoformat()
-_urls = [f'{BASE_URL}/', f'{BASE_URL}/archive.html', f'{BASE_URL}/about.html']
+_urls = [f'{BASE_URL}/', f'{BASE_URL}/photographs.html', f'{BASE_URL}/archive.html', f'{BASE_URL}/about.html']
 _urls += [f'{BASE_URL}/sites/{s["slug"]}.html' for s in sites]
 with open('sitemap.xml', 'w') as f:
     f.write('<?xml version="1.0" encoding="UTF-8"?>\n')
