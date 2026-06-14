@@ -1110,6 +1110,18 @@ html, body {{ height: 100%; font-family: 'Inter', sans-serif; background: var(--
 #topnav a {{ color: rgba(255,255,255,0.55); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 300; text-decoration: none; transition: color 0.15s; }}
 #topnav a:hover {{ color: var(--sand); }}
 #site-count {{ color: rgba(255,255,255,0.3); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 300; }}
+#search {{ position: fixed; top: 58px; left: 32px; z-index: 11; width: 240px; }}
+#search-input {{ width: 100%; box-sizing: border-box; background: rgba(18,18,18,0.72); border: 1px solid rgba(255,255,255,0.2); color: var(--sand); font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 300; letter-spacing: 0.06em; padding: 7px 12px; backdrop-filter: blur(8px); outline: none; transition: border-color 0.2s; }}
+#search-input::placeholder {{ color: rgba(255,255,255,0.4); letter-spacing: 0.12em; text-transform: uppercase; font-size: 11px; }}
+#search-input:focus {{ border-color: rgba(255,255,255,0.5); }}
+#search-results {{ margin-top: 4px; background: rgba(18,18,18,0.92); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.15); max-height: 50vh; overflow-y: auto; display: none; }}
+#search-results.visible {{ display: block; }}
+.search-item {{ padding: 7px 12px; cursor: pointer; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }}
+.search-item:last-child {{ border-bottom: none; }}
+.search-item:hover, .search-item.active {{ background: rgba(255,255,255,0.08); }}
+.search-item .s-name {{ color: var(--sand); font-size: 12px; font-weight: 300; letter-spacing: 0.02em; }}
+.search-item .s-state {{ color: rgba(255,255,255,0.4); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; flex-shrink: 0; }}
+.search-empty {{ padding: 7px 12px; color: rgba(255,255,255,0.4); font-size: 11px; letter-spacing: 0.04em; }}
 #layers {{ position: fixed; bottom: 32px; left: 32px; z-index: 10; display: flex; flex-direction: column; gap: 6px; }}
 .layer-btn {{ background: rgba(18,18,18,0.72); border: 1px solid rgba(255,255,255,0.2); color: var(--sand); font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 12px; cursor: pointer; backdrop-filter: blur(8px); transition: border-color 0.2s; text-align: left; }}
 .layer-btn:hover {{ border-color: rgba(255,255,255,0.5); }}
@@ -1178,6 +1190,7 @@ html, body {{ height: 100%; font-family: 'Inter', sans-serif; background: var(--
   #wordmark h1 {{ font-size: 11px; }}
   #topnav {{ top: 16px; right: 16px; gap: 12px; }}
   #topnav a, #site-count {{ font-size: 10px; }}
+  #search {{ top: 42px; left: 16px; right: 16px; width: auto; max-width: 300px; }}
   #layers {{ bottom: 16px; left: 16px; right: 16px; }}
   .layer-btn {{ font-size: 11px; padding: 7px 10px; }}
   #legend {{ left: 16px; right: 16px; bottom: 84px; min-width: 0; }}
@@ -1197,6 +1210,10 @@ html, body {{ height: 100%; font-family: 'Inter', sans-serif; background: var(--
 <body>
 <div id="map"></div>
 <div id="wordmark"><h1>Public Lands Institute</h1></div>
+<div id="search">
+  <input id="search-input" type="text" placeholder="Search sites" autocomplete="off" spellcheck="false">
+  <div id="search-results"></div>
+</div>
 <nav id="topnav">
   <a href="archive.html">Archive</a>
   <a href="about.html">About</a>
@@ -1288,6 +1305,7 @@ function agencyColor(s) {{
   return '#5a5a52';
 }}
 let activeLayer = null;
+let panelOpen = false;
 function dotColor(p) {{
   if (activeLayer==='geology') return geologyColor(p.geology);
   if (activeLayer==='agency')  return agencyColor(p.conservation_status);
@@ -1324,7 +1342,6 @@ map.on('load', () => {{
             'circle-color':['get','_color'],'circle-opacity':0.88,
             'circle-stroke-color':'rgba(255,255,255,0.2)','circle-stroke-width':1 }} }});
   const popup = new maplibregl.Popup({{closeButton:false,closeOnClick:false,offset:12}});
-  let panelOpen = false;
   map.on('mouseenter','sites-hit', e => {{
     if (panelOpen) return;
     map.getCanvas().style.cursor='pointer';
@@ -1507,6 +1524,59 @@ document.addEventListener('keydown', e => {{
   if (e.key==='ArrowLeft')  {{ lbIndex=(lbIndex-1+currentPhotos.length)%currentPhotos.length; showLbPhoto(lbIndex); }}
   if (e.key==='ArrowRight') {{ lbIndex=(lbIndex+1)%currentPhotos.length; showLbPhoto(lbIndex); }}
 }});
+
+// ---- Site search ----
+const searchBox     = document.getElementById('search');
+const searchInput   = document.getElementById('search-input');
+const searchResults = document.getElementById('search-results');
+let searchMatches = [];
+let searchActive  = -1;
+function gotoFeature(f) {{
+  map.flyTo({{ center:f.geometry.coordinates, zoom:Math.max(map.getZoom(),11), duration:900, essential:true }});
+  panelOpen = true;
+  openPanel(f.properties);
+}}
+function clearSearch() {{
+  searchInput.value=''; searchResults.classList.remove('visible'); searchResults.innerHTML='';
+  searchMatches=[]; searchActive=-1;
+}}
+function setSearchActive(i) {{
+  const items = searchResults.querySelectorAll('.search-item');
+  if (!items.length) return;
+  searchActive = (i + items.length) % items.length;
+  items.forEach((el,j) => el.classList.toggle('active', j===searchActive));
+}}
+function renderSearch(q) {{
+  q = (q||'').trim().toLowerCase();
+  searchActive = -1;
+  if (!q) {{ searchResults.classList.remove('visible'); searchResults.innerHTML=''; searchMatches=[]; return; }}
+  searchMatches = SITES.features
+    .filter(f => f.properties.name.toLowerCase().includes(q)
+              || (STATE_NAMES[f.properties.state]||f.properties.state||'').toLowerCase().includes(q))
+    .sort((a,b) => a.properties.name.localeCompare(b.properties.name))
+    .slice(0, 8);
+  if (!searchMatches.length) {{
+    searchResults.innerHTML = '<div class="search-empty">No sites found</div>';
+  }} else {{
+    searchResults.innerHTML = searchMatches.map((f,i) =>
+      '<div class="search-item" data-idx="'+i+'"><span class="s-name">'+f.properties.name+'</span><span class="s-state">'+f.properties.state+'</span></div>').join('');
+    searchResults.querySelectorAll('.search-item').forEach(el => {{
+      el.addEventListener('click', () => {{ gotoFeature(searchMatches[+el.dataset.idx]); clearSearch(); }});
+    }});
+  }}
+  searchResults.classList.add('visible');
+}}
+searchInput.addEventListener('input', e => renderSearch(e.target.value));
+searchInput.addEventListener('keydown', e => {{
+  if (e.key==='ArrowDown') {{ e.preventDefault(); setSearchActive(searchActive+1); }}
+  else if (e.key==='ArrowUp') {{ e.preventDefault(); setSearchActive(searchActive-1); }}
+  else if (e.key==='Enter') {{
+    const pick = searchActive>=0 ? searchMatches[searchActive] : searchMatches[0];
+    if (pick) {{ gotoFeature(pick); clearSearch(); searchInput.blur(); }}
+  }}
+  else if (e.key==='Escape') {{ clearSearch(); searchInput.blur(); }}
+}});
+document.addEventListener('click', e => {{ if (!searchBox.contains(e.target)) searchResults.classList.remove('visible'); }});
 </script>
 </body>
 </html>'''
