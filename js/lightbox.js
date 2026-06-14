@@ -6,7 +6,13 @@
 
   // ── Viewer (same chrome as the map index lightbox) ───────────────────────────
 
-  const images = figures.map(f => {
+  // Read figures in their *current* DOM order so navigation follows what the user
+  // sees: the Images feed can re-sort its park sections after load. Static site
+  // pages never reorder, so this is identical to the load-time order there.
+  const orderedFigures = () => [...document.querySelectorAll('figure')].filter(
+    f => f.querySelector('a[download]') && f.querySelector('img')
+  );
+  const imageData = f => {
     const img = f.querySelector('img');
     return {
       jpg:      img.dataset.full || img.src,
@@ -17,7 +23,8 @@
       caption:  f.querySelector('.caption-title')?.textContent?.trim() || '',
       filename: f.querySelector('.caption-filename')?.textContent?.trim() || '',
     };
-  });
+  };
+  let images = orderedFigures().map(imageData);
 
   const style = document.createElement('style');
   style.textContent = `
@@ -71,7 +78,6 @@
         <div id="plb-filename"></div>
       </div>
       <div id="plb-actions">
-        <a id="plb-tif" class="plb-action" href="#" download>Download TIFF</a>
         <a id="plb-raw" class="plb-action" href="#" download>RAW File</a>
         <a id="plb-xmp" class="plb-action" href="#" download>XML</a>
         <a id="plb-commons" class="plb-action" href="#" target="_blank" rel="noopener">Commons</a>
@@ -85,7 +91,6 @@
   const elCaption  = document.getElementById('plb-caption');
   const elFilename = document.getElementById('plb-filename');
   const elCounter  = document.getElementById('plb-counter');
-  const elTif      = document.getElementById('plb-tif');
   const elRaw      = document.getElementById('plb-raw');
   const elXmp      = document.getElementById('plb-xmp');
   const elCommons  = document.getElementById('plb-commons');
@@ -106,8 +111,6 @@
     elCaption.textContent  = img.caption;
     elFilename.textContent = img.filename;
     elCounter.textContent  = (current + 1) + ' / ' + images.length;
-    elTif.classList.toggle('hidden', !img.tif);
-    if (img.tif) elTif.href = img.tif;
     elCommons.classList.toggle('hidden', !img.commons);
     if (img.commons) elCommons.href = img.commons;
     elRaw.classList.toggle('hidden', !img.raw);
@@ -129,16 +132,19 @@
     document.body.style.overflow = '';
   }
 
-  figures.forEach((fig, i) => {
+  figures.forEach(fig => {
     fig.querySelector('a[download]').addEventListener('click', e => {
       e.preventDefault();
-      open(i);
+      const ordered = orderedFigures();
+      images = ordered.map(imageData);
+      open(ordered.indexOf(fig));
     });
   });
 
   document.querySelectorAll('.plb-view-all').forEach(btn => {
     btn.addEventListener('click', e => {
       e.preventDefault();
+      images = orderedFigures().map(imageData);
       open(0);
     });
   });

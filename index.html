@@ -141,7 +141,7 @@ html, body { height: 100%; font-family: 'Inter', sans-serif; background: var(--i
   <div id="search-results"></div>
 </div>
 <nav id="topnav">
-  <a href="photographs.html">Photographs</a>
+  <a href="photographs.html">Images</a>
   <a href="archive.html">Archive</a>
   <a href="about.html">About</a>
   <span id="site-count"></span>
@@ -172,7 +172,6 @@ html, body { height: 100%; font-family: 'Inter', sans-serif; background: var(--i
       <div id="lb-date"></div>
     </div>
     <div id="lb-actions">
-      <a id="lb-tif" class="lb-action" href="#" download>Download TIFF</a>
       <a id="lb-raw" class="lb-action" href="#" download>RAW File</a>
       <a id="lb-xml" class="lb-action" href="#" download>XML</a>
       <a id="lb-commons" class="lb-action" href="#" target="_blank" rel="noopener">Commons</a>
@@ -426,11 +425,8 @@ function showLbPhoto(idx) {
   const lbCommons = document.getElementById('lb-commons');
   lbCommons.style.display = p.c ? '' : 'none';
   if (p.c) lbCommons.href = p.c;
-  const lbTif = document.getElementById('lb-tif');
   const lbRaw = document.getElementById('lb-raw');
   const lbXml = document.getElementById('lb-xml');
-  lbTif.style.display = p.t ? '' : 'none';
-  if (p.t) lbTif.href = p.t;
   lbRaw.style.display = p.r ? '' : 'none';
   if (p.r) lbRaw.href = p.r;
   lbXml.style.display = p.x ? '' : 'none';

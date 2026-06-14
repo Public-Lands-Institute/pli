@@ -686,7 +686,7 @@ def make_site_page(site, all_sites):
   <div class="logotype"><a href="../index.html">Public Lands Institute</a></div>
   <nav class="header-nav">
     <a href="../index.html">Map</a>
-    <a href="../photographs.html">Photographs</a>
+    <a href="../photographs.html">Images</a>
     <a href="../archive.html">Archive</a>
     <a href="../about.html">About</a>
   </nav>
@@ -722,42 +722,62 @@ def make_site_page(site, all_sites):
 
 
 def make_gallery_page(all_sites):
-    """Visual feed of every photograph across all sites, newest first.
-    Reuses js/lightbox.js by emitting the same <figure> markup as site pages."""
-    feed = []
+    """Visual feed of every image grouped into per-park sections.
+    Sections default to most-recent order; a client-side toggle re-sorts
+    alphabetically. Reuses js/lightbox.js via the shared <figure> markup."""
+    groups = []
     for site in all_sites:
         slug = site['slug']
+        imgs = []
         for img in get_all_images_for_site(site):
             thumb = f'thumbs/{slug}/{img["camera_filename"]}'
             if not os.path.exists(thumb):
                 continue
-            feed.append({'site': site, 'img': img, 'thumb': thumb})
-    # Newest first; images with no EXIF date sort to the end
-    feed.sort(key=lambda e: e['img'].get('date') or '', reverse=True)
+            imgs.append({'img': img, 'thumb': thumb})
+        if not imgs:
+            continue
+        # Newest image first within a park
+        imgs.sort(key=lambda e: e['img'].get('date') or '', reverse=True)
+        dates = [e['img'].get('date') for e in imgs if e['img'].get('date')]
+        recent = max(dates) if dates else ''
+        groups.append({'site': site, 'imgs': imgs, 'recent': recent})
+    # Default order: most recently photographed park first
+    groups.sort(key=lambda g: g['recent'], reverse=True)
 
-    n_sites = len({e['site']['slug'] for e in feed})
-    items = ''
-    for e in feed:
-        site, img = e['site'], e['img']
+    total = sum(len(g['imgs']) for g in groups)
+    n_sites = len(groups)
+
+    sections = ''
+    for g in groups:
+        site = g['site']
         name, slug = site['name'], site['slug']
-        caption = f'{name} {img["caption_index"]}'
-        date_str = img['date'] or ''
-        meta_caption = caption + (f' · {date_str}' if date_str else '')
-        tif_attr = f' data-tif="{img["tif_url"]}"' if img['tif_url'] else ''
-        commons_attr = f' data-commons="{img["commons_page"]}"' if img['commons_page'] else ''
-        raw_attr = f' data-raw="{img["raw"]}"' if img['raw'] else ''
-        xmp_attr = f' data-xmp="{img["xmp"]}"' if img['xmp'] else ''
-        items += f'''  <figure class="feed-fig"{tif_attr}{commons_attr}{raw_attr}{xmp_attr}>
-    <a class="feed-link" href="{img['jpg']}" download title="{caption}"><img class="feed-img" src="{e['thumb']}" data-full="{img['jpg']}" alt="{caption}" loading="lazy"/></a>
-    <figcaption class="feed-cap">
-      <a class="feed-site" href="sites/{slug}.html">{name}</a>
-      <span class="feed-state">{site['state']}{(' · ' + date_str) if date_str else ''}</span>
-      <span class="caption-title" style="display:none">{meta_caption}</span>
-      <span class="caption-filename" style="display:none">{img['camera_filename']}</span>
-    </figcaption>
-  </figure>
+        date_label = format_obs_date(g['recent'][:7]) if g['recent'] else ''
+        figs = ''
+        for e in g['imgs']:
+            img = e['img']
+            caption = f'{name} {img["caption_index"]}'
+            date_str = img['date'] or ''
+            meta_caption = caption + (f' · {date_str}' if date_str else '')
+            tif_attr = f' data-tif="{img["tif_url"]}"' if img['tif_url'] else ''
+            commons_attr = f' data-commons="{img["commons_page"]}"' if img['commons_page'] else ''
+            raw_attr = f' data-raw="{img["raw"]}"' if img['raw'] else ''
+            xmp_attr = f' data-xmp="{img["xmp"]}"' if img['xmp'] else ''
+            figs += f'''      <figure class="feed-fig"{tif_attr}{commons_attr}{raw_attr}{xmp_attr}>
+        <a class="feed-link" href="{img['jpg']}" download title="{caption}"><img class="feed-img" src="{e['thumb']}" data-full="{img['jpg']}" alt="{caption}" loading="lazy"/></a>
+        <span class="caption-title" style="display:none">{meta_caption}</span>
+        <span class="caption-filename" style="display:none">{img['camera_filename']}</span>
+      </figure>
 '''
-    total = len(feed)
+        meta_suffix = f' · {date_label}' if date_label else ''
+        sections += f'''  <section class="feed-park" data-name="{name.lower()}" data-recent="{g['recent']}">
+    <div class="feed-park-head">
+      <a class="feed-park-name" href="sites/{slug}.html">{name}</a>
+      <span class="feed-park-meta">{site['state']}{meta_suffix}</span>
+    </div>
+    <div class="feed-grid">
+{figs}    </div>
+  </section>
+'''
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -770,12 +790,12 @@ def make_gallery_page(all_sites):
   gtag('config', 'G-TMR79M95R4');
 </script>
 <meta charset="utf-8"/>
-<title>Photographs — Public Lands Institute</title>
+<title>Images — Public Lands Institute</title>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="index, follow" name="robots"/>
-<meta content="A photographic feed of American public lands, newest first. CC0 Public Domain." name="description"/>
-<meta property="og:title" content="Photographs — Public Lands Institute"/>
-<meta property="og:description" content="A photographic feed of American public lands, newest first. CC0 Public Domain."/>
+<meta content="A visual index of American public lands, grouped by site. CC0 Public Domain." name="description"/>
+<meta property="og:title" content="Images — Public Lands Institute"/>
+<meta property="og:description" content="A visual index of American public lands, grouped by site. CC0 Public Domain."/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://publiclandsinstitute.net/photographs.html"/>
 <meta property="og:site_name" content="Public Lands Institute"/>
@@ -786,17 +806,24 @@ def make_gallery_page(all_sites):
 {FONT_LINKS}
 <style>
 {SHARED_CSS}
-  .feed-intro {{ font-size: 13px; color: var(--muted); margin-bottom: 24px; max-width: 640px; }}
+  .feed-intro {{ font-size: 13px; color: var(--muted); margin-bottom: 14px; max-width: 640px; }}
+  .feed-controls {{ display: flex; align-items: center; gap: 8px; margin-bottom: 30px; }}
+  .feed-sort-label {{ font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--muted); margin-right: 2px; }}
+  .feed-sort-btn {{ background: transparent; border: 1px solid var(--border); color: var(--muted); font-family: inherit; font-size: 11px; letter-spacing: 0.08em; padding: 5px 11px; cursor: pointer; transition: border-color 0.2s, color 0.2s; }}
+  .feed-sort-btn:hover {{ color: var(--fg); }}
+  .feed-sort-btn.active {{ color: var(--fg); border-color: rgba(255,255,255,0.5); }}
+  .feed-park {{ margin-bottom: 36px; }}
+  .feed-park-head {{ display: flex; align-items: baseline; gap: 12px; border-bottom: 1px solid var(--border); padding-bottom: 8px; margin-bottom: 10px; flex-wrap: wrap; }}
+  .feed-park-name {{ font-size: 14px; font-weight: 400; letter-spacing: 0.02em; color: var(--fg); }}
+  .feed-park-name:hover {{ text-decoration: underline; }}
+  .feed-park-meta {{ font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); }}
   .feed-grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 4px; }}
-  .feed-fig {{ background: #1f1f1f; display: flex; flex-direction: column; }}
+  .feed-fig {{ background: #1f1f1f; }}
   .feed-link {{ display: block; cursor: zoom-in; }}
   .feed-img {{ width: 100%; aspect-ratio: 3 / 2; object-fit: cover; display: block; filter: grayscale(100%); opacity: 0.9; transition: opacity 0.2s, filter 0.2s; }}
   .feed-link:hover .feed-img {{ opacity: 1; filter: grayscale(0%); }}
-  .feed-cap {{ padding: 7px 9px 9px; display: flex; flex-direction: column; gap: 2px; }}
-  .feed-site {{ font-size: 11px; font-weight: 400; letter-spacing: 0.02em; color: var(--fg); }}
-  .feed-state {{ font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }}
-  @media (min-width: 720px) {{ .feed-grid {{ grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }} }}
-  @media (max-width: 540px) {{ .feed-grid {{ grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 3px; }} }}
+  @media (min-width: 720px) {{ .feed-grid {{ grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }} }}
+  @media (max-width: 540px) {{ .feed-grid {{ grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 3px; }} }}
 </style>
 </head>
 <body>
@@ -805,20 +832,46 @@ def make_gallery_page(all_sites):
   <div class="logotype"><a href="index.html">Public Lands Institute</a></div>
   <nav class="header-nav">
     <a href="index.html">Map</a>
-    <a href="photographs.html" class="active">Photographs</a>
+    <a href="photographs.html" class="active">Images</a>
     <a href="archive.html">Archive</a>
     <a href="about.html">About</a>
   </nav>
 </header>
 <div class="divider"></div>
-<p class="feed-intro">{total} photographs across {n_sites} sites, newest first. Click any image to view full resolution and download. CC0 Public Domain.</p>
-<div class="feed-grid">
-{items}</div>
+<p class="feed-intro">{total} images across {n_sites} sites. Click any image to view full resolution and download. CC0 Public Domain.</p>
+<div class="feed-controls">
+  <span class="feed-sort-label">Sort</span>
+  <button class="feed-sort-btn active" data-sort="recent">Most recent</button>
+  <button class="feed-sort-btn" data-sort="alpha">A to Z</button>
+</div>
+<div id="feed-parks">
+{sections}</div>
 <footer>
   <span>Public Lands Institute — ongoing project</span>
   <span>CC0 Public Domain</span>
 </footer>
 </div>
+<script>
+(function() {{
+  var container = document.getElementById('feed-parks');
+  var sections = Array.prototype.slice.call(container.querySelectorAll('.feed-park'));
+  var btns = Array.prototype.slice.call(document.querySelectorAll('.feed-sort-btn'));
+  function apply(mode) {{
+    var sorted = sections.slice().sort(function(a, b) {{
+      if (mode === 'alpha') return a.getAttribute('data-name').localeCompare(b.getAttribute('data-name'));
+      return (b.getAttribute('data-recent') || '').localeCompare(a.getAttribute('data-recent') || '');
+    }});
+    sorted.forEach(function(s) {{ container.appendChild(s); }});
+  }}
+  btns.forEach(function(btn) {{
+    btn.addEventListener('click', function() {{
+      btns.forEach(function(b) {{ b.classList.remove('active'); }});
+      btn.classList.add('active');
+      apply(btn.getAttribute('data-sort'));
+    }});
+  }});
+}})();
+</script>
 <script src="js/lightbox.js"></script>
 </body>
 </html>'''
@@ -953,7 +1006,7 @@ def make_archive_page(all_sites):
   <div class="logotype"><a href="index.html">Public Lands Institute</a></div>
   <nav class="header-nav">
     <a href="index.html">Map</a>
-    <a href="photographs.html">Photographs</a>
+    <a href="photographs.html">Images</a>
     <a href="archive.html" class="active">Archive</a>
     <a href="about.html">About</a>
   </nav>
@@ -1048,7 +1101,7 @@ def make_about_page(all_sites):
   <div class="logotype"><a href="index.html">Public Lands Institute</a></div>
   <nav class="header-nav">
     <a href="index.html">Map</a>
-    <a href="photographs.html">Photographs</a>
+    <a href="photographs.html">Images</a>
     <a href="archive.html">Archive</a>
     <a href="about.html" class="active">About</a>
   </nav>
@@ -1360,7 +1413,7 @@ html, body {{ height: 100%; font-family: 'Inter', sans-serif; background: var(--
   <div id="search-results"></div>
 </div>
 <nav id="topnav">
-  <a href="photographs.html">Photographs</a>
+  <a href="photographs.html">Images</a>
   <a href="archive.html">Archive</a>
   <a href="about.html">About</a>
   <span id="site-count"></span>
@@ -1391,7 +1444,6 @@ html, body {{ height: 100%; font-family: 'Inter', sans-serif; background: var(--
       <div id="lb-date"></div>
     </div>
     <div id="lb-actions">
-      <a id="lb-tif" class="lb-action" href="#" download>Download TIFF</a>
       <a id="lb-raw" class="lb-action" href="#" download>RAW File</a>
       <a id="lb-xml" class="lb-action" href="#" download>XML</a>
       <a id="lb-commons" class="lb-action" href="#" target="_blank" rel="noopener">Commons</a>
@@ -1645,11 +1697,8 @@ function showLbPhoto(idx) {{
   const lbCommons = document.getElementById('lb-commons');
   lbCommons.style.display = p.c ? '' : 'none';
   if (p.c) lbCommons.href = p.c;
-  const lbTif = document.getElementById('lb-tif');
   const lbRaw = document.getElementById('lb-raw');
   const lbXml = document.getElementById('lb-xml');
-  lbTif.style.display = p.t ? '' : 'none';
-  if (p.t) lbTif.href = p.t;
   lbRaw.style.display = p.r ? '' : 'none';
   if (p.r) lbRaw.href = p.r;
   lbXml.style.display = p.x ? '' : 'none';
