@@ -25,8 +25,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
-<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<link rel="stylesheet" href="vendor/maplibre-gl-4.7.1/maplibre-gl.css">
+<script src="vendor/maplibre-gl-4.7.1/maplibre-gl.js"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root { --sand: #e8e8e8; --ink: #161616; --moss: #444444; --stone: #8c8c8c; --panel-w: 440px; }
@@ -311,15 +311,15 @@ function showLegend(layer) {
   const def = LAYER_LEGENDS[layer];
   document.getElementById('legend-title').textContent = def.title;
   document.getElementById('legend-items').innerHTML = def.entries.map(([l,c])=>
-    '<div class="legend-item" data-color="'+c+'" style="cursor:pointer"><div class="legend-dot" style="background:'+c+'"></div><span>'+l+'</span></div>').join('');
-  document.getElementById('legend-items').querySelectorAll('.legend-item').forEach((item, i) => {
+    '<div class="legend-item" data-color="'+c+'"'+(layer==='native' ? ' data-nation="'+l+'"' : '')+' style="cursor:pointer"><div class="legend-dot" style="background:'+c+'"></div><span>'+l+'</span></div>').join('');
+  document.getElementById('legend-items').querySelectorAll('.legend-item').forEach(item => {
     item.addEventListener('mouseenter', () => {
-      if (activeLayer === 'native') map.setFilter('nations-dot', ['==', ['get','nation'], NATION_LIST[i]]);
+      if (activeLayer === 'native') map.setFilter('nations-dot', ['==', ['get','nation'], item.dataset.nation]);
       else map.setFilter('sites-dot', ['==', ['get','_color'], item.dataset.color]);
     });
     item.addEventListener('click', () => {
       let matching;
-      if (activeLayer === 'native') matching = NATIONS_GJ.features.filter(f => f.properties.nation === NATION_LIST[i]);
+      if (activeLayer === 'native') matching = NATIONS_GJ.features.filter(f => f.properties.nation === item.dataset.nation);
       else matching = SITES.features.filter(f => dotColor(f.properties) === item.dataset.color);
       if (!matching.length) return;
       const lngs = matching.map(f => f.geometry.coordinates[0]);
@@ -360,7 +360,7 @@ function buildGeoBlock(geoText, epochText) {
       if (pos !== -1 && pos < firstPos) { firstPos = pos; firstEra = era; }
     }
     if (firstEra === eraName) {
-      myaLabel = myaMatch[1].replace(',','') + (myaMatch[2] ? '-' + myaMatch[2].replace(',','') : '') + ' Mya';
+      myaLabel = myaMatch[1].replace(/,/g,'') + (myaMatch[2] ? '-' + myaMatch[2].replace(/,/g,'') : '') + ' Mya';
     }
   }
   const barPct = Math.min(100, Math.round((oldest / EARTH_AGE) * 100));
@@ -451,6 +451,7 @@ function closeLightbox() {
   lbTrigger = null;
 }
 function showLbPhoto(idx) {
+  if (!currentPhotos.length) return;
   const p = currentPhotos[idx];
   if (!p) return;
   lbImg.classList.remove('loaded'); lbImg.src=''; lbSpinner.style.display='block'; lbSpinner.textContent='Loading';
@@ -473,8 +474,8 @@ function showLbPhoto(idx) {
   } else { lbSpinner.textContent='No local image'; }
 }
 document.getElementById('lb-close').addEventListener('click', closeLightbox);
-document.getElementById('lb-prev').addEventListener('click',  () => { lbIndex=(lbIndex-1+currentPhotos.length)%currentPhotos.length; showLbPhoto(lbIndex); });
-document.getElementById('lb-next').addEventListener('click',  () => { lbIndex=(lbIndex+1)%currentPhotos.length; showLbPhoto(lbIndex); });
+document.getElementById('lb-prev').addEventListener('click',  () => { if (!currentPhotos.length) return; lbIndex=(lbIndex-1+currentPhotos.length)%currentPhotos.length; showLbPhoto(lbIndex); });
+document.getElementById('lb-next').addEventListener('click',  () => { if (!currentPhotos.length) return; lbIndex=(lbIndex+1)%currentPhotos.length; showLbPhoto(lbIndex); });
 lightbox.addEventListener('click', e => { if(e.target===lightbox) closeLightbox(); });
 document.addEventListener('keydown', e => {
   if (!lightbox.classList.contains('open')) {
