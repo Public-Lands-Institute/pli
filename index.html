@@ -72,7 +72,7 @@ html, body { height: 100%; font-family: 'Inter', sans-serif; background: var(--i
 .panel-page-link a { color: var(--moss); text-decoration: none; border-bottom: 1px solid var(--moss); }
 .panel-state { font-size: 11px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); margin-bottom: 20px; }
 .photo-grid { display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 180px; gap: 3px; margin-bottom: 6px; }
-.photo-thumb { background: #c8c8c8; cursor: pointer; overflow: hidden; }
+.photo-thumb { background: #c8c8c8; cursor: pointer; overflow: hidden; border: 0; padding: 0; }
 .photo-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0; transition: opacity 0.25s; }
 .photo-thumb img.loaded { opacity: 1; }
 .photo-thumb:hover img { opacity: 0.75; }
@@ -152,20 +152,20 @@ html, body { height: 100%; font-family: 'Inter', sans-serif; background: var(--i
   <span id="site-count"></span>
 </nav>
 <div id="layers">
-  <button class="layer-btn" data-layer="geology">Geologic Age</button>
-  <button class="layer-btn" data-layer="agency">Managing Agency</button>
-  <button class="layer-btn" data-layer="native">Indigenous Territories</button>
-  <button class="layer-btn" data-layer="shadow">Shadow History</button>
+  <button class="layer-btn" data-layer="geology" aria-pressed="false">Geologic Age</button>
+  <button class="layer-btn" data-layer="agency" aria-pressed="false">Managing Agency</button>
+  <button class="layer-btn" data-layer="native" aria-pressed="false">Indigenous Territories</button>
+  <button class="layer-btn" data-layer="shadow" aria-pressed="false">Shadow History</button>
 </div>
 <div id="legend"><div id="legend-title"></div><div id="legend-items"></div></div>
 <div id="panel">
-  <div id="panel-close"><button>&#x2715;</button></div>
+  <div id="panel-close"><button aria-label="Close panel">&#x2715;</button></div>
   <div id="panel-body"></div>
 </div>
-<div id="lightbox">
-  <button id="lb-close">&#x2715;</button>
-  <button id="lb-prev">&#x2039;</button>
-  <button id="lb-next">&#x203a;</button>
+<div id="lightbox" role="dialog" aria-modal="true">
+  <button id="lb-close" aria-label="Close">&#x2715;</button>
+  <button id="lb-prev" aria-label="Previous image">&#x2039;</button>
+  <button id="lb-next" aria-label="Next image">&#x203a;</button>
   <div id="lb-counter"></div>
   <div id="lb-img-wrap">
     <div id="lb-spinner">Loading</div>
@@ -178,7 +178,7 @@ html, body { height: 100%; font-family: 'Inter', sans-serif; background: var(--i
     </div>
     <div id="lb-actions">
       <a id="lb-raw" class="lb-action" href="#" download>RAW File</a>
-      <a id="lb-xml" class="lb-action" href="#" download>XML</a>
+      <a id="lb-xml" class="lb-action" href="#" download>XMP</a>
       <a id="lb-commons" class="lb-action" href="#" target="_blank" rel="noopener">Commons</a>
     </div>
   </div>
@@ -298,6 +298,7 @@ map.on('load', () => {
       const layer = btn.dataset.layer;
       if (activeLayer===layer) { activeLayer=null; btn.classList.remove('active'); hideLegend(); }
       else { document.querySelectorAll('.layer-btn').forEach(b=>b.classList.remove('active')); activeLayer=layer; btn.classList.add('active'); showLegend(layer); }
+      document.querySelectorAll('.layer-btn').forEach(b=>b.setAttribute('aria-pressed', b.classList.contains('active') ? 'true' : 'false'));
       const nativeOn = activeLayer === 'native';
       map.setLayoutProperty('nations-dot', 'visibility', nativeOn ? 'visible' : 'none');
       map.setLayoutProperty('sites-dot',   'visibility', nativeOn ? 'none'    : 'visible');
@@ -408,7 +409,7 @@ function openPanel(props) {
   let gridHTML = '';
   if (grid.length) {
     gridHTML = '<div class="photo-grid">' +
-      grid.map((p,i) => '<div class="photo-thumb" data-idx="'+i+'"><img data-src="'+p.thumb+'" alt=""></div>').join('') +
+      grid.map((p,i) => '<button class="photo-thumb" data-idx="'+i+'"><img data-src="'+p.thumb+'" alt="'+props.name+' '+(i+1)+'"></button>').join('') +
     '</div>';
     if (photos.length > GRID_MAX) {
       gridHTML += '<p class="photo-grid-more"><a href="sites/'+props.slug+'.html">View all '+photos.length+' photos →</a></p>';
@@ -442,7 +443,13 @@ const lightbox  = document.getElementById('lightbox');
 const lbImg     = document.getElementById('lb-img');
 const lbSpinner = document.getElementById('lb-spinner');
 let lbIndex = 0;
-function openLightbox(idx) { lbIndex=idx; lightbox.classList.add('open'); showLbPhoto(idx); }
+let lbTrigger = null;
+function openLightbox(idx) { lbIndex=idx; lbTrigger=document.activeElement; lightbox.classList.add('open'); showLbPhoto(idx); document.getElementById('lb-close').focus(); }
+function closeLightbox() {
+  lightbox.classList.remove('open'); lbImg.src='';
+  if (lbTrigger && document.body.contains(lbTrigger)) lbTrigger.focus();
+  lbTrigger = null;
+}
 function showLbPhoto(idx) {
   const p = currentPhotos[idx];
   if (!p) return;
@@ -465,15 +472,28 @@ function showLbPhoto(idx) {
     lbImg.onerror = () => { lbSpinner.textContent='Image unavailable'; };
   } else { lbSpinner.textContent='No local image'; }
 }
-document.getElementById('lb-close').addEventListener('click', () => { lightbox.classList.remove('open'); lbImg.src=''; });
+document.getElementById('lb-close').addEventListener('click', closeLightbox);
 document.getElementById('lb-prev').addEventListener('click',  () => { lbIndex=(lbIndex-1+currentPhotos.length)%currentPhotos.length; showLbPhoto(lbIndex); });
 document.getElementById('lb-next').addEventListener('click',  () => { lbIndex=(lbIndex+1)%currentPhotos.length; showLbPhoto(lbIndex); });
-lightbox.addEventListener('click', e => { if(e.target===lightbox){ lightbox.classList.remove('open'); lbImg.src=''; } });
+lightbox.addEventListener('click', e => { if(e.target===lightbox) closeLightbox(); });
 document.addEventListener('keydown', e => {
-  if (!lightbox.classList.contains('open')) return;
-  if (e.key==='Escape')     { lightbox.classList.remove('open'); lbImg.src=''; }
+  if (!lightbox.classList.contains('open')) {
+    if (e.key==='Escape' && panel.classList.contains('open')) {
+      panel.classList.remove('open'); panelOpen = false; map.getCanvas().style.cursor='';
+    }
+    return;
+  }
+  if (e.key==='Escape')     closeLightbox();
   if (e.key==='ArrowLeft')  { lbIndex=(lbIndex-1+currentPhotos.length)%currentPhotos.length; showLbPhoto(lbIndex); }
   if (e.key==='ArrowRight') { lbIndex=(lbIndex+1)%currentPhotos.length; showLbPhoto(lbIndex); }
+  if (e.key==='Tab') {
+    const els = [...lightbox.querySelectorAll('button, a')].filter(el => el.style.display !== 'none');
+    if (!els.length) return;
+    const first = els[0], last = els[els.length-1];
+    if (!lightbox.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
+    else if (e.shiftKey && document.activeElement===first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement===last) { e.preventDefault(); first.focus(); }
+  }
 });
 
 // ---- Site search ----
