@@ -1,0 +1,97 @@
+PUBLIC LANDS INSTITUTE — GLOSSARY BIBLIOGRAPHY
+Sources consulted for glossary.html (geologic time, managing agencies, archaeological cultures, Indigenous nations).
+Generated 2026-07-08.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+GEOLOGIC TIME
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Wikipedia — Geologic time scale
+  https://en.wikipedia.org/wiki/Geologic_time_scale
+
+Wikipedia — Cambrian (period and Furongian epoch boundaries)
+  https://en.wikipedia.org/wiki/Cambrian
+
+Wikipedia — Ordovician (period boundaries)
+  https://en.wikipedia.org/wiki/Ordovician
+
+Wikipedia — Silurian (period and Llandovery/Wenlock/Ludlow series boundaries)
+  https://en.wikipedia.org/wiki/Silurian
+
+Wikipedia — Devonian (period boundaries)
+  https://en.wikipedia.org/wiki/Devonian
+
+Wikipedia — Eifelian (stage boundaries)
+  https://en.wikipedia.org/wiki/Eifelian
+
+Wikipedia — Givetian (stage boundaries)
+  https://en.wikipedia.org/wiki/Givetian
+
+Wikipedia — Mississippian (geology) (subperiod boundaries; North American series named but not individually dated)
+  https://en.wikipedia.org/wiki/Mississippian_(geology)
+
+Wikipedia — Pennsylvanian (geology) (subperiod boundaries; North American series named but not individually dated)
+  https://en.wikipedia.org/wiki/Pennsylvanian_(geology)
+
+Wikipedia — Permian (period boundaries; Leonardian noted as North American Lower Permian series)
+  https://en.wikipedia.org/wiki/Permian
+
+Wikipedia — Triassic (period and Carnian/Norian stage boundaries)
+  https://en.wikipedia.org/wiki/Triassic
+
+Wikipedia — Cretaceous (period and Campanian stage boundaries)
+  https://en.wikipedia.org/wiki/Cretaceous
+
+Wikipedia — Archean (eon boundaries)
+  https://en.wikipedia.org/wiki/Archean
+
+Wikipedia — Proterozoic (eon and Neoproterozoic era boundaries)
+  https://en.wikipedia.org/wiki/Proterozoic
+
+Wikipedia — Paleoproterozoic (era and Rhyacian period boundaries)
+  https://en.wikipedia.org/wiki/Paleoproterozoic
+
+Wikipedia — Holocene (epoch and Meghalayan age boundaries)
+  https://en.wikipedia.org/wiki/Holocene
+
+Wikipedia — Wisconsin glaciation (date range)
+  https://en.wikipedia.org/wiki/Wisconsin_glaciation
+
+Wikipedia — Illinoian glaciation (date range)
+  https://en.wikipedia.org/wiki/Illinoian_glaciation
+
+Web search aggregating Britannica, USGS Geolex/pamphlets, and Kansas Geological Survey material — used for the
+North American regional Mississippian series (Kinderhookian, Osagean, Meramecian) and Pennsylvanian series
+(Morrowan, Desmoinesian). These regional biostratigraphic units are not part of the international (ICS) timescale
+and lack a single authoritative numeric boundary; ranges given in the glossary are approximate and flagged as such.
+
+Web search aggregating Britannica and Encyclopedia.com — used for the Leonardian (North American Lower Permian
+series). Range given is approximate and flagged as such.
+
+Cincinnatian: no single authoritative source gave a precise numeric boundary for this North American regional
+series; the range in the glossary (~458-443 Mya) is an approximation for "Late Ordovician equivalent," derived
+from the Ordovician period's own end boundary (443.1 Mya per ICS) and flagged as approximate in the glossary text.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MANAGING AGENCIES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Not independently sourced per entry. These are general, uncontested descriptions of the standard federal and
+state public-land management categories (National Park Service, U.S. Fish & Wildlife Service, U.S. Forest
+Service, state park/wildlife/historic agencies, county and municipal parks, private preserves, conservation
+districts, and DOE legacy sites) drawn from common public knowledge of U.S. land management structure, not from
+a single cited reference.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ARCHAEOLOGICAL CULTURES AND INDIGENOUS NATIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Not independently re-researched. These glossary entries are condensed summaries of the native_lands field content
+already researched and written for each individual site page, which itself follows the project's established
+sourcing protocol (native-land.ca territory data, treaty texts, NPS/BIA administrative histories, and other
+primary sources; see generate_sites.py's ADDING A NEW LOCATION protocol in CLAUDE.md). No new external sources
+were fetched specifically for these glossary summaries. Readers seeking full citations for a given nation's
+site-specific history should consult that site's individual page and, where shadow history is involved,
+shadow_history_bibliography.txt.
+
+The native-land.ca API (queried directly during this research pass to check for reusable definitions) returns
+only a name, ID, slug, color, and a "description" field that is itself just a link to the nation's
+native-land.ca territory page, not descriptive text — confirmed not to contain ready-made definitions.
+  https://native-land.ca/api/index.php (territories endpoint)

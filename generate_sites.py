@@ -426,36 +426,63 @@ SHARED_CSS = '''  :root {
   }
   .gps-link:hover { text-decoration: underline; }'''
 
-# Paleozoic-and-later eras matched against geological_age text; color + onset Mya
+# Eras/epochs matched against geological_age + epoch text; color + onset Mya.
+# Order doesn't matter for matching (oldest-onset wins); Archean/Proterozoic are
+# listed first only for readability.
 GEO_TIMESCALE = [
+    ('Archean', '#3a3a52', 4000), ('Proterozoic', '#5c5c8a', 2500),
     ('Cambrian', '#a0522d', 541), ('Ordovician', '#c8a86e', 485),
     ('Silurian', '#7ecfc0', 444), ('Devonian', '#4aaa78', 419),
     ('Mississippian', '#3d7fbf', 359), ('Pennsylvanian', '#5d5abf', 323),
     ('Permian', '#9b59b6', 299), ('Triassic', '#e07050', 252),
     ('Jurassic', '#c8a840', 201), ('Cretaceous', '#d4b840', 145),
-    ('Paleogene', '#d4704a', 66), ('Neogene', '#c85a8a', 23),
+    ('Paleogene', '#d4704a', 66), ('Eocene', '#d4704a', 56), ('Oligocene', '#d4704a', 34),
+    ('Neogene', '#c85a8a', 23),
     ('Quaternary', '#8c8c8c', 2.6), ('Pleistocene', '#8c8c8c', 2.6),
 ]
 EARTH_TIMELINE_MYA = 541
 
-def make_geo_block(geo_text):
-    """Era swatch + timeline bar + full geological_age prose, mirroring the map panel."""
+def make_geo_block(geo_text, epoch_text=''):
+    """Era swatch + timeline bar + full geological_age prose, mirroring the map panel.
+
+    Matches era names across geological_age and epoch text combined, since some
+    entries state the era only in one field. Picks the oldest era mentioned as
+    the headline. The Mya number badge is only attached when the winning era is
+    also the first era name to appear in its clause, so a badge never gets
+    paired with a number that actually belongs to a different, later-mentioned era.
+    """
     if not geo_text:
         return ''
-    g = geo_text.lower()
-    matched = [(e, c, o) for e, c, o in GEO_TIMESCALE if e.lower() in g]
+    combined = geo_text + ('; ' + epoch_text if epoch_text else '')
+    clauses = re.split(r'[;.]', combined)
+    best = None  # (era, color, oldest, clause)
+    for clause in clauses:
+        c = clause.lower()
+        for era, color, oldest in GEO_TIMESCALE:
+            if era.lower() in c and (best is None or oldest > best[2]):
+                best = (era, color, oldest, clause)
     era_row = ''
     bar = ''
-    if matched:
-        era, color, oldest = max(matched, key=lambda t: t[2])
-        m = re.search(r'~?([\d,]+(?:-[\d,]+)?)\s*[Mm]ya', geo_text)
-        mya = f'<span class="geo-mya">{m.group(1).replace(",", "")} Mya</span>' if m else ''
+    if best:
+        era, color, oldest, clause = best
+        mya = ''
+        m = re.search(r'~?([\d,]+)(?:\s*(?:-|to)\s*([\d,]+))?\s*[Mm]ya', clause)
+        if m:
+            c = clause.lower()
+            positions = [(c.find(e.lower()), e) for e, _, _ in GEO_TIMESCALE if e.lower() in c]
+            first_era = min(positions)[1] if positions else None
+            if first_era == era:
+                num = m.group(1).replace(',', '')
+                if m.group(2):
+                    num += '-' + m.group(2).replace(',', '')
+                mya = f'<span class="geo-mya">{num} Mya</span>'
         pct = min(100, round(oldest / EARTH_TIMELINE_MYA * 100))
         era_row = (f'<div class="geo-era-row"><div class="geo-swatch" style="background:{color}"></div>'
                    f'<span class="geo-era-name">{era}</span>{mya}</div>')
         bar = (f'<div class="geo-bar-wrap"><div class="geo-bar-fill" '
                f'style="width:{pct}%;background:{color};opacity:0.55"></div></div>')
-    return (f'<div class="rec-section"><div class="rec-label">Geology</div>'
+    return (f'<div class="rec-section"><div class="rec-label">Geologic Age'
+            f' <a href="../glossary.html#geologic-time" class="rec-glossary-link">Glossary →</a></div>'
             f'{era_row}{bar}<p class="geo-prose">{geo_text}</p></div>')
 
 def make_site_page(site, all_sites):
@@ -481,10 +508,11 @@ def make_site_page(site, all_sites):
     nav_prev = f'<a href="{prev_site["slug"]}.html">← {prev_site["name"]}</a>' if prev_site else '<span></span>'
     nav_next = f'<a href="{next_site["slug"]}.html">{next_site["name"]} →</a>' if next_site else '<span></span>'
 
-    def sec(label, val):
+    def sec(label, val, glossary_anchor=None):
         if not val:
             return ''
-        return f'<div class="rec-section"><div class="rec-label">{label}</div><p>{val}</p></div>'
+        link = f' <a href="../glossary.html#{glossary_anchor}" class="rec-glossary-link">Glossary →</a>' if glossary_anchor else ''
+        return f'<div class="rec-section"><div class="rec-label">{label}{link}</div><p>{val}</p></div>'
 
     gps_val = ''
     if site.get('gps'):
@@ -492,9 +520,9 @@ def make_site_page(site, all_sites):
         lng = site.get('lng', '')
         gps_val = f'<a class="gps-link" href="https://maps.google.com/?q={lat},{lng}" target="_blank" rel="noopener">{site["gps"]}</a>'
 
-    sections = make_geo_block(site.get('geological_age', ''))
+    sections = make_geo_block(site.get('geological_age', ''), site.get('epoch', ''))
     sections += sec('Epoch', site.get('epoch', ''))
-    sections += sec('Native lands', site.get('native_lands', ''))
+    sections += sec('Native lands', site.get('native_lands', ''), glossary_anchor='indigenous-nations')
     sections += sec('Displacement &amp; Tenure', site.get('displacement_tenure', ''))
     sections += sec('Shadow History', site.get('shadow_history', ''))
     sections += sec('Ecology', site.get('ecology', ''))
@@ -591,6 +619,15 @@ def make_site_page(site, all_sites):
     color: var(--muted);
     margin-bottom: 8px;
   }}
+  .rec-glossary-link {{
+    text-transform: none;
+    letter-spacing: normal;
+    font-weight: 300;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+    margin-left: 8px;
+  }}
+  .rec-glossary-link:hover {{ color: var(--fg); border-bottom-color: var(--fg); }}
   .rec-section p {{
     font-size: 13.5px;
     font-weight: 300;
@@ -1114,8 +1151,253 @@ def make_about_page(all_sites):
   <h2>Sources</h2>
   <p>Site records draw on primary repositories: EPA Superfund and cleanup databases; National Park Service administrative histories; National Archives Civilian Conservation Corps records; Library of Congress Chronicling America; federal and state court records; Royce cession maps and treaty texts; <a href="https://native-land.ca" target="_blank" rel="noopener">native-land.ca</a> territory data; and <a href="https://www.inaturalist.org" target="_blank" rel="noopener">iNaturalist</a> research grade observations. Travel writing, tourism copy, and managing agency press releases are not accepted as sources.</p>
 
+  <h2>Glossary</h2>
+  <p>A <a href="glossary.html">reference glossary</a> defines the geologic time terms, managing agency types, archaeological culture designations, and Indigenous nations named throughout the site records.</p>
+
   <h2>Public domain</h2>
   <p>Every photograph is dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">Creative Commons CC0 1.0 Universal</a>. Full resolution TIFF and RAW files are freely downloadable from the <a href="archive.html">archive</a> and from <a href="https://commons.wikimedia.org/w/index.php?title=Special:MediaSearch&search=Public+Lands+Institute" target="_blank" rel="noopener">Wikimedia Commons</a>. No attribution is required and no permission is needed for any use.</p>
+</div>
+<footer>
+  <span>Public Lands Institute — ongoing project</span>
+  <span>CC0 Public Domain</span>
+</footer>
+</div>
+</body>
+</html>'''
+
+
+# ── Glossary page builder (glossary.html) ────────────────────────────────────
+# Entries are (term, range_label, definition). range_label is '' when not applicable.
+# Sourced per glossary_bibliography.txt.
+
+GLOSSARY_GEOLOGIC_TIME = [
+    ('Precambrian', 'before 538.8 Mya', "Informal term for all geologic time before the Cambrian Period, encompassing the Archean and Proterozoic eons and roughly seven-eighths of Earth's history."),
+    ('Archean', '4,031-2,500 Mya', "Eon when Earth's crust first solidified into stable continental cores and the earliest confirmed life appeared."),
+    ('Proterozoic', '2,500-538.8 Mya', 'Eon spanning the rise of atmospheric oxygen and the first complex, multicellular life.'),
+    ('Paleoproterozoic', '2,500-1,600 Mya', 'Earliest era of the Proterozoic eon.'),
+    ('Rhyacian', '2,300-2,050 Mya', 'Period within the Paleoproterozoic era.'),
+    ('Neoproterozoic', '~1,000-538.8 Mya', 'Latest era of the Proterozoic, ending with the first Ediacaran animals.'),
+    ('Paleozoic', '538.8-251.9 Mya', 'Era of early complex life, from the Cambrian Explosion to the end-Permian mass extinction.'),
+    ('Cambrian', '538.8-486.85 Mya', 'Period of the Cambrian Explosion, the rapid diversification of animal life.'),
+    ('Furongian', '~497-486.85 Mya', 'Final epoch of the Cambrian Period.'),
+    ('Ordovician', '486.85-443.1 Mya', 'Period ending in a mass extinction tied to continental glaciation.'),
+    ('Cincinnatian', '~458-443 Mya, approx.', "Regional North American series for Late Ordovician rock of the Cincinnati Arch, source of the region's abundant marine fossils."),
+    ('Silurian', '443.1-419.62 Mya', 'Period marking the diversification of early land plants and jawed fish.'),
+    ('Llandovery', '443.1-433.4 Mya', 'Earliest series of the Silurian.'),
+    ('Wenlock (Wenlockian)', '433.4-427.4 Mya', 'Middle series of the Silurian.'),
+    ('Ludlow (Ludlovian)', '427.4-419.62 Mya', 'Late series of the Silurian.'),
+    ('Devonian', '419.62-358.86 Mya', 'The "Age of Fishes," when the first forests and four-limbed vertebrates appeared.'),
+    ('Eifelian', '393.47-387.95 Mya', 'Middle Devonian stage.'),
+    ('Givetian', '387.95-382.31 Mya', 'Middle Devonian stage.'),
+    ('Frasnian', '382.31-372.15 Mya', 'Late Devonian stage, ending in a major mass extinction.'),
+    ('Famennian', '372.15-358.86 Mya', 'Final Devonian stage.'),
+    ('Carboniferous', '358.86-298.9 Mya', 'International term combining the Mississippian and Pennsylvanian subperiods, named for its extensive coal beds.'),
+    ('Mississippian', '358.86-323.4 Mya', 'North American subperiod of the early Carboniferous, named for exposures along the upper Mississippi River valley.'),
+    ('Kinderhookian', '~358.86-349 Mya, approx.', 'Earliest Mississippian regional series in North America.'),
+    ('Osagean', '~349-340 Mya, approx.', 'Mississippian regional series in North America.'),
+    ('Meramecian', '~340-330 Mya, approx.', 'Mississippian regional series in North America.'),
+    ('Pennsylvanian', '323.4-298.9 Mya', "North American subperiod of the late Carboniferous, named for the state's coal-bearing strata."),
+    ('Morrowan', '~323-318 Mya, approx.', 'Earliest Pennsylvanian regional series in North America.'),
+    ('Desmoinesian', '~314-305 Mya, approx.', 'Middle Pennsylvanian regional series, named for the Des Moines River valley.'),
+    ('Permian', '298.9-251.9 Mya', "Final Paleozoic period, ending in Earth's most severe mass extinction."),
+    ('Leonardian', '~290-280 Mya, approx.', 'Early Permian regional series in the south-central United States.'),
+    ('Mesozoic', '251.9-66 Mya', 'The age of dinosaurs, from the Triassic through the end-Cretaceous extinction.'),
+    ('Triassic', '251.9-201.4 Mya', 'Period following the end-Permian extinction, when dinosaurs first appeared.'),
+    ('Carnian', '~237-227.3 Mya', 'Late Triassic stage.'),
+    ('Norian', '~227.3-205.7 Mya', 'Late Triassic stage.'),
+    ('Jurassic', '201.4-145 Mya', 'Period of dinosaur dominance and the first birds.'),
+    ('Cretaceous', '145-66 Mya', 'Final Mesozoic period, ending with the asteroid impact that killed the non-avian dinosaurs.'),
+    ('Campanian', '83.6-72.2 Mya', 'Late Cretaceous stage.'),
+    ('Cenozoic', '66 Mya-present', 'Current era, following the extinction of the non-avian dinosaurs.'),
+    ('Paleocene', '66-56 Mya', 'Earliest Cenozoic epoch.'),
+    ('Eocene', '56-33.9 Mya', 'Epoch of a warm global climate and the diversification of modern mammal groups.'),
+    ('Oligocene', '33.9-23 Mya', 'Epoch of global cooling and grassland expansion.'),
+    ('Pliocene', '5.3-2.58 Mya', 'Epoch immediately preceding the Ice Ages.'),
+    ('Quaternary', '2.58 Mya-present', 'Current period, defined by repeated glacial cycles.'),
+    ('Pleistocene', '2.58 Mya-11,700 years ago', 'Epoch of the great Ice Age glaciations.'),
+    ('Illinoian', '~191,000-130,000 years ago', 'North American glacial stage, the "penultimate" glaciation before the Wisconsinan.'),
+    ('Wisconsinan', '~75,000-11,000 years ago', 'The most recent North American glaciation, which carved the Great Lakes and shaped much of the northern landscape.'),
+    ('Holocene', '11,700 years ago-present', 'Current epoch, beginning at the end of the last glaciation.'),
+    ('Meghalayan', '4,200 years ago-present', 'Current, most recent age of the Holocene.'),
+]
+
+GLOSSARY_AGENCIES = [
+    ('National Park Service (NPS)', '', 'Federal bureau within the Department of the Interior, established 1916, managing national parks, monuments, historic sites, and other units for both conservation and public use.'),
+    ('U.S. Fish & Wildlife Service (USFWS)', '', 'Federal bureau within the Department of the Interior managing the National Wildlife Refuge System along with endangered species and migratory bird protection.'),
+    ('U.S. Forest Service (USFS)', '', 'Federal agency within the Department of Agriculture managing National Forests and Grasslands under a multiple-use mandate for timber, recreation, watershed, and wildlife.'),
+    ('National monument', '', 'A federally protected area, often designated by presidential proclamation under the Antiquities Act (1906), to protect objects of historic, scientific, or scenic interest; may be managed by NPS, USFS, BLM, or USFWS depending on the site.'),
+    ('State park', '', 'Land managed by a state park agency for public recreation and resource conservation.'),
+    ('State wildlife area / State wildlife management area', '', 'Land managed by a state fish and wildlife agency primarily for habitat conservation and regulated hunting and fishing access.'),
+    ('State nature preserve', '', 'Land under state protection specifically for the conservation of rare or representative natural communities, typically with more restrictive use rules than a state park.'),
+    ('State historic site', '', 'Land managed by a state historical society or parks agency to preserve and interpret a specific historic or archaeological site.'),
+    ('State game area', '', 'Land managed by a state agency primarily for wildlife habitat and regulated hunting.'),
+    ('County park', '', 'Land owned and managed by a county government for local public recreation.'),
+    ('Municipal park', '', 'Land owned and managed by a city or township government for local public recreation.'),
+    ('Private preserve', '', 'Land owned and managed by a nonprofit conservation organization, such as a land trust, rather than a government agency.'),
+    ('Conservation district', '', 'Land managed by a local conservation district, a special-purpose government unit focused on natural resource management.'),
+    ('DOE legacy site', '', 'Land formerly used for U.S. Department of Energy nuclear weapons production or research, now managed under an environmental remediation and monitoring program.'),
+]
+
+GLOSSARY_CULTURES = [
+    ('Adena', 'c. 1000-500 BCE to c. 100-200 CE', 'Early Woodland moundbuilding culture of the Ohio Valley, known for conical burial mounds and effigy earthworks including part of Serpent Mound; not a single tribe.'),
+    ('Ancestral Puebloan', 'c. AD 200-1300', 'Archaeological term for the farming and cliff-dwelling culture of the Four Corners region, ancestral to the modern Pueblo nations, Hopi, and Zuni.'),
+    ('Fort Ancient culture', 'c. 1000-1650 CE', 'Late Prehistoric farming and village-building tradition of the Ohio, Kentucky, and Indiana river valleys, widely regarded as ancestral to the Shawnee.'),
+    ('Fremont', 'c. AD 200-1300', 'Archaeological culture of the eastern Great Basin and Colorado Plateau, contemporary with the Ancestral Puebloans.'),
+    ('Hopewell', 'c. 100 BCE-500 CE', 'Middle Woodland moundbuilding tradition centered on the Ohio Valley, known for its earthworks and the long-distance exchange network called the Hopewell Interaction Sphere; not a single tribe.'),
+    ('Paleoindian', 'from c. 12,000 BCE', 'Archaeological term for the earliest documented human occupants of North America; not a tribe.'),
+]
+
+GLOSSARY_NATIONS = [
+    ('Apache', '', 'A group of related Athabaskan-speaking nations of the Southern Plains and Southwest, including the Jicarilla Apache of Colorado and New Mexico and the Fort Sill (Chiricahua) Apache of Oklahoma.'),
+    ('Apsáalooke (Crow)', '', 'Siouan-speaking nation of the Yellowstone and Bighorn river country in present Montana and Wyoming; the endonym means "children of the large-beaked bird."'),
+    ('Arapaho (Hinono’eino)', '', 'Algonquian-speaking Plains nation allied with the Cheyenne, historically ranging the Central and Northern Plains including the Bighorns and Colorado Front Range.'),
+    ('Atakapa-Ishak (Ishak)', '', 'Gulf Coast nation of southeast Texas and southwest Louisiana; the Akokisa were the nation’s eastern division.'),
+    ('Bannock (Bannakwut)', '', 'A Northern Paiute-speaking people of the Snake River Plain, closely allied with the Shoshone.'),
+    ('Báxoje (Ioway)', '', 'Siouan-speaking nation whose core territory spanned the Mississippi and Iowa River drainages.'),
+    ('Blackfeet (Niitsitapi)', '', 'Algonquian-speaking confederacy of the Northern Plains, ranging present Montana and southern Alberta.'),
+    ('Cherokee (Aniyvwiya / Tsalagi)', '', 'Iroquoian-speaking nation whose historic homeland spanned the Southern Appalachians; forcibly removed to Indian Territory on the 1838-39 Trail of Tears. The Eastern Band of Cherokee Indians remains on the Qualla Boundary in North Carolina.'),
+    ('Cheyenne (Tsitsistas/Suhtai)', '', 'Algonquian-speaking Plains nation, historically divided into Northern and Southern Cheyenne branches, closely allied with the Arapaho.'),
+    ('Chickasaw', '', 'Muskogean-speaking nation of the Mid-South, forcibly removed to Indian Territory in the 1830s.'),
+    ('Comanche (Nʉmʉnʉʉ)', '', 'Numic-speaking nation whose territory, the Comancheria, dominated the Southern Plains until forced onto reservations in 1874-75.'),
+    ('Cusabo (Escamacu)', '', 'A confederation of small coastal towns, including Kussoe, Edisto, Kiawah, and Etiwan, along South Carolina’s Sea Islands, largely dispersed by disease and Spanish and English contact in the 1600s.'),
+    ('Dakota', '', 'Eastern division of the Oceti Sakowin (Sioux), historically centered on Minnesota and the eastern Dakotas; the Sisseton, Wahpeton, Yankton, and Wahpekute are among its bands.'),
+    ('Delaware (Lenape)', '', 'Algonquian-speaking nation whose homeland, Lenapehoking, spanned the Delaware River valley before repeated removals pushed communities west through Ohio and Indiana to eventual settlement in Oklahoma and Kansas.'),
+    ('Eastern Shoshone', '', 'Numic-speaking nation of the Wind River and Green River country in present Wyoming, settled on the Wind River Reservation.'),
+    ('Erie (Eriehronon)', '', 'Iroquoian-speaking nation of the south shore of Lake Erie, dispersed by the Haudenosaunee during the Beaver Wars of the 1650s.'),
+    ('Hitchiti', '', 'A Muskogean-speaking, Hitchiti-language town group incorporated into the Muscogee (Creek) confederacy, with historic towns along the Ocmulgee River.'),
+    ('Ho-Chunk (Hochungra)', '', 'Siouan-speaking nation, "People of the Big Voice," of the Wisconsin, Iowa, and Illinois region, also historically called Winnebago.'),
+    ('Hopi (Hopisinom)', '', 'Puebloan nation of northeastern Arizona, descended in part from the Ancestral Puebloans.'),
+    ('Kickapoo', '', 'Algonquian-speaking nation historically of the Ohio-Wabash region, later removed to Kansas, Oklahoma, and Mexico.'),
+    ('Kiowa (Cáuigù)', '', 'Plains nation historically allied with the Comanche, with territory across the Southern Plains.'),
+    ('Lakota (Thítȟuŋwaŋ)', '', 'Western division of the Oceti Sakowin (Sioux), whose seven bands, including the Oglala, Sicangu, and Hunkpapa, ranged the Northern Plains including the Black Hills.'),
+    ('Meskwaki (Meshkwahkihaki)', '', 'Algonquian-speaking nation, "Red-Earths people," historically allied with the Sauk, with a present-day settlement in Tama County, Iowa.'),
+    ('Miami (Myaamiaki)', '', 'Algonquian-speaking nation whose core territory spanned the Wabash and Great Miami river valleys of Indiana and Ohio; also known by its own endonym, Myaamia.'),
+    ('Moneton', '', 'A little-documented Siouan-speaking nation known from pre-contact archaeological evidence along the New River in present West Virginia.'),
+    ('Muscogee (Creek/Mvskoke)', '', 'Muskogean-speaking confederacy of the Southeast whose towns anchored the Ocmulgee and Chattahoochee river valleys before removal to Indian Territory.'),
+    ('Navajo (Diné)', '', 'Athabaskan-speaking nation of the Four Corners region, the largest federally recognized tribe by land and population.'),
+    ('Niimíipuu (Nez Perce)', '', 'Sahaptian-speaking nation of the Columbia Plateau in present Idaho, Oregon, and Washington.'),
+    ('Oceti Sakowin (Sioux)', '', 'The "Seven Council Fires" confederacy of Dakota, Lakota, and Nakota bands whose territory spanned the Northern Plains including the Black Hills.'),
+    ('Ojibwe (Anishinaabe)', '', 'Algonquian-speaking nation of the western Great Lakes, part of the broader Anishinaabe alliance with the Odawa and Potawatomi known as the Council of Three Fires.'),
+    ('Osage (Wazhazhe)', '', 'Siouan-speaking nation whose ancestral domain spanned Missouri, Kansas, and Oklahoma.'),
+    ('Ottawa (Odawa)', '', 'Algonquian-speaking nation of the western Lake Erie shore, part of the Anishinaabe Council of Three Fires.'),
+    ('Potawatomi (Bodéwadmi)', '', 'Algonquian-speaking nation of the southern Great Lakes, the third member of the Anishinaabe Council of Three Fires.'),
+    ('Pueblos', '', 'Collective term for the Indigenous farming nations of the Rio Grande valley and adjacent New Mexico, descended from the Ancestral Puebloans.'),
+    ('Sauk (Ozaakiiwaki)', '', 'Algonquian-speaking nation historically allied with the Meskwaki (Fox), displaced from Illinois after the 1832 Black Hawk War.'),
+    ('Seneca (Onöndowa’ga:’)', '', 'Westernmost nation of the Haudenosaunee (Iroquois) Confederacy, with historic territory extending into Ohio and West Virginia.'),
+    ('Shawnee (Shawanwaki / Shawandasse Tula)', '', 'Algonquian-speaking nation whose historic range spanned the Ohio Valley, with no fixed capital and frequently relocated principal towns; forcibly removed to Kansas and Indian Territory in the 1830s.'),
+    ('Southern Paiute (Nuwuvi)', '', 'Numic-speaking nation of the Colorado Plateau in southern Utah, Nevada, and Arizona; the Kaibab Band of Paiute Indians is one of its descendant communities.'),
+    ('Tukudika (Mountain Shoshone)', '', 'A Shoshone band, the "Sheep Eaters," who lived year-round at high elevation in the Yellowstone Plateau.'),
+    ('Ute (Núuchi-u / Núu-agha-tʉvʉ-pʉ̱)', '', 'Numic-speaking nation of the Colorado Plateau and central Rockies, historically organized into bands including the Mouache, Weeminuche, and Uintah, today the Southern Ute, Ute Mountain Ute, and Ute Indian Tribes.'),
+    ('Wea', '', 'Algonquian-speaking nation closely related to the Miami, with a historic town at Ouiatenon on the Wabash River near present Lafayette, Indiana.'),
+    ('Wichita (Kitikiti’sh)', '', 'Caddoan-speaking nation whose ancestral territory centered on the confluence of the Arkansas and Little Arkansas Rivers in present Kansas, later removed to Indian Territory.'),
+    ('Wyandot (Wendat/Huron)', '', 'Iroquoian-speaking confederacy formed partly from Erie and Petun survivors after the Beaver Wars; the last Indigenous nation forcibly removed from Ohio, in 1843.'),
+    ('Yamasee', '', 'A coalescent Southeastern nation formed from refugees of the Spanish Guale and Mocama missions, driven from South Carolina after the Yamasee War of 1715-17.'),
+    ('Yuchi (Tsoyaha)', '', '"Children of the Sun," a linguistically isolated nation of the Savannah River basin in Georgia and South Carolina, displaced westward by Creek and Carolina pressure in the early 1700s.'),
+    ('Zuni (A:shiwi)', '', 'Puebloan nation of west-central New Mexico, linguistically distinct from other Pueblo nations.'),
+]
+
+def make_glossary_page(all_sites):
+    def render_section(title, anchor, entries):
+        items = ''
+        for term, rng, definition in entries:
+            rng_html = f'<span class="glossary-range">{rng}</span>' if rng else ''
+            items += (f'<div class="glossary-entry"><div class="glossary-term">{term}{rng_html}</div>'
+                      f'<div class="glossary-def">{definition}</div></div>\n')
+        return f'<h2 id="{anchor}">{title}</h2>\n{items}'
+
+    body = (
+        render_section('Geologic time', 'geologic-time', GLOSSARY_GEOLOGIC_TIME) +
+        render_section('Managing agencies', 'managing-agencies', GLOSSARY_AGENCIES) +
+        render_section('Archaeological cultures', 'archaeological-cultures', GLOSSARY_CULTURES) +
+        render_section('Indigenous nations', 'indigenous-nations', GLOSSARY_NATIONS)
+    )
+
+    return f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TMR79M95R4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){{dataLayer.push(arguments);}}
+  gtag('js', new Date());
+  gtag('config', 'G-TMR79M95R4');
+</script>
+<meta charset="utf-8"/>
+<title>Glossary — Public Lands Institute</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="index, follow" name="robots"/>
+<meta content="Reference glossary of geologic time terms, managing agency types, archaeological cultures, and Indigenous nations used across the Public Lands Institute site records." name="description"/>
+<meta property="og:title" content="Glossary — Public Lands Institute"/>
+<meta property="og:description" content="Reference glossary of geologic time terms, managing agency types, archaeological cultures, and Indigenous nations used across the Public Lands Institute site records."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://publiclandsinstitute.net/glossary.html"/>
+<meta property="og:site_name" content="Public Lands Institute"/>
+<link href="https://publiclandsinstitute.net/glossary.html" rel="canonical"/>
+<link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
+{FONT_LINKS}
+<style>
+{SHARED_CSS}
+  .about-body {{
+    max-width: 760px;
+  }}
+  .about-body h2 {{
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+    margin: 36px 0 10px 0;
+  }}
+  .about-body h2:first-child {{ margin-top: 0; }}
+  .about-body p {{
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 14px;
+  }}
+  .about-body a {{ border-bottom: 1px solid var(--border); }}
+  .about-body a:hover {{ text-decoration: none; border-bottom-color: var(--fg); }}
+  .glossary-entry {{
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+  }}
+  .glossary-entry:last-child {{ border-bottom: none; }}
+  .glossary-term {{
+    font-size: 14px;
+    font-weight: 500;
+  }}
+  .glossary-range {{
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--muted);
+    margin-left: 10px;
+    letter-spacing: 0.02em;
+  }}
+  .glossary-def {{
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--muted);
+    margin-top: 3px;
+  }}
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="logotype"><a href="index.html">Public Lands Institute</a></div>
+  <nav class="header-nav">
+    <a href="index.html">Map</a>
+    <a href="photographs.html">Images</a>
+    <a href="archive.html">Archive</a>
+    <a href="about.html">About</a>
+  </nav>
+</header>
+<div class="divider"></div>
+<div class="about-body">
+  <p>Reference definitions for terms used across site records: geologic time, managing agency types, archaeological culture designations, and the Indigenous nations named in each site's native lands documentation. See <a href="about.html">About</a> for sourcing standards.</p>
+  {body}
 </div>
 <footer>
   <span>Public Lands Institute — ongoing project</span>
@@ -1350,6 +1632,8 @@ html, body {{ height: 100%; font-family: 'Inter', sans-serif; background: var(--
 .photo-grid-more a {{ color: var(--moss); text-decoration: none; border-bottom: 1px solid var(--moss); }}
 .panel-section {{ margin-bottom: 20px; border-top: 1px solid rgba(18,18,18,0.12); padding-top: 16px; }}
 .panel-section-label {{ font-size: 10px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--stone); margin-bottom: 8px; }}
+.panel-glossary-link {{ text-transform: none; letter-spacing: normal; font-weight: 300; color: var(--stone); border-bottom: 1px solid rgba(18,18,18,0.2); margin-left: 8px; }}
+.panel-glossary-link:hover {{ color: #2a2a2a; border-bottom-color: #2a2a2a; }}
 .panel-section p {{ font-size: 13.5px; font-weight: 300; line-height: 1.7; color: #2a2a2a; }}
 .geo-block {{ margin-bottom: 20px; border-top: 1px solid rgba(18,18,18,0.12); padding-top: 16px; }}
 .geo-label {{ font-size: 10px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--stone); margin-bottom: 10px; }}
@@ -1459,24 +1743,31 @@ const NATION_COLORS={nation_colors_json};
 const NATION_LIST={nation_list_json};
 
 const GEOLOGY_ERAS = [
+  ["Archean","#3a3a52"],["Proterozoic","#5c5c8a"],
   ["Cambrian","#a0522d"],["Ordovician","#c8a86e"],["Silurian","#7ecfc0"],["Devonian","#4aaa78"],
   ["Mississippian","#3d7fbf"],["Pennsylvanian","#5d5abf"],["Permian","#9b59b6"],
   ["Triassic","#e07050"],["Jurassic","#c8a840"],["Cretaceous","#d4b840"],
-  ["Paleogene","#d4704a"],["Neogene","#c85a8a"],["Quaternary","#8c8c8c"],["Pleistocene","#8c8c8c"],
+  ["Paleogene","#d4704a"],["Eocene","#d4704a"],["Oligocene","#d4704a"],
+  ["Neogene","#c85a8a"],["Quaternary","#8c8c8c"],["Pleistocene","#8c8c8c"],
 ];
 const GEO_TIMESCALE = [
-  ["Cambrian","#a0522d",541,485],["Ordovician","#c8a86e",485,444],["Silurian","#7ecfc0",444,419],
-  ["Devonian","#4aaa78",419,359],["Mississippian","#3d7fbf",359,323],["Pennsylvanian","#5d5abf",323,299],
-  ["Permian","#9b59b6",299,252],["Triassic","#e07050",252,201],["Jurassic","#c8a840",201,145],
-  ["Cretaceous","#d4b840",145,66],["Paleogene","#d4704a",66,23],["Neogene","#c85a8a",23,2.6],
-  ["Quaternary","#8c8c8c",2.6,0],["Pleistocene","#8c8c8c",2.6,0.01],
+  ["Archean","#3a3a52",4000],["Proterozoic","#5c5c8a",2500],
+  ["Cambrian","#a0522d",541],["Ordovician","#c8a86e",485],["Silurian","#7ecfc0",444],
+  ["Devonian","#4aaa78",419],["Mississippian","#3d7fbf",359],["Pennsylvanian","#5d5abf",323],
+  ["Permian","#9b59b6",299],["Triassic","#e07050",252],["Jurassic","#c8a840",201],
+  ["Cretaceous","#d4b840",145],["Paleogene","#d4704a",66],["Eocene","#d4704a",56],["Oligocene","#d4704a",34],
+  ["Neogene","#c85a8a",23],["Quaternary","#8c8c8c",2.6],["Pleistocene","#8c8c8c",2.6],
 ];
 const EARTH_AGE = 541;
 const GEOLOGY_LEGEND = [
-  ["Ordovician \xb7 485–444 Mya","#c8a86e"],["Silurian \xb7 444–419 Mya","#7ecfc0"],["Devonian \xb7 419–359 Mya","#4aaa78"],
+  ["Archean \xb7 4000–2500 Mya","#3a3a52"],["Proterozoic \xb7 2500–541 Mya","#5c5c8a"],
+  ["Cambrian \xb7 541–485 Mya","#a0522d"],["Ordovician \xb7 485–444 Mya","#c8a86e"],
+  ["Silurian \xb7 444–419 Mya","#7ecfc0"],["Devonian \xb7 419–359 Mya","#4aaa78"],
   ["Mississippian \xb7 359–323 Mya","#3d7fbf"],["Pennsylvanian \xb7 323–299 Mya","#5d5abf"],
-  ["Permian \xb7 299–252 Mya","#9b59b6"],["Cretaceous \xb7 145–66 Mya","#d4b840"],
-  ["Paleogene \xb7 66–23 Mya","#d4704a"],["Quaternary \xb7 <2.6 Mya","#8c8c8c"],
+  ["Permian \xb7 299–252 Mya","#9b59b6"],["Triassic \xb7 252–201 Mya","#e07050"],
+  ["Jurassic \xb7 201–145 Mya","#c8a840"],["Cretaceous \xb7 145–66 Mya","#d4b840"],
+  ["Paleogene \xb7 66–23 Mya","#d4704a"],["Neogene \xb7 23–2.6 Mya","#c85a8a"],
+  ["Quaternary \xb7 <2.6 Mya","#8c8c8c"],
 ];
 const AGENCY_ENTRIES = [
   ["National Park Service","#5c9e6a"],["U.S. Fish & Wildlife Service","#4a8a9e"],
@@ -1489,8 +1780,8 @@ const LAYER_LEGENDS = {{
   native: {{ title:"Indigenous Territories", entries:NATIVE_LEGEND }},
   shadow: {{ title:"Shadow History",         entries:[["Extensively documented","#c85a2a"],["Documented","#c8904a"],["Brief note","#8a6a3a"]] }},
 }};
-function geologyColor(geo) {{
-  const g=(geo||'').toLowerCase();
+function geologyColor(geo, epoch) {{
+  const g=((geo||'')+' '+(epoch||'')).toLowerCase();
   for (const [era,c] of GEOLOGY_ERAS) if (g.includes(era.toLowerCase())) return c;
   return '#5a5a52';
 }}
@@ -1505,7 +1796,7 @@ function agencyColor(s) {{
 let activeLayer = null;
 let panelOpen = false;
 function dotColor(p) {{
-  if (activeLayer==='geology') return geologyColor(p.geology);
+  if (activeLayer==='geology') return geologyColor(p.geology, p.epoch);
   if (activeLayer==='agency')  return agencyColor(p.conservation_status);
   if (activeLayer==='native')  return p.primary_nation ? (NATION_COLORS[p.primary_nation]||'#8c8c8c') : '#3a3a38';
   if (activeLayer==='shadow')  {{ const l=(p.shadow_history||'').length; return l>800?'#c85a2a':l>400?'#c8904a':'#8a6a3a'; }}
@@ -1600,18 +1891,36 @@ function hideLegend() {{
   map.setFilter('nations-dot', null); map.setFilter('sites-dot', null);
   document.getElementById('legend').classList.remove('visible');
 }}
-function buildGeoBlock(geoText) {{
+function buildGeoBlock(geoText, epochText) {{
   if (!geoText) return '';
-  const g = geoText.toLowerCase();
-  const matched = GEO_TIMESCALE.filter(([era]) => g.includes(era.toLowerCase()));
-  if (!matched.length) return '';
-  const [eraName, color, oldest] = matched.reduce((a, b) => a[2] > b[2] ? a : b);
-  const myaMatch = geoText.match(/~?([\d,]+(?:-[\d,]+)?)\s*[Mm]ya/);
-  const myaLabel = myaMatch ? myaMatch[1].replace(',','') + ' Mya' : '';
+  const combined = geoText + (epochText ? '; ' + epochText : '');
+  const clauses = combined.split(/[;.]/);
+  let best = null; // [era, color, oldest, clause]
+  for (const clause of clauses) {{
+    const c = clause.toLowerCase();
+    for (const [era, color, oldest] of GEO_TIMESCALE) {{
+      if (c.includes(era.toLowerCase()) && (!best || oldest > best[2])) best = [era, color, oldest, clause];
+    }}
+  }}
+  if (!best) return '';
+  const [eraName, color, oldest, clause] = best;
+  let myaLabel = '';
+  const myaMatch = clause.match(/~?([\d,]+)(?:\s*(?:-|to)\s*([\d,]+))?\s*[Mm]ya/);
+  if (myaMatch) {{
+    const c = clause.toLowerCase();
+    let firstEra = null, firstPos = Infinity;
+    for (const [era] of GEO_TIMESCALE) {{
+      const pos = c.indexOf(era.toLowerCase());
+      if (pos !== -1 && pos < firstPos) {{ firstPos = pos; firstEra = era; }}
+    }}
+    if (firstEra === eraName) {{
+      myaLabel = myaMatch[1].replace(',','') + (myaMatch[2] ? '-' + myaMatch[2].replace(',','') : '') + ' Mya';
+    }}
+  }}
   const barPct = Math.min(100, Math.round((oldest / EARTH_AGE) * 100));
   const prose = geoText.split(';')[0].trim();
   return '<div class="geo-block">' +
-    '<div class="geo-label">Geology</div>' +
+    '<div class="geo-label">Geologic Age <a href="glossary.html#geologic-time" class="panel-glossary-link">Glossary →</a></div>' +
     '<div class="geo-era-row">' +
       '<div class="geo-swatch" style="background:'+color+'"></div>' +
       '<span class="geo-era-name">'+eraName+'</span>' +
@@ -1635,8 +1944,10 @@ document.getElementById('panel-close').querySelector('button').addEventListener(
   panel.classList.remove('open'); panelOpen = false; map.getCanvas().style.cursor='';
 }});
 let currentPhotos = [];
-function sec(label, text) {{
-  return text ? '<div class="panel-section"><div class="panel-section-label">'+label+'</div><p>'+text+'</p></div>' : '';
+function sec(label, text, glossaryAnchor) {{
+  if (!text) return '';
+  const link = glossaryAnchor ? ' <a href="glossary.html#'+glossaryAnchor+'" class="panel-glossary-link">Glossary →</a>' : '';
+  return '<div class="panel-section"><div class="panel-section-label">'+label+link+'</div><p>'+text+'</p></div>';
 }}
 function openPanel(props) {{
   const state   = STATE_NAMES[props.state]||props.state;
@@ -1659,9 +1970,9 @@ function openPanel(props) {{
     }}
   }}
   let sections = '';
-  sections += buildGeoBlock(props.geology);
+  sections += buildGeoBlock(props.geology, props.epoch);
   sections += sec('Epoch', props.epoch);
-  sections += sec('Native Lands', props.native_lands);
+  sections += sec('Native Lands', props.native_lands, 'indigenous-nations');
   sections += sec('Displacement & Tenure', props.displacement_tenure);
   sections += sec('Shadow History', props.shadow_history);
   sections += sec('Ecology', props.ecology);
@@ -1675,7 +1986,7 @@ function openPanel(props) {{
     '<p class="panel-state">'+state+'</p>'+
     gridHTML+
     sections+
-    '<p class="panel-page-link"><a href="sites/'+props.slug+'.html">Site page · downloads →</a></p>';
+    '<p class="panel-page-link"><a href="sites/'+props.slug+'.html">Site page →</a></p>';
   panelBody.querySelectorAll('.photo-thumb img').forEach(img => imgObserver.observe(img));
   panelBody.querySelectorAll('.photo-thumb').forEach(el => {{
     el.addEventListener('click', () => openLightbox(parseInt(el.dataset.idx)));
@@ -1808,10 +2119,15 @@ with open('about.html', 'w') as f:
     f.write(make_about_page(sites))
 print('  about.html')
 
+print('\nGenerating glossary.html...')
+with open('glossary.html', 'w') as f:
+    f.write(make_glossary_page(sites))
+print('  glossary.html')
+
 print('\nGenerating sitemap.xml...')
 BASE_URL = 'https://publiclandsinstitute.net'
 _today = _dt.date.today().isoformat()
-_urls = [f'{BASE_URL}/', f'{BASE_URL}/photographs.html', f'{BASE_URL}/archive.html', f'{BASE_URL}/about.html']
+_urls = [f'{BASE_URL}/', f'{BASE_URL}/photographs.html', f'{BASE_URL}/archive.html', f'{BASE_URL}/about.html', f'{BASE_URL}/glossary.html']
 _urls += [f'{BASE_URL}/sites/{s["slug"]}.html' for s in sites]
 with open('sitemap.xml', 'w') as f:
     f.write('<?xml version="1.0" encoding="UTF-8"?>\n')
