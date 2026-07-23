@@ -286,6 +286,7 @@ def make_gallery_page(all_sites, photos):
     <a href="index.html">Map</a>
     <a href="photographs.html" class="active">Images</a>
     <a href="archive.html">Archive</a>
+    <a href="glossary.html">Glossary</a>
     <a href="about.html">About</a>
   </nav>
 </header>
@@ -466,6 +467,7 @@ def make_archive_page(all_sites, photos):
     <a href="index.html">Map</a>
     <a href="photographs.html">Images</a>
     <a href="archive.html" class="active">Archive</a>
+    <a href="glossary.html">Glossary</a>
     <a href="about.html">About</a>
   </nav>
 </header>
