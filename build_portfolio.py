@@ -62,17 +62,25 @@ IMG = {
  "wichita-mountains-national-wildlife-refuge": "_DSF0670.jpg",
  "hopewell-culture-national-historical-park": "_DSF1437.jpg",
  "mounds-state-park": "_DSF2411.jpg",
- "mammoth-cave-national-park": "_DSF0923.jpg",
+ "mammoth-cave-national-park": "_DSF0971.jpg",
  "pine-hills-nature-preserve": "_DSF2294.jpg",
  "shades-state-park": "_DSF2279.jpg",
  "new-river-gorge-national-park": "_DSF1372.jpg",
  "red-river-gorge-geological-area": "_DSF1505.jpg",
  "krejci-dump": "_DSF2105.jpg",
- "cuyahoga-valley-national-park": "_DSF2152.jpg",
+ "cuyahoga-valley-national-park": "_DSF2144.jpg",
  "fernald-preserve": "_DSF1138.jpg",
  "pointe-mouillee-state-game-area": "_DSF1831.jpg",
  "bryce-canyon-national-park": "_DSF3216.jpg",
  "fort-hill-state-memorial": "_DSF2222.jpg",
+ "arches-national-park": "_DSF3282.jpg",
+ "elephant-rocks-state-park": "_DSF0527.jpg",
+ "johnsons-shut-ins-state-park": "_DSF0566.jpg",
+ "prophetstown-state-park": "_DSF2406.jpg",
+ "ford-marsh-unit": "_DSF1875.jpg",
+ "maquoketa-caves-state-park": "_DSF2538.jpg",
+ "bighorn-national-forest": "_DSF2917.jpg",
+ "black-hills-national-forest": "_DSF2896.jpg",
 }
 
 FIELDS = [
@@ -93,8 +101,21 @@ TEN = ["pipestone-national-monument", "badlands-national-park", "yellowstone-nat
 FIFTEEN = TEN + ["mount-rushmore-national-memorial",
        "hopewell-culture-national-historical-park", "cuyahoga-valley-national-park",
        "shades-state-park", "wichita-mountains-national-wildlife-refuge"]
-TWENTY = FIFTEEN + ["mounds-state-park", "pointe-mouillee-state-game-area",
-       "bryce-canyon-national-park", "fort-hill-state-memorial"]
+# Complete edition: every selected site (pages alphabetized at build time).
+FULL = [
+ "pipestone-national-monument", "badlands-national-park", "yellowstone-national-park",
+ "mammoth-cave-national-park", "fernald-preserve", "new-river-gorge-national-park",
+ "red-river-gorge-geological-area", "pine-hills-nature-preserve", "krejci-dump",
+ "mount-rushmore-national-memorial", "hopewell-culture-national-historical-park",
+ "cuyahoga-valley-national-park",
+ "shades-state-park", "wichita-mountains-national-wildlife-refuge",
+ "mounds-state-park", "prophetstown-state-park",
+ "pointe-mouillee-state-game-area", "ford-marsh-unit",
+ "bryce-canyon-national-park", "arches-national-park",
+ "johnsons-shut-ins-state-park", "elephant-rocks-state-park",
+ "fort-hill-state-memorial", "maquoketa-caves-state-park",
+ "bighorn-national-forest", "black-hills-national-forest",
+]
 
 def prep(rel, maxedge=1500):
     src = os.path.join(SRC, rel)
@@ -167,12 +188,12 @@ def title_page(c):
     c.showPage()
 
 
-def site_page(c, slug):
+def site_page(c, slug, img):
     s = SITES[slug]
     url = site_url(slug)
     c.setFillColorRGB(1, 1, 1); c.rect(0, 0, PW, PH, fill=1, stroke=0)
     # hero image, full content width, top
-    path = prep("%s/%s" % (slug, IMG[slug]))
+    path = prep("%s/%s" % (slug, img))
     p, iw, ih = path
     box_w = PW - 2 * M
     draw_w = box_w
@@ -261,13 +282,15 @@ def colophon_page(c):
     c.showPage()
 
 
-def build(order, out, closing=False):
+def build(plates, out, closing=False):
     c = canvas.Canvas(out, pagesize=letter)
     c.setTitle("Public Lands Institute Portfolio"); c.setAuthor("Jordan Tate")
-    n = len(order)
+    n = len(plates)
     title_page(c)
-    for slug in order:
-        site_page(c, slug)
+    resolved = [p if isinstance(p, tuple) else (p, IMG[p]) for p in plates]
+    resolved.sort(key=lambda si: SITES[si[0]]["name"].lower())   # alphabetical by site name
+    for slug, img in resolved:
+        site_page(c, slug, img)
     if closing:
         colophon_page(c)
     c.save()
@@ -278,4 +301,4 @@ def build(order, out, closing=False):
 if __name__ == "__main__":
     build(TEN, os.path.join(ROOT, "PLI-Portfolio-10pg.pdf"))
     build(FIFTEEN, os.path.join(ROOT, "PLI-Portfolio-15pg.pdf"))
-    build(TWENTY, os.path.join(ROOT, "PLI-Portfolio-20pg.pdf"), closing=True)
+    build(FULL, os.path.join(ROOT, "PLI-Portfolio-Full.pdf"), closing=True)

@@ -1,4 +1,118 @@
 {
+  "great-smoky-mountains-national-park": {
+    "agency": "National Park Service",
+    "agency_type": "NPS",
+    "territory": [
+      "Cherokee"
+    ]
+  },
+  "nantahala-national-forest": {
+    "agency": "USDA Forest Service (National Forests in North Carolina)",
+    "agency_type": "USFS",
+    "territory": [
+      "Cherokee"
+    ]
+  },
+  "blood-mountain-wilderness": {
+    "agency": "USDA Forest Service (Chattahoochee-Oconee National Forests)",
+    "agency_type": "USFS",
+    "territory": [
+      "Cherokee"
+    ]
+  },
+  "chattahoochee-national-forest": {
+    "agency": "USDA Forest Service (Chattahoochee-Oconee National Forests)",
+    "agency_type": "USFS",
+    "territory": [
+      "Cherokee"
+    ]
+  },
+  "ocmulgee-mounds-national-historical-park": {
+    "agency": "National Park Service",
+    "agency_type": "NPS",
+    "territory": [
+      "Muscogee (Creek)",
+      "Hitchiti"
+    ]
+  },
+  "high-falls-state-park": {
+    "agency": "Georgia Department of Natural Resources, State Parks Division",
+    "agency_type": "State park",
+    "territory": [
+      "Muscogee (Creek)"
+    ]
+  },
+  "ohoopee-dunes-wildlife-management-area": {
+    "agency": "Georgia Department of Natural Resources, Wildlife Resources Division",
+    "agency_type": "State wildlife management area",
+    "territory": [
+      "Yuchi (Tsoyaha)",
+      "Muscogee (Creek)"
+    ]
+  },
+  "pinckney-island-national-wildlife-refuge": {
+    "agency": "U.S. Fish and Wildlife Service (Savannah Coastal Refuges Complex)",
+    "agency_type": "USFWS",
+    "territory": [
+      "Cusabo (Escamacu)",
+      "Yamasee"
+    ]
+  },
+  "chisholm-creek-park": {
+    "agency": "City of Wichita Park and Recreation (Great Plains Nature Center cooperative with USFWS and Kansas Department of Wildlife and Parks)",
+    "agency_type": "Municipal park",
+    "territory": [
+      "Wichita (Kitikiti'sh)",
+      "Osage (Wazhazhe)",
+      "Comanche",
+      "Kiowa"
+    ]
+  },
+  "lathrop-state-park": {
+    "agency": "Colorado Parks and Wildlife",
+    "agency_type": "State park",
+    "territory": [
+      "Mouache Ute (N\u00fauchi-u)",
+      "Jicarilla Apache (Tinde)",
+      "Comanche (N\u0289m\u0289n\u0289\u0289)",
+      "Kiowa (C\u00e1uig\u00f9)",
+      "Cheyenne",
+      "Arapaho"
+    ]
+  },
+  "mesa-verde-national-park": {
+    "agency": "National Park Service",
+    "agency_type": "NPS",
+    "territory": [
+      "Ancestral Puebloan",
+      "Hopi (Hopisinom)",
+      "Zuni (A:shiwi)",
+      "Pueblos",
+      "Ute Mountain Ute (Weeminuche)"
+    ]
+  },
+  "bears-ears-national-monument": {
+    "agency": "Bureau of Land Management and USDA Forest Service (co-managed with the Bears Ears Commission)",
+    "agency_type": "National monument",
+    "territory": [
+      "Hopi",
+      "Navajo (Din\u00e9)",
+      "Ute Mountain Ute",
+      "Ute Indian Tribe",
+      "Zuni (A:shiwi)",
+      "Ancestral Puebloan"
+    ]
+  },
+  "arches-national-park": {
+    "agency": "National Park Service",
+    "agency_type": "NPS",
+    "territory": [
+      "Ute (N\u00fau-agha-t\u0289v\u0289-p\u0289\u0331)",
+      "Sheberetch (Seuvarits) Ute",
+      "Fremont",
+      "Ancestral Puebloan"
+    ]
+  },
   "bryce-canyon-national-park": {
     "agency": "National Park Service",
     "agency_type": "NPS",
@@ -16,9 +130,9 @@
       "Tukudika (Mountain Shoshone)",
       "Eastern Shoshone",
       "Bannock",
-      "Apsáalooke (Crow)",
+      "Aps\u00e1alooke (Crow)",
       "Blackfeet",
-      "Niimíipuu (Nez Perce)"
+      "Niim\u00edipuu (Nez Perce)"
     ]
   },
   "bighorn-national-forest": {
@@ -87,7 +201,7 @@
     "agency": "Iowa DNR",
     "agency_type": "State park",
     "territory": [
-      "Báxoje (Ioway)",
+      "B\u00e1xoje (Ioway)",
       "Sauk",
       "Meskwaki",
       "Ho-Chunk"

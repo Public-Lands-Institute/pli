@@ -1,0 +1,35 @@
+WIKIMEDIA COMMONS DELETION REQUEST — Black Hills National Forest
+Reason: Wrong images (incorrect location); being replaced by uploader.
+
+These are all your own recent uploads, so they qualify for speedy deletion
+as an uploader/author request. Two ways to do it:
+
+OPTION A — Speedy deletion per file (fastest for own uploads)
+On each file page below, add this line at the top and save:
+  {{Db-author|reason=Wrong location, uploaded in error, replacing with correct images}}
+
+OPTION B — Single batch deletion request
+Create page: Commons:Deletion requests/Public Lands Institute Black Hills
+Paste:
+  {{delete|1=Wrong images (incorrect location), uploaded in error by me; replacing with correct images. Uploader request.|day=15|month=June|year=2026}}
+Then list all 11 files on that page and notify via the standard DR process.
+
+FILES TO DELETE (11):
+File:Public Lands Institute - Black Hills National Forest - 001.tif
+File:Public Lands Institute - Black Hills National Forest - 002.jpg
+File:Public Lands Institute - Black Hills National Forest - 003.tif
+File:Public Lands Institute - Black Hills National Forest - 004.jpg
+File:Public Lands Institute - Black Hills National Forest - 005.tif
+File:Public Lands Institute - Black Hills National Forest - 006.jpg
+File:Public Lands Institute - Black Hills National Forest - 007.tif
+File:Public Lands Institute - Black Hills National Forest - 008.tif
+File:Public Lands Institute - Black Hills National Forest - 009.tif
+File:Public Lands Institute - Black Hills National Forest - 010.tif
+File:Public Lands Institute - Black Hills National Forest - 011.tif
+
+Note: 002.jpg, 004.jpg, 006.jpg were accidental JPEG duplicates of the
+001/003/005 TIFFs.
+
+Direct links (replace spaces with underscores in the URL):
+https://commons.wikimedia.org/wiki/File:Public_Lands_Institute_-_Black_Hills_National_Forest_-_001.tif
+(...same pattern for 002.jpg through 011.tif)
