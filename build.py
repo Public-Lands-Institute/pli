@@ -349,7 +349,7 @@ def make_archive_page(all_sites, photos):
             if img['commons_page']:
                 rows += f'    <a class="archive-download" href="{img["commons_page"]}" target="_blank" rel="noopener">Commons</a>\n'
             else:
-                rows += f'    <span class="archive-download" style="visibility:hidden">Commons</span>\n'
+                rows += f'    <span class="archive-download archive-pending">Uploading</span>\n'
             if img['raw']:
                 rows += f'    <a class="archive-download" href="{img["raw"]}" download>Download RAW</a>\n'
             else:
@@ -447,6 +447,10 @@ def make_archive_page(all_sites, photos):
     text-transform: uppercase;
     letter-spacing: 0.14em;
     white-space: nowrap;
+  }}
+  .archive-pending {{
+    border: 1px solid rgba(200,144,74,0.5);
+    padding: 2px 8px;
   }}
   @media (max-width: 540px) {{
     .archive-item {{ grid-template-columns: 1fr max-content max-content max-content; }}
