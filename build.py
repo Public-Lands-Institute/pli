@@ -168,7 +168,35 @@ SHARED_CSS = '''  :root {
     padding: 11px 0;
     margin: -11px 0;
   }
-  .gps-link:hover { text-decoration: underline; }'''
+  .gps-link:hover { text-decoration: underline; }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }'''
+
+
+STATE_NAMES = {
+    'AL': 'Alabama', 'AK': 'Alaska', 'AZ': 'Arizona', 'AR': 'Arkansas',
+    'CA': 'California', 'CO': 'Colorado', 'CT': 'Connecticut', 'DE': 'Delaware',
+    'FL': 'Florida', 'GA': 'Georgia', 'HI': 'Hawaii', 'ID': 'Idaho',
+    'IL': 'Illinois', 'IN': 'Indiana', 'IA': 'Iowa', 'KS': 'Kansas',
+    'KY': 'Kentucky', 'LA': 'Louisiana', 'ME': 'Maine', 'MD': 'Maryland',
+    'MA': 'Massachusetts', 'MI': 'Michigan', 'MN': 'Minnesota', 'MS': 'Mississippi',
+    'MO': 'Missouri', 'MT': 'Montana', 'NE': 'Nebraska', 'NV': 'Nevada',
+    'NH': 'New Hampshire', 'NJ': 'New Jersey', 'NM': 'New Mexico', 'NY': 'New York',
+    'NC': 'North Carolina', 'ND': 'North Dakota', 'OH': 'Ohio', 'OK': 'Oklahoma',
+    'OR': 'Oregon', 'PA': 'Pennsylvania', 'RI': 'Rhode Island', 'SC': 'South Carolina',
+    'SD': 'South Dakota', 'TN': 'Tennessee', 'TX': 'Texas', 'UT': 'Utah',
+    'VT': 'Vermont', 'VA': 'Virginia', 'WA': 'Washington', 'WV': 'West Virginia',
+    'WI': 'Wisconsin', 'WY': 'Wyoming',
+}
 
 
 # ── photographs.html ───────────────────────────────────────────────────────────
@@ -284,6 +312,7 @@ def make_gallery_page(all_sites, photos):
 </head>
 <body>
 <div class="page">
+<h1 class="sr-only">Images</h1>
 <header>
   <div class="logotype"><a href="index.html">Public Lands Institute</a></div>
   <nav class="header-nav">
@@ -342,7 +371,7 @@ def make_archive_page(all_sites, photos):
         images = image_records(site['slug'], photos.get(site['slug'], []))
         if not images:
             continue
-        _search_key = f'{site["name"]} {site["state"]}'.lower()
+        _search_key = f'{site["name"]} {site["state"]} {STATE_NAMES.get(site["state"], "")}'.rstrip().lower()
         rows += f'<div class="archive-location" data-name="{_search_key}">\n'
         rows += f'  <h2 class="archive-location-name"><a href="sites/{site["slug"]}.html">{site["name"]} — {site["state"]}</a></h2>\n'
         for img in images:
@@ -360,9 +389,9 @@ def make_archive_page(all_sites, photos):
             else:
                 rows += f'    <span class="archive-download" style="visibility:hidden">Download RAW</span>\n'
             if img['xmp']:
-                rows += f'    <a class="archive-download" href="{img["xmp"]}" download>XML</a>\n'
+                rows += f'    <a class="archive-download" href="{img["xmp"]}" download>XMP</a>\n'
             else:
-                rows += f'    <span class="archive-download" style="visibility:hidden">XML</span>\n'
+                rows += f'    <span class="archive-download" style="visibility:hidden">XMP</span>\n'
             rows += f'  </div>\n'
         rows += '</div>\n'
 
@@ -469,6 +498,7 @@ def make_archive_page(all_sites, photos):
 </head>
 <body>
 <div class="page">
+<h1 class="sr-only">Archive</h1>
 <header>
   <div class="logotype"><a href="index.html">Public Lands Institute</a></div>
   <nav class="header-nav">

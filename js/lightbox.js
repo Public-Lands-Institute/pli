@@ -79,7 +79,7 @@
       </div>
       <div id="plb-actions">
         <a id="plb-raw" class="plb-action" href="#" download>RAW File</a>
-        <a id="plb-xmp" class="plb-action" href="#" download>XML</a>
+        <a id="plb-xmp" class="plb-action" href="#" download>XMP</a>
         <a id="plb-commons" class="plb-action" href="#" target="_blank" rel="noopener">Commons</a>
       </div>
     </div>

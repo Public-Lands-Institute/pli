@@ -100,6 +100,17 @@
     margin: -11px 0;
   }
   .gps-link:hover { text-decoration: underline; }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
   .about-body {
     max-width: 760px;
   }
@@ -123,6 +134,7 @@
 </head>
 <body>
 <div class="page">
+<h1 class="sr-only">About</h1>
 <header>
   <div class="logotype"><a href="index.html">Public Lands Institute</a></div>
   <nav class="header-nav">
@@ -145,7 +157,7 @@
   <p>A <a href="glossary.html">reference glossary</a> defines the geologic time terms, managing agency types, archaeological culture designations, and Indigenous nations named throughout the site records.</p>
 
   <h2>Public domain</h2>
-  <p>Every photograph is dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">Creative Commons CC0 1.0 Universal</a>. Full resolution TIFF and RAW files are freely downloadable from the <a href="archive.html">archive</a> and from <a href="https://commons.wikimedia.org/w/index.php?title=Special:MediaSearch&search=Public+Lands+Institute" target="_blank" rel="noopener">Wikimedia Commons</a>. No attribution is required and no permission is needed for any use.</p>
+  <p>Every photograph is dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">Creative Commons CC0 1.0 Universal</a>. Full resolution TIFF and RAW files are freely downloadable from the <a href="archive.html">archive</a> and from <a href="https://commons.wikimedia.org/w/index.php?title=Special:MediaSearch&search=Public+Lands+Institute" target="_blank" rel="noopener">Wikimedia Commons</a><!-- TODO: point this at https://commons.wikimedia.org/wiki/Category:Public_Lands_Institute once the category exists -->. No attribution is required and no permission is needed for any use.</p>
 </div>
 <footer>
   <span>Public Lands Institute — ongoing project</span>
