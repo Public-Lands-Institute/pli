@@ -62,7 +62,7 @@
     "agency": "City of Wichita Park and Recreation (Great Plains Nature Center cooperative with USFWS and Kansas Department of Wildlife and Parks)",
     "agency_type": "Municipal park",
     "territory": [
-      "Wichita (Kitikiti'sh)",
+      "Wichita (Kitikiti’sh)",
       "Osage (Wazhazhe)",
       "Comanche",
       "Kiowa"
@@ -72,10 +72,10 @@
     "agency": "Colorado Parks and Wildlife",
     "agency_type": "State park",
     "territory": [
-      "Mouache Ute (N\u00fauchi-u)",
+      "Mouache Ute (Núuchi-u)",
       "Jicarilla Apache (Tinde)",
-      "Comanche (N\u0289m\u0289n\u0289\u0289)",
-      "Kiowa (C\u00e1uig\u00f9)",
+      "Comanche (Nʉmʉnʉʉ)",
+      "Kiowa (Cáuigù)",
       "Cheyenne",
       "Arapaho"
     ]
@@ -96,7 +96,7 @@
     "agency_type": "National monument",
     "territory": [
       "Hopi",
-      "Navajo (Din\u00e9)",
+      "Navajo (Diné)",
       "Ute Mountain Ute",
       "Ute Indian Tribe",
       "Zuni (A:shiwi)",
@@ -107,7 +107,7 @@
     "agency": "National Park Service",
     "agency_type": "NPS",
     "territory": [
-      "Ute (N\u00fau-agha-t\u0289v\u0289-p\u0289\u0331)",
+      "Ute (Núuchi-u / Núu-agha-tʉvʉ-pʉ̱)",
       "Sheberetch (Seuvarits) Ute",
       "Fremont",
       "Ancestral Puebloan"
@@ -130,16 +130,16 @@
       "Tukudika (Mountain Shoshone)",
       "Eastern Shoshone",
       "Bannock",
-      "Aps\u00e1alooke (Crow)",
+      "Apsáalooke (Crow)",
       "Blackfeet",
-      "Niim\u00edipuu (Nez Perce)"
+      "Niimíipuu (Nez Perce)"
     ]
   },
   "bighorn-national-forest": {
     "agency": "USDA Forest Service",
     "agency_type": "USFS",
     "territory": [
-      "Crow (Apsaalooke)",
+      "Apsáalooke (Crow)",
       "Eastern Shoshone",
       "Cheyenne",
       "Arapaho",
@@ -201,7 +201,7 @@
     "agency": "Iowa DNR",
     "agency_type": "State park",
     "territory": [
-      "B\u00e1xoje (Ioway)",
+      "Báxoje (Ioway)",
       "Sauk",
       "Meskwaki",
       "Ho-Chunk"

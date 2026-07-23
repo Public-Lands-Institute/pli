@@ -177,8 +177,8 @@
       },
       "properties": {
         "slug": "chisholm-creek-park",
-        "nation": "Wichita (Kitikiti'sh)",
-        "color": "#bfbf5b"
+        "nation": "Wichita (Kitikiti’sh)",
+        "color": "#5b9ebf"
       }
     },
     {
@@ -492,8 +492,8 @@
       },
       "properties": {
         "slug": "arches-national-park",
-        "nation": "Ute (Núu-agha-tʉvʉ-pʉ̱)",
-        "color": "#8cbf5b"
+        "nation": "Ute (Núuchi-u / Núu-agha-tʉvʉ-pʉ̱)",
+        "color": "#5bbfbf"
       }
     },
     {
@@ -702,8 +702,8 @@
       },
       "properties": {
         "slug": "bighorn-national-forest",
-        "nation": "Crow (Apsaalooke)",
-        "color": "#5be8a8"
+        "nation": "Apsáalooke (Crow)",
+        "color": "#bf5b9e"
       }
     },
     {

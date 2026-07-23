@@ -15,10 +15,14 @@ Checks:
      exactly the site's pages with lastmod equal to each file's mtime date.
   5. Referenced files — every thumb / large / jpg / raw / xmp path referenced
      by data/photos.json must exist on disk.
+  6. Shadow history — every site must carry either real narrative text or
+     exactly the project's SHADOW_HISTORY_NONE convention text; empty fields
+     and near-miss variants of the standard text FAIL.
 
 Exit status: nonzero if any check FAILs. WARNs do not affect exit status.
 """
 
+import difflib
 import json
 import os
 import re
@@ -27,6 +31,8 @@ import datetime
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
+sys.path.insert(0, os.path.join(ROOT, 'tools'))
+from cleanup_sites import SHADOW_HISTORY_NONE  # single source of the convention text
 
 failures = 0
 
@@ -198,6 +204,21 @@ def main():
                + '\n    '.join(missing))
     else:
         report(5, 'PASS', 'all referenced thumb/large/jpg/raw/xmp files exist')
+
+    # ── Check 6: shadow_history completeness ──────────────────────────────────
+    shadow_problems = []
+    for s in sites:
+        sh = s.get('shadow_history', '').strip()
+        if not sh:
+            shadow_problems.append(f'{s["slug"]}: empty shadow_history')
+        elif sh != SHADOW_HISTORY_NONE and \
+                difflib.SequenceMatcher(None, sh, SHADOW_HISTORY_NONE).ratio() > 0.8:
+            shadow_problems.append(f'{s["slug"]}: near-miss variant of the standard '
+                                   f'none-found text: {sh!r}')
+    if shadow_problems:
+        report(6, 'FAIL', '\n    '.join(shadow_problems))
+    else:
+        report(6, 'PASS', 'every site has narrative text or the exact standard none-found text')
 
     if failures:
         print(f'\n{failures} check(s) failed')

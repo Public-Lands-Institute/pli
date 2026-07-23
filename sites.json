@@ -21,7 +21,8 @@
       "ᏣᎳᎫᏪᏘᏱ Tsalaguwetiyi (Cherokee, East)",
       "S’atsoyaha (Yuchi)",
       "Miccosukee"
-    ]
+    ],
+    "acreage_n": 522427
   },
   {
     "slug": "nantahala-national-forest",
@@ -45,7 +46,8 @@
       "ᏣᎳᎫᏪᏘᏱ Tsalaguwetiyi (Cherokee, East)",
       "S’atsoyaha (Yuchi)",
       "Miccosukee"
-    ]
+    ],
+    "acreage_n": 531148
   },
   {
     "slug": "blood-mountain-wilderness",
@@ -69,7 +71,8 @@
       "ᏣᎳᎫᏪᏘᏱ Tsalaguwetiyi (Cherokee, East)",
       "S’atsoyaha (Yuchi)",
       "Miccosukee"
-    ]
+    ],
+    "acreage_n": 7800
   },
   {
     "slug": "chattahoochee-national-forest",
@@ -93,7 +96,8 @@
       "ᏣᎳᎫᏪᏘᏱ Tsalaguwetiyi (Cherokee, East)",
       "S’atsoyaha (Yuchi)",
       "Miccosukee"
-    ]
+    ],
+    "acreage_n": 751069
   },
   {
     "slug": "ocmulgee-mounds-national-historical-park",
@@ -117,7 +121,8 @@
     "native_lands_api": [
       "Mvskoke (Muscogee)",
       "Hitchiti"
-    ]
+    ],
+    "acreage_n": 3336
   },
   {
     "slug": "high-falls-state-park",
@@ -127,7 +132,7 @@
     "epoch": "Pennsylvanian (Alleghanian orogeny)",
     "native_lands": "Muscogee (Mvskoke) confederacy; Hitchiti-speaking Okmulgee towns historically situated between the Towaliga River and Walnut Creek; the river name Towaliga derives from the Itsate-Creek \"towalika,\" a hewn wooden bench; Ocmulgee River corridor was Muscogee heartland until the Yamasee War of 1715 destroyed Okmulgee Town; ceded via Treaty of Indian Springs (1821, lands east of the Flint River) and the second Treaty of Indian Springs (1825), the latter signed by Muscogee leader William McIntosh, who was executed by his own nation months later for the unauthorized cession",
     "displacement_tenure": "Cession: Treaty of Indian Springs (1821), ceding Creek lands including the future Monroe County (organized May 15, 1821 directly from this cession); reinforced by the second Treaty of Indian Springs (1825), ceding virtually all remaining Muscogee land in Georgia. Site tenure: a gristmill built in 1827 grew under T.S.M. Bloodworth into a mill village with sawmills, cotton gins, and other industry; Confederate forces burned the mill in November 1864, and Bloodworth rebuilt it, but the Panic of 1873 ruined him financially and the village was abandoned. Captain Seaton Grantland's Towaliga Falls Power Company built a hydroelectric dam here, completed in 1904; the property passed to Georgia Hydroelectric Company in 1925, then to Georgia Power Company in 1930, which operated it until 1958. Hiwassee Land Company, a subsidiary of Bowaters Paper Corporation, acquired the property in 1961, timbered it, auctioned off the old gristmill, and donated the lake and surrounding land to the Georgia Game and Fish Commission on July 19, 1961; the commission ran it as an experimental park before transferring it to the State Parks Division, which formally established High Falls State Park in 1966.",
-    "shadow_history": "",
+    "shadow_history": "No significant or independently documentable shadow history has been identified for this site.",
     "ecology": "Piedmont hardwood forest with boulder-strewn riverine bluffs along the Towaliga River gorge; mixed hardwoods and understory wildflowers and fungi typical of the fall-line Piedmont.",
     "hydrology": "Towaliga River (52.3 mi tributary of the Ocmulgee River), Upper Ocmulgee and Altamaha basin; the falls drop about 135 feet over exposed granite and gneiss at the fall line; a dam (completed 1904) impounds the 650-acre High Falls Lake.",
     "acreage": "1,050",
@@ -140,7 +145,8 @@
     "native_lands_api": [
       "Mvskoke (Muscogee)",
       "Hitchiti"
-    ]
+    ],
+    "acreage_n": 1050
   },
   {
     "slug": "ohoopee-dunes-wildlife-management-area",
@@ -151,7 +157,7 @@
     "epoch": "Late Pleistocene (Wisconsin Glaciation)",
     "native_lands": "Yuchi (Tsoyaha, \"Children of the Sun\"), whose towns anchored the nearby Ogeechee River country before their westward displacement in the early 1700s under Creek and Carolina pressure; Lower Creek (Muscogee) towns then hunted, fished, and held Green Corn ceremonies along the Ohoopee, Ogeechee, and Canoochee rivers, leaving arrowheads and other artifacts across the dune fields that looters still disturb today",
     "displacement_tenure": "Cession: Treaty of Augusta (1773), the \"New Purchase\" extending Creek and Cherokee cession lines in Georgia to relieve traders' debts; Cession: Treaty of Augusta (November 1, 1783), in which Creek negotiators ceded the land between the Ogeechee and Oconee rivers, including the Ohoopee River dune country, over the strong public objection of the wider Creek Nation, which repudiated the sale as unauthorized. Georgia distributed the ceded land to settlers through its land lottery system beginning in 1805, and organized Emanuel County from Bulloch and Montgomery counties in 1812.",
-    "shadow_history": "",
+    "shadow_history": "No significant or independently documentable shadow history has been identified for this site.",
     "ecology": "Desert-like sandhill scrub built around Georgia plume (Elliottia racemosa), the state's only endemic tree, alongside stunted turkey oak, wiregrass, and aromatic shrubs adapted to the deep, fast-draining dune sand, with isolated longleaf pine and gopher tortoise burrows on the driest ridges. The dune system is the only place on Earth for the Ohoopee geometer moth (Fernaldella georgiana, tied to its host plant woody goldenrod), Donaldson's lined june beetle (Polyphylla donaldsoni), and the Ohoopee Dunes scarab beetle (Geopsammodius ohoopee), plus a grasshopper (Melanoplus stegocercus) found only here and at one outlying population at Yuchi WMA. Prescribed fire holds back woody encroachment.",
     "hydrology": "The Ohoopee River, a tributary of the Altamaha River, and its tributary the Little Ohoopee River run along the dune fields' western edge; the Altamaha ultimately reaches the Atlantic near Darien.",
     "acreage": "9,271",
@@ -163,7 +169,8 @@
     "inat_radius_km": 8,
     "native_lands_api": [
       "Mvskoke (Muscogee)"
-    ]
+    ],
+    "acreage_n": 9271
   },
   {
     "slug": "pinckney-island-national-wildlife-refuge",
@@ -185,7 +192,8 @@
     "inat_radius_km": 10,
     "native_lands_api": [
       "Yamasee"
-    ]
+    ],
+    "acreage_n": 4053
   },
   {
     "slug": "chisholm-creek-park",
@@ -207,10 +215,11 @@
     "inat_radius_km": 5,
     "native_lands_api": [
       "Gáuigú (Kiowa)",
-      "𐓏𐒰𐓓𐒰𐓓𐒷  𐒼𐓂𐓊𐒻  𐓆𐒻𐒿𐒷  𐓀𐒰^𐓓𐒰^(Osage)",
+      "𐓏𐒰𐓓𐒰𐓓𐒷 𐒼𐓂𐓊𐒻 𐓆𐒻𐒿𐒷 𐓀𐒰^𐓓𐒰^(Osage)",
       "Wichita",
       "Očhéthi Šakówiŋ"
-    ]
+    ],
+    "acreage_n": 282
   },
   {
     "slug": "lathrop-state-park",
@@ -236,7 +245,8 @@
       "Núu-agha-tʉvʉ-pʉ̱ (Ute)",
       "Jicarilla Apache",
       "Ndé Kónitsąąíí Gokíyaa (Lipan Apache)"
-    ]
+    ],
+    "acreage_n": 1451
   },
   {
     "slug": "mesa-verde-national-park",
@@ -260,7 +270,8 @@
       "Diné Bikéyah",
       "Pueblos",
       "Núu-agha-tʉvʉ-pʉ̱ (Ute)"
-    ]
+    ],
+    "acreage_n": 52485
   },
   {
     "slug": "bears-ears-national-monument",
@@ -285,7 +296,8 @@
       "Diné Bikéyah (Navajo)",
       "Núu-agha-tʉvʉ-pʉ̱ (Ute)",
       "Pueblos"
-    ]
+    ],
+    "acreage_n": 1360000
   },
   {
     "slug": "arches-national-park",
@@ -308,7 +320,8 @@
     "native_lands_api": [
       "Núu-agha-tʉvʉ-pʉ̱ (Ute)",
       "Pueblos"
-    ]
+    ],
+    "acreage_n": 76519
   },
   {
     "slug": "bryce-canyon-national-park",
@@ -332,7 +345,8 @@
       "Nuwuvi (Southern Paiute)",
       "Pueblos",
       "Núu-agha-tʉvʉ-pʉ̱ (Ute)"
-    ]
+    ],
+    "acreage_n": 35835
   },
   {
     "slug": "yellowstone-national-park",
@@ -358,7 +372,8 @@
       "Cayuse, Umatilla and Walla Walla",
       "Apsáalooke (Crow)",
       "Tsétsėhéstȧhese/Tsitsistas/Só'taeo'o (Cheyenne)"
-    ]
+    ],
+    "acreage_n": 2219791
   },
   {
     "slug": "bighorn-national-forest",
@@ -382,7 +397,8 @@
       "Apsáalooke (Crow)",
       "Tsétsėhéstȧhese/Tsitsistas/Só'taeo'o (Cheyenne)",
       "Očhéthi Šakówiŋ"
-    ]
+    ],
+    "acreage_n": 1115171
   },
   {
     "slug": "mount-rushmore-national-memorial",
@@ -405,7 +421,8 @@
     "native_lands_api": [
       "Tsétsėhéstȧhese/Tsitsistas/Só'taeo'o (Cheyenne)",
       "Očhéthi Šakówiŋ"
-    ]
+    ],
+    "acreage_n": 1278
   },
   {
     "slug": "black-hills-national-forest",
@@ -430,7 +447,8 @@
       "Apsáalooke (Crow)",
       "Tsétsėhéstȧhese/Tsitsistas/Só'taeo'o (Cheyenne)",
       "Očhéthi Šakówiŋ"
-    ]
+    ],
+    "acreage_n": 1253308
   },
   {
     "slug": "badlands-national-park",
@@ -455,7 +473,8 @@
       "Tsétsėhéstȧhese/Tsitsistas/Só'taeo'o (Cheyenne)",
       "Mnicoujou",
       "Očhéthi Šakówiŋ"
-    ]
+    ],
+    "acreage_n": 242756
   },
   {
     "slug": "pipestone-national-monument",
@@ -479,7 +498,8 @@
     "native_lands_api": [
       "Yankton",
       "Očhéthi Šakówiŋ"
-    ]
+    ],
+    "acreage_n": 301
   },
   {
     "slug": "palisades-state-park",
@@ -502,7 +522,8 @@
     "native_lands_api": [
       "Yankton",
       "Očhéthi Šakówiŋ"
-    ]
+    ],
+    "acreage_n": 435
   },
   {
     "slug": "myre-big-island-state-park",
@@ -525,7 +546,8 @@
     "native_lands_api": [
       "Wahpeton",
       "Očhéthi Šakówiŋ"
-    ]
+    ],
+    "acreage_n": 1578
   },
   {
     "slug": "maquoketa-caves-state-park",
@@ -549,7 +571,8 @@
       "oθaakiiwaki‧hina‧ki (Sauk) & Meškwahki·aša·hina (Fox)",
       "Kiikaapoi (Kickapoo)",
       "Očhéthi Šakówiŋ"
-    ]
+    ],
+    "acreage_n": 370
   },
   {
     "slug": "mississippi-palisades-state-park",
@@ -576,7 +599,8 @@
       "Kiikaapoi (Kickapoo)",
       "Myaamia",
       "Očhéthi Šakówiŋ"
-    ]
+    ],
+    "acreage_n": 2500
   },
   {
     "slug": "mounds-state-park",
@@ -600,7 +624,8 @@
       "Kaskaskia",
       "Kiikaapoi (Kickapoo)",
       "Myaamia"
-    ]
+    ],
+    "acreage_n": 290
   },
   {
     "slug": "pine-hills-nature-preserve",
@@ -624,7 +649,8 @@
       "Kaskaskia",
       "Kiikaapoi (Kickapoo)",
       "Myaamia"
-    ]
+    ],
+    "acreage_n": 480
   },
   {
     "slug": "prophetstown-state-park",
@@ -650,7 +676,8 @@
       "Kaskaskia",
       "Kiikaapoi (Kickapoo)",
       "Myaamia"
-    ]
+    ],
+    "acreage_n": 2000
   },
   {
     "slug": "shades-state-park",
@@ -675,7 +702,8 @@
       "Kiikaapoi (Kickapoo)",
       "Myaamia",
       "Očhéthi Šakówiŋ"
-    ]
+    ],
+    "acreage_n": 3082
   },
   {
     "slug": "fort-hill-state-memorial",
@@ -696,11 +724,12 @@
     "lng": -83.4063,
     "inat_radius_km": 5,
     "native_lands_api": [
-      "𐓏𐒰𐓓𐒰𐓓𐒷  𐒼𐓂𐓊𐒻  𐓆𐒻𐒿𐒷  𐓀𐒰^𐓓𐒰^(Osage)",
+      "𐓏𐒰𐓓𐒰𐓓𐒷 𐒼𐓂𐓊𐒻 𐓆𐒻𐒿𐒷 𐓀𐒰^𐓓𐒰^(Osage)",
       "Shawandasse Tula (Shawanwaki/Shawnee)",
       "Kaskaskia",
       "Myaamia"
-    ]
+    ],
+    "acreage_n": 1300
   },
   {
     "slug": "cuyahoga-valley-national-park",
@@ -723,7 +752,8 @@
     "native_lands_api": [
       "Erie",
       "Kaskaskia"
-    ]
+    ],
+    "acreage_n": 32950
   },
   {
     "slug": "krejci-dump",
@@ -747,7 +777,8 @@
       "Erie",
       "Kaskaskia",
       "Mississauga"
-    ]
+    ],
+    "acreage_n": 200
   },
   {
     "slug": "flint-ridge-state-memorial",
@@ -771,7 +802,8 @@
       "Shawandasse Tula (Shawanwaki/Shawnee)",
       "Kaskaskia",
       "Ofo"
-    ]
+    ],
+    "acreage_n": 533
   },
   {
     "slug": "octagon-earthworks",
@@ -795,7 +827,8 @@
       "Shawandasse Tula (Shawanwaki/Shawnee)",
       "Kaskaskia",
       "Ofo"
-    ]
+    ],
+    "acreage_n": 70
   },
   {
     "slug": "newark-earthworks",
@@ -819,7 +852,8 @@
       "Shawandasse Tula (Shawanwaki/Shawnee)",
       "Kaskaskia",
       "Ofo"
-    ]
+    ],
+    "acreage_n": 206
   },
   {
     "slug": "magee-marsh-wildlife-area",
@@ -844,7 +878,8 @@
       "Kaskaskia",
       "Wyandot",
       "Myaamia"
-    ]
+    ],
+    "acreage_n": 2202
   },
   {
     "slug": "oak-openings-metropark",
@@ -870,7 +905,8 @@
       "Kaskaskia",
       "Kiikaapoi (Kickapoo)",
       "Myaamia"
-    ]
+    ],
+    "acreage_n": 5000
   },
   {
     "slug": "ford-marsh-unit",
@@ -896,7 +932,8 @@
       "Wyandot",
       "Meškwahki·aša·hina (Fox)",
       "Myaamia"
-    ]
+    ],
+    "acreage_n": 485
   },
   {
     "slug": "william-c-sterling-state-park",
@@ -922,7 +959,8 @@
       "Wyandot",
       "Meškwahki·aša·hina (Fox)",
       "Myaamia"
-    ]
+    ],
+    "acreage_n": 1300
   },
   {
     "slug": "killdeer-plains-wildlife-area",
@@ -945,7 +983,8 @@
     "native_lands_api": [
       "Kaskaskia",
       "Myaamia"
-    ]
+    ],
+    "acreage_n": 9054
   },
   {
     "slug": "pointe-mouillee-state-game-area",
@@ -972,7 +1011,8 @@
       "Wyandot",
       "Meškwahki·aša·hina (Fox)",
       "Myaamia"
-    ]
+    ],
+    "acreage_n": 4040
   },
   {
     "slug": "edge-of-appalachia",
@@ -993,11 +1033,12 @@
     "lng": -83.384,
     "inat_radius_km": 8,
     "native_lands_api": [
-      "𐓏𐒰𐓓𐒰𐓓𐒷  𐒼𐓂𐓊𐒻  𐓆𐒻𐒿𐒷  𐓀𐒰^𐓓𐒰^(Osage)",
+      "𐓏𐒰𐓓𐒰𐓓𐒷 𐒼𐓂𐓊𐒻 𐓆𐒻𐒿𐒷 𐓀𐒰^𐓓𐒰^(Osage)",
       "Shawandasse Tula (Shawanwaki/Shawnee)",
       "Kaskaskia",
       "Myaamia"
-    ]
+    ],
+    "acreage_n": 21000
   },
   {
     "slug": "st-annes-woods-and-wetlands",
@@ -1019,11 +1060,12 @@
     "inat_radius_km": 5,
     "native_lands_api": [
       "ᏣᎳᎫᏪᏘᏱ Tsalaguwetiyi (Cherokee, East)",
-      "𐓏𐒰𐓓𐒰𐓓𐒷  𐒼𐓂𐓊𐒻  𐓆𐒻𐒿𐒷  𐓀𐒰^𐓓𐒰^(Osage)",
+      "𐓏𐒰𐓓𐒰𐓓𐒷 𐒼𐓂𐓊𐒻 𐓆𐒻𐒿𐒷 𐓀𐒰^𐓓𐒰^(Osage)",
       "Shawandasse Tula (Shawanwaki/Shawnee)",
       "Kaskaskia",
       "Myaamia"
-    ]
+    ],
+    "acreage_n": 165
   },
   {
     "slug": "red-river-gorge-geological-area",
@@ -1045,10 +1087,11 @@
     "inat_radius_km": 8,
     "native_lands_api": [
       "ᏣᎳᎫᏪᏘᏱ Tsalaguwetiyi (Cherokee, East)",
-      "𐓏𐒰𐓓𐒰𐓓𐒷  𐒼𐓂𐓊𐒻  𐓆𐒻𐒿𐒷  𐓀𐒰^𐓓𐒰^(Osage)",
+      "𐓏𐒰𐓓𐒰𐓓𐒷 𐒼𐓂𐓊𐒻 𐓆𐒻𐒿𐒷 𐓀𐒰^𐓓𐒰^(Osage)",
       "S’atsoyaha (Yuchi)",
       "Shawandasse Tula (Shawanwaki/Shawnee)"
-    ]
+    ],
+    "acreage_n": 29000
   },
   {
     "slug": "seip-earthworks",
@@ -1069,11 +1112,12 @@
     "lng": -83.2214,
     "inat_radius_km": 5,
     "native_lands_api": [
-      "𐓏𐒰𐓓𐒰𐓓𐒷  𐒼𐓂𐓊𐒻  𐓆𐒻𐒿𐒷  𐓀𐒰^𐓓𐒰^(Osage)",
+      "𐓏𐒰𐓓𐒰𐓓𐒷 𐒼𐓂𐓊𐒻 𐓆𐒻𐒿𐒷 𐓀𐒰^𐓓𐒰^(Osage)",
       "Shawandasse Tula (Shawanwaki/Shawnee)",
       "Kaskaskia",
       "Myaamia"
-    ]
+    ],
+    "acreage_n": 121
   },
   {
     "slug": "rocky-fork-state-park",
@@ -1094,11 +1138,12 @@
     "lng": -83.472,
     "inat_radius_km": 8,
     "native_lands_api": [
-      "𐓏𐒰𐓓𐒰𐓓𐒷  𐒼𐓂𐓊𐒻  𐓆𐒻𐒿𐒷  𐓀𐒰^𐓓𐒰^(Osage)",
+      "𐓏𐒰𐓓𐒰𐓓𐒷 𐒼𐓂𐓊𐒻 𐓆𐒻𐒿𐒷 𐓀𐒰^𐓓𐒰^(Osage)",
       "Shawandasse Tula (Shawanwaki/Shawnee)",
       "Kaskaskia",
       "Myaamia"
-    ]
+    ],
+    "acreage_n": 3464
   },
   {
     "slug": "hopewell-culture-national-historical-park",
@@ -1119,12 +1164,13 @@
     "lng": -83.0064,
     "inat_radius_km": 8,
     "native_lands_api": [
-      "𐓏𐒰𐓓𐒰𐓓𐒷  𐒼𐓂𐓊𐒻  𐓆𐒻𐒿𐒷  𐓀𐒰^𐓓𐒰^(Osage)",
+      "𐓏𐒰𐓓𐒰𐓓𐒷 𐒼𐓂𐓊𐒻 𐓆𐒻𐒿𐒷 𐓀𐒰^𐓓𐒰^(Osage)",
       "Shawandasse Tula (Shawanwaki/Shawnee)",
       "Kaskaskia",
       "Ofo",
       "Myaamia"
-    ]
+    ],
+    "acreage_n": 1170
   },
   {
     "slug": "new-river-gorge-national-park",
@@ -1149,7 +1195,8 @@
       "S’atsoyaha (Yuchi)",
       "Shawandasse Tula (Shawanwaki/Shawnee)",
       "Yesan (Tutelo)"
-    ]
+    ],
+    "acreage_n": 72808
   },
   {
     "slug": "big-bone-lick",
@@ -1170,9 +1217,10 @@
     "lng": -84.7474,
     "inat_radius_km": 5,
     "native_lands_api": [
-      "𐓏𐒰𐓓𐒰𐓓𐒷  𐒼𐓂𐓊𐒻  𐓆𐒻𐒿𐒷  𐓀𐒰^𐓓𐒰^(Osage)",
+      "𐓏𐒰𐓓𐒰𐓓𐒷 𐒼𐓂𐓊𐒻 𐓆𐒻𐒿𐒷 𐓀𐒰^𐓓𐒰^(Osage)",
       "Shawandasse Tula (Shawanwaki/Shawnee)"
-    ]
+    ],
+    "acreage_n": 525
   },
   {
     "slug": "dinsmore-woods",
@@ -1193,10 +1241,11 @@
     "lng": -84.8153,
     "inat_radius_km": 5,
     "native_lands_api": [
-      "𐓏𐒰𐓓𐒰𐓓𐒷  𐒼𐓂𐓊𐒻  𐓆𐒻𐒿𐒷  𐓀𐒰^𐓓𐒰^(Osage)",
+      "𐓏𐒰𐓓𐒰𐓓𐒷 𐒼𐓂𐓊𐒻 𐓆𐒻𐒿𐒷 𐓀𐒰^𐓓𐒰^(Osage)",
       "Shawandasse Tula (Shawanwaki/Shawnee)",
       "Kaskaskia"
-    ]
+    ],
+    "acreage_n": 107
   },
   {
     "slug": "caesar-creek",
@@ -1217,11 +1266,12 @@
     "lng": -84.0365,
     "inat_radius_km": 8,
     "native_lands_api": [
-      "𐓏𐒰𐓓𐒰𐓓𐒷  𐒼𐓂𐓊𐒻  𐓆𐒻𐒿𐒷  𐓀𐒰^𐓓𐒰^(Osage)",
+      "𐓏𐒰𐓓𐒰𐓓𐒷 𐒼𐓂𐓊𐒻 𐓆𐒻𐒿𐒷 𐓀𐒰^𐓓𐒰^(Osage)",
       "Shawandasse Tula (Shawanwaki/Shawnee)",
       "Kaskaskia",
       "Myaamia"
-    ]
+    ],
+    "acreage_n": 7530
   },
   {
     "slug": "shawnee-lookout",
@@ -1242,11 +1292,12 @@
     "lng": -84.8084,
     "inat_radius_km": 8,
     "native_lands_api": [
-      "𐓏𐒰𐓓𐒰𐓓𐒷  𐒼𐓂𐓊𐒻  𐓆𐒻𐒿𐒷  𐓀𐒰^𐓓𐒰^(Osage)",
+      "𐓏𐒰𐓓𐒰𐓓𐒷 𐒼𐓂𐓊𐒻 𐓆𐒻𐒿𐒷 𐓀𐒰^𐓓𐒰^(Osage)",
       "Shawandasse Tula (Shawanwaki/Shawnee)",
       "Kaskaskia",
       "Myaamia"
-    ]
+    ],
+    "acreage_n": 2179
   },
   {
     "slug": "fernald-preserve",
@@ -1268,11 +1319,12 @@
     "lng": -84.6878,
     "inat_radius_km": 5,
     "native_lands_api": [
-      "𐓏𐒰𐓓𐒰𐓓𐒷  𐒼𐓂𐓊𐒻  𐓆𐒻𐒿𐒷  𐓀𐒰^𐓓𐒰^(Osage)",
+      "𐓏𐒰𐓓𐒰𐓓𐒷 𐒼𐓂𐓊𐒻 𐓆𐒻𐒿𐒷 𐓀𐒰^𐓓𐒰^(Osage)",
       "Shawandasse Tula (Shawanwaki/Shawnee)",
       "Kaskaskia",
       "Myaamia"
-    ]
+    ],
+    "acreage_n": 1050
   },
   {
     "slug": "clifty-falls-state-park",
@@ -1295,7 +1347,8 @@
       "Shawandasse Tula (Shawanwaki/Shawnee)",
       "Myaamia"
     ],
-    "shadow_history": "Madison State Hospital (opened 1910 as Southeastern Indiana Hospital for the Insane) operated the adjacent farm fields under a patient-labor model in which psychiatric patients grew food, ran a dairy, and built roads without compensation; the Indiana legislature determined in the 1960s that this constituted indentured servitude, leading the hospital to discontinue farming rather than pay patients; the farm fields transferred to the park in 1965 were worked under this system for at least four decades; an institutional cemetery on hospital grounds holds an estimated 300 to 400 burials, the majority marked only with metal crosses bearing patient numbers rather than names."
+    "shadow_history": "Madison State Hospital (opened 1910 as Southeastern Indiana Hospital for the Insane) operated the adjacent farm fields under a patient-labor model in which psychiatric patients grew food, ran a dairy, and built roads without compensation; the Indiana legislature determined in the 1960s that this constituted indentured servitude, leading the hospital to discontinue farming rather than pay patients; the farm fields transferred to the park in 1965 were worked under this system for at least four decades; an institutional cemetery on hospital grounds holds an estimated 300 to 400 burials, the majority marked only with metal crosses bearing patient numbers rather than names.",
+    "acreage_n": 1416
   },
   {
     "slug": "french-park",
@@ -1315,12 +1368,13 @@
     "lng": -84.4233,
     "inat_radius_km": 5,
     "native_lands_api": [
-      "𐓏𐒰𐓓𐒰𐓓𐒷  𐒼𐓂𐓊𐒻  𐓆𐒻𐒿𐒷  𐓀𐒰^𐓓𐒰^(Osage)",
+      "𐓏𐒰𐓓𐒰𐓓𐒷 𐒼𐓂𐓊𐒻 𐓆𐒻𐒿𐒷 𐓀𐒰^𐓓𐒰^(Osage)",
       "Shawandasse Tula (Shawanwaki/Shawnee)",
       "Kaskaskia",
       "Myaamia"
     ],
-    "shadow_history": "The Benham Mound within the park, a Hopewell burial mound listed on the National Register of Historic Places in 1974, was excavated by local residents in the late 19th century; the diggings recovered mica deposits, stone tools, axes, scrapers, chisels, and flint projectile points; no institutional repository for the recovered material and no record of human remains from these excavations have been identified in accessible records; Herbert Greer French, who bequeathed the estate to the Cincinnati Park Board in 1942, was a vice president of Procter and Gamble."
+    "shadow_history": "The Benham Mound within the park, a Hopewell burial mound listed on the National Register of Historic Places in 1974, was excavated by local residents in the late 19th century; the diggings recovered mica deposits, stone tools, axes, scrapers, chisels, and flint projectile points; no institutional repository for the recovered material and no record of human remains from these excavations have been identified in accessible records; Herbert Greer French, who bequeathed the estate to the Cincinnati Park Board in 1942, was a vice president of Procter and Gamble.",
+    "acreage_n": 275
   },
   {
     "slug": "big-south-fork-national-river-and-recreation-area",
@@ -1344,7 +1398,8 @@
       "S’atsoyaha (Yuchi)",
       "Shawandasse Tula (Shawanwaki/Shawnee)"
     ],
-    "shadow_history": "Abandoned surface and deep coal mines throughout the park, the highest concentration of any NPS unit in the region, produce ongoing acid mine drainage; Roaring Paunch Creek and multiple tributaries carry contamination the NPS characterizes as potentially harmful to humans, with remediation underway under the Infrastructure Investment and Jobs Act; when word spread that the Army Corps of Engineers was authorized to acquire land under the 1974 act, large private landholders including Stearns Coal and Lumber accelerated logging and mining operations on their holdings before condemnation could proceed, extracting maximum value from land they knew would be taken; Blue Heron, the last Stearns company town in the gorge, was abandoned in 1962 after coal reserves were exhausted, leaving residents to relocate independently before Corps acquisition began in 1979."
+    "shadow_history": "Abandoned surface and deep coal mines throughout the park, the highest concentration of any NPS unit in the region, produce ongoing acid mine drainage; Roaring Paunch Creek and multiple tributaries carry contamination the NPS characterizes as potentially harmful to humans, with remediation underway under the Infrastructure Investment and Jobs Act; when word spread that the Army Corps of Engineers was authorized to acquire land under the 1974 act, large private landholders including Stearns Coal and Lumber accelerated logging and mining operations on their holdings before condemnation could proceed, extracting maximum value from land they knew would be taken; Blue Heron, the last Stearns company town in the gorge, was abandoned in 1962 after coal reserves were exhausted, leaving residents to relocate independently before Corps acquisition began in 1979.",
+    "acreage_n": 125000
   },
   {
     "slug": "mammoth-cave-national-park",
@@ -1368,7 +1423,8 @@
       "S’atsoyaha (Yuchi)",
       "Shawandasse Tula (Shawanwaki/Shawnee)"
     ],
-    "shadow_history": "In 1842, cave owner Dr. John Croghan moved 16 tuberculosis patients into the cave believing its constant temperature would cure consumption; enslaved workers built two stone cottages and eight wooden huts inside the cave; five patients died inside the cave, their bodies laid on what became known as Corpse Rock; Croghan died of tuberculosis in 1849; CCC Company 510, an all-Black company and the first CCC camp established in Kentucky (May 22, 1933), was placed at Mammoth Cave specifically because of its remoteness from white communities; when the Decree of Eminent Domain was issued against 507 families on 54,000 acres, Black families who had lived and worked the land were displaced without provision for resettlement, while white men retained their positions as guides; landowners widely reported receiving below-market compensation, and more than 70 cemeteries remain within park boundaries today; a pre-Columbian man now called Lost John was displayed publicly in the cave until the mid-1970s; a mummified woman known as Fawn Hoof, recovered in 1811, was exhibited at the 1876 and 1893 World's Fairs and transferred to the Smithsonian where the remains are held today."
+    "shadow_history": "In 1842, cave owner Dr. John Croghan moved 16 tuberculosis patients into the cave believing its constant temperature would cure consumption; enslaved workers built two stone cottages and eight wooden huts inside the cave; five patients died inside the cave, their bodies laid on what became known as Corpse Rock; Croghan died of tuberculosis in 1849; CCC Company 510, an all-Black company and the first CCC camp established in Kentucky (May 22, 1933), was placed at Mammoth Cave specifically because of its remoteness from white communities; when the Decree of Eminent Domain was issued against 507 families on 54,000 acres, Black families who had lived and worked the land were displaced without provision for resettlement, while white men retained their positions as guides; landowners widely reported receiving below-market compensation, and more than 70 cemeteries remain within park boundaries today; a pre-Columbian man now called Lost John was displayed publicly in the cave until the mid-1970s; a mummified woman known as Fawn Hoof, recovered in 1811, was exhibited at the 1876 and 1893 World's Fairs and transferred to the Smithsonian where the remains are held today.",
+    "acreage_n": 54012
   },
   {
     "slug": "sea-rim-state-park",
@@ -1391,7 +1447,8 @@
       "Karankawa",
       "Ishak (Atakapa)"
     ],
-    "shadow_history": "The park was purchased in 1972 from the Planet Oil and Mineral Corporation; active oil rigs remain visible from the park beach, and the site lies within Jefferson County, where the Spindletop salt dome discovery of 1901 launched the modern petroleum industry; the park's tidal marsh system is hydrologically connected to multiple federal hazardous waste sites in the Port Arthur-Beaumont corridor, including the Star Lake Canal Superfund site and contaminated wetlands from a former Chevron refinery; Hurricane Rita (2005) closed the park for nearly five years -- Hurricane Ike (2008) struck during the closure, compounding damage -- with the park partially reopening April 2010 and reaching full restoration by June 2014; during the closure, regional refinery and tank farm spills totaling approximately 8 million gallons contaminated the coastal zone; the site was formally designated as experiencing natural resource damages from the 2010 Deepwater Horizon blowout, receiving NOAA Gulf Spill Restoration funding for coastal dune restoration as a documented injured resource."
+    "shadow_history": "The park was purchased in 1972 from the Planet Oil and Mineral Corporation; active oil rigs remain visible from the park beach, and the site lies within Jefferson County, where the Spindletop salt dome discovery of 1901 launched the modern petroleum industry; the park's tidal marsh system is hydrologically connected to multiple federal hazardous waste sites in the Port Arthur-Beaumont corridor, including the Star Lake Canal Superfund site and contaminated wetlands from a former Chevron refinery; Hurricane Rita (2005) closed the park for nearly five years -- Hurricane Ike (2008) struck during the closure, compounding damage -- with the park partially reopening April 2010 and reaching full restoration by June 2014; during the closure, regional refinery and tank farm spills totaling approximately 8 million gallons contaminated the coastal zone; the site was formally designated as experiencing natural resource damages from the 2010 Deepwater Horizon blowout, receiving NOAA Gulf Spill Restoration funding for coastal dune restoration as a documented injured resource.",
+    "acreage_n": 15109
   },
   {
     "slug": "caprock-canyon",
@@ -1401,7 +1458,7 @@
     "epoch": "Permian through Pliocene; Quartermaster Formation (Permian, ~280 Mya); caliche caprock (Pliocene, ~5 Mya).",
     "native_lands": "Comanche (Nʉmʉnʉʉ) · Kiowa · Apache; territory of the Comancheria; Caprock Canyons part of the southern Comanche range; forced removal to Oklahoma reservations 1874-75.",
     "displacement_tenure": "Cession 478: Treaty with the Comanche and Kiowa (Little Arkansas Treaty, 1865); Cession 511: Agreement with the Comanche, Kiowa, and Apache (Jerome Agreement, 1892, ratified 1900); Comanche and Kiowa bands used the canyon breaks as a refuge until Col. Ranald Mackenzie's Fifth Cavalry swept through during the Red River War campaign of 1874, forcing their return to the Fort Sill reservation; state purchased approximately 13,961 acres from the estate of rancher Theodore Geisler in May 1975; the park opened in 1982.",
-    "ecology": "Shortgrass prairie; canyon riparian; home to the official Texas State Bison Herd ; last free-ranging southern plains bison lineage.",
+    "ecology": "Shortgrass prairie; canyon riparian; home to the official Texas State Bison Herd; last free-ranging southern plains bison lineage.",
     "hydrology": "South Prong Little Red River; Lake Theo (reservoir); playa lakes; intermittent canyon streams.",
     "acreage": "15,313 acres",
     "conservation_status": "Texas State Park; International Dark Sky Park.",
@@ -1414,7 +1471,8 @@
       "Nʉmʉnʉʉ Sookobitʉ (Comanche)",
       "Ndé Kónitsąąíí Gokíyaa (Lipan Apache)"
     ],
-    "shadow_history": "The Texas State Bison Herd at Caprock Canyons descends from calves captured by Charles Goodnight beginning in 1878, immediately after the systematic extermination campaign of 1874 to 1878 reduced the southern plains bison population from an estimated tens of millions to fewer than 1,000 animals continent-wide; Folsom- and Archaic-period archaeological sites are documented throughout the canyon, and Texas Parks and Wildlife acknowledges that most have been disturbed, with many artifacts removed, though no specific prosecution for looting at this site appears in public records."
+    "shadow_history": "The Texas State Bison Herd at Caprock Canyons descends from calves captured by Charles Goodnight beginning in 1878, immediately after the systematic extermination campaign of 1874 to 1878 reduced the southern plains bison population from an estimated tens of millions to fewer than 1,000 animals continent-wide; Folsom- and Archaic-period archaeological sites are documented throughout the canyon, and Texas Parks and Wildlife acknowledges that most have been disturbed, with many artifacts removed, though no specific prosecution for looting at this site appears in public records.",
+    "acreage_n": 15313
   },
   {
     "slug": "palo-duro-canyon",
@@ -1438,7 +1496,8 @@
       "Nʉmʉnʉʉ Sookobitʉ (Comanche)",
       "Ndé Kónitsąąíí Gokíyaa (Lipan Apache)"
     ],
-    "shadow_history": "CCC Companies 2875 and 2876, composed of African American enrollees transferred from East Texas, arrived at Palo Duro in August 1935 and performed the same construction labor as four white companies already on site; the Texas State Parks Board chairman selected Palo Duro specifically for Black enrollees because its canyon location 13 miles from Amarillo made geographic isolation easier to enforce; Black Texans were legally barred from entering the park they built until the Texas State Parks system was desegregated under federal pressure in 1964; Texas Parks and Wildlife acknowledges that most of the canyon's archaeological sites have been picked over and many artifacts removed."
+    "shadow_history": "CCC Companies 2875 and 2876, composed of African American enrollees transferred from East Texas, arrived at Palo Duro in August 1935 and performed the same construction labor as four white companies already on site; the Texas State Parks Board chairman selected Palo Duro specifically for Black enrollees because its canyon location 13 miles from Amarillo made geographic isolation easier to enforce; Black Texans were legally barred from entering the park they built until the Texas State Parks system was desegregated under federal pressure in 1964; Texas Parks and Wildlife acknowledges that most of the canyon's archaeological sites have been picked over and many artifacts removed.",
+    "acreage_n": 29182
   },
   {
     "slug": "johnsons-shut-ins-state-park",
@@ -1458,13 +1517,14 @@
     "lng": -90.848,
     "inat_radius_km": 5,
     "native_lands_api": [
-      "𐓏𐒰𐓓𐒰𐓓𐒷  𐒼𐓂𐓊𐒻  𐓆𐒻𐒿𐒷  𐓀𐒰^𐓓𐒰^(Osage)",
+      "𐓏𐒰𐓓𐒰𐓓𐒷 𐒼𐓂𐓊𐒻 𐓆𐒻𐒿𐒷 𐓀𐒰^𐓓𐒰^(Osage)",
       "O-ga-xpa Ma-zhoⁿ (O-ga-xpa) (Quapaw)",
       "Kaskaskia",
       "Kiikaapoi (Kickapoo)",
       "Očhéthi Šakówiŋ"
     ],
-    "shadow_history": "The park was assembled over 17 years by Joseph Desloge, heir to a St. Louis lead-mining family whose wealth derived from mineral extraction in the same regional belt as the park's Precambrian geology, and donated to the state in 1955; a 2006 to 2007 USGS study following the 2005 reservoir breach documented elevated turbidity, dissolved aluminum, dissolved iron, and a blue-green surface coloration in the East Fork Black River attributed to rock flour and an alum-based flocculant used by AmerenUE; the East Fork Black River corridor has documented Paleo-Indian occupation extending to approximately 12,000 years BP, and whether the flood disturbed intact subsurface deposits has not been publicly assessed."
+    "shadow_history": "The park was assembled over 17 years by Joseph Desloge, heir to a St. Louis lead-mining family whose wealth derived from mineral extraction in the same regional belt as the park's Precambrian geology, and donated to the state in 1955; a 2006 to 2007 USGS study following the 2005 reservoir breach documented elevated turbidity, dissolved aluminum, dissolved iron, and a blue-green surface coloration in the East Fork Black River attributed to rock flour and an alum-based flocculant used by AmerenUE; the East Fork Black River corridor has documented Paleo-Indian occupation extending to approximately 12,000 years BP, and whether the flood disturbed intact subsurface deposits has not been publicly assessed.",
+    "acreage_n": 8916
   },
   {
     "slug": "elephant-rocks-state-park",
@@ -1484,13 +1544,14 @@
     "lng": -90.726,
     "inat_radius_km": 5,
     "native_lands_api": [
-      "𐓏𐒰𐓓𐒰𐓓𐒷  𐒼𐓂𐓊𐒻  𐓆𐒻𐒿𐒷  𐓀𐒰^𐓓𐒰^(Osage)",
+      "𐓏𐒰𐓓𐒰𐓓𐒷 𐒼𐓂𐓊𐒻 𐓆𐒻𐒿𐒷 𐓀𐒰^𐓓𐒰^(Osage)",
       "O-ga-xpa Ma-zhoⁿ (O-ga-xpa) (Quapaw)",
       "Kaskaskia",
       "Kiikaapoi (Kickapoo)",
       "Očhéthi Šakówiŋ"
     ],
-    "shadow_history": "The Graniteville quarry operated beginning in 1869 as a company town with approximately 700 residents at peak; the company owned the hotel, post office, store, railroad depot, and workers' homes; the quarry supplied paving granite for the Eads Bridge piers and St. Louis streets; silica dust exposure in granite quarrying was a nationally documented occupational hazard by the 1890s, producing silicosis in quarry workers, though no site-specific injury or fatality records for Graniteville appear in accessible public records; two abandoned quarry pits remain within the park without documented environmental remediation."
+    "shadow_history": "The Graniteville quarry operated beginning in 1869 as a company town with approximately 700 residents at peak; the company owned the hotel, post office, store, railroad depot, and workers' homes; the quarry supplied paving granite for the Eads Bridge piers and St. Louis streets; silica dust exposure in granite quarrying was a nationally documented occupational hazard by the 1890s, producing silicosis in quarry workers, though no site-specific injury or fatality records for Graniteville appear in accessible public records; two abandoned quarry pits remain within the park without documented environmental remediation.",
+    "acreage_n": 132
   },
   {
     "slug": "charons-garden-wilderness-area",
@@ -1511,21 +1572,22 @@
     "inat_radius_km": 8,
     "native_lands_api": [
       "Gáuigú (Kiowa)",
-      "𐓏𐒰𐓓𐒰𐓓𐒷  𐒼𐓂𐓊𐒻  𐓆𐒻𐒿𐒷  𐓀𐒰^𐓓𐒰^(Osage)",
+      "𐓏𐒰𐓓𐒰𐓓𐒷 𐒼𐓂𐓊𐒻 𐓆𐒻𐒿𐒷 𐓀𐒰^𐓓𐒰^(Osage)",
       "O-ga-xpa Ma-zhoⁿ (O-ga-xpa) (Quapaw)",
       "Wichita",
       "Nʉmʉnʉʉ Sookobitʉ (Comanche)",
       "Kiowa-Comanche-Apache (Oklahoma)",
       "Kiikaapoi (Kickapoo)"
     ],
-    "shadow_history": "The Wichita Mountains formed the core of Comancheria; after the Red River War of 1874-75, in which Colonel Ranald Mackenzie destroyed the last major Comanche winter camp at Palo Duro Canyon (September 28, 1874) and slaughtered approximately 1,400 horses, all surviving Comanche bands were confined to the Kiowa-Comanche-Apache Reservation surrounding Fort Sill; Quanah Parker's band, among the last holdouts, surrendered June 2, 1875; 74 men identified as war leaders were imprisoned at Fort Marion, Florida; the Jerome Agreement (negotiated 1892, ratified June 6, 1900) extracted approximately 2.5 million acres of KCA surplus lands over sustained Kiowa opposition; on July 4, 1901 -- the same day President McKinley proclaimed the KCA surplus land lottery open -- McKinley issued Proclamation 459 establishing the 57,120-acre Wichita Forest Reserve on those ceded lands, making the conservation of these mountains directly contingent on the dispossession of the Comanche and Kiowa. Charon's Garden Wilderness Area was established by Public Law 91-504 (October 23, 1970), making it one of the first wilderness areas designated within a National Wildlife Refuge under the FWS system; a companion North Mountain Unit was designated simultaneously but carries heavily restricted public access."
+    "shadow_history": "The Wichita Mountains formed the core of Comancheria; after the Red River War of 1874-75, in which Colonel Ranald Mackenzie destroyed the last major Comanche winter camp at Palo Duro Canyon (September 28, 1874) and slaughtered approximately 1,400 horses, all surviving Comanche bands were confined to the Kiowa-Comanche-Apache Reservation surrounding Fort Sill; Quanah Parker's band, among the last holdouts, surrendered June 2, 1875; 74 men identified as war leaders were imprisoned at Fort Marion, Florida; the Jerome Agreement (negotiated 1892, ratified June 6, 1900) extracted approximately 2.5 million acres of KCA surplus lands over sustained Kiowa opposition; on July 4, 1901 -- the same day President McKinley proclaimed the KCA surplus land lottery open -- McKinley issued Proclamation 459 establishing the 57,120-acre Wichita Forest Reserve on those ceded lands, making the conservation of these mountains directly contingent on the dispossession of the Comanche and Kiowa. Charon's Garden Wilderness Area was established by Public Law 91-504 (October 23, 1970), making it one of the first wilderness areas designated within a National Wildlife Refuge under the FWS system; a companion North Mountain Unit was designated simultaneously but carries heavily restricted public access.",
+    "acreage_n": 5723
   },
   {
     "slug": "wichita-mountains-national-wildlife-refuge",
     "name": "Wichita Mountains National Wildlife Refuge",
     "state": "OK",
     "geological_age": "~525 million years ago (bedrock); mountains re-exhumed ~300 Mya.",
-    "epoch": "Cambrian bedrock (Furongian); Wichita Mountains uplifted during Pennsylvanian Ouachita Orogeny (~300 Mya), then buried and re-exhumed ; one of the most geologically complex mountain histories in the U.S.",
+    "epoch": "Cambrian bedrock (Furongian); Wichita Mountains uplifted during Pennsylvanian Ouachita Orogeny (~300 Mya), then buried and re-exhumed; one of the most geologically complex mountain histories in the U.S.",
     "native_lands": "Comanche (Nʉmʉnʉʉ) · Kiowa · Wichita (Kitikiti'sh) · Apache · Fort Sill Apache; Quanah Parker (Comanche) called the Wichitas home; mountains set aside from Kiowa-Comanche-Apache Reservation lands in 1901.",
     "displacement_tenure": "Cession 510: Treaty with the Kiowa, Comanche, and Apache (Medicine Lodge Creek, 1867); Cession 485: Agreement with the Comanche, Kiowa, and Apache (Jerome Agreement, 1892, ratified 1900); Congress carved 61,500 acres directly out of the Kiowa-Comanche-Apache Reservation and proclaimed the Wichita Forest Reserve on July 4, 1901; President Roosevelt redesignated the area a game preserve in 1905; the New York Zoological Park shipped fifteen bison by rail to the refuge on October 10, 1907, at the invitation of Quanah Parker's Comanche delegation; retitled Wichita Mountains Wildlife Refuge in 1936.",
     "ecology": "Mixed-grass and shortgrass prairie; cross timbers; American bison herd (reintroduced 1907, ~650 animals); longhorn cattle; Rocky Mountain elk; prairie dogs.",
@@ -1539,14 +1601,15 @@
     "inat_radius_km": 10,
     "native_lands_api": [
       "Gáuigú (Kiowa)",
-      "𐓏𐒰𐓓𐒰𐓓𐒷  𐒼𐓂𐓊𐒻  𐓆𐒻𐒿𐒷  𐓀𐒰^𐓓𐒰^(Osage)",
+      "𐓏𐒰𐓓𐒰𐓓𐒷 𐒼𐓂𐓊𐒻 𐓆𐒻𐒿𐒷 𐓀𐒰^𐓓𐒰^(Osage)",
       "O-ga-xpa Ma-zhoⁿ (O-ga-xpa) (Quapaw)",
       "Wichita",
       "Nʉmʉnʉʉ Sookobitʉ (Comanche)",
       "Kiowa-Comanche-Apache (Oklahoma)",
       "Kiikaapoi (Kickapoo)"
     ],
-    "shadow_history": "The refuge occupies land ceded by the Kiowa-Comanche-Apache under the Jerome Agreement (negotiated 1892, ratified June 6, 1900), which extracted approximately 2.5 million acres of KCA surplus lands over sustained Kiowa opposition; President McKinley established the Wichita Forest Reserve on those ceded lands by Proclamation 459 on July 4, 1901 -- the same day he opened the KCA land lottery; the refuge was reorganized under the FWS in 1936. Three CCC camps and multiple WPA projects operated at the refuge through the 1930s; by March 1938, CCC labor had constructed 46 concrete dams, 14 rubble masonry dams, 50 miles of improved roads, 46 miles of big-game fencing, and a hydroelectric system; the WPA built the Holy City of the Wichitas between 1935 and 1936 at a cost of $147,000; Roosevelt's April 1905 wolf hunt in the adjacent Big Pasture, which included Quanah Parker as a participant, is documented as a direct political catalyst for the congressional appropriation that created the preserve; the Quanah Artillery Range (15,850 acres) has been operational along the refuge's southern boundary since 1957, with a 3,800-acre strip between the refuge and Fort Sill closed to the public."
+    "shadow_history": "The refuge occupies land ceded by the Kiowa-Comanche-Apache under the Jerome Agreement (negotiated 1892, ratified June 6, 1900), which extracted approximately 2.5 million acres of KCA surplus lands over sustained Kiowa opposition; President McKinley established the Wichita Forest Reserve on those ceded lands by Proclamation 459 on July 4, 1901 -- the same day he opened the KCA land lottery; the refuge was reorganized under the FWS in 1936. Three CCC camps and multiple WPA projects operated at the refuge through the 1930s; by March 1938, CCC labor had constructed 46 concrete dams, 14 rubble masonry dams, 50 miles of improved roads, 46 miles of big-game fencing, and a hydroelectric system; the WPA built the Holy City of the Wichitas between 1935 and 1936 at a cost of $147,000; Roosevelt's April 1905 wolf hunt in the adjacent Big Pasture, which included Quanah Parker as a participant, is documented as a direct political catalyst for the congressional appropriation that created the preserve; the Quanah Artillery Range (15,850 acres) has been operational along the refuge's southern boundary since 1957, with a 3,800-acre strip between the refuge and Fort Sill closed to the public.",
+    "acreage_n": 59020
   },
   {
     "slug": "john-bryan-state-park",
@@ -1556,7 +1619,7 @@
     "epoch": "Silurian period (Llandovery-Wenlock); dolomite formed in shallow tropical sea; gorge incised during Late Pleistocene and early Holocene by glacial meltwater drainage.",
     "native_lands": "Shawnee (Shawanwaki) · Miami · Adena and Hopewell cultures (500 BCE-500 CE); Little Miami River corridor a major Shawnee territory; Shawnee ceded Ohio lands via Treaty of Greene Ville 1795.",
     "displacement_tenure": "Cession 11: Treaty of Greene Ville (1795); Clifton Gorge corridor industrialized through the 19th century as a water-power district with textile mills, gristmills, and sawmills; John Bryan purchased 335 acres as Riverside Farm in 1896 and bequeathed it to the State of Ohio in 1918 for use as a forestry, botanic, and wildlife reserve; designated a state forest park in 1925.",
-    "ecology": "Gorge microclimate supporting relict northern plant communities; Canadian yew, white cedar, walking fern ; species absent from surrounding landscape; National Natural Landmark.",
+    "ecology": "Gorge microclimate supporting relict northern plant communities; Canadian yew, white cedar, walking fern; species absent from surrounding landscape; National Natural Landmark.",
     "hydrology": "Little Miami River (Ohio State Scenic River; National Wild & Scenic River); Yellow Spring iron-rich seep; Jacoby Creek tributary.",
     "acreage": "752 acres (park); 268 acres (Clifton Gorge SNP)",
     "conservation_status": "Ohio State Park; National Wild and Scenic River (Little Miami River); Ohio State Scenic River (Little Miami River).",
@@ -1566,12 +1629,13 @@
     "lng": -83.831,
     "inat_radius_km": 5,
     "native_lands_api": [
-      "𐓏𐒰𐓓𐒰𐓓𐒷  𐒼𐓂𐓊𐒻  𐓆𐒻𐒿𐒷  𐓀𐒰^𐓓𐒰^(Osage)",
+      "𐓏𐒰𐓓𐒰𐓓𐒷 𐒼𐓂𐓊𐒻 𐓆𐒻𐒿𐒷 𐓀𐒰^𐓓𐒰^(Osage)",
       "Shawandasse Tula (Shawanwaki/Shawnee)",
       "Kaskaskia",
       "Myaamia"
     ],
-    "shadow_history": "The Little Miami River corridor through Clifton Gorge supported at least six mills within one mile by the early 19th century, including a woolen mill, sawmill, paper mill, barrel mill, and two grist mills, all operating before workplace safety or child labor laws; most were abandoned by the late 19th century as water power became uneconomical; no records of worker injuries or labor litigation from the Clifton mill district appear in accessible archives, though the pre-regulatory context makes the absence of documentation unsurprising."
+    "shadow_history": "The Little Miami River corridor through Clifton Gorge supported at least six mills within one mile by the early 19th century, including a woolen mill, sawmill, paper mill, barrel mill, and two grist mills, all operating before workplace safety or child labor laws; most were abandoned by the late 19th century as water power became uneconomical; no records of worker injuries or labor litigation from the Clifton mill district appear in accessible archives, though the pre-regulatory context makes the absence of documentation unsurprising.",
+    "acreage_n": 1020
   },
   {
     "slug": "hocking-hills",
@@ -1591,19 +1655,20 @@
     "lng": -82.5408,
     "inat_radius_km": 8,
     "native_lands_api": [
-      "𐓏𐒰𐓓𐒰𐓓𐒷  𐒼𐓂𐓊𐒻  𐓆𐒻𐒿𐒷  𐓀𐒰^𐓓𐒰^(Osage)",
+      "𐓏𐒰𐓓𐒰𐓓𐒷 𐒼𐓂𐓊𐒻 𐓆𐒻𐒿𐒷 𐓀𐒰^𐓓𐒰^(Osage)",
       "Shawandasse Tula (Shawanwaki/Shawnee)",
       "Kaskaskia",
       "Ofo"
     ],
-    "shadow_history": "Two racially segregated CCC companies built the park's infrastructure in the 1930s: Company 505 (white enrollees) was based at Camp Hocking near Conkle's Hollow, while Company 526 (Black enrollees) was based at Camp Logan from approximately 1934 to 1937, improving over 2,000 acres including Cantwell Cliffs, Rock House, and Rockbridge; by July 1935 all CCC camps nationally were formally segregated under an order from CCC director Robert Fechner; acid mine drainage from abandoned coal operations in the broader Hocking watershed is well-documented, with Monday Creek and its tributaries largely devoid of fish due to sulfuric acid and settled iron and aluminum particles."
+    "shadow_history": "Two racially segregated CCC companies built the park's infrastructure in the 1930s: Company 505 (white enrollees) was based at Camp Hocking near Conkle's Hollow, while Company 526 (Black enrollees) was based at Camp Logan from approximately 1934 to 1937, improving over 2,000 acres including Cantwell Cliffs, Rock House, and Rockbridge; by July 1935 all CCC camps nationally were formally segregated under an order from CCC director Robert Fechner; acid mine drainage from abandoned coal operations in the broader Hocking watershed is well-documented, with Monday Creek and its tributaries largely devoid of fish due to sulfuric acid and settled iron and aluminum particles.",
+    "acreage_n": 11623
   },
   {
     "slug": "arc-of-appalachia",
     "name": "Arc of Appalachia",
     "state": "OH",
     "geological_age": "~485-420 million years ago (bedrock).",
-    "epoch": "Ordovician and Silurian periods; limestone and dolomite deposited in shallow Iapetus Ocean; terrain never covered by Pleistocene glaciation ; landscape continuity extending back millions of years.",
+    "epoch": "Ordovician and Silurian periods; limestone and dolomite deposited in shallow Iapetus Ocean; terrain never covered by Pleistocene glaciation; landscape continuity extending back millions of years.",
     "native_lands": "Shawnee (Shawanwaki) · Adena and Hopewell mound-building cultures; unglaciated Adams County at southern edge of Shawnee territory; proximity to Serpent Mound (Adena/Fort Ancient, ~300 BCE-1200 CE).",
     "displacement_tenure": "Cession 11: Treaty of Greene Ville (1795); co-founded by Nancy Stranahan in 1995, beginning with a 47-acre purchase at Rocky Fork Gorge in Highland County; the system has grown to approximately 5,000 acres across five southern Ohio counties through more than 100 individual real estate transactions, funded in part by Ohio's Clean Ohio program; operates independently of The Nature Conservancy, which separately manages the adjacent Edge of Appalachia Preserve System established 1959.",
     "ecology": "One of the most biodiverse landscapes in Ohio; 114 rare or endangered species; dry limestone prairie (Lynx Prairie); eastern red cedar savanna; unglaciated forest; relict Appalachian flora.",
@@ -1616,19 +1681,20 @@
     "lng": -83.54,
     "inat_radius_km": 8,
     "native_lands_api": [
-      "𐓏𐒰𐓓𐒰𐓓𐒷  𐒼𐓂𐓊𐒻  𐓆𐒻𐒿𐒷  𐓀𐒰^𐓓𐒰^(Osage)",
+      "𐓏𐒰𐓓𐒰𐓓𐒷 𐒼𐓂𐓊𐒻 𐓆𐒻𐒿𐒷 𐓀𐒰^𐓓𐒰^(Osage)",
       "Shawandasse Tula (Shawanwaki/Shawnee)",
       "Kaskaskia",
       "Myaamia"
     ],
-    "shadow_history": "Frederic Ward Putnam of the Harvard Peabody Museum excavated Serpent Mound from 1887 to 1889, placing trenches in the effigy and excavating two nearby conical mounds; the excavations yielded pipes, points, earspools, gorgets, and multiple human burials with associated grave goods; Putnam raised funds to have Harvard purchase the site in 1887 -- making it the first privately funded archaeological preserve in the United States -- and the Peabody held the site until 1900; whether Serpent Mound skeletal material and grave goods remain in the Peabody collections or have been subject to NAGPRA repatriation has not been confirmed in publicly available records."
+    "shadow_history": "Frederic Ward Putnam of the Harvard Peabody Museum excavated Serpent Mound from 1887 to 1889, placing trenches in the effigy and excavating two nearby conical mounds; the excavations yielded pipes, points, earspools, gorgets, and multiple human burials with associated grave goods; Putnam raised funds to have Harvard purchase the site in 1887 -- making it the first privately funded archaeological preserve in the United States -- and the Peabody held the site until 1900; whether Serpent Mound skeletal material and grave goods remain in the Peabody collections or have been subject to NAGPRA repatriation has not been confirmed in publicly available records.",
+    "acreage_n": 7000
   },
   {
     "slug": "mount-airy-forest",
     "name": "Mount Airy Forest",
     "state": "OH",
     "geological_age": "~450 million years ago (Ordovician bedrock); surface soils entirely reworked by 19th-century agricultural erosion and 20th-century reforestation.",
-    "epoch": "Ordovician period (Cincinnatian); overlain by Wisconsin glacial till; original forest cleared by 1900 through farming and grazing; reforestation begun 1911 ; one of the first municipal reforestation projects in the United States.",
+    "epoch": "Ordovician period (Cincinnatian); overlain by Wisconsin glacial till; original forest cleared by 1900 through farming and grazing; reforestation begun 1911; one of the first municipal reforestation projects in the United States.",
     "native_lands": "Shawnee (Shawanwaki) · Fort Ancient culture (900-1650 CE); upland forest ridge a known hunting and travel corridor; Shawnee ceded Hamilton County lands via Treaty of Greene Ville 1795.",
     "displacement_tenure": "Cession 11: Treaty of Greene Ville (1795); by the early 20th century the land comprised small, failing farms eroded by decades of poor agricultural and grazing practices; Cincinnati Park Board purchased the initial 168 acres of barren farmland in 1911, planting over 1.2 million trees through 1920 in what became the first municipal reforestation project in the United States.",
     "ecology": "Reforested mixed hardwood and evergreen; 700 acres hardwoods, 200 acres evergreens, 269 acres native woodland; 120-acre arboretum with 1,600+ species; CCC plantings 1935-42; National Register of Historic Places 2010.",
@@ -1641,12 +1707,13 @@
     "lng": -84.587,
     "inat_radius_km": 5,
     "native_lands_api": [
-      "𐓏𐒰𐓓𐒰𐓓𐒷  𐒼𐓂𐓊𐒻  𐓆𐒻𐒿𐒷  𐓀𐒰^𐓓𐒰^(Osage)",
+      "𐓏𐒰𐓓𐒰𐓓𐒷 𐒼𐓂𐓊𐒻 𐓆𐒻𐒿𐒷 𐓀𐒰^𐓓𐒰^(Osage)",
       "Shawandasse Tula (Shawanwaki/Shawnee)",
       "Kaskaskia",
       "Myaamia"
     ],
-    "shadow_history": "CCC Company 1505-C, an all-Black unit, arrived at Mount Airy in May 1935 and logged 51,414 man-hours building forest infrastructure; its encampment was constructed by the enrollees themselves on land Cincinnati Parks describes as unsuccessful farmland; Cincinnati maintained formal racial segregation of public recreational facilities through the 1950s, with the Sunlite Pool at Coney Island not desegregated until 1961 following NAACP litigation; whether Mount Airy Forest operated under a formal segregation policy for visitors during this period has not been confirmed in accessible public records."
+    "shadow_history": "CCC Company 1505-C, an all-Black unit, arrived at Mount Airy in May 1935 and logged 51,414 man-hours building forest infrastructure; its encampment was constructed by the enrollees themselves on land Cincinnati Parks describes as unsuccessful farmland; Cincinnati maintained formal racial segregation of public recreational facilities through the 1950s, with the Sunlite Pool at Coney Island not desegregated until 1961 following NAACP litigation; whether Mount Airy Forest operated under a formal segregation policy for visitors during this period has not been confirmed in accessible public records.",
+    "acreage_n": 1459
   },
   {
     "slug": "clifton-gorge-state-nature-preserve",
@@ -1666,12 +1733,13 @@
     "lng": -83.8328,
     "inat_radius_km": 5,
     "native_lands_api": [
-      "𐓏𐒰𐓓𐒰𐓓𐒷  𐒼𐓂𐓊𐒻  𐓆𐒻𐒿𐒷  𐓀𐒰^𐓓𐒰^(Osage)",
+      "𐓏𐒰𐓓𐒰𐓓𐒷 𐒼𐓂𐓊𐒻 𐓆𐒻𐒿𐒷 𐓀𐒰^𐓓𐒰^(Osage)",
       "Shawandasse Tula (Shawanwaki/Shawnee)",
       "Kaskaskia",
       "Myaamia"
     ],
-    "shadow_history": "The gorge corridor supported six operating mills within one mile by the early 19th century, all functioning before child labor and workplace safety laws; Hugh Taylor Birch, who donated 160 acres to the state in 1937 and also donated the initial parcel of Glen Helen to Antioch College in 1929, was an attorney and real estate speculator who assembled multiple large tracts in the Little Miami corridor; no records of displaced tenants in either acquisition appear in accessible archives."
+    "shadow_history": "The gorge corridor supported six operating mills within one mile by the early 19th century, all functioning before child labor and workplace safety laws; Hugh Taylor Birch, who donated 160 acres to the state in 1937 and also donated the initial parcel of Glen Helen to Antioch College in 1929, was an attorney and real estate speculator who assembled multiple large tracts in the Little Miami corridor; no records of displaced tenants in either acquisition appear in accessible archives.",
+    "acreage_n": 268
   },
   {
     "slug": "parker-woods",
@@ -1691,19 +1759,20 @@
     "lng": -84.5348,
     "inat_radius_km": 5,
     "native_lands_api": [
-      "𐓏𐒰𐓓𐒰𐓓𐒷  𐒼𐓂𐓊𐒻  𐓆𐒻𐒿𐒷  𐓀𐒰^𐓓𐒰^(Osage)",
+      "𐓏𐒰𐓓𐒰𐓓𐒷 𐒼𐓂𐓊𐒻 𐓆𐒻𐒿𐒷 𐓀𐒰^𐓓𐒰^(Osage)",
       "Shawandasse Tula (Shawanwaki/Shawnee)",
       "Kaskaskia",
       "Myaamia"
     ],
-    "shadow_history": "The park sits adjacent to the Mill Creek watershed, which a 1996 assessment found to contain three Superfund sites on its banks, 31 other hazardous waste sites, and 158 combined sewer overflow outflows; EPA conducted a buried-drum hazardous waste removal on the West Fork Mill Creek in South Cumminsville in 2004; no contamination record specific to the Parker Woods parcel has been located, though the Mill Creek corridor has been among the most industrially contaminated urban streams in the Midwest."
+    "shadow_history": "The park sits adjacent to the Mill Creek watershed, which a 1996 assessment found to contain three Superfund sites on its banks, 31 other hazardous waste sites, and 158 combined sewer overflow outflows; EPA conducted a buried-drum hazardous waste removal on the West Fork Mill Creek in South Cumminsville in 2004; no contamination record specific to the Parker Woods parcel has been located, though the Mill Creek corridor has been among the most industrially contaminated urban streams in the Midwest.",
+    "acreage_n": 63
   },
   {
     "slug": "glen-helen-nature-preserve",
     "name": "Glen Helen Nature Preserve",
     "state": "OH",
     "geological_age": "~445-430 million years ago (bedrock); gorge and ravine system formed by glacial meltwater ~15,000 years ago.",
-    "epoch": "Silurian period (Llandovery-Wenlock); same dolomite and limestone formations as Clifton Gorge; Holocene iron precipitation at Yellow Spring actively ongoing ; visible as orange mineral staining on rock surfaces.",
+    "epoch": "Silurian period (Llandovery-Wenlock); same dolomite and limestone formations as Clifton Gorge; Holocene iron precipitation at Yellow Spring actively ongoing; visible as orange mineral staining on rock surfaces.",
     "native_lands": "Shawnee (Shawanwaki) · Miami · Adena culture; Orators Mound (Adena burial mound) within preserve boundaries; Yellow Spring a known Shawnee waypoint; Little Miami River a principal Shawnee waterway.",
     "displacement_tenure": "Cession 11: Treaty of Greene Ville (1795); attorney Hugh Taylor Birch donated the initial 700-acre parcel to Antioch College in 1929 as a memorial to his daughter Helen Birch Bartlett; Glen Helen Association assumed operational ownership from Antioch College in 2020 via a $2.5 million agreement over ten years.",
     "ecology": "Mixed mesophytic gorge forest; 400-year-old trees; regionally significant old-growth stands; beaver wetland; Raptor Center (Ohio’s first raptor rehabilitation facility); 20+ miles of trail connecting to John Bryan State Park and Clifton Gorge.",
@@ -1716,12 +1785,13 @@
     "lng": -83.891,
     "inat_radius_km": 5,
     "native_lands_api": [
-      "𐓏𐒰𐓓𐒰𐓓𐒷  𐒼𐓂𐓊𐒻  𐓆𐒻𐒿𐒷  𐓀𐒰^𐓓𐒰^(Osage)",
+      "𐓏𐒰𐓓𐒰𐓓𐒷 𐒼𐓂𐓊𐒻 𐓆𐒻𐒿𐒷 𐓀𐒰^𐓓𐒰^(Osage)",
       "Shawandasse Tula (Shawanwaki/Shawnee)",
       "Kaskaskia",
       "Myaamia"
     ],
-    "shadow_history": "Frank Van Wort's unregulated dig into the Orators Mound in 1953 to 1954 found five skeletons (two adults, three infants), which he interpreted as Adena; Van Wort published no reports. A more systematic 1971 excavation by Antioch College students under archaeologist Wolfgang Marschall exposed Van Wort's earlier work, excavated roughly a third of the mound, and recovered seven skeletons, which were placed along with artifacts and excavation records in the Dayton Museum of Natural History (now the Boonshoft Museum of Discovery); Marschall's team concluded the mound was Hopewellian rather than Adena. The current location or repatriation status of the material recovered in 1971 is not confirmed in available sources. The Neff family's 246-room hotel at the Yellow Spring, built in 1869 at a cost of approximately $250,000 and targeting Southern vacationers, failed financially within 13 years."
+    "shadow_history": "Frank Van Wort's unregulated dig into the Orators Mound in 1953 to 1954 found five skeletons (two adults, three infants), which he interpreted as Adena; Van Wort published no reports. A more systematic 1971 excavation by Antioch College students under archaeologist Wolfgang Marschall exposed Van Wort's earlier work, excavated roughly a third of the mound, and recovered seven skeletons, which were placed along with artifacts and excavation records in the Dayton Museum of Natural History (now the Boonshoft Museum of Discovery); Marschall's team concluded the mound was Hopewellian rather than Adena. The current location or repatriation status of the material recovered in 1971 is not confirmed in available sources. The Neff family's 246-room hotel at the Yellow Spring, built in 1869 at a cost of approximately $250,000 and targeting Southern vacationers, failed financially within 13 years.",
+    "acreage_n": 1147
   },
   {
     "slug": "otto-armleder-memorial-park",
@@ -1741,12 +1811,13 @@
     "lng": -84.428,
     "inat_radius_km": 5,
     "native_lands_api": [
-      "𐓏𐒰𐓓𐒰𐓓𐒷  𐒼𐓂𐓊𐒻  𐓆𐒻𐒿𐒷  𐓀𐒰^𐓓𐒰^(Osage)",
+      "𐓏𐒰𐓓𐒰𐓓𐒷 𐒼𐓂𐓊𐒻 𐓆𐒻𐒿𐒷 𐓀𐒰^𐓓𐒰^(Osage)",
       "Shawandasse Tula (Shawanwaki/Shawnee)",
       "Kaskaskia",
       "Myaamia"
     ],
-    "shadow_history": "Ohio EPA and USGS assessments of the Little Miami basin have documented elevated trace elements and synthetic organic compounds including organochlorine insecticides and PCBs in streambed sediments downstream of Cincinnati's industrial corridor; no Superfund listing specific to the Armleder floodplain section appears in EPA records; the park's floodplain location, which prevented prior development and made acquisition relatively inexpensive, reflects the same industrial contamination history that kept the land undeveloped."
+    "shadow_history": "Ohio EPA and USGS assessments of the Little Miami basin have documented elevated trace elements and synthetic organic compounds including organochlorine insecticides and PCBs in streambed sediments downstream of Cincinnati's industrial corridor; no Superfund listing specific to the Armleder floodplain section appears in EPA records; the park's floodplain location, which prevented prior development and made acquisition relatively inexpensive, reflects the same industrial contamination history that kept the land undeveloped.",
+    "acreage_n": 347
   },
   {
     "slug": "bender-mountain-nature-preserve",
@@ -1766,11 +1837,12 @@
     "lng": -84.62,
     "inat_radius_km": 5,
     "native_lands_api": [
-      "𐓏𐒰𐓓𐒰𐓓𐒷  𐒼𐓂𐓊𐒻  𐓆𐒻𐒿𐒷  𐓀𐒰^𐓓𐒰^(Osage)",
+      "𐓏𐒰𐓓𐒰𐓓𐒷 𐒼𐓂𐓊𐒻 𐓆𐒻𐒿𐒷 𐓀𐒰^𐓓𐒰^(Osage)",
       "Shawandasse Tula (Shawanwaki/Shawnee)",
       "Kaskaskia",
       "Myaamia"
     ],
-    "shadow_history": "Prior land use included grazing, hog foraging, fruit growing, and selective logging; no quarrying, industrial use, or documented forced removal has been identified for this Ohio River bluff site in accessible records; the Western Wildlife Corridor began managing the site in 2003 and describes it as degraded agricultural and silvicultural land undergoing active restoration."
+    "shadow_history": "Prior land use included grazing, hog foraging, fruit growing, and selective logging; no quarrying, industrial use, or documented forced removal has been identified for this Ohio River bluff site in accessible records; the Western Wildlife Corridor began managing the site in 2003 and describes it as degraded agricultural and silvicultural land undergoing active restoration.",
+    "acreage_n": 130
   }
 ]
