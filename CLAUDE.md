@@ -5,17 +5,22 @@ Static photographic index of public lands. CC0 Public Domain.
 ## Important
 Always work directly in the main repo. Never use git worktrees for this project — they drift from main and cause data loss on deploy. If you find yourself in a worktree, sync sites.json, sites_meta.json, and *_cache.json from the main repo before generating or deploying.
 Never use preview_start, preview_screenshot, preview_snapshot, or any browser preview tools. They do not work in this environment. Do not attempt browser verification for any change — report what changed and move on.
-At the start of every session, read sites.json (first 60 lines), sites_meta.json, shadow_history_bibliography.txt, generate_sites.py, and js/lightbox.js before performing any task.
+At the start of every session, read sites.json (first 60 lines), sites_meta.json, shadow_history_bibliography.txt, build.py, data/photos.json (spot-check a slug), and js/lightbox.js before performing any task.
 Site: publiclandsinstitute.net
 Host: DreamHost (SFTP port 22, credentials in .env)
 
 ## Key files
-- generate_sites.py — master generator, run with: python3 generate_sites.py
-- sites.json — location metadata (includes lat/lng/inat_radius_km)
+- build.py — master generator, run with: python3 build.py. Writes sites/*.html, archive.html, photographs.html, the About stats sentence, sitemap.xml, and data/sites-map.js (loaded by index.html with a ?v= content hash), then runs tools/validate_pli.py and exits nonzero if validation fails
+- data/photos.json — single source of truth for images (per-slug entries: f, d, thumb, large, t, r, x, c, commons_n). build.py does NOT scan image folders; new images must get entries here (tools/sync_photos.py does this)
+- data/nations.geojson — per-(site, nation) features for the map's Indigenous territories layer
+- sites.json — location metadata (includes lat/lng/inat_radius_km, acreage_n)
 - sites_meta.json — agency, agency_type, territory data used by the map index (index.html)
+- index.html, glossary.html, about.html — hand-maintained (build.py only updates the About stats sentence and the sites-map.js version string in index.html)
+- tools/ — validate_pli.py (data/page checks), sync_photos.py (append photos.json entries for new images), make_cards.py (og social cards in img/cards/), cleanup_sites.py, add_site_og.py
+- generate_sites.py — LEGACY, superseded by build.py July 2026. Never run it: it would overwrite index.html and the generated pages with pre-audit output. Kept only as reference for the iNat/native-land fetchers and the glossary builder
 - inaturalist_cache.json — iNat API cache, safe to delete entries to force refresh
-- img/jpg/<slug>/ — JPEG images (drive generation)
-- img/full/<slug>/ — TIFF downloads
+- img/jpg/<slug>/ — JPEG images; thumbs/<slug>/ — gallery thumbnails; img/RAW/<slug>/ — RAW+XMP (per-site since July 2026); img/cards/ — 1200x630 social cards
+- img/full/<slug>/ — TIFF masters (upload to Commons only, never to DreamHost)
 - .env — DreamHost credentials (never commit this file)
 
 ## Deploying
@@ -43,7 +48,7 @@ for e in entries[:-2]:
     except ValueError:
         pass
 "
-Then deploy (two-phase — image uploads are handled separately by the "update" workflow):
+Then deploy (two-phase — image uploads are handled separately by the "update" workflow; note the image workflow must also ship img/cards/ and the per-site img/RAW/<slug>/ tree, which replaced the flat img/RAW layout in July 2026 — the server keeps old flat copies until cleaned up, mapping in data/raw-redirects.txt):
   source .env
   # Phase 2: HTML/JS/JSON/text files — checksum-accurate, deletes removed files, skips images
   sshpass -p "$DREAMHOST_PASS" rsync -avz --checksum --delete \
@@ -82,7 +87,7 @@ Add an `observations` array to group images by visit date:
 - date: YYYY-MM
 - notes: free text, displayed above that visit's images
 - image_list: filenames only (files must exist in img/jpg/<slug>/)
-If omitted, generator falls back to scanning the folder and grouping images by EXIF month.
+If omitted, build.py groups consecutive data/photos.json entries by capture month (the d field, filled from EXIF by tools/sync_photos.py).
 
 ## research_pli_metadata.py
 Populates native_lands and displacement_tenure using native-land.ca territories + treaties APIs and Claude.
@@ -94,7 +99,7 @@ Safe to re-run; skips already-populated entries. Complex sites (Mammoth Cave, et
 - Never use em dashes or en dashes anywhere in output or field values
 - Never add an "images" count field to sites.json
 - Plain numeric captions (1, 2, 3...), not roman numerals
-- Always run generator after any change and confirm output before finishing
+- Always run python3 build.py after any change and confirm output (including the validator result) before finishing
 - Always deploy after generating unless told otherwise
 
 ## inat_radius_km defaults
@@ -180,7 +185,9 @@ Output the following terminal block for the user to paste and run themselves. Do
 
 ```bash
 cd "/Users/jordan/Library/CloudStorage/OneDrive-UniversityofCincinnati/pli"
-python3 generate_sites.py
+python3 tools/sync_photos.py
+python3 tools/make_cards.py
+python3 build.py
 STAMP=$(date +%Y-%m-%d_%H-%M)
 mkdir -p Archive/$STAMP/sites
 cp *.html Archive/$STAMP/ 2>/dev/null || true
@@ -250,13 +257,14 @@ lightbox.js reads .caption-title and .caption-filename from the hidden figcaptio
 and prefers img data-full for the viewer image. Do not add onclick handlers or
 image interaction logic to the page template. No changes to sites.json needed.
 
-Wikimedia Commons is the canonical source for TIFF downloads. The generator
-reads ../pli-commons/upload_log.json and links Download TIFF (and the Commons
-page action) via Special:FilePath using the exact logged filename; images not
-yet uploaded hide those actions until the next generate after upload. RAW and
-XML (.xmp sidecar) downloads stay on DreamHost under img/RAW/. The archive
-page lists Download TIFF, Download RAW, and XML per image, hiding any that are
-unavailable.
+Wikimedia Commons is the canonical source for TIFF downloads. tools/sync_photos.py
+reads ../pli-commons/upload_log.json when creating data/photos.json entries and
+fills t (Special:FilePath URL), c (file page URL), and commons_n from the exact
+logged filename; build.py renders those links. Images not yet uploaded show a
+bordered "Uploading" cell in the archive and hide the TIFF/Commons actions until
+sync_photos runs again after upload. RAW and XMP (.xmp sidecar) downloads stay
+on DreamHost under img/RAW/<slug>/. The archive page lists Commons, Download RAW,
+and XMP per image.
 
 On mobile (max-width: 719px), CSS order places the photo grid above the record
 column. The desktop two-column layout (min-width: 720px) is unaffected.
