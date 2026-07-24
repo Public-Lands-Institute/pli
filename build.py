@@ -15,12 +15,16 @@ Inputs:
   data/nations.geojson  per-(site, nation) point features for the map's native layer
 
 Outputs:
+  sites/<slug>.html     one page per site (record column + photo pane)
   archive.html          plain-text download index (all rows, per-site sections)
   photographs.html      visual feed grouped by site
   about.html            stats sentence only — the rest of the page is hand-maintained
   sitemap.xml           lastmod = each source file's actual last-modified date
   data/sites-map.js     SITES / NATIONS_GJ / PHOTOS / NATION_COLORS / NATION_LIST,
                         loaded by index.html with a ?v= content-hash query string
+
+glossary.html and index.html are hand-maintained (build.py only stamps the
+sites-map.js version string into index.html).
 
 Ends by running tools/validate_pli.py; exits nonzero if validation fails.
 """
@@ -197,6 +201,364 @@ STATE_NAMES = {
     'VT': 'Vermont', 'VA': 'Virginia', 'WA': 'Washington', 'WV': 'West Virginia',
     'WI': 'Wisconsin', 'WY': 'Wyoming',
 }
+
+
+# ── Site pages ─────────────────────────────────────────────────────────────────
+
+# Eras/epochs matched against geological_age + epoch text; color + onset Mya.
+GEO_TIMESCALE = [
+    ('Archean', '#3a3a52', 4000), ('Proterozoic', '#5c5c8a', 2500),
+    ('Cambrian', '#a0522d', 541), ('Ordovician', '#c8a86e', 485),
+    ('Silurian', '#7ecfc0', 444), ('Devonian', '#4aaa78', 419),
+    ('Mississippian', '#3d7fbf', 359), ('Pennsylvanian', '#5d5abf', 323),
+    ('Permian', '#9b59b6', 299), ('Triassic', '#e07050', 252),
+    ('Jurassic', '#c8a840', 201), ('Cretaceous', '#d4b840', 145),
+    ('Paleogene', '#d4704a', 66), ('Eocene', '#d4704a', 56), ('Oligocene', '#d4704a', 34),
+    ('Neogene', '#c85a8a', 23),
+    ('Quaternary', '#8c8c8c', 2.6), ('Pleistocene', '#8c8c8c', 2.6),
+]
+EARTH_TIMELINE_MYA = 541
+
+
+def make_geo_block(geo_text, epoch_text=''):
+    """Era swatch + timeline bar + full geological_age prose, mirroring the map panel.
+
+    Matches era names across geological_age and epoch text combined, since some
+    entries state the era only in one field. Picks the oldest era mentioned as
+    the headline. The Mya number badge is only attached when the winning era is
+    also the first era name to appear in its clause, so a badge never gets
+    paired with a number that actually belongs to a different, later-mentioned era.
+    """
+    if not geo_text:
+        return ''
+    combined = geo_text + ('; ' + epoch_text if epoch_text else '')
+    clauses = re.split(r'[;.]', combined)
+    best = None  # (era, color, oldest, clause)
+    for clause in clauses:
+        c = clause.lower()
+        for era, color, oldest in GEO_TIMESCALE:
+            if era.lower() in c and (best is None or oldest > best[2]):
+                best = (era, color, oldest, clause)
+    era_row = ''
+    bar = ''
+    if best:
+        era, color, oldest, clause = best
+        mya = ''
+        m = re.search(r'~?([\d,]+)(?:\s*(?:-|to)\s*([\d,]+))?\s*[Mm]ya', clause)
+        if m:
+            c = clause.lower()
+            positions = [(c.find(e.lower()), e) for e, _, _ in GEO_TIMESCALE if e.lower() in c]
+            first_era = min(positions)[1] if positions else None
+            if first_era == era:
+                num = m.group(1).replace(',', '')
+                if m.group(2):
+                    num += '-' + m.group(2).replace(',', '')
+                mya = f'<span class="geo-mya">{num} Mya</span>'
+        pct = min(100, round(oldest / EARTH_TIMELINE_MYA * 100))
+        era_row = (f'<div class="geo-era-row"><div class="geo-swatch" style="background:{color}"></div>'
+                   f'<span class="geo-era-name">{era}</span>{mya}</div>')
+        bar = (f'<div class="geo-bar-wrap"><div class="geo-bar-fill" '
+               f'style="width:{pct}%;background:{color};opacity:0.55"></div></div>')
+    return (f'<div class="rec-section"><div class="rec-label">Geologic Age'
+            f' <a href="../glossary.html#geologic-time" class="rec-glossary-link">Glossary →</a></div>'
+            f'{era_row}{bar}<p class="geo-prose">{geo_text}</p></div>')
+
+
+def observations_for_site(site, entries):
+    """[{date, notes, images}] groups for a site's photo pane.
+
+    If the site has an explicit 'observations' key (see CLAUDE.md schema), its
+    image_list filenames are matched against data/photos.json. Otherwise the
+    photos.json order is canonical: consecutive entries sharing a capture month
+    form one group. Caption numbers always come from photos.json position.
+    """
+    recs = image_records(site['slug'], entries)
+    if 'observations' in site:
+        by_cam = {r['camera_filename']: r for r in recs}
+        result = []
+        for obs in site['observations']:
+            images = [by_cam[f] for f in obs.get('image_list', []) if f in by_cam]
+            result.append({'date': obs.get('date', ''), 'notes': obs.get('notes', ''),
+                           'images': images})
+        return result
+    result = []
+    for r in recs:
+        key = r['date'][:7] if r['date'] and len(r['date']) >= 7 else ''
+        if not result or result[-1]['date'] != key:
+            result.append({'date': key, 'notes': '', 'images': []})
+        result[-1]['images'].append(r)
+    return result
+
+
+def make_site_page(site, all_sites, photos):
+    slug  = site['slug']
+    name  = site['name']
+    state = site['state']
+    observations = observations_for_site(site, photos.get(slug, []))
+
+    og_image_tags = ''
+    if os.path.exists(f'img/cards/{slug}.jpg'):
+        og_image_tags = (
+            f'<meta property="og:image" content="https://publiclandsinstitute.net/img/cards/{slug}.jpg"/>\n'
+            f'<meta property="og:image:width" content="1200"/>\n'
+            f'<meta property="og:image:height" content="630"/>\n'
+            f'<meta name="twitter:card" content="summary_large_image"/>\n')
+
+    idx       = next(i for i, s in enumerate(all_sites) if s['slug'] == slug)
+    prev_site = all_sites[idx - 1] if idx > 0 else None
+    next_site = all_sites[idx + 1] if idx < len(all_sites) - 1 else None
+
+    nav_prev = f'<a href="{prev_site["slug"]}.html">← {prev_site["name"]}</a>' if prev_site else '<span></span>'
+    nav_next = f'<a href="{next_site["slug"]}.html">{next_site["name"]} →</a>' if next_site else '<span></span>'
+
+    def sec(label, val, glossary_anchor=None):
+        if not val:
+            return ''
+        link = f' <a href="../glossary.html#{glossary_anchor}" class="rec-glossary-link">Glossary →</a>' if glossary_anchor else ''
+        return f'<div class="rec-section"><div class="rec-label">{label}{link}</div><p>{val}</p></div>'
+
+    gps_val = ''
+    if site.get('gps'):
+        lat = site.get('lat', '')
+        lng = site.get('lng', '')
+        gps_val = f'<a class="gps-link" href="https://maps.google.com/?q={lat},{lng}" target="_blank" rel="noopener">{site["gps"]}</a>'
+
+    sections = make_geo_block(site.get('geological_age', ''), site.get('epoch', ''))
+    sections += sec('Epoch', site.get('epoch', ''))
+    sections += sec('Native lands', site.get('native_lands', ''), glossary_anchor='indigenous-nations')
+    sections += sec('Displacement &amp; Tenure', site.get('displacement_tenure', ''))
+    sections += sec('Shadow History', site.get('shadow_history', ''))
+    sections += sec('Ecology', site.get('ecology', ''))
+    sections += sec('Hydrology', site.get('hydrology', ''))
+    sections += sec('Acreage', site.get('acreage', ''))
+    sections += sec('GPS', gps_val)
+
+    show_obs_headers = len(observations) > 1 or any(obs.get('notes') for obs in observations)
+    total_images = sum(len(obs['images']) for obs in observations)
+    view_all_label = f'View all {total_images} images →' if total_images > 1 else 'Open viewer →'
+    images_html = ''
+    for obs in observations:
+        if show_obs_headers:
+            label = format_obs_date(obs['date']) if obs['date'] else 'Undated'
+            notes_html = f'<p class="obs-notes">{obs["notes"]}</p>' if obs.get('notes') else ''
+            images_html += f'    <div class="obs-header"><span class="obs-date">{label}</span>{notes_html}</div>\n'
+        for img in obs['images']:
+            caption = f'{name} {img["caption_index"]}'
+            date_str = f' &middot; {img["date"]}' if img['date'] else ''
+            tif_attr = f' data-tif="{img["tif_url"]}"' if img['tif_url'] else ''
+            commons_attr = f' data-commons="{img["commons_page"]}"' if img['commons_page'] else ''
+            raw_attr = f' data-raw="../{img["raw"]}"' if img['raw'] else ''
+            xmp_attr = f' data-xmp="../{img["xmp"]}"' if img['xmp'] else ''
+            images_html += f'''    <figure class="ph"{tif_attr}{commons_attr}{raw_attr}{xmp_attr}>
+      <a href="#" download title="{caption}">
+        <img src="../{img["jpg"]}" alt="{caption}" loading="lazy"/>
+      </a>
+      <figcaption>
+        <span class="caption-title">{caption}{date_str}</span>
+        <span class="caption-filename">{img["camera_filename"]}</span>
+      </figcaption>
+    </figure>\n'''
+
+    return f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TMR79M95R4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){{dataLayer.push(arguments);}}
+  gtag('js', new Date());
+  gtag('config', 'G-TMR79M95R4');
+</script>
+<meta charset="utf-8"/>
+<title>{name} — Public Lands Institute</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="index, follow" name="robots"/>
+<meta content="{name}. Public Lands Institute photographic index. CC0 Public Domain." name="description"/>
+<meta property="og:title" content="{name} — Public Lands Institute"/>
+<meta property="og:description" content="{name}. An ongoing photographic index and open-access archive of American public lands. CC0 Public Domain."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://publiclandsinstitute.net/sites/{slug}.html"/>
+<meta property="og:site_name" content="Public Lands Institute"/>
+{og_image_tags}
+<link href="https://publiclandsinstitute.net/sites/{slug}.html" rel="canonical"/>
+<link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
+{FONT_LINKS}
+<style>
+{SHARED_CSS}
+  .site-header {{ margin-bottom: 28px; }}
+  .site-header h1 {{
+    font-size: 26px;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }}
+  .site-header .state {{
+    font-size: 11px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+  }}
+  .site-layout {{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }}
+  .site-record {{ align-content: start; }}
+  .rec-section {{
+    border-top: 1px solid var(--border);
+    padding-top: 14px;
+    margin-bottom: 18px;
+  }}
+  .rec-label {{
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }}
+  .rec-glossary-link {{
+    text-transform: none;
+    letter-spacing: normal;
+    font-weight: 300;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+    margin-left: 8px;
+  }}
+  .rec-glossary-link:hover {{ color: var(--fg); border-bottom-color: var(--fg); }}
+  .rec-section p {{
+    font-size: 13.5px;
+    font-weight: 300;
+    line-height: 1.7;
+  }}
+  .geo-era-row {{ display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }}
+  .geo-swatch {{ width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }}
+  .geo-era-name {{ font-size: 14px; font-weight: 300; }}
+  .geo-mya {{ font-size: 11px; font-weight: 300; color: var(--muted); margin-left: auto; letter-spacing: 0.04em; }}
+  .geo-bar-wrap {{ position: relative; height: 3px; background: rgba(255,255,255,0.08); margin-bottom: 8px; border-radius: 2px; }}
+  .geo-bar-fill {{ position: absolute; right: 0; top: 0; height: 100%; border-radius: 2px; }}
+  .geo-prose {{ color: var(--fg); }}
+  .photo-pane {{ min-width: 0; }}
+  .photo-scroll {{
+    display: flex; flex-direction: column; gap: 16px;
+    overflow-y: auto; min-height: 0; flex: 1;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.18) transparent;
+  }}
+  .photo-scroll::-webkit-scrollbar {{ width: 6px; }}
+  .photo-scroll::-webkit-scrollbar-thumb {{ background: rgba(255,255,255,0.18); }}
+  .ph {{ background: #1f1f1f; flex-shrink: 0; }}
+  .ph a {{ display: block; width: 100%; }}
+  .ph img {{
+    width: 100%; height: auto; display: block;
+    filter: grayscale(100%);
+    opacity: 0.92;
+    transition: opacity 0.15s;
+  }}
+  .ph:hover img {{ opacity: 1; }}
+  .ph figcaption {{ display: none; }}
+  .photo-foot {{
+    flex-shrink: 0;
+    padding-top: 12px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+  }}
+  .plb-view-all {{
+    font-family: inherit; font-size: 10px; font-weight: 400;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); background: none; border: none;
+    cursor: pointer; padding: 0;
+  }}
+  .plb-view-all:hover {{ color: var(--fg); }}
+  .obs-header {{
+    padding: 10px 0 4px 0;
+  }}
+  .obs-header:first-child {{ padding-top: 0; }}
+  .obs-date {{
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    display: block;
+  }}
+  .obs-notes {{
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--fg);
+    margin-top: 4px;
+    line-height: 1.6;
+  }}
+  .site-nav {{
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 8px;
+  }}
+  @media (min-width: 720px) {{
+    .site-layout {{ grid-template-columns: 360px 1fr; gap: 48px; align-items: start; }}
+    .photo-pane {{ position: sticky; top: 24px; height: calc(100vh - 48px); display: flex; flex-direction: column; }}
+  }}
+  @media (min-width: 1148px) {{
+    .site-layout {{ grid-template-columns: 7fr 15fr; }}
+  }}
+  @media (max-width: 719px) {{
+    .photo-pane {{ order: -1; display: flex; flex-direction: column; }}
+    .photo-scroll {{ max-height: 70vh; }}
+  }}
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="logotype"><a href="../index.html">Public Lands Institute</a></div>
+  <nav class="header-nav">
+    <a href="../index.html">Map</a>
+    <a href="../photographs.html">Images</a>
+    <a href="../archive.html">Archive</a>
+    <a href="../about.html">About</a>
+  </nav>
+</header>
+<div class="divider"></div>
+<div class="site-header">
+  <h1>{name}</h1>
+  <div class="state">{state}</div>
+</div>
+<div class="site-layout">
+  <aside class="site-record">
+{sections}  </aside>
+  <div class="photo-pane">
+    <div class="photo-scroll">
+{images_html}    </div>
+    <div class="photo-foot">
+      <button class="plb-view-all">{view_all_label}</button>
+    </div>
+  </div>
+</div>
+<nav class="site-nav">
+  {nav_prev}
+  {nav_next}
+</nav>
+<footer>
+  <span>Public Lands Institute — ongoing project</span>
+  <span>CC0 Public Domain</span>
+</footer>
+</div>
+<script src="../js/lightbox.js"></script>
+</body>
+</html>'''
 
 
 # ── photographs.html ───────────────────────────────────────────────────────────
@@ -672,7 +1034,7 @@ def write_sites_map_js(all_sites, meta, photos, nations_gj):
 
 # ── Main ───────────────────────────────────────────────────────────────────────
 
-ALL_TARGETS = ['archive', 'photographs', 'about', 'sitemap', 'mapjs']
+ALL_TARGETS = ['sites', 'archive', 'photographs', 'about', 'mapjs', 'sitemap']
 
 
 def main(argv):
@@ -682,6 +1044,12 @@ def main(argv):
 
     sites, meta, photos, nations_gj = load_data()
 
+    if 'sites' in targets:
+        os.makedirs('sites', exist_ok=True)
+        for site in sites:
+            with open(f'sites/{site["slug"]}.html', 'w') as f:
+                f.write(make_site_page(site, sites, photos))
+        print(f'sites/ ({len(sites)} pages)')
     if 'archive' in targets:
         with open('archive.html', 'w') as f:
             f.write(make_archive_page(sites, photos))
