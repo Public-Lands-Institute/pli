@@ -34,6 +34,29 @@ os.chdir(ROOT)
 sys.path.insert(0, os.path.join(ROOT, 'tools'))
 from cleanup_sites import SHADOW_HISTORY_NONE  # single source of the convention text
 
+# Commons numbers that are legitimately unlinked and must NOT be flagged as
+# numbering drift: the source frame was intentionally removed from the index, so
+# the Commons file (kept on Commons under CC0) has no site entry by design. Each
+# accepted orphan also shifts every later entry's expected number by one, so the
+# post-gap entries stop reading as "out of position". (slug, commons_number).
+# Distinct from unresolved drift like Clifty Falls 001 / Prophetstown 005, which
+# stay flagged until the files are realigned on Commons.
+ACCEPTED_ORPHANS = {
+    ('pointe-mouillee-state-game-area', 4),  # _DSF1814 pulled from the index 2026-07
+}
+
+
+def expected_commons_n(slug, i):
+    """The commons_n the entry at 0-based position i should carry, counting past
+    any accepted-orphan numbers that were intentionally skipped for this site."""
+    n, seen = 0, -1
+    while seen < i:
+        n += 1
+        if (slug, n) not in ACCEPTED_ORPHANS:
+            seen += 1
+    return n
+
+
 failures = 0
 
 
@@ -94,10 +117,10 @@ def main():
                 if e['commons_n'] != linked_n:
                     bad_links.append(
                         f'{slug} {i + 1}: commons_n={e["commons_n"]} but URL is {linked_n:03d}')
-                if linked_n != i + 1:
+                if linked_n != expected_commons_n(slug, i):
                     mismatches.append(f'{slug} {i + 1} -> Commons {linked_n:03d}')
             else:
-                if linked_n != i + 1:
+                if linked_n != expected_commons_n(slug, i):
                     mismatches.append(f'{slug} {i + 1} -> Commons {linked_n:03d}')
     has_commons_n = any('commons_n' in e for entries in photos.values() for e in entries)
     if bad_links:
@@ -113,7 +136,8 @@ def main():
                 claimed = {e['commons_n'] for e in entries if e.get('commons_n')}
                 if not claimed:
                     continue
-                unclaimed = set(range(1, max(claimed) + 1)) - claimed
+                accepted = {n for (s, n) in ACCEPTED_ORPHANS if s == slug}
+                unclaimed = set(range(1, max(claimed) + 1)) - claimed - accepted
                 if unclaimed:
                     by_site[slug] = unclaimed
             orphans = [f'{slug} {n:03d}' for slug, ns in sorted(by_site.items())
