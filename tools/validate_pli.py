@@ -39,10 +39,13 @@ from cleanup_sites import SHADOW_HISTORY_NONE  # single source of the convention
 # the Commons file (kept on Commons under CC0) has no site entry by design. Each
 # accepted orphan also shifts every later entry's expected number by one, so the
 # post-gap entries stop reading as "out of position". (slug, commons_number).
-# Distinct from unresolved drift like Clifty Falls 001 / Prophetstown 005, which
-# stay flagged until the files are realigned on Commons.
+# NOT for positional rotations where every number is still linked (e.g.
+# Chattahoochee, entry 1 -> Commons 008): those have no orphan and are only
+# fixable by renaming the files on Commons.
 ACCEPTED_ORPHANS = {
     ('pointe-mouillee-state-game-area', 4),  # _DSF1814 pulled from the index 2026-07
+    ('clifty-falls-state-park', 1),          # _DSF1071 pulled from the index 2026-07
+    ('prophetstown-state-park', 5),          # _DSF2384 pulled from the index 2026-07
 }
 
 
