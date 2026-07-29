@@ -238,17 +238,6 @@
   ],
   "chattahoochee-national-forest": [
     {
-      "f": "Public Lands Institute - Chattahoochee National Forest - 008.tif",
-      "d": "2026-07-05",
-      "thumb": "thumbs/chattahoochee-national-forest/_DSF3837.jpg",
-      "large": "thumbs/chattahoochee-national-forest/lg__DSF3837.jpg",
-      "t": "https://commons.wikimedia.org/wiki/Special:FilePath/Public%20Lands%20Institute%20-%20Chattahoochee%20National%20Forest%20-%20008.tif",
-      "r": "img/RAW/chattahoochee-national-forest/_DSF3837.RAF",
-      "x": "img/RAW/chattahoochee-national-forest/_DSF3837.xmp",
-      "c": "https://commons.wikimedia.org/wiki/File:Public_Lands_Institute_-_Chattahoochee_National_Forest_-_008.tif",
-      "commons_n": 8
-    },
-    {
       "f": "Public Lands Institute - Chattahoochee National Forest - 001.tif",
       "d": "2026-07-05",
       "thumb": "thumbs/chattahoochee-national-forest/_DSF3839.jpg",
@@ -324,6 +313,17 @@
       "x": "img/RAW/chattahoochee-national-forest/_DSF3893.xmp",
       "c": "https://commons.wikimedia.org/wiki/File:Public_Lands_Institute_-_Chattahoochee_National_Forest_-_007.tif",
       "commons_n": 7
+    },
+    {
+      "f": "Public Lands Institute - Chattahoochee National Forest - 008.tif",
+      "d": "2026-07-05",
+      "thumb": "thumbs/chattahoochee-national-forest/_DSF3837.jpg",
+      "large": "thumbs/chattahoochee-national-forest/lg__DSF3837.jpg",
+      "t": "https://commons.wikimedia.org/wiki/Special:FilePath/Public%20Lands%20Institute%20-%20Chattahoochee%20National%20Forest%20-%20008.tif",
+      "r": "img/RAW/chattahoochee-national-forest/_DSF3837.RAF",
+      "x": "img/RAW/chattahoochee-national-forest/_DSF3837.xmp",
+      "c": "https://commons.wikimedia.org/wiki/File:Public_Lands_Institute_-_Chattahoochee_National_Forest_-_008.tif",
+      "commons_n": 8
     }
   ],
   "ocmulgee-mounds-national-historical-park": [
