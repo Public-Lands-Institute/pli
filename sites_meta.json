@@ -1,4 +1,28 @@
 {
+  "warren-dunes-state-park": {
+    "agency": "Michigan Department of Natural Resources, Parks and Recreation Division",
+    "agency_type": "State park",
+    "territory": [
+      "Potawatomi (Bodéwadmi)",
+      "Odawa",
+      "Ojibwe"
+    ]
+  },
+  "chain-o-lakes-state-park": {
+    "agency": "Indiana DNR",
+    "agency_type": "State park",
+    "territory": [
+      "Potawatomi",
+      "Miami"
+    ]
+  },
+  "eagle-marsh-nature-preserve": {
+    "agency": "Little River Wetlands Project (nonprofit land trust)",
+    "agency_type": "Private preserve",
+    "territory": [
+      "Miami"
+    ]
+  },
   "great-smoky-mountains-national-park": {
     "agency": "National Park Service",
     "agency_type": "NPS",
