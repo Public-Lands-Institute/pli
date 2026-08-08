@@ -1,4 +1,31 @@
 {
+  "silver-lake-state-park": {
+    "agency": "Michigan Department of Natural Resources, Parks and Recreation Division",
+    "agency_type": "State park",
+    "territory": [
+      "Odawa (Ottawa)",
+      "Ojibwe (Chippewa)",
+      "Potawatomi"
+    ]
+  },
+  "saugatuck-dunes-state-park": {
+    "agency": "Michigan Department of Natural Resources, Parks and Recreation Division",
+    "agency_type": "State park",
+    "territory": [
+      "Odawa (Ottawa)",
+      "Potawatomi (Bodéwadmi)",
+      "Ojibwe"
+    ]
+  },
+  "pj-hoffmaster-state-park": {
+    "agency": "Michigan Department of Natural Resources, Parks and Recreation Division",
+    "agency_type": "State park",
+    "territory": [
+      "Odawa (Ottawa)",
+      "Ojibwe (Chippewa)",
+      "Potawatomi"
+    ]
+  },
   "warren-dunes-state-park": {
     "agency": "Michigan Department of Natural Resources, Parks and Recreation Division",
     "agency_type": "State park",
