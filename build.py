@@ -36,9 +36,46 @@ import os
 import re
 import subprocess
 import sys
+from collections import defaultdict
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 os.chdir(ROOT)
+
+
+# Endonym/exonym label variants that name the SAME nation. Only true duplicates
+# are merged here; distinct bands (the various Ute or Dakota divisions, Wea vs
+# Miami, Sauk vs Meskwaki) are deliberately left separate.
+NATION_CANON = {
+    'Miami': 'Myaamia (Miami)',
+    'Myaamia': 'Myaamia (Miami)',
+    'Lenape': 'Lenape (Delaware)',
+    'Delaware': 'Lenape (Delaware)',
+    'Delaware (Lenape)': 'Lenape (Delaware)',
+    'Comanche (Nʉmʉnʉʉ)': 'Comanche',
+    'Kiowa (Cáuigù)': 'Kiowa',
+    'Osage (Wazhazhe)': 'Osage',
+    'Ottawa': 'Ottawa (Odawa)',
+    'Hopi (Hopisinom)': 'Hopi',
+    'Yuchi (Tsoyaha)': 'Yuchi',
+    'Wichita (Kitikiti’sh)': 'Wichita',
+    'Ute Mountain Ute (Weeminuche)': 'Ute Mountain Ute',
+}
+
+
+def normalize_nations(nations_gj):
+    """Collapse endonym/exonym label variants to one canonical name + color, in place."""
+    color = {}
+    for f in nations_gj['features']:
+        orig = f['properties']['nation']
+        cn = NATION_CANON.get(orig, orig)
+        color.setdefault(cn, f['properties']['color'])
+        if orig == cn:  # the canonical label's own color wins
+            color[cn] = f['properties']['color']
+    for f in nations_gj['features']:
+        cn = NATION_CANON.get(f['properties']['nation'], f['properties']['nation'])
+        f['properties']['nation'] = cn
+        f['properties']['color'] = color[cn]
+    return nations_gj
 
 
 def load_data():
@@ -49,7 +86,7 @@ def load_data():
     with open('data/photos.json') as f:
         photos = json.load(f)
     with open('data/nations.geojson') as f:
-        nations_gj = json.load(f)
+        nations_gj = normalize_nations(json.load(f))
     return sites, meta, photos, nations_gj
 
 
@@ -998,19 +1035,26 @@ def make_sites_map_js(all_sites, meta, photos, nations_gj):
         return json.dumps(obj, ensure_ascii=False, separators=(',', ':'))
 
     sites_gj = build_sites_geojson(all_sites, meta)
-    # NATION_LIST / NATION_COLORS in first-encounter order across nations.geojson
-    nation_list, nation_colors, seen = [], {}, set()
+    # Distinct-site count per nation (the map connects the dots and sorts the legend by this)
+    nation_sites = defaultdict(set)
+    for f in nations_gj['features']:
+        lng, lat = f['geometry']['coordinates']
+        nation_sites[f['properties']['nation']].add((round(lng, 4), round(lat, 4)))
+    nation_counts = {n: len(s) for n, s in nation_sites.items()}
+    # NATION_COLORS in first-encounter order; NATION_LIST sorted by site count descending
+    nation_colors, seen = {}, set()
     for f in nations_gj['features']:
         n = f['properties']['nation']
         if n not in seen:
             seen.add(n)
-            nation_list.append(n)
             nation_colors[n] = f['properties']['color']
+    nation_list = sorted(nation_colors, key=lambda n: (-nation_counts.get(n, 0), n))
     return (f'const SITES={dump(sites_gj)};\n'
             f'const NATIONS_GJ={dump(nations_gj)};\n'
             f'const PHOTOS={dump(photos)};\n'
             f'const NATION_COLORS={dump(nation_colors)};\n'
-            f'const NATION_LIST={dump(nation_list)};\n')
+            f'const NATION_LIST={dump(nation_list)};\n'
+            f'const NATION_COUNTS={dump(nation_counts)};\n')
 
 
 MAPJS_SRC_RE = re.compile(r'src="data/sites-map\.js\?v=[0-9a-f]+"')

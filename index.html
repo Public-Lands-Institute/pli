@@ -54,7 +54,8 @@ html, body { height: 100%; font-family: 'Inter', sans-serif; background: var(--i
 .layer-btn { background: rgba(18,18,18,0.72); border: 1px solid rgba(255,255,255,0.2); color: var(--sand); font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 12px; cursor: pointer; backdrop-filter: blur(8px); transition: border-color 0.2s; text-align: left; }
 .layer-btn:hover { border-color: rgba(255,255,255,0.5); }
 .layer-btn.active { color: #ffffff; border-color: #ffffff; background: rgba(18,18,18,0.9); }
-#legend { position: fixed; bottom: 32px; right: 32px; z-index: 10; background: rgba(18,18,18,0.85); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.15); padding: 14px 16px; min-width: 200px; display: none; }
+#legend { position: fixed; bottom: 32px; right: 32px; z-index: 10; background: rgba(18,18,18,0.85); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.15); padding: 14px 16px; min-width: 200px; display: none; max-height: calc(100vh - 64px); overflow-y: auto; }
+.legend-item .legend-n { margin-left: auto; padding-left: 14px; opacity: 0.5; font-variant-numeric: tabular-nums; }
 #legend.visible { display: block; }
 #legend-title { font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 10px; }
 .legend-item { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-size: 11px; font-weight: 300; color: rgba(255,255,255,0.75); }
@@ -183,7 +184,7 @@ html, body { height: 100%; font-family: 'Inter', sans-serif; background: var(--i
     </div>
   </div>
 </div>
-<script src="data/sites-map.js?v=c4c4f94cc6"></script>
+<script src="data/sites-map.js?v=deadf3a5bc"></script>
 <script>
 const STATE_NAMES={"AL":"Alabama","AK":"Alaska","AZ":"Arizona","AR":"Arkansas","CA":"California","CO":"Colorado","CT":"Connecticut","DE":"Delaware","FL":"Florida","GA":"Georgia","HI":"Hawaii","ID":"Idaho","IL":"Illinois","IN":"Indiana","IA":"Iowa","KS":"Kansas","KY":"Kentucky","LA":"Louisiana","ME":"Maine","MD":"Maryland","MA":"Massachusetts","MI":"Michigan","MN":"Minnesota","MS":"Mississippi","MO":"Missouri","MT":"Montana","NE":"Nebraska","NV":"Nevada","NH":"New Hampshire","NJ":"New Jersey","NM":"New Mexico","NY":"New York","NC":"North Carolina","ND":"North Dakota","OH":"Ohio","OK":"Oklahoma","OR":"Oregon","PA":"Pennsylvania","RI":"Rhode Island","SC":"South Carolina","SD":"South Dakota","TN":"Tennessee","TX":"Texas","UT":"Utah","VT":"Vermont","VA":"Virginia","WA":"Washington","WV":"West Virginia","WI":"Wisconsin","WY":"Wyoming"};
 
@@ -240,6 +241,11 @@ function agencyColor(s) {
 }
 let activeLayer = null;
 let panelOpen = false;
+// Layers that draw connecting constellations; agency/shadow are omitted because
+// grouping so many state parks just retraces state boundaries.
+const LINE_LAYERS = new Set(['native', 'geology']);
+// Lines start hidden (all-on is too busy); hovering a legend entry reveals one group.
+const GROUP_LINE_BLANK = ['==', ['get','key'], ' '];
 function dotColor(p) {
   if (activeLayer==='geology') return geologyColor(p.geology, p.epoch);
   if (activeLayer==='agency')  return agencyColor(p.conservation_status);
@@ -249,6 +255,47 @@ function dotColor(p) {
 }
 function buildDotFeatures() {
   return { ...SITES, features: SITES.features.map(f => ({...f, properties:{...f.properties, _color:dotColor(f.properties)}}) ) };
+}
+// Connect each group's dots with a nearest-neighbor (minimum spanning tree) of lines.
+function mstEdges(pts) {
+  const n = pts.length; if (n < 2) return [];
+  const P = pts.map(([lng,lat]) => [lng*Math.PI/180, Math.log(Math.tan(Math.PI/4 + lat*Math.PI/180/2))]);
+  const d2 = (i,j) => { const dx=P[i][0]-P[j][0], dy=P[i][1]-P[j][1]; return dx*dx+dy*dy; };
+  const inT = new Array(n).fill(false); inT[0]=true;
+  const best = P.map((_,i) => [d2(0,i), 0]);
+  const edges = [];
+  for (let s=0; s<n-1; s++) {
+    let k=-1; for (let i=0;i<n;i++) if (!inT[i] && (k<0 || best[i][0]<best[k][0])) k=i;
+    edges.push([best[k][1], k]); inT[k]=true;
+    for (let i=0;i<n;i++) if (!inT[i]) { const dd=d2(k,i); if (dd<best[i][0]) best[i]=[dd,k]; }
+  }
+  return edges;
+}
+function groupLines(groups) {
+  const feats = [];
+  for (const g of Object.values(groups)) {
+    const seen = new Set(), pts = [];
+    for (const p of g.points) { const key=p[0]+','+p[1]; if (!seen.has(key)) { seen.add(key); pts.push(p); } }
+    for (const [a,b] of mstEdges(pts))
+      feats.push({ type:'Feature', properties:{ color:g.color, key:g.key },
+                   geometry:{ type:'LineString', coordinates:[pts[a], pts[b]] } });
+  }
+  return { type:'FeatureCollection', features:feats };
+}
+function buildLayerLines(layer) {
+  const groups = {};
+  if (layer === 'native') {
+    for (const f of NATIONS_GJ.features) {
+      const n = f.properties.nation;
+      (groups[n] = groups[n] || { key:n, color:f.properties.color, points:[] }).points.push(f.geometry.coordinates);
+    }
+  } else {
+    for (const f of SITES.features) {
+      const c = dotColor(f.properties);
+      (groups[c] = groups[c] || { key:c, color:c, points:[] }).points.push(f.geometry.coordinates);
+    }
+  }
+  return groupLines(groups);
 }
 const map = new maplibregl.Map({
   container:'map',
@@ -265,14 +312,19 @@ document.getElementById('site-count').textContent = SITES.features.length+' site
 map.on('load', () => {
   map.addSource('sites', { type:'geojson', data:buildDotFeatures() });
   map.addSource('nations', { type:'geojson', data:NATIONS_GJ });
+  map.addSource('group-lines', { type:'geojson', data:{ type:'FeatureCollection', features:[] } });
+  map.addLayer({ id:'group-line', type:'line', source:'group-lines',
+    layout:{ visibility:'none','line-cap':'round','line-join':'round' },
+    paint:{ 'line-color':['get','color'],'line-opacity':0.5,
+            'line-width':['interpolate',['linear'],['zoom'],3,1,10,2] } });
   map.addLayer({ id:'nations-dot', type:'circle', source:'nations',
     layout:{ visibility:'none' },
-    paint:{ 'circle-radius':['interpolate',['linear'],['zoom'],3,4.5,10,8],
+    paint:{ 'circle-radius':['interpolate',['linear'],['zoom'],3,3,10,5.5],
             'circle-color':['get','color'], 'circle-opacity':0.85,
             'circle-stroke-color':'rgba(255,255,255,0.2)','circle-stroke-width':1 } });
   map.addLayer({ id:'sites-hit', type:'circle', source:'sites', paint:{ 'circle-radius':16,'circle-opacity':0,'circle-stroke-width':0 } });
   map.addLayer({ id:'sites-dot', type:'circle', source:'sites',
-    paint:{ 'circle-radius':['interpolate',['linear'],['zoom'],3,4.5,10,8],
+    paint:{ 'circle-radius':['interpolate',['linear'],['zoom'],3,3,10,5.5],
             'circle-color':['get','_color'],'circle-opacity':0.88,
             'circle-stroke-color':'rgba(255,255,255,0.2)','circle-stroke-width':1 } });
   const popup = new maplibregl.Popup({closeButton:false,closeOnClick:false,offset:12});
@@ -301,40 +353,53 @@ map.on('load', () => {
       document.querySelectorAll('.layer-btn').forEach(b=>b.setAttribute('aria-pressed', b.classList.contains('active') ? 'true' : 'false'));
       const nativeOn = activeLayer === 'native';
       map.setLayoutProperty('nations-dot', 'visibility', nativeOn ? 'visible' : 'none');
-      map.setLayoutProperty('sites-dot',   'visibility', nativeOn ? 'none'    : 'visible');
-      if (!nativeOn) { map.setFilter('nations-dot', null); map.setFilter('sites-dot', null); }
+      map.setLayoutProperty('sites-dot', 'visibility', nativeOn ? 'none' : 'visible');
+      map.setFilter('nations-dot', null);
+      map.setFilter('sites-dot', null);
+      map.setFilter('group-line', null);
       map.getSource('sites').setData(buildDotFeatures());
+      if (LINE_LAYERS.has(activeLayer)) {
+        map.getSource('group-lines').setData(buildLayerLines(activeLayer));
+        map.setFilter('group-line', GROUP_LINE_BLANK);
+        map.setLayoutProperty('group-line', 'visibility', 'visible');
+      } else {
+        map.setLayoutProperty('group-line', 'visibility', 'none');
+      }
     });
   });
 });
+function zoomToNation(matching) {
+  if (!matching.length) return;
+  const lngs = matching.map(f => f.geometry.coordinates[0]);
+  const lats = matching.map(f => f.geometry.coordinates[1]);
+  map.fitBounds([[Math.min(...lngs), Math.min(...lats)], [Math.max(...lngs), Math.max(...lats)]],
+    { padding:{ top:80, bottom:180, left:220, right:280 }, maxZoom:9, duration:800 });
+}
 function showLegend(layer) {
+  const legend = document.getElementById('legend');
   const def = LAYER_LEGENDS[layer];
   document.getElementById('legend-title').textContent = def.title;
-  document.getElementById('legend-items').innerHTML = def.entries.map(([l,c])=>
-    '<div class="legend-item" data-color="'+c+'"'+(layer==='native' ? ' data-nation="'+l+'"' : '')+' style="cursor:pointer"><div class="legend-dot" style="background:'+c+'"></div><span>'+l+'</span></div>').join('');
+  document.getElementById('legend-items').innerHTML = def.entries.map(([l,c])=>{
+    const count = (layer==='native') ? '<span class="legend-n">'+(NATION_COUNTS[l]||0)+'</span>' : '';
+    return '<div class="legend-item" data-color="'+c+'"'+(layer==='native' ? ' data-nation="'+l+'"' : '')+' style="cursor:pointer"><div class="legend-dot" style="background:'+c+'"></div><span>'+l+'</span>'+count+'</div>';
+  }).join('');
   document.getElementById('legend-items').querySelectorAll('.legend-item').forEach(item => {
     item.addEventListener('mouseenter', () => {
-      if (activeLayer === 'native') map.setFilter('nations-dot', ['==', ['get','nation'], item.dataset.nation]);
-      else map.setFilter('sites-dot', ['==', ['get','_color'], item.dataset.color]);
+      if (activeLayer === 'native') { map.setFilter('nations-dot', ['==', ['get','nation'], item.dataset.nation]); map.setFilter('group-line', ['==', ['get','key'], item.dataset.nation]); }
+      else { map.setFilter('sites-dot', ['==', ['get','_color'], item.dataset.color]); map.setFilter('group-line', ['==', ['get','key'], item.dataset.color]); }
     });
     item.addEventListener('click', () => {
       let matching;
       if (activeLayer === 'native') matching = NATIONS_GJ.features.filter(f => f.properties.nation === item.dataset.nation);
       else matching = SITES.features.filter(f => dotColor(f.properties) === item.dataset.color);
-      if (!matching.length) return;
-      const lngs = matching.map(f => f.geometry.coordinates[0]);
-      const lats = matching.map(f => f.geometry.coordinates[1]);
-      map.fitBounds([[Math.min(...lngs), Math.min(...lats)], [Math.max(...lngs), Math.max(...lats)]],
-        { padding:{ top:80, bottom:180, left:220, right:280 }, maxZoom:9, duration:800 });
+      zoomToNation(matching);
     });
   });
-  document.getElementById('legend').addEventListener('mouseleave', () => {
-    map.setFilter('nations-dot', null); map.setFilter('sites-dot', null);
-  });
-  document.getElementById('legend').classList.add('visible');
+  legend.onmouseleave = () => { map.setFilter('nations-dot', null); map.setFilter('sites-dot', null); map.setFilter('group-line', GROUP_LINE_BLANK); };
+  legend.classList.add('visible');
 }
 function hideLegend() {
-  map.setFilter('nations-dot', null); map.setFilter('sites-dot', null);
+  map.setFilter('nations-dot', null); map.setFilter('sites-dot', null); map.setFilter('group-line', null);
   document.getElementById('legend').classList.remove('visible');
 }
 function buildGeoBlock(geoText, epochText) {
