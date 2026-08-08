@@ -1,9 +1,9 @@
 Date generated: August 06, 2026
-Total sites: 75
-Total images: 644
+Total sites: 78
+Total images: 670
 States represented: 20
 State list: CO, GA, IA, IL, IN, KS, KY, MI, MN, MO, NC, OH, OK, SC, SD, TN, TX, UT, WV, WY
-Total acreage represented: 8,729,646
+Total acreage represented: 8,734,782
 Managing agencies represented: 34
-Total Wikimedia Commons uploads: 646
+Total Wikimedia Commons uploads: 672
 Total Wikimedia Commons file views: check manually
