@@ -1835,11 +1835,22 @@ National Park Service — The Birth of Camp Sherman (1917 War Department acquisi
 National Park Service — Influenza at Camp Sherman (roughly 5,686 documented cases; NPS states 1,777 deaths)
   https://www.nps.gov/articles/influenza-at-camp-sherman.htm
 
-FLAGGED, UNRESOLVED — Camp Sherman influenza death toll. sites.json follows the National Park Service figure of 1,777 deaths. Ohio History Connection and the Ross County mortality schedules give 1,177 deaths by the end of October 1918. Both figures are in circulation, the discrepancy has not been resolved here, and the field should not be treated as settled.
-  Ohio History Connection — The Spanish Influenza Comes to Ohio
-    https://www.ohiohistory.org/the-spanish-influenza-comes-to-ohio/
-  Camp Sherman Mortality Schedule, Flu Epidemic of 1918 (October 1 to October 13) — Ross County History Depot
-    https://rosscountyhistorydepot.edublogs.org/files/2014/12/Flu-Pandemic-517-1bqunch.pdf
+RESOLVED 2026-09-07 — Camp Sherman influenza death toll. The field gives 1,177 dead by the end of October 1918, out of 5,686 cases reported at the camp that month, with 131 deaths on October 8, the worst single day.
+
+That figure is the one with both a stated scope and a traceable source. The Ross County History Depot mortality schedule states: "In the month of October, 1918, 5,686 cases of the flu were reported there. By month's end, 1,177 had died," and credits "The Historical Report of Camp Sherman" and G. Richard Peck, The Rise and Fall of Camp Sherman. The same sheet prints the daily death count for October 1 to 13: 16, 22, 47, 52, 104, 119, 104, 131, 97, 86, 53, 49, 83, totalling 963 deaths in the first thirteen days.
+
+The competing figure of 1,777 appears on the National Park Service page and in the Ohio History Connection blog. Neither states a period or cites a source, both attach it to the same 5,686 case count, and 1,777 would require roughly 814 further deaths across the back half of October, after the daily counts had already fallen from the October 8 peak of 131 to 83 by October 13. 1,777 and 1,177 differ by a digit transposition, and the daily schedule does not support the higher number. A third account giving 842 deaths out of 7,618 hospital admissions is measuring hospital admissions rather than reported cases and is not comparable.
+
+The contemporary primary source (JAMA / War Medicine, "The Epidemic of Influenza at Camp Sherman, Ohio," February-March 1919) survives on PubMed Central only as page scans, not machine-readable text, and would settle the point definitively for anyone with library access.
+  https://rosscountyhistorydepot.edublogs.org/files/2014/12/Flu-Pandemic-517-1bqunch.pdf
+  https://www.nps.gov/articles/influenza-at-camp-sherman.htm
+  https://www.ohiohistory.org/the-spanish-influenza-comes-to-ohio/
+  https://jamanetwork.com/journals/jama/fullarticle/219569
+  https://pmc.ncbi.nlm.nih.gov/articles/PMC10211124/
+
+CORRECTED — the deadliest single day was 131 deaths on October 8, 1918 per the mortality schedule, not the 125 the field previously carried, which appears only in uncited secondary accounts.
+
+REMOVED AS UNSOURCED — the field previously stated that approximately 60 percent of Chillicothe's civilian population was infected. No source for that figure was located, and the Ross County account says the opposite of the implication: "The city itself had suffered an epidemic, but only a small number of deaths occurred." It has been dropped. Restore it if a citation turns up.
 
 Squier, E.G. and Davis, E.H. — Ancient Monuments of the Mississippi Valley (Smithsonian Contributions to Knowledge, 1848); Mound 8 at Mound City, the Mound of Pipes, described as yielding "not far from two hundred pipes, carved in stone"
   https://www.gutenberg.org/files/49668/49668-h/49668-h.htm
@@ -2024,7 +2035,7 @@ Caldwell Nature Preserve founding date. Cincinnati Parks dates the park to the C
   https://www.cincinnati-oh.gov/cincyparks/visit-a-park/parks-events-calendar/a-history-of-caldwell-nature-preserve/
   https://cleanmillcreek.wordpress.com/2013/11/25/caldwell-park-playground-greenway-trail/
 
-Camp Sherman influenza deaths. NPS gives 1,777, Ohio History Connection and the Ross County mortality schedules give 1,177. Flagged and left unresolved; see the Hopewell Culture National Historical Park section above.
+Camp Sherman influenza deaths, RESOLVED. The field now gives 1,177 dead by the end of October 1918, the only figure carrying both a stated period and a traceable source, and the one consistent with the camp's own daily mortality schedule. NPS and Ohio History Connection give an uncited 1,777, which the daily counts contradict and which differs from 1,177 by a digit transposition. See the Hopewell Culture National Historical Park section above.
 
 Edge of Appalachia National Natural Landmark, RESOLVED 2026-09-07. The entry previously read as though Lynx Prairie, Buzzardroost Rock, Red Rock, and The Wilderness were four separate National Natural Landmarks. The NPS National Registry of Natural Landmarks (June 2009, Ohio, Adams County, page 72) records a single landmark, "BUZZARDROOST ROCK-LYNX PRAIRIE-THE WILDERNESS," designated 1967, privately owned, described as consisting of four areas. The registry title names only three; the fourth is unnamed there, and The Nature Conservancy and Wikipedia identify it as Red Rock. There is no separate Red Rock landmark in Ohio, the only "Red Rock" in the national registry being Red Rock Lakes in Montana. The field now states one landmark of four areas.
   https://www.npshistory.com/publications/nnl/registry-2009.pdf
