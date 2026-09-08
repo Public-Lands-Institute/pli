@@ -1,4 +1,85 @@
 {
+  "caldwell-nature-preserve": {
+    "agency": "Cincinnati Parks",
+    "agency_type": "Municipal park",
+    "territory": [
+      "Shawnee",
+      "Myaamia"
+    ]
+  },
+  "bell-smith-springs": {
+    "agency": "USDA Forest Service (Shawnee National Forest, Hidden Springs Ranger District)",
+    "agency_type": "USFS",
+    "territory": [
+      "Kaskaskia",
+      "Miami (Myaamia)",
+      "Kickapoo"
+    ]
+  },
+  "hovey-lake-fish-and-wildlife-area": {
+    "agency": "Indiana Department of Natural Resources, Division of Fish and Wildlife",
+    "agency_type": "State fish and wildlife area",
+    "territory": [
+      "Miami (Myaamia)",
+      "Piankeshaw",
+      "Shawnee"
+    ]
+  },
+  "falls-of-the-ohio-state-park": {
+    "agency": "Indiana Department of Natural Resources, Division of State Parks",
+    "agency_type": "State park",
+    "territory": [
+      "Shawnee",
+      "Miami (Myaamia)",
+      "Haudenosaunee",
+      "Lenape (Delaware)"
+    ]
+  },
+  "cave-in-rock-state-park": {
+    "agency": "Illinois Department of Natural Resources",
+    "agency_type": "State park",
+    "territory": [
+      "Kaskaskia",
+      "Shawnee",
+      "Kickapoo"
+    ]
+  },
+  "general-butler-state-resort-park": {
+    "agency": "Kentucky Department of Parks",
+    "agency_type": "State park",
+    "territory": [
+      "Shawnee",
+      "Cherokee",
+      "Miami"
+    ]
+  },
+  "big-oaks-national-wildlife-refuge": {
+    "agency": "U.S. Fish and Wildlife Service (land owned by the U.S. Army; ~1,000-acre inholding managed by the Indiana Air National Guard)",
+    "agency_type": "USFWS",
+    "territory": [
+      "Miami (Myaamia)",
+      "Wea (Waayaahtanwa)",
+      "Shawnee"
+    ]
+  },
+  "versailles-state-park": {
+    "agency": "Indiana Department of Natural Resources, Division of State Parks",
+    "agency_type": "State park",
+    "territory": [
+      "Miami (Myaamia)",
+      "Wea (Waayaahtanwa)",
+      "Shawnee"
+    ]
+  },
+  "cave-run-lake": {
+    "agency": "U.S. Army Corps of Engineers (Louisville District); recreation managed by USDA Forest Service (Daniel Boone National Forest, Cumberland Ranger District)",
+    "agency_type": "USACE reservoir",
+    "territory": [
+      "Shawnee",
+      "Cherokee",
+      "Adena"
+    ]
+  },
   "silver-lake-state-park": {
     "agency": "Michigan Department of Natural Resources, Parks and Recreation Division",
     "agency_type": "State park",
