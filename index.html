@@ -184,7 +184,7 @@ html, body { height: 100%; font-family: 'Inter', sans-serif; background: var(--i
     </div>
   </div>
 </div>
-<script src="data/sites-map.js?v=deadf3a5bc"></script>
+<script src="data/sites-map.js?v=748149668c"></script>
 <script>
 const STATE_NAMES={"AL":"Alabama","AK":"Alaska","AZ":"Arizona","AR":"Arkansas","CA":"California","CO":"Colorado","CT":"Connecticut","DE":"Delaware","FL":"Florida","GA":"Georgia","HI":"Hawaii","ID":"Idaho","IL":"Illinois","IN":"Indiana","IA":"Iowa","KS":"Kansas","KY":"Kentucky","LA":"Louisiana","ME":"Maine","MD":"Maryland","MA":"Massachusetts","MI":"Michigan","MN":"Minnesota","MS":"Mississippi","MO":"Missouri","MT":"Montana","NE":"Nebraska","NV":"Nevada","NH":"New Hampshire","NJ":"New Jersey","NM":"New Mexico","NY":"New York","NC":"North Carolina","ND":"North Dakota","OH":"Ohio","OK":"Oklahoma","OR":"Oregon","PA":"Pennsylvania","RI":"Rhode Island","SC":"South Carolina","SD":"South Dakota","TN":"Tennessee","TX":"Texas","UT":"Utah","VT":"Vermont","VA":"Virginia","WA":"Washington","WV":"West Virginia","WI":"Wisconsin","WY":"Wyoming"};
 
@@ -299,7 +299,7 @@ function buildLayerLines(layer) {
 }
 const map = new maplibregl.Map({
   container:'map',
-  style:{ version:8, sources:{ base:{ type:'raster', tiles:['https://basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png'], tileSize:256, attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>' } }, layers:[{id:'bg',type:'raster',source:'base'}] },
+  style:{ version:8, sources:{ base:{ type:'raster', tiles:['https://basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}@2x.png?key=cb1_2hgy_1_234da71950746c5f4d77733a'], tileSize:256, attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>' } }, layers:[{id:'bg',type:'raster',source:'base'}] },
   bounds:(() => {
     const lngs = SITES.features.map(f => f.geometry.coordinates[0]);
     const lats = SITES.features.map(f => f.geometry.coordinates[1]);
