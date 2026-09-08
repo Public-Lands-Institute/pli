@@ -2026,6 +2026,11 @@ Caldwell Nature Preserve founding date. Cincinnati Parks dates the park to the C
 
 Camp Sherman influenza deaths. NPS gives 1,777, Ohio History Connection and the Ross County mortality schedules give 1,177. Flagged and left unresolved; see the Hopewell Culture National Historical Park section above.
 
+Edge of Appalachia National Natural Landmark, RESOLVED 2026-09-07. The entry previously read as though Lynx Prairie, Buzzardroost Rock, Red Rock, and The Wilderness were four separate National Natural Landmarks. The NPS National Registry of Natural Landmarks (June 2009, Ohio, Adams County, page 72) records a single landmark, "BUZZARDROOST ROCK-LYNX PRAIRIE-THE WILDERNESS," designated 1967, privately owned, described as consisting of four areas. The registry title names only three; the fourth is unnamed there, and The Nature Conservancy and Wikipedia identify it as Red Rock. There is no separate Red Rock landmark in Ohio, the only "Red Rock" in the national registry being Red Rock Lakes in Montana. The field now states one landmark of four areas.
+  https://www.npshistory.com/publications/nnl/registry-2009.pdf
+  https://www.nature.org/en-us/get-involved/how-to-help/places-we-protect/edge-of-appalachia-preserve-system/
+  https://en.wikipedia.org/wiki/Edge_of_Appalachia_Preserve
+
 Royce cession numbering. The file mixes Charles C. Royce's national cession numbers with state-sequence numbers. The Treaty of Grouseland (1805) is now given consistently as Royce Cession 56 with the Indiana sequence number 8 in parentheses, following the convention already used in the Hovey Lake entry. The Jerome Agreement is now given consistently as Cession 511, the only reading consistent with the Medicine Lodge Treaty of 1867 being numbered 510 in the same entries. Neither number has been confirmed directly against Royce's schedule, and both should be checked against the source before they are relied on.
   Royce, Charles C. — Indian Land Cessions in the United States, Eighteenth Annual Report of the Bureau of American Ethnology, Part 2 (1899)
   https://home.nps.gov/articles/000/cessions-of-land-by-indigenous-peoples-in-the-state-of-indiana.htm
