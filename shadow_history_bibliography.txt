@@ -1,6 +1,244 @@
 PUBLIC LANDS INSTITUTE — SHADOW HISTORY FIELD BIBLIOGRAPHY
 Sources consulted for shadow_history field values.
-Generated 2026-08-06.
+Generated 2026-09-07.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CALDWELL NATURE PRESERVE (Hamilton County, Ohio)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Cincinnati Parks — A History of Caldwell Nature Preserve (site once part of the Symmes Purchase; location of Cincinnati Parks' first nursery; home to a formerly enslaved person; park dated to 1914; no name or further account given)
+  https://www.cincinnati-oh.gov/cincyparks/visit-a-park/parks-events-calendar/a-history-of-caldwell-nature-preserve/
+
+American Rivers — Urban River Revival: Celebrating Ohio's Mill Creek (1996 listing as the most endangered urban river in the country; three Superfund sites on the banks, 31 other hazardous waste sites, 158 combined and sanitary sewer overflow outfalls)
+  https://www.americanrivers.org/2017/09/urban-river-revival-celebrating-ohios-mill-creek/
+
+CityBeat — Cincinnati's Mill Creek Rising (1992 Ohio Department of Health finding that Mill Creek fish were unsafe to eat; Ohio EPA no body contact recommendation; industrial and packing-house discharge history)
+  https://www.citybeat.com/news/cincinnatis-mill-creek-rising-12177363/
+
+Mill Creek Restoration Project (now Groundwork Cincinnati Mill Creek) — Caldwell Park & Greenway Trail (park naturalist Olivia Canada on combined sewer overflows near the preserve; MSD-built greenway from the Caldwell playground to West Seymour Avenue; creek bank stabilization, riffles, and J-hook rock structures; Clean Ohio Conservation Fund partnership; 123 acres, gifted by Caldwell family heirs in 1914; trees over 200 years old)
+  https://cleanmillcreek.wordpress.com/2013/11/25/caldwell-park-playground-greenway-trail/
+
+Metropolitan Sewer District of Greater Cincinnati — Consent Decree and Wet Weather Improvement Plan (2002 federal consent decree with U.S. EPA, Ohio EPA, and ORSANCO; requirement to capture, treat, or remove 85 percent of roughly 14 billion gallons of annual combined sewer overflow and to eliminate sanitary sewer overflows)
+  https://msdgc.org/programs/wet-weather-program-consent-decree/consent-decree-and-wet-weather-improvement-plan-wwip/
+
+University of Cincinnati Libraries Special Collections — Cincinnati (Ohio) Board of Park Commissioners Records finding aid (park board annual reports, property acquisition records, field journals; consulted for the nursery and residency claims, no individual named in accessible finding-aid material)
+  https://findingaids.libraries.uc.edu/repositories/5/resources/401
+
+History of Cincinnati and Hamilton County, Ohio, Millcreek Township chapter — White's and Caldwell's blockhouses and mills at Carthage supplying the settlements within three years of the 1788 Columbia landing; the old Indigenous trail passing near Caldwell's mill westward to the Great Miami and on to North Bend; Major James Caldwell among the dozen households at Carthage in 1821
+  https://hamilton.ohgenweb.org/histhc/333.html
+
+Johnny Molloy, 60 Hikes Within 60 Miles: Cincinnati, chapter 22, Caldwell Park — GPS trailhead coordinates, 89.3-acre donation by J. Nelson Caldwell in 1915, National Recreation Trail designation, forest composition (American beech, red and white oak, sugar maple, shagbark hickory, black cherry, tulip poplar, pawpaw), blue clay deposits along the creek, ridge and ravine elevations
+  https://blog.cincinnatichildrens.org/wp-content/uploads/2013/04/Caldwell-Park.pdf
+
+American Trails, National Recreation Trails database — Caldwell Park Trails, designated January 3 1980 by the U.S. Department of the Interior
+  https://www.nrtapplication.org/trails/caldwell-park-trails
+
+Macrostrat / Ohio Division of Geological Survey bedrock mapping — queried directly for 39.2016,-84.4924 (Kope Formation, Late Ordovician 450 to 456 Ma, shale 75 percent and limestone 25 percent, gray to bluish gray, 200 to 260 feet thick)
+  https://macrostrat.org/api/v2/geologic_units/map?lat=39.2016&lng=-84.4924
+
+Symmes Purchase patent records — patent signed by George Washington September 13 1794 conveying 248,250 acres plus a surveying township between the Great and Little Miami Rivers, running roughly 24 miles north of the Ohio
+  https://en.wikipedia.org/wiki/Symmes_Purchase
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+BELL SMITH SPRINGS RECREATION AREA (Pope County, Illinois)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+thesouthern.com — 7 things you may want to know about the Shawnee National Forest in its 80th (Shawnee Purchase Unit established August 1933 under the Weeks Act, covering Gallatin, Hardin, Pope, and Saline counties; farmland purchased from Depression-era families)
+  https://thesouthern.com/news/local/7-things-you-may-want-to-know-about-the-shawnee-national-forest-in-its-80th/article_32e73a76-b18e-5f53-bb46-e3ea9eee3e29.html
+
+thelandpatents.com — Pope County, Illinois federal land patent records (180 acres from Thomas Cullum et al., 1937; 207 acres via Federal Land Bank, 1939 — parcel-level Shawnee Purchase Unit buyout documentation)
+  https://thelandpatents.com/patents/ilfsaa-000043
+  https://thelandpatents.com/patents/ilfsaa-000443
+
+USDA Forest Service — Bell Smith Springs (Shawnee National Forest, Hidden Springs Ranger District; five natural community types, canyon geology, Bay Creek watershed, natural bridge)
+  https://www.fs.usda.gov/wildflowers/regions/eastern/BellSmithSprings/index.shtml
+
+digitreaties.org — Cession 48 (Treaty with the Kaskaskia / Treaty of Vincennes, August 13 1803) and Cession 96a (Treaty with the confederated Peoria, Kaskaskia, Michigamea, Tamaroa, and Cahokia, September 25 1818)
+  https://digitreaties.org/treaties/cession/48/
+  https://digitreaties.org/treaties/cession/96a/
+
+Peoria Tribe of Indians of Oklahoma — History (Kaskaskia removal west of the Mississippi during the War of 1812 era; October 27 1832 union treaty with the Peoria, Osage Reserve, Miami County, Kansas; later relocation to the Quapaw Agency, Ottawa County, Oklahoma)
+  https://peoriatribe.com/welcome/history/
+
+native-land.ca API — territories and treaties layers queried directly for 37.5186,-88.6561 (Kaskaskia, Myaamia, Kickapoo territory polygons; Cession 48 and Cession 96a treaty polygons)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+HOVEY LAKE FISH AND WILDLIFE AREA (Posey County, Indiana)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Munson, Cheryl Ann, Jocelyn C. Turner, and Dru E. McGill — Public Education at the Hovey Lake Archaeological Site, in Indiana Archaeology 10(1) (2015), pp. 44-51, Indiana DNR Division of Historic Preservation and Archaeology (Hovey Lake site 12Po10, A.D. 1400-1650 Caborn-Welborn village; 1996-2007 public education program run explicitly against the backdrop of the Slack Farm and GE Mound looting cases; Bone Bank and Murphy sites requiring emergency/salvage archaeology)
+  https://www.in.gov/dnr/historic-preservation/files/hp-2015_ArchaeologyJournal.pdf
+
+Trafficking Culture — Slack Farm case study (1987 looting of 400+ Mississippian burials, Union County, Kentucky; ten diggers paid $10,000 for excavation rights; elevated grave desecration from misdemeanor to felony under Kentucky law)
+  https://traffickingculture.org/encyclopedia/case-studies/slack-farm/
+
+Trafficking Culture — GE Mound (Mount Vernon Site) case study (Hopewell mound, Black Township, Posey County, Indiana, discovered and leveled for road fill during General Electric plant construction 1988, looted 1988-89; precedent Archaeological Resources Protection Act prosecution; led to statewide Indiana excavation-permit requirement)
+  https://traffickingculture.org/encyclopedia/case-studies/ge-mound-mount-vernon-site/
+
+Wikipedia — Hovey Lake-Klein Archeological Site; Mount Vernon Site (GE Mound)
+  https://en.wikipedia.org/wiki/Hovey_Lake-Klein_Archeological_Site
+  https://en.wikipedia.org/wiki/Mount_Vernon_Site
+
+Indiana DNR — Hovey Lake Fish and Wildlife Area property page (7,404 acres, 1,400-acre oxbow lake, bald cypress swamp, Division of Fish and Wildlife)
+  https://www.in.gov/dnr/fish-and-wildlife/properties/hovey-lake-fwa
+
+digitreaties.org — Cession 49 (Treaty of Vincennes with the Piankeshaw, August 27 1804, and companion Delaware treaty of August 18 1804)
+  https://digitreaties.org/treaties/cession/49/
+
+genealogytrails.com — Posey County, Indiana aborigines (Miami Confederacy, Piankeshaw, Shawnee village at the Wabash-Ohio junction; 2-square-mile Piankeshaw reserve ceded January 3 1818 by principal chief Chekommia)
+  https://genealogytrails.com/ind/posey/aborigines.html
+
+native-land.ca API — territories and treaties layers queried directly for 37.8167,-87.9333 (Myaamia, Piankeshaw, Shawnee territory polygons; Cession 49 treaty polygon)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FALLS OF THE OHIO STATE PARK (Clark County, Indiana)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Wikipedia — Shippingport, Kentucky (incorporated 1785; peaked at ~600 residents in the 1820s; isolated into an island by the 1825 Louisville and Portland Canal; 1832 flood drove most French residents to Portland; 1937 flood forced remaining families out; 1958 federal condemnation of remaining private property to widen the canal, evicting the last residents)
+  https://en.wikipedia.org/wiki/Shippingport,_Kentucky
+
+Wikipedia — Louisville and Portland Canal (chartered 1825, construction began March 1826, completed 1830, bypassing the Falls of the Ohio)
+  https://en.wikipedia.org/wiki/Louisville_and_Portland_Canal
+
+Time — "The American Way": Photos From the Great Ohio River Flood of 1937 (Margaret Bourke-White photograph; more than 175,000 mostly Black Louisville residents displaced)
+  https://time.com/3879426/the-american-way-photos-from-the-great-ohio-river-flood-of-1937/
+
+NPS — Paleontology of Ohio Coral Reef (Falls of the Ohio) National Natural Landmark (~390 Mya Middle Devonian Jeffersonville Limestone fossil beds; 1966 NNL designation)
+  https://www.nps.gov/articles/000/paleontology-of-ohio-coral-reef-nnl.htm
+
+NPS — Falls of the Ohio / Old Clarksville Site (Shawnee, Haudenosaunee, and Delaware named as river travelers who knew the rapids; George Rogers Clark's 1778 Corn Island landing and the 1783-84 platting of Clarksville)
+  https://www.nps.gov/places/falls-of-the-ohio-old-clarksville-site.htm
+
+NPS — Cessions of Land by Indigenous Peoples in the State of Indiana (Royce Cession No. 5, Clark's Grant, excepted from Indian country by the Treaty of Greene Ville, August 3 1795)
+  https://www.nps.gov/articles/000/cessions-of-land-by-indigenous-peoples-in-the-state-of-indiana.htm
+
+Wikipedia — Clark's Grant; McAlpine Locks and Dam; Falls of the Ohio National Wildlife Conservation Area
+  https://en.wikipedia.org/wiki/Clark's_Grant
+  https://en.wikipedia.org/wiki/McAlpine_Locks_and_Dam
+  https://en.wikipedia.org/wiki/Falls_of_the_Ohio_National_Wildlife_Conservation_Area
+
+Indiana DNR — Falls of the Ohio State Park property page (165 acres, established 1990; 270+ bird species, 125 fish species, Audubon connection; 220-acre fossil bed exposure; low-water viewing season August-October)
+  https://www.in.gov/dnr/state-parks/parks-lakes/falls-of-the-ohio-state-park/
+
+native-land.ca API — territories and treaties layers queried directly for 38.2756,-85.7636 (Osage, Shawnee, Kaskaskia, Myaamia territory polygons; Cession 25 / Treaty of Greenville treaty polygon)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CAVE-IN-ROCK STATE PARK (Hardin County, Illinois)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Wikipedia — James Ford (pirate) (Ford's Ferry Gang, operated 1823 until Ford's death in 1833; associate of John Hart Crenshaw; road from the Crenshaw House to Ford's Ferry a documented route of the Reverse Underground Railroad)
+  https://en.wikipedia.org/wiki/James_Ford_(pirate)
+
+Wikipedia — Crenshaw House (Gallatin County, Illinois) (John Hart Crenshaw, salt-works operator; kidnapping and sale of free Black Illinoisans into slavery; the "Old Slave House")
+  https://en.wikipedia.org/wiki/Crenshaw_House_(Gallatin_County,_Illinois)
+
+Illinois DNR — About Cave-in-Rock (official brochure language: no historical evidence the cave sheltered outlaws Samuel Mason or the Harpe brothers beyond brief stopovers)
+  https://dnr.illinois.gov/parks/about/park.caveinrock.html
+  https://dnr.illinois.gov/content/dam/soi/en/web/dnr/publications/documents/00000017.pdf
+
+Illinois State Geological Survey — Guide to the Geology of Cave-In-Rock Area, Hardin County, Illinois (Field Trip Guidebook 2006B, Frankie and Jacobson) (cave developed in the Mississippian St. Louis Limestone; James Ford documented as a Cave-in-Rock-area outlaw)
+  http://library.isgs.illinois.edu/Pubs/pdfs/ftgb/ftgb2006B-caveinrock.pdf
+
+Wikipedia — St. Louis Limestone; Cave-in-Rock State Park; List of National Natural Landmarks in Illinois (204 acres, established 1929, NRHP-listed 1998; confirmed absent from the Illinois NNL list)
+  https://en.wikipedia.org/wiki/St._Louis_Limestone
+  https://en.wikipedia.org/wiki/Cave-in-Rock_State_Park
+  https://en.wikipedia.org/wiki/List_of_National_Natural_Landmarks_in_Illinois
+
+digitreaties.org — Cession 48 and Cession 96a (see Bell Smith Springs entry above; same treaties apply to Hardin County)
+  https://digitreaties.org/treaties/cession/48/
+  https://digitreaties.org/treaties/cession/96a/
+
+SIU Morris Library — Native American Relations in Illinois before Statehood (Kaskaskia territory to Murphysboro before 1803 removal; Shawneetown established by the French to help control Ohio River traffic; Shawnee allied with Britain, remained until removal after the War of 1812)
+  https://scrcexhibits.omeka.net/exhibits/show/sihistory/relations
+
+native-land.ca API — territories and treaties layers queried directly for 37.4686,-88.1558 (Osage, Quapaw, Yuchi, Shawnee, Kaskaskia, Kickapoo territory polygons; Cession 48 and Cession 96a treaty polygons)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+GENERAL BUTLER STATE RESORT PARK (Carroll County, Kentucky)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Wikipedia — General Butler State Resort Park (791 acres, Carroll County, adjoining Carrollton; established August 12, 1931 as Kentucky's sixth state park on ~300 acres of the William O. Butler family farm; developed by the Civilian Conservation Corps; 705 ft elevation; 30-acre Butler Lake; Butler-Turpin State Historic House built 1859; family cemetery on the grounds; confluence of the Kentucky and Ohio rivers)
+  https://en.wikipedia.org/wiki/General_Butler_State_Resort_Park
+
+Living New Deal — General Butler State Park (Butler Memorial Park), Carrollton KY (Civilian Conservation Corps built a camp, dam, stone overlook, and other structures beginning 1933)
+  https://livingnewdeal.org/sites/general-butler-state-park-butler-memorial-park-carrollton-ky/
+
+StateParks.com — Butler-Turpin State Historic House (1859 Greek Revival house of Major Thomas Langford Butler; household included enslaved people whose names are not known; described as an apparent family of three generations)
+  https://stateparks.com/butler-turpin_state_historic_house_in_kentucky.html
+
+Butler-Turpin State Historic House interpretation, via Kentucky Historic Travels and Genuine Kentucky (three generations of enslaved people lived and are buried on the property in a slave cemetery, a short walk from the Butler family cemetery; the Butler family emancipated enslaved people before the Civil War, most remaining as servants)
+  https://www.genuinekentucky.com/kentucky-state-parks/general-butler-state-resort-park/
+
+Notable Kentucky African Americans Database — Carroll County (KY) Enslaved, Free Blacks, and Free Mulattoes, 1850-1870 (enslaved population of Carroll County; census context)
+  https://nkaa.uky.edu/nkaa/items/show/2301
+
+Wikipedia — William O. Butler (park's namesake; U.S. Representative and War of 1812 and Mexican-American War general; a slaveholder who opposed the extension of slavery and favored gradual emancipation)
+  https://en.wikipedia.org/wiki/William_O._Butler
+
+Wikipedia — Butler Family Cemetery (Carroll County; family burial ground on the state park grounds)
+  https://en.wikipedia.org/wiki/Butler_Family_Cemetery
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+BIG OAKS NATIONAL WILDLIFE REFUGE (Jefferson, Ripley, and Jennings Counties, Indiana)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+U.S. Fish and Wildlife Service — Big Oaks National Wildlife Refuge (50,000 acres across Jefferson, Ripley, and Jennings Counties; established 2000 on land leased from the U.S. Army; Globally Important Bird Area; one of the largest breeding populations of Henslow's sparrow; ~1,000-acre Indiana Air National Guard inholding; annual acknowledgement-of-danger waiver; ~4,000 acres open around Old Timbers Lake)
+  https://www.fws.gov/refuge/big-oaks
+
+Wikipedia — Jefferson Proving Ground (56,000-acre site selected December 1940; residents given 30 to 120 days to vacate; first round fired May 10, 1941; closed September 30, 1995 under BRAC; ~50,000 acres north of the firing line leased to USFWS in 2000; depleted uranium testing)
+  https://en.wikipedia.org/wiki/Jefferson_Proving_Ground
+
+U.S. Nuclear Regulatory Commission — Jefferson Proving Ground decommissioning / DU blog (1984-1994 the Army test-fired ~100,000 kg of depleted-uranium tank penetrators under NRC License SUB-1435; impact area still holds ~70,000 kg of DU and ~1.5 million rounds of unexploded ordnance; 2,080-acre DU impact area; more than 24 million rounds fired overall; twice-yearly monitoring of soil, groundwater, surface water, and sediment since 1984; possession-only license with decommissioning-timeliness exemption issued September 2019)
+  https://www.nrc.gov/info-finder/decommissioning/complex/jefferson-proving-ground-facility
+  https://public-blog.nrc-gateway.gov/tag/jefferson-proving-ground/
+
+EcoIndiana — Muscatatuck Watershed (Muscatatuck River basin drains ~730,000 acres of southeastern Indiana including portions of Jefferson, Ripley, and Jennings Counties; Big Creek and Otter Creek drainages)
+  https://ecoindiana.net/watersheds/muscatatuck.html
+
+National Park Service — Cessions of Land by Indigenous Peoples in the State of Indiana (Cession No. 8, treaty of August 21, 1805, with the Miami, Eel River, and Wea, covering the southeastern part of the state)
+  https://www.nps.gov/articles/000/cessions-of-land-by-indigenous-peoples-in-the-state-of-indiana.htm
+
+Wikipedia — Treaty of Grouseland (August 21, 1805, Vincennes; Miami, Eel River, and Wea ceded southeastern Indiana; reserved right to hunt and tap maple sugar in the ceded land; Miami retained claim to the Wabash and its waters)
+  https://en.wikipedia.org/wiki/Treaty_of_Grouseland
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+VERSAILLES STATE PARK (Ripley County, Indiana)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Wikipedia — Versailles State Park (5,988 acres, Ripley County; farmland acquired by the National Park Service in the 1930s and developed by the CCC as a Recreational Demonstration Area; transferred to Indiana 1943; 230-acre Versailles Lake formed 1954 by damming Laughery Creek; 1885 Busching covered bridge; CCC monument dedicated May 21, 2010)
+  https://en.wikipedia.org/wiki/Versailles_State_Park
+
+National Park Service — Recreational Demonstration Areas / Federal Lands to Parks (RDA program established 1934; submarginal lands purchased with Federal Emergency Relief Administration funds and developed under NPS direction; land bought from sub-optimal farmers as Depression relief; retiring submarginal land from cultivation)
+  https://www.nps.gov/orgs/1508/rda.htm
+
+Indiana DNR — Recreation Demonstration Areas (state history of the RDA program and the Versailles Recreational Demonstration Area)
+  https://secure.in.gov/dnr/state-parks/cultural-resources-and-history/recreation-demonstration-areas/
+
+Indiana Landmarks — Versailles State Park Celebrates 100 Years of Conservation (RDA origins, CCC construction, transfer to the state)
+  https://www.indianalandmarks.org/2016/07/100-years-conservation-versailles-state-park/
+
+Laughery Creek Currents — About Laughery Creek (~90-mile Ohio River tributary running through Versailles State Park, emptying into the Ohio between Aurora and Rising Sun)
+  https://laugherycreek.wordpress.com/about-laughery-creek/
+
+Indiana Geological Survey — Dillsboro Formation, Upper Ordovician (Cincinnatian) interbedded limestone and shale of southeastern Indiana; fossiliferous marine strata exposed on lower slopes near Versailles and Madison
+  https://en.wikipedia.org/wiki/Versailles_State_Park
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CAVE RUN LAKE (Rowan, Bath, Menifee, and Morgan Counties, Kentucky)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Appalachian Historian — Cave Run Lake Dam: Bath County's New Deal Promise and Appalachian Tradeoffs (Flood Control Act of 1936; Farmers valley site selected early 1960s; construction began June 1965; operational February 1974; Corps acquisition of farms, timberland, and homesteads for the permanent and flood pools; families relocated to higher ground or into town; ~3,600-square-mile Licking River basin; cites The History of Cave Run Lake, Rowan County Public Library)
+  https://appalachianhistorian.org/cave-run-lake-dam-bath-countys-new-deal-promise-and-appalachian-tradeoffs/
+
+U.S. Army Corps of Engineers, Great Lakes and Ohio River Division — Cave Run Lake project page (earth-and-rockfill dam ~148 ft high, half-mile long; 8,270-acre summer pool at elevation 730; 614,100 acre-feet storage; flood control, water supply, water quality, and recreation on the Licking River; Louisville District; recreation within Daniel Boone National Forest)
+  https://www.lrd.usace.army.mil/Submit-ArticleCS/Projects/Article/3641194/cave-run-lake/
+
+Wikipedia — Cave Run Lake (Rowan, Morgan, Menifee, and Bath Counties; construction 1965, completed 1973; dam 148 ft; 8,270 acres; 614,100 acre-feet; Licking River; dam coordinates 38 deg 04 min 53 sec N, 83 deg 29 min 29 sec W)
+  https://en.wikipedia.org/wiki/Cave_Run_Lake
+
+USGS Professional Paper 1151-H — The Geology of Kentucky: Physiography and Pennsylvanian System (Cumberland Plateau of Pennsylvanian clastic rocks; Pottsville/Cumberland Escarpment of resistant lower-Pennsylvanian sandstone and conglomerate; Lee Formation quartz sandstone; entrenched Licking River)
+  https://pubs.usgs.gov/pp/p1151h/physiography.html
+  https://pubs.usgs.gov/pp/p1151h/penn.html
+
+Work, Mason, and others — Mississippian (Early Osagean) Cave Run Lake Ammonoid Fauna, Borden Formation, Northeastern Kentucky (JSTOR) (Early Osagean Borden Formation exposed at Cave Run Lake; marine ammonoid fauna)
+  https://www.jstor.org/stable/4095044
+
+NKyTribune — The Licking River: A healthy sign, mussels are thriving, including the endangered fanshell (55 native mussel species and 111 native fish species in the Licking basin; imperiled mussel fauna downstream)
+  https://nkytribune.com/2015/09/a-the-licking-river-a-healthy-sign-mussels-are-thriving-including-the-endangered-fanshell/
+
+Wikipedia — Daniel Boone National Forest (26 federally listed threatened and endangered species; Indiana bat, Virginia big-eared bat; Weeks Act acquisition from 1916; Cumberland Ranger District)
+  https://en.wikipedia.org/wiki/Daniel_Boone_National_Forest
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 SILVER LAKE STATE PARK (Oceana County, Michigan)
@@ -259,6 +497,46 @@ Wikipedia — Hitchiti (Ochese Creek towns, Hitchiti-English naming of "Creek In
   https://en.wikipedia.org/wiki/Hitchiti
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+HIGH FALLS STATE PARK (Monroe County, Georgia)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+New Georgia Encyclopedia — Monroe County (more than 10,000 enslaved laborers in the county in 1860, nearly two-thirds of the total population; cotton-based agricultural economy)
+  https://www.georgiaencyclopedia.org/articles/counties-cities-neighborhoods/monroe-county/
+
+Visit Forsyth GA — High Falls and the Weight of Time (1827 gristmill; T.S.M. Bloodworth's mill village of stores, gin, blacksmith shop, and shoe factory; Confederate cavalry under Wheeler burned the mill in November 1864 as Kilpatrick's Union column advanced on Sherman's March to the Sea; Sunny South, December 1893, on roughly $2,000 of stored corn, wheat, meal, and flour destroyed and seventy hogs killed on the spot)
+  https://visitforsythga.com/high-falls-the-weight-of-time/
+
+New Georgia Encyclopedia — Georgia State Parks (segregated state park system; separate Black-only parks including Yam Grande near Swainsboro, George Washington Carver on Lake Allatoona, Lincoln near Millen, and a section of Georgia Veterans near Cordele; integration pressure in the 1960s)
+  https://www.georgiaencyclopedia.org/articles/geography-environment/georgia-state-parks/
+
+High Falls State Park — Wikipedia (Towaliga Falls Power Company dam completed 1904; Georgia Power operation to 1958; Hiwassee Land Company donation to the Georgia Game and Fish Commission July 19, 1961; state park formally established 1966)
+  https://en.wikipedia.org/wiki/High_Falls_State_Park
+
+Note: no roster, payroll, or bill of sale naming enslaved people who worked the High Falls mills has been located in accessible public records. The field states the county-level slave economy the mill village sat inside rather than asserting site-specific labor.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+OHOOPEE DUNES WILDLIFE MANAGEMENT AREA (Emanuel County, Georgia)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+New Georgia Encyclopedia — Emanuel County (first railroads in the 1870s opening large-scale lumbering; forest-related industry an economic mainstay from the 1870s through the 1960s; longleaf pine supplying sawmills, turpentine stills, and cabinetmakers)
+  https://www.georgiaencyclopedia.org/articles/counties-cities-neighborhoods/emanuel-county/
+
+New Georgia Encyclopedia — Naval Stores Industry (North Carolina producers migrating to southeast Georgia's sandy coastal plain in the early 1870s with their equipment and Black laborers, establishing residential villages on large turpentine farms; Georgia the national leader in naval stores 1890 to 1905 and again from the 1920s until the 1960s)
+  https://www.georgiaencyclopedia.org/articles/business-economy/naval-stores-industry/
+
+New Georgia Encyclopedia — Georgia State Parks (Yam Grande near Swainsboro among the Black-only parks Georgia operated under segregation)
+  https://www.georgiaencyclopedia.org/articles/geography-environment/georgia-state-parks/
+
+Georgia DNR Wildlife Resources Division — Ohoopee Dunes WMA (9,271 acres in Emanuel County; nine legally protected species and more than ten additional species of conservation concern; prescribed fire management)
+  https://georgiawildlife.com/ohoopee-dunes-wma
+
+National Park Service — National Natural Landmarks site designations (Camp E. F. Boyd Natural Area, Emanuel County, designated 1974 as a representative upland sand ridge ecosystem of the Coastal Plain; privately owned)
+  https://www.nps.gov/subjects/nnlandmarks/nnl-site-designations.htm
+
+The Nature Conservancy — Ohoopee Dunes Preserve (adjoining Conservancy tract)
+  https://www.nature.org/en-us/get-involved/how-to-help/places-we-protect/ohoopee-dunes/
+
+Note: no prosecution for artifact looting in the Ohoopee dune fields appears in accessible public records, and no site-specific record tying Georgia's convict lease system to Emanuel County turpentine operations was located. The field states continuing disturbance and the county's forest economy without asserting either case.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 PINCKNEY ISLAND NATIONAL WILDLIFE REFUGE (Beaufort County, South Carolina)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Pinckney Island National Wildlife Refuge — Wikipedia (plantation history, enslaved population figures, 1862 skirmish, USCT cemetery, Bruce/Starr/Barker ownership, 1975 donation)
@@ -641,36 +919,6 @@ Palisades State Park land expansion project — South Dakota Parks and Wildlife 
   https://www.parkswildlifefoundation.org/projects/palisades-state-park
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-CHARON'S GARDEN WILDERNESS AREA / WICHITA MOUNTAINS (Comanche County, Oklahoma)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Red River War — Oklahoma Historical Society Encyclopedia of Oklahoma History and Culture
-  https://www.okhistory.org/publications/enc/entry.php?entry=RE010
-
-Kiowa-Comanche-Apache Opening — Oklahoma Historical Society Encyclopedia
-  https://www.okhistory.org/publications/enc/entry.php?entry=KI020
-
-Wichita Mountains NWR history — Oklahoma Historical Society Encyclopedia
-  https://www.okhistory.org/publications/enc/entry.php?entry=WI003
-
-Jerome Agreement (1892/1900): KCA surplus lands ceded; McKinley Proclamation 459 (July 4, 1901) establishing Wichita Forest Reserve on those ceded lands
-  Cross-referenced: Red River War + KCA Opening + OHS NWR entry
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-SEA RIM STATE PARK (Jefferson County, Texas) — additions
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Hurricane Rita closure / reopening — TPWD News Release, September 27, 2005
-  https://tpwd.texas.gov/newsmedia/releases/?req=20050927a
-
-Sea Rim reopening and restoration — Texas Parks and Wildlife Magazine, July 2014
-  https://tpwmagazine.com/archive/2014/jul/scout1_searim/
-
-Sea Rim State Park — NOAA Gulf Spill Restoration project (coastal dune restoration, formal NRD designation)
-  https://www.gulfspillrestoration.noaa.gov/media/document/txsearimfinal10214pdf
-
-TPWD Deepwater Horizon natural resource damage assessment
-  https://tpwd.texas.gov/landwater/water/environconcerns/damage_assessment/dwh_spill/
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 MISSISSIPPI PALISADES STATE PARK (Carroll County, Illinois)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EPA Superfund Site Profile — Savanna Army Depot Activity (ID 0501174) (NPL listing 1989, Apple River landfill contamination documentation)
@@ -715,6 +963,32 @@ Mounds State Park — Wikipedia (overview, amusement park, BSU excavations, loot
   https://en.wikipedia.org/wiki/Mounds_State_Park
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PROPHETSTOWN STATE PARK (Tippecanoe County, Indiana)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EBSCO Research Starters — Founding of Prophetstown (Tenskwatawa agrees in January 1808 to establish the town and moves west in the first week of April; Miami chief Little Turtle attempts to prevent the settlement on ground he claimed; nations represented include Potawatomi, Shawnee, Kickapoo, Delaware, Winnebago, Wea, Wyandotte, Ottawa, Chippewa, Menominee, Fox, Sauk, and Creek)
+  https://www.ebsco.com/research-starters/history/founding-prophetstown
+
+Archaeology Magazine, January/February 2026 — Off the Grid: Prophetstown, Indiana (Christopher Moore, University of Indianapolis, on multiple dispersed occupation zones separated by cornfields rather than a single centralized village)
+  https://archaeology.org/issues/january-february-2026/off-the-grid/prophetstown-indiana/
+
+University of Indianapolis — Christopher Moore receives $50,000 DNR grant for Prophetstown State Park archaeological survey (2020)
+  https://news.uindy.edu/2020/08/26/christopher-moore-receives-50000-dnr-grant-for-prophetstown-state-park-archaeological-survey/
+
+Moore, Christopher R. — Archaeological Investigations at Site 12-T-59 and Two Other Locations in Prophetstown State Park, Tippecanoe County, Indiana
+  https://www.academia.edu/524020/Archaeological_Investigations_at_Site_12_T_59_and_Two_Other_Locations_in_Prophetstown_State_Park_Tippecanoe_County_Indiana
+
+Moore, Christopher R. — Report of the 2006 Archaeological Investigations at Kethtippecanunk (12-T-59), Tippecanoe County, Indiana
+  https://www.academia.edu/524026/Report_of_the_2006_Archaeological_Investigations_at_Kethtippecanunk_12_T_59_Tippecanoe_County_Indiana
+
+Indiana DNR Division of Historic Preservation and Archaeology — Indiana Archaeology, Vol. 17 No. 1 (2024)
+  https://www.in.gov/dnr/historic-preservation/files/hp-2024-Archaeology-Journal-Vol-17-No-1.pdf
+
+Indiana DNR State Parks — Indigenous Peoples in Indiana
+  https://www.in.gov/dnr/state-parks/cultural-resources-and-history/native-americans/
+
+Note: documentation of tribal consultation in the early excavations is absent from the public record, as the field states.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 SHADES STATE PARK (Montgomery County, Indiana)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Discover Indiana History — Shades State Park (Garland Dells Mineral Springs Association, 40-room inn 1887, Dells Resort, Frisz acquisition)
@@ -885,36 +1159,7 @@ Piping Plover first Ohio nest in 83 years (2021) — Audubon Society
 Lake Sturgeon reintroduction, Maumee River — USFWS
   https://www.fws.gov/story/2024-02/tails-deep
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-GRAND LAKE ST. MARYS STATE PARK (Mercer/Auglaize counties, Ohio)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Grand Lake St. Marys State Park — Wikipedia
-  https://en.wikipedia.org/wiki/Grand_Lake_St._Marys_State_Park
-
-Grand Lake/Wabash Watershed Alliance — Nine Element Plan documentation
-  https://lakeimprovement.com/wp-content/uploads/2016/11/Sections_1.0-3.0_General_12-09.pdf
-
-Ohio EPA TMDL Factsheet, Grand Lake St. Marys
-  https://dam.assets.ohio.gov/image/upload/epa.ohio.gov/Portals/35/tmdl/GLSMfactsheet%20Final%20Oct07.pdf
-
-Nine Element Nonpoint Source Implementation Plan v1.3 — Ohio EPA
-  https://dam.assets.ohio.gov/image/upload/epa.ohio.gov/Portals/35/nps/Approved%209-Element%20Plans/Grand%20Lake%20Saint%20Marys_Ver1.3_1-20-2021.pdf
-
-Ohio EPA HAB Response Strategy
-  https://dam.assets.ohio.gov/image/upload/epa.ohio.gov/Portals/35/hab/HABResponseStrategy.pdf
-
-Exploring long-term microcystin trends, Grand Lake St. Marys — PubMed
-  https://pubmed.ncbi.nlm.nih.gov/36754460/
-
-Algae attacks Ohio's largest inland lake — Great Lakes Echo
-  https://greatlakesecho.org/2011/06/30/algae-attacks-ohios-largest-inland-lake-wet-spring-and-manure-blamed/
-
-Distressed Watershed designation — Ohio Department of Agriculture (January 18, 2011)
-
-History of canal construction and labor — Lake Improvement Association
-  https://lakeimprovement.com/history/
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 OAK OPENINGS METROPARK (Lucas County, Ohio)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Toledo Stone and Glass Sand Quarry — MinDat
@@ -970,6 +1215,27 @@ River Raisin Watershed Assessment — Michigan DNR
   https://www.michigandnr.com/publications/pdfs/ifr/ifrlibra/special/reports/sr23.pdf
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FORD MARSH UNIT, DETROIT RIVER INTERNATIONAL WILDLIFE REFUGE (Monroe County, Michigan)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+U.S. EPA — River Raisin Area of Concern (PCB contamination from a century of paper mill, foundry, and automotive discharges; Great Lakes Legacy Act remediation)
+  https://www.epa.gov/great-lakes-aocs/river-raisin-aoc
+
+U.S. EPA — River Raisin Great Lakes Legacy Act Project fact sheet, June 2012 (106,000 cubic yards of sediment removed in the 2012-2013 project; $44.2 million cost shared among EPA, Michigan EGLE, and Ford Motor Company; dredging in front of the Ford Motor Company property near the Port of Monroe turning basin)
+  https://www.epa.gov/sites/default/files/2015-09/documents/raisin_fs_201206.pdf
+
+Michigan PFAS Action Response Team — Ford River Raisin Warehouse, Monroe (3200 East Elm Avenue; the site began as the Newton Steel plant in the 1920s; on-site chrome plating waste disposal; February 2019 monitoring well sampling by the Mannik Smith Group)
+  https://www.michigan.gov/pfasresponse/investigations/sites-aoi/monroe-county/ford-river-raisin-warehouse
+
+Michigan EGLE — Ford River Raisin Warehouse, liquid industrial byproducts file
+  https://www.michigan.gov/egle/about/organization/materials-management/hazardous-waste/liquid-industrial-byproducts/ford-river-raisin-warehouse
+
+Michigan EGLE — River Raisin Remedial Action Plan, biennial report
+  https://www.michigan.gov/-/media/Project/Websites/egle/Documents/Programs/WRD/AOC/raisin-rap.pdf
+
+Wikipedia — Monroe Power Plant (41.8892 N, 83.3456 W, on the Lake Erie shore south of the River Raisin mouth, correcting the previous "five miles north")
+  https://en.wikipedia.org/wiki/Monroe_Power_Plant
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 WILLIAM C. STERLING STATE PARK (Monroe County, Michigan)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Monroe Power Plant — Global Energy Monitor
@@ -991,6 +1257,31 @@ Piping Plover Great Lakes recovery — U.S. Fish and Wildlife Service
   https://www.fws.gov/story/how-great-lakes-communities-are-helping-endangered-piping-plover-recover
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+KILLDEER PLAINS WILDLIFE AREA (Wyandot and Marion counties, Ohio)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Ohio DNR — Killdeer Plains Wildlife Area (9,054 acres; acquisition begun in 1952 and continued through 2007; wet prairie remnant of the prairie peninsula)
+  https://ohiodnr.gov/go-and-do/plan-a-visit/find-a-property/killdeer-plains-wildlife-area
+
+Killdeer Plains Wildlife Area historical marker — Historical Marker Database
+  https://www.hmdb.org/m.asp?m=94525
+
+The Sandusky Plains historical marker — Historical Marker Database
+  https://www.hmdb.org/m.asp?m=94535
+
+Ohio State University Marion, Larry R. Yoder Prairie Learning Lab — Mapping the Sandusky Plains (extent of the Sandusky Plains wet prairie and its drainage for row-crop agriculture)
+  https://u.osu.edu/marionprairie/mapping-the-sandusky-plains/
+
+The Wyandot Removal Trail, University of Cincinnati History Lab — Upper Sandusky (departure from Upper Sandusky July 11, 1843; more than 650 Wyandot walking roughly 150 miles to Cincinnati and then west by steamboat; the last nation removed from Ohio)
+  https://uchistorylab.com/wyandot-trail/explore/upper-sandusky/
+
+The Wyandot Removal Trail — Indian Removal and Our Dispersal
+  https://uchistorylab.com/wyandot-trail/history/removal/
+
+Treaty with the Wyandot, Seneca, Delaware, Shawanoese, Potawatomees, Ottawas, and Chippewas, September 29, 1817, at the foot of the Rapids of the Miami of Lake Erie: Article 4 reserves one square mile at the Cranberry Swamp on Broken Sword Creek. (Kappler, Indian Affairs: Laws and Treaties, Vol. 2.)
+
+Note: sites.json gives the drained wet prairie associated with Killdeer Plains as roughly 30,000 acres, which is the local tract; the Sandusky Plains as a whole are given by other sources at more than 200,000 acres. The two figures describe different extents.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 POINTE MOUILLEE STATE GAME AREA (Monroe/Wayne counties, Michigan)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Confined Disposal Facility at Pointe Mouillee — DTIC/U.S. Army Corps of Engineers
@@ -1309,6 +1600,16 @@ Sea Rim State Park Restoration — NOAA Gulf Spill Restoration
 Hurricanes Katrina and Rita Oil Spill Response — NOAA
   https://response.restoration.noaa.gov/oil-and-chemical-spills/significant-incidents/hurricanes-katrina-and-rita
 
+Hurricane Rita closure / reopening — TPWD News Release, September 27, 2005
+  https://tpwd.texas.gov/newsmedia/releases/?req=20050927a
+
+Sea Rim reopening and restoration — Texas Parks and Wildlife Magazine, July 2014
+  https://tpwmagazine.com/archive/2014/jul/scout1_searim/
+
+TPWD Deepwater Horizon natural resource damage assessment
+  https://tpwd.texas.gov/landwater/water/environconcerns/damage_assessment/dwh_spill/
+
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 CAPROCK CANYONS STATE PARK (Briscoe County, Texas)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -1376,6 +1677,16 @@ F-105 Overflight Noise Survey, Wichita Mountains — Defense Technical Informati
 Records of the U.S. Fish and Wildlife Service, Wichita Mountain Wildlife Refuge
   National Archives, Fort Worth
   https://www.archives.gov/fort-worth/finding-aids/rg022-fish-and-wildlife-wichita.html
+
+Red River War — Oklahoma Historical Society Encyclopedia of Oklahoma History and Culture
+  https://www.okhistory.org/publications/enc/entry.php?entry=RE010
+
+Kiowa-Comanche-Apache Opening — Oklahoma Historical Society Encyclopedia
+  https://www.okhistory.org/publications/enc/entry.php?entry=KI020
+
+Jerome Agreement (1892/1900): KCA surplus lands ceded; McKinley Proclamation 459 (July 4, 1901) establishing Wichita Forest Reserve on those ceded lands
+  Cross-referenced: Red River War + KCA Opening + OHS NWR entry
+
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 WICHITA MOUNTAINS NATIONAL WILDLIFE REFUGE (Comanche County, Oklahoma)
@@ -1514,3 +1825,217 @@ Rocky Fork State Park — Ohio DNR
 
 Ohio Historic Inventory — Rocky Fork Park Group and Rocky Fork Park Site
   (Ross/Highland County archaeological site records, Ohio History Connection)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+HOPEWELL CULTURE NATIONAL HISTORICAL PARK (Ross County, Ohio)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+National Park Service — The Birth of Camp Sherman (1917 War Department acquisition; construction of more than 2,000 buildings in three months over and around the Mound City earthworks)
+  https://www.nps.gov/articles/the-birth-of-camp-sherman.htm
+
+National Park Service — Influenza at Camp Sherman (roughly 5,686 documented cases; NPS states 1,777 deaths)
+  https://www.nps.gov/articles/influenza-at-camp-sherman.htm
+
+FLAGGED, UNRESOLVED — Camp Sherman influenza death toll. sites.json follows the National Park Service figure of 1,777 deaths. Ohio History Connection and the Ross County mortality schedules give 1,177 deaths by the end of October 1918. Both figures are in circulation, the discrepancy has not been resolved here, and the field should not be treated as settled.
+  Ohio History Connection — The Spanish Influenza Comes to Ohio
+    https://www.ohiohistory.org/the-spanish-influenza-comes-to-ohio/
+  Camp Sherman Mortality Schedule, Flu Epidemic of 1918 (October 1 to October 13) — Ross County History Depot
+    https://rosscountyhistorydepot.edublogs.org/files/2014/12/Flu-Pandemic-517-1bqunch.pdf
+
+Squier, E.G. and Davis, E.H. — Ancient Monuments of the Mississippi Valley (Smithsonian Contributions to Knowledge, 1848); Mound 8 at Mound City, the Mound of Pipes, described as yielding "not far from two hundred pipes, carved in stone"
+  https://www.gutenberg.org/files/49668/49668-h/49668-h.htm
+
+Squier and Davis collection provenance: purchased by William Blackmore in 1864 for $10,000, displayed at Salisbury until 1931, then sold to the British Museum, where it remains
+  https://arrowheads.com/squier-davis-reconsidered/
+
+World's Columbian Exposition Expedition to Southern Ohio, 1891-1892 — finding aid (Frederic Ward Putnam hires Warren K. Moorehead to excavate the Hopewell Mound Group for the 1893 Chicago exposition)
+  https://hopewell.unl.edu/finding_aids/Exp_to_Southern_Ohio_Finding_Aid.pdf
+
+The Hopewell Site Collection at the Field Museum — finding aid
+  https://hopewell.unl.edu/finding_aids/12-28_Hopewell_Collection_FA.pdf
+
+United States World War One Centennial Commission — Camp Sherman versus the Mound City Earthworks
+  https://www.worldwar1centennial.org/index.php/communicate/press-media/wwi-centennial-news/6394-camp-sherman-versus-the-mound-city-earthworks.html
+
+National Park Service — Hopewell Culture NHP administrative history
+  https://www.nps.gov/parkhistory/online_books/hocu/adhi/adhi2.htm
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+NEW RIVER GORGE NATIONAL PARK AND PRESERVE (Fayette, Raleigh, and Summers counties, West Virginia)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+National Park Service — Nuttallburg (segregation by status, race, and ethnicity in the coal camp; Short Creek as the informal color line, with separate school, church, and social hall on each side; African Americans working the mine and camp for some eighty-five years)
+  https://www.nps.gov/places/nuttallburg.htm
+
+Historical Marker Database — Helen, WV (East Gulf Coal Company town opened in the 1910s with boarding house, company store, clubhouse, movie theater, and telephone exchange; segregated residential areas and businesses, with equal wages for equal work underground)
+  https://www.hmdb.org/m.asp?m=186950
+
+e-WV, The West Virginia Encyclopedia — Scrip (company scrip redeemable only at the company store; traders buying scrip at discounts of 25 percent and upward, independent stores discounting 10 to 30 percent)
+  https://www.wvencyclopedia.org/entries/190
+
+West Virginia Mine Wars Museum — 16 Tons: Company Scrip and Tokens
+  https://wvminewars.org/16tons
+
+e-WV / West Virginia Division of Culture and History — West Virginia's Mine Wars
+  https://archive.wvculture.org/history/archives/minewars.html
+
+Note: CCC segregation in the region follows Director Robert Fechner's July 1935 order requiring complete separation of Black and white enrollees, the same order cited in the Hocking Hills and Great Smoky Mountains entries.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FIELD CORRECTIONS AND CONTESTED FIGURES (audit of 2026-09-07)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Sources for corrections applied to sites.json on 2026-09-07, and both sides of the
+figures that remain genuinely contested in the published literature.
+
+TAXONOMY AND LISTING STATUS
+
+Northern long-eared bat is Myotis septentrionalis, reclassified from Threatened to Endangered effective 2023; Perimyotis subflavus is the tricolored bat. Corrected at Mounds State Park, Prophetstown State Park, and Fort Hill State Memorial.
+  https://www.fws.gov/species/northern-long-eared-bat-myotis-septentrionalis
+  https://www.federalregister.gov/documents/2022/11/30/2022-25998/endangered-and-threatened-wildlife-and-plants-endangered-species-status-for-northern-long-eared-bat
+
+Lake sturgeon is not federally listed; the USFWS 12-month finding of April 23, 2024 found listing not warranted. Corrected at Magee Marsh Wildlife Area.
+  https://www.fws.gov/press-release/2024-04/collaborative-conservation-keeps-lake-sturgeon-endangered-list
+  https://www.federalregister.gov/documents/2024/04/23/2024-08567/endangered-and-threatened-wildlife-and-plants-12-month-finding-for-lake-sturgeon
+
+Tubercled blossom (Epioblasma torulosa torulosa) was delisted due to extinction in October 2023. Corrected at Prophetstown State Park.
+  https://www.fws.gov/species/tubercled-blossom-epioblasma-torulosa-torulosa
+  https://www.doi.gov/pressreleases/us-fish-and-wildlife-service-proposes-delisting-23-species-endangered-species-act-due
+
+Loggerhead shrike is not a federal candidate species. The migrans subspecies was listed as a candidate in 1994; the species is now a USFWS Bird of Conservation Concern. Corrected at Killdeer Plains Wildlife Area.
+  https://www.fws.gov/species/migrant-loggerhead-shrike-lanius-ludovicianus-migrans
+
+No federal critical habitat has been designated for the Karner blue butterfly, and the Ohio population is a reintroduction begun at Kitty Todd in May 1998. Corrected at Oak Openings Metropark.
+  https://www.fws.gov/species/karner-blue-butterfly-lycaeides-melissa-samuelis
+  https://www.nature.org/en-us/get-involved/how-to-help/places-we-protect/kitty-todd-nature-preserve/
+
+GEOLOGY
+
+1.47 Ga is Mesoproterozoic (Calymmian), not Rhyacian, which is 2300 to 2050 Ma. The St. Francois Mountains igneous rocks belong to the 1.48 to 1.45 Ga magmatism of the Eastern Granite-Rhyolite Province on the southern Laurentian margin, not to Midcontinent Rift precursor activity; the Midcontinent Rift is roughly 1.1 Ga. Corrected at Johnson's Shut-Ins State Park and Elephant Rocks State Park.
+  https://pubs.usgs.gov/publication/pp1866
+  https://www.usgs.gov/publications/petrology-and-geochronology-148-145-ga-igneous-rocks-st-francois-mountains-terrane
+
+The modern Ohio River at Cincinnati was established when pre-Illinoian ice dammed the west-flowing Teays River and formed glacial Lake Tight, roughly 730,000 to 900,000 years ago, not by Illinoian glaciation about 400,000 years ago. Corrected at Bender Mountain Nature Preserve.
+  https://ohiodnr.gov/wps/wcm/connect/gov/ohio+content+english/odnr/discover-and-learn/safety-conservation/about-odnr/geologic-survey/glacial-geology/ice-age-in-ohio
+  https://en.wikipedia.org/wiki/Lake_Tight
+
+GEOGRAPHY
+
+Magee Marsh Wildlife Area is in Carroll Township at 41.6156 N, 83.1632 W. The previous coordinates placed it roughly twenty miles east-southeast near Port Clinton. Davis-Besse Nuclear Power Station is less than a mile west of the wildlife area entrance, not ten miles southwest.
+  https://en.wikipedia.org/wiki/Magee_Marsh_Wildlife_Area
+  https://en.wikipedia.org/wiki/Davis%E2%80%93Besse_Nuclear_Power_Station
+
+Monroe Power Plant (41.8892 N, 83.3456 W) lies south of both the Ford Marsh Unit and William C. Sterling State Park, not five miles north of either.
+  https://en.wikipedia.org/wiki/Monroe_Power_Plant
+
+The Raccoon Creek beside the Newark Earthworks is a Licking River tributary in Licking County. The 683 square mile watershed figure belongs to the unrelated Raccoon Creek of southeastern Ohio.
+
+The Scioto River basin is about 6,517 square miles, not 7,956. Corrected at Hopewell Culture NHP.
+  https://en.wikipedia.org/wiki/Scioto_River
+
+Otto Armleder Memorial Park sits on the west bank of the Little Miami River about two miles above its confluence with the Ohio; the previous reference to a Mill Creek confluence was wrong, Mill Creek draining the opposite side of the city. The park is a Cincinnati Parks property jointly managed with Great Parks of Hamilton County.
+  https://www.cincinnati-oh.gov/cincyparks/visit-a-park/find-a-parkfacility/otto-armleder-memorial-park/
+  https://www.greatparks.org/parks/otto-armleder-memorial-park
+
+HISTORY AND NUMBERS
+
+Ranald Mackenzie commanded the Fourth Cavalry, not the Fifth. Corrected at Caprock Canyons State Park.
+  https://en.wikipedia.org/wiki/Battle_of_Palo_Duro_Canyon
+  https://www.legendsofamerica.com/battle-palo-duro-canyon-texas/
+
+Slack Farm: at least 650 graves were opened by looters over two months in 1987, not more than 400. Corrected at Hovey Lake Fish and Wildlife Area.
+  https://traffickingculture.org/encyclopedia/case-studies/slack-farm/
+  https://archaeology.ky.gov/Find-a-Site/Pages/Slack-Farm.aspx
+
+The Wyandot purchased thirty-six sections (23,040 acres) from the Delaware in December 1843 for $46,080, with three further sections donated, not 44,000 acres. Corrected at Cuyahoga Valley National Park.
+  https://treaties.okstate.edu/treaties/agreement-with-the-delawares-and-wyandot-1843-1048
+  https://wyandot.org/wyandot-history/removal/
+
+The 1937 Ohio River flood forced the evacuation of about 175,000 Louisville residents, roughly fifty-five percent of the city's population, so the evacuated population cannot have been mostly Black. The burden fell disproportionately on Black residents, who had fewer evacuation destinations and were made to wait longer for rescue. Corrected at Falls of the Ohio State Park.
+  https://www.ebsco.com/research-starters/history/ohio-river-flood-1937
+
+The Louisville and Portland Canal was begun in 1826 and opened in 1830. The Falls of the Ohio entry previously carried both "the 1825 Louisville and Portland Canal" and "(1826-1830)."
+
+The Road to Nowhere reached six miles of a promised road of roughly thirty miles, not forty-two. Corrected at Nantahala National Forest.
+  https://www.ncpedia.org/road-nowhere
+
+The Taum Sauk settlement was reached in November 2007, not 2009: Ameren agreed to pay $180 million in cash and property, about $103 million of it to clean up and restore Johnson's Shut-Ins State Park. The breach released roughly 1.3 billion gallons.
+  https://ameren.mediaroom.com/news-releases?item=408
+  https://damfailures.org/case-study/taum-sauk-dam-missouri-2005
+
+The Great Black Swamp covered roughly 1,500 square miles, with a high published estimate of 2,600. The previous "5,000+ square mile" figure exceeded every published estimate. Corrected at Magee Marsh Wildlife Area.
+  https://en.wikipedia.org/wiki/Great_Black_Swamp
+
+DESIGNATIONS, ACREAGE, AND OWNERSHIP
+
+Mississippi Palisades was designated a National Natural Landmark in 1972 per the NPS National Registry of Natural Landmarks, not 1973. Wikipedia's Mississippi Palisades State Park article carries the 1972 date in its infobox without a citation; the Illinois National Natural Landmarks list carries the same date and cites the NPS registry.
+  https://www.npshistory.com/publications/nnl/registry-2009.pdf
+  https://en.wikipedia.org/wiki/List_of_National_Natural_Landmarks_in_Illinois
+
+Clifton Gorge was designated a National Natural Landmark in 1967. The entry previously carried 1968 in one field and 1967 in another.
+  https://en.wikipedia.org/wiki/List_of_National_Natural_Landmarks_in_Ohio
+
+The Cuyahoga was designated an American Heritage River in 1998 under Proclamation 7112. There is no federal "National Heritage River" program, though the National Park Service uses that phrasing loosely on one article page.
+  https://www.govinfo.gov/content/pkg/STATUTE-112/pdf/STATUTE-112-Pg3782.pdf
+  https://www.nps.gov/articles/000/cuyahoga-national-heritage-river.htm
+
+Arches National Park is 76,679 acres; 76,519 is a superseded NPS figure. The Moab UMTRA project is projected for completion around 2029, not 2034, with more than 98 percent of the tailings shipped as of March 2025.
+  https://www.energy.gov/em/moab/overview-moab-umtra-project
+  https://en.wikipedia.org/wiki/Arches_National_Park
+
+Sea Rim State Park is 4,141 acres per Texas Parks and Wildlife. The 15,109 acre figure is the historic total including marsh units, carried by the Texas State Historical Association at 15,094.19 acres.
+  https://en.wikipedia.org/wiki/Sea_Rim_State_Park
+  https://www.tshaonline.org/handbook/entries/sea-rim-state-park
+
+The Arc of Appalachia preserve system holds roughly 15,700 acres, not the 5,000 and 7,000 acre figures the entry previously carried in two different fields. The Lynx Prairie, Buzzardroost Rock, Red Rock, and Wilderness National Natural Landmarks belong to the Edge of Appalachia Preserve System, owned by The Nature Conservancy and Cincinnati Museum Center; that attribution has been removed from the Arc of Appalachia entry.
+  https://www.arcofappalachia.org/
+  https://soapboxmedia.com/arc-of-appalachia-has-acquired-14000-acres-to-protect-the-regions-temperate-forest-biome-foreve/
+  https://www.nature.org/en-us/get-involved/how-to-help/places-we-protect/edge-of-appalachia-preserve-system/
+
+Glen Helen Nature Preserve has been owned by the Glen Helen Association since the 2020 purchase from Antioch College, structured as roughly $2.5 million over ten years. Acreage set to the 1,000 acres both parties state; the initial 700 acre gift from Hugh Taylor Birch in 1929 is confirmed.
+  https://ysnews.com/news/2020/06/antioch-to-sell-glen-helen-2
+  https://www.dayton.com/news/glen-helen-trails-to-reopen-after-ownership-change/G5QRPBWZHZH4VD2RDUQFHVIFPE/
+
+Paint Creek and its tributaries including Rocky Fork went through Ohio's scenic river designation process in 2021 as the state's sixteenth scenic river, 81.7 miles. The Rocky Fork entry had described the designation as still proposed while the Seip entry described it as complete.
+  https://www.peoplesdefender.com/2021/07/21/odnr-scenic-river-designation-for-paint-rattlesnake-and-rocky-fork-creeks/
+  https://ohiodnr.gov/discover-and-learn/land-water/rivers-streams-wetlands/scenic-rivers-program
+
+The Texas Parks and Wildlife name is Caprock Canyons State Park and Trailway. The site name has been corrected from the singular "Caprock Canyon State Park"; the slug caprock-canyon is unchanged so that image paths, photos.json entries, and Commons filenames stay valid.
+  https://en.wikipedia.org/wiki/Caprock_Canyons_State_Park_and_Trailway
+
+CONTESTED FIGURES, BOTH SOURCES RECORDED
+
+Maumee River watershed. Ohio watershed groups give 8,316 square miles, now used in both the Oak Openings and Magee Marsh entries; USGS-derived sources give roughly 6,600 square miles at the mouth. The two entries previously disagreed with each other.
+  https://partnersforcleanstreams.org/education/about-our-waterways/maumee-river/
+  https://lakeeriewaterkeeper.org/lake-erie-info/lake-erie-facts/maumee-river-watershed.html
+
+1851 Dakota treaties. The Treaty of Traverse des Sioux and the Treaty of Mendota together took roughly 24 million acres, and sources differ on how to divide that between them; Wikipedia's Mendota article gives 16 million acres for Mendota alone. The Myre-Big Island entry previously assigned the full 24 million to Mendota by itself while the Pipestone entry assigned 21 million to Traverse des Sioux, which cannot both stand. Myre-Big Island now states the joint figure.
+  https://treatiesmatter.org/treaties/land/1851-Dakota
+  https://www.mnhs.org/usdakotawar/stories/history/treaty-mendota
+  https://en.wikipedia.org/wiki/Treaty_of_Mendota
+
+Palo Duro Canyon horses. Published accounts give between 1,000 and 1,400 horses captured and destroyed on September 28, 1874. The Palo Duro Canyon and Charon's Garden entries previously gave 1,000 and 1,400 respectively; both now read "more than 1,000 of the roughly 1,400 horses captured."
+  https://en.wikipedia.org/wiki/Battle_of_Palo_Duro_Canyon
+  https://www.legendsofamerica.com/battle-palo-duro-canyon-texas/
+  https://www.okhistory.org/publications/enc/entry?entry=RE010
+
+Wichita Forest Reserve acreage. Congress placed roughly 61,500 acres of the Kiowa-Comanche-Apache Reservation under Interior control in 1901, while the reserve proclaimed on July 4, 1901 covered 57,120 acres. Both figures are accurate to different acts and are now stated as such rather than as competing totals for the same thing.
+  https://www.okhistory.org/publications/enc/entry?entry=WI003
+  https://www.fws.gov/refuge/wichita-mountains/about-us
+
+Caldwell Nature Preserve founding date. Cincinnati Parks dates the park to the Caldwell family heirs' gift of 1914; other accounts record J. Nelson Caldwell conveying 89.3 acres in 1915. Both are now stated in the field.
+  https://www.cincinnati-oh.gov/cincyparks/visit-a-park/parks-events-calendar/a-history-of-caldwell-nature-preserve/
+  https://cleanmillcreek.wordpress.com/2013/11/25/caldwell-park-playground-greenway-trail/
+
+Camp Sherman influenza deaths. NPS gives 1,777, Ohio History Connection and the Ross County mortality schedules give 1,177. Flagged and left unresolved; see the Hopewell Culture National Historical Park section above.
+
+Royce cession numbering. The file mixes Charles C. Royce's national cession numbers with state-sequence numbers. The Treaty of Grouseland (1805) is now given consistently as Royce Cession 56 with the Indiana sequence number 8 in parentheses, following the convention already used in the Hovey Lake entry. The Jerome Agreement is now given consistently as Cession 511, the only reading consistent with the Medicine Lodge Treaty of 1867 being numbered 510 in the same entries. Neither number has been confirmed directly against Royce's schedule, and both should be checked against the source before they are relied on.
+  Royce, Charles C. — Indian Land Cessions in the United States, Eighteenth Annual Report of the Bureau of American Ethnology, Part 2 (1899)
+  https://home.nps.gov/articles/000/cessions-of-land-by-indigenous-peoples-in-the-state-of-indiana.htm
+  https://digitreaties.org/treaties/cession/49/
+
+HOUSEKEEPING
+
+The Grand Lake St. Marys State Park section was removed on 2026-09-07; no such site exists in sites.json.
+
+The duplicate Sea Rim State Park and Charon's Garden Wilderness Area sections were merged on 2026-09-07. Each pair cited different sources, so the earlier sections (Sea Rim "additions" and Charon's Garden / Wichita Mountains) were folded into the later ones rather than discarded. The only lines dropped were a Gulf Spill Restoration URL already present in the receiving Sea Rim section and an Oklahoma Historical Society WI003 entry already present in the Wichita Mountains National Wildlife Refuge section.
+
+This file uses em dashes as its source separator throughout. That is intentional and permitted: the project rule bars em and en dashes from output documents and field values, not from this internal reference file. sites.json itself is free of em and en dashes.
+
