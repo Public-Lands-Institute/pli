@@ -19,7 +19,7 @@ Host: DreamHost (SFTP port 22, credentials in .env)
 - tools/ — validate_pli.py (data/page checks), sync_photos.py (append photos.json entries for new images), make_cards.py (og social cards in img/cards/), cleanup_sites.py, add_site_og.py
 - generate_sites.py — LEGACY, superseded by build.py July 2026. Never run it: it would overwrite index.html and the generated pages with pre-audit output. Kept only as reference for the iNat/native-land fetchers and the glossary builder
 - inaturalist_cache.json — iNat API cache, safe to delete entries to force refresh
-- img/jpg/<slug>/ — JPEG images; thumbs/<slug>/ — gallery thumbnails; img/RAW/<slug>/ — RAW+XMP (per-site since July 2026); img/cards/ — 1200x630 social cards
+- img/jpg/<slug>/ — JPEG images; thumbs/<slug>/ — gallery thumbnails; img/RAW/<slug>/ — RAW+XMP (per-site since July 2026), upload source for the Internet Archive pipeline, NOT deployed to DreamHost; img/cards/ — 1200x630 social cards
 - img/full/<slug>/ — TIFF masters (upload to Commons only, never to DreamHost)
 - .env — DreamHost credentials (never commit this file)
 
@@ -48,7 +48,7 @@ for e in entries[:-2]:
     except ValueError:
         pass
 "
-Then deploy (two-phase — image uploads are handled separately by the "update" workflow; note the image workflow must also ship img/cards/ and the per-site img/RAW/<slug>/ tree, which replaced the flat img/RAW layout in July 2026 — the server keeps old flat copies until cleaned up, mapping in data/raw-redirects.txt):
+Then deploy (two-phase — image uploads are handled separately by the "update" workflow; note the image workflow must also ship img/cards/. RAW is no longer deployed to DreamHost: RAW/XMP now live on the Internet Archive (item pli-<slug>) and are uploaded via the pli-archive pipeline, not rsync. Old RAW copies remain on the server under the flat and per-site img/RAW layouts until cleaned up, mapping in data/raw-redirects.txt):
   source .env
   # Phase 2: HTML/JS/JSON/text files — checksum-accurate, deletes removed files, skips images
   sshpass -p "$DREAMHOST_PASS" rsync -avz --checksum --delete \
@@ -262,9 +262,12 @@ reads ../pli-commons/upload_log.json when creating data/photos.json entries and
 fills t (Special:FilePath URL), c (file page URL), and commons_n from the exact
 logged filename; build.py renders those links. Images not yet uploaded show a
 bordered "Uploading" cell in the archive and hide the TIFF/Commons actions until
-sync_photos runs again after upload. RAW and XMP (.xmp sidecar) downloads stay
-on DreamHost under img/RAW/<slug>/. The archive page lists Commons, Download RAW,
-and XMP per image.
+sync_photos runs again after upload. RAW and XMP (.xmp sidecar) downloads are
+served from the Internet Archive item pli-<slug> (URLs of the form
+https://archive.org/download/pli-<slug>/<file>); sync_photos writes those URLs
+into r/x, gated on the local img/RAW/<slug>/ source existing, which is also the
+upload source for the pli-archive pipeline. RAW is no longer deployed to
+DreamHost. The archive page lists Commons, Download RAW, and XMP per image.
 
 On mobile (max-width: 719px), CSS order places the photo grid above the record
 column. The desktop two-column layout (min-width: 720px) is unaffected.

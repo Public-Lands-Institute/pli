@@ -13,7 +13,9 @@ caption numbers never shift. Each new entry gets:
   f / t / c / commons_n  from ../pli-commons/upload_log.json when uploaded;
                  until then f=camera filename and t/c stay empty ("Uploading"
                  state in the archive)
-  r / x          img/RAW/<slug>/<stem>.RAF|.NEF and .xmp when present
+  r / x          Internet Archive download URLs for the RAW master (.RAF|.NEF)
+                 and .xmp sidecar (item pli-<slug>), emitted when the local
+                 img/RAW/<slug>/ source exists
 """
 
 import json
@@ -98,9 +100,14 @@ def main():
                 if not os.path.exists(p):
                     print(f'  WARNING: {p} missing — generate thumbnails before build.py',
                           file=sys.stderr)
-            raw = next((f'img/RAW/{slug}/{stem}{ext}' for ext in ('.RAF', '.NEF')
+            # RAW masters and XMP sidecars live on the Internet Archive item
+            # pli-<slug>; the local img/RAW file is the upload source and gates
+            # whether the link is emitted.
+            raw = next((f'https://archive.org/download/pli-{slug}/{stem}{ext}'
+                        for ext in ('.RAF', '.NEF')
                         if os.path.exists(f'img/RAW/{slug}/{stem}{ext}')), '')
-            xmp = next((f'img/RAW/{slug}/{stem}{ext}' for ext in ('.xmp', '.XMP')
+            xmp = next((f'https://archive.org/download/pli-{slug}/{stem}{ext}'
+                        for ext in ('.xmp', '.XMP')
                         if os.path.exists(f'img/RAW/{slug}/{stem}{ext}')), '')
             name = commons.get((slug, stem))
             entry = {

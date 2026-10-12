@@ -1,6 +1,157 @@
 PUBLIC LANDS INSTITUTE — SHADOW HISTORY FIELD BIBLIOGRAPHY
 Sources consulted for shadow_history field values.
-Generated 2026-09-07.
+Generated 2026-09-11.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FORT ANCIENT EARTHWORKS AND NATURE PRESERVE (Warren County, Ohio)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Ohio History Connection, Fort Ancient Earthworks & Nature Preserve (ownership, Dayton Society of Natural History operation, Ohio's oldest state park, bluff above the Little Miami, embankments to 23 feet, UNESCO serial inscription)
+  https://www.ohiohistory.org/visit/browse-historical-sites/fort-ancient-earthworks/
+
+Hopewell Ceremonial Earthworks, Fort Ancient site page (largest hilltop enclosure in North America, more than 67 gateways, limestone-capped mounds aligned to the solstice sunrises, 18.6-year lunar cycle)
+  https://hopewellearthworks.org/site/fort-ancient/
+
+Wikipedia, Fort Ancient (Lebanon, Ohio), citing the National Register documentation (764-acre state memorial, 3.5 miles of wall enclosing about 100 acres, 270 feet above the Little Miami, 553,000 cubic yards of earth, 1891 state purchase, National Historic Landmark 1964, NRHP 1966, excavation sequence from Moorehead through Riordan)
+  https://en.wikipedia.org/wiki/Fort_Ancient_(Lebanon,_Ohio)
+
+Warren K. Moorehead, Fort Ancient: The Great Prehistoric Earthwork of Warren County, Ohio, Compiled from a Careful Survey, with an Account of its Mounds and Graves (1890), the excavator's own account of the graves he opened
+  https://archive.org/details/b24881740/
+
+Peabody Institute, Phillips Academy Andover, Behind the Photograph: W.K. Moorehead and the Fort Ancient Excavation (Moorehead's Fort Ancient work; Frederic Ward Putnam's 1891 commission to collect human remains and objects in southern Ohio for the 1893 World's Columbian Exposition)
+  https://peabody.andover.edu/2020/05/28/behind-the-photograph-w-k-moorehead-and-the-fort-ancient-excavation/
+
+Ohio Memory, Fort Ancient Anderson Village excavation (Clifford C. Anderson's digging of the Fort Ancient culture village inside the park boundary, 1893 to 1936: refuse pits, house post patterns, burials, thousands of objects)
+  https://ohiomemory.org/digital/collection/p267401coll7/id/1290/
+
+Smithsonian National Museum of the American Indian collections records for Anderson Village material excavated by Clifford C. Anderson and Robert A. Kercher between 1932 and 1936, purchased by Dr. Edgar Burke in 1950 and donated to the museum in 1952
+  https://americanindian.si.edu/collections-search/object/NMAI_230075
+
+WOSU Public Media, Removed tribes, Ohio History Connection working together to return 7,000 ancestral remains, January 21 2025 (collection above 7,000 in December 2024; 17 repatriations since NAGPRA passed in 1990; consultation with 45 tribal nations)
+  https://www.wosu.org/2025-01-21/removed-tribes-ohio-history-working-together-to-return-7-000-ancestral-remains
+
+Native News Online, Ohio History Organization Seeks to Establish Intertribal Cemetery to Bury Thousands of Native Ancestors
+  https://nativenewsonline.net/sovereignty/ohio-history-organization-seeks-to-establish-intertribal-cemetery-to-bury-thousands-of-native-ancestors
+
+Macrostrat and Ohio Division of Geological Survey bedrock mapping, queried directly for 39.4078,-84.0903 (Waynesville and Arnheim Formations undivided, Late Ordovician, shale and limestone interbedded, 140 to 220 feet)
+  https://macrostrat.org/api/v2/geologic_units/map?lat=39.4078&lng=-84.0903
+
+National Wild and Scenic Rivers System, Little Miami River (Clifton to Foster designated Scenic August 1973; Foster to the Ohio River designated Recreational January 1980; 92 miles total)
+  https://rivers.gov/river/little-miami
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MIAMISBURG MOUND (Montgomery County, Ohio)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Ohio History Connection, Miamisburg Mound (65 feet tall, 800 feet in circumference, 54,000 cubic yards, atop a 100-foot ridge above the Great Miami; Adena construction in stages per the 1869 excavation; flat stones overlapping like shingles at 24 feet; City of Miamisburg management; NRHP listing)
+  https://www.ohiohistory.org/visit/browse-historical-sites/miamisburg-mound/
+
+Wikipedia, Miamisburg Mound (1869 excavation finds, Charles F. Kettering's purchase and 1920 park, transfer to the state in 1929, NRHP listing November 10 1971, Mound Laboratories across the street and named for the mound)
+  https://en.wikipedia.org/wiki/Miamisburg_Mound
+
+Miamisburg Parks and Recreation, Mound Park, 900 Mound Road (37 acres, observation platform, 116 steps)
+  https://www.playmiamisburg.com/location/mound-park/
+
+Wikipedia, Mound Laboratories (Dayton Project polonium work, 1946 selection of a 180-acre tract adjacent to Miamisburg, construction from February 1947, naming after the Miamisburg mound, tritium production from 1954 and tritium recovery from 1969, mound 380 feet east of the plant boundary)
+  https://en.wikipedia.org/wiki/Mound_Laboratories
+
+U.S. Department of Energy Office of Legacy Management, Mound, Ohio, Site fact sheet (1948 to 2003 operation, Manhattan Project polonium-beryllium initiator work, cleanup and institutional controls)
+  https://www.energy.gov/lm/articles/mound-ohio-site-fact-sheet
+
+U.S. Department of Energy Office of Legacy Management, The Site That Came in from the Cold
+  https://www.energy.gov/lm/articles/site-came-cold
+
+EPA Superfund Site Profile, Mound Plant (USDOE): NPL listing November 21 1989 after 1986 detection of volatile organic compounds in monitoring wells, Miami and Erie Canal sediment, plutonium-238 soil removals, billion-dollar cleanup completed 2010, continuing groundwater treatment and institutional controls
+  https://cumulis.epa.gov/supercpad/SiteProfiles/index.cfm?fuseaction=second.cleanup&id=0504935
+
+OSTI, Focused Risk Assessment: Mound Plant, Miami-Erie Canal Operable Unit 4 (1969 rupture of an underground waste line releasing plutonium-238 in dilute nitric acid; storm erosion during remediation carrying contaminated clay through the drainage into the canal remnant and the Great Miami River)
+  https://www.osti.gov/servlets/purl/10190107
+
+OSTI, Mound Laboratory Plutonium-238 Study: Off-Site Analytical Data, May to December 1974 (offsite canal, pond, creek, and river sediment sampling above baseline)
+  https://www.osti.gov/biblio/966372
+
+NIOSH, Mound Plant site profile and Special Exposure Cohort classes (October 1 1949 to February 28 1959; March 1 1959 to March 5 1980; 1972 and 1976 periods)
+  https://www.cdc.gov/niosh/ocas/mound.html
+
+Miami Conservancy District, Great Miami Buried Valley Aquifer (EPA sole source aquifer designation, May 1988)
+  https://www.mcdwater.org/what-is-an-aquifer
+
+Dayton Daily News, Miamisburg community history (Hole's Station from about 1797; February 20 1818 auction of 90 fifth-acre lots by Emanuel Gebhart, Jacob Kercher, and John and Peter Treon)
+  https://www.daytondailynews.com/news/local/miamisburg-things-know-about-the-community-220-year-history/Qf38xH90odVu0nBZtuiBbM/
+
+Macrostrat and Ohio Division of Geological Survey bedrock mapping, queried directly for 39.6276,-84.2809 (Drakes, Whitewater, and Liberty Formations undivided, Late Ordovician, 60 to 150 feet)
+  https://macrostrat.org/api/v2/geologic_units/map?lat=39.6276&lng=-84.2809
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SPRING VALLEY WILDLIFE AREA (Greene and Warren Counties, Ohio)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Ohio Department of Natural Resources, Division of Wildlife Publication 5032 (R808), Spring Valley Wildlife Area map and area description (842 acres; land purchasing begun 1953; the old Sinclair Fur Farm lake and marsh improved in 1954 to the present 80-acre lake; 150-acre lake and marsh complex on the south edge; more than 100,000 trees and shrubs planted; game, fur, fish, and waterfowl species lists)
+  https://dam.assets.ohio.gov/image/upload/ohiodnr.gov/documents/wildlife/wildlife-area-maps/springvalley.pdf
+
+Ohio Department of Natural Resources, Spring Valley Wildlife Area property page
+  https://ohiodnr.gov/go-and-do/plan-a-visit/find-a-property/spring-valley-wildlife-area
+
+Ohio Bicentennial marker 6-83, Spring Valley Wildlife Area: A Feature of Ohio's Wetlands, erected 2003 by the Ohio Bicentennial Commission, the Ohio Department of Natural Resources, the Ohio Historical Society, and the International Paper Company Foundation ("Once a commercial fur farm..."; nearly 90 percent of Ohio's wetlands drained or filled; more than 230 bird species recorded)
+  https://remarkableohio.org/marker/6-83-spring-valley-wildlife-area-a-feature-of-ohios-wetlands/
+
+Historical Marker Database entry for the same marker
+  https://www.hmdb.org/m.asp?m=254402
+
+Footpaths field account, Spring Valley Wildlife Area, Waynesville, Ohio, June 9 2024 (mid-twentieth-century fur farm origin of the wetland; dam separating the lake from the Little Miami and the adjacent former railroad bed; 660-foot boardwalk and observation tower removed for disrepair and vandalism; 230 species bird list)
+  https://footpathsblog.com/2024/06/09/spring-valley-wildlife-area-waynesville-ohio/
+
+Farm and Dairy, Nuisance or not, muskrat population declining (several muskrat farms developed in Ohio in the 1920s), consulted as regional context only, not as a claim about the Sinclair operation
+  https://www.farmanddairy.com/columns/nuisance-or-not-muskrat-population-declining/721614.html
+
+County 10, From the Swamp to the Height of Fashion: Muskrat Farming (the fur farm model of enclosing a water source and adding dams and dikes to flood ground for semi-wild animals), regional context only
+  https://county10.com/from-the-swamp-to-the-height-of-fashion-muskrat-farming/
+
+Village of Spring Valley, Spring Valley Heritage (1844 founding by Edward and Moses Walton, Quakers from Virginia; Cincinnati-Xenia Pike and Little Miami Railroad crossroads; 19th century industries), consulted for the fur farm and containing no mention of it
+  https://www.springvalleyoh.com/spring-valley-heritage/
+
+Searches that returned nothing on the Sinclair Fur Farm's dates, species, ownership, or labor: Greene County Ohio Archives Out of the Clocktower blog, Greene County Records Center and Archives finding aids, Chronicling America and Google Books full text, and Ohio Conservation Bulletin references
+  https://greenecountyarchives.wordpress.com/
+
+Macrostrat and Ohio Division of Geological Survey bedrock mapping, queried directly for 39.5756,-84.0135 (Grant Lake and Fairview Formations with the Miamitown Shale, Late Ordovician, limestone and shale in roughly equal proportion)
+  https://macrostrat.org/api/v2/geologic_units/map?lat=39.5756&lng=-84.0135
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+HUFFMAN PRAIRIE FLYING FIELD (Greene County, Ohio)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+National Park Service, Huffman Prairie Flying Field, Dayton Aviation Heritage National Historical Park (Torrence Huffman's rent-free pasture, the 1904 and 1905 flying seasons, the Wright Company's use of the field to 1916, National Historic Landmark designation 1990)
+  https://www.nps.gov/daav/learn/historyculture/huffman-prairie-flying-field.htm
+
+National Park Service, Cultural Landscapes Inventory: Huffman Prairie Flying Field (84-acre historic site in the northeast quarter of Section 1, Township 2, Range 8, Bath Township; Huffman land transfers of 1847 and about 1870; Miami Conservancy District purchase 1915; 1917 Army lease of roughly 2,100 acres for Wilbur Wright Field; Huffman Dam under construction 1918 to 1923; interurban line moved to higher ground 1919; 1910 hangar razed by the District in 1938; agricultural leasing 1951 to 1954; CATM facility and Rod and Gun Club built at the south end about 1960; Linwood muck and Westland soils; 1802 survey notes describing wet, boggy prairie; prairie indicator species; the ranges as visual, auditory, access, and possible environmental impacts)
+  https://npshistory.com/publications/daav/cli-huffman-field.pdf
+
+Wikipedia, Huffman Prairie (84-acre field, Dayton Aviation Heritage National Historical Park)
+  https://en.wikipedia.org/wiki/Huffman_Prairie
+
+Wikipedia, Osborn, Ohio (relocation of nearly the entire town two miles east beside Fairfield for the Huffman retarding basin, move begun 1922 and completed 1924, nearly 200 houses and several frame businesses, 1950 merger into Fairborn, Osborn Historic District)
+  https://en.wikipedia.org/wiki/Osborn,_Ohio
+
+Greene County Ohio Archives, A Brief History of Osborn, Ohio
+  https://greenecountyarchives.wordpress.com/2024/02/18/a-brief-history-of-osborn-ohio-sunday-rewind/
+
+Miami Conservancy District, Huffman Dam (flood protection system built after the March 1913 flood)
+  https://www.mcdwater.org/flood-protection/huffman-dam
+
+EPA Superfund Site Profile, Wright-Patterson Air Force Base (8,100 acres in Areas A and B; Installation Restoration Program begun 1981; 1988 consent order with Ohio EPA; 1991 Federal Facilities Agreement; chlorinated volatile organic compounds and benzene compounds; operable unit histories)
+  https://cumulis.epa.gov/supercpad/SiteProfiles/index.cfm?fuseaction=second.cleanup&id=0504939
+
+EPA, Wright-Patterson Air Force Base Federal Facility Agreement (National Priorities List listing October 4 1989, 54 Federal Register 41021)
+  https://www.epa.gov/system/files/documents/2024-06/wright-pattersonafb.pdf
+
+U.S. Air Force, Wright-Patterson AFB Installation Restoration Program fact sheet, December 2023 (site and operable unit counts, landfills, fire training areas, chemical burial sites, fuel and chemical spill sites, PFAS)
+  https://www.wpafb.af.mil/Portals/60/documents/CE/IRP%20Fact%20Sheet%20Dec%202023.pdf
+
+Wright-Patterson AFB, Enjoy beauty of Huffman Prairie State Natural Landmark (112-acre grassland, 109 acres designated an Ohio Natural Area in 1986, more than 300 wildflower species, joint management with Five Rivers MetroParks, grassland bird habitat)
+  https://www.wpafb.af.mil/News/Article-Display/Article/2278392/enjoy-beauty-of-huffman-prairie-state-natural-landmark/
+
+Macrostrat and Ohio Division of Geological Survey bedrock mapping, queried directly for 39.8033,-84.0658 (Waynesville and Arnheim Formations undivided, Late Ordovician)
+  https://macrostrat.org/api/v2/geologic_units/map?lat=39.8033&lng=-84.0658
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 CALDWELL NATURE PRESERVE (Hamilton County, Ohio)
@@ -1159,7 +1310,7 @@ Piping Plover first Ohio nest in 83 years (2021) — Audubon Society
 Lake Sturgeon reintroduction, Maumee River — USFWS
   https://www.fws.gov/story/2024-02/tails-deep
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 OAK OPENINGS METROPARK (Lucas County, Ohio)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Toledo Stone and Glass Sand Quarry — MinDat

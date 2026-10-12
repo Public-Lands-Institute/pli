@@ -1,4 +1,41 @@
 {
+  "fort-ancient-earthworks": {
+    "agency": "Ohio History Connection (operated by the Dayton Society of Natural History)",
+    "agency_type": "State historic site",
+    "territory": [
+      "Hopewell",
+      "Fort Ancient culture",
+      "Shawnee",
+      "Myaamia"
+    ]
+  },
+  "miamisburg-mound": {
+    "agency": "Ohio History Connection (maintained by the City of Miamisburg)",
+    "agency_type": "State historic site",
+    "territory": [
+      "Adena",
+      "Myaamia",
+      "Shawnee"
+    ]
+  },
+  "spring-valley-wildlife-area": {
+    "agency": "Ohio DNR Division of Wildlife",
+    "agency_type": "State wildlife area",
+    "territory": [
+      "Shawnee",
+      "Myaamia",
+      "Adena",
+      "Hopewell"
+    ]
+  },
+  "huffman-prairie-flying-field": {
+    "agency": "National Park Service (Dayton Aviation Heritage National Historical Park), on Wright-Patterson Air Force Base land",
+    "agency_type": "NPS",
+    "territory": [
+      "Shawnee",
+      "Myaamia"
+    ]
+  },
   "caldwell-nature-preserve": {
     "agency": "Cincinnati Parks",
     "agency_type": "Municipal park",
