@@ -1,5 +1,10 @@
 AddType application/octet-stream .RAF .NEF .raf .nef .xmp .XMP
 
+# Retired pages
+# yellow-springs.html was an early combined Clifton Gorge / Glen Helen record,
+# superseded by the two dedicated site pages.
+Redirect 301 /sites/yellow-springs.html /sites/clifton-gorge-state-nature-preserve.html
+
 # Deny direct access to dotfiles (.env, .gitignore, etc.)
 <FilesMatch "^\.">
   Require all denied

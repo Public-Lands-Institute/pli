@@ -150,6 +150,7 @@ html, body { height: 100%; font-family: 'Inter', sans-serif; background: var(--i
   <a href="archive.html">Archive</a>
   <a href="glossary.html">Glossary</a>
   <a href="about.html">About</a>
+  <a href="support.html">Support</a>
   <span id="site-count"></span>
 </nav>
 <div id="layers">
@@ -184,7 +185,7 @@ html, body { height: 100%; font-family: 'Inter', sans-serif; background: var(--i
     </div>
   </div>
 </div>
-<script src="data/sites-map.js?v=84ef2c214a"></script>
+<script src="data/sites-map.js?v=bd943174ad"></script>
 <script>
 const STATE_NAMES={"AL":"Alabama","AK":"Alaska","AZ":"Arizona","AR":"Arkansas","CA":"California","CO":"Colorado","CT":"Connecticut","DE":"Delaware","FL":"Florida","GA":"Georgia","HI":"Hawaii","ID":"Idaho","IL":"Illinois","IN":"Indiana","IA":"Iowa","KS":"Kansas","KY":"Kentucky","LA":"Louisiana","ME":"Maine","MD":"Maryland","MA":"Massachusetts","MI":"Michigan","MN":"Minnesota","MS":"Mississippi","MO":"Missouri","MT":"Montana","NE":"Nebraska","NV":"Nevada","NH":"New Hampshire","NJ":"New Jersey","NM":"New Mexico","NY":"New York","NC":"North Carolina","ND":"North Dakota","OH":"Ohio","OK":"Oklahoma","OR":"Oregon","PA":"Pennsylvania","RI":"Rhode Island","SC":"South Carolina","SD":"South Dakota","TN":"Tennessee","TX":"Texas","UT":"Utah","VT":"Vermont","VA":"Virginia","WA":"Washington","WV":"West Virginia","WI":"Wisconsin","WY":"Wyoming"};
 
@@ -245,7 +246,7 @@ let panelOpen = false;
 // grouping so many state parks just retraces state boundaries.
 const LINE_LAYERS = new Set(['native', 'geology']);
 // Lines start hidden (all-on is too busy); hovering a legend entry reveals one group.
-const GROUP_LINE_BLANK = ['==', ['get','key'], ' '];
+const GROUP_LINE_BLANK = ['==', ['get','key'], '__none__'];
 function dotColor(p) {
   if (activeLayer==='geology') return geologyColor(p.geology, p.epoch);
   if (activeLayer==='agency')  return agencyColor(p.conservation_status);

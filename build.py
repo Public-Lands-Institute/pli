@@ -19,6 +19,7 @@ Outputs:
   archive.html          plain-text download index (all rows, per-site sections)
   photographs.html      visual feed grouped by site
   about.html            stats sentence only — the rest of the page is hand-maintained
+  support.html          counts line only — the rest of the page is hand-maintained
   sitemap.xml           lastmod = each source file's actual last-modified date
   data/sites-map.js     SITES / NATIONS_GJ / PHOTOS / NATION_COLORS / NATION_LIST,
                         loaded by index.html with a ?v= content-hash query string
@@ -133,6 +134,32 @@ def format_obs_date(date_str):
         return dt.strftime('%B %Y')
     except ValueError:
         return date_str
+
+
+# ── Project counts (single source for every page that states them) ────────────
+
+def site_counts(all_sites, photos):
+    """The four project figures, derived from sites.json + data/photos.json.
+    Photographs count unique frames: one (slug, camera filename) pair each.
+    Acreage sums the numeric acreage_n field and is reported in millions to one
+    decimal place. Every page that states these figures goes through here."""
+    frames = {(slug, camera_filename(e))
+              for slug, entries in photos.items() for e in entries}
+    acres = sum(s.get('acreage_n') or 0 for s in all_sites)
+    return {
+        'sites': len(all_sites),
+        'states': len({s['state'] for s in all_sites}),
+        'photographs': len(frames),
+        'acres': acres,
+        'acres_m': f'{acres / 1_000_000:.1f}',
+    }
+
+
+def counts_line(all_sites, photos):
+    """Single-line form of the four figures, used on support.html."""
+    c = site_counts(all_sites, photos)
+    return (f'{c["sites"]} sites, {c["states"]} states, '
+            f'{c["photographs"]} photographs, {c["acres_m"]} million acres')
 
 
 # ── Shared page chrome ─────────────────────────────────────────────────────────
@@ -384,8 +411,8 @@ def make_site_page(site, all_sites, photos):
             date_str = f' &middot; {img["date"]}' if img['date'] else ''
             tif_attr = f' data-tif="{img["tif_url"]}"' if img['tif_url'] else ''
             commons_attr = f' data-commons="{img["commons_page"]}"' if img['commons_page'] else ''
-            raw_attr = f' data-raw="../{img["raw"]}"' if img['raw'] else ''
-            xmp_attr = f' data-xmp="../{img["xmp"]}"' if img['xmp'] else ''
+            raw_attr = f' data-raw="{img["raw"]}"' if img['raw'] else ''
+            xmp_attr = f' data-xmp="{img["xmp"]}"' if img['xmp'] else ''
             images_html += f'''    <figure class="ph"{tif_attr}{commons_attr}{raw_attr}{xmp_attr}>
       <a href="#" download title="{caption}">
         <img src="../{img["jpg"]}" alt="{caption}" loading="lazy"/>
@@ -566,6 +593,7 @@ def make_site_page(site, all_sites, photos):
     <a href="../photographs.html">Images</a>
     <a href="../archive.html">Archive</a>
     <a href="../about.html">About</a>
+    <a href="../support.html">Support</a>
   </nav>
 </header>
 <div class="divider"></div>
@@ -591,6 +619,7 @@ def make_site_page(site, all_sites, photos):
 <footer>
   <span>Public Lands Institute — ongoing project</span>
   <span>CC0 Public Domain</span>
+  <span><a href="../support.html">Support</a></span>
 </footer>
 </div>
 <script src="../js/lightbox.js"></script>
@@ -623,8 +652,12 @@ def make_gallery_page(all_sites, photos):
     # Default order: most recently photographed park first
     groups.sort(key=lambda g: g['recent'], reverse=True)
 
-    total = sum(len(g['imgs']) for g in groups)
-    n_sites = len(groups)
+    # Same helper as about/support, scoped to the images this feed actually renders
+    gallery = site_counts([g['site'] for g in groups],
+                          {g['site']['slug']: [{'thumb': e['thumb']} for e in g['imgs']]
+                           for g in groups})
+    total = gallery['photographs']
+    n_sites = gallery['sites']
 
     sections = ''
     for g in groups:
@@ -720,6 +753,7 @@ def make_gallery_page(all_sites, photos):
     <a href="archive.html">Archive</a>
     <a href="glossary.html">Glossary</a>
     <a href="about.html">About</a>
+    <a href="support.html">Support</a>
   </nav>
 </header>
 <div class="divider"></div>
@@ -734,6 +768,7 @@ def make_gallery_page(all_sites, photos):
 <footer>
   <span>Public Lands Institute — ongoing project</span>
   <span>CC0 Public Domain</span>
+  <span><a href="support.html">Support</a></span>
 </footer>
 </div>
 <script>
@@ -906,6 +941,7 @@ def make_archive_page(all_sites, photos):
     <a href="archive.html" class="active">Archive</a>
     <a href="glossary.html">Glossary</a>
     <a href="about.html">About</a>
+    <a href="support.html">Support</a>
   </nav>
 </header>
 <div class="divider"></div>
@@ -916,6 +952,7 @@ def make_archive_page(all_sites, photos):
 <footer>
   <span>Public Lands Institute — ongoing project</span>
   <span>CC0 Public Domain</span>
+  <span><a href="support.html">Support</a></span>
 </footer>
 </div>
 <script>
@@ -947,16 +984,10 @@ STATS_RE = re.compile(
 
 
 def update_about_stats(all_sites, photos):
-    """Rewrite the stats sentence in about.html in place. Counts unique frames:
-    one (slug, camera filename) pair per photograph."""
-    frames = set()
-    for slug, entries in photos.items():
-        for e in entries:
-            frames.add((slug, camera_filename(e)))
-    n_sites = len(all_sites)
-    n_states = len({s['state'] for s in all_sites})
-    sentence = (f'The index currently holds {n_sites} sites across {n_states} states, '
-                f'documented in {len(frames)} photographs')
+    """Rewrite the stats sentence in about.html in place, from site_counts()."""
+    c = site_counts(all_sites, photos)
+    sentence = (f'The index currently holds {c["sites"]} sites across {c["states"]} states, '
+                f'documented in {c["photographs"]} photographs')
     with open('about.html') as f:
         html = f.read()
     new_html, n = STATS_RE.subn(sentence, html)
@@ -964,6 +995,27 @@ def update_about_stats(all_sites, photos):
         raise RuntimeError(f'about.html stats sentence: expected 1 match, found {n}')
     if new_html != html:
         with open('about.html', 'w') as f:
+            f.write(new_html)
+    return new_html != html
+
+
+# ── support.html (counts line only) ───────────────────────────────────────────
+
+SUPPORT_COUNTS_RE = re.compile(
+    r'\d[\d,]* sites, \d[\d,]* states, \d[\d,]* photographs, '
+    r'\d+\.\d million acres')
+
+
+def update_support_counts(all_sites, photos):
+    """Rewrite the counts line in support.html in place, from counts_line()."""
+    line = counts_line(all_sites, photos)
+    with open('support.html') as f:
+        html = f.read()
+    new_html, n = SUPPORT_COUNTS_RE.subn(line, html)
+    if n != 1:
+        raise RuntimeError(f'support.html counts line: expected 1 match, found {n}')
+    if new_html != html:
+        with open('support.html', 'w') as f:
             f.write(new_html)
     return new_html != html
 
@@ -980,6 +1032,7 @@ def make_sitemap(all_sites):
         (f'{BASE_URL}/archive.html', 'archive.html'),
         (f'{BASE_URL}/about.html', 'about.html'),
         (f'{BASE_URL}/glossary.html', 'glossary.html'),
+        (f'{BASE_URL}/support.html', 'support.html'),
     ]
     entries += [(f'{BASE_URL}/sites/{s["slug"]}.html', f'sites/{s["slug"]}.html')
                 for s in all_sites]
@@ -1078,7 +1131,7 @@ def write_sites_map_js(all_sites, meta, photos, nations_gj):
 
 # ── Main ───────────────────────────────────────────────────────────────────────
 
-ALL_TARGETS = ['sites', 'archive', 'photographs', 'about', 'mapjs', 'sitemap']
+ALL_TARGETS = ['sites', 'archive', 'photographs', 'about', 'support', 'mapjs', 'sitemap']
 
 
 def main(argv):
@@ -1105,6 +1158,9 @@ def main(argv):
     if 'about' in targets:
         changed = update_about_stats(sites, photos)
         print(f'about.html stats sentence{"" if changed else " (unchanged)"}')
+    if 'support' in targets:
+        changed = update_support_counts(sites, photos)
+        print(f'support.html counts line{"" if changed else " (unchanged)"}')
     if 'mapjs' in targets:
         version = write_sites_map_js(sites, meta, photos, nations_gj)
         print(f'data/sites-map.js (v={version})')

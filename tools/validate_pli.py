@@ -10,8 +10,9 @@ Checks:
   2. Commons numbering — the caption number of each Commons-linked entry must
      agree with the number in the linked Commons filename.
   3. Pending Commons uploads — entries with no 'c' value (WARN, informational).
-  4. Generated-page consistency — the about.html stats sentence and the
-     photographs.html intro counts must match the data; sitemap.xml must cover
+  4. Generated-page consistency — the about.html stats sentence, the
+     support.html counts line, and the photographs.html intro counts must match
+     the data; sitemap.xml must cover
      exactly the site's pages with lastmod equal to each file's mtime date.
   5. Referenced files — every thumb / large / jpg / raw / xmp path referenced
      by data/photos.json must exist on disk.
@@ -181,6 +182,18 @@ def main():
         if got != (n_sites, n_states, n_frames):
             problems.append(f'about.html: stats say {got}, data says '
                             f'({n_sites}, {n_states}, {n_frames})')
+    n_acres_m = f'{sum(s.get("acreage_n") or 0 for s in sites) / 1_000_000:.1f}'
+    support = open('support.html').read()
+    m = re.search(r'(\d[\d,]*) sites, (\d[\d,]*) states, (\d[\d,]*) photographs, '
+                  r'(\d+\.\d) million acres', support)
+    if not m:
+        problems.append('support.html: counts line not found')
+    else:
+        got = (int(m.group(1).replace(',', '')), int(m.group(2).replace(',', '')),
+               int(m.group(3).replace(',', '')), m.group(4))
+        if got != (n_sites, n_states, n_frames, n_acres_m):
+            problems.append(f'support.html: counts say {got}, data says '
+                            f'({n_sites}, {n_states}, {n_frames}, {n_acres_m})')
     gallery = open('photographs.html').read()
     m = re.search(r'(\d[\d,]*) images across (\d[\d,]*) sites\.', gallery)
     n_gallery = sum(1 for slug, entries in photos.items()
@@ -197,7 +210,8 @@ def main():
     lastmods = re.findall(r'<lastmod>([^<]+)</lastmod>', sitemap)
     base = 'https://publiclandsinstitute.net'
     expected = [f'{base}/', f'{base}/photographs.html', f'{base}/archive.html',
-                f'{base}/about.html', f'{base}/glossary.html']
+                f'{base}/about.html', f'{base}/glossary.html',
+                f'{base}/support.html']
     expected += [f'{base}/sites/{s["slug"]}.html' for s in sites]
     if sorted(locs) != sorted(expected):
         missing = set(expected) - set(locs)
@@ -214,7 +228,7 @@ def main():
     if problems:
         report(4, 'FAIL', '\n    '.join(problems))
     else:
-        report(4, 'PASS', 'about/photographs stats and sitemap agree with data')
+        report(4, 'PASS', 'about/support/photographs stats and sitemap agree with data')
 
     # ── Check 5: referenced files exist ───────────────────────────────────────
     missing = []
@@ -222,10 +236,16 @@ def main():
         for i, e in enumerate(entries):
             cam = camera_filename(e)
             for label, path in (('thumb', e.get('thumb')), ('large', e.get('large')),
-                                ('jpg', f'img/jpg/{slug}/{cam}'),
-                                ('raw', e.get('r')), ('xmp', e.get('x'))):
+                                ('jpg', f'img/jpg/{slug}/{cam}')):
                 if path and not os.path.exists(path):
                     missing.append(f'{slug} {i + 1}: {label} {path}')
+            # raw/xmp are Internet Archive URLs; validate the local upload
+            # source under img/RAW/<slug>/ (by basename) still exists.
+            for label, url in (('raw', e.get('r')), ('xmp', e.get('x'))):
+                if url:
+                    src = f'img/RAW/{slug}/{os.path.basename(url)}'
+                    if not os.path.exists(src):
+                        missing.append(f'{slug} {i + 1}: {label} source {src}')
     if missing:
         report(5, 'FAIL', f'{len(missing)} referenced files missing\n    '
                + '\n    '.join(missing))
