@@ -391,8 +391,20 @@ function zoomToNation(matching) {
   if (!matching.length) return;
   const lngs = matching.map(f => f.geometry.coordinates[0]);
   const lats = matching.map(f => f.geometry.coordinates[1]);
+  // Keep matching sites clear of the legend: measure it, then pad that side
+  // (right on desktop, bottom on mobile where it spans the screen width).
+  const W = window.innerWidth, H = window.innerHeight;
+  const r = document.getElementById('legend').getBoundingClientRect();
+  const pad = { top:80, bottom:180, left:220, right:280 };
+  if (r.width) {
+    if (r.width > W * 0.6) pad.bottom = Math.max(pad.bottom, H - r.top + 24);
+    else pad.right = Math.max(pad.right, W - r.left + 40);
+  }
+  // fitBounds rejects padding wider or taller than the viewport
+  const sx = Math.min(1, (W - 80) / (pad.left + pad.right)), sy = Math.min(1, (H - 80) / (pad.top + pad.bottom));
+  pad.left *= sx; pad.right *= sx; pad.top *= sy; pad.bottom *= sy;
   map.fitBounds([[Math.min(...lngs), Math.min(...lats)], [Math.max(...lngs), Math.max(...lats)]],
-    { padding:{ top:80, bottom:180, left:220, right:280 }, maxZoom:9, duration:800 });
+    { padding:pad, maxZoom:9, duration:800 });
 }
 function showLegend(layer) {
   const legend = document.getElementById('legend');
