@@ -9,10 +9,9 @@ Run from the root of the PLI site folder:
 
 Inputs:
   sites.json            location records (one object per site)
-  sites_meta.json       agency / agency_type / territory data
+  sites_meta.json       agency / agency_type / nations / cultures
   data/photos.json      per-site image entries, keyed by slug
                         entry shape: f, d, thumb, large, t, r, x, c
-  data/nations.geojson  per-(site, nation) point features for the map's native layer
 
 Outputs:
   sites/<slug>.html     one page per site (record column + photo pane)
@@ -21,7 +20,10 @@ Outputs:
   about.html            stats sentence only — the rest of the page is hand-maintained
   support.html          counts line only — the rest of the page is hand-maintained
   sitemap.xml           lastmod = each source file's actual last-modified date
-  data/sites-map.js     SITES / NATIONS_GJ / PHOTOS / NATION_COLORS / NATION_LIST,
+  data/nations.geojson  per-(site, nation or culture) points for the map's native
+                        layer, derived from sites_meta.json on every mapjs build
+  data/sites-map.js     SITES / NATIONS_GJ / PHOTOS / NATION_COLORS / NATION_LIST /
+                        CULTURE_LIST / NATION_COUNTS,
                         loaded by index.html with a ?v= content-hash query string
 
 glossary.html and index.html are hand-maintained (build.py only stamps the
@@ -49,6 +51,12 @@ os.chdir(ROOT)
 NATION_CANON = {
     'Miami': 'Myaamia (Miami)',
     'Myaamia': 'Myaamia (Miami)',
+    'Miami (Myaamia)': 'Myaamia (Miami)',
+    'Odawa': 'Ottawa (Odawa)',
+    'Odawa (Ottawa)': 'Ottawa (Odawa)',
+    'Ojibwe (Chippewa)': 'Ojibwe',
+    'Potawatomi (Bodéwadmi)': 'Potawatomi',
+    'Wea (Waayaahtanwa)': 'Wea',
     'Lenape': 'Lenape (Delaware)',
     'Delaware': 'Lenape (Delaware)',
     'Delaware (Lenape)': 'Lenape (Delaware)',
@@ -63,20 +71,48 @@ NATION_CANON = {
 }
 
 
-def normalize_nations(nations_gj):
-    """Collapse endonym/exonym label variants to one canonical name + color, in place."""
-    color = {}
-    for f in nations_gj['features']:
-        orig = f['properties']['nation']
-        cn = NATION_CANON.get(orig, orig)
-        color.setdefault(cn, f['properties']['color'])
-        if orig == cn:  # the canonical label's own color wins
-            color[cn] = f['properties']['color']
-    for f in nations_gj['features']:
-        cn = NATION_CANON.get(f['properties']['nation'], f['properties']['nation'])
-        f['properties']['nation'] = cn
-        f['properties']['color'] = color[cn]
-    return nations_gj
+NATION_PALETTE = [
+    '#e8a838', '#5b9e6e', '#5b8abf', '#bf5b7a', '#7a5bbf', '#c87840', '#5bbfbf',
+    '#bf5b5b', '#8cbf5b', '#4a6ebf', '#bf9e5b', '#5bbf8c', '#bf5b9e', '#5b9ebf',
+    '#9ebf5b', '#bf6e5b', '#8a5bbf', '#bfbf5b', '#e87c5b', '#5be8a8', '#c45be8',
+    '#e8c45b', '#5bc4e8', '#e85b8a', '#a8e85b', '#c8a050', '#6abf9e', '#9e6abf',
+]
+
+
+def nation_color(name):
+    """Deterministic legend color from the (canonical) label."""
+    return NATION_PALETTE[int(hashlib.md5(name.encode()).hexdigest(), 16) % len(NATION_PALETTE)]
+
+
+def build_nations_geojson(sites, meta):
+    """One point per (site, nation or culture), from sites_meta.json.
+
+    Nations are the union of `nations` (documented in the site record) and
+    `nations_nld` (Native Land territories containing the site, written by
+    tools/nativeland_territories.py). Regenerated on every build so new sites
+    can never be missing from the map's territory layer (the old hand-kept
+    data/nations.geojson froze in July 2026).
+    """
+    features = []
+    for site in sites:
+        lat, lng = site.get('lat'), site.get('lng')
+        if lat is None or lng is None:
+            continue
+        m = meta.get(site['slug'], {})
+        for group, keys in (('nation', ('nations', 'nations_nld')), ('culture', ('cultures',))):
+            seen = set()
+            for n in (n for k in keys for n in m.get(k, [])):
+                cn = NATION_CANON.get(n, n)
+                if cn in seen:
+                    continue
+                seen.add(cn)
+                features.append({
+                    'type': 'Feature',
+                    'geometry': {'type': 'Point', 'coordinates': [lng, lat]},
+                    'properties': {'slug': site['slug'], 'nation': cn,
+                                   'group': group, 'color': nation_color(cn)},
+                })
+    return {'type': 'FeatureCollection', 'features': features}
 
 
 def load_data():
@@ -86,8 +122,7 @@ def load_data():
         meta = json.load(f)
     with open('data/photos.json') as f:
         photos = json.load(f)
-    with open('data/nations.geojson') as f:
-        nations_gj = normalize_nations(json.load(f))
+    nations_gj = build_nations_geojson(sites, meta)
     return sites, meta, photos, nations_gj
 
 
@@ -1056,7 +1091,7 @@ def build_sites_geojson(all_sites, meta):
         if lat is None or lng is None:
             continue
         m = meta.get(slug, {})
-        territory = m.get('territory', [])
+        territory = m.get('nations', []) + m.get('cultures', [])
         props = {
             'slug': slug,
             'name': site['name'],
@@ -1088,25 +1123,27 @@ def make_sites_map_js(all_sites, meta, photos, nations_gj):
         return json.dumps(obj, ensure_ascii=False, separators=(',', ':'))
 
     sites_gj = build_sites_geojson(all_sites, meta)
-    # Distinct-site count per nation (the map connects the dots and sorts the legend by this)
+    # Distinct-site count per nation/culture (the legend shows and sorts by this)
     nation_sites = defaultdict(set)
     for f in nations_gj['features']:
-        lng, lat = f['geometry']['coordinates']
-        nation_sites[f['properties']['nation']].add((round(lng, 4), round(lat, 4)))
+        nation_sites[f['properties']['nation']].add(f['properties']['slug'])
     nation_counts = {n: len(s) for n, s in nation_sites.items()}
-    # NATION_COLORS in first-encounter order; NATION_LIST sorted by site count descending
-    nation_colors, seen = {}, set()
+    # NATION_COLORS in first-encounter order; NATION_LIST (nations) and
+    # CULTURE_LIST (archaeological cultures) sorted by site count descending
+    nation_colors, groups = {}, {}
     for f in nations_gj['features']:
         n = f['properties']['nation']
-        if n not in seen:
-            seen.add(n)
-            nation_colors[n] = f['properties']['color']
-    nation_list = sorted(nation_colors, key=lambda n: (-nation_counts.get(n, 0), n))
+        nation_colors.setdefault(n, f['properties']['color'])
+        groups.setdefault(n, f['properties']['group'])
+    by_count = lambda n: (-nation_counts.get(n, 0), n)
+    nation_list = sorted((n for n in nation_colors if groups[n] == 'nation'), key=by_count)
+    culture_list = sorted((n for n in nation_colors if groups[n] == 'culture'), key=by_count)
     return (f'const SITES={dump(sites_gj)};\n'
             f'const NATIONS_GJ={dump(nations_gj)};\n'
             f'const PHOTOS={dump(photos)};\n'
             f'const NATION_COLORS={dump(nation_colors)};\n'
             f'const NATION_LIST={dump(nation_list)};\n'
+            f'const CULTURE_LIST={dump(culture_list)};\n'
             f'const NATION_COUNTS={dump(nation_counts)};\n')
 
 
@@ -1162,6 +1199,9 @@ def main(argv):
         changed = update_support_counts(sites, photos)
         print(f'support.html counts line{"" if changed else " (unchanged)"}')
     if 'mapjs' in targets:
+        with open('data/nations.geojson', 'w') as f:
+            json.dump(nations_gj, f, ensure_ascii=False, indent=2)
+            f.write('\n')
         version = write_sites_map_js(sites, meta, photos, nations_gj)
         print(f'data/sites-map.js (v={version})')
     if 'sitemap' in targets:

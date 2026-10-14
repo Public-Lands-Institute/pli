@@ -60,6 +60,10 @@ html, body { height: 100%; font-family: 'Inter', sans-serif; background: var(--i
 #legend-title { font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 10px; }
 .legend-item { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-size: 11px; font-weight: 300; color: rgba(255,255,255,0.75); }
 .legend-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.legend-group { font-size: 9px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin: 12px 0 7px; }
+.legend-group:first-child { margin-top: 0; }
+#legend-note { display: none; max-width: 240px; margin-top: 12px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 10px; font-weight: 300; line-height: 1.5; color: rgba(255,255,255,0.45); }
+#legend-note a { color: rgba(255,255,255,0.65); }
 #panel { position: fixed; top: 0; right: 0; width: var(--panel-w); height: 100%; background: var(--sand); z-index: 20; transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.16,1,0.3,1); overflow-y: auto; overflow-x: hidden; }
 #panel.open { transform: translateX(0); }
 #panel-close { position: sticky; top: 0; z-index: 5; display: flex; justify-content: flex-end; padding: 16px 20px 0; background: var(--sand); }
@@ -159,7 +163,7 @@ html, body { height: 100%; font-family: 'Inter', sans-serif; background: var(--i
   <button class="layer-btn" data-layer="native" aria-pressed="false">Indigenous Territories</button>
   <button class="layer-btn" data-layer="shadow" aria-pressed="false">Shadow History</button>
 </div>
-<div id="legend"><div id="legend-title"></div><div id="legend-items"></div></div>
+<div id="legend"><div id="legend-title"></div><div id="legend-items"></div><div id="legend-note"></div></div>
 <div id="panel">
   <div id="panel-close"><button aria-label="Close panel">&#x2715;</button></div>
   <div id="panel-body"></div>
@@ -185,7 +189,7 @@ html, body { height: 100%; font-family: 'Inter', sans-serif; background: var(--i
     </div>
   </div>
 </div>
-<script src="data/sites-map.js?v=bd943174ad"></script>
+<script src="data/sites-map.js?v=79fedbd21f"></script>
 <script>
 const STATE_NAMES={"AL":"Alabama","AK":"Alaska","AZ":"Arizona","AR":"Arkansas","CA":"California","CO":"Colorado","CT":"Connecticut","DE":"Delaware","FL":"Florida","GA":"Georgia","HI":"Hawaii","ID":"Idaho","IL":"Illinois","IN":"Indiana","IA":"Iowa","KS":"Kansas","KY":"Kentucky","LA":"Louisiana","ME":"Maine","MD":"Maryland","MA":"Massachusetts","MI":"Michigan","MN":"Minnesota","MS":"Mississippi","MO":"Missouri","MT":"Montana","NE":"Nebraska","NV":"Nevada","NH":"New Hampshire","NJ":"New Jersey","NM":"New Mexico","NY":"New York","NC":"North Carolina","ND":"North Dakota","OH":"Ohio","OK":"Oklahoma","OR":"Oregon","PA":"Pennsylvania","RI":"Rhode Island","SC":"South Carolina","SD":"South Dakota","TN":"Tennessee","TX":"Texas","UT":"Utah","VT":"Vermont","VA":"Virginia","WA":"Washington","WV":"West Virginia","WI":"Wisconsin","WY":"Wyoming"};
 
@@ -220,7 +224,12 @@ const AGENCY_ENTRIES = [
   ["National Park Service","#5c9e6a"],["U.S. Fish & Wildlife Service","#4a8a9e"],
   ["State Park / Preserve","#9e7a4a"],["Nature Conservancy / Private","#7a5a8a"],["Other","#5a5a52"],
 ];
-const NATIVE_LEGEND = NATION_LIST.map(n => [n, NATION_COLORS[n]||'#8c8c8c']);
+// Group headers are [label, null]; showLegend renders them as labels, not filter items.
+const NATIVE_LEGEND = [
+  ['Nations', null], ...NATION_LIST.map(n => [n, NATION_COLORS[n]||'#8c8c8c']),
+  ['Archaeological cultures (scholarly designations)', null], ...CULTURE_LIST.map(n => [n, NATION_COLORS[n]||'#8c8c8c']),
+];
+const NATIVE_NOTE = 'Territory data: <a href="https://native-land.ca" target="_blank" rel="noopener">Native Land Digital</a> (native-land.ca), plus nations documented in each site record. These boundaries are approximate and do not represent official or legal boundaries of any nation. <a href="about.html#territories">How sites are assigned</a>';
 const LAYER_LEGENDS = {
   geology:{ title:"Geologic Age",          entries:GEOLOGY_LEGEND },
   agency: { title:"Managing Agency",        entries:AGENCY_ENTRIES },
@@ -243,8 +252,9 @@ function agencyColor(s) {
 let activeLayer = null;
 let panelOpen = false;
 // Layers that draw connecting constellations; agency/shadow are omitted because
-// grouping so many state parks just retraces state boundaries.
-const LINE_LAYERS = new Set(['native', 'geology']);
+// grouping so many state parks just retraces state boundaries, and native is
+// omitted because lines between a nation's sites read as routes or borders.
+const LINE_LAYERS = new Set(['geology']);
 // Lines start hidden (all-on is too busy); hovering a legend entry reveals one group.
 const GROUP_LINE_BLANK = ['==', ['get','key'], '__none__'];
 function dotColor(p) {
@@ -300,7 +310,7 @@ function buildLayerLines(layer) {
 }
 const map = new maplibregl.Map({
   container:'map',
-  style:{ version:8, sources:{ base:{ type:'raster', tiles:['https://basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}@2x.png?key=cb1_2hgy_1_234da71950746c5f4d77733a'], tileSize:256, attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>' } }, layers:[{id:'bg',type:'raster',source:'base'}] },
+  style:'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
   bounds:(() => {
     const lngs = SITES.features.map(f => f.geometry.coordinates[0]);
     const lats = SITES.features.map(f => f.geometry.coordinates[1]);
@@ -311,6 +321,14 @@ const map = new maplibregl.Map({
 });
 document.getElementById('site-count').textContent = SITES.features.length+' sites';
 map.on('load', () => {
+  ['road_mot_case_noramp','road_trunk_case_noramp','road_pri_case_noramp'].forEach(id => {
+    map.setPaintProperty(id, 'line-color', ['interpolate',['linear'],['zoom'],5,'#474747',9,'#3c3c3c',12,'#363636']);
+    map.setPaintProperty(id, 'line-opacity', 1);
+    map.setPaintProperty(id, 'line-width', ['interpolate',['linear'],['zoom'],5,0.8,7,1.1,8,1.2,11,3,13,4,14,6,16,10,18,18]);
+  });
+  map.setPaintProperty('road_mot_fill_noramp', 'line-color', 'rgba(92,92,92,1)');
+  map.setPaintProperty('road_trunk_fill_noramp', 'line-color', 'rgba(80,86,104,1)');
+  map.setPaintProperty('road_pri_fill_noramp', 'line-color', 'rgba(98,101,118,1)');
   map.addSource('sites', { type:'geojson', data:buildDotFeatures() });
   map.addSource('nations', { type:'geojson', data:NATIONS_GJ });
   map.addSource('group-lines', { type:'geojson', data:{ type:'FeatureCollection', features:[] } });
@@ -381,12 +399,16 @@ function showLegend(layer) {
   const def = LAYER_LEGENDS[layer];
   document.getElementById('legend-title').textContent = def.title;
   document.getElementById('legend-items').innerHTML = def.entries.map(([l,c])=>{
+    if (c === null) return '<div class="legend-group">'+l+'</div>';
     const count = (layer==='native') ? '<span class="legend-n">'+(NATION_COUNTS[l]||0)+'</span>' : '';
     return '<div class="legend-item" data-color="'+c+'"'+(layer==='native' ? ' data-nation="'+l+'"' : '')+' style="cursor:pointer"><div class="legend-dot" style="background:'+c+'"></div><span>'+l+'</span>'+count+'</div>';
   }).join('');
+  const note = document.getElementById('legend-note');
+  note.innerHTML = layer==='native' ? NATIVE_NOTE : '';
+  note.style.display = layer==='native' ? 'block' : 'none';
   document.getElementById('legend-items').querySelectorAll('.legend-item').forEach(item => {
     item.addEventListener('mouseenter', () => {
-      if (activeLayer === 'native') { map.setFilter('nations-dot', ['==', ['get','nation'], item.dataset.nation]); map.setFilter('group-line', ['==', ['get','key'], item.dataset.nation]); }
+      if (activeLayer === 'native') map.setFilter('nations-dot', ['==', ['get','nation'], item.dataset.nation]);
       else { map.setFilter('sites-dot', ['==', ['get','_color'], item.dataset.color]); map.setFilter('group-line', ['==', ['get','key'], item.dataset.color]); }
     });
     item.addEventListener('click', () => {

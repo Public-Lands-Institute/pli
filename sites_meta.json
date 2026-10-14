@@ -2,849 +2,1582 @@
   "fort-ancient-earthworks": {
     "agency": "Ohio History Connection (operated by the Dayton Society of Natural History)",
     "agency_type": "State historic site",
-    "territory": [
-      "Hopewell",
-      "Fort Ancient culture",
+    "nations": [
       "Shawnee",
       "Myaamia"
-    ]
+    ],
+    "cultures": [
+      "Hopewell",
+      "Fort Ancient culture"
+    ],
+    "nations_nld": [
+      "Osage",
+      "Shawnee",
+      "Kaskaskia",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "miamisburg-mound": {
     "agency": "Ohio History Connection (maintained by the City of Miamisburg)",
     "agency_type": "State historic site",
-    "territory": [
-      "Adena",
+    "nations": [
       "Myaamia",
       "Shawnee"
-    ]
+    ],
+    "cultures": [
+      "Adena"
+    ],
+    "nations_nld": [
+      "Osage",
+      "Shawnee",
+      "Kaskaskia",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "spring-valley-wildlife-area": {
     "agency": "Ohio DNR Division of Wildlife",
     "agency_type": "State wildlife area",
-    "territory": [
+    "nations": [
       "Shawnee",
-      "Myaamia",
+      "Myaamia"
+    ],
+    "cultures": [
       "Adena",
       "Hopewell"
-    ]
+    ],
+    "nations_nld": [
+      "Osage",
+      "Shawnee",
+      "Kaskaskia",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "huffman-prairie-flying-field": {
     "agency": "National Park Service (Dayton Aviation Heritage National Historical Park), on Wright-Patterson Air Force Base land",
     "agency_type": "NPS",
-    "territory": [
+    "nations": [
       "Shawnee",
       "Myaamia"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Osage",
+      "Shawnee",
+      "Kaskaskia",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "caldwell-nature-preserve": {
     "agency": "Cincinnati Parks",
     "agency_type": "Municipal park",
-    "territory": [
+    "nations": [
       "Shawnee",
       "Myaamia"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Osage",
+      "Shawnee",
+      "Kaskaskia",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "bell-smith-springs": {
     "agency": "USDA Forest Service (Shawnee National Forest, Hidden Springs Ranger District)",
     "agency_type": "USFS",
-    "territory": [
+    "nations": [
       "Kaskaskia",
       "Miami (Myaamia)",
       "Kickapoo"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Osage",
+      "O-ga-xpa (Quapaw)",
+      "Kaskaskia",
+      "Kickapoo",
+      "Myaamia (Miami)",
+      "Oceti Sakowin (Sioux)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "hovey-lake-fish-and-wildlife-area": {
     "agency": "Indiana Department of Natural Resources, Division of Fish and Wildlife",
     "agency_type": "State fish and wildlife area",
-    "territory": [
+    "nations": [
       "Miami (Myaamia)",
       "Piankeshaw",
       "Shawnee"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Cherokee",
+      "Osage",
+      "O-ga-xpa (Quapaw)",
+      "Shawnee",
+      "Kaskaskia",
+      "Kickapoo"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "falls-of-the-ohio-state-park": {
     "agency": "Indiana Department of Natural Resources, Division of State Parks",
     "agency_type": "State park",
-    "territory": [
+    "nations": [
       "Shawnee",
       "Miami (Myaamia)",
       "Haudenosaunee",
       "Lenape (Delaware)"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Osage",
+      "Shawnee",
+      "Kaskaskia",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "cave-in-rock-state-park": {
     "agency": "Illinois Department of Natural Resources",
     "agency_type": "State park",
-    "territory": [
+    "nations": [
       "Kaskaskia",
       "Shawnee",
       "Kickapoo"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Osage",
+      "O-ga-xpa (Quapaw)",
+      "Yuchi",
+      "Shawnee",
+      "Kaskaskia",
+      "Kickapoo"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "general-butler-state-resort-park": {
     "agency": "Kentucky Department of Parks",
     "agency_type": "State park",
-    "territory": [
+    "nations": [
       "Shawnee",
       "Cherokee",
       "Miami"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Cherokee",
+      "Osage",
+      "Shawnee",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "big-oaks-national-wildlife-refuge": {
     "agency": "U.S. Fish and Wildlife Service (land owned by the U.S. Army; ~1,000-acre inholding managed by the Indiana Air National Guard)",
     "agency_type": "USFWS",
-    "territory": [
+    "nations": [
       "Miami (Myaamia)",
       "Wea (Waayaahtanwa)",
       "Shawnee"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Osage",
+      "Shawnee",
+      "Kaskaskia",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "versailles-state-park": {
     "agency": "Indiana Department of Natural Resources, Division of State Parks",
     "agency_type": "State park",
-    "territory": [
+    "nations": [
       "Miami (Myaamia)",
       "Wea (Waayaahtanwa)",
       "Shawnee"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Osage",
+      "Shawnee",
+      "Kaskaskia",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "cave-run-lake": {
     "agency": "U.S. Army Corps of Engineers (Louisville District); recreation managed by USDA Forest Service (Daniel Boone National Forest, Cumberland Ranger District)",
     "agency_type": "USACE reservoir",
-    "territory": [
+    "nations": [
       "Shawnee",
-      "Cherokee",
+      "Cherokee"
+    ],
+    "cultures": [
       "Adena"
-    ]
+    ],
+    "nations_nld": [
+      "Cherokee",
+      "Osage",
+      "Yuchi",
+      "Shawnee"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "silver-lake-state-park": {
     "agency": "Michigan Department of Natural Resources, Parks and Recreation Division",
     "agency_type": "State park",
-    "territory": [
+    "nations": [
       "Odawa (Ottawa)",
       "Ojibwe (Chippewa)",
       "Potawatomi"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Ottawa (Odawa)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "saugatuck-dunes-state-park": {
     "agency": "Michigan Department of Natural Resources, Parks and Recreation Division",
     "agency_type": "State park",
-    "territory": [
+    "nations": [
       "Odawa (Ottawa)",
       "Potawatomi (Bodéwadmi)",
       "Ojibwe"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Peoria",
+      "Ottawa (Odawa)",
+      "Potawatomi"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "pj-hoffmaster-state-park": {
     "agency": "Michigan Department of Natural Resources, Parks and Recreation Division",
     "agency_type": "State park",
-    "territory": [
+    "nations": [
       "Odawa (Ottawa)",
       "Ojibwe (Chippewa)",
       "Potawatomi"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Peoria",
+      "Ottawa (Odawa)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "warren-dunes-state-park": {
     "agency": "Michigan Department of Natural Resources, Parks and Recreation Division",
     "agency_type": "State park",
-    "territory": [
+    "nations": [
       "Potawatomi (Bodéwadmi)",
       "Odawa",
       "Ojibwe"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Peoria",
+      "Potawatomi",
+      "Kaskaskia",
+      "Kickapoo"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "chain-o-lakes-state-park": {
     "agency": "Indiana DNR",
     "agency_type": "State park",
-    "territory": [
+    "nations": [
       "Potawatomi",
       "Miami"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Peoria",
+      "Potawatomi",
+      "Kaskaskia",
+      "Kickapoo",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "eagle-marsh-nature-preserve": {
     "agency": "Little River Wetlands Project (nonprofit land trust)",
     "agency_type": "Private preserve",
-    "territory": [
+    "nations": [
       "Miami"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Peoria",
+      "Potawatomi",
+      "Kaskaskia",
+      "Kickapoo",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "great-smoky-mountains-national-park": {
     "agency": "National Park Service",
     "agency_type": "NPS",
-    "territory": [
+    "nations": [
       "Cherokee"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Cherokee",
+      "Yuchi",
+      "Miccosukee"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "nantahala-national-forest": {
     "agency": "USDA Forest Service (National Forests in North Carolina)",
     "agency_type": "USFS",
-    "territory": [
+    "nations": [
       "Cherokee"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Cherokee",
+      "Yuchi",
+      "Miccosukee"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "blood-mountain-wilderness": {
     "agency": "USDA Forest Service (Chattahoochee-Oconee National Forests)",
     "agency_type": "USFS",
-    "territory": [
+    "nations": [
       "Cherokee"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Cherokee",
+      "Yuchi",
+      "Miccosukee"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "chattahoochee-national-forest": {
     "agency": "USDA Forest Service (Chattahoochee-Oconee National Forests)",
     "agency_type": "USFS",
-    "territory": [
+    "nations": [
       "Cherokee"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Cherokee",
+      "Yuchi",
+      "Miccosukee"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "ocmulgee-mounds-national-historical-park": {
     "agency": "National Park Service",
     "agency_type": "NPS",
-    "territory": [
+    "nations": [
       "Muscogee (Creek)",
       "Hitchiti"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Muscogee (Creek)",
+      "Hitchiti"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "high-falls-state-park": {
     "agency": "Georgia Department of Natural Resources, State Parks Division",
     "agency_type": "State park",
-    "territory": [
+    "nations": [
       "Muscogee (Creek)"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Muscogee (Creek)",
+      "Hitchiti"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "ohoopee-dunes-wildlife-management-area": {
     "agency": "Georgia Department of Natural Resources, Wildlife Resources Division",
     "agency_type": "State wildlife management area",
-    "territory": [
+    "nations": [
       "Yuchi (Tsoyaha)",
       "Muscogee (Creek)"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Muscogee (Creek)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "pinckney-island-national-wildlife-refuge": {
     "agency": "U.S. Fish and Wildlife Service (Savannah Coastal Refuges Complex)",
     "agency_type": "USFWS",
-    "territory": [
+    "nations": [
       "Cusabo (Escamacu)",
       "Yamasee"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Yamasee"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "chisholm-creek-park": {
     "agency": "City of Wichita Park and Recreation (Great Plains Nature Center cooperative with USFWS and Kansas Department of Wildlife and Parks)",
     "agency_type": "Municipal park",
-    "territory": [
+    "nations": [
       "Wichita (Kitikiti’sh)",
       "Osage (Wazhazhe)",
       "Comanche",
       "Kiowa"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Kiowa",
+      "Osage",
+      "Wichita",
+      "Oceti Sakowin (Sioux)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "lathrop-state-park": {
     "agency": "Colorado Parks and Wildlife",
     "agency_type": "State park",
-    "territory": [
+    "nations": [
       "Mouache Ute (Núuchi-u)",
       "Jicarilla Apache (Tinde)",
       "Comanche (Nʉmʉnʉʉ)",
       "Kiowa (Cáuigù)",
       "Cheyenne",
       "Arapaho"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Cheyenne",
+      "Comanche",
+      "Ute (Núuchi-u / Núu-agha-tʉvʉ-pʉ̱)",
+      "Jicarilla Apache (Tinde)",
+      "Lipan Apache (Ndé Kónitsąąíí Gokíyaa)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "mesa-verde-national-park": {
     "agency": "National Park Service",
     "agency_type": "NPS",
-    "territory": [
-      "Ancestral Puebloan",
+    "nations": [
       "Hopi (Hopisinom)",
       "Zuni (A:shiwi)",
       "Pueblos",
       "Ute Mountain Ute (Weeminuche)"
-    ]
+    ],
+    "cultures": [
+      "Ancestral Puebloan"
+    ],
+    "nations_nld": [
+      "Navajo (Diné)",
+      "Pueblos",
+      "Ute (Núuchi-u / Núu-agha-tʉvʉ-pʉ̱)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "bears-ears-national-monument": {
     "agency": "Bureau of Land Management and USDA Forest Service (co-managed with the Bears Ears Commission)",
     "agency_type": "National monument",
-    "territory": [
+    "nations": [
       "Hopi",
       "Navajo (Diné)",
       "Ute Mountain Ute",
       "Ute Indian Tribe",
-      "Zuni (A:shiwi)",
+      "Zuni (A:shiwi)"
+    ],
+    "cultures": [
       "Ancestral Puebloan"
-    ]
+    ],
+    "nations_nld": [
+      "Navajo (Diné)",
+      "Pueblos",
+      "Ute (Núuchi-u / Núu-agha-tʉvʉ-pʉ̱)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "arches-national-park": {
     "agency": "National Park Service",
     "agency_type": "NPS",
-    "territory": [
+    "nations": [
       "Ute (Núuchi-u / Núu-agha-tʉvʉ-pʉ̱)",
-      "Sheberetch (Seuvarits) Ute",
+      "Sheberetch (Seuvarits) Ute"
+    ],
+    "cultures": [
       "Fremont",
       "Ancestral Puebloan"
-    ]
+    ],
+    "nations_nld": [
+      "Timpanogos",
+      "Ute (Núuchi-u / Núu-agha-tʉvʉ-pʉ̱)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "bryce-canyon-national-park": {
     "agency": "National Park Service",
     "agency_type": "NPS",
-    "territory": [
+    "nations": [
       "Southern Paiute (Nuwuvi)",
-      "Kaibab Band of Paiute Indians",
+      "Kaibab Band of Paiute Indians"
+    ],
+    "cultures": [
       "Fremont",
       "Ancestral Puebloan"
-    ]
+    ],
+    "nations_nld": [
+      "Southern Paiute (Nuwuvi)",
+      "Pueblos",
+      "Ute (Núuchi-u / Núu-agha-tʉvʉ-pʉ̱)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "yellowstone-national-park": {
     "agency": "National Park Service",
     "agency_type": "NPS",
-    "territory": [
+    "nations": [
       "Tukudika (Mountain Shoshone)",
       "Eastern Shoshone",
       "Bannock",
       "Apsáalooke (Crow)",
       "Blackfeet",
       "Niimíipuu (Nez Perce)"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Eastern Shoshone",
+      "Cayuse, Umatilla and Walla Walla",
+      "Apsáalooke (Crow)",
+      "Cheyenne"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "bighorn-national-forest": {
     "agency": "USDA Forest Service",
     "agency_type": "USFS",
-    "territory": [
+    "nations": [
       "Apsáalooke (Crow)",
       "Eastern Shoshone",
       "Cheyenne",
       "Arapaho",
       "Oceti Sakowin (Sioux)"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Apsáalooke (Crow)",
+      "Cheyenne",
+      "Oceti Sakowin (Sioux)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "mount-rushmore-national-memorial": {
     "agency": "National Park Service",
     "agency_type": "NPS",
-    "territory": [
+    "nations": [
       "Oceti Sakowin (Sioux)",
       "Cheyenne",
       "Arapaho"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Cheyenne",
+      "Oceti Sakowin (Sioux)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "black-hills-national-forest": {
     "agency": "USDA Forest Service",
     "agency_type": "USFS",
-    "territory": [
+    "nations": [
       "Oceti Sakowin (Sioux)",
       "Cheyenne",
       "Arapaho"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Apsáalooke (Crow)",
+      "Cheyenne",
+      "Oceti Sakowin (Sioux)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "badlands-national-park": {
     "agency": "National Park Service",
     "agency_type": "NPS",
-    "territory": [
+    "nations": [
       "Oglala Lakota",
       "Oceti Sakowin (Sioux)"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Cheyenne",
+      "Mnicoujou",
+      "Oceti Sakowin (Sioux)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "pipestone-national-monument": {
     "agency": "National Park Service",
     "agency_type": "NPS",
-    "territory": [
+    "nations": [
       "Oceti Sakowin (Sioux)",
       "Yankton Dakota"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Yankton Dakota",
+      "Oceti Sakowin (Sioux)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "palisades-state-park": {
     "agency": "South Dakota Game, Fish and Parks",
     "agency_type": "State park",
-    "territory": [
+    "nations": [
       "Oceti Sakowin (Sioux)",
       "Yankton Dakota",
       "Sisseton-Wahpeton Dakota"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Yankton Dakota",
+      "Oceti Sakowin (Sioux)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "myre-big-island-state-park": {
     "agency": "Minnesota DNR",
     "agency_type": "State park",
-    "territory": [
+    "nations": [
       "Wahpekute Dakota",
       "Sisseton Dakota"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Wahpeton",
+      "Oceti Sakowin (Sioux)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "maquoketa-caves-state-park": {
     "agency": "Iowa DNR",
     "agency_type": "State park",
-    "territory": [
+    "nations": [
       "Báxoje (Ioway)",
       "Sauk",
       "Meskwaki",
       "Ho-Chunk"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Sauk",
+      "Meskwaki",
+      "Kickapoo",
+      "Oceti Sakowin (Sioux)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "mississippi-palisades-state-park": {
     "agency": "Illinois DNR",
     "agency_type": "State park",
-    "territory": [
+    "nations": [
       "Ho-Chunk",
       "Sauk",
       "Meskwaki"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Peoria",
+      "Sauk",
+      "Meskwaki",
+      "Ho-Chunk",
+      "Kickapoo",
+      "Myaamia (Miami)",
+      "Oceti Sakowin (Sioux)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "mounds-state-park": {
     "agency": "Indiana DNR",
     "agency_type": "State park",
-    "territory": [
+    "nations": [
       "Lenape",
       "Miami"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Kaskaskia",
+      "Kickapoo",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "pine-hills-nature-preserve": {
     "agency": "Indiana DNR",
     "agency_type": "State nature preserve",
-    "territory": [
+    "nations": [
       "Miami",
       "Wea",
       "Potawatomi",
       "Shawnee"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Kaskaskia",
+      "Kickapoo",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "prophetstown-state-park": {
     "agency": "Indiana DNR",
     "agency_type": "State park",
-    "territory": [
+    "nations": [
       "Miami",
       "Potawatomi",
       "Shawnee",
       "Wea",
       "Kickapoo",
       "Lenape (Delaware)"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Peoria",
+      "Potawatomi",
+      "Kaskaskia",
+      "Kickapoo",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "shades-state-park": {
     "agency": "Indiana DNR",
     "agency_type": "State park",
-    "territory": [
+    "nations": [
       "Miami",
       "Wea",
       "Shawnee",
       "Potawatomi"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Kaskaskia",
+      "Kickapoo",
+      "Myaamia (Miami)",
+      "Oceti Sakowin (Sioux)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "fort-hill-state-memorial": {
     "agency": "Ohio History Connection",
     "agency_type": "State historic site",
-    "territory": [
-      "Hopewell",
-      "Adena",
+    "nations": [
       "Shawnee"
-    ]
+    ],
+    "cultures": [
+      "Hopewell",
+      "Adena"
+    ],
+    "nations_nld": [
+      "Osage",
+      "Shawnee",
+      "Kaskaskia",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "newark-earthworks": {
     "agency": "Ohio History Connection",
     "agency_type": "State historic site",
-    "territory": [
-      "Hopewell",
+    "nations": [
       "Lenape (Delaware)",
       "Shawnee",
       "Wyandot",
       "Myaamia"
-    ]
+    ],
+    "cultures": [
+      "Hopewell"
+    ],
+    "nations_nld": [
+      "Shawnee",
+      "Kaskaskia",
+      "Ofo"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "octagon-earthworks": {
     "agency": "Ohio History Connection",
     "agency_type": "State historic site",
-    "territory": [
-      "Hopewell",
+    "nations": [
       "Lenape (Delaware)",
       "Shawnee",
       "Wyandot",
       "Myaamia"
-    ]
+    ],
+    "cultures": [
+      "Hopewell"
+    ],
+    "nations_nld": [
+      "Shawnee",
+      "Kaskaskia",
+      "Ofo"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "cuyahoga-valley-national-park": {
     "agency": "National Park Service",
     "agency_type": "NPS",
-    "territory": [
-      "Hopewell",
+    "nations": [
       "Erie",
       "Wyandot",
       "Lenape (Delaware)",
       "Shawnee",
       "Seneca"
-    ]
+    ],
+    "cultures": [
+      "Hopewell"
+    ],
+    "nations_nld": [
+      "Erie",
+      "Kaskaskia"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "krejci-dump": {
     "agency": "National Park Service",
     "agency_type": "NPS",
-    "territory": [
+    "nations": [
       "Wyandot",
       "Lenape (Delaware)",
       "Shawnee",
       "Erie",
       "Seneca"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Erie",
+      "Kaskaskia",
+      "Mississauga"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "flint-ridge-state-memorial": {
     "agency": "Ohio History Connection",
     "agency_type": "State historic site",
-    "territory": [
-      "Hopewell",
-      "Adena",
+    "nations": [
       "Wyandot",
       "Lenape (Delaware)",
       "Shawnee",
       "Myaamia"
-    ]
+    ],
+    "cultures": [
+      "Hopewell",
+      "Adena"
+    ],
+    "nations_nld": [
+      "Shawnee",
+      "Kaskaskia",
+      "Ofo"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "killdeer-plains-wildlife-area": {
     "agency": "Ohio DNR",
     "agency_type": "State wildlife area",
-    "territory": [
+    "nations": [
       "Wyandot",
       "Shawnee",
       "Delaware (Lenape)"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Kaskaskia",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "magee-marsh-wildlife-area": {
     "agency": "Ohio DNR",
     "agency_type": "State wildlife area",
-    "territory": [
+    "nations": [
       "Ottawa (Odawa)",
       "Wyandot",
       "Potawatomi",
       "Erie"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Peoria",
+      "Kaskaskia",
+      "Wyandot",
+      "Kickapoo",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "oak-openings-metropark": {
     "agency": "Metroparks Toledo",
     "agency_type": "County park",
-    "territory": [
+    "nations": [
       "Wyandot",
       "Ottawa",
       "Potawatomi",
       "Shawnee",
       "Myaamia"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Peoria",
+      "Potawatomi",
+      "Kaskaskia",
+      "Kickapoo",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "ford-marsh-unit": {
     "agency": "U.S. Fish and Wildlife Service",
     "agency_type": "USFWS",
-    "territory": [
+    "nations": [
       "Ottawa (Odawa)",
       "Potawatomi",
       "Wyandot",
       "Ojibwe"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Peoria",
+      "Potawatomi",
+      "Wyandot",
+      "Meskwaki",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "william-c-sterling-state-park": {
     "agency": "Michigan DNR",
     "agency_type": "State park",
-    "territory": [
+    "nations": [
       "Ottawa (Odawa)",
       "Potawatomi",
       "Wyandot",
       "Ojibwe"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Peoria",
+      "Potawatomi",
+      "Wyandot",
+      "Meskwaki",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "pointe-mouillee-state-game-area": {
     "agency": "Michigan DNR",
     "agency_type": "State game area",
-    "territory": [
+    "nations": [
       "Ottawa (Odawa)",
       "Potawatomi",
       "Wyandot",
       "Ojibwe"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Peoria",
+      "Potawatomi",
+      "Wyandot",
+      "Meskwaki",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "edge-of-appalachia": {
     "agency": "The Nature Conservancy / Cincinnati Museum Center",
     "agency_type": "Private preserve",
-    "territory": [
-      "Adena",
-      "Hopewell",
-      "Fort Ancient culture",
+    "nations": [
       "Shawnee",
       "Myaamia"
-    ]
+    ],
+    "cultures": [
+      "Adena",
+      "Hopewell",
+      "Fort Ancient culture"
+    ],
+    "nations_nld": [
+      "Osage",
+      "Shawnee",
+      "Kaskaskia",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "st-annes-woods-and-wetlands": {
     "agency": "Campbell County Conservation District",
     "agency_type": "Conservation district",
-    "territory": [
+    "nations": [
+      "Shawnee"
+    ],
+    "cultures": [
       "Adena",
       "Hopewell",
-      "Fort Ancient culture",
-      "Shawnee"
-    ]
+      "Fort Ancient culture"
+    ],
+    "nations_nld": [
+      "Cherokee",
+      "Osage",
+      "Shawnee",
+      "Kaskaskia",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "red-river-gorge-geological-area": {
     "agency": "USDA Forest Service (Daniel Boone National Forest)",
     "agency_type": "USFS",
-    "territory": [
+    "nations": [
       "Cherokee",
-      "Shawnee",
+      "Shawnee"
+    ],
+    "cultures": [
       "Paleoindian",
       "Adena"
-    ]
+    ],
+    "nations_nld": [
+      "Cherokee",
+      "Osage",
+      "Yuchi",
+      "Shawnee"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "rocky-fork-state-park": {
     "agency": "Ohio DNR",
     "agency_type": "State park",
-    "territory": [
+    "nations": [
       "Shawnee",
-      "Hopewell",
       "Myaamia"
-    ]
+    ],
+    "cultures": [
+      "Hopewell"
+    ],
+    "nations_nld": [
+      "Osage",
+      "Shawnee",
+      "Kaskaskia",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "hopewell-culture-national-historical-park": {
     "agency": "National Park Service",
     "agency_type": "NPS",
-    "territory": [
-      "Shawnee",
+    "nations": [
+      "Shawnee"
+    ],
+    "cultures": [
       "Adena",
       "Hopewell"
-    ]
+    ],
+    "nations_nld": [
+      "Osage",
+      "Shawnee",
+      "Kaskaskia",
+      "Ofo",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "new-river-gorge-national-park": {
     "agency": "National Park Service",
     "agency_type": "NPS",
-    "territory": [
+    "nations": [
       "Shawnee",
       "Cherokee",
       "Seneca",
       "Moneton"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Moneton",
+      "Yuchi",
+      "Shawnee",
+      "Yesan (Tutelo)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "big-bone-lick": {
     "agency": "Kentucky State Parks",
     "agency_type": "State historic site",
-    "territory": [
+    "nations": [
       "Shawnee",
-      "Delaware",
+      "Delaware"
+    ],
+    "cultures": [
       "Paleoindian"
-    ]
+    ],
+    "nations_nld": [
+      "Osage",
+      "Shawnee"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "dinsmore-woods": {
     "agency": "Boone County Parks / Office of Kentucky Nature Preserves",
     "agency_type": "State nature preserve",
-    "territory": [
+    "nations": [
       "Shawnee",
-      "Cherokee",
+      "Cherokee"
+    ],
+    "cultures": [
       "Adena"
-    ]
+    ],
+    "nations_nld": [
+      "Osage",
+      "Shawnee",
+      "Kaskaskia"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "caesar-creek": {
     "agency": "Ohio DNR",
     "agency_type": "State park",
-    "territory": [
+    "nations": [
       "Shawnee",
-      "Myaamia",
+      "Myaamia"
+    ],
+    "cultures": [
       "Hopewell",
       "Fort Ancient culture"
-    ]
+    ],
+    "nations_nld": [
+      "Osage",
+      "Shawnee",
+      "Kaskaskia",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "shawnee-lookout": {
     "agency": "Great Parks of Hamilton County",
     "agency_type": "County park",
-    "territory": [
+    "nations": [
       "Shawnee",
-      "Myaamia",
+      "Myaamia"
+    ],
+    "cultures": [
       "Hopewell",
       "Fort Ancient culture"
-    ]
+    ],
+    "nations_nld": [
+      "Osage",
+      "Shawnee",
+      "Kaskaskia",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "fernald-preserve": {
     "agency": "U.S. Department of Energy, Office of Legacy Management",
     "agency_type": "DOE legacy site",
-    "territory": [
+    "nations": [
       "Myaamia",
       "Shawnee"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Osage",
+      "Shawnee",
+      "Kaskaskia",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "clifty-falls-state-park": {
     "agency": "Indiana DNR",
     "agency_type": "State park",
-    "territory": [
+    "nations": [
       "Shawnee",
       "Miami"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Osage",
+      "Shawnee",
+      "Kaskaskia",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "french-park": {
     "agency": "Cincinnati Parks",
     "agency_type": "Municipal park",
-    "territory": [
-      "Hopewell",
+    "nations": [
       "Shawnee",
       "Myaamia"
-    ]
+    ],
+    "cultures": [
+      "Hopewell"
+    ],
+    "nations_nld": [
+      "Osage",
+      "Shawnee",
+      "Kaskaskia",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "big-south-fork-national-river-and-recreation-area": {
     "agency": "National Park Service",
     "agency_type": "NPS",
-    "territory": [
+    "nations": [
       "Cherokee",
       "Yuchi",
       "Shawnee"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Cherokee",
+      "Yuchi",
+      "Shawnee"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "mammoth-cave-national-park": {
     "agency": "National Park Service",
     "agency_type": "NPS",
-    "territory": [
+    "nations": [
       "Shawnee",
       "Cherokee",
       "Chickasaw",
       "Osage"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Cherokee",
+      "Yuchi",
+      "Shawnee"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "sea-rim-state-park": {
     "agency": "Texas Parks and Wildlife",
     "agency_type": "State park",
-    "territory": [
+    "nations": [
       "Ishak (Atakapa-Ishak)",
       "Akokisa"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Karankawa",
+      "Ishak (Atakapa-Ishak)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "caprock-canyon": {
     "agency": "Texas Parks and Wildlife",
     "agency_type": "State park",
-    "territory": [
+    "nations": [
       "Comanche",
       "Kiowa",
       "Apache"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Comanche",
+      "Lipan Apache (Ndé Kónitsąąíí Gokíyaa)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "palo-duro-canyon": {
     "agency": "Texas Parks and Wildlife",
     "agency_type": "State park",
-    "territory": [
+    "nations": [
       "Comanche",
       "Kiowa",
       "Southern Cheyenne",
       "Arapaho"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Kiowa",
+      "Comanche",
+      "Lipan Apache (Ndé Kónitsąąíí Gokíyaa)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "johnsons-shut-ins-state-park": {
     "agency": "Missouri State Parks",
     "agency_type": "State park",
-    "territory": [
+    "nations": [
       "Osage"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Osage",
+      "O-ga-xpa (Quapaw)",
+      "Kaskaskia",
+      "Kickapoo",
+      "Oceti Sakowin (Sioux)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "elephant-rocks-state-park": {
     "agency": "Missouri State Parks",
     "agency_type": "State park",
-    "territory": [
+    "nations": [
       "Osage"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Osage",
+      "O-ga-xpa (Quapaw)",
+      "Kaskaskia",
+      "Kickapoo",
+      "Oceti Sakowin (Sioux)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "charons-garden-wilderness-area": {
     "agency": "U.S. Fish and Wildlife Service",
     "agency_type": "USFWS",
-    "territory": [
+    "nations": [
       "Comanche",
       "Kiowa",
       "Wichita",
       "Apache"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Kiowa",
+      "Osage",
+      "O-ga-xpa (Quapaw)",
+      "Wichita",
+      "Comanche",
+      "Apache",
+      "Kickapoo"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "wichita-mountains-national-wildlife-refuge": {
     "agency": "U.S. Fish and Wildlife Service",
     "agency_type": "USFWS",
-    "territory": [
+    "nations": [
       "Comanche",
       "Kiowa",
       "Wichita",
       "Apache"
-    ]
+    ],
+    "cultures": [],
+    "nations_nld": [
+      "Kiowa",
+      "Osage",
+      "O-ga-xpa (Quapaw)",
+      "Wichita",
+      "Comanche",
+      "Apache",
+      "Kickapoo"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "john-bryan-state-park": {
     "agency": "Ohio DNR",
     "agency_type": "State park",
-    "territory": [
+    "nations": [
       "Shawnee",
-      "Miami",
+      "Miami"
+    ],
+    "cultures": [
       "Adena",
       "Hopewell"
-    ]
+    ],
+    "nations_nld": [
+      "Osage",
+      "Shawnee",
+      "Kaskaskia",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "hocking-hills": {
     "agency": "Ohio DNR",
     "agency_type": "State park",
-    "territory": [
+    "nations": [
       "Shawnee",
       "Delaware (Lenape)",
-      "Wyandot",
+      "Wyandot"
+    ],
+    "cultures": [
       "Adena",
       "Hopewell"
-    ]
+    ],
+    "nations_nld": [
+      "Osage",
+      "Shawnee",
+      "Kaskaskia",
+      "Ofo"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "arc-of-appalachia": {
     "agency": "Arc of Appalachia Preserve System",
     "agency_type": "Private preserve",
-    "territory": [
-      "Shawnee",
+    "nations": [
+      "Shawnee"
+    ],
+    "cultures": [
       "Adena",
       "Hopewell"
-    ]
+    ],
+    "nations_nld": [
+      "Osage",
+      "Shawnee",
+      "Kaskaskia",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "mount-airy-forest": {
     "agency": "Cincinnati Parks",
     "agency_type": "Municipal park",
-    "territory": [
-      "Shawnee",
+    "nations": [
+      "Shawnee"
+    ],
+    "cultures": [
       "Fort Ancient culture"
-    ]
+    ],
+    "nations_nld": [
+      "Osage",
+      "Shawnee",
+      "Kaskaskia",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "clifton-gorge-state-nature-preserve": {
     "agency": "Ohio DNR",
     "agency_type": "State nature preserve",
-    "territory": [
+    "nations": [
       "Shawnee",
-      "Miami",
+      "Miami"
+    ],
+    "cultures": [
       "Adena",
       "Hopewell"
-    ]
+    ],
+    "nations_nld": [
+      "Osage",
+      "Shawnee",
+      "Kaskaskia",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "parker-woods": {
     "agency": "Cincinnati Parks",
     "agency_type": "Municipal park",
-    "territory": [
+    "nations": [
       "Shawnee",
-      "Myaamia",
+      "Myaamia"
+    ],
+    "cultures": [
       "Adena",
       "Hopewell"
-    ]
+    ],
+    "nations_nld": [
+      "Osage",
+      "Shawnee",
+      "Kaskaskia",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "glen-helen-nature-preserve": {
     "agency": "Glen Helen Association",
     "agency_type": "Private preserve",
-    "territory": [
+    "nations": [
       "Shawnee",
-      "Miami",
+      "Miami"
+    ],
+    "cultures": [
       "Adena"
-    ]
+    ],
+    "nations_nld": [
+      "Osage",
+      "Shawnee",
+      "Kaskaskia",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "otto-armleder-memorial-park": {
     "agency": "Cincinnati Parks",
     "agency_type": "Municipal park",
-    "territory": [
-      "Shawnee",
+    "nations": [
+      "Shawnee"
+    ],
+    "cultures": [
       "Fort Ancient culture"
-    ]
+    ],
+    "nations_nld": [
+      "Osage",
+      "Shawnee",
+      "Kaskaskia",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "bender-mountain-nature-preserve": {
     "agency": "Cincinnati Parks",
     "agency_type": "Municipal park",
-    "territory": [
-      "Shawnee",
+    "nations": [
+      "Shawnee"
+    ],
+    "cultures": [
       "Adena",
       "Hopewell"
-    ]
+    ],
+    "nations_nld": [
+      "Osage",
+      "Shawnee",
+      "Kaskaskia",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-10-14"
   },
   "seip-earthworks": {
     "agency": "National Park Service",
     "agency_type": "NPS",
-    "territory": [
-      "Adena",
-      "Hopewell",
+    "nations": [
       "Shawnee",
       "Myaamia"
-    ]
+    ],
+    "cultures": [
+      "Adena",
+      "Hopewell"
+    ],
+    "nations_nld": [
+      "Osage",
+      "Shawnee",
+      "Kaskaskia",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-10-14"
   }
 }
