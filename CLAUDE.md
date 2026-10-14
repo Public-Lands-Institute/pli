@@ -60,7 +60,7 @@ Then deploy (two-phase — image uploads are handled separately by the "update" 
     --exclude '*.docx' --exclude 'banner.html' --exclude 'index2.html' \
     --exclude 'archive2.html' --exclude 'Draft*' --exclude 'Database Style/' \
     --exclude 'no image/' --exclude 'single image/' --exclude 'deploy.sh' \
-    --exclude '.gitignore' --exclude '.DS_Store' --exclude 'loghaven_submission/' \
+    --exclude '.gitignore' --exclude '.DS_Store' --exclude 'loghaven_submission/' --exclude 'submissions/' --exclude '_review_sheets/' --exclude '_to_delete/' \
     -e "ssh -o StrictHostKeyChecking=no -o PubkeyAuthentication=no -o ControlMaster=auto -o ControlPath=/tmp/pli_ssh_mux -o ControlPersist=300 -o ServerAliveInterval=60 -o ServerAliveCountMax=3" \
     . "$DREAMHOST_USER@$DREAMHOST_HOST:$DREAMHOST_REMOTE_PATH/"
   # Phase 3: Fix permissions on existing files — rsync --chmod only applies to files transferred in that run
@@ -171,9 +171,11 @@ Add an entry to sites_meta.json with the new slug as key:
 "slug": {
   "agency": "Managing agency name",
   "agency_type": "State park | NPS | USFWS | Municipal park | Private preserve | etc.",
-  "territory": ["Nation1", "Nation2"]
+  "nations": ["Nation1", "Nation2"],
+  "cultures": ["Hopewell"]
 }
 ```
+nations = nations documented at the site in its record; cultures = archaeological designations (Adena, Hopewell, Fort Ancient culture, Ancestral Puebloan, Fremont, Paleoindian). Then run `python3 tools/nativeland_territories.py` to add nations_nld (Native Land point-in-polygon result) and nld_retrieved. The map shows the union of nations and nations_nld; build.py regenerates data/nations.geojson from these fields.
 
 ### Step 3c: Update shadow_history_bibliography.txt
 
@@ -203,7 +205,7 @@ sshpass -p "$DREAMHOST_PASS" rsync -avz --checksum --delete \
   --exclude '*.docx' --exclude 'banner.html' --exclude 'index2.html' \
   --exclude 'archive2.html' --exclude 'Draft*' --exclude 'Database Style/' \
   --exclude 'no image/' --exclude 'single image/' --exclude 'deploy.sh' \
-  --exclude '.gitignore' --exclude '.DS_Store' --exclude 'loghaven_submission/' \
+  --exclude '.gitignore' --exclude '.DS_Store' --exclude 'loghaven_submission/' --exclude 'submissions/' --exclude '_review_sheets/' --exclude '_to_delete/' \
   -e "ssh -o StrictHostKeyChecking=no -o PubkeyAuthentication=no -o ControlMaster=auto -o ControlPath=/tmp/pli_ssh_mux -o ControlPersist=300 -o ServerAliveInterval=60 -o ServerAliveCountMax=3" \
   . "$DREAMHOST_USER@$DREAMHOST_HOST:$DREAMHOST_REMOTE_PATH/"
 sshpass -p "$DREAMHOST_PASS" ssh \

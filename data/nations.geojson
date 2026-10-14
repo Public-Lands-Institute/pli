@@ -6,6 +6,1558 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          -84.0903,
+          39.4078
+        ]
+      },
+      "properties": {
+        "slug": "fort-ancient-earthworks",
+        "nation": "Shawnee",
+        "group": "nation",
+        "color": "#c45be8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.0903,
+          39.4078
+        ]
+      },
+      "properties": {
+        "slug": "fort-ancient-earthworks",
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.0903,
+          39.4078
+        ]
+      },
+      "properties": {
+        "slug": "fort-ancient-earthworks",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.0903,
+          39.4078
+        ]
+      },
+      "properties": {
+        "slug": "fort-ancient-earthworks",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.0903,
+          39.4078
+        ]
+      },
+      "properties": {
+        "slug": "fort-ancient-earthworks",
+        "nation": "Hopewell",
+        "group": "culture",
+        "color": "#bf6e5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.0903,
+          39.4078
+        ]
+      },
+      "properties": {
+        "slug": "fort-ancient-earthworks",
+        "nation": "Fort Ancient culture",
+        "group": "culture",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.2809,
+          39.6276
+        ]
+      },
+      "properties": {
+        "slug": "miamisburg-mound",
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.2809,
+          39.6276
+        ]
+      },
+      "properties": {
+        "slug": "miamisburg-mound",
+        "nation": "Shawnee",
+        "group": "nation",
+        "color": "#c45be8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.2809,
+          39.6276
+        ]
+      },
+      "properties": {
+        "slug": "miamisburg-mound",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.2809,
+          39.6276
+        ]
+      },
+      "properties": {
+        "slug": "miamisburg-mound",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.2809,
+          39.6276
+        ]
+      },
+      "properties": {
+        "slug": "miamisburg-mound",
+        "nation": "Adena",
+        "group": "culture",
+        "color": "#5bbf8c"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.0135,
+          39.5756
+        ]
+      },
+      "properties": {
+        "slug": "spring-valley-wildlife-area",
+        "nation": "Shawnee",
+        "group": "nation",
+        "color": "#c45be8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.0135,
+          39.5756
+        ]
+      },
+      "properties": {
+        "slug": "spring-valley-wildlife-area",
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.0135,
+          39.5756
+        ]
+      },
+      "properties": {
+        "slug": "spring-valley-wildlife-area",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.0135,
+          39.5756
+        ]
+      },
+      "properties": {
+        "slug": "spring-valley-wildlife-area",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.0135,
+          39.5756
+        ]
+      },
+      "properties": {
+        "slug": "spring-valley-wildlife-area",
+        "nation": "Adena",
+        "group": "culture",
+        "color": "#5bbf8c"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.0135,
+          39.5756
+        ]
+      },
+      "properties": {
+        "slug": "spring-valley-wildlife-area",
+        "nation": "Hopewell",
+        "group": "culture",
+        "color": "#bf6e5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.0658,
+          39.8033
+        ]
+      },
+      "properties": {
+        "slug": "huffman-prairie-flying-field",
+        "nation": "Shawnee",
+        "group": "nation",
+        "color": "#c45be8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.0658,
+          39.8033
+        ]
+      },
+      "properties": {
+        "slug": "huffman-prairie-flying-field",
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.0658,
+          39.8033
+        ]
+      },
+      "properties": {
+        "slug": "huffman-prairie-flying-field",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.0658,
+          39.8033
+        ]
+      },
+      "properties": {
+        "slug": "huffman-prairie-flying-field",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.4924,
+          39.2016
+        ]
+      },
+      "properties": {
+        "slug": "caldwell-nature-preserve",
+        "nation": "Shawnee",
+        "group": "nation",
+        "color": "#c45be8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.4924,
+          39.2016
+        ]
+      },
+      "properties": {
+        "slug": "caldwell-nature-preserve",
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.4924,
+          39.2016
+        ]
+      },
+      "properties": {
+        "slug": "caldwell-nature-preserve",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.4924,
+          39.2016
+        ]
+      },
+      "properties": {
+        "slug": "caldwell-nature-preserve",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.6561,
+          37.5186
+        ]
+      },
+      "properties": {
+        "slug": "bell-smith-springs",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.6561,
+          37.5186
+        ]
+      },
+      "properties": {
+        "slug": "bell-smith-springs",
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.6561,
+          37.5186
+        ]
+      },
+      "properties": {
+        "slug": "bell-smith-springs",
+        "nation": "Kickapoo",
+        "group": "nation",
+        "color": "#e87c5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.6561,
+          37.5186
+        ]
+      },
+      "properties": {
+        "slug": "bell-smith-springs",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.6561,
+          37.5186
+        ]
+      },
+      "properties": {
+        "slug": "bell-smith-springs",
+        "nation": "O-ga-xpa (Quapaw)",
+        "group": "nation",
+        "color": "#e85b8a"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.6561,
+          37.5186
+        ]
+      },
+      "properties": {
+        "slug": "bell-smith-springs",
+        "nation": "Oceti Sakowin (Sioux)",
+        "group": "nation",
+        "color": "#bf9e5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9333,
+          37.8167
+        ]
+      },
+      "properties": {
+        "slug": "hovey-lake-fish-and-wildlife-area",
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9333,
+          37.8167
+        ]
+      },
+      "properties": {
+        "slug": "hovey-lake-fish-and-wildlife-area",
+        "nation": "Piankeshaw",
+        "group": "nation",
+        "color": "#e85b8a"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9333,
+          37.8167
+        ]
+      },
+      "properties": {
+        "slug": "hovey-lake-fish-and-wildlife-area",
+        "nation": "Shawnee",
+        "group": "nation",
+        "color": "#c45be8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9333,
+          37.8167
+        ]
+      },
+      "properties": {
+        "slug": "hovey-lake-fish-and-wildlife-area",
+        "nation": "Cherokee",
+        "group": "nation",
+        "color": "#8cbf5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9333,
+          37.8167
+        ]
+      },
+      "properties": {
+        "slug": "hovey-lake-fish-and-wildlife-area",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9333,
+          37.8167
+        ]
+      },
+      "properties": {
+        "slug": "hovey-lake-fish-and-wildlife-area",
+        "nation": "O-ga-xpa (Quapaw)",
+        "group": "nation",
+        "color": "#e85b8a"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9333,
+          37.8167
+        ]
+      },
+      "properties": {
+        "slug": "hovey-lake-fish-and-wildlife-area",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9333,
+          37.8167
+        ]
+      },
+      "properties": {
+        "slug": "hovey-lake-fish-and-wildlife-area",
+        "nation": "Kickapoo",
+        "group": "nation",
+        "color": "#e87c5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.7636,
+          38.2756
+        ]
+      },
+      "properties": {
+        "slug": "falls-of-the-ohio-state-park",
+        "nation": "Shawnee",
+        "group": "nation",
+        "color": "#c45be8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.7636,
+          38.2756
+        ]
+      },
+      "properties": {
+        "slug": "falls-of-the-ohio-state-park",
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.7636,
+          38.2756
+        ]
+      },
+      "properties": {
+        "slug": "falls-of-the-ohio-state-park",
+        "nation": "Haudenosaunee",
+        "group": "nation",
+        "color": "#9e6abf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.7636,
+          38.2756
+        ]
+      },
+      "properties": {
+        "slug": "falls-of-the-ohio-state-park",
+        "nation": "Lenape (Delaware)",
+        "group": "nation",
+        "color": "#c8a050"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.7636,
+          38.2756
+        ]
+      },
+      "properties": {
+        "slug": "falls-of-the-ohio-state-park",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.7636,
+          38.2756
+        ]
+      },
+      "properties": {
+        "slug": "falls-of-the-ohio-state-park",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.1558,
+          37.4686
+        ]
+      },
+      "properties": {
+        "slug": "cave-in-rock-state-park",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.1558,
+          37.4686
+        ]
+      },
+      "properties": {
+        "slug": "cave-in-rock-state-park",
+        "nation": "Shawnee",
+        "group": "nation",
+        "color": "#c45be8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.1558,
+          37.4686
+        ]
+      },
+      "properties": {
+        "slug": "cave-in-rock-state-park",
+        "nation": "Kickapoo",
+        "group": "nation",
+        "color": "#e87c5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.1558,
+          37.4686
+        ]
+      },
+      "properties": {
+        "slug": "cave-in-rock-state-park",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.1558,
+          37.4686
+        ]
+      },
+      "properties": {
+        "slug": "cave-in-rock-state-park",
+        "nation": "O-ga-xpa (Quapaw)",
+        "group": "nation",
+        "color": "#e85b8a"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.1558,
+          37.4686
+        ]
+      },
+      "properties": {
+        "slug": "cave-in-rock-state-park",
+        "nation": "Yuchi",
+        "group": "nation",
+        "color": "#bf5b9e"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.1542,
+          38.6706
+        ]
+      },
+      "properties": {
+        "slug": "general-butler-state-resort-park",
+        "nation": "Shawnee",
+        "group": "nation",
+        "color": "#c45be8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.1542,
+          38.6706
+        ]
+      },
+      "properties": {
+        "slug": "general-butler-state-resort-park",
+        "nation": "Cherokee",
+        "group": "nation",
+        "color": "#8cbf5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.1542,
+          38.6706
+        ]
+      },
+      "properties": {
+        "slug": "general-butler-state-resort-park",
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.1542,
+          38.6706
+        ]
+      },
+      "properties": {
+        "slug": "general-butler-state-resort-park",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.39,
+          39.005
+        ]
+      },
+      "properties": {
+        "slug": "big-oaks-national-wildlife-refuge",
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.39,
+          39.005
+        ]
+      },
+      "properties": {
+        "slug": "big-oaks-national-wildlife-refuge",
+        "nation": "Wea",
+        "group": "nation",
+        "color": "#5b8abf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.39,
+          39.005
+        ]
+      },
+      "properties": {
+        "slug": "big-oaks-national-wildlife-refuge",
+        "nation": "Shawnee",
+        "group": "nation",
+        "color": "#c45be8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.39,
+          39.005
+        ]
+      },
+      "properties": {
+        "slug": "big-oaks-national-wildlife-refuge",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.39,
+          39.005
+        ]
+      },
+      "properties": {
+        "slug": "big-oaks-national-wildlife-refuge",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.2155,
+          39.0614
+        ]
+      },
+      "properties": {
+        "slug": "versailles-state-park",
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.2155,
+          39.0614
+        ]
+      },
+      "properties": {
+        "slug": "versailles-state-park",
+        "nation": "Wea",
+        "group": "nation",
+        "color": "#5b8abf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.2155,
+          39.0614
+        ]
+      },
+      "properties": {
+        "slug": "versailles-state-park",
+        "nation": "Shawnee",
+        "group": "nation",
+        "color": "#c45be8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.2155,
+          39.0614
+        ]
+      },
+      "properties": {
+        "slug": "versailles-state-park",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.2155,
+          39.0614
+        ]
+      },
+      "properties": {
+        "slug": "versailles-state-park",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.4914,
+          38.0814
+        ]
+      },
+      "properties": {
+        "slug": "cave-run-lake",
+        "nation": "Shawnee",
+        "group": "nation",
+        "color": "#c45be8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.4914,
+          38.0814
+        ]
+      },
+      "properties": {
+        "slug": "cave-run-lake",
+        "nation": "Cherokee",
+        "group": "nation",
+        "color": "#8cbf5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.4914,
+          38.0814
+        ]
+      },
+      "properties": {
+        "slug": "cave-run-lake",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.4914,
+          38.0814
+        ]
+      },
+      "properties": {
+        "slug": "cave-run-lake",
+        "nation": "Yuchi",
+        "group": "nation",
+        "color": "#bf5b9e"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.4914,
+          38.0814
+        ]
+      },
+      "properties": {
+        "slug": "cave-run-lake",
+        "nation": "Adena",
+        "group": "culture",
+        "color": "#5bbf8c"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.5111,
+          43.6786
+        ]
+      },
+      "properties": {
+        "slug": "silver-lake-state-park",
+        "nation": "Ottawa (Odawa)",
+        "group": "nation",
+        "color": "#e8c45b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.5111,
+          43.6786
+        ]
+      },
+      "properties": {
+        "slug": "silver-lake-state-park",
+        "nation": "Ojibwe",
+        "group": "nation",
+        "color": "#9ebf5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.5111,
+          43.6786
+        ]
+      },
+      "properties": {
+        "slug": "silver-lake-state-park",
+        "nation": "Potawatomi",
+        "group": "nation",
+        "color": "#e8c45b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.202,
+          42.7059
+        ]
+      },
+      "properties": {
+        "slug": "saugatuck-dunes-state-park",
+        "nation": "Ottawa (Odawa)",
+        "group": "nation",
+        "color": "#e8c45b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.202,
+          42.7059
+        ]
+      },
+      "properties": {
+        "slug": "saugatuck-dunes-state-park",
+        "nation": "Potawatomi",
+        "group": "nation",
+        "color": "#e8c45b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.202,
+          42.7059
+        ]
+      },
+      "properties": {
+        "slug": "saugatuck-dunes-state-park",
+        "nation": "Ojibwe",
+        "group": "nation",
+        "color": "#9ebf5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.202,
+          42.7059
+        ]
+      },
+      "properties": {
+        "slug": "saugatuck-dunes-state-park",
+        "nation": "Peoria",
+        "group": "nation",
+        "color": "#8a5bbf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.274,
+          43.129
+        ]
+      },
+      "properties": {
+        "slug": "pj-hoffmaster-state-park",
+        "nation": "Ottawa (Odawa)",
+        "group": "nation",
+        "color": "#e8c45b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.274,
+          43.129
+        ]
+      },
+      "properties": {
+        "slug": "pj-hoffmaster-state-park",
+        "nation": "Ojibwe",
+        "group": "nation",
+        "color": "#9ebf5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.274,
+          43.129
+        ]
+      },
+      "properties": {
+        "slug": "pj-hoffmaster-state-park",
+        "nation": "Potawatomi",
+        "group": "nation",
+        "color": "#e8c45b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.274,
+          43.129
+        ]
+      },
+      "properties": {
+        "slug": "pj-hoffmaster-state-park",
+        "nation": "Peoria",
+        "group": "nation",
+        "color": "#8a5bbf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.59,
+          41.906
+        ]
+      },
+      "properties": {
+        "slug": "warren-dunes-state-park",
+        "nation": "Potawatomi",
+        "group": "nation",
+        "color": "#e8c45b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.59,
+          41.906
+        ]
+      },
+      "properties": {
+        "slug": "warren-dunes-state-park",
+        "nation": "Ottawa (Odawa)",
+        "group": "nation",
+        "color": "#e8c45b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.59,
+          41.906
+        ]
+      },
+      "properties": {
+        "slug": "warren-dunes-state-park",
+        "nation": "Ojibwe",
+        "group": "nation",
+        "color": "#9ebf5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.59,
+          41.906
+        ]
+      },
+      "properties": {
+        "slug": "warren-dunes-state-park",
+        "nation": "Peoria",
+        "group": "nation",
+        "color": "#8a5bbf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.59,
+          41.906
+        ]
+      },
+      "properties": {
+        "slug": "warren-dunes-state-park",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.59,
+          41.906
+        ]
+      },
+      "properties": {
+        "slug": "warren-dunes-state-park",
+        "nation": "Kickapoo",
+        "group": "nation",
+        "color": "#e87c5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.3806,
+          41.3331
+        ]
+      },
+      "properties": {
+        "slug": "chain-o-lakes-state-park",
+        "nation": "Potawatomi",
+        "group": "nation",
+        "color": "#e8c45b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.3806,
+          41.3331
+        ]
+      },
+      "properties": {
+        "slug": "chain-o-lakes-state-park",
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.3806,
+          41.3331
+        ]
+      },
+      "properties": {
+        "slug": "chain-o-lakes-state-park",
+        "nation": "Peoria",
+        "group": "nation",
+        "color": "#8a5bbf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.3806,
+          41.3331
+        ]
+      },
+      "properties": {
+        "slug": "chain-o-lakes-state-park",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.3806,
+          41.3331
+        ]
+      },
+      "properties": {
+        "slug": "chain-o-lakes-state-park",
+        "nation": "Kickapoo",
+        "group": "nation",
+        "color": "#e87c5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.2317,
+          41.0333
+        ]
+      },
+      "properties": {
+        "slug": "eagle-marsh-nature-preserve",
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.2317,
+          41.0333
+        ]
+      },
+      "properties": {
+        "slug": "eagle-marsh-nature-preserve",
+        "nation": "Peoria",
+        "group": "nation",
+        "color": "#8a5bbf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.2317,
+          41.0333
+        ]
+      },
+      "properties": {
+        "slug": "eagle-marsh-nature-preserve",
+        "nation": "Potawatomi",
+        "group": "nation",
+        "color": "#e8c45b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.2317,
+          41.0333
+        ]
+      },
+      "properties": {
+        "slug": "eagle-marsh-nature-preserve",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.2317,
+          41.0333
+        ]
+      },
+      "properties": {
+        "slug": "eagle-marsh-nature-preserve",
+        "nation": "Kickapoo",
+        "group": "nation",
+        "color": "#e87c5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           -83.5365,
           35.6857
         ]
@@ -13,7 +1565,40 @@
       "properties": {
         "slug": "great-smoky-mountains-national-park",
         "nation": "Cherokee",
+        "group": "nation",
         "color": "#8cbf5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.5365,
+          35.6857
+        ]
+      },
+      "properties": {
+        "slug": "great-smoky-mountains-national-park",
+        "nation": "Yuchi",
+        "group": "nation",
+        "color": "#bf5b9e"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.5365,
+          35.6857
+        ]
+      },
+      "properties": {
+        "slug": "great-smoky-mountains-national-park",
+        "nation": "Miccosukee",
+        "group": "nation",
+        "color": "#bf5b7a"
       }
     },
     {
@@ -28,7 +1613,40 @@
       "properties": {
         "slug": "nantahala-national-forest",
         "nation": "Cherokee",
+        "group": "nation",
         "color": "#8cbf5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.5604,
+          35.1804
+        ]
+      },
+      "properties": {
+        "slug": "nantahala-national-forest",
+        "nation": "Yuchi",
+        "group": "nation",
+        "color": "#bf5b9e"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.5604,
+          35.1804
+        ]
+      },
+      "properties": {
+        "slug": "nantahala-national-forest",
+        "nation": "Miccosukee",
+        "group": "nation",
+        "color": "#bf5b7a"
       }
     },
     {
@@ -43,7 +1661,40 @@
       "properties": {
         "slug": "blood-mountain-wilderness",
         "nation": "Cherokee",
+        "group": "nation",
         "color": "#8cbf5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.9357,
+          34.7372
+        ]
+      },
+      "properties": {
+        "slug": "blood-mountain-wilderness",
+        "nation": "Yuchi",
+        "group": "nation",
+        "color": "#bf5b9e"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.9357,
+          34.7372
+        ]
+      },
+      "properties": {
+        "slug": "blood-mountain-wilderness",
+        "nation": "Miccosukee",
+        "group": "nation",
+        "color": "#bf5b7a"
       }
     },
     {
@@ -58,7 +1709,40 @@
       "properties": {
         "slug": "chattahoochee-national-forest",
         "nation": "Cherokee",
+        "group": "nation",
         "color": "#8cbf5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.9153,
+          34.7066
+        ]
+      },
+      "properties": {
+        "slug": "chattahoochee-national-forest",
+        "nation": "Yuchi",
+        "group": "nation",
+        "color": "#bf5b9e"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.9153,
+          34.7066
+        ]
+      },
+      "properties": {
+        "slug": "chattahoochee-national-forest",
+        "nation": "Miccosukee",
+        "group": "nation",
+        "color": "#bf5b7a"
       }
     },
     {
@@ -73,6 +1757,7 @@
       "properties": {
         "slug": "ocmulgee-mounds-national-historical-park",
         "nation": "Muscogee (Creek)",
+        "group": "nation",
         "color": "#5bbf8c"
       }
     },
@@ -88,6 +1773,7 @@
       "properties": {
         "slug": "ocmulgee-mounds-national-historical-park",
         "nation": "Hitchiti",
+        "group": "nation",
         "color": "#a8e85b"
       }
     },
@@ -103,7 +1789,24 @@
       "properties": {
         "slug": "high-falls-state-park",
         "nation": "Muscogee (Creek)",
+        "group": "nation",
         "color": "#5bbf8c"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.0205,
+          33.1783
+        ]
+      },
+      "properties": {
+        "slug": "high-falls-state-park",
+        "nation": "Hitchiti",
+        "group": "nation",
+        "color": "#a8e85b"
       }
     },
     {
@@ -117,8 +1820,9 @@
       },
       "properties": {
         "slug": "ohoopee-dunes-wildlife-management-area",
-        "nation": "Yuchi (Tsoyaha)",
-        "color": "#5be8a8"
+        "nation": "Yuchi",
+        "group": "nation",
+        "color": "#bf5b9e"
       }
     },
     {
@@ -133,6 +1837,7 @@
       "properties": {
         "slug": "ohoopee-dunes-wildlife-management-area",
         "nation": "Muscogee (Creek)",
+        "group": "nation",
         "color": "#5bbf8c"
       }
     },
@@ -148,6 +1853,7 @@
       "properties": {
         "slug": "pinckney-island-national-wildlife-refuge",
         "nation": "Cusabo (Escamacu)",
+        "group": "nation",
         "color": "#8cbf5b"
       }
     },
@@ -163,6 +1869,7 @@
       "properties": {
         "slug": "pinckney-island-national-wildlife-refuge",
         "nation": "Yamasee",
+        "group": "nation",
         "color": "#a8e85b"
       }
     },
@@ -177,8 +1884,9 @@
       },
       "properties": {
         "slug": "chisholm-creek-park",
-        "nation": "Wichita (Kitikiti’sh)",
-        "color": "#5b9ebf"
+        "nation": "Wichita",
+        "group": "nation",
+        "color": "#bfbf5b"
       }
     },
     {
@@ -192,8 +1900,9 @@
       },
       "properties": {
         "slug": "chisholm-creek-park",
-        "nation": "Osage (Wazhazhe)",
-        "color": "#5b9e6e"
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
       }
     },
     {
@@ -208,6 +1917,7 @@
       "properties": {
         "slug": "chisholm-creek-park",
         "nation": "Comanche",
+        "group": "nation",
         "color": "#5bbf8c"
       }
     },
@@ -223,7 +1933,24 @@
       "properties": {
         "slug": "chisholm-creek-park",
         "nation": "Kiowa",
+        "group": "nation",
         "color": "#7a5bbf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.2734,
+          37.7287
+        ]
+      },
+      "properties": {
+        "slug": "chisholm-creek-park",
+        "nation": "Oceti Sakowin (Sioux)",
+        "group": "nation",
+        "color": "#bf9e5b"
       }
     },
     {
@@ -238,6 +1965,7 @@
       "properties": {
         "slug": "lathrop-state-park",
         "nation": "Mouache Ute (Núuchi-u)",
+        "group": "nation",
         "color": "#c45be8"
       }
     },
@@ -253,6 +1981,7 @@
       "properties": {
         "slug": "lathrop-state-park",
         "nation": "Jicarilla Apache (Tinde)",
+        "group": "nation",
         "color": "#5bbf8c"
       }
     },
@@ -267,8 +1996,9 @@
       },
       "properties": {
         "slug": "lathrop-state-park",
-        "nation": "Comanche (Nʉmʉnʉʉ)",
-        "color": "#bf5b9e"
+        "nation": "Comanche",
+        "group": "nation",
+        "color": "#5bbf8c"
       }
     },
     {
@@ -282,8 +2012,9 @@
       },
       "properties": {
         "slug": "lathrop-state-park",
-        "nation": "Kiowa (Cáuigù)",
-        "color": "#5b9ebf"
+        "nation": "Kiowa",
+        "group": "nation",
+        "color": "#7a5bbf"
       }
     },
     {
@@ -298,6 +2029,7 @@
       "properties": {
         "slug": "lathrop-state-park",
         "nation": "Cheyenne",
+        "group": "nation",
         "color": "#a8e85b"
       }
     },
@@ -313,6 +2045,7 @@
       "properties": {
         "slug": "lathrop-state-park",
         "nation": "Arapaho",
+        "group": "nation",
         "color": "#bf5b9e"
       }
     },
@@ -321,14 +2054,31 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -108.473,
-          37.1675
+          -104.8404,
+          37.61
         ]
       },
       "properties": {
-        "slug": "mesa-verde-national-park",
-        "nation": "Ancestral Puebloan",
-        "color": "#5bc4e8"
+        "slug": "lathrop-state-park",
+        "nation": "Ute (Núuchi-u / Núu-agha-tʉvʉ-pʉ̱)",
+        "group": "nation",
+        "color": "#5bbfbf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8404,
+          37.61
+        ]
+      },
+      "properties": {
+        "slug": "lathrop-state-park",
+        "nation": "Lipan Apache (Ndé Kónitsąąíí Gokíyaa)",
+        "group": "nation",
+        "color": "#5be8a8"
       }
     },
     {
@@ -342,8 +2092,9 @@
       },
       "properties": {
         "slug": "mesa-verde-national-park",
-        "nation": "Hopi (Hopisinom)",
-        "color": "#6abf9e"
+        "nation": "Hopi",
+        "group": "nation",
+        "color": "#e85b8a"
       }
     },
     {
@@ -358,6 +2109,7 @@
       "properties": {
         "slug": "mesa-verde-national-park",
         "nation": "Zuni (A:shiwi)",
+        "group": "nation",
         "color": "#9e6abf"
       }
     },
@@ -373,6 +2125,7 @@
       "properties": {
         "slug": "mesa-verde-national-park",
         "nation": "Pueblos",
+        "group": "nation",
         "color": "#bfbf5b"
       }
     },
@@ -387,8 +2140,57 @@
       },
       "properties": {
         "slug": "mesa-verde-national-park",
-        "nation": "Ute Mountain Ute (Weeminuche)",
-        "color": "#8a5bbf"
+        "nation": "Ute Mountain Ute",
+        "group": "nation",
+        "color": "#4a6ebf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -108.473,
+          37.1675
+        ]
+      },
+      "properties": {
+        "slug": "mesa-verde-national-park",
+        "nation": "Navajo (Diné)",
+        "group": "nation",
+        "color": "#bf5b7a"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -108.473,
+          37.1675
+        ]
+      },
+      "properties": {
+        "slug": "mesa-verde-national-park",
+        "nation": "Ute (Núuchi-u / Núu-agha-tʉvʉ-pʉ̱)",
+        "group": "nation",
+        "color": "#5bbfbf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -108.473,
+          37.1675
+        ]
+      },
+      "properties": {
+        "slug": "mesa-verde-national-park",
+        "nation": "Ancestral Puebloan",
+        "group": "culture",
+        "color": "#5bc4e8"
       }
     },
     {
@@ -403,6 +2205,7 @@
       "properties": {
         "slug": "bears-ears-national-monument",
         "nation": "Hopi",
+        "group": "nation",
         "color": "#e85b8a"
       }
     },
@@ -418,6 +2221,7 @@
       "properties": {
         "slug": "bears-ears-national-monument",
         "nation": "Navajo (Diné)",
+        "group": "nation",
         "color": "#bf5b7a"
       }
     },
@@ -433,6 +2237,7 @@
       "properties": {
         "slug": "bears-ears-national-monument",
         "nation": "Ute Mountain Ute",
+        "group": "nation",
         "color": "#4a6ebf"
       }
     },
@@ -448,6 +2253,7 @@
       "properties": {
         "slug": "bears-ears-national-monument",
         "nation": "Ute Indian Tribe",
+        "group": "nation",
         "color": "#bfbf5b"
       }
     },
@@ -463,6 +2269,7 @@
       "properties": {
         "slug": "bears-ears-national-monument",
         "nation": "Zuni (A:shiwi)",
+        "group": "nation",
         "color": "#9e6abf"
       }
     },
@@ -477,7 +2284,40 @@
       },
       "properties": {
         "slug": "bears-ears-national-monument",
+        "nation": "Pueblos",
+        "group": "nation",
+        "color": "#bfbf5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -109.6325,
+          37.5221
+        ]
+      },
+      "properties": {
+        "slug": "bears-ears-national-monument",
+        "nation": "Ute (Núuchi-u / Núu-agha-tʉvʉ-pʉ̱)",
+        "group": "nation",
+        "color": "#5bbfbf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -109.6325,
+          37.5221
+        ]
+      },
+      "properties": {
+        "slug": "bears-ears-national-monument",
         "nation": "Ancestral Puebloan",
+        "group": "culture",
         "color": "#5bc4e8"
       }
     },
@@ -493,6 +2333,7 @@
       "properties": {
         "slug": "arches-national-park",
         "nation": "Ute (Núuchi-u / Núu-agha-tʉvʉ-pʉ̱)",
+        "group": "nation",
         "color": "#5bbfbf"
       }
     },
@@ -508,6 +2349,7 @@
       "properties": {
         "slug": "arches-national-park",
         "nation": "Sheberetch (Seuvarits) Ute",
+        "group": "nation",
         "color": "#e8a838"
       }
     },
@@ -522,7 +2364,24 @@
       },
       "properties": {
         "slug": "arches-national-park",
+        "nation": "Timpanogos",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -109.54,
+          38.7281
+        ]
+      },
+      "properties": {
+        "slug": "arches-national-park",
         "nation": "Fremont",
+        "group": "culture",
         "color": "#6abf9e"
       }
     },
@@ -538,6 +2397,7 @@
       "properties": {
         "slug": "arches-national-park",
         "nation": "Ancestral Puebloan",
+        "group": "culture",
         "color": "#5bc4e8"
       }
     },
@@ -553,6 +2413,7 @@
       "properties": {
         "slug": "bryce-canyon-national-park",
         "nation": "Southern Paiute (Nuwuvi)",
+        "group": "nation",
         "color": "#c87840"
       }
     },
@@ -568,6 +2429,7 @@
       "properties": {
         "slug": "bryce-canyon-national-park",
         "nation": "Kaibab Band of Paiute Indians",
+        "group": "nation",
         "color": "#9e6abf"
       }
     },
@@ -582,7 +2444,40 @@
       },
       "properties": {
         "slug": "bryce-canyon-national-park",
+        "nation": "Pueblos",
+        "group": "nation",
+        "color": "#bfbf5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.1677,
+          37.6283
+        ]
+      },
+      "properties": {
+        "slug": "bryce-canyon-national-park",
+        "nation": "Ute (Núuchi-u / Núu-agha-tʉvʉ-pʉ̱)",
+        "group": "nation",
+        "color": "#5bbfbf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.1677,
+          37.6283
+        ]
+      },
+      "properties": {
+        "slug": "bryce-canyon-national-park",
         "nation": "Fremont",
+        "group": "culture",
         "color": "#6abf9e"
       }
     },
@@ -598,6 +2493,7 @@
       "properties": {
         "slug": "bryce-canyon-national-park",
         "nation": "Ancestral Puebloan",
+        "group": "culture",
         "color": "#5bc4e8"
       }
     },
@@ -613,6 +2509,7 @@
       "properties": {
         "slug": "yellowstone-national-park",
         "nation": "Tukudika (Mountain Shoshone)",
+        "group": "nation",
         "color": "#7a5bbf"
       }
     },
@@ -628,6 +2525,7 @@
       "properties": {
         "slug": "yellowstone-national-park",
         "nation": "Eastern Shoshone",
+        "group": "nation",
         "color": "#e85b8a"
       }
     },
@@ -643,6 +2541,7 @@
       "properties": {
         "slug": "yellowstone-national-park",
         "nation": "Bannock",
+        "group": "nation",
         "color": "#5be8a8"
       }
     },
@@ -658,6 +2557,7 @@
       "properties": {
         "slug": "yellowstone-national-park",
         "nation": "Apsáalooke (Crow)",
+        "group": "nation",
         "color": "#bf5b9e"
       }
     },
@@ -673,6 +2573,7 @@
       "properties": {
         "slug": "yellowstone-national-park",
         "nation": "Blackfeet",
+        "group": "nation",
         "color": "#e8a838"
       }
     },
@@ -688,7 +2589,40 @@
       "properties": {
         "slug": "yellowstone-national-park",
         "nation": "Niimíipuu (Nez Perce)",
+        "group": "nation",
         "color": "#5b9e6e"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -110.5,
+          44.6
+        ]
+      },
+      "properties": {
+        "slug": "yellowstone-national-park",
+        "nation": "Cayuse, Umatilla and Walla Walla",
+        "group": "nation",
+        "color": "#6abf9e"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -110.5,
+          44.6
+        ]
+      },
+      "properties": {
+        "slug": "yellowstone-national-park",
+        "nation": "Cheyenne",
+        "group": "nation",
+        "color": "#a8e85b"
       }
     },
     {
@@ -703,6 +2637,7 @@
       "properties": {
         "slug": "bighorn-national-forest",
         "nation": "Apsáalooke (Crow)",
+        "group": "nation",
         "color": "#bf5b9e"
       }
     },
@@ -718,6 +2653,7 @@
       "properties": {
         "slug": "bighorn-national-forest",
         "nation": "Eastern Shoshone",
+        "group": "nation",
         "color": "#e85b8a"
       }
     },
@@ -733,6 +2669,7 @@
       "properties": {
         "slug": "bighorn-national-forest",
         "nation": "Cheyenne",
+        "group": "nation",
         "color": "#a8e85b"
       }
     },
@@ -748,6 +2685,7 @@
       "properties": {
         "slug": "bighorn-national-forest",
         "nation": "Arapaho",
+        "group": "nation",
         "color": "#bf5b9e"
       }
     },
@@ -763,6 +2701,7 @@
       "properties": {
         "slug": "bighorn-national-forest",
         "nation": "Oceti Sakowin (Sioux)",
+        "group": "nation",
         "color": "#bf9e5b"
       }
     },
@@ -778,6 +2717,7 @@
       "properties": {
         "slug": "mount-rushmore-national-memorial",
         "nation": "Oceti Sakowin (Sioux)",
+        "group": "nation",
         "color": "#bf9e5b"
       }
     },
@@ -793,6 +2733,7 @@
       "properties": {
         "slug": "mount-rushmore-national-memorial",
         "nation": "Cheyenne",
+        "group": "nation",
         "color": "#a8e85b"
       }
     },
@@ -808,6 +2749,7 @@
       "properties": {
         "slug": "mount-rushmore-national-memorial",
         "nation": "Arapaho",
+        "group": "nation",
         "color": "#bf5b9e"
       }
     },
@@ -823,6 +2765,7 @@
       "properties": {
         "slug": "black-hills-national-forest",
         "nation": "Oceti Sakowin (Sioux)",
+        "group": "nation",
         "color": "#bf9e5b"
       }
     },
@@ -838,6 +2781,7 @@
       "properties": {
         "slug": "black-hills-national-forest",
         "nation": "Cheyenne",
+        "group": "nation",
         "color": "#a8e85b"
       }
     },
@@ -853,6 +2797,23 @@
       "properties": {
         "slug": "black-hills-national-forest",
         "nation": "Arapaho",
+        "group": "nation",
+        "color": "#bf5b9e"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -103.8072,
+          44.4197
+        ]
+      },
+      "properties": {
+        "slug": "black-hills-national-forest",
+        "nation": "Apsáalooke (Crow)",
+        "group": "nation",
         "color": "#bf5b9e"
       }
     },
@@ -868,6 +2829,7 @@
       "properties": {
         "slug": "badlands-national-park",
         "nation": "Oglala Lakota",
+        "group": "nation",
         "color": "#c45be8"
       }
     },
@@ -883,7 +2845,40 @@
       "properties": {
         "slug": "badlands-national-park",
         "nation": "Oceti Sakowin (Sioux)",
+        "group": "nation",
         "color": "#bf9e5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -102.3397,
+          43.8554
+        ]
+      },
+      "properties": {
+        "slug": "badlands-national-park",
+        "nation": "Cheyenne",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -102.3397,
+          43.8554
+        ]
+      },
+      "properties": {
+        "slug": "badlands-national-park",
+        "nation": "Mnicoujou",
+        "group": "nation",
+        "color": "#bf5b5b"
       }
     },
     {
@@ -898,6 +2893,7 @@
       "properties": {
         "slug": "pipestone-national-monument",
         "nation": "Oceti Sakowin (Sioux)",
+        "group": "nation",
         "color": "#bf9e5b"
       }
     },
@@ -913,6 +2909,7 @@
       "properties": {
         "slug": "pipestone-national-monument",
         "nation": "Yankton Dakota",
+        "group": "nation",
         "color": "#bf5b9e"
       }
     },
@@ -928,6 +2925,7 @@
       "properties": {
         "slug": "palisades-state-park",
         "nation": "Oceti Sakowin (Sioux)",
+        "group": "nation",
         "color": "#bf9e5b"
       }
     },
@@ -943,6 +2941,7 @@
       "properties": {
         "slug": "palisades-state-park",
         "nation": "Yankton Dakota",
+        "group": "nation",
         "color": "#bf5b9e"
       }
     },
@@ -958,6 +2957,7 @@
       "properties": {
         "slug": "palisades-state-park",
         "nation": "Sisseton-Wahpeton Dakota",
+        "group": "nation",
         "color": "#bf6e5b"
       }
     },
@@ -973,6 +2973,7 @@
       "properties": {
         "slug": "myre-big-island-state-park",
         "nation": "Wahpekute Dakota",
+        "group": "nation",
         "color": "#5bc4e8"
       }
     },
@@ -988,7 +2989,40 @@
       "properties": {
         "slug": "myre-big-island-state-park",
         "nation": "Sisseton Dakota",
+        "group": "nation",
         "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.3089,
+          43.6372
+        ]
+      },
+      "properties": {
+        "slug": "myre-big-island-state-park",
+        "nation": "Wahpeton",
+        "group": "nation",
+        "color": "#7a5bbf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.3089,
+          43.6372
+        ]
+      },
+      "properties": {
+        "slug": "myre-big-island-state-park",
+        "nation": "Oceti Sakowin (Sioux)",
+        "group": "nation",
+        "color": "#bf9e5b"
       }
     },
     {
@@ -1003,6 +3037,7 @@
       "properties": {
         "slug": "maquoketa-caves-state-park",
         "nation": "Báxoje (Ioway)",
+        "group": "nation",
         "color": "#5b9e6e"
       }
     },
@@ -1018,6 +3053,7 @@
       "properties": {
         "slug": "maquoketa-caves-state-park",
         "nation": "Sauk",
+        "group": "nation",
         "color": "#c45be8"
       }
     },
@@ -1033,6 +3069,7 @@
       "properties": {
         "slug": "maquoketa-caves-state-park",
         "nation": "Meskwaki",
+        "group": "nation",
         "color": "#c45be8"
       }
     },
@@ -1048,7 +3085,40 @@
       "properties": {
         "slug": "maquoketa-caves-state-park",
         "nation": "Ho-Chunk",
+        "group": "nation",
         "color": "#bf6e5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.7678,
+          42.1203
+        ]
+      },
+      "properties": {
+        "slug": "maquoketa-caves-state-park",
+        "nation": "Kickapoo",
+        "group": "nation",
+        "color": "#e87c5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.7678,
+          42.1203
+        ]
+      },
+      "properties": {
+        "slug": "maquoketa-caves-state-park",
+        "nation": "Oceti Sakowin (Sioux)",
+        "group": "nation",
+        "color": "#bf9e5b"
       }
     },
     {
@@ -1063,6 +3133,7 @@
       "properties": {
         "slug": "mississippi-palisades-state-park",
         "nation": "Ho-Chunk",
+        "group": "nation",
         "color": "#bf6e5b"
       }
     },
@@ -1078,6 +3149,7 @@
       "properties": {
         "slug": "mississippi-palisades-state-park",
         "nation": "Sauk",
+        "group": "nation",
         "color": "#c45be8"
       }
     },
@@ -1093,7 +3165,72 @@
       "properties": {
         "slug": "mississippi-palisades-state-park",
         "nation": "Meskwaki",
+        "group": "nation",
         "color": "#c45be8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.159,
+          42.1384
+        ]
+      },
+      "properties": {
+        "slug": "mississippi-palisades-state-park",
+        "nation": "Peoria",
+        "group": "nation",
+        "color": "#8a5bbf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.159,
+          42.1384
+        ]
+      },
+      "properties": {
+        "slug": "mississippi-palisades-state-park",
+        "nation": "Kickapoo",
+        "group": "nation",
+        "color": "#e87c5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.159,
+          42.1384
+        ]
+      },
+      "properties": {
+        "slug": "mississippi-palisades-state-park",
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.159,
+          42.1384
+        ]
+      },
+      "properties": {
+        "slug": "mississippi-palisades-state-park",
+        "nation": "Oceti Sakowin (Sioux)",
+        "group": "nation",
+        "color": "#bf9e5b"
       }
     },
     {
@@ -1107,8 +3244,9 @@
       },
       "properties": {
         "slug": "mounds-state-park",
-        "nation": "Lenape",
-        "color": "#c45be8"
+        "nation": "Lenape (Delaware)",
+        "group": "nation",
+        "color": "#c8a050"
       }
     },
     {
@@ -1122,8 +3260,41 @@
       },
       "properties": {
         "slug": "mounds-state-park",
-        "nation": "Miami",
-        "color": "#9ebf5b"
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.6201,
+          40.0958
+        ]
+      },
+      "properties": {
+        "slug": "mounds-state-park",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.6201,
+          40.0958
+        ]
+      },
+      "properties": {
+        "slug": "mounds-state-park",
+        "nation": "Kickapoo",
+        "group": "nation",
+        "color": "#e87c5b"
       }
     },
     {
@@ -1137,8 +3308,9 @@
       },
       "properties": {
         "slug": "pine-hills-nature-preserve",
-        "nation": "Miami",
-        "color": "#9ebf5b"
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
       }
     },
     {
@@ -1153,6 +3325,7 @@
       "properties": {
         "slug": "pine-hills-nature-preserve",
         "nation": "Wea",
+        "group": "nation",
         "color": "#5b8abf"
       }
     },
@@ -1168,6 +3341,7 @@
       "properties": {
         "slug": "pine-hills-nature-preserve",
         "nation": "Potawatomi",
+        "group": "nation",
         "color": "#e8c45b"
       }
     },
@@ -1183,7 +3357,40 @@
       "properties": {
         "slug": "pine-hills-nature-preserve",
         "nation": "Shawnee",
+        "group": "nation",
         "color": "#c45be8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.049,
+          39.9423
+        ]
+      },
+      "properties": {
+        "slug": "pine-hills-nature-preserve",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.049,
+          39.9423
+        ]
+      },
+      "properties": {
+        "slug": "pine-hills-nature-preserve",
+        "nation": "Kickapoo",
+        "group": "nation",
+        "color": "#e87c5b"
       }
     },
     {
@@ -1197,8 +3404,9 @@
       },
       "properties": {
         "slug": "prophetstown-state-park",
-        "nation": "Miami",
-        "color": "#9ebf5b"
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
       }
     },
     {
@@ -1213,6 +3421,7 @@
       "properties": {
         "slug": "prophetstown-state-park",
         "nation": "Potawatomi",
+        "group": "nation",
         "color": "#e8c45b"
       }
     },
@@ -1228,6 +3437,7 @@
       "properties": {
         "slug": "prophetstown-state-park",
         "nation": "Shawnee",
+        "group": "nation",
         "color": "#c45be8"
       }
     },
@@ -1243,6 +3453,7 @@
       "properties": {
         "slug": "prophetstown-state-park",
         "nation": "Wea",
+        "group": "nation",
         "color": "#5b8abf"
       }
     },
@@ -1258,6 +3469,7 @@
       "properties": {
         "slug": "prophetstown-state-park",
         "nation": "Kickapoo",
+        "group": "nation",
         "color": "#e87c5b"
       }
     },
@@ -1273,7 +3485,40 @@
       "properties": {
         "slug": "prophetstown-state-park",
         "nation": "Lenape (Delaware)",
+        "group": "nation",
         "color": "#c8a050"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.8425,
+          40.4973
+        ]
+      },
+      "properties": {
+        "slug": "prophetstown-state-park",
+        "nation": "Peoria",
+        "group": "nation",
+        "color": "#8a5bbf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.8425,
+          40.4973
+        ]
+      },
+      "properties": {
+        "slug": "prophetstown-state-park",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
       }
     },
     {
@@ -1287,8 +3532,9 @@
       },
       "properties": {
         "slug": "shades-state-park",
-        "nation": "Miami",
-        "color": "#9ebf5b"
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
       }
     },
     {
@@ -1303,6 +3549,7 @@
       "properties": {
         "slug": "shades-state-park",
         "nation": "Wea",
+        "group": "nation",
         "color": "#5b8abf"
       }
     },
@@ -1318,6 +3565,7 @@
       "properties": {
         "slug": "shades-state-park",
         "nation": "Shawnee",
+        "group": "nation",
         "color": "#c45be8"
       }
     },
@@ -1333,7 +3581,120 @@
       "properties": {
         "slug": "shades-state-park",
         "nation": "Potawatomi",
+        "group": "nation",
         "color": "#e8c45b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.0748,
+          39.9326
+        ]
+      },
+      "properties": {
+        "slug": "shades-state-park",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.0748,
+          39.9326
+        ]
+      },
+      "properties": {
+        "slug": "shades-state-park",
+        "nation": "Kickapoo",
+        "group": "nation",
+        "color": "#e87c5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.0748,
+          39.9326
+        ]
+      },
+      "properties": {
+        "slug": "shades-state-park",
+        "nation": "Oceti Sakowin (Sioux)",
+        "group": "nation",
+        "color": "#bf9e5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.4063,
+          39.1131
+        ]
+      },
+      "properties": {
+        "slug": "fort-hill-state-memorial",
+        "nation": "Shawnee",
+        "group": "nation",
+        "color": "#c45be8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.4063,
+          39.1131
+        ]
+      },
+      "properties": {
+        "slug": "fort-hill-state-memorial",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.4063,
+          39.1131
+        ]
+      },
+      "properties": {
+        "slug": "fort-hill-state-memorial",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.4063,
+          39.1131
+        ]
+      },
+      "properties": {
+        "slug": "fort-hill-state-memorial",
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
       }
     },
     {
@@ -1348,6 +3709,7 @@
       "properties": {
         "slug": "fort-hill-state-memorial",
         "nation": "Hopewell",
+        "group": "culture",
         "color": "#bf6e5b"
       }
     },
@@ -1363,37 +3725,8 @@
       "properties": {
         "slug": "fort-hill-state-memorial",
         "nation": "Adena",
+        "group": "culture",
         "color": "#5bbf8c"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -83.4063,
-          39.1131
-        ]
-      },
-      "properties": {
-        "slug": "fort-hill-state-memorial",
-        "nation": "Shawnee",
-        "color": "#c45be8"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -81.5497,
-          41.2417
-        ]
-      },
-      "properties": {
-        "slug": "cuyahoga-valley-national-park",
-        "nation": "Hopewell",
-        "color": "#bf6e5b"
       }
     },
     {
@@ -1408,6 +3741,7 @@
       "properties": {
         "slug": "cuyahoga-valley-national-park",
         "nation": "Erie",
+        "group": "nation",
         "color": "#bf5b5b"
       }
     },
@@ -1423,6 +3757,7 @@
       "properties": {
         "slug": "cuyahoga-valley-national-park",
         "nation": "Wyandot",
+        "group": "nation",
         "color": "#bf9e5b"
       }
     },
@@ -1438,6 +3773,7 @@
       "properties": {
         "slug": "cuyahoga-valley-national-park",
         "nation": "Lenape (Delaware)",
+        "group": "nation",
         "color": "#c8a050"
       }
     },
@@ -1453,6 +3789,7 @@
       "properties": {
         "slug": "cuyahoga-valley-national-park",
         "nation": "Shawnee",
+        "group": "nation",
         "color": "#c45be8"
       }
     },
@@ -1468,7 +3805,40 @@
       "properties": {
         "slug": "cuyahoga-valley-national-park",
         "nation": "Seneca",
+        "group": "nation",
         "color": "#e85b8a"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.5497,
+          41.2417
+        ]
+      },
+      "properties": {
+        "slug": "cuyahoga-valley-national-park",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.5497,
+          41.2417
+        ]
+      },
+      "properties": {
+        "slug": "cuyahoga-valley-national-park",
+        "nation": "Hopewell",
+        "group": "culture",
+        "color": "#bf6e5b"
       }
     },
     {
@@ -1483,6 +3853,7 @@
       "properties": {
         "slug": "krejci-dump",
         "nation": "Wyandot",
+        "group": "nation",
         "color": "#bf9e5b"
       }
     },
@@ -1498,6 +3869,7 @@
       "properties": {
         "slug": "krejci-dump",
         "nation": "Lenape (Delaware)",
+        "group": "nation",
         "color": "#c8a050"
       }
     },
@@ -1513,6 +3885,7 @@
       "properties": {
         "slug": "krejci-dump",
         "nation": "Shawnee",
+        "group": "nation",
         "color": "#c45be8"
       }
     },
@@ -1528,6 +3901,7 @@
       "properties": {
         "slug": "krejci-dump",
         "nation": "Erie",
+        "group": "nation",
         "color": "#bf5b5b"
       }
     },
@@ -1543,6 +3917,7 @@
       "properties": {
         "slug": "krejci-dump",
         "nation": "Seneca",
+        "group": "nation",
         "color": "#e85b8a"
       }
     },
@@ -1551,6 +3926,134 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          -81.5449,
+          41.272
+        ]
+      },
+      "properties": {
+        "slug": "krejci-dump",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.5449,
+          41.272
+        ]
+      },
+      "properties": {
+        "slug": "krejci-dump",
+        "nation": "Mississauga",
+        "group": "nation",
+        "color": "#5b9e6e"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.2095,
+          39.9848
+        ]
+      },
+      "properties": {
+        "slug": "flint-ridge-state-memorial",
+        "nation": "Wyandot",
+        "group": "nation",
+        "color": "#bf9e5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.2095,
+          39.9848
+        ]
+      },
+      "properties": {
+        "slug": "flint-ridge-state-memorial",
+        "nation": "Lenape (Delaware)",
+        "group": "nation",
+        "color": "#c8a050"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.2095,
+          39.9848
+        ]
+      },
+      "properties": {
+        "slug": "flint-ridge-state-memorial",
+        "nation": "Shawnee",
+        "group": "nation",
+        "color": "#c45be8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.2095,
+          39.9848
+        ]
+      },
+      "properties": {
+        "slug": "flint-ridge-state-memorial",
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.2095,
+          39.9848
+        ]
+      },
+      "properties": {
+        "slug": "flint-ridge-state-memorial",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.2095,
+          39.9848
+        ]
+      },
+      "properties": {
+        "slug": "flint-ridge-state-memorial",
+        "nation": "Ofo",
+        "group": "nation",
+        "color": "#5b9ebf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           -82.2095,
           39.9848
         ]
@@ -1558,6 +4061,7 @@
       "properties": {
         "slug": "flint-ridge-state-memorial",
         "nation": "Hopewell",
+        "group": "culture",
         "color": "#bf6e5b"
       }
     },
@@ -1573,6 +4077,7 @@
       "properties": {
         "slug": "flint-ridge-state-memorial",
         "nation": "Adena",
+        "group": "culture",
         "color": "#5bbf8c"
       }
     },
@@ -1581,81 +4086,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -82.2095,
-          39.9848
-        ]
-      },
-      "properties": {
-        "slug": "flint-ridge-state-memorial",
-        "nation": "Wyandot",
-        "color": "#bf9e5b"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -82.2095,
-          39.9848
-        ]
-      },
-      "properties": {
-        "slug": "flint-ridge-state-memorial",
-        "nation": "Lenape (Delaware)",
-        "color": "#c8a050"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -82.2095,
-          39.9848
-        ]
-      },
-      "properties": {
-        "slug": "flint-ridge-state-memorial",
-        "nation": "Shawnee",
-        "color": "#c45be8"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -82.2095,
-          39.9848
-        ]
-      },
-      "properties": {
-        "slug": "flint-ridge-state-memorial",
-        "nation": "Myaamia",
-        "color": "#c87840"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -82.4278,
-          40.0403
-        ]
-      },
-      "properties": {
-        "slug": "octagon-earthworks",
-        "nation": "Hopewell",
-        "color": "#bf6e5b"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -82.4278,
           40.0403
         ]
@@ -1663,6 +4093,7 @@
       "properties": {
         "slug": "octagon-earthworks",
         "nation": "Lenape (Delaware)",
+        "group": "nation",
         "color": "#c8a050"
       }
     },
@@ -1678,6 +4109,7 @@
       "properties": {
         "slug": "octagon-earthworks",
         "nation": "Shawnee",
+        "group": "nation",
         "color": "#c45be8"
       }
     },
@@ -1693,6 +4125,7 @@
       "properties": {
         "slug": "octagon-earthworks",
         "nation": "Wyandot",
+        "group": "nation",
         "color": "#bf9e5b"
       }
     },
@@ -1707,8 +4140,9 @@
       },
       "properties": {
         "slug": "octagon-earthworks",
-        "nation": "Myaamia",
-        "color": "#c87840"
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
       }
     },
     {
@@ -1716,13 +4150,46 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -82.4301,
-          40.0422
+          -82.4278,
+          40.0403
         ]
       },
       "properties": {
-        "slug": "newark-earthworks",
+        "slug": "octagon-earthworks",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.4278,
+          40.0403
+        ]
+      },
+      "properties": {
+        "slug": "octagon-earthworks",
+        "nation": "Ofo",
+        "group": "nation",
+        "color": "#5b9ebf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.4278,
+          40.0403
+        ]
+      },
+      "properties": {
+        "slug": "octagon-earthworks",
         "nation": "Hopewell",
+        "group": "culture",
         "color": "#bf6e5b"
       }
     },
@@ -1738,6 +4205,7 @@
       "properties": {
         "slug": "newark-earthworks",
         "nation": "Lenape (Delaware)",
+        "group": "nation",
         "color": "#c8a050"
       }
     },
@@ -1753,6 +4221,7 @@
       "properties": {
         "slug": "newark-earthworks",
         "nation": "Shawnee",
+        "group": "nation",
         "color": "#c45be8"
       }
     },
@@ -1768,6 +4237,7 @@
       "properties": {
         "slug": "newark-earthworks",
         "nation": "Wyandot",
+        "group": "nation",
         "color": "#bf9e5b"
       }
     },
@@ -1782,8 +4252,9 @@
       },
       "properties": {
         "slug": "newark-earthworks",
-        "nation": "Myaamia",
-        "color": "#c87840"
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
       }
     },
     {
@@ -1791,13 +4262,62 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -82.8395,
-          41.5039
+          -82.4301,
+          40.0422
+        ]
+      },
+      "properties": {
+        "slug": "newark-earthworks",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.4301,
+          40.0422
+        ]
+      },
+      "properties": {
+        "slug": "newark-earthworks",
+        "nation": "Ofo",
+        "group": "nation",
+        "color": "#5b9ebf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.4301,
+          40.0422
+        ]
+      },
+      "properties": {
+        "slug": "newark-earthworks",
+        "nation": "Hopewell",
+        "group": "culture",
+        "color": "#bf6e5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.1632,
+          41.6156
         ]
       },
       "properties": {
         "slug": "magee-marsh-wildlife-area",
         "nation": "Ottawa (Odawa)",
+        "group": "nation",
         "color": "#e8c45b"
       }
     },
@@ -1806,13 +4326,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -82.8395,
-          41.5039
+          -83.1632,
+          41.6156
         ]
       },
       "properties": {
         "slug": "magee-marsh-wildlife-area",
         "nation": "Wyandot",
+        "group": "nation",
         "color": "#bf9e5b"
       }
     },
@@ -1821,13 +4342,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -82.8395,
-          41.5039
+          -83.1632,
+          41.6156
         ]
       },
       "properties": {
         "slug": "magee-marsh-wildlife-area",
         "nation": "Potawatomi",
+        "group": "nation",
         "color": "#e8c45b"
       }
     },
@@ -1836,13 +4358,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -82.8395,
-          41.5039
+          -83.1632,
+          41.6156
         ]
       },
       "properties": {
         "slug": "magee-marsh-wildlife-area",
         "nation": "Erie",
+        "group": "nation",
         "color": "#bf5b5b"
       }
     },
@@ -1851,6 +4374,70 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          -83.1632,
+          41.6156
+        ]
+      },
+      "properties": {
+        "slug": "magee-marsh-wildlife-area",
+        "nation": "Peoria",
+        "group": "nation",
+        "color": "#8a5bbf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.1632,
+          41.6156
+        ]
+      },
+      "properties": {
+        "slug": "magee-marsh-wildlife-area",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.1632,
+          41.6156
+        ]
+      },
+      "properties": {
+        "slug": "magee-marsh-wildlife-area",
+        "nation": "Kickapoo",
+        "group": "nation",
+        "color": "#e87c5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.1632,
+          41.6156
+        ]
+      },
+      "properties": {
+        "slug": "magee-marsh-wildlife-area",
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           -83.8518,
           41.5545
         ]
@@ -1858,6 +4445,7 @@
       "properties": {
         "slug": "oak-openings-metropark",
         "nation": "Wyandot",
+        "group": "nation",
         "color": "#bf9e5b"
       }
     },
@@ -1872,7 +4460,88 @@
       },
       "properties": {
         "slug": "oak-openings-metropark",
-        "nation": "Ottawa",
+        "nation": "Ottawa (Odawa)",
+        "group": "nation",
+        "color": "#e8c45b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.8518,
+          41.5545
+        ]
+      },
+      "properties": {
+        "slug": "oak-openings-metropark",
+        "nation": "Potawatomi",
+        "group": "nation",
+        "color": "#e8c45b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.8518,
+          41.5545
+        ]
+      },
+      "properties": {
+        "slug": "oak-openings-metropark",
+        "nation": "Shawnee",
+        "group": "nation",
+        "color": "#c45be8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.8518,
+          41.5545
+        ]
+      },
+      "properties": {
+        "slug": "oak-openings-metropark",
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.8518,
+          41.5545
+        ]
+      },
+      "properties": {
+        "slug": "oak-openings-metropark",
+        "nation": "Peoria",
+        "group": "nation",
+        "color": "#8a5bbf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.8518,
+          41.5545
+        ]
+      },
+      "properties": {
+        "slug": "oak-openings-metropark",
+        "nation": "Kaskaskia",
+        "group": "nation",
         "color": "#5bc4e8"
       }
     },
@@ -1887,7 +4556,24 @@
       },
       "properties": {
         "slug": "oak-openings-metropark",
-        "nation": "Potawatomi",
+        "nation": "Kickapoo",
+        "group": "nation",
+        "color": "#e87c5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.3412,
+          41.8977
+        ]
+      },
+      "properties": {
+        "slug": "ford-marsh-unit",
+        "nation": "Ottawa (Odawa)",
+        "group": "nation",
         "color": "#e8c45b"
       }
     },
@@ -1896,13 +4582,78 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -83.8518,
-          41.5545
+          -83.3412,
+          41.8977
         ]
       },
       "properties": {
-        "slug": "oak-openings-metropark",
-        "nation": "Shawnee",
+        "slug": "ford-marsh-unit",
+        "nation": "Potawatomi",
+        "group": "nation",
+        "color": "#e8c45b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.3412,
+          41.8977
+        ]
+      },
+      "properties": {
+        "slug": "ford-marsh-unit",
+        "nation": "Wyandot",
+        "group": "nation",
+        "color": "#bf9e5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.3412,
+          41.8977
+        ]
+      },
+      "properties": {
+        "slug": "ford-marsh-unit",
+        "nation": "Ojibwe",
+        "group": "nation",
+        "color": "#9ebf5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.3412,
+          41.8977
+        ]
+      },
+      "properties": {
+        "slug": "ford-marsh-unit",
+        "nation": "Peoria",
+        "group": "nation",
+        "color": "#8a5bbf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.3412,
+          41.8977
+        ]
+      },
+      "properties": {
+        "slug": "ford-marsh-unit",
+        "nation": "Meskwaki",
+        "group": "nation",
         "color": "#c45be8"
       }
     },
@@ -1911,74 +4662,15 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -83.8518,
-          41.5545
-        ]
-      },
-      "properties": {
-        "slug": "oak-openings-metropark",
-        "nation": "Myaamia",
-        "color": "#c87840"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -83.3412,
           41.8977
         ]
       },
       "properties": {
         "slug": "ford-marsh-unit",
-        "nation": "Ottawa (Odawa)",
-        "color": "#e8c45b"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -83.3412,
-          41.8977
-        ]
-      },
-      "properties": {
-        "slug": "ford-marsh-unit",
-        "nation": "Potawatomi",
-        "color": "#e8c45b"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -83.3412,
-          41.8977
-        ]
-      },
-      "properties": {
-        "slug": "ford-marsh-unit",
-        "nation": "Wyandot",
-        "color": "#bf9e5b"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -83.3412,
-          41.8977
-        ]
-      },
-      "properties": {
-        "slug": "ford-marsh-unit",
-        "nation": "Ojibwe",
-        "color": "#9ebf5b"
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
       }
     },
     {
@@ -1993,6 +4685,7 @@
       "properties": {
         "slug": "william-c-sterling-state-park",
         "nation": "Ottawa (Odawa)",
+        "group": "nation",
         "color": "#e8c45b"
       }
     },
@@ -2008,6 +4701,7 @@
       "properties": {
         "slug": "william-c-sterling-state-park",
         "nation": "Potawatomi",
+        "group": "nation",
         "color": "#e8c45b"
       }
     },
@@ -2023,6 +4717,7 @@
       "properties": {
         "slug": "william-c-sterling-state-park",
         "nation": "Wyandot",
+        "group": "nation",
         "color": "#bf9e5b"
       }
     },
@@ -2038,7 +4733,56 @@
       "properties": {
         "slug": "william-c-sterling-state-park",
         "nation": "Ojibwe",
+        "group": "nation",
         "color": "#9ebf5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.3335,
+          41.9156
+        ]
+      },
+      "properties": {
+        "slug": "william-c-sterling-state-park",
+        "nation": "Peoria",
+        "group": "nation",
+        "color": "#8a5bbf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.3335,
+          41.9156
+        ]
+      },
+      "properties": {
+        "slug": "william-c-sterling-state-park",
+        "nation": "Meskwaki",
+        "group": "nation",
+        "color": "#c45be8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.3335,
+          41.9156
+        ]
+      },
+      "properties": {
+        "slug": "william-c-sterling-state-park",
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
       }
     },
     {
@@ -2053,6 +4797,7 @@
       "properties": {
         "slug": "killdeer-plains-wildlife-area",
         "nation": "Wyandot",
+        "group": "nation",
         "color": "#bf9e5b"
       }
     },
@@ -2068,6 +4813,7 @@
       "properties": {
         "slug": "killdeer-plains-wildlife-area",
         "nation": "Shawnee",
+        "group": "nation",
         "color": "#c45be8"
       }
     },
@@ -2082,8 +4828,41 @@
       },
       "properties": {
         "slug": "killdeer-plains-wildlife-area",
-        "nation": "Delaware (Lenape)",
-        "color": "#5b8abf"
+        "nation": "Lenape (Delaware)",
+        "group": "nation",
+        "color": "#c8a050"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.315,
+          40.7158
+        ]
+      },
+      "properties": {
+        "slug": "killdeer-plains-wildlife-area",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.315,
+          40.7158
+        ]
+      },
+      "properties": {
+        "slug": "killdeer-plains-wildlife-area",
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
       }
     },
     {
@@ -2098,6 +4877,7 @@
       "properties": {
         "slug": "pointe-mouillee-state-game-area",
         "nation": "Ottawa (Odawa)",
+        "group": "nation",
         "color": "#e8c45b"
       }
     },
@@ -2113,6 +4893,7 @@
       "properties": {
         "slug": "pointe-mouillee-state-game-area",
         "nation": "Potawatomi",
+        "group": "nation",
         "color": "#e8c45b"
       }
     },
@@ -2128,6 +4909,7 @@
       "properties": {
         "slug": "pointe-mouillee-state-game-area",
         "nation": "Wyandot",
+        "group": "nation",
         "color": "#bf9e5b"
       }
     },
@@ -2143,7 +4925,120 @@
       "properties": {
         "slug": "pointe-mouillee-state-game-area",
         "nation": "Ojibwe",
+        "group": "nation",
         "color": "#9ebf5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.198,
+          42.0117
+        ]
+      },
+      "properties": {
+        "slug": "pointe-mouillee-state-game-area",
+        "nation": "Peoria",
+        "group": "nation",
+        "color": "#8a5bbf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.198,
+          42.0117
+        ]
+      },
+      "properties": {
+        "slug": "pointe-mouillee-state-game-area",
+        "nation": "Meskwaki",
+        "group": "nation",
+        "color": "#c45be8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.198,
+          42.0117
+        ]
+      },
+      "properties": {
+        "slug": "pointe-mouillee-state-game-area",
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.384,
+          38.7924
+        ]
+      },
+      "properties": {
+        "slug": "edge-of-appalachia",
+        "nation": "Shawnee",
+        "group": "nation",
+        "color": "#c45be8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.384,
+          38.7924
+        ]
+      },
+      "properties": {
+        "slug": "edge-of-appalachia",
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.384,
+          38.7924
+        ]
+      },
+      "properties": {
+        "slug": "edge-of-appalachia",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.384,
+          38.7924
+        ]
+      },
+      "properties": {
+        "slug": "edge-of-appalachia",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
       }
     },
     {
@@ -2158,6 +5053,7 @@
       "properties": {
         "slug": "edge-of-appalachia",
         "nation": "Adena",
+        "group": "culture",
         "color": "#5bbf8c"
       }
     },
@@ -2173,6 +5069,7 @@
       "properties": {
         "slug": "edge-of-appalachia",
         "nation": "Hopewell",
+        "group": "culture",
         "color": "#bf6e5b"
       }
     },
@@ -2188,6 +5085,7 @@
       "properties": {
         "slug": "edge-of-appalachia",
         "nation": "Fort Ancient culture",
+        "group": "culture",
         "color": "#5bc4e8"
       }
     },
@@ -2196,13 +5094,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -83.384,
-          38.7924
+          -84.3708,
+          39.0343
         ]
       },
       "properties": {
-        "slug": "edge-of-appalachia",
+        "slug": "st-annes-woods-and-wetlands",
         "nation": "Shawnee",
+        "group": "nation",
         "color": "#c45be8"
       }
     },
@@ -2211,14 +5110,63 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -83.384,
-          38.7924
+          -84.3708,
+          39.0343
         ]
       },
       "properties": {
-        "slug": "edge-of-appalachia",
-        "nation": "Myaamia",
-        "color": "#c87840"
+        "slug": "st-annes-woods-and-wetlands",
+        "nation": "Cherokee",
+        "group": "nation",
+        "color": "#8cbf5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.3708,
+          39.0343
+        ]
+      },
+      "properties": {
+        "slug": "st-annes-woods-and-wetlands",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.3708,
+          39.0343
+        ]
+      },
+      "properties": {
+        "slug": "st-annes-woods-and-wetlands",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.3708,
+          39.0343
+        ]
+      },
+      "properties": {
+        "slug": "st-annes-woods-and-wetlands",
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
       }
     },
     {
@@ -2233,6 +5181,7 @@
       "properties": {
         "slug": "st-annes-woods-and-wetlands",
         "nation": "Adena",
+        "group": "culture",
         "color": "#5bbf8c"
       }
     },
@@ -2248,6 +5197,7 @@
       "properties": {
         "slug": "st-annes-woods-and-wetlands",
         "nation": "Hopewell",
+        "group": "culture",
         "color": "#bf6e5b"
       }
     },
@@ -2263,22 +5213,8 @@
       "properties": {
         "slug": "st-annes-woods-and-wetlands",
         "nation": "Fort Ancient culture",
+        "group": "culture",
         "color": "#5bc4e8"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -84.3708,
-          39.0343
-        ]
-      },
-      "properties": {
-        "slug": "st-annes-woods-and-wetlands",
-        "nation": "Shawnee",
-        "color": "#c45be8"
       }
     },
     {
@@ -2293,6 +5229,7 @@
       "properties": {
         "slug": "red-river-gorge-geological-area",
         "nation": "Cherokee",
+        "group": "nation",
         "color": "#8cbf5b"
       }
     },
@@ -2308,7 +5245,40 @@
       "properties": {
         "slug": "red-river-gorge-geological-area",
         "nation": "Shawnee",
+        "group": "nation",
         "color": "#c45be8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.6078,
+          37.8339
+        ]
+      },
+      "properties": {
+        "slug": "red-river-gorge-geological-area",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.6078,
+          37.8339
+        ]
+      },
+      "properties": {
+        "slug": "red-river-gorge-geological-area",
+        "nation": "Yuchi",
+        "group": "nation",
+        "color": "#bf5b9e"
       }
     },
     {
@@ -2323,6 +5293,7 @@
       "properties": {
         "slug": "red-river-gorge-geological-area",
         "nation": "Paleoindian",
+        "group": "culture",
         "color": "#8cbf5b"
       }
     },
@@ -2338,7 +5309,72 @@
       "properties": {
         "slug": "red-river-gorge-geological-area",
         "nation": "Adena",
+        "group": "culture",
         "color": "#5bbf8c"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.2214,
+          39.2417
+        ]
+      },
+      "properties": {
+        "slug": "seip-earthworks",
+        "nation": "Shawnee",
+        "group": "nation",
+        "color": "#c45be8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.2214,
+          39.2417
+        ]
+      },
+      "properties": {
+        "slug": "seip-earthworks",
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.2214,
+          39.2417
+        ]
+      },
+      "properties": {
+        "slug": "seip-earthworks",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.2214,
+          39.2417
+        ]
+      },
+      "properties": {
+        "slug": "seip-earthworks",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
       }
     },
     {
@@ -2353,6 +5389,7 @@
       "properties": {
         "slug": "seip-earthworks",
         "nation": "Adena",
+        "group": "culture",
         "color": "#5bbf8c"
       }
     },
@@ -2368,37 +5405,8 @@
       "properties": {
         "slug": "seip-earthworks",
         "nation": "Hopewell",
+        "group": "culture",
         "color": "#bf6e5b"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -83.2214,
-          39.2417
-        ]
-      },
-      "properties": {
-        "slug": "seip-earthworks",
-        "nation": "Shawnee",
-        "color": "#c45be8"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -83.2214,
-          39.2417
-        ]
-      },
-      "properties": {
-        "slug": "seip-earthworks",
-        "nation": "Myaamia",
-        "color": "#c87840"
       }
     },
     {
@@ -2413,7 +5421,56 @@
       "properties": {
         "slug": "rocky-fork-state-park",
         "nation": "Shawnee",
+        "group": "nation",
         "color": "#c45be8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.472,
+          39.1861
+        ]
+      },
+      "properties": {
+        "slug": "rocky-fork-state-park",
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.472,
+          39.1861
+        ]
+      },
+      "properties": {
+        "slug": "rocky-fork-state-park",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.472,
+          39.1861
+        ]
+      },
+      "properties": {
+        "slug": "rocky-fork-state-park",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
       }
     },
     {
@@ -2428,22 +5485,8 @@
       "properties": {
         "slug": "rocky-fork-state-park",
         "nation": "Hopewell",
+        "group": "culture",
         "color": "#bf6e5b"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -83.472,
-          39.1861
-        ]
-      },
-      "properties": {
-        "slug": "rocky-fork-state-park",
-        "nation": "Myaamia",
-        "color": "#c87840"
       }
     },
     {
@@ -2458,7 +5501,72 @@
       "properties": {
         "slug": "hopewell-culture-national-historical-park",
         "nation": "Shawnee",
+        "group": "nation",
         "color": "#c45be8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.0064,
+          39.3758
+        ]
+      },
+      "properties": {
+        "slug": "hopewell-culture-national-historical-park",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.0064,
+          39.3758
+        ]
+      },
+      "properties": {
+        "slug": "hopewell-culture-national-historical-park",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.0064,
+          39.3758
+        ]
+      },
+      "properties": {
+        "slug": "hopewell-culture-national-historical-park",
+        "nation": "Ofo",
+        "group": "nation",
+        "color": "#5b9ebf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.0064,
+          39.3758
+        ]
+      },
+      "properties": {
+        "slug": "hopewell-culture-national-historical-park",
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
       }
     },
     {
@@ -2473,6 +5581,7 @@
       "properties": {
         "slug": "hopewell-culture-national-historical-park",
         "nation": "Adena",
+        "group": "culture",
         "color": "#5bbf8c"
       }
     },
@@ -2488,6 +5597,7 @@
       "properties": {
         "slug": "hopewell-culture-national-historical-park",
         "nation": "Hopewell",
+        "group": "culture",
         "color": "#bf6e5b"
       }
     },
@@ -2503,6 +5613,7 @@
       "properties": {
         "slug": "new-river-gorge-national-park",
         "nation": "Shawnee",
+        "group": "nation",
         "color": "#c45be8"
       }
     },
@@ -2518,6 +5629,7 @@
       "properties": {
         "slug": "new-river-gorge-national-park",
         "nation": "Cherokee",
+        "group": "nation",
         "color": "#8cbf5b"
       }
     },
@@ -2533,6 +5645,7 @@
       "properties": {
         "slug": "new-river-gorge-national-park",
         "nation": "Seneca",
+        "group": "nation",
         "color": "#e85b8a"
       }
     },
@@ -2548,7 +5661,40 @@
       "properties": {
         "slug": "new-river-gorge-national-park",
         "nation": "Moneton",
+        "group": "nation",
         "color": "#bf6e5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.0758,
+          38.07
+        ]
+      },
+      "properties": {
+        "slug": "new-river-gorge-national-park",
+        "nation": "Yuchi",
+        "group": "nation",
+        "color": "#bf5b9e"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.0758,
+          38.07
+        ]
+      },
+      "properties": {
+        "slug": "new-river-gorge-national-park",
+        "nation": "Yesan (Tutelo)",
+        "group": "nation",
+        "color": "#9e6abf"
       }
     },
     {
@@ -2563,6 +5709,7 @@
       "properties": {
         "slug": "big-bone-lick",
         "nation": "Shawnee",
+        "group": "nation",
         "color": "#c45be8"
       }
     },
@@ -2577,8 +5724,25 @@
       },
       "properties": {
         "slug": "big-bone-lick",
-        "nation": "Delaware",
-        "color": "#8a5bbf"
+        "nation": "Lenape (Delaware)",
+        "group": "nation",
+        "color": "#c8a050"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.7474,
+          38.8838
+        ]
+      },
+      "properties": {
+        "slug": "big-bone-lick",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
       }
     },
     {
@@ -2593,6 +5757,7 @@
       "properties": {
         "slug": "big-bone-lick",
         "nation": "Paleoindian",
+        "group": "culture",
         "color": "#8cbf5b"
       }
     },
@@ -2608,6 +5773,7 @@
       "properties": {
         "slug": "dinsmore-woods",
         "nation": "Shawnee",
+        "group": "nation",
         "color": "#c45be8"
       }
     },
@@ -2623,6 +5789,7 @@
       "properties": {
         "slug": "dinsmore-woods",
         "nation": "Cherokee",
+        "group": "nation",
         "color": "#8cbf5b"
       }
     },
@@ -2637,7 +5804,40 @@
       },
       "properties": {
         "slug": "dinsmore-woods",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.8153,
+          38.9989
+        ]
+      },
+      "properties": {
+        "slug": "dinsmore-woods",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.8153,
+          38.9989
+        ]
+      },
+      "properties": {
+        "slug": "dinsmore-woods",
         "nation": "Adena",
+        "group": "culture",
         "color": "#5bbf8c"
       }
     },
@@ -2653,6 +5853,7 @@
       "properties": {
         "slug": "caesar-creek",
         "nation": "Shawnee",
+        "group": "nation",
         "color": "#c45be8"
       }
     },
@@ -2667,8 +5868,41 @@
       },
       "properties": {
         "slug": "caesar-creek",
-        "nation": "Myaamia",
-        "color": "#c87840"
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.0365,
+          39.5146
+        ]
+      },
+      "properties": {
+        "slug": "caesar-creek",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.0365,
+          39.5146
+        ]
+      },
+      "properties": {
+        "slug": "caesar-creek",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
       }
     },
     {
@@ -2683,6 +5917,7 @@
       "properties": {
         "slug": "caesar-creek",
         "nation": "Hopewell",
+        "group": "culture",
         "color": "#bf6e5b"
       }
     },
@@ -2698,6 +5933,7 @@
       "properties": {
         "slug": "caesar-creek",
         "nation": "Fort Ancient culture",
+        "group": "culture",
         "color": "#5bc4e8"
       }
     },
@@ -2713,6 +5949,7 @@
       "properties": {
         "slug": "shawnee-lookout",
         "nation": "Shawnee",
+        "group": "nation",
         "color": "#c45be8"
       }
     },
@@ -2727,8 +5964,41 @@
       },
       "properties": {
         "slug": "shawnee-lookout",
-        "nation": "Myaamia",
-        "color": "#c87840"
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.8084,
+          39.1207
+        ]
+      },
+      "properties": {
+        "slug": "shawnee-lookout",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.8084,
+          39.1207
+        ]
+      },
+      "properties": {
+        "slug": "shawnee-lookout",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
       }
     },
     {
@@ -2743,6 +6013,7 @@
       "properties": {
         "slug": "shawnee-lookout",
         "nation": "Hopewell",
+        "group": "culture",
         "color": "#bf6e5b"
       }
     },
@@ -2758,6 +6029,7 @@
       "properties": {
         "slug": "shawnee-lookout",
         "nation": "Fort Ancient culture",
+        "group": "culture",
         "color": "#5bc4e8"
       }
     },
@@ -2772,8 +6044,9 @@
       },
       "properties": {
         "slug": "fernald-preserve",
-        "nation": "Myaamia",
-        "color": "#c87840"
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
       }
     },
     {
@@ -2788,7 +6061,40 @@
       "properties": {
         "slug": "fernald-preserve",
         "nation": "Shawnee",
+        "group": "nation",
         "color": "#c45be8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.6878,
+          39.2922
+        ]
+      },
+      "properties": {
+        "slug": "fernald-preserve",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.6878,
+          39.2922
+        ]
+      },
+      "properties": {
+        "slug": "fernald-preserve",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
       }
     },
     {
@@ -2803,6 +6109,7 @@
       "properties": {
         "slug": "clifty-falls-state-park",
         "nation": "Shawnee",
+        "group": "nation",
         "color": "#c45be8"
       }
     },
@@ -2817,8 +6124,105 @@
       },
       "properties": {
         "slug": "clifty-falls-state-park",
-        "nation": "Miami",
-        "color": "#9ebf5b"
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.4188,
+          38.7608
+        ]
+      },
+      "properties": {
+        "slug": "clifty-falls-state-park",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.4188,
+          38.7608
+        ]
+      },
+      "properties": {
+        "slug": "clifty-falls-state-park",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.4233,
+          39.1991
+        ]
+      },
+      "properties": {
+        "slug": "french-park",
+        "nation": "Shawnee",
+        "group": "nation",
+        "color": "#c45be8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.4233,
+          39.1991
+        ]
+      },
+      "properties": {
+        "slug": "french-park",
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.4233,
+          39.1991
+        ]
+      },
+      "properties": {
+        "slug": "french-park",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.4233,
+          39.1991
+        ]
+      },
+      "properties": {
+        "slug": "french-park",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
       }
     },
     {
@@ -2833,37 +6237,8 @@
       "properties": {
         "slug": "french-park",
         "nation": "Hopewell",
+        "group": "culture",
         "color": "#bf6e5b"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -84.4233,
-          39.1991
-        ]
-      },
-      "properties": {
-        "slug": "french-park",
-        "nation": "Shawnee",
-        "color": "#c45be8"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -84.4233,
-          39.1991
-        ]
-      },
-      "properties": {
-        "slug": "french-park",
-        "nation": "Myaamia",
-        "color": "#c87840"
       }
     },
     {
@@ -2878,6 +6253,7 @@
       "properties": {
         "slug": "big-south-fork-national-river-and-recreation-area",
         "nation": "Cherokee",
+        "group": "nation",
         "color": "#8cbf5b"
       }
     },
@@ -2893,6 +6269,7 @@
       "properties": {
         "slug": "big-south-fork-national-river-and-recreation-area",
         "nation": "Yuchi",
+        "group": "nation",
         "color": "#bf5b9e"
       }
     },
@@ -2908,6 +6285,7 @@
       "properties": {
         "slug": "big-south-fork-national-river-and-recreation-area",
         "nation": "Shawnee",
+        "group": "nation",
         "color": "#c45be8"
       }
     },
@@ -2923,6 +6301,7 @@
       "properties": {
         "slug": "mammoth-cave-national-park",
         "nation": "Shawnee",
+        "group": "nation",
         "color": "#c45be8"
       }
     },
@@ -2938,6 +6317,7 @@
       "properties": {
         "slug": "mammoth-cave-national-park",
         "nation": "Cherokee",
+        "group": "nation",
         "color": "#8cbf5b"
       }
     },
@@ -2953,6 +6333,7 @@
       "properties": {
         "slug": "mammoth-cave-national-park",
         "nation": "Chickasaw",
+        "group": "nation",
         "color": "#bf5b5b"
       }
     },
@@ -2968,7 +6349,24 @@
       "properties": {
         "slug": "mammoth-cave-national-park",
         "nation": "Osage",
+        "group": "nation",
         "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.1,
+          37.1877
+        ]
+      },
+      "properties": {
+        "slug": "mammoth-cave-national-park",
+        "nation": "Yuchi",
+        "group": "nation",
+        "color": "#bf5b9e"
       }
     },
     {
@@ -2983,6 +6381,7 @@
       "properties": {
         "slug": "sea-rim-state-park",
         "nation": "Ishak (Atakapa-Ishak)",
+        "group": "nation",
         "color": "#bf5b7a"
       }
     },
@@ -2998,7 +6397,24 @@
       "properties": {
         "slug": "sea-rim-state-park",
         "nation": "Akokisa",
+        "group": "nation",
         "color": "#e8a838"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.9308,
+          29.6776
+        ]
+      },
+      "properties": {
+        "slug": "sea-rim-state-park",
+        "nation": "Karankawa",
+        "group": "nation",
+        "color": "#5bc4e8"
       }
     },
     {
@@ -3013,6 +6429,7 @@
       "properties": {
         "slug": "caprock-canyon",
         "nation": "Comanche",
+        "group": "nation",
         "color": "#5bbf8c"
       }
     },
@@ -3028,6 +6445,7 @@
       "properties": {
         "slug": "caprock-canyon",
         "nation": "Kiowa",
+        "group": "nation",
         "color": "#7a5bbf"
       }
     },
@@ -3043,7 +6461,24 @@
       "properties": {
         "slug": "caprock-canyon",
         "nation": "Apache",
+        "group": "nation",
         "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -101.0578,
+          33.9778
+        ]
+      },
+      "properties": {
+        "slug": "caprock-canyon",
+        "nation": "Lipan Apache (Ndé Kónitsąąíí Gokíyaa)",
+        "group": "nation",
+        "color": "#5be8a8"
       }
     },
     {
@@ -3058,6 +6493,7 @@
       "properties": {
         "slug": "palo-duro-canyon",
         "nation": "Comanche",
+        "group": "nation",
         "color": "#5bbf8c"
       }
     },
@@ -3073,6 +6509,7 @@
       "properties": {
         "slug": "palo-duro-canyon",
         "nation": "Kiowa",
+        "group": "nation",
         "color": "#7a5bbf"
       }
     },
@@ -3088,6 +6525,7 @@
       "properties": {
         "slug": "palo-duro-canyon",
         "nation": "Southern Cheyenne",
+        "group": "nation",
         "color": "#5b9e6e"
       }
     },
@@ -3103,7 +6541,24 @@
       "properties": {
         "slug": "palo-duro-canyon",
         "nation": "Arapaho",
+        "group": "nation",
         "color": "#bf5b9e"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -101.6713,
+          34.8873
+        ]
+      },
+      "properties": {
+        "slug": "palo-duro-canyon",
+        "nation": "Lipan Apache (Ndé Kónitsąąíí Gokíyaa)",
+        "group": "nation",
+        "color": "#5be8a8"
       }
     },
     {
@@ -3118,7 +6573,72 @@
       "properties": {
         "slug": "johnsons-shut-ins-state-park",
         "nation": "Osage",
+        "group": "nation",
         "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.848,
+          37.553
+        ]
+      },
+      "properties": {
+        "slug": "johnsons-shut-ins-state-park",
+        "nation": "O-ga-xpa (Quapaw)",
+        "group": "nation",
+        "color": "#e85b8a"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.848,
+          37.553
+        ]
+      },
+      "properties": {
+        "slug": "johnsons-shut-ins-state-park",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.848,
+          37.553
+        ]
+      },
+      "properties": {
+        "slug": "johnsons-shut-ins-state-park",
+        "nation": "Kickapoo",
+        "group": "nation",
+        "color": "#e87c5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.848,
+          37.553
+        ]
+      },
+      "properties": {
+        "slug": "johnsons-shut-ins-state-park",
+        "nation": "Oceti Sakowin (Sioux)",
+        "group": "nation",
+        "color": "#bf9e5b"
       }
     },
     {
@@ -3133,7 +6653,72 @@
       "properties": {
         "slug": "elephant-rocks-state-park",
         "nation": "Osage",
+        "group": "nation",
         "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.726,
+          37.637
+        ]
+      },
+      "properties": {
+        "slug": "elephant-rocks-state-park",
+        "nation": "O-ga-xpa (Quapaw)",
+        "group": "nation",
+        "color": "#e85b8a"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.726,
+          37.637
+        ]
+      },
+      "properties": {
+        "slug": "elephant-rocks-state-park",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.726,
+          37.637
+        ]
+      },
+      "properties": {
+        "slug": "elephant-rocks-state-park",
+        "nation": "Kickapoo",
+        "group": "nation",
+        "color": "#e87c5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.726,
+          37.637
+        ]
+      },
+      "properties": {
+        "slug": "elephant-rocks-state-park",
+        "nation": "Oceti Sakowin (Sioux)",
+        "group": "nation",
+        "color": "#bf9e5b"
       }
     },
     {
@@ -3148,6 +6733,7 @@
       "properties": {
         "slug": "charons-garden-wilderness-area",
         "nation": "Comanche",
+        "group": "nation",
         "color": "#5bbf8c"
       }
     },
@@ -3163,6 +6749,7 @@
       "properties": {
         "slug": "charons-garden-wilderness-area",
         "nation": "Kiowa",
+        "group": "nation",
         "color": "#7a5bbf"
       }
     },
@@ -3178,6 +6765,7 @@
       "properties": {
         "slug": "charons-garden-wilderness-area",
         "nation": "Wichita",
+        "group": "nation",
         "color": "#bfbf5b"
       }
     },
@@ -3193,7 +6781,56 @@
       "properties": {
         "slug": "charons-garden-wilderness-area",
         "nation": "Apache",
+        "group": "nation",
         "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.688,
+          34.726
+        ]
+      },
+      "properties": {
+        "slug": "charons-garden-wilderness-area",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.688,
+          34.726
+        ]
+      },
+      "properties": {
+        "slug": "charons-garden-wilderness-area",
+        "nation": "O-ga-xpa (Quapaw)",
+        "group": "nation",
+        "color": "#e85b8a"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.688,
+          34.726
+        ]
+      },
+      "properties": {
+        "slug": "charons-garden-wilderness-area",
+        "nation": "Kickapoo",
+        "group": "nation",
+        "color": "#e87c5b"
       }
     },
     {
@@ -3208,6 +6845,7 @@
       "properties": {
         "slug": "wichita-mountains-national-wildlife-refuge",
         "nation": "Comanche",
+        "group": "nation",
         "color": "#5bbf8c"
       }
     },
@@ -3223,6 +6861,7 @@
       "properties": {
         "slug": "wichita-mountains-national-wildlife-refuge",
         "nation": "Kiowa",
+        "group": "nation",
         "color": "#7a5bbf"
       }
     },
@@ -3238,6 +6877,7 @@
       "properties": {
         "slug": "wichita-mountains-national-wildlife-refuge",
         "nation": "Wichita",
+        "group": "nation",
         "color": "#bfbf5b"
       }
     },
@@ -3253,7 +6893,56 @@
       "properties": {
         "slug": "wichita-mountains-national-wildlife-refuge",
         "nation": "Apache",
+        "group": "nation",
         "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.673,
+          34.769
+        ]
+      },
+      "properties": {
+        "slug": "wichita-mountains-national-wildlife-refuge",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.673,
+          34.769
+        ]
+      },
+      "properties": {
+        "slug": "wichita-mountains-national-wildlife-refuge",
+        "nation": "O-ga-xpa (Quapaw)",
+        "group": "nation",
+        "color": "#e85b8a"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.673,
+          34.769
+        ]
+      },
+      "properties": {
+        "slug": "wichita-mountains-national-wildlife-refuge",
+        "nation": "Kickapoo",
+        "group": "nation",
+        "color": "#e87c5b"
       }
     },
     {
@@ -3268,6 +6957,7 @@
       "properties": {
         "slug": "john-bryan-state-park",
         "nation": "Shawnee",
+        "group": "nation",
         "color": "#c45be8"
       }
     },
@@ -3282,8 +6972,41 @@
       },
       "properties": {
         "slug": "john-bryan-state-park",
-        "nation": "Miami",
-        "color": "#9ebf5b"
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.831,
+          39.796
+        ]
+      },
+      "properties": {
+        "slug": "john-bryan-state-park",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.831,
+          39.796
+        ]
+      },
+      "properties": {
+        "slug": "john-bryan-state-park",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
       }
     },
     {
@@ -3298,6 +7021,7 @@
       "properties": {
         "slug": "john-bryan-state-park",
         "nation": "Adena",
+        "group": "culture",
         "color": "#5bbf8c"
       }
     },
@@ -3313,6 +7037,7 @@
       "properties": {
         "slug": "john-bryan-state-park",
         "nation": "Hopewell",
+        "group": "culture",
         "color": "#bf6e5b"
       }
     },
@@ -3328,6 +7053,7 @@
       "properties": {
         "slug": "hocking-hills",
         "nation": "Shawnee",
+        "group": "nation",
         "color": "#c45be8"
       }
     },
@@ -3342,8 +7068,9 @@
       },
       "properties": {
         "slug": "hocking-hills",
-        "nation": "Delaware (Lenape)",
-        "color": "#5b8abf"
+        "nation": "Lenape (Delaware)",
+        "group": "nation",
+        "color": "#c8a050"
       }
     },
     {
@@ -3358,6 +7085,7 @@
       "properties": {
         "slug": "hocking-hills",
         "nation": "Wyandot",
+        "group": "nation",
         "color": "#bf9e5b"
       }
     },
@@ -3372,7 +7100,56 @@
       },
       "properties": {
         "slug": "hocking-hills",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.5408,
+          39.4354
+        ]
+      },
+      "properties": {
+        "slug": "hocking-hills",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.5408,
+          39.4354
+        ]
+      },
+      "properties": {
+        "slug": "hocking-hills",
+        "nation": "Ofo",
+        "group": "nation",
+        "color": "#5b9ebf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.5408,
+          39.4354
+        ]
+      },
+      "properties": {
+        "slug": "hocking-hills",
         "nation": "Adena",
+        "group": "culture",
         "color": "#5bbf8c"
       }
     },
@@ -3388,6 +7165,7 @@
       "properties": {
         "slug": "hocking-hills",
         "nation": "Hopewell",
+        "group": "culture",
         "color": "#bf6e5b"
       }
     },
@@ -3403,6 +7181,7 @@
       "properties": {
         "slug": "arc-of-appalachia",
         "nation": "Shawnee",
+        "group": "nation",
         "color": "#c45be8"
       }
     },
@@ -3417,7 +7196,56 @@
       },
       "properties": {
         "slug": "arc-of-appalachia",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.54,
+          38.82
+        ]
+      },
+      "properties": {
+        "slug": "arc-of-appalachia",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.54,
+          38.82
+        ]
+      },
+      "properties": {
+        "slug": "arc-of-appalachia",
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.54,
+          38.82
+        ]
+      },
+      "properties": {
+        "slug": "arc-of-appalachia",
         "nation": "Adena",
+        "group": "culture",
         "color": "#5bbf8c"
       }
     },
@@ -3433,6 +7261,7 @@
       "properties": {
         "slug": "arc-of-appalachia",
         "nation": "Hopewell",
+        "group": "culture",
         "color": "#bf6e5b"
       }
     },
@@ -3448,6 +7277,7 @@
       "properties": {
         "slug": "mount-airy-forest",
         "nation": "Shawnee",
+        "group": "nation",
         "color": "#c45be8"
       }
     },
@@ -3462,7 +7292,56 @@
       },
       "properties": {
         "slug": "mount-airy-forest",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.587,
+          39.168
+        ]
+      },
+      "properties": {
+        "slug": "mount-airy-forest",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.587,
+          39.168
+        ]
+      },
+      "properties": {
+        "slug": "mount-airy-forest",
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.587,
+          39.168
+        ]
+      },
+      "properties": {
+        "slug": "mount-airy-forest",
         "nation": "Fort Ancient culture",
+        "group": "culture",
         "color": "#5bc4e8"
       }
     },
@@ -3478,6 +7357,7 @@
       "properties": {
         "slug": "clifton-gorge-state-nature-preserve",
         "nation": "Shawnee",
+        "group": "nation",
         "color": "#c45be8"
       }
     },
@@ -3492,8 +7372,41 @@
       },
       "properties": {
         "slug": "clifton-gorge-state-nature-preserve",
-        "nation": "Miami",
-        "color": "#9ebf5b"
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.8328,
+          39.7993
+        ]
+      },
+      "properties": {
+        "slug": "clifton-gorge-state-nature-preserve",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.8328,
+          39.7993
+        ]
+      },
+      "properties": {
+        "slug": "clifton-gorge-state-nature-preserve",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
       }
     },
     {
@@ -3508,6 +7421,7 @@
       "properties": {
         "slug": "clifton-gorge-state-nature-preserve",
         "nation": "Adena",
+        "group": "culture",
         "color": "#5bbf8c"
       }
     },
@@ -3523,6 +7437,7 @@
       "properties": {
         "slug": "clifton-gorge-state-nature-preserve",
         "nation": "Hopewell",
+        "group": "culture",
         "color": "#bf6e5b"
       }
     },
@@ -3538,6 +7453,7 @@
       "properties": {
         "slug": "parker-woods",
         "nation": "Shawnee",
+        "group": "nation",
         "color": "#c45be8"
       }
     },
@@ -3552,8 +7468,41 @@
       },
       "properties": {
         "slug": "parker-woods",
-        "nation": "Myaamia",
-        "color": "#c87840"
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.5348,
+          39.1709
+        ]
+      },
+      "properties": {
+        "slug": "parker-woods",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.5348,
+          39.1709
+        ]
+      },
+      "properties": {
+        "slug": "parker-woods",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
       }
     },
     {
@@ -3568,6 +7517,7 @@
       "properties": {
         "slug": "parker-woods",
         "nation": "Adena",
+        "group": "culture",
         "color": "#5bbf8c"
       }
     },
@@ -3583,6 +7533,7 @@
       "properties": {
         "slug": "parker-woods",
         "nation": "Hopewell",
+        "group": "culture",
         "color": "#bf6e5b"
       }
     },
@@ -3598,6 +7549,7 @@
       "properties": {
         "slug": "glen-helen-nature-preserve",
         "nation": "Shawnee",
+        "group": "nation",
         "color": "#c45be8"
       }
     },
@@ -3612,8 +7564,41 @@
       },
       "properties": {
         "slug": "glen-helen-nature-preserve",
-        "nation": "Miami",
-        "color": "#9ebf5b"
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.891,
+          39.803
+        ]
+      },
+      "properties": {
+        "slug": "glen-helen-nature-preserve",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.891,
+          39.803
+        ]
+      },
+      "properties": {
+        "slug": "glen-helen-nature-preserve",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
       }
     },
     {
@@ -3628,6 +7613,7 @@
       "properties": {
         "slug": "glen-helen-nature-preserve",
         "nation": "Adena",
+        "group": "culture",
         "color": "#5bbf8c"
       }
     },
@@ -3643,7 +7629,56 @@
       "properties": {
         "slug": "otto-armleder-memorial-park",
         "nation": "Shawnee",
+        "group": "nation",
         "color": "#c45be8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.428,
+          39.102
+        ]
+      },
+      "properties": {
+        "slug": "otto-armleder-memorial-park",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.428,
+          39.102
+        ]
+      },
+      "properties": {
+        "slug": "otto-armleder-memorial-park",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.428,
+          39.102
+        ]
+      },
+      "properties": {
+        "slug": "otto-armleder-memorial-park",
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
       }
     },
     {
@@ -3658,6 +7693,7 @@
       "properties": {
         "slug": "otto-armleder-memorial-park",
         "nation": "Fort Ancient culture",
+        "group": "culture",
         "color": "#5bc4e8"
       }
     },
@@ -3673,6 +7709,7 @@
       "properties": {
         "slug": "bender-mountain-nature-preserve",
         "nation": "Shawnee",
+        "group": "nation",
         "color": "#c45be8"
       }
     },
@@ -3687,7 +7724,56 @@
       },
       "properties": {
         "slug": "bender-mountain-nature-preserve",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.62,
+          39.11
+        ]
+      },
+      "properties": {
+        "slug": "bender-mountain-nature-preserve",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.62,
+          39.11
+        ]
+      },
+      "properties": {
+        "slug": "bender-mountain-nature-preserve",
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.62,
+          39.11
+        ]
+      },
+      "properties": {
+        "slug": "bender-mountain-nature-preserve",
         "nation": "Adena",
+        "group": "culture",
         "color": "#5bbf8c"
       }
     },
@@ -3703,6 +7789,7 @@
       "properties": {
         "slug": "bender-mountain-nature-preserve",
         "nation": "Hopewell",
+        "group": "culture",
         "color": "#bf6e5b"
       }
     }
