@@ -6,6 +6,118 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          -83.4302,
+          39.0254
+        ]
+      },
+      "properties": {
+        "slug": "serpent-mound",
+        "nation": "Shawnee",
+        "group": "nation",
+        "color": "#c45be8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.4302,
+          39.0254
+        ]
+      },
+      "properties": {
+        "slug": "serpent-mound",
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.4302,
+          39.0254
+        ]
+      },
+      "properties": {
+        "slug": "serpent-mound",
+        "nation": "Adena",
+        "group": "culture",
+        "color": "#5bbf8c"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.4302,
+          39.0254
+        ]
+      },
+      "properties": {
+        "slug": "serpent-mound",
+        "nation": "Fort Ancient culture",
+        "group": "culture",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.63,
+          38.43
+        ]
+      },
+      "properties": {
+        "slug": "charlestown-state-park",
+        "nation": "Shawnee",
+        "group": "nation",
+        "color": "#c45be8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.63,
+          38.43
+        ]
+      },
+      "properties": {
+        "slug": "charlestown-state-park",
+        "nation": "Myaamia (Miami)",
+        "group": "nation",
+        "color": "#9e6abf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.63,
+          38.43
+        ]
+      },
+      "properties": {
+        "slug": "charlestown-state-park",
+        "nation": "Lenape (Delaware)",
+        "group": "nation",
+        "color": "#c8a050"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           -84.0903,
           39.4078
         ]
