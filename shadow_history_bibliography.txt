@@ -1,6 +1,111 @@
 PUBLIC LANDS INSTITUTE — SHADOW HISTORY FIELD BIBLIOGRAPHY
 Sources consulted for shadow_history field values.
-Generated 2026-09-11.
+Generated 2026-11-03.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SERPENT MOUND (Adams County, Ohio)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+National Park Service, National Register of Historic Places Inventory, Nomination Form, Serpent Mound, National Historic Landmarks survey, prepared by Francine D. Weiss, December 26 1974 (60 acres; Putnam's three seasons from 1886; partly cremated adult male and nine intrusive burials in the conical mound; four stone-grave burials in the oblong mound; one grave with 30 points; present restoration conforms to the egg interpretation)
+  https://npgallery.nps.gov/GetAsset/e0d046b4-3346-44c6-967b-9a44fb9470dd
+
+Wikipedia, Serpent Mound (1886 purchase of 60 acres with funds raised by Boston women led by Alice C. Fletcher; 1900 grant to the Ohio State Archaeological and Historical Society; Arc of Appalachia management 2009 to 2021; 2014 and 2019 dating and Lepper's critique; 2011 excavation dating the Fort Ancient ash bed to 1041 to 1211 CE)
+  https://en.wikipedia.org/wiki/Serpent_Mound
+
+Federal Register document search for "Serpent Mound", queried November 3 2026 (nine documents, all World Heritage List notices; no NAGPRA notice)
+  https://www.federalregister.gov/api/v1/documents.json?conditions%5Bterm%5D=%22Serpent+Mound%22
+
+WOSU Public Media, Removed tribes, Ohio History Connection working together to return 7,000 ancestral remains, January 21 2025
+  https://www.wosu.org/2025-01-21/removed-tribes-ohio-history-working-together-to-return-7-000-ancestral-remains
+
+Macrostrat geologic map units at 39.0258, -83.4301 (Peebles Dolomite, Lilley and Bisher Formations undivided, 433.4 to 427.4 Ma)
+  https://macrostrat.org/api/v2/geologic_units/map?lat=39.0258&lng=-83.4301
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CHARLESTOWN STATE PARK (Clark County, Indiana)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Charlestown-Clark County Public Library, Indiana Army Ammunition Plant history and genealogy page (1940 taking and about sixty families; January 1941 taking of 4,800 acres with farmhouses, cottages, the Clark County Poor Farm, churches, and 17 cemeteries; cave openings blasted shut; 1944 taking with Rose Island; 18,169.41 acres in all; town population 936 in 1940; German POWs May 19 1945; 4,047.63 acres transferred to the DNR through 2016; restoration costs $27.5 million and $41.5 million)
+  https://youseemore.com/clarkco/contentpages.asp?loc=118
+
+Indiana Historical Bureau, World War II Comes to Indiana: The Indiana Army Ammunition Plant, Parts I and II (town of 939; 30,000 transient workers; condemned jail; 130 units set apart for Black workers behind a 300-foot strip; 1942 account of Charlestown Township Black schools; more than one billion pounds of smokeless powder; Korea and Vietnam reactivations)
+  https://blog.history.in.gov/world-war-ii-comes-to-indiana-the-indiana-army-ammunition-plant-part-i/
+  https://blog.history.in.gov/world-war-ii-comes-to-indiana-the-indiana-army-ammunition-plant-part-ii/
+
+Wikipedia, Charlestown State Park and Indiana Army Ammunition Plant (1993 and 1994 transfers; 2006 boat ramp discovery of a cooking area of about 2000 BCE; Devil's Backbone)
+  https://en.wikipedia.org/wiki/Charlestown_State_Park
+  https://en.wikipedia.org/wiki/Indiana_Army_Ammunition_Plant
+
+Indiana DNR, Charlestown State Park (Rose Island, Portersville Bridge, Charlestown Landing, 72 bird species)
+  https://www.in.gov/dnr/state-parks/parks-lakes/charlestown-state-park/
+
+Indiana DNR Division of Nature Preserves, Fourteenmile Creek Nature Preserve (1,602 acres)
+  https://secure.in.gov/dnr/nature-preserves/files/np-Fourteenmile_Cr.pdf
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+HEMLOCK CLIFFS (Crawford County, Indiana)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Ellen Sieber and Cheryl Ann Munson, Looking at History: Indiana's Hoosier National Forest Region, 1600 to 1950, USDA Forest Service, 1992 (Crawford County's unwritten law excluding Black people; 1935 land purchases from willing sellers, more than 2,000 offers by August 1935; Forest designated 1951)
+  https://npshistory.com/publications/usfs/region/9/hoosier/history/contents.htm
+
+Emma Lou Thornbrough, The Negro in Indiana (Indiana Historical Bureau, 1957), pp. 225 to 226, as quoted with oral accounts in the Tougaloo College sundown towns database entry for Crawford County
+  https://justice.tougaloo.edu/sundowntown/crawford-in/
+
+Indiana Historical Society, Early Black Settlements by County (fewer than 15 African Americans in the Crawford County census, 1820 through 1870)
+  https://indianahistory.org/research/research-materials/early-black-settlements/early-black-settlements-by-county/
+
+Hoosier National Forest, 2006 Forest Plan, Appendix H, Special Areas (Hemlock Cliffs, about 1,860 acres; cliff damage from climbing and rappelling; closure order)
+  https://www.fs.usda.gov/r09/hoosier/planning/forest-plan
+
+Hoosier National Forest, Hemlock Cliffs Trail sheet, March 2024 (1.4 miles; trailhead coordinates; wintergreen, wild geranium, French's shooting star)
+  https://www.fs.usda.gov/media/193969
+
+tDAR, ROI053, Rockshelter Survey and Testing in the Hemlock Cliffs and Mesmore Cliffs Areas of the Hoosier National Forest, Crawford County, Indiana
+  https://core.tdar.org/project/463038/roi053-rockshelter-survey-and-testing-in-the-hemlock-cliffs-and-mesmore-cliffs-areas-of-the-hoosier-national-forest-crawford-county-indiana
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+WESLEY CHAPEL GULF (Orange County, Indiana)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+New York Times, Bitter Race War Threatened, June 17 1902, and Indianapolis Freeman, June 21 1902, as quoted in the Tougaloo College sundown towns database entry for French Lick (White Cap notices; Orange County Black population 159 in 1870, 70 in 1890, 482 in 1930; the Waddy hotel)
+  https://justice.tougaloo.edu/?p=5646
+
+Sieber and Munson, Looking at History (1992), Lick Creek settlement
+  https://npshistory.com/publications/usfs/region/9/hoosier/history/contents.htm
+
+Hoosier National Forest, Lick Creek settlement history page (archived)
+  https://webarchive.library.unt.edu/eot2008/20081027030628/http:/www.fs.fed.us/r9/hoosier/docs/history/lick_creek.htm
+
+Federal Register, Establishment of Wesley Chapel Gulf Purchase Unit, November 1 1996 (189 acres, established September 26 1996)
+  https://www.govinfo.gov/content/pkg/FR-1996-11-01/pdf/96-28089.pdf
+
+Hoosier National Forest, 2006 Forest Plan, Appendix H, Special Areas (Wesley Chapel, about 188 acres; 103-acre opening for Henslow's sparrow)
+  https://www.fs.usda.gov/r09/hoosier/planning/forest-plan
+
+Visit Indiana, Hoosier National Forest 101: Wesley Chapel Gulf is a National Landmark, July 6 2021 (Shirley Gulf and Elrod Gulf; 1972 designation; 1996 acquisition; Forest Service flood discharge figures)
+  https://visitindiana.in.gov/blog/post/hoosier-national-forest-101-wesley-chapel-gulf-is-a-national-landmark/
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SPRING MILL STATE PARK (Lawrence County, Indiana)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Friends of Spring Mill State Park, CCC records for 1934 and 1935 (Company 1536; October 1934 report on the camp becoming all white; Black Company 539 arriving November 1934; Bedford newspaper, Riots staged in Mitchell, August 26 1935; Mitchell Tribune, Military investigates local disorder, August 29 1935; Rex Deckard's race relations summary; camp lists by enrollment period)
+  https://friendsofspringmill.squarespace.com/1934-1
+  https://friendsofspringmill.squarespace.com/1935
+
+Friends of Spring Mill State Park, Owners of the Mill (Jackson through Lehigh; Lehigh's June 19 1928 deed of 258 acres for $1 with retained Hamer Cave water rights still in use for its lime kilns; park established September 1927)
+  https://friendsofspringmill.squarespace.com/owners-of-the-mill
+
+Friends of Spring Mill State Park, founding families page (George Donaldson; Donaldson v. State of Indiana, April 13 1913)
+  https://friendsofspringmill.squarespace.com/new-page-1-1-1
+
+Friends of Spring Mill State Park, Birth of Spring Mill State Park and building histories (Lieber and Guernsey restoration; buildings moved in from elsewhere)
+  https://friendsofspringmill.squarespace.com/birth-of-spring-mill-state-park
+  https://friendsofspringmill.squarespace.com/new-page-2
+
+Indiana DNR Division of Nature Preserves, Donaldson Cave, Donaldson's Woods, and Mitchell Sinkhole Plain Nature Preserves (39, 145, and 459 acres)
+  https://secure.in.gov/dnr/nature-preserves/files/np-Mitchell-Donaldson.pdf
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 FORT ANCIENT EARTHWORKS AND NATURE PRESERVE (Warren County, Ohio)
