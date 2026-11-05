@@ -44,6 +44,38 @@
       },
       "properties": {
         "slug": "serpent-mound",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.4308,
+          39.0264
+        ]
+      },
+      "properties": {
+        "slug": "serpent-mound",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.4308,
+          39.0264
+        ]
+      },
+      "properties": {
+        "slug": "serpent-mound",
         "nation": "Adena",
         "group": "culture",
         "color": "#5bbf8c"
@@ -118,6 +150,38 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          -85.6332,
+          38.4247
+        ]
+      },
+      "properties": {
+        "slug": "charlestown-state-park",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.6332,
+          38.4247
+        ]
+      },
+      "properties": {
+        "slug": "charlestown-state-park",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           -86.539,
           38.2774
         ]
@@ -175,6 +239,54 @@
         "nation": "Myaamia (Miami)",
         "group": "nation",
         "color": "#9e6abf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.539,
+          38.2774
+        ]
+      },
+      "properties": {
+        "slug": "hemlock-cliffs",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.539,
+          38.2774
+        ]
+      },
+      "properties": {
+        "slug": "hemlock-cliffs",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.539,
+          38.2774
+        ]
+      },
+      "properties": {
+        "slug": "hemlock-cliffs",
+        "nation": "Kickapoo",
+        "group": "nation",
+        "color": "#e87c5b"
       }
     },
     {
@@ -278,6 +390,38 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          -86.5222,
+          38.623
+        ]
+      },
+      "properties": {
+        "slug": "wesley-chapel-gulf",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.5222,
+          38.623
+        ]
+      },
+      "properties": {
+        "slug": "wesley-chapel-gulf",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           -86.42,
           38.7333
         ]
@@ -351,6 +495,22 @@
         "nation": "Kickapoo",
         "group": "nation",
         "color": "#e87c5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.42,
+          38.7333
+        ]
+      },
+      "properties": {
+        "slug": "spring-mill-state-park",
+        "nation": "Kaskaskia",
+        "group": "nation",
+        "color": "#5bc4e8"
       }
     },
     {

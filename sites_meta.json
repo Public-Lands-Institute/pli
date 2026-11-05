@@ -9,7 +9,14 @@
     "cultures": [
       "Adena",
       "Fort Ancient culture"
-    ]
+    ],
+    "nations_nld": [
+      "Osage",
+      "Shawnee",
+      "Kaskaskia",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-11-05"
   },
   "charlestown-state-park": {
     "agency": "Indiana Department of Natural Resources, Division of State Parks",
@@ -19,7 +26,14 @@
       "Myaamia",
       "Lenape (Delaware)"
     ],
-    "cultures": []
+    "cultures": [],
+    "nations_nld": [
+      "Osage",
+      "Shawnee",
+      "Kaskaskia",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-11-05"
   },
   "hemlock-cliffs": {
     "agency": "USDA Forest Service (Hoosier National Forest, Tell City Ranger District)",
@@ -32,7 +46,15 @@
     ],
     "cultures": [
       "Paleoindian"
-    ]
+    ],
+    "nations_nld": [
+      "Osage",
+      "Shawnee",
+      "Kaskaskia",
+      "Kickapoo",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-11-05"
   },
   "wesley-chapel-gulf": {
     "agency": "USDA Forest Service (Hoosier National Forest, Brownstown Ranger District)",
@@ -44,7 +66,15 @@
       "Kickapoo",
       "Piankeshaw"
     ],
-    "cultures": []
+    "cultures": [],
+    "nations_nld": [
+      "Osage",
+      "Shawnee",
+      "Kaskaskia",
+      "Kickapoo",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-11-05"
   },
   "spring-mill-state-park": {
     "agency": "Indiana Department of Natural Resources, Division of State Parks",
@@ -56,7 +86,14 @@
       "Shawnee",
       "Kickapoo"
     ],
-    "cultures": []
+    "cultures": [],
+    "nations_nld": [
+      "Shawnee",
+      "Kaskaskia",
+      "Kickapoo",
+      "Myaamia (Miami)"
+    ],
+    "nld_retrieved": "2026-11-05"
   },
   "fort-ancient-earthworks": {
     "agency": "Ohio History Connection (operated by the Dayton Society of Natural History)",
