@@ -318,6 +318,8 @@ function rasterLook(map) {
     set(id, 'text-color', '#8c8c8c'); set(id, 'icon-color', '#5a5a5a'); halo(id);
     lay(id, 'text-size', id === 'place_city_dot_z7' ? 9 : 11); lay(id, 'text-transform', 'none'); lay(id, 'text-font', ['Montserrat Medium','Open Sans Regular','Noto Sans Regular']);
   });
+  zr('place_city_dot_r4', 4, 7);
+  zr('place_city_dot_r7', 4, 7);
   ['place_city_r5','place_city_r6'].forEach(id => {
     set(id, 'text-color', '#707070'); halo(id);
     lay(id, 'text-size', ['interpolate',['linear'],['zoom'],8,11,10,13,13,16]);
@@ -334,11 +336,11 @@ function rasterLook(map) {
   zr('place_state', 4, 10);
   ['place_country_1','place_country_2'].forEach(id => { set(id, 'text-color', '#6a6a6a'); halo(id); });
 
-  [['road_mot_case_noramp',5],['road_trunk_case_noramp',5],['road_pri_case_noramp',7]].forEach(([id, minz]) => {
+  [['road_mot_case_noramp',4],['road_trunk_case_noramp',4],['road_pri_case_noramp',7]].forEach(([id, minz]) => {
     zr(id, minz, 24);
-    set(id, 'line-color', ['interpolate',['linear'],['zoom'],5,'#232323',8,'#2c2c2c',12,'#303030']);
+    set(id, 'line-color', ['interpolate',['linear'],['zoom'],4,'#232323',8,'#2c2c2c',12,'#303030']);
     set(id, 'line-opacity', 1);
-    set(id, 'line-width', ['interpolate',['linear'],['zoom'],5,0.5,7,0.8,8,1,11,3,13,4,14,6,16,10,18,18]);
+    set(id, 'line-width', ['interpolate',['linear'],['zoom'],4,0.4,5,0.5,7,0.8,8,1,11,3,13,4,14,6,16,10,18,18]);
   });
   set('road_mot_fill_noramp', 'line-color', '#3a3a3a');
   set('road_trunk_fill_noramp', 'line-color', '#333333');
