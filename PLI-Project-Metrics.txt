@@ -1,6 +1,6 @@
 Date generated: November 05, 2026
 Total sites: 96
-Total images: 873
+Total images: 771
 States represented: 20
 State list: CO, GA, IA, IL, IN, KS, KY, MI, MN, MO, NC, OH, OK, SC, SD, TN, TX, UT, WV, WY
 Total acreage represented: 8,815,990
