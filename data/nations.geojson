@@ -6,6 +6,102 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          -83.1222,
+          38.3739
+        ]
+      },
+      "properties": {
+        "slug": "carter-caves-state-resort-park",
+        "nation": "Shawnee",
+        "group": "nation",
+        "color": "#c45be8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.1222,
+          38.3739
+        ]
+      },
+      "properties": {
+        "slug": "carter-caves-state-resort-park",
+        "nation": "Cherokee",
+        "group": "nation",
+        "color": "#8cbf5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.1222,
+          38.3739
+        ]
+      },
+      "properties": {
+        "slug": "carter-caves-state-resort-park",
+        "nation": "Lenape (Delaware)",
+        "group": "nation",
+        "color": "#c8a050"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.1222,
+          38.3739
+        ]
+      },
+      "properties": {
+        "slug": "carter-caves-state-resort-park",
+        "nation": "Haudenosaunee",
+        "group": "nation",
+        "color": "#9e6abf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.1222,
+          38.3739
+        ]
+      },
+      "properties": {
+        "slug": "carter-caves-state-resort-park",
+        "nation": "Osage",
+        "group": "nation",
+        "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.1222,
+          38.3739
+        ]
+      },
+      "properties": {
+        "slug": "carter-caves-state-resort-park",
+        "nation": "Fort Ancient culture",
+        "group": "culture",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           -83.4308,
           39.0264
         ]

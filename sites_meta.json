@@ -1,4 +1,23 @@
 {
+  "carter-caves-state-resort-park": {
+    "agency": "Kentucky Department of Parks",
+    "agency_type": "State park",
+    "nations": [
+      "Shawnee",
+      "Cherokee",
+      "Lenape",
+      "Haudenosaunee"
+    ],
+    "cultures": [
+      "Fort Ancient culture"
+    ],
+    "nations_nld": [
+      "Cherokee",
+      "Osage",
+      "Shawnee"
+    ],
+    "nld_retrieved": "2026-11-07"
+  },
   "serpent-mound": {
     "agency": "Ohio History Connection",
     "agency_type": "State historic site",
