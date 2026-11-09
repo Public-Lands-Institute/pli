@@ -1126,6 +1126,38 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          -83.4914,
+          38.0814
+        ]
+      },
+      "properties": {
+        "slug": "cave-run-lake",
+        "nation": "Fort Ancient culture",
+        "group": "culture",
+        "color": "#5bc4e8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.4914,
+          38.0814
+        ]
+      },
+      "properties": {
+        "slug": "cave-run-lake",
+        "nation": "Paleoindian",
+        "group": "culture",
+        "color": "#8cbf5b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           -86.5111,
           43.6786
         ]
@@ -2687,6 +2719,22 @@
         "nation": "Meskwaki",
         "group": "nation",
         "color": "#c45be8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.159,
+          42.1384
+        ]
+      },
+      "properties": {
+        "slug": "mississippi-palisades-state-park",
+        "nation": "Hopewell",
+        "group": "culture",
+        "color": "#bf6e5b"
       }
     },
     {
@@ -4700,6 +4748,22 @@
       },
       "properties": {
         "slug": "french-park",
+        "nation": "Adena",
+        "group": "culture",
+        "color": "#5bbf8c"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.4233,
+          39.1991
+        ]
+      },
+      "properties": {
+        "slug": "french-park",
         "nation": "Hopewell",
         "group": "culture",
         "color": "#bf6e5b"
@@ -4991,6 +5055,22 @@
         "nation": "Osage",
         "group": "nation",
         "color": "#a8e85b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.848,
+          37.553
+        ]
+      },
+      "properties": {
+        "slug": "johnsons-shut-ins-state-park",
+        "nation": "Paleoindian",
+        "group": "culture",
+        "color": "#8cbf5b"
       }
     },
     {
