@@ -1315,7 +1315,9 @@
       "Myaamia",
       "Shawnee"
     ],
-    "cultures": [],
+    "cultures": [
+      "Fort Ancient culture"
+    ],
     "nations_nld": [
       "Osage",
       "Shawnee",

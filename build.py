@@ -71,6 +71,105 @@ NATION_CANON = {
 }
 
 
+# ── Native Land filter ────────────────────────────────────────────────────────
+# Native Land's territory polygons are broad (the Kaskaskia polygon covers all
+# of Ohio and Indiana), so a point-in-polygon match alone does not put a nation
+# on the map. A nation from `nations_nld` is kept for a site only when the
+# site's native_lands or displacement_tenure text names it, by the canonical
+# label or a common alternate below. Nations in the curated `nations` list are
+# always kept. The raw Native Land result stays in sites_meta.json
+# (`nations_nld`), so this filter can be rerun or changed at any time.
+# A second test, a Royce cession polygon containing the site and made by that
+# nation, is not applied: the pipeline has no Royce cession geometry.
+# Patterns are case-insensitive except inside (?-i:...); lookarounds keep place
+# names (Little Miami River, Lake Erie, Ottawa County, Taum Sauk) from counting.
+NATION_ALIASES = {
+    'Kaskaskia': r'\bKaskaskias?\b(?!\s+River)',
+    'Peoria': r'\bPeorias?\b(?!\s+(County|Lake))|Illinois Confederacy|Illiniwek|Inoka',
+    'Shawnee': r'\bShawnees?\b|Shawanwaki|Šawanwaki|Shawandasse',
+    'Myaamia (Miami)': r'Myaamia|(?<!Great )(?<!Little )\bMiamis?\b(?!\)?\s+(River|Valley|Canal|and Erie|County|University|Whitewater|Township|Bend|Fort|Purchase|Conservancy|Rapids))',
+    'Osage': r'\bOsages?\b(?!\s+(orange|River|Plains|County|Cuestas|Reserve))|Wazhazhe',
+    'Kickapoo': r'Kickapoo|Kiikaapoi|Kiiakapoi',
+    'Oceti Sakowin (Sioux)': r'Oceti|Očhéthi|\bSioux\b(?!\s+River)|\bLakh?ota\b|(?<!North )(?<!South )\bDakotas?\b(?!\s+Territory)|\bNakota\b',
+    'Cherokee': r'Cherokee|Tsalagi|Tsalaguwetiyi|Aniyvwiya',
+    'Yuchi': r'Yuchi|Euchee|Tsoyaha',
+    'Potawatomi': r'Potawatomi|Pottawatomi|Bod[ée]wadmi|Bodwéwadmi|Bodewadmi|Neshnab',
+    'O-ga-xpa (Quapaw)': r'Quapaw(?!\s+Agency)|O-ga-xpa',
+    'Cheyenne': r'Cheyenne(?!\s+River)|Tsitsistas',
+    'Comanche': r'Comanche|Nʉmʉnʉʉ',
+    'Ute (Núuchi-u / Núu-agha-tʉvʉ-pʉ̱)': r'\bUtes?\b|Núuchi|Núu-agha',
+    'Meskwaki': r'Meskwaki|Mesquakie|Sau?k and Fox|Sac and Fox|Sauk, Fox',
+    'Sauk': r'(?<!Taum )\bSauk\b|\bSac\b|Ozaakiiwaki',
+    'Ofo': r'\bOfo\b|Mosopelea',
+    'Miccosukee': r'Miccosukee|Mikasuki',
+    'Kiowa': r'Kiowa|Cáuigù|Gáuigú',
+    'Wyandot': r'Wyandott?e?s?\b(?!\s+County)|Wendat|(?<!Lake )\bHurons?\b(?!\s+(River|County))',
+    'Ottawa (Odawa)': r'Odawa|\bOttawas?\b(?!\s+(County|National|River))',
+    'Muscogee (Creek)': r'Muscogee|Muskogee|Mvskoke|\bCreeks?\s+(Nation|Confederacy|War|Indians)|Upper Creek|Lower Creek|\(Creek\)|(?<=, )Creeks?(?=[,;)]| and )',
+    'Wichita': r'(?<!town of )\bWichita\b(?!\s+(Mountains|Falls|County|Forest))|Kitikiti',
+    'Lipan Apache (Ndé Kónitsąąíí Gokíyaa)': r'Lipan|Kónitsąąíí',
+    'Apache': r'Apache',
+    'Jicarilla Apache (Tinde)': r'Jicarilla',
+    'Pueblos': r'(?-i:(?<!Ancestral )\bPueblos?\b)|Zuni|A:shiwi|\bTewa\b|\bTiwa\b|\bKeres',
+    'Apsáalooke (Crow)': r'Apsáalooke|Apsaalooke|(?-i:\bCrow\b)',
+    'Hitchiti': r'Hitchiti',
+    'Navajo (Diné)': r'Navajo|Diné',
+    'Yankton Dakota': r'Yankton|Ihanktonwan|Ihanktunwan',
+    'Erie': r'(?<!Lake )(?<!and )\bErie\b(?!\s+(Canal|County|Railroad|Basin|Lowland|Lake Plain|Shale))|Eriehronon',
+    'Yamasee': r'Yamasee|Yemassee',
+    'Timpanogos': r'Timpanogos(?!\s+(Cave|Mountain|Peak))',
+    'Southern Paiute (Nuwuvi)': r'Paiute|Nuwuvi',
+    'Eastern Shoshone': r'Shoshone|\bNewe\b',
+    'Cayuse, Umatilla and Walla Walla': r'Cayuse|Umatilla|Walla Walla',
+    'Mnicoujou': r'Mnicoujou|Miniconjou|Minneconjou',
+    'Wahpeton': r'Wahpeton',
+    'Ho-Chunk': r'Ho-?Chunk|Hoocąk|Hochungra|Winnebago',
+    'Mississauga': r'Mississauga',
+    'Moneton': r'Moneton',
+    'Yesan (Tutelo)': r'Tutelo|Yesan',
+    'Karankawa': r'Karankawa',
+    'Ishak (Atakapa-Ishak)': r'Atakapa|Ishak',
+}
+_NATION_RX = {}
+
+
+def nation_rx(cn):
+    """Compiled pattern for a canonical nation label. A label with no entry in
+    NATION_ALIASES falls back to its own name parts, e.g. 'Foo (Bar)' matches
+    Foo or Bar."""
+    if cn not in _NATION_RX:
+        pat = NATION_ALIASES.get(cn)
+        if pat is None:
+            parts = [p.strip() for p in re.split(r'[()/]', cn) if p.strip()]
+            pat = '|'.join(r'\b' + re.escape(p) + r'\b' for p in parts)
+        _NATION_RX[cn] = re.compile(pat, re.I)
+    return _NATION_RX[cn]
+
+
+def site_nations(site, m):
+    """Nations for one site under the filter rule.
+    Returns (kept, dropped): kept is a list of (canonical label, source), source
+    'record' (curated `nations`) or 'text' (Native Land, named in the record
+    text); dropped lists canonical Native Land labels the record does not name."""
+    text = ' '.join([site.get('native_lands', ''), site.get('displacement_tenure', '')])
+    kept, seen, dropped = [], set(), []
+    for n in m.get('nations', []):
+        cn = NATION_CANON.get(n, n)
+        if cn not in seen:
+            seen.add(cn)
+            kept.append((cn, 'record'))
+    for n in m.get('nations_nld', []):
+        cn = NATION_CANON.get(n, n)
+        if cn in seen or cn in dropped:
+            continue
+        if nation_rx(cn).search(text):
+            seen.add(cn)
+            kept.append((cn, 'text'))
+        else:
+            dropped.append(cn)
+    return kept, dropped
+
+
 NATION_PALETTE = [
     '#e8a838', '#5b9e6e', '#5b8abf', '#bf5b7a', '#7a5bbf', '#c87840', '#5bbfbf',
     '#bf5b5b', '#8cbf5b', '#4a6ebf', '#bf9e5b', '#5bbf8c', '#bf5b9e', '#5b9ebf',
@@ -87,11 +186,11 @@ def nation_color(name):
 def build_nations_geojson(sites, meta):
     """One point per (site, nation or culture), from sites_meta.json.
 
-    Nations are the union of `nations` (documented in the site record) and
-    `nations_nld` (Native Land territories containing the site, written by
-    tools/nativeland_territories.py). Regenerated on every build so new sites
-    can never be missing from the map's territory layer (the old hand-kept
-    data/nations.geojson froze in July 2026).
+    Nations are the curated `nations` (documented in the site record) plus the
+    `nations_nld` entries (Native Land territories containing the site, written
+    by tools/nativeland_territories.py) that pass the filter in site_nations().
+    Cultures come from `cultures` only. Regenerated on every build so new sites
+    can never be missing from the map's territory layer.
     """
     features = []
     for site in sites:
@@ -99,13 +198,15 @@ def build_nations_geojson(sites, meta):
         if lat is None or lng is None:
             continue
         m = meta.get(site['slug'], {})
-        for group, keys in (('nation', ('nations', 'nations_nld')), ('culture', ('cultures',))):
-            seen = set()
-            for n in (n for k in keys for n in m.get(k, [])):
-                cn = NATION_CANON.get(n, n)
-                if cn in seen:
-                    continue
+        kept, _ = site_nations(site, m)
+        cultures, seen = [], set()
+        for n in m.get('cultures', []):
+            cn = NATION_CANON.get(n, n)
+            if cn not in seen:
                 seen.add(cn)
+                cultures.append(cn)
+        for group, names in (('nation', [cn for cn, _ in kept]), ('culture', cultures)):
+            for cn in names:
                 features.append({
                     'type': 'Feature',
                     'geometry': {'type': 'Point', 'coordinates': [lng, lat]},
@@ -1091,7 +1192,10 @@ def build_sites_geojson(all_sites, meta):
         if lat is None or lng is None:
             continue
         m = meta.get(slug, {})
-        territory = m.get('nations', []) + m.get('cultures', [])
+        # primary_nation (dot color): first nation that survives the filter,
+        # else first culture, in the canonical spelling used by NATION_COLORS
+        kept, _ = site_nations(site, m)
+        territory = [cn for cn, _ in kept] + [NATION_CANON.get(c, c) for c in m.get('cultures', [])]
         props = {
             'slug': slug,
             'name': site['name'],
