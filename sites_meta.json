@@ -336,7 +336,9 @@
       "Cherokee"
     ],
     "cultures": [
-      "Adena"
+      "Adena",
+      "Fort Ancient culture",
+      "Paleoindian"
     ],
     "nations_nld": [
       "Cherokee",
@@ -816,7 +818,9 @@
       "Sauk",
       "Meskwaki"
     ],
-    "cultures": [],
+    "cultures": [
+      "Hopewell"
+    ],
     "nations_nld": [
       "Peoria",
       "Sauk",
@@ -1354,6 +1358,7 @@
       "Myaamia"
     ],
     "cultures": [
+      "Adena",
       "Hopewell"
     ],
     "nations_nld": [
@@ -1449,7 +1454,9 @@
     "nations": [
       "Osage"
     ],
-    "cultures": [],
+    "cultures": [
+      "Paleoindian"
+    ],
     "nations_nld": [
       "Osage",
       "O-ga-xpa (Quapaw)",
