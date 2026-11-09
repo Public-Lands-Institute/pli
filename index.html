@@ -189,7 +189,7 @@ html, body { height: 100%; font-family: 'Inter', sans-serif; background: var(--i
     </div>
   </div>
 </div>
-<script src="data/sites-map.js?v=153a08d54f"></script>
+<script src="data/sites-map.js?v=19caee5a13"></script>
 <script>
 const STATE_NAMES={"AL":"Alabama","AK":"Alaska","AZ":"Arizona","AR":"Arkansas","CA":"California","CO":"Colorado","CT":"Connecticut","DE":"Delaware","FL":"Florida","GA":"Georgia","HI":"Hawaii","ID":"Idaho","IL":"Illinois","IN":"Indiana","IA":"Iowa","KS":"Kansas","KY":"Kentucky","LA":"Louisiana","ME":"Maine","MD":"Maryland","MA":"Massachusetts","MI":"Michigan","MN":"Minnesota","MS":"Mississippi","MO":"Missouri","MT":"Montana","NE":"Nebraska","NV":"Nevada","NH":"New Hampshire","NJ":"New Jersey","NM":"New Mexico","NY":"New York","NC":"North Carolina","ND":"North Dakota","OH":"Ohio","OK":"Oklahoma","OR":"Oregon","PA":"Pennsylvania","RI":"Rhode Island","SC":"South Carolina","SD":"South Dakota","TN":"Tennessee","TX":"Texas","UT":"Utah","VT":"Vermont","VA":"Virginia","WA":"Washington","WV":"West Virginia","WI":"Wisconsin","WY":"Wyoming"};
 
@@ -229,7 +229,7 @@ const NATIVE_LEGEND = [
   ['Nations', null], ...NATION_LIST.map(n => [n, NATION_COLORS[n]||'#8c8c8c']),
   ['Archaeological cultures (scholarly designations)', null], ...CULTURE_LIST.map(n => [n, NATION_COLORS[n]||'#8c8c8c']),
 ];
-const NATIVE_NOTE = 'Territory data: <a href="https://native-land.ca" target="_blank" rel="noopener">Native Land Digital</a> (native-land.ca), plus nations documented in each site record. These boundaries are approximate and do not represent official or legal boundaries of any nation. <a href="about.html#territories">How sites are assigned</a>';
+const NATIVE_NOTE = 'Nations documented in each site record, cross-checked against <a href="https://native-land.ca" target="_blank" rel="noopener">Native Land Digital</a> (native-land.ca) territories. A Native Land territory appears at a site only where the site record or a treaty cession covering the site names that nation. These boundaries are approximate and do not represent official or legal boundaries of any nation. <a href="about.html#territories">How sites are assigned</a>';
 const LAYER_LEGENDS = {
   geology:{ title:"Geologic Age",          entries:GEOLOGY_LEGEND },
   agency: { title:"Managing Agency",        entries:AGENCY_ENTRIES },
