@@ -1,6 +1,6 @@
 PUBLIC LANDS INSTITUTE — SHADOW HISTORY FIELD BIBLIOGRAPHY
 Sources consulted for shadow_history field values.
-Generated 2026-11-07.
+Generated 2026-11-11.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 CARTER CAVES STATE RESORT PARK (Carter County, Kentucky)
@@ -1431,8 +1431,29 @@ A Brief History of Magee Marsh — Black Swamp Bird Observatory
 Davis-Besse Nuclear Power Station — Wikipedia
   https://en.wikipedia.org/wiki/Davis-Besse_Nuclear_Power_Station
 
-Davis-Besse reactor vessel head corrosion (2002 incident) — NRC
-  https://www.nrc.gov/reactors/operating/ops-experience/vessel-head-degradation/history.html
+Davis-Besse Reactor Vessel Head Degradation Lessons-Learned Task Force Report (September 2002), NRC
+  https://forms.nrc.gov/reactors/operating/ops-experience/vessel-head-degradation/lessons-learned/lessons-learned-files/dblltf-summary-report-web.pdf
+
+Reactor Vessel Head Degradation lessons learned, US Department of Energy
+  https://webarchive.library.unt.edu/eot2008/20090117000149/http://www.hss.energy.gov/csa/LessonsLearned_REACTOR_VESSEL_HEAD_DEGRADATION.pdf
+
+Treaty of Greenville (1795), Article 3, Avalon Project, Yale Law School
+  https://avalon.law.yale.edu/18th_century/greenvil.asp
+
+Treaty of Fort Meigs (1817), Royce area 87
+  https://en.wikipedia.org/wiki/Treaty_of_Fort_Meigs
+
+Treaty with the Ottawa (1833), Oklahoma State University Tribal Treaties Database
+  https://treaties.okstate.edu/treaties/treaty-with-the-ottawa-1833-0392
+
+Removal From Ohio, Adawe Cultural Center, Ottawa Tribe of Oklahoma
+  https://www.heritage.ottawatribe.gov/removal-from-ohio
+
+Bedrock Geology 24K, Oak Harbor quadrangle, ODNR Division of Geological Survey
+  https://gis.ohiodnr.gov/arcgis/rest/services/DGS_Services/Bedrock_Geology_24K_AGOL/MapServer
+
+Lake Erie Marsh Region, Western Hemisphere Shorebird Reserve Network
+  https://whsrn.org/?p=6559
 
 Lake Erie Western Basin Important Bird Area — Birding Hotspots
   https://birdinghotspots.org/iba/lake-erie-western-basin
