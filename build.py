@@ -19,10 +19,10 @@ Outputs:
   photographs.html      visual feed grouped by site
   about.html            stats sentence only — the rest of the page is hand-maintained
   support.html          counts line only — the rest of the page is hand-maintained
-  suggested.html        public Suggested Sites page (map + list), from the public
+  prospective.html      public Prospective Sites page (map + list), from the public
                         entries in submissions/suggestions.json
   data/suggestions-map.js  SUGGESTIONS geojson (public fields only), loaded by
-                        index.html and suggested.html with a ?v= content hash
+                        index.html and prospective.html with a ?v= content hash
   sitemap.xml           lastmod = each source file's actual last-modified date
   data/nations.geojson  per-(site, nation or culture) points for the map's native
                         layer, derived from sites_meta.json on every mapjs build
@@ -759,7 +759,7 @@ def make_site_page(site, all_sites, photos):
 <footer>
   <span>Public Lands Institute — ongoing project</span>
   <span>CC0 Public Domain</span>
-  <span><a href="../suggested.html">Suggested sites</a> · <a href="../support.html">Support</a></span>
+  <span><a href="../prospective.html">Prospective sites</a> · <a href="../support.html">Support</a></span>
 </footer>
 </div>
 <script src="../js/lightbox.js"></script>
@@ -908,7 +908,7 @@ def make_gallery_page(all_sites, photos):
 <footer>
   <span>Public Lands Institute — ongoing project</span>
   <span>CC0 Public Domain</span>
-  <span><a href="suggested.html">Suggested sites</a> · <a href="support.html">Support</a></span>
+  <span><a href="prospective.html">Prospective sites</a> · <a href="support.html">Support</a></span>
 </footer>
 </div>
 <script>
@@ -1092,7 +1092,7 @@ def make_archive_page(all_sites, photos):
 <footer>
   <span>Public Lands Institute — ongoing project</span>
   <span>CC0 Public Domain</span>
-  <span><a href="suggested.html">Suggested sites</a> · <a href="support.html">Support</a></span>
+  <span><a href="prospective.html">Prospective sites</a> · <a href="support.html">Support</a></span>
 </footer>
 </div>
 <script>
@@ -1173,7 +1173,7 @@ def make_sitemap(all_sites):
         (f'{BASE_URL}/about.html', 'about.html'),
         (f'{BASE_URL}/glossary.html', 'glossary.html'),
         (f'{BASE_URL}/support.html', 'support.html'),
-        (f'{BASE_URL}/suggested.html', 'suggested.html'),
+        (f'{BASE_URL}/prospective.html', 'prospective.html'),
     ]
     entries += [(f'{BASE_URL}/sites/{s["slug"]}.html', f'sites/{s["slug"]}.html')
                 for s in all_sites]
@@ -1275,7 +1275,7 @@ def write_sites_map_js(all_sites, meta, photos, nations_gj):
     return version
 
 
-# ── suggested.html + data/suggestions-map.js ──────────────────────────────────
+# ── prospective.html + data/suggestions-map.js ────────────────────────────────
 # Source: submissions/suggestions.json (private; submissions/ is never deployed).
 # Only entries with public true and a status other than declined are published,
 # and only the fields in SUGGESTION_PUBLIC_FIELDS leave the private file:
@@ -1329,7 +1329,7 @@ def write_suggestions_map_js(suggestions):
     with open('data/suggestions-map.js', 'w') as f:
         f.write(content)
     version = hashlib.md5(content.encode()).hexdigest()[:10]
-    for page in ('index.html', 'suggested.html'):
+    for page in ('index.html', 'prospective.html'):
         if not os.path.exists(page):
             continue
         with open(page) as f:
@@ -1385,8 +1385,8 @@ def make_suggested_page(suggestions):
     n_total = len(rows)
     n_states = len({s.get('state') for s in rows if s.get('state')})
     intro = (f'{n_total} site{"s" if n_total != 1 else ""} in {n_states} '
-             f'state{"s" if n_states != 1 else ""}, suggested by visitors and '
-             f'researched before fieldwork.')
+             f'state{"s" if n_states != 1 else ""} under consideration for the index, from visitor '
+             f'suggestions and project research, each researched before fieldwork.')
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1399,20 +1399,20 @@ def make_suggested_page(suggestions):
   gtag('config', 'G-TMR79M95R4');
 </script>
 <meta charset="utf-8"/>
-<title>Suggested Sites · Public Lands Institute</title>
+<title>Prospective Sites · Public Lands Institute</title>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="index, follow" name="robots"/>
-<meta content="Public and protected lands suggested for the Public Lands Institute index, with research notes and fieldwork status." name="description"/>
-<meta property="og:title" content="Suggested Sites · Public Lands Institute"/>
-<meta property="og:description" content="Public and protected lands suggested for the Public Lands Institute index, with research notes and fieldwork status."/>
+<meta content="Public and protected lands under consideration for the Public Lands Institute index, with research notes and fieldwork status." name="description"/>
+<meta property="og:title" content="Prospective Sites · Public Lands Institute"/>
+<meta property="og:description" content="Public and protected lands under consideration for the Public Lands Institute index, with research notes and fieldwork status."/>
 <meta property="og:type" content="website"/>
-<meta property="og:url" content="https://publiclandsinstitute.net/suggested.html"/>
+<meta property="og:url" content="https://publiclandsinstitute.net/prospective.html"/>
 <meta property="og:site_name" content="Public Lands Institute"/>
 <meta property="og:image" content="https://publiclandsinstitute.net/img/cards/site.jpg"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<link href="https://publiclandsinstitute.net/suggested.html" rel="canonical"/>
+<link href="https://publiclandsinstitute.net/prospective.html" rel="canonical"/>
 <link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
 <link href="/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/>
 <link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
@@ -1423,6 +1423,8 @@ def make_suggested_page(suggestions):
   .sg-intro {{ font-size: 13px; color: var(--muted); margin-bottom: 18px; max-width: 680px; line-height: 1.6; }}
   .sg-intro a {{ color: var(--fg); border-bottom: 1px solid var(--border); }}
   .sg-intro a:hover {{ text-decoration: none; border-bottom-color: var(--fg); }}
+  .sg-legend {{ display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }}
+  .sg-legend span {{ display: inline-flex; align-items: center; gap: 7px; }}
   #sg-map {{ width: 100%; height: 56vh; min-height: 320px; border: 1px solid var(--border); margin-bottom: 28px; background: #1b1b1b; }}
   .sg-list {{ display: grid; grid-template-columns: 1fr; gap: 0 32px; }}
   @media (min-width: 900px) {{ .sg-list {{ grid-template-columns: 1fr 1fr; }} }}
@@ -1444,7 +1446,7 @@ def make_suggested_page(suggestions):
 </head>
 <body>
 <div class="page">
-<h1 class="sr-only">Suggested Sites</h1>
+<h1 class="sr-only">Prospective Sites</h1>
 <header>
   <div class="logotype"><a href="index.html">Public Lands Institute</a></div>
   <nav class="header-nav">
@@ -1457,15 +1459,16 @@ def make_suggested_page(suggestions):
   </nav>
 </header>
 <div class="divider"></div>
-<p class="sg-intro">{intro} Hollow markers are suggestions; filled markers are documented sites. Know a place that belongs here? <a href="support.html#suggest">Suggest a site</a>.</p>
-<div id="sg-map" role="region" aria-label="Map of suggested sites"></div>
+<p class="sg-intro">{intro} Know a place that belongs here? <a href="support.html#suggest">Suggest a site</a>.</p>
+<div class="sg-legend" aria-hidden="true"><span><svg width="14" height="14"><circle cx="7" cy="7" r="5" fill="none" stroke="#e8e8e8" stroke-width="1.5"/></svg>Researching</span><span><svg width="14" height="14"><circle cx="7" cy="7" r="5" fill="none" stroke="#e8e8e8" stroke-width="1.5"/><circle cx="7" cy="7" r="1.8" fill="#e8e8e8"/></svg>Proposed</span><span><svg width="14" height="14"><circle cx="7" cy="7" r="5" fill="none" stroke="#e8e8e8" stroke-width="3"/></svg>Planned for fieldwork</span><span><svg width="14" height="14"><circle cx="7" cy="7" r="3.5" fill="#8c8c8c" fill-opacity="0.7"/></svg>Documented site</span></div>
+<div id="sg-map" role="region" aria-label="Map of prospective sites"></div>
 <div class="sg-list">
 {chr(10).join(cards)}
 </div>
 <footer>
   <span>Public Lands Institute · ongoing project</span>
   <span>CC0 Public Domain</span>
-  <span><a href="suggested.html">Suggested sites</a> · <a href="support.html">Support</a></span>
+  <span><a href="prospective.html">Prospective sites</a> · <a href="support.html">Support</a></span>
 </footer>
 </div>
 <script src="vendor/maplibre-gl-4.7.1/maplibre-gl.js"></script>
@@ -1497,7 +1500,11 @@ def make_suggested_page(suggestions):
     map.addLayer({{ id: 'sg-ring', type: 'circle', source: 'suggestions',
       paint: {{ 'circle-radius': ['interpolate', ['linear'], ['zoom'], 3, 6, 10, 9],
                'circle-color': 'rgba(0,0,0,0)', 'circle-stroke-color': '#e8e8e8',
-               'circle-stroke-width': 1.5 }} }});
+               'circle-stroke-width': ['match', ['get', 'status'], 'planned', 3, 1.5] }} }});
+    map.addLayer({{ id: 'sg-core', type: 'circle', source: 'suggestions',
+      filter: ['==', ['get', 'status'], 'pending'],
+      paint: {{ 'circle-radius': ['interpolate', ['linear'], ['zoom'], 3, 1.8, 10, 2.8],
+               'circle-color': '#e8e8e8' }} }});
     var popup = new maplibregl.Popup({{ closeButton: false, closeOnClick: false, offset: 12 }});
     function label(p) {{ return '<span style="letter-spacing:.07em">' + p.name + '</span><br><span style="opacity:.6;font-size:10px;letter-spacing:.14em;text-transform:uppercase">' + p.status_label + '</span>'; }}
     map.on('mouseenter', 'sg-hit', function (e) {{
@@ -1532,7 +1539,7 @@ def make_suggested_page(suggestions):
 # ── Main ───────────────────────────────────────────────────────────────────────
 
 ALL_TARGETS = ['sites', 'archive', 'photographs', 'about', 'support', 'mapjs',
-               'suggested', 'sitemap']
+               'prospective', 'sitemap']
 
 
 def main(argv):
@@ -1568,16 +1575,16 @@ def main(argv):
             f.write('\n')
         version = write_sites_map_js(sites, meta, photos, nations_gj)
         print(f'data/sites-map.js (v={version})')
-    if 'suggested' in targets:
+    if 'prospective' in targets:
         suggestions = load_public_suggestions()
         page = make_suggested_page(suggestions)
         with open('data/sites-map.js') as f:
             sites_v = hashlib.md5(f.read().encode()).hexdigest()[:10]
         page = MAPJS_SRC_RE.sub(f'src="data/sites-map.js?v={sites_v}"', page)
-        with open('suggested.html', 'w') as f:
+        with open('prospective.html', 'w') as f:
             f.write(page)
         version = write_suggestions_map_js(suggestions)
-        print(f'suggested.html + data/suggestions-map.js ({len(suggestions)} public, v={version})')
+        print(f'prospective.html + data/suggestions-map.js ({len(suggestions)} public, v={version})')
     if 'sitemap' in targets:
         # Last so lastmod reflects the files written above
         with open('sitemap.xml', 'w') as f:

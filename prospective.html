@@ -10,20 +10,20 @@
   gtag('config', 'G-TMR79M95R4');
 </script>
 <meta charset="utf-8"/>
-<title>Suggested Sites · Public Lands Institute</title>
+<title>Prospective Sites · Public Lands Institute</title>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="index, follow" name="robots"/>
-<meta content="Public and protected lands suggested for the Public Lands Institute index, with research notes and fieldwork status." name="description"/>
-<meta property="og:title" content="Suggested Sites · Public Lands Institute"/>
-<meta property="og:description" content="Public and protected lands suggested for the Public Lands Institute index, with research notes and fieldwork status."/>
+<meta content="Public and protected lands under consideration for the Public Lands Institute index, with research notes and fieldwork status." name="description"/>
+<meta property="og:title" content="Prospective Sites · Public Lands Institute"/>
+<meta property="og:description" content="Public and protected lands under consideration for the Public Lands Institute index, with research notes and fieldwork status."/>
 <meta property="og:type" content="website"/>
-<meta property="og:url" content="https://publiclandsinstitute.net/suggested.html"/>
+<meta property="og:url" content="https://publiclandsinstitute.net/prospective.html"/>
 <meta property="og:site_name" content="Public Lands Institute"/>
 <meta property="og:image" content="https://publiclandsinstitute.net/img/cards/site.jpg"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<link href="https://publiclandsinstitute.net/suggested.html" rel="canonical"/>
+<link href="https://publiclandsinstitute.net/prospective.html" rel="canonical"/>
 <link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
 <link href="/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/>
 <link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
@@ -115,6 +115,8 @@
   .sg-intro { font-size: 13px; color: var(--muted); margin-bottom: 18px; max-width: 680px; line-height: 1.6; }
   .sg-intro a { color: var(--fg); border-bottom: 1px solid var(--border); }
   .sg-intro a:hover { text-decoration: none; border-bottom-color: var(--fg); }
+  .sg-legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+  .sg-legend span { display: inline-flex; align-items: center; gap: 7px; }
   #sg-map { width: 100%; height: 56vh; min-height: 320px; border: 1px solid var(--border); margin-bottom: 28px; background: #1b1b1b; }
   .sg-list { display: grid; grid-template-columns: 1fr; gap: 0 32px; }
   @media (min-width: 900px) { .sg-list { grid-template-columns: 1fr 1fr; } }
@@ -136,7 +138,7 @@
 </head>
 <body>
 <div class="page">
-<h1 class="sr-only">Suggested Sites</h1>
+<h1 class="sr-only">Prospective Sites</h1>
 <header>
   <div class="logotype"><a href="index.html">Public Lands Institute</a></div>
   <nav class="header-nav">
@@ -149,8 +151,9 @@
   </nav>
 </header>
 <div class="divider"></div>
-<p class="sg-intro">6 sites in 5 states, suggested by visitors and researched before fieldwork. Hollow markers are suggestions; filled markers are documented sites. Know a place that belongs here? <a href="support.html#suggest">Suggest a site</a>.</p>
-<div id="sg-map" role="region" aria-label="Map of suggested sites"></div>
+<p class="sg-intro">6 sites in 5 states under consideration for the index, from visitor suggestions and project research, each researched before fieldwork. Know a place that belongs here? <a href="support.html#suggest">Suggest a site</a>.</p>
+<div class="sg-legend" aria-hidden="true"><span><svg width="14" height="14"><circle cx="7" cy="7" r="5" fill="none" stroke="#e8e8e8" stroke-width="1.5"/></svg>Researching</span><span><svg width="14" height="14"><circle cx="7" cy="7" r="5" fill="none" stroke="#e8e8e8" stroke-width="1.5"/><circle cx="7" cy="7" r="1.8" fill="#e8e8e8"/></svg>Proposed</span><span><svg width="14" height="14"><circle cx="7" cy="7" r="5" fill="none" stroke="#e8e8e8" stroke-width="3"/></svg>Planned for fieldwork</span><span><svg width="14" height="14"><circle cx="7" cy="7" r="3.5" fill="#8c8c8c" fill-opacity="0.7"/></svg>Documented site</span></div>
+<div id="sg-map" role="region" aria-label="Map of prospective sites"></div>
 <div class="sg-list">
   <article class="sg-card" id="avi-kwa-ame-national-monument" data-lng="-114.85" data-lat="35.3">
     <div class="sg-head">
@@ -216,7 +219,7 @@
 <footer>
   <span>Public Lands Institute · ongoing project</span>
   <span>CC0 Public Domain</span>
-  <span><a href="suggested.html">Suggested sites</a> · <a href="support.html">Support</a></span>
+  <span><a href="prospective.html">Prospective sites</a> · <a href="support.html">Support</a></span>
 </footer>
 </div>
 <script src="vendor/maplibre-gl-4.7.1/maplibre-gl.js"></script>
@@ -248,7 +251,11 @@
     map.addLayer({ id: 'sg-ring', type: 'circle', source: 'suggestions',
       paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 3, 6, 10, 9],
                'circle-color': 'rgba(0,0,0,0)', 'circle-stroke-color': '#e8e8e8',
-               'circle-stroke-width': 1.5 } });
+               'circle-stroke-width': ['match', ['get', 'status'], 'planned', 3, 1.5] } });
+    map.addLayer({ id: 'sg-core', type: 'circle', source: 'suggestions',
+      filter: ['==', ['get', 'status'], 'pending'],
+      paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 3, 1.8, 10, 2.8],
+               'circle-color': '#e8e8e8' } });
     var popup = new maplibregl.Popup({ closeButton: false, closeOnClick: false, offset: 12 });
     function label(p) { return '<span style="letter-spacing:.07em">' + p.name + '</span><br><span style="opacity:.6;font-size:10px;letter-spacing:.14em;text-transform:uppercase">' + p.status_label + '</span>'; }
     map.on('mouseenter', 'sg-hit', function (e) {
