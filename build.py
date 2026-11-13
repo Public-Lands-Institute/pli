@@ -733,7 +733,7 @@ def make_site_page(site, all_sites, photos):
     <a href="../photographs.html">Images</a>
     <a href="../archive.html">Archive</a>
     <a href="../about.html">About</a>
-    <a href="../support.html">Support</a>
+    <a href="../support.html">Contribute</a>
   </nav>
 </header>
 <div class="divider"></div>
@@ -759,7 +759,7 @@ def make_site_page(site, all_sites, photos):
 <footer>
   <span>Public Lands Institute — ongoing project</span>
   <span>CC0 Public Domain</span>
-  <span><a href="../prospective.html">Prospective sites</a> · <a href="../support.html">Support</a></span>
+  <span><a href="../prospective.html">Prospective sites</a> · <a href="../support.html">Contribute</a></span>
 </footer>
 </div>
 <script src="../js/lightbox.js"></script>
@@ -893,7 +893,7 @@ def make_gallery_page(all_sites, photos):
     <a href="archive.html">Archive</a>
     <a href="glossary.html">Glossary</a>
     <a href="about.html">About</a>
-    <a href="support.html">Support</a>
+    <a href="support.html">Contribute</a>
   </nav>
 </header>
 <div class="divider"></div>
@@ -908,7 +908,7 @@ def make_gallery_page(all_sites, photos):
 <footer>
   <span>Public Lands Institute — ongoing project</span>
   <span>CC0 Public Domain</span>
-  <span><a href="prospective.html">Prospective sites</a> · <a href="support.html">Support</a></span>
+  <span><a href="prospective.html">Prospective sites</a> · <a href="support.html">Contribute</a></span>
 </footer>
 </div>
 <script>
@@ -1081,7 +1081,7 @@ def make_archive_page(all_sites, photos):
     <a href="archive.html" class="active">Archive</a>
     <a href="glossary.html">Glossary</a>
     <a href="about.html">About</a>
-    <a href="support.html">Support</a>
+    <a href="support.html">Contribute</a>
   </nav>
 </header>
 <div class="divider"></div>
@@ -1092,7 +1092,7 @@ def make_archive_page(all_sites, photos):
 <footer>
   <span>Public Lands Institute — ongoing project</span>
   <span>CC0 Public Domain</span>
-  <span><a href="prospective.html">Prospective sites</a> · <a href="support.html">Support</a></span>
+  <span><a href="prospective.html">Prospective sites</a> · <a href="support.html">Contribute</a></span>
 </footer>
 </div>
 <script>
@@ -1458,7 +1458,7 @@ def make_suggested_page(suggestions):
     <a href="archive.html">Archive</a>
     <a href="glossary.html">Glossary</a>
     <a href="about.html">About</a>
-    <a href="support.html">Support</a>
+    <a href="support.html">Contribute</a>
   </nav>
 </header>
 <div class="divider"></div>
@@ -1471,7 +1471,7 @@ def make_suggested_page(suggestions):
 <footer>
   <span>Public Lands Institute · ongoing project</span>
   <span>CC0 Public Domain</span>
-  <span><a href="prospective.html">Prospective sites</a> · <a href="support.html">Support</a></span>
+  <span><a href="prospective.html">Prospective sites</a> · <a href="support.html">Contribute</a></span>
 </footer>
 </div>
 <script src="vendor/maplibre-gl-4.7.1/maplibre-gl.js"></script>
