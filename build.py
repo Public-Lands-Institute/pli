@@ -1369,8 +1369,9 @@ def make_suggested_page(suggestions):
             facts.append(f'{esc(s["acreage"])} acres')
         if s.get('designated'):
             facts.append(f'Designated {format_designated(s["designated"])}')
-        n = s.get('times_suggested', 1)
-        facts.append(f'Suggested {n} time{"s" if n != 1 else ""}')
+        if s.get('origin') != 'grant':
+            n = s.get('times_suggested', 1)
+            facts.append(f'Suggested {n} time{"s" if n != 1 else ""}')
         themes = ''.join(f'<span class="sg-theme">{esc(t)}</span>' for t in s.get('themes', []))
         cards.append(f'''  <article class="sg-card" id="{esc(s['id'])}" data-lng="{s['lng']}" data-lat="{s['lat']}">
     <div class="sg-head">
