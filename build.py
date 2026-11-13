@@ -1380,7 +1380,7 @@ def make_suggested_page(suggestions):
     <div class="sg-facts">{' · '.join(facts)}</div>
     {f'<div class="sg-themes">{themes}</div>' if themes else ''}
     {f'<p class="sg-note">{esc(s["note"])}</p>' if s.get('note') else ''}
-    {'<p class="sg-support"><a href="support.html#give">Support this fieldwork</a></p>' if s['status'] == 'pending' else ''}
+    {'<p class="sg-support"><a href="support.html#donate">Support this fieldwork</a></p>' if s['status'] == 'pending' else ''}
   </article>''')
     n_total = len(rows)
     n_states = len({s.get('state') for s in rows if s.get('state')})
