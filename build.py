@@ -1365,8 +1365,6 @@ def make_suggested_page(suggestions):
         if s.get('agency'):
             meta.append(esc(s['agency']))
         facts = []
-        if s.get('acreage') and s.get('origin') != 'grant':
-            facts.append(f'{esc(s["acreage"])} acres')
         if s.get('designated'):
             facts.append(f'Designated {format_designated(s["designated"])}')
         if s.get('origin') != 'grant':
