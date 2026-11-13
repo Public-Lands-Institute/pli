@@ -1287,7 +1287,7 @@ SUGGESTION_PUBLIC_FIELDS = ['id', 'name', 'state', 'agency', 'agency_type', 'des
 SUGGESTION_STATUS_LABELS = {
     'received': 'Under review',
     'researching': 'Researching',
-    'pending': 'Proposed, pending funding',
+    'pending': 'Seeking funding',
     'planned': 'Planned for fieldwork',
     'documented': 'Documented',
 }
@@ -1380,6 +1380,7 @@ def make_suggested_page(suggestions):
     <div class="sg-facts">{' · '.join(facts)}</div>
     {f'<div class="sg-themes">{themes}</div>' if themes else ''}
     {f'<p class="sg-note">{esc(s["note"])}</p>' if s.get('note') else ''}
+    {'<p class="sg-support"><a href="support.html">Support this fieldwork</a></p>' if s['status'] == 'pending' else ''}
   </article>''')
     n_total = len(rows)
     n_states = len({s.get('state') for s in rows if s.get('state')})
@@ -1438,6 +1439,9 @@ def make_suggested_page(suggestions):
   .sg-themes {{ display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 2px; }}
   .sg-theme {{ font-size: 11px; color: var(--fg); border: 1px solid var(--border); padding: 2px 8px; }}
   .sg-note {{ font-size: 13.5px; line-height: 1.7; margin-top: 10px; max-width: 680px; }}
+  .sg-support {{ margin-top: 10px; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; }}
+  .sg-support a {{ border-bottom: 1px solid var(--border); }}
+  .sg-support a:hover {{ text-decoration: none; border-bottom-color: var(--fg); }}
   .maplibregl-popup-content {{ background: var(--bg); color: var(--fg); font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 300; padding: 8px 12px; border-radius: 0; box-shadow: none; border: 1px solid var(--border); }}
   .maplibregl-popup-tip {{ display: none; }}
   .maplibregl-ctrl-attrib {{ font-size: 9px; opacity: 0.4; }}
@@ -1459,7 +1463,7 @@ def make_suggested_page(suggestions):
 </header>
 <div class="divider"></div>
 <p class="sg-intro">{intro} Know a place that belongs here? <a href="support.html#suggest">Suggest a site</a>.</p>
-<div class="sg-legend" aria-hidden="true"><span><svg width="14" height="14"><circle cx="7" cy="7" r="5" fill="none" stroke="#e8e8e8" stroke-width="1.5"/></svg>Researching</span><span><svg width="14" height="14"><circle cx="7" cy="7" r="5" fill="none" stroke="#e8e8e8" stroke-width="1.5"/><circle cx="7" cy="7" r="1.8" fill="#e8e8e8"/></svg>Proposed</span><span><svg width="14" height="14"><circle cx="7" cy="7" r="5" fill="none" stroke="#e8e8e8" stroke-width="3"/></svg>Planned for fieldwork</span><span><svg width="14" height="14"><circle cx="7" cy="7" r="3.5" fill="#8c8c8c" fill-opacity="0.7"/></svg>Documented site</span></div>
+<div class="sg-legend" aria-hidden="true"><span><svg width="14" height="14"><circle cx="7" cy="7" r="5" fill="none" stroke="#e8e8e8" stroke-width="1.5"/></svg>Researching</span><span><svg width="14" height="14"><circle cx="7" cy="7" r="5" fill="none" stroke="#e8e8e8" stroke-width="1.5"/><circle cx="7" cy="7" r="1.8" fill="#e8e8e8"/></svg>Seeking funding</span><span><svg width="14" height="14"><circle cx="7" cy="7" r="5" fill="none" stroke="#e8e8e8" stroke-width="3"/></svg>Planned for fieldwork</span><span><svg width="14" height="14"><circle cx="7" cy="7" r="3.5" fill="#8c8c8c" fill-opacity="0.7"/></svg>Documented site</span></div>
 <div id="sg-map" role="region" aria-label="Map of prospective sites"></div>
 <div class="sg-list">
 {chr(10).join(cards)}

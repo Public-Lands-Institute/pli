@@ -195,7 +195,7 @@ html, body { height: 100%; font-family: 'Inter', sans-serif; background: var(--i
     </div>
   </div>
 </div>
-<script src="data/suggestions-map.js?v=6c78184e05"></script>
+<script src="data/suggestions-map.js?v=009bb6adf8"></script>
 <script src="data/sites-map.js?v=3951d1ae07"></script>
 <script>
 const STATE_NAMES={"AL":"Alabama","AK":"Alaska","AZ":"Arizona","AR":"Arkansas","CA":"California","CO":"Colorado","CT":"Connecticut","DE":"Delaware","FL":"Florida","GA":"Georgia","HI":"Hawaii","ID":"Idaho","IL":"Illinois","IN":"Indiana","IA":"Iowa","KS":"Kansas","KY":"Kentucky","LA":"Louisiana","ME":"Maine","MD":"Maryland","MA":"Massachusetts","MI":"Michigan","MN":"Minnesota","MS":"Mississippi","MO":"Missouri","MT":"Montana","NE":"Nebraska","NV":"Nevada","NH":"New Hampshire","NJ":"New Jersey","NM":"New Mexico","NY":"New York","NC":"North Carolina","ND":"North Dakota","OH":"Ohio","OK":"Oklahoma","OR":"Oregon","PA":"Pennsylvania","RI":"Rhode Island","SC":"South Carolina","SD":"South Dakota","TN":"Tennessee","TX":"Texas","UT":"Utah","VT":"Vermont","VA":"Virginia","WA":"Washington","WV":"West Virginia","WI":"Wisconsin","WY":"Wyoming"};
@@ -461,7 +461,7 @@ map.on('load', () => {
   if (!SUGGESTIONS.features.length) sgBtn.hidden = true;
   const sgLegend = document.getElementById('sg-legend');
   const SG_MARKS = [['researching','Researching','<circle cx="7" cy="7" r="5" fill="none" stroke="#e8e8e8" stroke-width="1.5"/>'],
-    ['pending','Proposed','<circle cx="7" cy="7" r="5" fill="none" stroke="#e8e8e8" stroke-width="1.5"/><circle cx="7" cy="7" r="1.8" fill="#e8e8e8"/>'],
+    ['pending','Seeking funding','<circle cx="7" cy="7" r="5" fill="none" stroke="#e8e8e8" stroke-width="1.5"/><circle cx="7" cy="7" r="1.8" fill="#e8e8e8"/>'],
     ['planned','Planned for fieldwork','<circle cx="7" cy="7" r="5" fill="none" stroke="#e8e8e8" stroke-width="3"/>']];
   const sgStatuses = new Set(SUGGESTIONS.features.map(f => f.properties.status));
   sgLegend.innerHTML = SG_MARKS.filter(m => sgStatuses.has(m[0])).map(m => '<div class="sg-leg"><svg width="14" height="14" aria-hidden="true">'+m[2]+'</svg>'+m[1]+'</div>').join('');
