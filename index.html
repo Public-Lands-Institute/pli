@@ -128,9 +128,10 @@ html, body { height: 100%; font-family: 'Inter', sans-serif; background: var(--i
   :root { --panel-w: 100%; }
   #wordmark { top: 16px; left: 16px; }
   #wordmark h1 { font-size: 11px; }
-  #topnav { top: 16px; right: 16px; gap: 12px; }
-  #topnav a, #site-count { font-size: 10px; }
-  #search { top: 42px; left: 16px; right: 16px; width: auto; max-width: 300px; }
+  #topnav { top: 36px; left: 16px; right: 16px; gap: 6px 14px; flex-wrap: wrap; }
+  #topnav a, #site-count { font-size: 10px; white-space: nowrap; }
+  #site-count { display: none; }
+  #search { top: 64px; left: 16px; right: 16px; width: auto; max-width: 300px; }
   #layers { bottom: 16px; left: 16px; right: 16px; }
   .layer-btn { font-size: 11px; padding: 7px 10px; }
   #legend { left: 16px; right: 16px; bottom: 84px; min-width: 0; }
