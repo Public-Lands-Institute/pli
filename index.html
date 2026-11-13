@@ -166,7 +166,6 @@ html, body { height: 100%; font-family: 'Inter', sans-serif; background: var(--i
   <button class="layer-btn" data-layer="geology" aria-pressed="false">Geologic Age</button>
   <button class="layer-btn" data-layer="agency" aria-pressed="false">Managing Agency</button>
   <button class="layer-btn" data-layer="native" aria-pressed="false">Indigenous Territories</button>
-  <button class="layer-btn" data-layer="shadow" aria-pressed="false">Shadow History</button>
   <button class="layer-btn" id="suggest-toggle" aria-pressed="false">Prospective Sites</button>
   <div id="sg-legend" hidden></div>
 </div>
@@ -196,7 +195,7 @@ html, body { height: 100%; font-family: 'Inter', sans-serif; background: var(--i
     </div>
   </div>
 </div>
-<script src="data/suggestions-map.js?v=e34de7ae73"></script>
+<script src="data/suggestions-map.js?v=f11b044734"></script>
 <script src="data/sites-map.js?v=3951d1ae07"></script>
 <script>
 const STATE_NAMES={"AL":"Alabama","AK":"Alaska","AZ":"Arizona","AR":"Arkansas","CA":"California","CO":"Colorado","CT":"Connecticut","DE":"Delaware","FL":"Florida","GA":"Georgia","HI":"Hawaii","ID":"Idaho","IL":"Illinois","IN":"Indiana","IA":"Iowa","KS":"Kansas","KY":"Kentucky","LA":"Louisiana","ME":"Maine","MD":"Maryland","MA":"Massachusetts","MI":"Michigan","MN":"Minnesota","MS":"Mississippi","MO":"Missouri","MT":"Montana","NE":"Nebraska","NV":"Nevada","NH":"New Hampshire","NJ":"New Jersey","NM":"New Mexico","NY":"New York","NC":"North Carolina","ND":"North Dakota","OH":"Ohio","OK":"Oklahoma","OR":"Oregon","PA":"Pennsylvania","RI":"Rhode Island","SC":"South Carolina","SD":"South Dakota","TN":"Tennessee","TX":"Texas","UT":"Utah","VT":"Vermont","VA":"Virginia","WA":"Washington","WV":"West Virginia","WI":"Wisconsin","WY":"Wyoming"};
@@ -259,10 +258,12 @@ function agencyColor(s) {
 }
 let activeLayer = null;
 let panelOpen = false;
-// Layers that draw connecting constellations; agency/shadow are omitted because
-// grouping so many state parks just retraces state boundaries, and native is
-// omitted because lines between a nation's sites read as routes or borders.
-const LINE_LAYERS = new Set(['geology']);
+// Layers that draw connecting constellations. Empty since 2026-11-12: geology
+// lines removed at Jordan's direction; agency is omitted because grouping so many
+// state parks just retraces state boundaries, and native because lines between a
+// nation's sites read as routes or borders. The line machinery is kept so a layer
+// can be re-added here.
+const LINE_LAYERS = new Set([]);
 // Lines start hidden (all-on is too busy); hovering a legend entry reveals one group.
 const GROUP_LINE_BLANK = ['==', ['get','key'], '__none__'];
 function dotColor(p) {
