@@ -54,6 +54,8 @@ html, body { height: 100%; font-family: 'Inter', sans-serif; background: var(--i
 .layer-btn { background: rgba(18,18,18,0.72); border: 1px solid rgba(255,255,255,0.2); color: var(--sand); font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 12px; cursor: pointer; backdrop-filter: blur(8px); transition: border-color 0.2s; text-align: left; }
 .layer-btn:hover { border-color: rgba(255,255,255,0.5); }
 .layer-btn.active { color: #ffffff; border-color: #ffffff; background: rgba(18,18,18,0.9); }
+#suggest-toggle { margin-top: 6px; }
+#suggest-toggle a { color: inherit; opacity: 0.6; margin-left: 6px; text-transform: none; letter-spacing: 0.04em; }
 #legend { position: fixed; bottom: 32px; right: 32px; z-index: 10; background: rgba(18,18,18,0.85); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.15); padding: 14px 16px; min-width: 200px; display: none; max-height: calc(100vh - 64px); overflow-y: auto; }
 .legend-item .legend-n { margin-left: auto; padding-left: 14px; opacity: 0.5; font-variant-numeric: tabular-nums; }
 #legend.visible { display: block; }
@@ -162,6 +164,7 @@ html, body { height: 100%; font-family: 'Inter', sans-serif; background: var(--i
   <button class="layer-btn" data-layer="agency" aria-pressed="false">Managing Agency</button>
   <button class="layer-btn" data-layer="native" aria-pressed="false">Indigenous Territories</button>
   <button class="layer-btn" data-layer="shadow" aria-pressed="false">Shadow History</button>
+  <button class="layer-btn" id="suggest-toggle" aria-pressed="false">Suggested Sites</button>
 </div>
 <div id="legend"><div id="legend-title"></div><div id="legend-items"></div><div id="legend-note"></div></div>
 <div id="panel">
@@ -189,6 +192,7 @@ html, body { height: 100%; font-family: 'Inter', sans-serif; background: var(--i
     </div>
   </div>
 </div>
+<script src="data/suggestions-map.js?v=e34de7ae73"></script>
 <script src="data/sites-map.js?v=3951d1ae07"></script>
 <script>
 const STATE_NAMES={"AL":"Alabama","AK":"Alaska","AZ":"Arizona","AR":"Arkansas","CA":"California","CO":"Colorado","CT":"Connecticut","DE":"Delaware","FL":"Florida","GA":"Georgia","HI":"Hawaii","ID":"Idaho","IL":"Illinois","IN":"Indiana","IA":"Iowa","KS":"Kansas","KY":"Kentucky","LA":"Louisiana","ME":"Maine","MD":"Maryland","MA":"Massachusetts","MI":"Michigan","MN":"Minnesota","MS":"Mississippi","MO":"Missouri","MT":"Montana","NE":"Nebraska","NV":"Nevada","NH":"New Hampshire","NJ":"New Jersey","NM":"New Mexico","NY":"New York","NC":"North Carolina","ND":"North Dakota","OH":"Ohio","OK":"Oklahoma","OR":"Oregon","PA":"Pennsylvania","RI":"Rhode Island","SC":"South Carolina","SD":"South Dakota","TN":"Tennessee","TX":"Texas","UT":"Utah","VT":"Vermont","VA":"Virginia","WA":"Washington","WV":"West Virginia","WI":"Wisconsin","WY":"Wyoming"};
@@ -404,12 +408,12 @@ map.on('load', () => {
     panelOpen = true;
     openPanel(props);
   });
-  document.querySelectorAll('.layer-btn').forEach(btn => {
+  document.querySelectorAll('.layer-btn[data-layer]').forEach(btn => {
     btn.addEventListener('click', () => {
       const layer = btn.dataset.layer;
       if (activeLayer===layer) { activeLayer=null; btn.classList.remove('active'); hideLegend(); }
-      else { document.querySelectorAll('.layer-btn').forEach(b=>b.classList.remove('active')); activeLayer=layer; btn.classList.add('active'); showLegend(layer); }
-      document.querySelectorAll('.layer-btn').forEach(b=>b.setAttribute('aria-pressed', b.classList.contains('active') ? 'true' : 'false'));
+      else { document.querySelectorAll('.layer-btn[data-layer]').forEach(b=>b.classList.remove('active')); activeLayer=layer; btn.classList.add('active'); showLegend(layer); }
+      document.querySelectorAll('.layer-btn[data-layer]').forEach(b=>b.setAttribute('aria-pressed', b.classList.contains('active') ? 'true' : 'false'));
       const nativeOn = activeLayer === 'native';
       map.setLayoutProperty('nations-dot', 'visibility', nativeOn ? 'visible' : 'none');
       map.setLayoutProperty('sites-dot', 'visibility', nativeOn ? 'none' : 'visible');
@@ -425,6 +429,36 @@ map.on('load', () => {
         map.setLayoutProperty('group-line', 'visibility', 'none');
       }
     });
+  });
+  // Suggested sites: hollow rings, independent of the exclusive layer buttons
+  map.addSource('suggestions', { type:'geojson', data:SUGGESTIONS });
+  map.addLayer({ id:'sg-hit', type:'circle', source:'suggestions', layout:{ visibility:'none' },
+    paint:{ 'circle-radius':16,'circle-opacity':0 } });
+  map.addLayer({ id:'sg-ring', type:'circle', source:'suggestions', layout:{ visibility:'none' },
+    paint:{ 'circle-radius':['interpolate',['linear'],['zoom'],3,5,10,8],
+            'circle-color':'rgba(0,0,0,0)','circle-stroke-color':'#e8e8e8','circle-stroke-width':1.5 } });
+  const sgPopup = new maplibregl.Popup({closeButton:false,closeOnClick:false,offset:12});
+  map.on('mouseenter','sg-hit', e => {
+    if (panelOpen) return;
+    map.getCanvas().style.cursor='pointer';
+    const p = e.features[0].properties;
+    sgPopup.setLngLat(e.features[0].geometry.coordinates).setHTML('<span style="letter-spacing:.07em">'+p.name+'</span><br><span style="opacity:.6;font-size:10px;letter-spacing:.14em;text-transform:uppercase">Suggested · '+p.status_label+'</span>').addTo(map);
+  });
+  map.on('mouseleave','sg-hit', () => { map.getCanvas().style.cursor=''; sgPopup.remove(); });
+  map.on('click','sg-hit', e => { location.href = 'suggested.html#' + e.features[0].properties.id; });
+  const sgBtn = document.getElementById('suggest-toggle');
+  if (!SUGGESTIONS.features.length) sgBtn.hidden = true;
+  sgBtn.addEventListener('click', () => {
+    const on = !sgBtn.classList.contains('active');
+    sgBtn.classList.toggle('active', on);
+    sgBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    ['sg-hit','sg-ring'].forEach(id => map.setLayoutProperty(id, 'visibility', on ? 'visible' : 'none'));
+    if (on) {
+      const all = SITES.features.concat(SUGGESTIONS.features);
+      const lngs = all.map(f => f.geometry.coordinates[0]), lats = all.map(f => f.geometry.coordinates[1]);
+      map.fitBounds([[Math.min(...lngs), Math.min(...lats)], [Math.max(...lngs), Math.max(...lats)]],
+        { padding: window.innerWidth < 640 ? 40 : 90, duration: 800 });
+    }
   });
 });
 function zoomToNation(matching) {

@@ -211,7 +211,7 @@ def main():
     base = 'https://publiclandsinstitute.net'
     expected = [f'{base}/', f'{base}/photographs.html', f'{base}/archive.html',
                 f'{base}/about.html', f'{base}/glossary.html',
-                f'{base}/support.html']
+                f'{base}/support.html', f'{base}/suggested.html']
     expected += [f'{base}/sites/{s["slug"]}.html' for s in sites]
     if sorted(locs) != sorted(expected):
         missing = set(expected) - set(locs)

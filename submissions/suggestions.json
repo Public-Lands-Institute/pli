@@ -1,0 +1,175 @@
+[
+  {
+    "id": "baaj-nwaavjo-itah-kukveni-national-monument",
+    "name": "Baaj Nwaavjo I'tah Kukveni National Monument",
+    "state": "AZ",
+    "agency": "Bureau of Land Management; U.S. Forest Service (Kaibab National Forest)",
+    "agency_type": "BLM and USFS",
+    "designated": "2023-08-08",
+    "acreage": "917,618",
+    "lat": 36.45,
+    "lng": -112.55,
+    "status": "researching",
+    "public": true,
+    "times_suggested": 1,
+    "first_received": "2026-11",
+    "themes": [
+      "Shadow history",
+      "Indigenous history",
+      "Energy and mining"
+    ],
+    "note": "Three units surrounding Grand Canyon National Park, designated in 2023 after decades of advocacy by the Havasupai, Hopi, Hualapai, Navajo, and other nations. The proclamation closed the land to new mining claims, but the Pinyon Plain uranium mine, on national forest land inside the boundary since the 1980s, continues to operate under prior rights.",
+    "review": "Center point is approximate (three noncontiguous units). Confirm BLM and USFS acreage split. Ninth Circuit dismissed the Arizona Legislature challenge on 2026-04-01 (reported); monument was reported as under consideration during the July 2026 Utah monument reductions, no change confirmed.",
+    "sources": [
+      "https://www.grandcanyontrust.org/?p=26735",
+      "https://nativenewsonline.net/environment/new-national-monument-designation-doesnt-stop-mining",
+      "https://rollcall.com/2023/08/08/biden-to-designate-national-monument-for-lands-near-grand-canyon/"
+    ],
+    "origin": "visitor"
+  },
+  {
+    "id": "avi-kwa-ame-national-monument",
+    "name": "Avi Kwa Ame National Monument",
+    "state": "NV",
+    "agency": "Bureau of Land Management; National Park Service",
+    "agency_type": "BLM and NPS",
+    "designated": "2023-03-21",
+    "acreage": "506,814",
+    "lat": 35.3,
+    "lng": -114.85,
+    "status": "researching",
+    "public": true,
+    "times_suggested": 1,
+    "first_received": "2026-11",
+    "themes": [
+      "Indigenous history",
+      "Energy and mining",
+      "Ecology"
+    ],
+    "note": "Avi Kwa Ame, the Mojave name for Spirit Mountain, is the center of creation for Yuman-speaking peoples. The monument was designated in 2023 after years of tribal advocacy and closed the area to new mining and utility-scale wind development; the Crescent Peak wind project was rejected in 2018 and its successor, Kulning, was abandoned.",
+    "review": "Verified 2026-11-12: 506,814 acres, designated 2023-03-21. BLM and NPS management split still from prior knowledge (part lies in Lake Mead NRA); confirm. Center point approximate.",
+    "sources": [
+      "https://www.eenews.net/articles/nevada-dilemma-renewable-energy-or-national-monument/",
+      "https://www.knau.org/knau-and-arizona-news/2023-03-29/biden-creates-national-monument-on-land-sacred-to-a-dozen-southwestern-tribes",
+      "https://westernwatersheds.org/2023/03/conservation-groups-celebrate-new-avi-kwa-ame-national-monument/",
+      "https://wfdd.org/story/biden-creating-new-national-monuments-protect-land-nevada-and-texas"
+    ],
+    "origin": "visitor"
+  },
+  {
+    "id": "camp-hale-continental-divide-national-monument",
+    "name": "Camp Hale Continental Divide National Monument",
+    "state": "CO",
+    "agency": "U.S. Forest Service (White River National Forest)",
+    "agency_type": "USFS",
+    "designated": "2022-10-12",
+    "acreage": "53,804",
+    "lat": 39.42,
+    "lng": -106.32,
+    "status": "researching",
+    "public": true,
+    "times_suggested": 1,
+    "first_received": "2026-11",
+    "themes": [
+      "Shadow history",
+      "Indigenous history"
+    ],
+    "note": "Camp Hale trained the 10th Mountain Division for winter warfare during World War II. From 1958 to 1964 the CIA secretly used the camp to train about 260 Tibetan resistance fighters, a program the government acknowledged with a plaque at the site in 2010. The monument, designated in 2022 in Ute homelands, bars new mining.",
+    "review": "Verified 2026-11-12: 53,804 acres (USFS); CIA Tibetan program 1958 to 1964, 259 to about 300 trainees by source, plaque 2010. Official name uses an en dash between Hale and Continental, written here without one per house rules.",
+    "sources": [
+      "https://www.fs.usda.gov/r02/whiteriver/recreation/camp-hale-continental-divide-national-monument",
+      "https://www.smithsonianmag.com/smart-news/camp-hale-is-colorados-newest-national-monument-180980944/",
+      "https://www.cia.gov/stories/story/spy-sites-camp-hale",
+      "https://coloradosun.com/2024/06/16/camp-hale-tibet-cia-training-history/",
+      "https://savetibet.org/memorial-plaque-honors-tibetan-freedom-fighters-at-cia-training-camp/"
+    ],
+    "origin": "visitor"
+  },
+  {
+    "id": "chuckwalla-national-monument",
+    "name": "Chuckwalla National Monument",
+    "state": "CA",
+    "agency": "Bureau of Land Management",
+    "agency_type": "BLM",
+    "designated": "2025-01-14",
+    "acreage": "624,270",
+    "lat": 33.65,
+    "lng": -115.45,
+    "status": "researching",
+    "public": true,
+    "times_suggested": 1,
+    "first_received": "2026-11",
+    "themes": [
+      "Indigenous history",
+      "Energy and mining",
+      "Ecology"
+    ],
+    "note": "Colorado Desert lands between Joshua Tree National Park and the Colorado River, homelands of the Iviatim (Cahuilla), Chemehuevi, Quechan, and Mojave peoples. Designated in January 2025 amid pressure for utility-scale solar and critical mineral development. The White House said in March 2025 that it would rescind the designation but issued no order; a federal lawsuit now seeks to dissolve the monument, and in March 2026 the court allowed tribal nations and conservation groups to intervene in its defense.",
+    "review": "Verified 2026-11-12: 624,270 acres (Federal Register summary); Torongo v. Burgum pending in federal court in Michigan, tribes allowed to intervene 2026-03-03; no rescission order found. Recheck status before major announcements. Center point approximate.",
+    "sources": [
+      "https://www.kunc.org/npr-news/2025-03-19/future-of-the-newest-national-monuments-looks-murky-after-white-house-communication",
+      "https://earthjustice.org/brief/2025/trump-administration-signals-it-will-try-to-eliminate-two-national-monuments-in-california",
+      "https://www.sej.org/print/headlines/confusion-clouds-fate-two-new-california-monuments",
+      "https://narf.org/cases/protecting-chuckwalla/",
+      "https://earthjustice.org/press/2026/court-allows-organizations-to-intervene-in-lawsuit-to-defend-chuckwalla-national-monument",
+      "https://policyrisk.com/federal-register/2025-01441"
+    ],
+    "origin": "visitor"
+  },
+  {
+    "id": "castner-range-national-monument",
+    "name": "Castner Range National Monument",
+    "state": "TX",
+    "agency": "U.S. Army (Fort Bliss)",
+    "agency_type": "Department of Defense",
+    "designated": "2023-03-21",
+    "acreage": "6,672",
+    "lat": 31.91,
+    "lng": -106.47,
+    "status": "researching",
+    "public": true,
+    "times_suggested": 1,
+    "first_received": "2026-11",
+    "themes": [
+      "Shadow history",
+      "Ecology"
+    ],
+    "note": "A former Army artillery and training range on the Franklin Mountains above El Paso, used from World War II through Vietnam and closed in 1966. Unexploded ordnance has kept it closed to the public for decades, which also left its Chihuahuan Desert grasslands and spring poppy fields largely undisturbed; access is to open in phases as cleanup proceeds.",
+    "review": "Verified 2026-11-12: 6,672 acres, closure and phased access tied to unexploded ordnance remediation. Poppy fields from prior knowledge; add a source.",
+    "sources": [
+      "https://www.kunc.org/2023-03-24/two-new-national-monuments-are-dedicated-in-nevada-and-texas",
+      "https://www.opb.org/article/2023/03/21/biden-is-creating-new-national-monuments-to-protect-land-in-nevada-and-texas",
+      "https://www.eenews.net/articles/advocates-praise-new-monuments-but-work-remains-on-access/"
+    ],
+    "origin": "visitor"
+  },
+  {
+    "id": "sattitla-highlands-national-monument",
+    "name": "Sáttítla Highlands National Monument",
+    "state": "CA",
+    "agency": "U.S. Forest Service (Modoc, Klamath, and Shasta-Trinity National Forests)",
+    "agency_type": "USFS",
+    "designated": "2025-01-14",
+    "acreage": "224,000+",
+    "lat": 41.58,
+    "lng": -121.6,
+    "status": "researching",
+    "public": true,
+    "times_suggested": 1,
+    "first_received": "2026-11",
+    "themes": [
+      "Indigenous history",
+      "Energy and mining",
+      "Geology",
+      "Hydrology"
+    ],
+    "note": "The Medicine Lake Highlands, a shield volcano landscape sacred to the Pit River (Achumawi) and Modoc peoples, whose porous volcanic rock feeds the region's large spring systems. The highlands were the subject of decades of litigation over federal geothermal leasing. Designated in January 2025; the White House said in March 2025 that it would rescind the designation but issued no order.",
+    "review": "Verified 2026-11-12: more than 224,000 acres (exact proclamation figure not confirmed); no rescission order found. Geothermal MLRS query returns 272 records within 25 km, likely including closed cases; filter before citing. Spring system claim needs a source.",
+    "sources": [
+      "https://earthjustice.org/brief/2025/trump-administration-signals-it-will-try-to-eliminate-two-national-monuments-in-california",
+      "https://insideclimatenews.org/?p=92510",
+      "https://bidenwhitehouse.archives.gov/briefing-room/statements-releases/2025/01/07/fact-sheet-president-biden-establishes-chuckwalla-and-sattitla-highlands-national-monuments-in-california"
+    ],
+    "origin": "visitor"
+  }
+]

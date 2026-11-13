@@ -273,3 +273,13 @@ DreamHost. The archive page lists Commons, Download RAW, and XMP per image.
 
 On mobile (max-width: 719px), CSS order places the photo grid above the record
 column. The desktop two-column layout (min-width: 720px) is unaffected.
+
+---
+
+## SUGGESTED SITES
+
+Visitors suggest sites with the short form on support.html (site name required; note and email optional). suggest.php appends each one to ../pli-inbox/suggestions.jsonl on DreamHost, outside the web root so rsync --delete never removes it, and emails it if .suggest.ini sets a recipient.
+- python3 tools/pull_suggestions.py fetches the inbox, saves raw lines to submissions/inbox.jsonl (gitignored: it holds messages and emails), and merges them into submissions/suggestions.json (a repeat site gets times_suggested + 1; a new one gets status "received", public false). It also writes submissions/suggestions.csv.
+- submissions/ is never deployed. build.py publishes only entries with public true and a status of received, researching, planned, or documented, and only the public fields (id, name, state, agency, agency_type, designated, acreage, status, times_suggested, themes, note). review and sources stay private.
+- Research happens here with Claude, not with the submitter: fill in state, agency, coordinates, acreage, themes, a short public note (house writing rules apply), plus review notes and sources. Set public true only when the user approves. Sites proposed in grant applications use status "pending" (shown as "Proposed, pending funding") and origin "grant"; never name the funder publicly. Visitor suggestions use origin "visitor".
+- Outputs: suggested.html (map and list) and data/suggestions-map.js, which also drives the "Suggested Sites" toggle on the index map.
