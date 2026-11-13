@@ -146,6 +146,81 @@
     line-height: 1.7;
     margin-bottom: 0;
   }
+  .suggest-form { margin-top: 22px; }
+  .suggest-form .field { margin-bottom: 18px; }
+  .suggest-form .row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0 18px;
+  }
+  @media (min-width: 720px) {
+    .suggest-form .row { grid-template-columns: 1fr 1fr; }
+  }
+  .suggest-form label,
+  .suggest-form legend {
+    display: block;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .suggest-form .opt { font-weight: 300; letter-spacing: 0.08em; text-transform: none; }
+  .suggest-form input[type=text],
+  .suggest-form input[type=email],
+  .suggest-form select,
+  .suggest-form textarea {
+    width: 100%;
+    background: transparent;
+    color: var(--fg);
+    border: 1px solid var(--border);
+    border-radius: 0;
+    padding: 9px 10px;
+    font: inherit;
+    font-size: 13.5px;
+  }
+  .suggest-form select { appearance: none; background: var(--bg); }
+  .suggest-form textarea { min-height: 120px; resize: vertical; line-height: 1.6; }
+  .suggest-form input:focus,
+  .suggest-form select:focus,
+  .suggest-form textarea:focus { outline: none; border-color: var(--fg); }
+  .suggest-form fieldset { border: 0; margin-bottom: 18px; }
+  .suggest-form .checks { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+  .suggest-form .checks label,
+  .suggest-form .consent {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    color: var(--fg);
+    margin: 0;
+  }
+  .suggest-form input[type=checkbox] { accent-color: var(--fg); }
+  .suggest-form .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+  .suggest-form button {
+    background: transparent;
+    color: var(--fg);
+    border: 1px solid var(--fg);
+    padding: 10px 22px;
+    font: inherit;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 6px;
+  }
+  .suggest-form button:hover { background: var(--fg); color: var(--bg); }
+  .suggest-status {
+    border: 1px solid var(--border);
+    padding: 12px 14px;
+    font-size: 13.5px;
+    margin: 18px 0 0 0;
+  }
 </style>
 </head>
 <body>
@@ -182,12 +257,60 @@
   <h2>Fiscal sponsor</h2>
   <p>The Public Lands Institute is fiscally sponsored by CENTER, Santa Fe, a 501(c)(3) organization. Gifts are made to CENTER on behalf of the project and are tax deductible to the extent allowed by law. Check, Fidelity Charitable, Zelle, and PayPal are accepted.</p>
   <p><a href="https://centersantafe.org/publiclands" target="_blank" rel="noopener">centersantafe.org/publiclands</a></p>
+
+  <h2 id="suggest">Suggest a site</h2>
+  <p>Know a public or protected place that belongs in the index? Name it. That is all that is needed; the research happens here. If you know something about it, especially history that rarely makes the signage, add a note.</p>
+  <p>Suggestions are reviewed before they appear on the <a href="suggested.html">suggested sites map</a>, which shows a short research note for each, never your name or message. Not every site can be documented.</p>
+
+  <p class="suggest-status" id="suggest-status" role="status" hidden></p>
+
+  <form class="suggest-form" action="suggest.php" method="post" accept-charset="utf-8">
+    <div class="field">
+      <label for="sg-site">Site name and state</label>
+      <input type="text" id="sg-site" name="site" maxlength="300" placeholder="Castner Range National Monument, Texas" required/>
+    </div>
+    <div class="field">
+      <label for="sg-note">Anything you would like to share <span class="opt">(optional)</span></label>
+      <textarea id="sg-note" name="note" maxlength="5000"></textarea>
+    </div>
+    <div class="field">
+      <label for="sg-email">Email, if you are open to a question <span class="opt">(optional)</span></label>
+      <input type="email" id="sg-email" name="email" maxlength="200" autocomplete="email"/>
+    </div>
+    <p class="support-counts">Please do not give precise locations of unprotected archaeological or burial sites.</p>
+
+    <div class="hp" aria-hidden="true">
+      <label for="sg-website">Website</label>
+      <input type="text" id="sg-website" name="website" tabindex="-1" autocomplete="off"/>
+    </div>
+    <input type="hidden" name="t" id="sg-t" value=""/>
+
+    <button type="submit">Send suggestion</button>
+  </form>
 </div>
 <footer>
   <span>Public Lands Institute — ongoing project</span>
   <span>CC0 Public Domain</span>
-  <span><a href="support.html">Support</a></span>
+  <span><a href="suggested.html">Suggested sites</a> · <a href="support.html">Support</a></span>
 </footer>
 </div>
+<script>
+(function () {
+  var t = document.getElementById('sg-t');
+  if (t) t.value = String(Date.now());
+  var msgs = {
+    sent: 'Thank you. Your suggestion was received.',
+    invalid: 'Please name the site, then send again.',
+    error: 'The suggestion could not be sent. Please try again later.'
+  };
+  var m = /[?&]suggest=(\w+)/.exec(location.search);
+  if (m && msgs[m[1]]) {
+    var box = document.getElementById('suggest-status');
+    box.textContent = msgs[m[1]];
+    box.hidden = false;
+    document.getElementById('suggest').scrollIntoView();
+  }
+})();
+</script>
 </body>
 </html>

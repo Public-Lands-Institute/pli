@@ -19,6 +19,10 @@ Outputs:
   photographs.html      visual feed grouped by site
   about.html            stats sentence only — the rest of the page is hand-maintained
   support.html          counts line only — the rest of the page is hand-maintained
+  suggested.html        public Suggested Sites page (map + list), from the public
+                        entries in submissions/suggestions.json
+  data/suggestions-map.js  SUGGESTIONS geojson (public fields only), loaded by
+                        index.html and suggested.html with a ?v= content hash
   sitemap.xml           lastmod = each source file's actual last-modified date
   data/nations.geojson  per-(site, nation or culture) points for the map's native
                         layer, derived from sites_meta.json on every mapjs build
@@ -755,7 +759,7 @@ def make_site_page(site, all_sites, photos):
 <footer>
   <span>Public Lands Institute — ongoing project</span>
   <span>CC0 Public Domain</span>
-  <span><a href="../support.html">Support</a></span>
+  <span><a href="../suggested.html">Suggested sites</a> · <a href="../support.html">Support</a></span>
 </footer>
 </div>
 <script src="../js/lightbox.js"></script>
@@ -904,7 +908,7 @@ def make_gallery_page(all_sites, photos):
 <footer>
   <span>Public Lands Institute — ongoing project</span>
   <span>CC0 Public Domain</span>
-  <span><a href="support.html">Support</a></span>
+  <span><a href="suggested.html">Suggested sites</a> · <a href="support.html">Support</a></span>
 </footer>
 </div>
 <script>
@@ -1088,7 +1092,7 @@ def make_archive_page(all_sites, photos):
 <footer>
   <span>Public Lands Institute — ongoing project</span>
   <span>CC0 Public Domain</span>
-  <span><a href="support.html">Support</a></span>
+  <span><a href="suggested.html">Suggested sites</a> · <a href="support.html">Support</a></span>
 </footer>
 </div>
 <script>
@@ -1169,6 +1173,7 @@ def make_sitemap(all_sites):
         (f'{BASE_URL}/about.html', 'about.html'),
         (f'{BASE_URL}/glossary.html', 'glossary.html'),
         (f'{BASE_URL}/support.html', 'support.html'),
+        (f'{BASE_URL}/suggested.html', 'suggested.html'),
     ]
     entries += [(f'{BASE_URL}/sites/{s["slug"]}.html', f'sites/{s["slug"]}.html')
                 for s in all_sites]
@@ -1270,9 +1275,264 @@ def write_sites_map_js(all_sites, meta, photos, nations_gj):
     return version
 
 
+# ── suggested.html + data/suggestions-map.js ──────────────────────────────────
+# Source: submissions/suggestions.json (private; submissions/ is never deployed).
+# Only entries with public true and a status other than declined are published,
+# and only the fields in SUGGESTION_PUBLIC_FIELDS leave the private file:
+# review notes, sources, and anything from submitters stay behind.
+
+SUGGESTIONS_PATH = 'submissions/suggestions.json'
+SUGGESTION_PUBLIC_FIELDS = ['id', 'name', 'state', 'agency', 'agency_type', 'designated',
+                            'acreage', 'status', 'times_suggested', 'themes', 'note']
+SUGGESTION_STATUS_LABELS = {
+    'received': 'Under review',
+    'researching': 'Researching',
+    'pending': 'Proposed, pending funding',
+    'planned': 'Planned for fieldwork',
+    'documented': 'Documented',
+}
+
+
+def load_public_suggestions():
+    if not os.path.exists(SUGGESTIONS_PATH):
+        return []
+    with open(SUGGESTIONS_PATH) as f:
+        allsug = json.load(f)
+    out = []
+    for s in allsug:
+        if not s.get('public') or s.get('status') not in SUGGESTION_STATUS_LABELS:
+            continue
+        if s.get('lat') is None or s.get('lng') is None:
+            continue
+        out.append(s)
+    return out
+
+
+def suggestions_geojson(suggestions):
+    features = []
+    for s in suggestions:
+        props = {k: s.get(k, '') for k in SUGGESTION_PUBLIC_FIELDS}
+        props['status_label'] = SUGGESTION_STATUS_LABELS[s['status']]
+        features.append({'type': 'Feature',
+                         'geometry': {'type': 'Point', 'coordinates': [s['lng'], s['lat']]},
+                         'properties': props})
+    return {'type': 'FeatureCollection', 'features': features}
+
+
+SUGMAP_SRC_RE = re.compile(r'src="data/suggestions-map\.js\?v=[0-9a-f]+"')
+
+
+def write_suggestions_map_js(suggestions):
+    gj = suggestions_geojson(suggestions)
+    content = ('const SUGGESTIONS=' +
+               json.dumps(gj, ensure_ascii=False, separators=(',', ':')) + ';\n')
+    with open('data/suggestions-map.js', 'w') as f:
+        f.write(content)
+    version = hashlib.md5(content.encode()).hexdigest()[:10]
+    for page in ('index.html', 'suggested.html'):
+        if not os.path.exists(page):
+            continue
+        with open(page) as f:
+            html = f.read()
+        new_html, n = SUGMAP_SRC_RE.subn(f'src="data/suggestions-map.js?v={version}"', html)
+        if n != 1:
+            raise RuntimeError(f'{page} suggestions-map.js script tag: expected 1 match, found {n}')
+        if new_html != html:
+            with open(page, 'w') as f:
+                f.write(new_html)
+    return version
+
+
+def esc(text):
+    return (str(text).replace('&', '&amp;').replace('<', '&lt;')
+            .replace('>', '&gt;').replace('"', '&quot;'))
+
+
+def format_designated(date_str):
+    try:
+        d = datetime.date.fromisoformat(date_str)
+    except (TypeError, ValueError):
+        return ''
+    return f'{d.strftime("%B")} {d.day}, {d.year}'
+
+
+def make_suggested_page(suggestions):
+    order = {'documented': 0, 'planned': 1, 'pending': 2, 'researching': 3, 'received': 4}
+    rows = sorted(suggestions, key=lambda s: (order[s['status']], s['name']))
+    cards = []
+    for s in rows:
+        meta = [STATE_NAMES.get(s.get('state', ''), s.get('state', ''))]
+        if s.get('agency'):
+            meta.append(esc(s['agency']))
+        facts = []
+        if s.get('acreage'):
+            facts.append(f'{esc(s["acreage"])} acres')
+        if s.get('designated'):
+            facts.append(f'Designated {format_designated(s["designated"])}')
+        n = s.get('times_suggested', 1)
+        facts.append(f'Suggested {n} time{"s" if n != 1 else ""}')
+        themes = ''.join(f'<span class="sg-theme">{esc(t)}</span>' for t in s.get('themes', []))
+        cards.append(f'''  <article class="sg-card" id="{esc(s['id'])}" data-lng="{s['lng']}" data-lat="{s['lat']}">
+    <div class="sg-head">
+      <h2 class="sg-name">{esc(s['name'])}</h2>
+      <span class="sg-status sg-{s['status']}">{SUGGESTION_STATUS_LABELS[s['status']]}</span>
+    </div>
+    <div class="sg-meta">{' · '.join(meta)}</div>
+    <div class="sg-facts">{' · '.join(facts)}</div>
+    {f'<div class="sg-themes">{themes}</div>' if themes else ''}
+    {f'<p class="sg-note">{esc(s["note"])}</p>' if s.get('note') else ''}
+  </article>''')
+    n_total = len(rows)
+    n_states = len({s.get('state') for s in rows if s.get('state')})
+    intro = (f'{n_total} site{"s" if n_total != 1 else ""} in {n_states} '
+             f'state{"s" if n_states != 1 else ""}, suggested by visitors and '
+             f'researched before fieldwork.')
+    return f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TMR79M95R4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){{dataLayer.push(arguments);}}
+  gtag('js', new Date());
+  gtag('config', 'G-TMR79M95R4');
+</script>
+<meta charset="utf-8"/>
+<title>Suggested Sites · Public Lands Institute</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="index, follow" name="robots"/>
+<meta content="Public and protected lands suggested for the Public Lands Institute index, with research notes and fieldwork status." name="description"/>
+<meta property="og:title" content="Suggested Sites · Public Lands Institute"/>
+<meta property="og:description" content="Public and protected lands suggested for the Public Lands Institute index, with research notes and fieldwork status."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://publiclandsinstitute.net/suggested.html"/>
+<meta property="og:site_name" content="Public Lands Institute"/>
+<meta property="og:image" content="https://publiclandsinstitute.net/img/cards/site.jpg"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link href="https://publiclandsinstitute.net/suggested.html" rel="canonical"/>
+<link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
+{FONT_LINKS}
+<link rel="stylesheet" href="vendor/maplibre-gl-4.7.1/maplibre-gl.css">
+<style>
+{SHARED_CSS}
+  .sg-intro {{ font-size: 13px; color: var(--muted); margin-bottom: 18px; max-width: 680px; line-height: 1.6; }}
+  .sg-intro a {{ color: var(--fg); border-bottom: 1px solid var(--border); }}
+  .sg-intro a:hover {{ text-decoration: none; border-bottom-color: var(--fg); }}
+  #sg-map {{ width: 100%; height: 56vh; min-height: 320px; border: 1px solid var(--border); margin-bottom: 28px; background: #1b1b1b; }}
+  .sg-list {{ display: grid; grid-template-columns: 1fr; gap: 0 32px; }}
+  @media (min-width: 900px) {{ .sg-list {{ grid-template-columns: 1fr 1fr; }} }}
+  .sg-card {{ border-top: 1px solid var(--border); padding: 16px 0 22px; scroll-margin-top: 24px; }}
+  .sg-card.focus .sg-name {{ text-decoration: underline; }}
+  .sg-head {{ display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 4px; }}
+  .sg-name {{ font-size: 16px; font-weight: 400; letter-spacing: 0.01em; cursor: pointer; }}
+  .sg-status {{ font-size: 10px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--border); padding: 3px 8px; white-space: nowrap; }}
+  .sg-status.sg-planned, .sg-status.sg-documented {{ color: var(--fg); border-color: var(--fg); }}
+  .sg-status.sg-pending {{ color: var(--fg); border-style: dashed; border-color: var(--fg); }}
+  .sg-meta, .sg-facts {{ font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }}
+  .sg-themes {{ display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 2px; }}
+  .sg-theme {{ font-size: 11px; color: var(--fg); border: 1px solid var(--border); padding: 2px 8px; }}
+  .sg-note {{ font-size: 13.5px; line-height: 1.7; margin-top: 10px; max-width: 680px; }}
+  .maplibregl-popup-content {{ background: var(--bg); color: var(--fg); font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 300; padding: 8px 12px; border-radius: 0; box-shadow: none; border: 1px solid var(--border); }}
+  .maplibregl-popup-tip {{ display: none; }}
+  .maplibregl-ctrl-attrib {{ font-size: 9px; opacity: 0.4; }}
+</style>
+</head>
+<body>
+<div class="page">
+<h1 class="sr-only">Suggested Sites</h1>
+<header>
+  <div class="logotype"><a href="index.html">Public Lands Institute</a></div>
+  <nav class="header-nav">
+    <a href="index.html">Map</a>
+    <a href="photographs.html">Images</a>
+    <a href="archive.html">Archive</a>
+    <a href="glossary.html">Glossary</a>
+    <a href="about.html">About</a>
+    <a href="support.html">Support</a>
+  </nav>
+</header>
+<div class="divider"></div>
+<p class="sg-intro">{intro} Hollow markers are suggestions; filled markers are documented sites. Know a place that belongs here? <a href="support.html#suggest">Suggest a site</a>.</p>
+<div id="sg-map" role="region" aria-label="Map of suggested sites"></div>
+<div class="sg-list">
+{chr(10).join(cards)}
+</div>
+<footer>
+  <span>Public Lands Institute · ongoing project</span>
+  <span>CC0 Public Domain</span>
+  <span><a href="suggested.html">Suggested sites</a> · <a href="support.html">Support</a></span>
+</footer>
+</div>
+<script src="vendor/maplibre-gl-4.7.1/maplibre-gl.js"></script>
+<script src="data/sites-map.js?v=0"></script>
+<script src="data/suggestions-map.js?v=0000000000"></script>
+<script>
+(function () {{
+  var feats = SUGGESTIONS.features;
+  if (!feats.length) {{ document.getElementById('sg-map').hidden = true; return; }}
+  var lngs = feats.map(function (f) {{ return f.geometry.coordinates[0]; }});
+  var lats = feats.map(function (f) {{ return f.geometry.coordinates[1]; }});
+  var narrow = window.innerWidth < 640;
+  var map = new maplibregl.Map({{
+    container: 'sg-map',
+    style: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
+    bounds: [[Math.min.apply(null, lngs), Math.min.apply(null, lats)], [Math.max.apply(null, lngs), Math.max.apply(null, lats)]],
+    fitBoundsOptions: {{ padding: narrow ? 40 : 80, maxZoom: 7 }},
+    minZoom: 2, maxZoom: 14, cooperativeGestures: true
+  }});
+  map.addControl(new maplibregl.NavigationControl({{ showCompass: false }}), 'top-right');
+  map.on('load', function () {{
+    map.addSource('sites', {{ type: 'geojson', data: SITES }});
+    map.addSource('suggestions', {{ type: 'geojson', data: SUGGESTIONS }});
+    map.addLayer({{ id: 'sites-dot', type: 'circle', source: 'sites',
+      paint: {{ 'circle-radius': ['interpolate', ['linear'], ['zoom'], 3, 2.5, 10, 5],
+               'circle-color': '#8c8c8c', 'circle-opacity': 0.7 }} }});
+    map.addLayer({{ id: 'sg-hit', type: 'circle', source: 'suggestions',
+      paint: {{ 'circle-radius': 16, 'circle-opacity': 0 }} }});
+    map.addLayer({{ id: 'sg-ring', type: 'circle', source: 'suggestions',
+      paint: {{ 'circle-radius': ['interpolate', ['linear'], ['zoom'], 3, 6, 10, 9],
+               'circle-color': 'rgba(0,0,0,0)', 'circle-stroke-color': '#e8e8e8',
+               'circle-stroke-width': 1.5 }} }});
+    var popup = new maplibregl.Popup({{ closeButton: false, closeOnClick: false, offset: 12 }});
+    function label(p) {{ return '<span style="letter-spacing:.07em">' + p.name + '</span><br><span style="opacity:.6;font-size:10px;letter-spacing:.14em;text-transform:uppercase">' + p.status_label + '</span>'; }}
+    map.on('mouseenter', 'sg-hit', function (e) {{
+      map.getCanvas().style.cursor = 'pointer';
+      popup.setLngLat(e.features[0].geometry.coordinates).setHTML(label(e.features[0].properties)).addTo(map);
+    }});
+    map.on('mouseleave', 'sg-hit', function () {{ map.getCanvas().style.cursor = ''; popup.remove(); }});
+    map.on('click', 'sg-hit', function (e) {{ focus(e.features[0].properties.id, false); }});
+    function focus(id, fly) {{
+      document.querySelectorAll('.sg-card.focus').forEach(function (c) {{ c.classList.remove('focus'); }});
+      var card = document.getElementById(id);
+      if (!card) return;
+      card.classList.add('focus');
+      if (fly) {{
+        map.flyTo({{ center: [+card.dataset.lng, +card.dataset.lat], zoom: 7, duration: 900 }});
+        document.getElementById('sg-map').scrollIntoView({{ behavior: 'smooth' }});
+      }} else {{
+        card.scrollIntoView({{ behavior: 'smooth' }});
+      }}
+    }}
+    document.querySelectorAll('.sg-name').forEach(function (n) {{
+      n.addEventListener('click', function () {{ focus(n.closest('.sg-card').id, true); }});
+    }});
+    if (location.hash) focus(location.hash.slice(1), true);
+  }});
+}})();
+</script>
+</body>
+</html>'''
+
+
 # ── Main ───────────────────────────────────────────────────────────────────────
 
-ALL_TARGETS = ['sites', 'archive', 'photographs', 'about', 'support', 'mapjs', 'sitemap']
+ALL_TARGETS = ['sites', 'archive', 'photographs', 'about', 'support', 'mapjs',
+               'suggested', 'sitemap']
 
 
 def main(argv):
@@ -1308,6 +1568,16 @@ def main(argv):
             f.write('\n')
         version = write_sites_map_js(sites, meta, photos, nations_gj)
         print(f'data/sites-map.js (v={version})')
+    if 'suggested' in targets:
+        suggestions = load_public_suggestions()
+        page = make_suggested_page(suggestions)
+        with open('data/sites-map.js') as f:
+            sites_v = hashlib.md5(f.read().encode()).hexdigest()[:10]
+        page = MAPJS_SRC_RE.sub(f'src="data/sites-map.js?v={sites_v}"', page)
+        with open('suggested.html', 'w') as f:
+            f.write(page)
+        version = write_suggestions_map_js(suggestions)
+        print(f'suggested.html + data/suggestions-map.js ({len(suggestions)} public, v={version})')
     if 'sitemap' in targets:
         # Last so lastmod reflects the files written above
         with open('sitemap.xml', 'w') as f:
