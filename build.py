@@ -18,7 +18,7 @@ Outputs:
   archive.html          plain-text download index (all rows, per-site sections)
   photographs.html      visual feed grouped by site
   about.html            stats sentence only — the rest of the page is hand-maintained
-  support.html          counts line only — the rest of the page is hand-maintained
+  contribute.html          counts line only — the rest of the page is hand-maintained
   prospective.html      public Prospective Sites page (map + list), from the public
                         entries in submissions/suggestions.json
   data/suggestions-map.js  SUGGESTIONS geojson (public fields only), loaded by
@@ -296,7 +296,7 @@ def site_counts(all_sites, photos):
 
 
 def counts_line(all_sites, photos):
-    """Single-line form of the four figures, used on support.html."""
+    """Single-line form of the four figures, used on contribute.html."""
     c = site_counts(all_sites, photos)
     return (f'{c["sites"]} sites, {c["states"]} states, '
             f'{c["photographs"]} photographs, {c["acres_m"]} million acres')
@@ -733,7 +733,7 @@ def make_site_page(site, all_sites, photos):
     <a href="../photographs.html">Images</a>
     <a href="../archive.html">Archive</a>
     <a href="../about.html">About</a>
-    <a href="../support.html">Contribute</a>
+    <a href="../contribute.html">Contribute</a>
   </nav>
 </header>
 <div class="divider"></div>
@@ -759,7 +759,7 @@ def make_site_page(site, all_sites, photos):
 <footer>
   <span>Public Lands Institute — ongoing project</span>
   <span>CC0 Public Domain</span>
-  <span><a href="../prospective.html">Prospective sites</a> · <a href="../support.html">Contribute</a></span>
+  <span><a href="../prospective.html">Prospective sites</a> · <a href="../contribute.html">Contribute</a></span>
 </footer>
 </div>
 <script src="../js/lightbox.js"></script>
@@ -893,7 +893,7 @@ def make_gallery_page(all_sites, photos):
     <a href="archive.html">Archive</a>
     <a href="glossary.html">Glossary</a>
     <a href="about.html">About</a>
-    <a href="support.html">Contribute</a>
+    <a href="contribute.html">Contribute</a>
   </nav>
 </header>
 <div class="divider"></div>
@@ -908,7 +908,7 @@ def make_gallery_page(all_sites, photos):
 <footer>
   <span>Public Lands Institute — ongoing project</span>
   <span>CC0 Public Domain</span>
-  <span><a href="prospective.html">Prospective sites</a> · <a href="support.html">Contribute</a></span>
+  <span><a href="prospective.html">Prospective sites</a> · <a href="contribute.html">Contribute</a></span>
 </footer>
 </div>
 <script>
@@ -1081,7 +1081,7 @@ def make_archive_page(all_sites, photos):
     <a href="archive.html" class="active">Archive</a>
     <a href="glossary.html">Glossary</a>
     <a href="about.html">About</a>
-    <a href="support.html">Contribute</a>
+    <a href="contribute.html">Contribute</a>
   </nav>
 </header>
 <div class="divider"></div>
@@ -1092,7 +1092,7 @@ def make_archive_page(all_sites, photos):
 <footer>
   <span>Public Lands Institute — ongoing project</span>
   <span>CC0 Public Domain</span>
-  <span><a href="prospective.html">Prospective sites</a> · <a href="support.html">Contribute</a></span>
+  <span><a href="prospective.html">Prospective sites</a> · <a href="contribute.html">Contribute</a></span>
 </footer>
 </div>
 <script>
@@ -1139,7 +1139,7 @@ def update_about_stats(all_sites, photos):
     return new_html != html
 
 
-# ── support.html (counts line only) ───────────────────────────────────────────
+# ── contribute.html (counts line only) ───────────────────────────────────────────
 
 SUPPORT_COUNTS_RE = re.compile(
     r'\d[\d,]* sites, \d[\d,]* states, \d[\d,]* photographs, '
@@ -1147,15 +1147,15 @@ SUPPORT_COUNTS_RE = re.compile(
 
 
 def update_support_counts(all_sites, photos):
-    """Rewrite the counts line in support.html in place, from counts_line()."""
+    """Rewrite the counts line in contribute.html in place, from counts_line()."""
     line = counts_line(all_sites, photos)
-    with open('support.html') as f:
+    with open('contribute.html') as f:
         html = f.read()
     new_html, n = SUPPORT_COUNTS_RE.subn(line, html)
     if n != 1:
-        raise RuntimeError(f'support.html counts line: expected 1 match, found {n}')
+        raise RuntimeError(f'contribute.html counts line: expected 1 match, found {n}')
     if new_html != html:
-        with open('support.html', 'w') as f:
+        with open('contribute.html', 'w') as f:
             f.write(new_html)
     return new_html != html
 
@@ -1172,7 +1172,7 @@ def make_sitemap(all_sites):
         (f'{BASE_URL}/archive.html', 'archive.html'),
         (f'{BASE_URL}/about.html', 'about.html'),
         (f'{BASE_URL}/glossary.html', 'glossary.html'),
-        (f'{BASE_URL}/support.html', 'support.html'),
+        (f'{BASE_URL}/contribute.html', 'contribute.html'),
         (f'{BASE_URL}/prospective.html', 'prospective.html'),
     ]
     entries += [(f'{BASE_URL}/sites/{s["slug"]}.html', f'sites/{s["slug"]}.html')
@@ -1380,7 +1380,7 @@ def make_suggested_page(suggestions):
     <div class="sg-facts">{' · '.join(facts)}</div>
     {f'<div class="sg-themes">{themes}</div>' if themes else ''}
     {f'<p class="sg-note">{esc(s["note"])}</p>' if s.get('note') else ''}
-    {'<p class="sg-support"><a href="support.html#donate">Support this fieldwork</a></p>' if s['status'] == 'pending' else ''}
+    {'<p class="sg-support"><a href="contribute.html#donate">Support this fieldwork</a></p>' if s['status'] == 'pending' else ''}
   </article>''')
     n_total = len(rows)
     n_states = len({s.get('state') for s in rows if s.get('state')})
@@ -1458,11 +1458,11 @@ def make_suggested_page(suggestions):
     <a href="archive.html">Archive</a>
     <a href="glossary.html">Glossary</a>
     <a href="about.html">About</a>
-    <a href="support.html">Contribute</a>
+    <a href="contribute.html">Contribute</a>
   </nav>
 </header>
 <div class="divider"></div>
-<p class="sg-intro">{intro} Know a place that belongs here? <a href="support.html#suggest">Suggest a site</a>.</p>
+<p class="sg-intro">{intro} Know a place that belongs here? <a href="contribute.html#suggest">Suggest a site</a>.</p>
 <div class="sg-legend" aria-hidden="true"><span><svg width="14" height="14"><circle cx="7" cy="7" r="5" fill="none" stroke="#e8e8e8" stroke-width="1.5"/></svg>Researching</span><span><svg width="14" height="14"><circle cx="7" cy="7" r="5" fill="none" stroke="#e8e8e8" stroke-width="1.5"/><circle cx="7" cy="7" r="1.8" fill="#e8e8e8"/></svg>Seeking funding</span><span><svg width="14" height="14"><circle cx="7" cy="7" r="5" fill="none" stroke="#e8e8e8" stroke-width="3"/></svg>Planned for fieldwork</span><span><svg width="14" height="14"><circle cx="7" cy="7" r="3.5" fill="#8c8c8c" fill-opacity="0.7"/></svg>Documented site</span></div>
 <div id="sg-map" role="region" aria-label="Map of prospective sites"></div>
 <div class="sg-list">
@@ -1471,7 +1471,7 @@ def make_suggested_page(suggestions):
 <footer>
   <span>Public Lands Institute · ongoing project</span>
   <span>CC0 Public Domain</span>
-  <span><a href="prospective.html">Prospective sites</a> · <a href="support.html">Contribute</a></span>
+  <span><a href="prospective.html">Prospective sites</a> · <a href="contribute.html">Contribute</a></span>
 </footer>
 </div>
 <script src="vendor/maplibre-gl-4.7.1/maplibre-gl.js"></script>
@@ -1571,7 +1571,7 @@ def main(argv):
         print(f'about.html stats sentence{"" if changed else " (unchanged)"}')
     if 'support' in targets:
         changed = update_support_counts(sites, photos)
-        print(f'support.html counts line{"" if changed else " (unchanged)"}')
+        print(f'contribute.html counts line{"" if changed else " (unchanged)"}')
     if 'mapjs' in targets:
         with open('data/nations.geojson', 'w') as f:
             json.dump(nations_gj, f, ensure_ascii=False, indent=2)
