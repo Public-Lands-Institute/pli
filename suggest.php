@@ -1,5 +1,5 @@
 <?php
-// Suggest a site: receives the short form on support.html.
+// Suggest a site: receives the short form on contribute.html.
 //
 // Each submission is appended as one JSON line to an inbox OUTSIDE the web
 // root (../pli-inbox/suggestions.jsonl), so rsync --delete never touches it
@@ -12,7 +12,7 @@
 // out of git by .gitignore.)
 
 function back($status) {
-    header('Location: support.html?suggest=' . $status . '#suggest', true, 303);
+    header('Location: contribute.html?suggest=' . $status . '#suggest', true, 303);
     exit;
 }
 
@@ -27,7 +27,7 @@ function one_line($v) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: support.html#suggest', true, 302);
+    header('Location: contribute.html#suggest', true, 302);
     exit;
 }
 

@@ -11,7 +11,7 @@ Checks:
      agree with the number in the linked Commons filename.
   3. Pending Commons uploads — entries with no 'c' value (WARN, informational).
   4. Generated-page consistency — the about.html stats sentence, the
-     support.html counts line, and the photographs.html intro counts must match
+     contribute.html counts line, and the photographs.html intro counts must match
      the data; sitemap.xml must cover
      exactly the site's pages with lastmod equal to each file's mtime date.
   5. Referenced files — every thumb / large / jpg / raw / xmp path referenced
@@ -183,16 +183,16 @@ def main():
             problems.append(f'about.html: stats say {got}, data says '
                             f'({n_sites}, {n_states}, {n_frames})')
     n_acres_m = f'{sum(s.get("acreage_n") or 0 for s in sites) / 1_000_000:.1f}'
-    support = open('support.html').read()
+    support = open('contribute.html').read()
     m = re.search(r'(\d[\d,]*) sites, (\d[\d,]*) states, (\d[\d,]*) photographs, '
                   r'(\d+\.\d) million acres', support)
     if not m:
-        problems.append('support.html: counts line not found')
+        problems.append('contribute.html: counts line not found')
     else:
         got = (int(m.group(1).replace(',', '')), int(m.group(2).replace(',', '')),
                int(m.group(3).replace(',', '')), m.group(4))
         if got != (n_sites, n_states, n_frames, n_acres_m):
-            problems.append(f'support.html: counts say {got}, data says '
+            problems.append(f'contribute.html: counts say {got}, data says '
                             f'({n_sites}, {n_states}, {n_frames}, {n_acres_m})')
     gallery = open('photographs.html').read()
     m = re.search(r'(\d[\d,]*) images across (\d[\d,]*) sites\.', gallery)
@@ -211,7 +211,7 @@ def main():
     base = 'https://publiclandsinstitute.net'
     expected = [f'{base}/', f'{base}/photographs.html', f'{base}/archive.html',
                 f'{base}/about.html', f'{base}/glossary.html',
-                f'{base}/support.html', f'{base}/prospective.html']
+                f'{base}/contribute.html', f'{base}/prospective.html']
     expected += [f'{base}/sites/{s["slug"]}.html' for s in sites]
     if sorted(locs) != sorted(expected):
         missing = set(expected) - set(locs)
