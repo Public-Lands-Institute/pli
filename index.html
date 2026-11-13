@@ -55,6 +55,9 @@ html, body { height: 100%; font-family: 'Inter', sans-serif; background: var(--i
 .layer-btn:hover { border-color: rgba(255,255,255,0.5); }
 .layer-btn.active { color: #ffffff; border-color: #ffffff; background: rgba(18,18,18,0.9); }
 #suggest-toggle { margin-top: 6px; }
+#sg-legend { background: rgba(18,18,18,0.72); border: 1px solid rgba(255,255,255,0.2); padding: 8px 12px; display: flex; flex-direction: column; gap: 5px; }
+#sg-legend[hidden] { display: none; }
+.sg-leg { display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 300; letter-spacing: 0.06em; color: var(--sand); }
 #suggest-toggle a { color: inherit; opacity: 0.6; margin-left: 6px; text-transform: none; letter-spacing: 0.04em; }
 #legend { position: fixed; bottom: 32px; right: 32px; z-index: 10; background: rgba(18,18,18,0.85); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.15); padding: 14px 16px; min-width: 200px; display: none; max-height: calc(100vh - 64px); overflow-y: auto; }
 .legend-item .legend-n { margin-left: auto; padding-left: 14px; opacity: 0.5; font-variant-numeric: tabular-nums; }
@@ -164,7 +167,8 @@ html, body { height: 100%; font-family: 'Inter', sans-serif; background: var(--i
   <button class="layer-btn" data-layer="agency" aria-pressed="false">Managing Agency</button>
   <button class="layer-btn" data-layer="native" aria-pressed="false">Indigenous Territories</button>
   <button class="layer-btn" data-layer="shadow" aria-pressed="false">Shadow History</button>
-  <button class="layer-btn" id="suggest-toggle" aria-pressed="false">Suggested Sites</button>
+  <button class="layer-btn" id="suggest-toggle" aria-pressed="false">Prospective Sites</button>
+  <div id="sg-legend" hidden></div>
 </div>
 <div id="legend"><div id="legend-title"></div><div id="legend-items"></div><div id="legend-note"></div></div>
 <div id="panel">
@@ -430,29 +434,42 @@ map.on('load', () => {
       }
     });
   });
-  // Suggested sites: hollow rings, independent of the exclusive layer buttons
+  // Prospective sites: rings, independent of the exclusive layer buttons
   map.addSource('suggestions', { type:'geojson', data:SUGGESTIONS });
   map.addLayer({ id:'sg-hit', type:'circle', source:'suggestions', layout:{ visibility:'none' },
     paint:{ 'circle-radius':16,'circle-opacity':0 } });
+  // Marker by status: hollow ring = researching, ring + center dot = proposed
+  // (pending), heavier ring = planned for fieldwork
   map.addLayer({ id:'sg-ring', type:'circle', source:'suggestions', layout:{ visibility:'none' },
     paint:{ 'circle-radius':['interpolate',['linear'],['zoom'],3,5,10,8],
-            'circle-color':'rgba(0,0,0,0)','circle-stroke-color':'#e8e8e8','circle-stroke-width':1.5 } });
+            'circle-color':'rgba(0,0,0,0)','circle-stroke-color':'#e8e8e8',
+            'circle-stroke-width':['match',['get','status'],'planned',3,1.5] } });
+  map.addLayer({ id:'sg-core', type:'circle', source:'suggestions', layout:{ visibility:'none' },
+    filter:['==',['get','status'],'pending'],
+    paint:{ 'circle-radius':['interpolate',['linear'],['zoom'],3,1.6,10,2.6], 'circle-color':'#e8e8e8' } });
   const sgPopup = new maplibregl.Popup({closeButton:false,closeOnClick:false,offset:12});
   map.on('mouseenter','sg-hit', e => {
     if (panelOpen) return;
     map.getCanvas().style.cursor='pointer';
     const p = e.features[0].properties;
-    sgPopup.setLngLat(e.features[0].geometry.coordinates).setHTML('<span style="letter-spacing:.07em">'+p.name+'</span><br><span style="opacity:.6;font-size:10px;letter-spacing:.14em;text-transform:uppercase">Suggested · '+p.status_label+'</span>').addTo(map);
+    sgPopup.setLngLat(e.features[0].geometry.coordinates).setHTML('<span style="letter-spacing:.07em">'+p.name+'</span><br><span style="opacity:.6;font-size:10px;letter-spacing:.14em;text-transform:uppercase">Prospective · '+p.status_label+'</span>').addTo(map);
   });
   map.on('mouseleave','sg-hit', () => { map.getCanvas().style.cursor=''; sgPopup.remove(); });
-  map.on('click','sg-hit', e => { location.href = 'suggested.html#' + e.features[0].properties.id; });
+  map.on('click','sg-hit', e => { location.href = 'prospective.html#' + e.features[0].properties.id; });
   const sgBtn = document.getElementById('suggest-toggle');
   if (!SUGGESTIONS.features.length) sgBtn.hidden = true;
+  const sgLegend = document.getElementById('sg-legend');
+  const SG_MARKS = [['researching','Researching','<circle cx="7" cy="7" r="5" fill="none" stroke="#e8e8e8" stroke-width="1.5"/>'],
+    ['pending','Proposed','<circle cx="7" cy="7" r="5" fill="none" stroke="#e8e8e8" stroke-width="1.5"/><circle cx="7" cy="7" r="1.8" fill="#e8e8e8"/>'],
+    ['planned','Planned for fieldwork','<circle cx="7" cy="7" r="5" fill="none" stroke="#e8e8e8" stroke-width="3"/>']];
+  const sgStatuses = new Set(SUGGESTIONS.features.map(f => f.properties.status));
+  sgLegend.innerHTML = SG_MARKS.filter(m => sgStatuses.has(m[0])).map(m => '<div class="sg-leg"><svg width="14" height="14" aria-hidden="true">'+m[2]+'</svg>'+m[1]+'</div>').join('');
   sgBtn.addEventListener('click', () => {
     const on = !sgBtn.classList.contains('active');
     sgBtn.classList.toggle('active', on);
     sgBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
-    ['sg-hit','sg-ring'].forEach(id => map.setLayoutProperty(id, 'visibility', on ? 'visible' : 'none'));
+    ['sg-hit','sg-ring','sg-core'].forEach(id => map.setLayoutProperty(id, 'visibility', on ? 'visible' : 'none'));
+    sgLegend.hidden = !on || !sgLegend.innerHTML;
     if (on) {
       const all = SITES.features.concat(SUGGESTIONS.features);
       const lngs = all.map(f => f.geometry.coordinates[0]), lats = all.map(f => f.geometry.coordinates[1]);
