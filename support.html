@@ -10,11 +10,11 @@
   gtag('config', 'G-TMR79M95R4');
 </script>
 <meta charset="utf-8"/>
-<title>Support — Public Lands Institute</title>
+<title>Support · Public Lands Institute</title>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="index, follow" name="robots"/>
 <meta content="Support the Public Lands Institute: fieldwork and archive costs for an ongoing photographic index of American public lands. CC0 Public Domain." name="description"/>
-<meta property="og:title" content="Support — Public Lands Institute"/>
+<meta property="og:title" content="Support · Public Lands Institute"/>
 <meta property="og:description" content="Support the Public Lands Institute: fieldwork and archive costs for an ongoing photographic index of American public lands. CC0 Public Domain."/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://publiclandsinstitute.net/support.html"/>
@@ -215,6 +215,18 @@
     margin-top: 6px;
   }
   .suggest-form button:hover { background: var(--fg); color: var(--bg); }
+  .give-link {
+    display: inline-block;
+    border: 1px solid var(--fg) !important;
+    padding: 10px 22px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin: 4px 0 14px 0;
+  }
+  .give-link:hover { background: var(--fg); color: var(--bg); text-decoration: none; }
+  .form-note { font-size: 13px; color: var(--muted); margin-bottom: 14px; }
   .suggest-status {
     border: 1px solid var(--border);
     padding: 12px 14px;
@@ -253,14 +265,18 @@
     <div class="rec-label">Archive</div>
     <p>Raw file storage, site hosting, and the upload pipelines to Wikimedia Commons and the Internet Archive.</p>
   </div>
+  <div class="rec-section">
+    <div class="rec-label">Sites seeking funding</div>
+    <p>Sites researched and proposed for fieldwork but not yet funded are mapped on the <a href="prospective.html">prospective sites</a> page, each with a short research note. Gifts fund the fieldwork that moves them into the index.</p>
+  </div>
 
-  <h2>Fiscal sponsor</h2>
+  <h2 id="give">Give</h2>
   <p>The Public Lands Institute is fiscally sponsored by CENTER, Santa Fe, a 501(c)(3) organization. Gifts are made to CENTER on behalf of the project and are tax deductible to the extent allowed by law. Check, Fidelity Charitable, Zelle, and PayPal are accepted.</p>
-  <p><a href="https://centersantafe.org/publiclands" target="_blank" rel="noopener">centersantafe.org/publiclands</a></p>
+  <p><a class="give-link" href="https://centersantafe.org/publiclands" target="_blank" rel="noopener">Give through CENTER</a></p>
 
   <h2 id="suggest">Suggest a site</h2>
-  <p>Know a public or protected place that belongs in the index? Name it. That is all that is needed; the research happens here. If you know something about it, especially history that rarely makes the signage, add a note.</p>
-  <p>Suggestions are reviewed before they appear on the <a href="prospective.html">prospective sites map</a>, which shows a short research note for each, never your name or message. Not every site can be documented.</p>
+  <p>Recommendations of public or protected lands for inclusion in the index are welcome. Only the name and state of the site are required; all research is conducted by the Institute. Knowledge of the site may be added in the notes, particularly history absent from its official interpretation.</p>
+  <p>Each suggestion is reviewed before it appears on the <a href="prospective.html">prospective sites map</a>, which publishes a brief research note for the site and never the name or message of the person who submitted it. Not every suggested site can be documented.</p>
 
   <p class="suggest-status" id="suggest-status" role="status" hidden></p>
 
@@ -270,14 +286,14 @@
       <input type="text" id="sg-site" name="site" maxlength="300" placeholder="Castner Range National Monument, Texas" required/>
     </div>
     <div class="field">
-      <label for="sg-note">Anything you would like to share <span class="opt">(optional)</span></label>
+      <label for="sg-note">Notes on the site <span class="opt">(optional)</span></label>
       <textarea id="sg-note" name="note" maxlength="5000"></textarea>
     </div>
     <div class="field">
-      <label for="sg-email">Email, if you are open to a question <span class="opt">(optional)</span></label>
+      <label for="sg-email">Email, for follow-up questions <span class="opt">(optional)</span></label>
       <input type="email" id="sg-email" name="email" maxlength="200" autocomplete="email"/>
     </div>
-    <p class="support-counts">Please do not give precise locations of unprotected archaeological or burial sites.</p>
+    <p class="form-note">Please do not include the precise locations of unprotected archaeological or burial sites.</p>
 
     <div class="hp" aria-hidden="true">
       <label for="sg-website">Website</label>
@@ -285,11 +301,11 @@
     </div>
     <input type="hidden" name="t" id="sg-t" value=""/>
 
-    <button type="submit">Send suggestion</button>
+    <button type="submit">Submit suggestion</button>
   </form>
 </div>
 <footer>
-  <span>Public Lands Institute — ongoing project</span>
+  <span>Public Lands Institute · ongoing project</span>
   <span>CC0 Public Domain</span>
   <span><a href="prospective.html">Prospective sites</a> · <a href="support.html">Support</a></span>
 </footer>
@@ -299,9 +315,9 @@
   var t = document.getElementById('sg-t');
   if (t) t.value = String(Date.now());
   var msgs = {
-    sent: 'Thank you. Your suggestion was received.',
-    invalid: 'Please name the site, then send again.',
-    error: 'The suggestion could not be sent. Please try again later.'
+    sent: 'Thank you. Your suggestion has been received.',
+    invalid: 'Please provide the name of the site and submit again.',
+    error: 'The suggestion could not be submitted. Please try again later.'
   };
   var m = /[?&]suggest=(\w+)/.exec(location.search);
   if (m && msgs[m[1]]) {
