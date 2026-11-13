@@ -40,3 +40,7 @@ loghaven_submission/
 .suggest.ini
 # Suggest a Site raw submissions (messages and emails)
 submissions/inbox.jsonl
+# Prospective sites list: private review notes identify grant applications (repo is public)
+submissions/suggestions.json
+submissions/suggestions.backup-*.json
+submissions/suggestions.csv
