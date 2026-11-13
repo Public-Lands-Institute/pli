@@ -134,7 +134,13 @@ html, body { height: 100%; font-family: 'Inter', sans-serif; background: var(--i
   #search { top: 64px; left: 16px; right: 16px; width: auto; max-width: 300px; }
   #layers { bottom: 16px; left: 16px; right: 16px; }
   .layer-btn { font-size: 11px; padding: 7px 10px; }
-  #legend { left: 16px; right: 16px; bottom: 84px; min-width: 0; }
+  #legend { left: 16px; right: 16px; bottom: 170px; min-width: 0; max-height: 34vh; padding: 10px 12px; }
+  #legend-title { margin-bottom: 8px; }
+  #legend-items { columns: 2; column-gap: 14px; }
+  .legend-item { font-size: 10px; margin-bottom: 5px; break-inside: avoid; }
+  .legend-item .legend-n { padding-left: 6px; }
+  .legend-group { break-after: avoid; }
+  #legend-note { font-size: 9px; }
   #panel { width: 100%; }
   #panel-body { padding: 8px 20px 48px; }
   .panel-site-name { font-size: 19px; }
