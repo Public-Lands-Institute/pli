@@ -743,8 +743,9 @@ def make_site_page(site, all_sites, photos, meta=None):
     sections += sec('GPS', gps_val)
     sections += make_sources_block(site)
 
+    # The summary is shown in the map panel and used as the page description;
+    # it is not repeated in the page body, where the full record follows.
     summary = site.get('summary', '')
-    summary_html = f'  <p class="site-summary">{esc(summary)}</p>\n' if summary else ''
     meta_desc = esc(summary) if summary else f'{name}. Public Lands Institute photographic index. CC0 Public Domain.'
 
     show_obs_headers = len(observations) > 1 or any(obs.get('notes') for obs in observations)
@@ -843,7 +844,6 @@ def make_site_page(site, all_sites, photos, meta=None):
     letter-spacing: 0.2em;
     color: var(--muted);
   }}
-  .site-summary {{ font-size: 15px; font-weight: 300; line-height: 1.6; max-width: 760px; margin-top: 14px; }}
   .sources summary {{ cursor: pointer; list-style: none; }}
   .sources summary::-webkit-details-marker {{ display: none; }}
   .sources summary::after {{ content: ' +'; }}
@@ -986,7 +986,7 @@ def make_site_page(site, all_sites, photos, meta=None):
 <div class="site-header">
   <h1>{name}</h1>
   <div class="state">{state}</div>
-{summary_html}</div>
+</div>
 <div class="site-layout">
   <aside class="site-record">
 {sections}  </aside>
