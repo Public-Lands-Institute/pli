@@ -61,7 +61,7 @@ Then deploy (two-phase — image uploads are handled separately by the "update" 
     --exclude '*.docx' --exclude 'banner.html' --exclude 'index2.html' \
     --exclude 'archive2.html' --exclude 'Draft*' --exclude 'Database Style/' \
     --exclude 'no image/' --exclude 'single image/' --exclude 'deploy.sh' \
-    --exclude '.gitignore' --exclude '.DS_Store' --exclude 'application_submission/' --exclude 'submissions/' --exclude '_review_sheets/' --exclude '_to_delete/' \
+    --exclude '.gitignore' --exclude '.DS_Store' --exclude '*_submission/' --exclude 'submissions/' --exclude '_review_sheets/' --exclude '_to_delete/' \
     --exclude 'portfolio/' --exclude 'application-portfolio/' --exclude '*portfolio*' \
     --exclude 'nativeland_cache.json' --exclude 'inaturalist_cache.json' --exclude 'black-hills-commons-deletion-request.txt' \
     -e "ssh -o StrictHostKeyChecking=no -o PubkeyAuthentication=no -o ControlMaster=auto -o ControlPath=/tmp/pli_ssh_mux -o ControlPersist=300 -o ServerAliveInterval=60 -o ServerAliveCountMax=3" \
@@ -208,7 +208,7 @@ sshpass -p "$DREAMHOST_PASS" rsync -avz --checksum --delete \
   --exclude '*.docx' --exclude 'banner.html' --exclude 'index2.html' \
   --exclude 'archive2.html' --exclude 'Draft*' --exclude 'Database Style/' \
   --exclude 'no image/' --exclude 'single image/' --exclude 'deploy.sh' \
-  --exclude '.gitignore' --exclude '.DS_Store' --exclude 'application_submission/' --exclude 'submissions/' --exclude '_review_sheets/' --exclude '_to_delete/' \
+  --exclude '.gitignore' --exclude '.DS_Store' --exclude '*_submission/' --exclude 'submissions/' --exclude '_review_sheets/' --exclude '_to_delete/' \
   --exclude 'portfolio/' --exclude 'application-portfolio/' --exclude '*portfolio*' \
   --exclude 'nativeland_cache.json' --exclude 'inaturalist_cache.json' --exclude 'black-hills-commons-deletion-request.txt' \
   -e "ssh -o StrictHostKeyChecking=no -o PubkeyAuthentication=no -o ControlMaster=auto -o ControlPath=/tmp/pli_ssh_mux -o ControlPersist=300 -o ServerAliveInterval=60 -o ServerAliveCountMax=3" \
