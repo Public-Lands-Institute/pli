@@ -74,7 +74,7 @@ Then deploy (two-phase — image uploads are handled separately by the "update" 
     "find $DREAMHOST_REMOTE_PATH -type d -exec chmod 755 {} + && find $DREAMHOST_REMOTE_PATH -type f -exec chmod 644 {} +"
 
 ## Field order in sites.json
-geological_age, epoch, native_lands, displacement_tenure, shadow_history, ecology, hydrology, acreage, gps
+summary (one plain sentence shown under the site name and used as the page meta description: what the place is plus its central documented fact, drawn only from the record; written for every site), then: geological_age, epoch, native_lands, displacement_tenure, shadow_history, ecology, hydrology, acreage, gps
 (plus conservation_status, endangered_species, lat, lng, inat_radius_km — kept in JSON, not displayed)
 
 ## shadow_history field

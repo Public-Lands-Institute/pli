@@ -616,6 +616,81 @@ def make_use_block(slug, observations):
 '''
 
 
+# ── Per-site sources (from shadow_history_bibliography.txt) ────────────────────
+
+CONTACT_EMAIL = 'contact@publiclandsinstitute.net'
+BIBLIOGRAPHY_PATH = 'shadow_history_bibliography.txt'
+_BIB = None
+
+
+def _name_key(text):
+    return re.sub(r'[^a-z0-9]', '', re.sub(r'\(.*?\)', '', text.lower()))
+
+
+def load_bibliography():
+    """{normalized section heading: [(citation text, [urls])]}.
+    Sections are headings boxed between rule lines; entries are separated by
+    blank lines, with indented URL lines under the citation text."""
+    global _BIB
+    if _BIB is not None:
+        return _BIB
+    _BIB = {}
+    if not os.path.exists(BIBLIOGRAPHY_PATH):
+        return _BIB
+    with open(BIBLIOGRAPHY_PATH) as f:
+        lines = f.read().split('\n')
+    is_rule = lambda l: l.startswith('━━━')
+    heads = [i for i in range(1, len(lines) - 1) if is_rule(lines[i - 1]) and is_rule(lines[i + 1])]
+    for n, i in enumerate(heads):
+        end = heads[n + 1] - 1 if n + 1 < len(heads) else len(lines)
+        entries, text, urls = [], [], []
+        for line in lines[i + 2:end] + ['']:
+            s = line.strip()
+            if not s:
+                if text:
+                    entries.append((' '.join(text), urls))
+                text, urls = [], []
+            elif s.startswith('http'):
+                urls.append(s)
+            else:
+                text.append(s)
+        _BIB[_name_key(lines[i])] = entries
+    return _BIB
+
+
+def site_sources(site):
+    bib = load_bibliography()
+    key = _name_key(site['name'])
+    if key in bib:
+        return bib[key]
+    # A heading may carry a longer form of the name (e.g. "X / Y Nature Center")
+    close = [k for k in bib if k.startswith(key)]
+    return bib[close[0]] if len(close) == 1 else []
+
+
+def _cite(text):
+    """Citation text for display: house rule, no em or en dashes."""
+    text = re.sub(r'\s+(—|--)\s+', ', ', text).replace('—', ', ').replace('–', '-')
+    return esc(text)
+
+
+def make_sources_block(site):
+    """Collapsed list of the sources consulted for the record, plus the
+    corrections link."""
+    subject = ('Correction: ' + site['name']).replace(' ', '%20').replace("'", '%27').replace(',', '%2C')
+    correct = (f'<div class="rec-section rec-correct"><div class="rec-label">Corrections</div>'
+               f'<p><a href="mailto:{CONTACT_EMAIL}?subject={subject}">Report an error in this record</a></p></div>')
+    entries = site_sources(site)
+    if not entries:
+        return correct
+    items = ''
+    for text, urls in entries:
+        links = ''.join(f' <a href="{esc(u)}" target="_blank" rel="noopener">Link</a>' for u in urls)
+        items += f'<li>{_cite(text)}{links}</li>'
+    return (f'<details class="rec-section sources"><summary class="rec-label">Sources consulted ({len(entries)})</summary>'
+            f'<ol>{items}</ol></details>' + correct)
+
+
 def make_site_page(site, all_sites, photos, meta=None):
     slug  = site['slug']
     name  = site['name']
@@ -664,6 +739,11 @@ def make_site_page(site, all_sites, photos, meta=None):
     sections += sec('Hydrology', site.get('hydrology', ''))
     sections += sec('Acreage', format_acreage(site.get('acreage', '')))
     sections += sec('GPS', gps_val)
+    sections += make_sources_block(site)
+
+    summary = site.get('summary', '')
+    summary_html = f'  <p class="site-summary">{esc(summary)}</p>\n' if summary else ''
+    meta_desc = esc(summary) if summary else f'{name}. Public Lands Institute photographic index. CC0 Public Domain.'
 
     show_obs_headers = len(observations) > 1 or any(obs.get('notes') for obs in observations)
     total_images = sum(len(obs['images']) for obs in observations)
@@ -707,9 +787,9 @@ def make_site_page(site, all_sites, photos, meta=None):
 <title>{name} · Public Lands Institute</title>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="index, follow" name="robots"/>
-<meta content="{name}. Public Lands Institute photographic index. CC0 Public Domain." name="description"/>
+<meta content="{meta_desc}" name="description"/>
 <meta property="og:title" content="{name} · Public Lands Institute"/>
-<meta property="og:description" content="{name}. An ongoing photographic index and open-access archive of American public lands. CC0 Public Domain."/>
+<meta property="og:description" content="{meta_desc}"/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://publiclandsinstitute.net/sites/{slug}.html"/>
 <meta property="og:site_name" content="Public Lands Institute"/>
@@ -761,6 +841,15 @@ def make_site_page(site, all_sites, photos, meta=None):
     letter-spacing: 0.2em;
     color: var(--muted);
   }}
+  .site-summary {{ font-size: 15px; font-weight: 300; line-height: 1.6; max-width: 760px; margin-top: 14px; }}
+  .sources summary {{ cursor: pointer; list-style: none; }}
+  .sources summary::-webkit-details-marker {{ display: none; }}
+  .sources summary::after {{ content: ' +'; }}
+  .sources[open] summary::after {{ content: ''; }}
+  .sources ol {{ margin: 4px 0 0 18px; font-size: 12px; font-weight: 300; line-height: 1.6; color: var(--muted); }}
+  .sources li {{ margin-bottom: 8px; overflow-wrap: anywhere; }}
+  .sources a, .rec-correct a {{ color: var(--fg); border-bottom: 1px solid var(--border); }}
+  .sources a:hover, .rec-correct a:hover {{ text-decoration: none; border-bottom-color: var(--fg); }}
   .site-layout {{
     display: grid;
     grid-template-columns: 1fr;
@@ -895,7 +984,7 @@ def make_site_page(site, all_sites, photos, meta=None):
 <div class="site-header">
   <h1>{name}</h1>
   <div class="state">{state}</div>
-</div>
+{summary_html}</div>
 <div class="site-layout">
   <aside class="site-record">
 {sections}  </aside>
