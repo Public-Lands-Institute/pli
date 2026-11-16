@@ -373,7 +373,7 @@ for site in sites:
 if not DRY_RUN:
     with open(SITES_FILE, 'w') as f:
         json.dump(sites, f, indent=2, ensure_ascii=False)
-    print(f'\nDone — {updated} site(s) updated. Run python3 generate_sites.py to rebuild.')
+    print(f'\nDone — {updated} site(s) updated. Run python3 build.py to rebuild.')
 else:
     print(f'\nDry run complete — {updated} site(s) would be updated.')
     print('Remove --dry-run to apply changes.')

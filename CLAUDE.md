@@ -18,7 +18,7 @@ Host: DreamHost (SFTP port 22, credentials in .env)
 - sites_meta.json — agency, agency_type, territory data used by the map index (index.html)
 - index.html, glossary.html, about.html — hand-maintained (build.py only updates the About stats sentence and the sites-map.js version string in index.html)
 - tools/ — validate_pli.py (data/page checks), sync_photos.py (append photos.json entries for new images), make_cards.py (og social cards in img/cards/), cleanup_sites.py, add_site_og.py
-- generate_sites.py — LEGACY, superseded by build.py July 2026. Never run it: it would overwrite index.html and the generated pages with pre-audit output. Kept only as reference for the iNat/native-land fetchers and the glossary builder
+- generate_sites.py — REMOVED from the repo 2026-11-16 (legacy generator, superseded by build.py July 2026). A local copy sits in _to_delete/legacy-2026-11-16/ and it remains in git history, as reference for the iNat/native-land fetchers and the glossary builder. Never run it
 - inaturalist_cache.json — iNat API cache, safe to delete entries to force refresh
 - img/jpg/<slug>/ — JPEG images; thumbs/<slug>/ — gallery thumbnails; img/RAW/<slug>/ — RAW+XMP (per-site since July 2026), upload source for the Internet Archive pipeline, NOT deployed to DreamHost; img/cards/ — 1200x630 social cards
 - img/full/<slug>/ — TIFF masters (upload to Commons only, never to DreamHost)
