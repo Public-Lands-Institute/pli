@@ -235,8 +235,9 @@ const GEOLOGY_LEGEND = [
   ["Quaternary · <2.6 Mya","#8c8c8c"],
 ];
 const AGENCY_ENTRIES = [
-  ["National Park Service","#5c9e6a"],["U.S. Fish & Wildlife Service","#4a8a9e"],
-  ["State Park / Preserve","#9e7a4a"],["Nature Conservancy / Private","#7a5a8a"],["Other","#5a5a52"],
+  ["National Park Service","#5c9e6a"],["U.S. Forest Service","#c8c05a"],
+  ["U.S. Fish & Wildlife Service","#4a8a9e"],["Other federal","#a8a8a0"],
+  ["State","#9e7a4a"],["County / Municipal","#b0607a"],["Private preserve","#7a5a8a"],
 ];
 // Group headers are [label, null]; showLegend renders them as labels, not filter items.
 const NATIVE_LEGEND = [
@@ -255,12 +256,17 @@ function geologyColor(geo, epoch) {
   for (const [era,c] of GEOLOGY_ERAS) if (g.includes(era.toLowerCase())) return c;
   return '#5a5a52';
 }
-function agencyColor(s) {
-  const sl=(s||'').toLowerCase();
-  if (sl.includes('national park')||sl.includes('national seashore')||sl.includes('national river')||sl.includes('national monument')||sl.includes('national recreation')) return '#5c9e6a';
-  if (sl.includes('wildlife refuge')||sl.includes('federal wilderness')) return '#4a8a9e';
-  if (sl.includes('state park')||sl.includes('state nature preserve')||sl.includes('state memorial')||sl.includes('state forest')) return '#9e7a4a';
-  if (sl.includes('nature conservancy')||sl.includes('private')||sl.includes('land trust')) return '#7a5a8a';
+// Colors come from the curated agency_type in sites_meta.json (not from
+// conservation_status text, which names designations rather than managers).
+function agencyColor(t) {
+  t=(t||'').toLowerCase();
+  if (t==='nps') return '#5c9e6a';
+  if (t==='usfs') return '#c8c05a';
+  if (t==='usfws') return '#4a8a9e';
+  if (t.startsWith('state')) return '#9e7a4a';
+  if (t.includes('municipal')||t.includes('county')||t.includes('conservation district')) return '#b0607a';
+  if (t.includes('private')) return '#7a5a8a';
+  if (t.includes('national')||t.includes('usace')||t.includes('doe')||t.includes('blm')) return '#a8a8a0';
   return '#5a5a52';
 }
 let activeLayer = null;
@@ -275,7 +281,7 @@ const LINE_LAYERS = new Set([]);
 const GROUP_LINE_BLANK = ['==', ['get','key'], '__none__'];
 function dotColor(p) {
   if (activeLayer==='geology') return geologyColor(p.geology, p.epoch);
-  if (activeLayer==='agency')  return agencyColor(p.conservation_status);
+  if (activeLayer==='agency')  return agencyColor(p.agency_type);
   if (activeLayer==='native')  return p.primary_nation ? (NATION_COLORS[p.primary_nation]||'#8c8c8c') : '#3a3a38';
   if (activeLayer==='shadow')  { const l=(p.shadow_history||'').length; return l>800?'#c85a2a':l>400?'#c8904a':'#8a6a3a'; }
   return '#e8e8e8';

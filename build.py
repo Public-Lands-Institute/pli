@@ -302,6 +302,15 @@ def counts_line(all_sites, photos):
             f'{c["photographs"]} photographs, {c["acres_m"]} million acres')
 
 
+def lightbox_src(prefix=''):
+    """js/lightbox.js with a ?v= content hash. .htaccess caches .js for a year
+    as immutable, so an unversioned URL would never refresh for returning
+    visitors."""
+    with open('js/lightbox.js', 'rb') as f:
+        v = hashlib.md5(f.read()).hexdigest()[:10]
+    return f'{prefix}js/lightbox.js?v={v}'
+
+
 # ── Shared page chrome ─────────────────────────────────────────────────────────
 
 FONT_LINKS = '''<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -762,7 +771,7 @@ def make_site_page(site, all_sites, photos):
   <span><a href="../prospective.html">Prospective sites</a> · <a href="../contribute.html">Contribute</a></span>
 </footer>
 </div>
-<script src="../js/lightbox.js"></script>
+<script src="{lightbox_src('../')}"></script>
 </body>
 </html>'''
 
@@ -932,7 +941,7 @@ def make_gallery_page(all_sites, photos):
   }});
 }})();
 </script>
-<script src="js/lightbox.js"></script>
+<script src="{lightbox_src()}"></script>
 </body>
 </html>'''
 

@@ -44,3 +44,12 @@ submissions/inbox.jsonl
 submissions/suggestions.json
 submissions/suggestions.backup-*.json
 submissions/suggestions.csv
+
+# Grant, fellowship and residency application material lives in ../pli-planning,
+# outside this repo. These patterns are a safety net in case any of it is
+# recreated here: it must never be pushed or deployed.
+portfolio/
+application-portfolio/
+*portfolio*.py
+export_*_grant.py
+export_application_images.py

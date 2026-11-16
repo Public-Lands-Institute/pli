@@ -1,3 +1,15 @@
+# No directory listings
+Options -Indexes
+
+# One canonical origin: https, no www (ACME challenges are left alone)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{REQUEST_URI} !^/\.well-known/
+  RewriteCond %{HTTPS} !=on [OR]
+  RewriteCond %{HTTP_HOST} ^www\. [NC]
+  RewriteRule ^ https://publiclandsinstitute.net%{REQUEST_URI} [L,R=301]
+</IfModule>
+
 AddType application/octet-stream .RAF .NEF .raf .nef .xmp .XMP
 
 # Retired pages

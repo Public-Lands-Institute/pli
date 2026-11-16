@@ -6,6 +6,7 @@ Static photographic index of public lands. CC0 Public Domain.
 Always work directly in the main repo. Never use git worktrees for this project — they drift from main and cause data loss on deploy. If you find yourself in a worktree, sync sites.json, sites_meta.json, and *_cache.json from the main repo before generating or deploying.
 Never use preview_start, preview_screenshot, preview_snapshot, or any browser preview tools. They do not work in this environment. Do not attempt browser verification for any change — report what changed and move on.
 At the start of every session, read sites.json (first 60 lines), sites_meta.json, shadow_history_bibliography.txt, build.py, data/photos.json (spot-check a slug), and js/lightbox.js before performing any task.
+Grant, fellowship, and residency application material (portfolio exports, export scripts, submission folders) lives in ../pli-planning, outside this repo. Never create or keep it here: it must not be deployed or pushed (the repo is public). Run those scripts from this folder as python3 ../pli-planning/<script>.py; their output goes to pli-planning. The portfolio-builder skill stays in .claude/skills (gitignored, never deployed).
 Site: publiclandsinstitute.net
 Host: DreamHost (SFTP port 22, credentials in .env)
 
@@ -61,6 +62,8 @@ Then deploy (two-phase — image uploads are handled separately by the "update" 
     --exclude 'archive2.html' --exclude 'Draft*' --exclude 'Database Style/' \
     --exclude 'no image/' --exclude 'single image/' --exclude 'deploy.sh' \
     --exclude '.gitignore' --exclude '.DS_Store' --exclude 'application_submission/' --exclude 'submissions/' --exclude '_review_sheets/' --exclude '_to_delete/' \
+    --exclude 'portfolio/' --exclude 'application-portfolio/' --exclude '*portfolio*' \
+    --exclude 'nativeland_cache.json' --exclude 'inaturalist_cache.json' --exclude 'black-hills-commons-deletion-request.txt' \
     -e "ssh -o StrictHostKeyChecking=no -o PubkeyAuthentication=no -o ControlMaster=auto -o ControlPath=/tmp/pli_ssh_mux -o ControlPersist=300 -o ServerAliveInterval=60 -o ServerAliveCountMax=3" \
     . "$DREAMHOST_USER@$DREAMHOST_HOST:$DREAMHOST_REMOTE_PATH/"
   # Phase 3: Fix permissions on existing files — rsync --chmod only applies to files transferred in that run
@@ -206,6 +209,8 @@ sshpass -p "$DREAMHOST_PASS" rsync -avz --checksum --delete \
   --exclude 'archive2.html' --exclude 'Draft*' --exclude 'Database Style/' \
   --exclude 'no image/' --exclude 'single image/' --exclude 'deploy.sh' \
   --exclude '.gitignore' --exclude '.DS_Store' --exclude 'application_submission/' --exclude 'submissions/' --exclude '_review_sheets/' --exclude '_to_delete/' \
+  --exclude 'portfolio/' --exclude 'application-portfolio/' --exclude '*portfolio*' \
+  --exclude 'nativeland_cache.json' --exclude 'inaturalist_cache.json' --exclude 'black-hills-commons-deletion-request.txt' \
   -e "ssh -o StrictHostKeyChecking=no -o PubkeyAuthentication=no -o ControlMaster=auto -o ControlPath=/tmp/pli_ssh_mux -o ControlPersist=300 -o ServerAliveInterval=60 -o ServerAliveCountMax=3" \
   . "$DREAMHOST_USER@$DREAMHOST_HOST:$DREAMHOST_REMOTE_PATH/"
 sshpass -p "$DREAMHOST_PASS" ssh \
