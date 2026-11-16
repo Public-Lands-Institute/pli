@@ -313,6 +313,62 @@ def format_acreage(acreage):
     return f'{a} acres' if re.fullmatch(r'\d[\d,]*', a) else a
 
 
+# ── Image license metadata (schema.org ImageObject, Google image license) ────
+# Google requires contentUrl plus one of creator / creditText / copyrightNotice /
+# license, and needs license for the Licensable badge. One ImageObject per image
+# instance on the page, in a single JSON-LD array.
+
+SITE_URL = 'https://publiclandsinstitute.net'
+CC0_URL = 'https://creativecommons.org/publicdomain/zero/1.0/'
+CREATOR_NAME = 'Jordan Tate'
+CREDIT_TEXT = 'Public Lands Institute'
+COPYRIGHT_NOTICE = 'No rights reserved (CC0 1.0)'
+# Address shown in the "Use this image" block for reports of where an image was
+# used. Empty: the block points to the Contribute page instead.
+USE_REPORT_EMAIL = 'contact@publiclandsinstitute.net'
+
+
+def image_alt(site, agency, caption_index):
+    """Plain descriptive alt text: site, state, agency, caption number."""
+    state = STATE_NAMES.get(site['state'], site['state'])
+    alt = f'Photograph {caption_index}, {site["name"]}, {state}'
+    if agency:
+        alt += f', managed by {agency}'
+    return alt
+
+
+def image_object(site, agency, img, total, license_page):
+    state = STATE_NAMES.get(site['state'], site['state'])
+    desc = f'Photograph {img["caption_index"]} of {total}, {site["name"]}, {state}.'
+    if agency:
+        desc += f' Managed by {agency}.'
+    desc += ' Public Lands Institute photographic index.'
+    obj = {
+        '@type': 'ImageObject',
+        'contentUrl': f'{SITE_URL}/{img["jpg"]}',
+        'name': f'{site["name"]} {img["caption_index"]}',
+        'description': desc,
+        'license': CC0_URL,
+        'acquireLicensePage': license_page,
+        'creator': {'@type': 'Person', 'name': CREATOR_NAME},
+        'creditText': CREDIT_TEXT,
+        'copyrightNotice': COPYRIGHT_NOTICE,
+    }
+    if img.get('date'):
+        obj['dateCreated'] = img['date']
+    return obj
+
+
+def json_ld(objects):
+    """<script type="application/ld+json"> block; '</' escaped so record text
+    can never close the script element."""
+    if not objects:
+        return ''
+    data = {'@context': 'https://schema.org', '@graph': objects}
+    body = json.dumps(data, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
+    return f'<script type="application/ld+json">\n{body}\n</script>\n'
+
+
 def write_if_changed(path, content):
     """Write only when the content differs, so file dates (and the sitemap
     lastmod values read from them) change only when a page really changes."""
@@ -528,11 +584,49 @@ def observations_for_site(site, entries):
     return result
 
 
-def make_site_page(site, all_sites, photos):
+def make_use_block(slug, observations):
+    """'Use this image' terms + per-image TIFF / Commons links."""
+    page_url = f'{SITE_URL}/sites/{slug}.html'
+    rows = ''
+    for obs in observations:
+        for img in obs['images']:
+            links = ''
+            if img['tif_url']:
+                links += f'<a href="{img["tif_url"]}">TIFF</a>'
+            if img['commons_page']:
+                links += f'<a href="{img["commons_page"]}" target="_blank" rel="noopener">Commons</a>'
+            if not links:
+                links = '<span class="use-pending">Uploading</span>'
+            rows += (f'      <li><span class="use-n">{img["caption_index"]}</span>'
+                     f'<span class="use-file">{img["camera_filename"]}</span>{links}</li>\n')
+    if not rows:
+        return ''
+    if USE_REPORT_EMAIL:
+        report = f'write to <a href="mailto:{USE_REPORT_EMAIL}">{USE_REPORT_EMAIL}</a>'
+    else:
+        report = 'use the <a href="../contribute.html">Contribute page</a>'
+    return f'''<section class="use-block" id="use">
+  <div class="rec-label">Use this image</div>
+  <p>These photographs are in the public domain (CC0 1.0). No permission is required. No credit is required.</p>
+  <p>Optional credit line: Public Lands Institute, <a href="{page_url}">{page_url[len("https://"):]}</a></p>
+  <p>To tell PLI where an image was used, {report}.</p>
+  <ul class="use-list">
+{rows}  </ul>
+</section>
+'''
+
+
+def make_site_page(site, all_sites, photos, meta=None):
     slug  = site['slug']
     name  = site['name']
     state = site['state']
+    agency = (meta or {}).get(slug, {}).get('agency', '')
     observations = observations_for_site(site, photos.get(slug, []))
+    page_url = f'{SITE_URL}/sites/{slug}.html'
+    all_imgs = [img for obs in observations for img in obs['images']]
+    ld_block = json_ld([image_object(site, agency, img, len(all_imgs), f'{page_url}#use')
+                        for img in all_imgs])
+    use_block = make_use_block(slug, observations)
 
     og_image_tags = ''
     if os.path.exists(f'img/cards/{slug}.jpg'):
@@ -587,9 +681,10 @@ def make_site_page(site, all_sites, photos):
             commons_attr = f' data-commons="{img["commons_page"]}"' if img['commons_page'] else ''
             raw_attr = f' data-raw="{img["raw"]}"' if img['raw'] else ''
             xmp_attr = f' data-xmp="{img["xmp"]}"' if img['xmp'] else ''
+            alt = esc(image_alt(site, agency, img['caption_index']))
             images_html += f'''    <figure class="ph"{tif_attr}{commons_attr}{raw_attr}{xmp_attr}>
       <a href="../{img["jpg"]}" download title="{caption}">
-        <img src="../{img["jpg"]}" alt="{caption}" loading="lazy"/>
+        <img src="../{img["jpg"]}" alt="{alt}" loading="lazy"/>
       </a>
       <figcaption>
         <span class="caption-title">{caption}{date_str}</span>
@@ -623,9 +718,34 @@ def make_site_page(site, all_sites, photos):
 <link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
 <link href="/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/>
 <link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
-{FONT_LINKS}
+{ld_block}{FONT_LINKS}
 <style>
 {SHARED_CSS}
+  .use-block {{
+    margin-top: 40px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+    max-width: 720px;
+  }}
+  .use-block p {{ font-size: 13.5px; line-height: 1.7; margin-bottom: 6px; }}
+  .use-block p a {{ border-bottom: 1px solid var(--border); }}
+  .use-block p a:hover {{ text-decoration: none; border-bottom-color: var(--fg); }}
+  .use-list {{ list-style: none; margin-top: 14px; }}
+  .use-list li {{
+    display: grid;
+    grid-template-columns: 2.5em 1fr max-content max-content;
+    gap: 18px;
+    align-items: baseline;
+    padding: 4px 0;
+    font-size: 11px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }}
+  .use-n {{ color: var(--fg); }}
+  .use-file {{ color: var(--muted); font-size: 10px; font-family: monospace; letter-spacing: 0.04em; }}
+  .use-list a, .use-pending {{
+    color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em;
+  }}
+  .use-list a:hover {{ color: var(--fg); }}
   .site-header {{ margin-bottom: 28px; }}
   .site-header h1 {{
     font-size: 26px;
@@ -787,7 +907,7 @@ def make_site_page(site, all_sites, photos):
     </div>
   </div>
 </div>
-<nav class="site-nav">
+{use_block}<nav class="site-nav">
   {nav_prev}
   {nav_next}
 </nav>
@@ -804,10 +924,12 @@ def make_site_page(site, all_sites, photos):
 
 # ── photographs.html ───────────────────────────────────────────────────────────
 
-def make_gallery_page(all_sites, photos):
+def make_gallery_page(all_sites, photos, meta=None):
     """Visual feed of every image grouped into per-park sections.
     Sections default to most-recent order; a client-side toggle re-sorts
     alphabetically. Reuses js/lightbox.js via the shared <figure> markup."""
+    meta = meta or {}
+    ld_objects = []
     groups = []
     for site in all_sites:
         slug = site['slug']
@@ -839,10 +961,16 @@ def make_gallery_page(all_sites, photos):
         site = g['site']
         name, slug = site['name'], site['slug']
         date_label = format_obs_date(g['recent'][:7]) if g['recent'] else ''
+        agency = meta.get(slug, {}).get('agency', '')
+        n_site = len(photos.get(slug, []))
         figs = ''
         for e in g['imgs']:
             img = e['img']
             caption = f'{name} {img["caption_index"]}'
+            alt = esc(image_alt(site, agency, img['caption_index']))
+            obj = image_object(site, agency, img, n_site, f'{SITE_URL}/sites/{slug}.html#use')
+            obj['thumbnailUrl'] = f'{SITE_URL}/{e["thumb"]}'
+            ld_objects.append(obj)
             date_str = img['date'] or ''
             meta_caption = caption + (f' · {date_str}' if date_str else '')
             tif_attr = f' data-tif="{img["tif_url"]}"' if img['tif_url'] else ''
@@ -850,7 +978,7 @@ def make_gallery_page(all_sites, photos):
             raw_attr = f' data-raw="{img["raw"]}"' if img['raw'] else ''
             xmp_attr = f' data-xmp="{img["xmp"]}"' if img['xmp'] else ''
             figs += f'''      <figure class="feed-fig"{tif_attr}{commons_attr}{raw_attr}{xmp_attr}>
-        <a class="feed-link" href="{img['jpg']}" download title="{caption}"><img class="feed-img" src="{e['thumb']}" data-full="{img['jpg']}" alt="{caption}" loading="lazy"/></a>
+        <a class="feed-link" href="{img['jpg']}" download title="{caption}"><img class="feed-img" src="{e['thumb']}" data-full="{img['jpg']}" alt="{alt}" loading="lazy"/></a>
         <span class="caption-title" style="display:none">{meta_caption}</span>
         <span class="caption-filename" style="display:none">{img['camera_filename']}</span>
       </figure>
@@ -894,7 +1022,7 @@ def make_gallery_page(all_sites, photos):
 <link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
 <link href="/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/>
 <link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
-{FONT_LINKS}
+{json_ld(ld_objects)}{FONT_LINKS}
 <style>
 {SHARED_CSS}
   .feed-intro {{ font-size: 13px; color: var(--muted); margin-bottom: 14px; max-width: 640px; }}
@@ -1200,7 +1328,14 @@ def update_support_counts(all_sites, photos):
 BASE_URL = 'https://publiclandsinstitute.net'
 
 
-def make_sitemap(all_sites):
+def make_sitemap(all_sites, photos=None):
+    """URL sitemap with Google image extensions: each site page lists its
+    full-size JPEGs as image:image entries (image:loc only; Google ignores the
+    other image tags)."""
+    photos = photos or {}
+    page_images = {f'sites/{s["slug"]}.html': [f'{BASE_URL}/{r["jpg"]}'
+                   for r in image_records(s['slug'], photos.get(s['slug'], []))]
+                   for s in all_sites}
     entries = [
         (f'{BASE_URL}/', 'index.html'),
         (f'{BASE_URL}/photographs.html', 'photographs.html'),
@@ -1213,10 +1348,18 @@ def make_sitemap(all_sites):
     entries += [(f'{BASE_URL}/sites/{s["slug"]}.html', f'sites/{s["slug"]}.html')
                 for s in all_sites]
     out = '<?xml version="1.0" encoding="UTF-8"?>\n'
-    out += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    out += ('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n'
+            '        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n')
     for url, path in entries:
         lastmod = datetime.date.fromtimestamp(os.path.getmtime(path)).isoformat()
-        out += f'  <url><loc>{url}</loc><lastmod>{lastmod}</lastmod></url>\n'
+        imgs = page_images.get(path, [])
+        if not imgs:
+            out += f'  <url><loc>{url}</loc><lastmod>{lastmod}</lastmod></url>\n'
+            continue
+        out += f'  <url><loc>{url}</loc><lastmod>{lastmod}</lastmod>\n'
+        for u in imgs:
+            out += f'    <image:image><image:loc>{esc(u)}</image:loc></image:image>\n'
+        out += '  </url>\n'
     out += '</urlset>\n'
     return out
 
@@ -1590,13 +1733,13 @@ def main(argv):
     if 'sites' in targets:
         os.makedirs('sites', exist_ok=True)
         for site in sites:
-            write_if_changed(f'sites/{site["slug"]}.html', make_site_page(site, sites, photos))
+            write_if_changed(f'sites/{site["slug"]}.html', make_site_page(site, sites, photos, meta))
         print(f'sites/ ({len(sites)} pages)')
     if 'archive' in targets:
         write_if_changed('archive.html', make_archive_page(sites, photos))
         print('archive.html')
     if 'photographs' in targets:
-        write_if_changed('photographs.html', make_gallery_page(sites, photos))
+        write_if_changed('photographs.html', make_gallery_page(sites, photos, meta))
         print('photographs.html')
     if 'about' in targets:
         changed = update_about_stats(sites, photos)
@@ -1623,7 +1766,7 @@ def main(argv):
     if 'sitemap' in targets:
         # Last so lastmod reflects the files written above
         with open('sitemap.xml', 'w') as f:
-            f.write(make_sitemap(sites))
+            f.write(make_sitemap(sites, photos))
         print('sitemap.xml')
 
     if validate:
