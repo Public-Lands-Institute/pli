@@ -377,17 +377,43 @@ function rasterLook(map) {
   set('waterway', 'line-color', '#33424d');
   set('waterway', 'line-width', ['interpolate',['linear'],['zoom'],4,0.4,6,0.7,8,1,12,1.6,16,3]);
 }
+const INITIAL_BOUNDS = (() => {
+  const lngs = SITES.features.map(f => f.geometry.coordinates[0]);
+  const lats = SITES.features.map(f => f.geometry.coordinates[1]);
+  return [[Math.min(...lngs), Math.min(...lats)], [Math.max(...lngs), Math.max(...lats)]];
+})();
+const initialPadding = () => window.innerWidth < 640 ? {top:70,bottom:130,left:30,right:30} : {top:90,bottom:120,left:70,right:70};
 const map = new maplibregl.Map({
   container:'map',
   style:'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
-  bounds:(() => {
-    const lngs = SITES.features.map(f => f.geometry.coordinates[0]);
-    const lats = SITES.features.map(f => f.geometry.coordinates[1]);
-    return [[Math.min(...lngs), Math.min(...lats)], [Math.max(...lngs), Math.max(...lats)]];
-  })(),
-  fitBoundsOptions:{ padding: window.innerWidth < 640 ? {top:70,bottom:130,left:30,right:30} : {top:90,bottom:120,left:70,right:70} },
+  bounds:INITIAL_BOUNDS,
+  fitBoundsOptions:{ padding: initialPadding() },
   minZoom:2, maxZoom:18,
 });
+// MapLibre measures its container once when the map is built and ignores the
+// first resize notification. If the viewport settles a moment later (the
+// browser restoring a saved page zoom, a window still opening), the canvas
+// stays at the earlier, smaller size and part of the map area is blank.
+// Re-measure whenever the canvas and its container disagree, and re-frame
+// the sites if the view has not been moved yet.
+const cameraKey = () => { const c = map.getCenter(); return [c.lng, c.lat, map.getZoom()].map(n => n.toFixed(4)).join(); };
+let initialCamera = cameraKey();
+function syncMapSize() {
+  const box = map.getContainer(), canvas = map.getCanvas();
+  if (Math.abs(canvas.clientWidth - box.clientWidth) < 2 && Math.abs(canvas.clientHeight - box.clientHeight) < 2) return;
+  const untouched = cameraKey() === initialCamera;
+  map.resize();
+  if (untouched) {
+    map.fitBounds(INITIAL_BOUNDS, { padding: initialPadding(), duration: 0 });
+    initialCamera = cameraKey();
+  }
+}
+if (window.ResizeObserver) new ResizeObserver(syncMapSize).observe(map.getContainer());
+window.addEventListener('resize', syncMapSize);
+window.addEventListener('pageshow', syncMapSize);
+if (window.visualViewport) window.visualViewport.addEventListener('resize', syncMapSize);
+map.once('load', syncMapSize);
+[0, 250, 1000, 3000].forEach(ms => setTimeout(syncMapSize, ms));
 document.getElementById('site-count').textContent = SITES.features.length+' sites';
 map.on('load', () => {
   rasterLook(map);

@@ -1759,6 +1759,16 @@ def make_suggested_page(suggestions):
     minZoom: 2, maxZoom: 14, cooperativeGestures: true
   }});
   map.addControl(new maplibregl.NavigationControl({{ showCompass: false }}), 'top-right');
+  // MapLibre can miss a size change that lands right after it is built
+  function syncMapSize() {{
+    var box = map.getContainer(), canvas = map.getCanvas();
+    if (Math.abs(canvas.clientWidth - box.clientWidth) > 1 || Math.abs(canvas.clientHeight - box.clientHeight) > 1) map.resize();
+  }}
+  if (window.ResizeObserver) new ResizeObserver(syncMapSize).observe(map.getContainer());
+  window.addEventListener('resize', syncMapSize);
+  window.addEventListener('pageshow', syncMapSize);
+  map.once('load', syncMapSize);
+  [250, 1000, 3000].forEach(function (ms) {{ setTimeout(syncMapSize, ms); }});
   map.on('load', function () {{
     map.addSource('sites', {{ type: 'geojson', data: SITES }});
     map.addSource('suggestions', {{ type: 'geojson', data: SUGGESTIONS }});
