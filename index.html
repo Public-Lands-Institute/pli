@@ -78,8 +78,6 @@ html, body { height: 100%; font-family: 'Inter', sans-serif; background: var(--i
 .panel-site-name { font-family: 'Inter', sans-serif; font-size: 22px; font-weight: 300; letter-spacing: -0.01em; color: var(--ink); line-height: 1.2; margin-bottom: 4px; }
 .panel-site-name a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(18,18,18,0.25); }
 .panel-site-name a:hover { border-bottom-color: var(--ink); }
-.panel-page-link { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; margin: 14px 0 0; text-align: right; }
-.panel-page-link a { color: var(--moss); text-decoration: none; border-bottom: 1px solid var(--moss); }
 .panel-state { font-size: 11px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); margin-bottom: 20px; }
 .photo-grid { display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 180px; gap: 3px; margin-bottom: 6px; }
 .photo-thumb { background: #c8c8c8; cursor: pointer; overflow: hidden; border: 0; padding: 0; }
@@ -88,6 +86,14 @@ html, body { height: 100%; font-family: 'Inter', sans-serif; background: var(--i
 .photo-thumb:hover img { opacity: 0.75; }
 .photo-grid-more { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--stone); margin-bottom: 20px; text-align: right; }
 .photo-grid-more a { color: var(--moss); text-decoration: none; border-bottom: 1px solid var(--moss); }
+.panel-summary { font-size: 14.5px; font-weight: 300; line-height: 1.6; color: #2a2a2a; margin-bottom: 20px; }
+.panel-facts { border-top: 1px solid rgba(18,18,18,0.12); margin-bottom: 22px; }
+.panel-fact { display: flex; justify-content: space-between; gap: 18px; padding: 10px 0; border-bottom: 1px solid rgba(18,18,18,0.12); font-size: 13px; font-weight: 300; line-height: 1.5; color: #2a2a2a; }
+.panel-fact span:first-child { flex-shrink: 0; font-size: 10px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--stone); padding-top: 2px; }
+.panel-fact span:last-child { text-align: right; }
+.panel-full { display: block; text-align: center; font-size: 11px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); text-decoration: none; border: 1px solid rgba(18,18,18,0.45); padding: 12px 14px; transition: background 0.15s, color 0.15s; }
+.panel-full:hover { background: var(--ink); color: var(--sand); }
+.geo-block .geo-bar-wrap { margin-bottom: 0; }
 .panel-section { margin-bottom: 20px; border-top: 1px solid rgba(18,18,18,0.12); padding-top: 16px; }
 .panel-section-label { font-size: 10px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--stone); margin-bottom: 8px; }
 .panel-glossary-link { text-transform: none; letter-spacing: normal; font-weight: 300; color: var(--stone); border-bottom: 1px solid rgba(18,18,18,0.2); margin-left: 8px; }
@@ -203,7 +209,7 @@ html, body { height: 100%; font-family: 'Inter', sans-serif; background: var(--i
   </div>
 </div>
 <script src="data/suggestions-map.js?v=009bb6adf8"></script>
-<script src="data/sites-map.js?v=3951d1ae07"></script>
+<script src="data/sites-map.js?v=e21f51028a"></script>
 <script>
 const STATE_NAMES={"AL":"Alabama","AK":"Alaska","AZ":"Arizona","AR":"Arkansas","CA":"California","CO":"Colorado","CT":"Connecticut","DE":"Delaware","FL":"Florida","GA":"Georgia","HI":"Hawaii","ID":"Idaho","IL":"Illinois","IN":"Indiana","IA":"Iowa","KS":"Kansas","KY":"Kentucky","LA":"Louisiana","ME":"Maine","MD":"Maryland","MA":"Massachusetts","MI":"Michigan","MN":"Minnesota","MS":"Mississippi","MO":"Missouri","MT":"Montana","NE":"Nebraska","NV":"Nevada","NH":"New Hampshire","NJ":"New Jersey","NM":"New Mexico","NY":"New York","NC":"North Carolina","ND":"North Dakota","OH":"Ohio","OK":"Oklahoma","OR":"Oregon","PA":"Pennsylvania","RI":"Rhode Island","SC":"South Carolina","SD":"South Dakota","TN":"Tennessee","TX":"Texas","UT":"Utah","VT":"Vermont","VA":"Virginia","WA":"Washington","WV":"West Virginia","WI":"Wisconsin","WY":"Wyoming"};
 
@@ -249,7 +255,6 @@ const LAYER_LEGENDS = {
   geology:{ title:"Geologic Age",          entries:GEOLOGY_LEGEND },
   agency: { title:"Managing Agency",        entries:AGENCY_ENTRIES },
   native: { title:"Indigenous Territories", entries:NATIVE_LEGEND },
-  shadow: { title:"Shadow History",         entries:[["Extensively documented","#c85a2a"],["Documented","#c8904a"],["Brief note","#8a6a3a"]] },
 };
 function geologyColor(geo, epoch) {
   const g=((geo||'')+' '+(epoch||'')).toLowerCase();
@@ -283,7 +288,6 @@ function dotColor(p) {
   if (activeLayer==='geology') return geologyColor(p.geology, p.epoch);
   if (activeLayer==='agency')  return agencyColor(p.agency_type);
   if (activeLayer==='native')  return p.primary_nation ? (NATION_COLORS[p.primary_nation]||'#8c8c8c') : '#3a3a38';
-  if (activeLayer==='shadow')  { const l=(p.shadow_history||'').length; return l>800?'#c85a2a':l>400?'#c8904a':'#8a6a3a'; }
   return '#e8e8e8';
 }
 function buildDotFeatures() {
@@ -445,12 +449,12 @@ map.on('load', () => {
     map.getCanvas().style.cursor=''; popup.remove();
   });
   map.on('click','sites-hit', e => {
-    const props = e.features[0].properties;
-    const coords = e.features[0].geometry.coordinates;
-    map.flyTo({ center:coords, zoom:Math.max(map.getZoom(),11), duration:900, essential:true });
+    const f = SITE_BY_SLUG[e.features[0].properties.slug];
+    if (!f) return;
+    map.flyTo({ center:f.geometry.coordinates, zoom:Math.max(map.getZoom(),11), duration:900, essential:true });
     popup.remove();
     panelOpen = true;
-    openPanel(props);
+    openPanel(f.properties);
   });
   document.querySelectorAll('.layer-btn[data-layer]').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -595,7 +599,6 @@ function buildGeoBlock(geoText, epochText) {
     }
   }
   const barPct = Math.min(100, Math.round((oldest / EARTH_AGE) * 100));
-  const prose = geoText.split(';')[0].trim();
   return '<div class="geo-block">' +
     '<div class="geo-label">Geologic Age <a href="glossary.html#geologic-time" class="panel-glossary-link">Glossary →</a></div>' +
     '<div class="geo-era-row">' +
@@ -604,7 +607,6 @@ function buildGeoBlock(geoText, epochText) {
       (myaLabel ? '<span class="geo-mya">'+myaLabel+'</span>' : '') +
     '</div>' +
     '<div class="geo-bar-wrap"><div class="geo-bar-fill" style="width:'+barPct+'%;background:'+color+';opacity:0.5"></div></div>' +
-    '<p class="geo-prose">'+prose+'</p>' +
   '</div>';
 }
 const imgObserver = new IntersectionObserver((entries) => {
@@ -618,14 +620,31 @@ const imgObserver = new IntersectionObserver((entries) => {
 const panel = document.getElementById('panel');
 const panelBody = document.getElementById('panel-body');
 document.getElementById('panel-close').querySelector('button').addEventListener('click', () => {
-  panel.classList.remove('open'); panelOpen = false; map.getCanvas().style.cursor='';
+  closePanel();
 });
 let currentPhotos = [];
-function sec(label, text, glossaryAnchor) {
-  if (!text) return '';
-  const link = glossaryAnchor ? ' <a href="glossary.html#'+glossaryAnchor+'" class="panel-glossary-link">Glossary →</a>' : '';
-  return '<div class="panel-section"><div class="panel-section-label">'+label+link+'</div><p>'+text+'</p></div>';
+// The open site is kept in the address (#slug), so a site on the map can be
+// linked to, and Back from a site page returns to the same place on the map.
+const SITE_BY_SLUG = Object.fromEntries(SITES.features.map(f => [f.properties.slug, f]));
+function setSiteHash(slug) {
+  const target = slug ? '#' + slug : location.pathname + location.search;
+  if ((slug && location.hash === '#' + slug) || (!slug && !location.hash)) return;
+  history.replaceState(null, '', target);
 }
+function closePanel() {
+  panel.classList.remove('open'); panelOpen = false; map.getCanvas().style.cursor='';
+  setSiteHash('');
+}
+function openSiteFromHash(animate) {
+  const f = SITE_BY_SLUG[decodeURIComponent(location.hash.slice(1))];
+  if (!f) return;
+  const view = { center:f.geometry.coordinates, zoom:Math.max(map.getZoom(),11) };
+  if (animate) map.flyTo({ ...view, duration:900, essential:true }); else map.jumpTo(view);
+  panelOpen = true;
+  openPanel(f.properties);
+}
+if (location.hash) openSiteFromHash(false);
+window.addEventListener('hashchange', () => { if (location.hash) openSiteFromHash(true); else closePanel(); });
 function openPanel(props) {
   const state   = STATE_NAMES[props.state]||props.state;
   const acreage = props.acreage
@@ -646,24 +665,22 @@ function openPanel(props) {
       gridHTML += '<p class="photo-grid-more"><a href="sites/'+props.slug+'.html">View all '+photos.length+' photos →</a></p>';
     }
   }
-  let sections = '';
-  sections += buildGeoBlock(props.geology, props.epoch);
-  sections += sec('Epoch', props.epoch);
-  sections += sec('Native Lands', props.native_lands, 'indigenous-nations');
-  sections += sec('Displacement & Tenure', props.displacement_tenure);
-  sections += sec('Shadow History', props.shadow_history);
-  sections += sec('Ecology', props.ecology);
-  sections += sec('Hydrology', props.hydrology);
-  sections += sec('Conservation Status', props.conservation_status);
-  sections += sec('Endangered Species', props.endangered_species);
-  sections += sec('Acreage', acreage);
-  sections += sec('GPS', props.gps);
+  const fact = (label, value) => value ? '<div class="panel-fact"><span>'+label+'</span><span>'+value+'</span></div>' : '';
+  const facts =
+    fact('Managed by', props.agency) +
+    fact('Acreage', acreage) +
+    fact('Nations', (props.nations||[]).join(' · ')) +
+    fact('Cultures', (props.cultures||[]).join(' · '));
   panelBody.innerHTML =
     '<p class="panel-site-name"><a href="sites/'+props.slug+'.html">'+props.name+'</a></p>'+
     '<p class="panel-state">'+state+'</p>'+
+    (props.summary ? '<p class="panel-summary">'+props.summary+'</p>' : '')+
     gridHTML+
-    sections+
-    '<p class="panel-page-link"><a href="sites/'+props.slug+'.html">Site page →</a></p>';
+    buildGeoBlock(props.geology, props.epoch)+
+    (facts ? '<div class="panel-facts">'+facts+'</div>' : '')+
+    '<a class="panel-full" href="sites/'+props.slug+'.html">Read the full record and sources →</a>';
+  panelBody.scrollTop = 0; panel.scrollTop = 0;
+  setSiteHash(props.slug);
   panelBody.querySelectorAll('.photo-thumb img').forEach(img => imgObserver.observe(img));
   panelBody.querySelectorAll('.photo-thumb').forEach(el => {
     el.addEventListener('click', () => openLightbox(parseInt(el.dataset.idx)));
@@ -710,9 +727,7 @@ document.getElementById('lb-next').addEventListener('click',  () => { if (!curre
 lightbox.addEventListener('click', e => { if(e.target===lightbox) closeLightbox(); });
 document.addEventListener('keydown', e => {
   if (!lightbox.classList.contains('open')) {
-    if (e.key==='Escape' && panel.classList.contains('open')) {
-      panel.classList.remove('open'); panelOpen = false; map.getCanvas().style.cursor='';
-    }
+    if (e.key==='Escape' && panel.classList.contains('open')) closePanel();
     return;
   }
   if (e.key==='Escape')     closeLightbox();

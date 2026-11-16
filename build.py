@@ -1469,24 +1469,29 @@ def build_sites_geojson(all_sites, meta):
         # primary_nation (dot color): first nation that survives the filter,
         # else first culture, in the canonical spelling used by NATION_COLORS
         kept, _ = site_nations(site, m)
-        territory = [cn for cn, _ in kept] + [NATION_CANON.get(c, c) for c in m.get('cultures', [])]
+        nations = [cn for cn, _ in kept]
+        cultures = []
+        for c in m.get('cultures', []):
+            cc = NATION_CANON.get(c, c)
+            if cc not in cultures:
+                cultures.append(cc)
+        territory = nations + cultures
+        # The map panel is a preview: summary, key facts, and a link to the
+        # site page, which carries the full record. The long text fields are
+        # deliberately not shipped with the map.
         props = {
             'slug': slug,
             'name': site['name'],
             'state': site['state'],
+            'summary': site.get('summary', ''),
             'acreage': site.get('acreage', ''),
             'geology': site.get('geological_age', ''),
             'epoch': site.get('epoch', ''),
-            'hydrology': site.get('hydrology', ''),
-            'native_lands': site.get('native_lands', ''),
-            'displacement_tenure': site.get('displacement_tenure', ''),
-            'shadow_history': site.get('shadow_history', ''),
-            'ecology': site.get('ecology', ''),
-            'conservation_status': site.get('conservation_status', ''),
-            'endangered_species': site.get('endangered_species', ''),
-            'gps': site.get('gps', ''),
-            'primary_nation': territory[0] if territory else '',
+            'agency': m.get('agency', ''),
             'agency_type': m.get('agency_type', ''),
+            'nations': nations,
+            'cultures': cultures,
+            'primary_nation': territory[0] if territory else '',
         }
         features.append({
             'type': 'Feature',
