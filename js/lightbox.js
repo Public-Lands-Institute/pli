@@ -96,6 +96,7 @@
   const elCommons  = document.getElementById('plb-commons');
 
   let current = 0;
+  let trigger = null;
 
   function show(index) {
     current = (index + images.length) % images.length;
@@ -120,6 +121,7 @@
   }
 
   function open(index) {
+    trigger = document.activeElement;
     show(index);
     lb.classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -130,6 +132,8 @@
     lb.classList.remove('open');
     elImg.src = '';
     document.body.style.overflow = '';
+    if (trigger && document.body.contains(trigger)) trigger.focus();
+    trigger = null;
   }
 
   figures.forEach(fig => {
@@ -159,6 +163,14 @@
     if (e.key === 'Escape')     close();
     if (e.key === 'ArrowLeft')  show(current - 1);
     if (e.key === 'ArrowRight') show(current + 1);
+    // Keep Tab inside the viewer while it is open
+    if (e.key === 'Tab') {
+      const els = [...lb.querySelectorAll('button, a')].filter(el => !el.classList.contains('hidden'));
+      const first = els[0], last = els[els.length - 1];
+      if (!lb.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
+      else if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
   });
 
   // Touch: swipe to navigate

@@ -302,6 +302,31 @@ def counts_line(all_sites, photos):
             f'{c["photographs"]} photographs, {c["acres_m"]} million acres')
 
 
+def amp(text):
+    """Escape bare ampersands in record text (existing entities are left alone)."""
+    return re.sub(r'&(?!#?\w+;)', '&amp;', text)
+
+
+def format_acreage(acreage):
+    """'1,820' -> '1,820 acres'; values that already carry a unit are unchanged."""
+    a = (acreage or '').strip()
+    return f'{a} acres' if re.fullmatch(r'\d[\d,]*', a) else a
+
+
+def write_if_changed(path, content):
+    """Write only when the content differs, so file dates (and the sitemap
+    lastmod values read from them) change only when a page really changes."""
+    try:
+        with open(path) as f:
+            if f.read() == content:
+                return False
+    except FileNotFoundError:
+        pass
+    with open(path, 'w') as f:
+        f.write(content)
+    return True
+
+
 def lightbox_src(prefix=''):
     """js/lightbox.js with a ?v= content hash. .htaccess caches .js for a year
     as immutable, so an unversioned URL would never refresh for returning
@@ -474,7 +499,7 @@ def make_geo_block(geo_text, epoch_text=''):
                f'style="width:{pct}%;background:{color};opacity:0.55"></div></div>')
     return (f'<div class="rec-section"><div class="rec-label">Geologic Age'
             f' <a href="../glossary.html#geologic-time" class="rec-glossary-link">Glossary →</a></div>'
-            f'{era_row}{bar}<p class="geo-prose">{geo_text}</p></div>')
+            f'{era_row}{bar}<p class="geo-prose">{amp(geo_text)}</p></div>')
 
 
 def observations_for_site(site, entries):
@@ -528,7 +553,7 @@ def make_site_page(site, all_sites, photos):
         if not val:
             return ''
         link = f' <a href="../glossary.html#{glossary_anchor}" class="rec-glossary-link">Glossary →</a>' if glossary_anchor else ''
-        return f'<div class="rec-section"><div class="rec-label">{label}{link}</div><p>{val}</p></div>'
+        return f'<div class="rec-section"><div class="rec-label">{label}{link}</div><p>{amp(val)}</p></div>'
 
     gps_val = ''
     if site.get('gps'):
@@ -543,7 +568,7 @@ def make_site_page(site, all_sites, photos):
     sections += sec('Shadow History', site.get('shadow_history', ''))
     sections += sec('Ecology', site.get('ecology', ''))
     sections += sec('Hydrology', site.get('hydrology', ''))
-    sections += sec('Acreage', site.get('acreage', ''))
+    sections += sec('Acreage', format_acreage(site.get('acreage', '')))
     sections += sec('GPS', gps_val)
 
     show_obs_headers = len(observations) > 1 or any(obs.get('notes') for obs in observations)
@@ -563,7 +588,7 @@ def make_site_page(site, all_sites, photos):
             raw_attr = f' data-raw="{img["raw"]}"' if img['raw'] else ''
             xmp_attr = f' data-xmp="{img["xmp"]}"' if img['xmp'] else ''
             images_html += f'''    <figure class="ph"{tif_attr}{commons_attr}{raw_attr}{xmp_attr}>
-      <a href="#" download title="{caption}">
+      <a href="../{img["jpg"]}" download title="{caption}">
         <img src="../{img["jpg"]}" alt="{caption}" loading="lazy"/>
       </a>
       <figcaption>
@@ -584,11 +609,11 @@ def make_site_page(site, all_sites, photos):
   gtag('config', 'G-TMR79M95R4');
 </script>
 <meta charset="utf-8"/>
-<title>{name} — Public Lands Institute</title>
+<title>{name} · Public Lands Institute</title>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="index, follow" name="robots"/>
 <meta content="{name}. Public Lands Institute photographic index. CC0 Public Domain." name="description"/>
-<meta property="og:title" content="{name} — Public Lands Institute"/>
+<meta property="og:title" content="{name} · Public Lands Institute"/>
 <meta property="og:description" content="{name}. An ongoing photographic index and open-access archive of American public lands. CC0 Public Domain."/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://publiclandsinstitute.net/sites/{slug}.html"/>
@@ -741,6 +766,7 @@ def make_site_page(site, all_sites, photos):
     <a href="../index.html">Map</a>
     <a href="../photographs.html">Images</a>
     <a href="../archive.html">Archive</a>
+    <a href="../glossary.html">Glossary</a>
     <a href="../about.html">About</a>
     <a href="../contribute.html">Contribute</a>
   </nav>
@@ -766,7 +792,7 @@ def make_site_page(site, all_sites, photos):
   {nav_next}
 </nav>
 <footer>
-  <span>Public Lands Institute — ongoing project</span>
+  <span>Public Lands Institute · ongoing project</span>
   <span>CC0 Public Domain</span>
   <span><a href="../prospective.html">Prospective sites</a> · <a href="../contribute.html">Contribute</a></span>
 </footer>
@@ -851,11 +877,11 @@ def make_gallery_page(all_sites, photos):
   gtag('config', 'G-TMR79M95R4');
 </script>
 <meta charset="utf-8"/>
-<title>Images — Public Lands Institute</title>
+<title>Images · Public Lands Institute</title>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="index, follow" name="robots"/>
 <meta content="A visual index of American public lands, grouped by site. CC0 Public Domain." name="description"/>
-<meta property="og:title" content="Images — Public Lands Institute"/>
+<meta property="og:title" content="Images · Public Lands Institute"/>
 <meta property="og:description" content="A visual index of American public lands, grouped by site. CC0 Public Domain."/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://publiclandsinstitute.net/photographs.html"/>
@@ -915,7 +941,7 @@ def make_gallery_page(all_sites, photos):
 <div id="feed-parks">
 {sections}</div>
 <footer>
-  <span>Public Lands Institute — ongoing project</span>
+  <span>Public Lands Institute · ongoing project</span>
   <span>CC0 Public Domain</span>
   <span><a href="prospective.html">Prospective sites</a> · <a href="contribute.html">Contribute</a></span>
 </footer>
@@ -956,7 +982,7 @@ def make_archive_page(all_sites, photos):
             continue
         _search_key = f'{site["name"]} {site["state"]} {STATE_NAMES.get(site["state"], "")}'.rstrip().lower()
         rows += f'<div class="archive-location" data-name="{_search_key}">\n'
-        rows += f'  <h2 class="archive-location-name"><a href="sites/{site["slug"]}.html">{site["name"]} — {site["state"]}</a></h2>\n'
+        rows += f'  <h2 class="archive-location-name"><a href="sites/{site["slug"]}.html">{site["name"]} · {site["state"]}</a></h2>\n'
         for img in images:
             caption = f'{site["name"]} {img["caption_index"]}'
             date_str = f' &middot; {img["date"]}' if img['date'] else ''
@@ -990,11 +1016,11 @@ def make_archive_page(all_sites, photos):
   gtag('config', 'G-TMR79M95R4');
 </script>
 <meta charset="utf-8"/>
-<title>Archive — Public Lands Institute</title>
+<title>Archive · Public Lands Institute</title>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="index, follow" name="robots"/>
 <meta content="Full-resolution TIFFs and RAW files from the Public Lands Institute photographic archive. CC0 Public Domain." name="description"/>
-<meta property="og:title" content="Archive — Public Lands Institute"/>
+<meta property="og:title" content="Archive · Public Lands Institute"/>
 <meta property="og:description" content="Full-resolution TIFFs and RAW files from the Public Lands Institute photographic archive. CC0 Public Domain."/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://publiclandsinstitute.net/archive.html"/>
@@ -1099,7 +1125,7 @@ def make_archive_page(all_sites, photos):
 <p id="archive-noresults" class="archive-noresults">No sites match your search.</p>
 {rows}
 <footer>
-  <span>Public Lands Institute — ongoing project</span>
+  <span>Public Lands Institute · ongoing project</span>
   <span>CC0 Public Domain</span>
   <span><a href="prospective.html">Prospective sites</a> · <a href="contribute.html">Contribute</a></span>
 </footer>
@@ -1564,16 +1590,13 @@ def main(argv):
     if 'sites' in targets:
         os.makedirs('sites', exist_ok=True)
         for site in sites:
-            with open(f'sites/{site["slug"]}.html', 'w') as f:
-                f.write(make_site_page(site, sites, photos))
+            write_if_changed(f'sites/{site["slug"]}.html', make_site_page(site, sites, photos))
         print(f'sites/ ({len(sites)} pages)')
     if 'archive' in targets:
-        with open('archive.html', 'w') as f:
-            f.write(make_archive_page(sites, photos))
+        write_if_changed('archive.html', make_archive_page(sites, photos))
         print('archive.html')
     if 'photographs' in targets:
-        with open('photographs.html', 'w') as f:
-            f.write(make_gallery_page(sites, photos))
+        write_if_changed('photographs.html', make_gallery_page(sites, photos))
         print('photographs.html')
     if 'about' in targets:
         changed = update_about_stats(sites, photos)
