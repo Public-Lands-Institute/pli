@@ -75,7 +75,7 @@ Then deploy (two-phase — image uploads are handled separately by the "update" 
 
 ## Field order in sites.json
 summary (one plain sentence shown under the site name and used as the page meta description: what the place is plus its central documented fact, drawn only from the record; written for every site), then: geological_age, epoch, native_lands, displacement_tenure, shadow_history, ecology, hydrology, acreage, gps
-(plus conservation_status, endangered_species, lat, lng, inat_radius_km — kept in JSON, not displayed)
+conservation_status and endangered_species are displayed on site pages after hydrology (since 2026-11-16) and in the map panel. (plus lat, lng, inat_radius_km: kept in JSON, not displayed)
 
 ## shadow_history field
 Documented but underreported history: industrial contamination, forced residential removal, segregated CCC labor, archaeological extraction, institutional labor. Displayed on individual site pages and in the map index panel, positioned between displacement_tenure and ecology. Sources tracked in shadow_history_bibliography.txt (archived with each deploy).
@@ -128,8 +128,8 @@ Use web search to find the following for the named location. Search specifically
 - **acreage**: Total acreage of the protected area. Use the official figure from NPS, state DNR, or managing agency.
 - **displacement_tenure**: Land cession and tenure history. Run research_pli_metadata.py after adding to sites.json, or manually research treaties. Format: "Cession N: Full Treaty Name (YYYY); [qualitative context]." For Kentucky, Tennessee, and other non-federal-domain states, document the colonial-era dispossession chain instead (no Royce cession applies). Complex cases (enslaved labor, litigation) require manual narrative.
 - **shadow_history**: Documented but underreported history. Research via EPA records, NPS administrative histories, CCC camp rosters, archaeological site files, court records. Add to shadow_history_bibliography.txt. Leave empty if nothing significant found.
-- **conservation_status**: Official federal or state designations. Kept in JSON, not displayed.
-- **endangered_species**: Federally listed T&E species. Kept in JSON, not displayed.
+- **conservation_status**: Official federal or state designations. Displayed on the site page.
+- **endangered_species**: Federally listed T&E species. Displayed on the site page.
 - **gps**: Decimal degrees of the park/preserve center or main entrance. Format: "XX.XXXX° N, XX.XXXX° W"
 - **lat** / **lng**: Numeric values parsed from GPS above (e.g. 39.7993 and -83.8328)
 - **inat_radius_km**: Choose based on size using the defaults above.
