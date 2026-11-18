@@ -42,7 +42,7 @@
     .plb-action { font-size: 11px; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; padding: 5px 12px; border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.65); transition: border-color 0.15s, color 0.15s; white-space: nowrap; }
     .plb-action:hover { border-color: rgba(255,255,255,0.75); color: #e8e8e8; }
     .plb-action.hidden { display: none; }
-    #plb-close { position: fixed; top: 18px; right: 24px; z-index: 10001; background: none; border: none; cursor: pointer; color: rgba(255,255,255,0.4); font-size: 22px; line-height: 1; transition: color 0.15s; }
+    #plb-close { position: fixed; top: 18px; right: 24px; z-index: 10001; background: none; border: none; cursor: pointer; color: rgba(255,255,255,0.75); font-size: 22px; line-height: 1; transition: color 0.15s; }
     #plb-close:hover { color: #e8e8e8; }
     #plb-prev, #plb-next { position: fixed; top: 50%; transform: translateY(-50%); z-index: 10001; background: none; border: none; cursor: pointer; color: rgba(255,255,255,0.3); font-size: 36px; padding: 16px; transition: color 0.15s; line-height: 1; }
     #plb-prev { left: 8px; } #plb-next { right: 8px; }

@@ -1208,6 +1208,10 @@ def make_archive_page(all_sites, photos):
             rows += f'  <div class="archive-item">\n'
             rows += f'    <span class="archive-caption">{caption}{date_str}</span>\n'
             rows += f'    <span class="archive-filename">{img["camera_filename"]}</span>\n'
+            if img['tif_url']:
+                rows += f'    <a class="archive-download" href="{img["tif_url"]}">TIFF</a>\n'
+            else:
+                rows += f'    <span class="archive-download" style="visibility:hidden">TIFF</span>\n'
             if img['commons_page']:
                 rows += f'    <a class="archive-download" href="{img["commons_page"]}" target="_blank" rel="noopener">Commons</a>\n'
             else:
@@ -1293,7 +1297,7 @@ def make_archive_page(all_sites, photos):
   }}
   .archive-item {{
     display: grid;
-    grid-template-columns: 1fr max-content max-content max-content max-content;
+    grid-template-columns: 1fr max-content max-content max-content max-content max-content;
     gap: 24px;
     align-items: baseline;
     padding: 4px 0;
@@ -1319,7 +1323,7 @@ def make_archive_page(all_sites, photos):
     padding: 2px 8px;
   }}
   @media (max-width: 540px) {{
-    .archive-item {{ grid-template-columns: 1fr max-content max-content max-content; }}
+    .archive-item {{ grid-template-columns: 1fr max-content max-content max-content max-content; gap: 12px; }}
     .archive-filename {{ display: none; }}
   }}
 </style>

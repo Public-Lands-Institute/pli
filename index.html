@@ -121,7 +121,7 @@ html, body { height: 100%; font-family: 'Inter', sans-serif; background: var(--i
 #lb-actions { display: flex; gap: 8px; flex-shrink: 0; }
 .lb-action { font-size: 11px; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; padding: 5px 12px; border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.65); transition: border-color 0.15s, color 0.15s; white-space: nowrap; }
 .lb-action:hover { border-color: rgba(255,255,255,0.75); color: var(--sand); }
-#lb-close { position: fixed; top: 18px; right: 24px; z-index: 101; background: none; border: none; cursor: pointer; color: rgba(255,255,255,0.4); font-size: 22px; line-height: 1; transition: color 0.15s; }
+#lb-close { position: fixed; top: 18px; right: 24px; z-index: 101; background: none; border: none; cursor: pointer; color: rgba(255,255,255,0.75); font-size: 22px; line-height: 1; transition: color 0.15s; }
 #lb-close:hover { color: var(--sand); }
 #lb-prev, #lb-next { position: fixed; top: 50%; transform: translateY(-50%); z-index: 101; background: none; border: none; cursor: pointer; color: rgba(255,255,255,0.3); font-size: 36px; padding: 16px; transition: color 0.15s; line-height: 1; }
 #lb-prev { left: 8px; } #lb-next { right: 8px; }
@@ -210,6 +210,44 @@ html, body { height: 100%; font-family: 'Inter', sans-serif; background: var(--i
 </div>
 <script src="data/suggestions-map.js?v=009bb6adf8"></script>
 <script src="data/sites-map.js?v=e21f51028a"></script>
+<script>
+// Without WebGL, MapLibre cannot build the map and the main script below stops
+// at new maplibregl.Map, taking search with it. Detect that first and give the
+// page a working site list and search that link straight to the site pages.
+(function() {
+  var gl = false;
+  try { var c = document.createElement('canvas'); gl = !!(window.WebGLRenderingContext && (c.getContext('webgl2') || c.getContext('webgl'))); } catch (e) {}
+  if (gl) return;
+  window.PLI_NO_MAP = true;
+  ['layers', 'legend'].forEach(function(id) { var el = document.getElementById(id); if (el) el.style.display = 'none'; });
+  var sites = SITES.features.map(function(f) { return f.properties; })
+    .sort(function(a, b) { return a.name.localeCompare(b.name); });
+  var esc = function(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); };
+  var link = function(p) { return 'sites/' + p.slug + '.html'; };
+  var box = document.getElementById('map');
+  box.style.overflowY = 'auto';
+  box.innerHTML = '<div style="max-width:640px;margin:0 auto;padding:130px 24px 60px;color:#e8e8e8;font-family:Inter,sans-serif;font-weight:300;font-size:13px;line-height:1.6">'
+    + '<p style="color:#a8a8a8;margin:0 0 24px">The map needs WebGL, which this browser has turned off or does not support. Every site is listed below, and the <a href="photographs.html" style="color:#e8e8e8">Images</a> and <a href="archive.html" style="color:#e8e8e8">Archive</a> pages hold all photographs.</p>'
+    + sites.map(function(p) { return '<div style="display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.08)"><a href="' + link(p) + '" style="color:#e8e8e8;text-decoration:none">' + esc(p.name) + '</a><span style="color:#8c8c8c;font-size:10px;letter-spacing:0.1em">' + esc(p.state) + '</span></div>'; }).join('')
+    + '</div>';
+  var input = document.getElementById('search-input');
+  var results = document.getElementById('search-results');
+  var matches = [];
+  input.addEventListener('input', function() {
+    var q = input.value.trim().toLowerCase();
+    if (!q) { results.classList.remove('visible'); results.innerHTML = ''; matches = []; return; }
+    matches = sites.filter(function(p) { return p.name.toLowerCase().indexOf(q) >= 0 || (STATE_NAMES[p.state] || p.state || '').toLowerCase().indexOf(q) >= 0; }).slice(0, 8);
+    results.innerHTML = matches.length
+      ? matches.map(function(p) { return '<a class="search-item" style="text-decoration:none" href="' + link(p) + '"><span class="s-name">' + esc(p.name) + '</span><span class="s-state">' + esc(p.state) + '</span></a>'; }).join('')
+      : '<div class="search-empty">No sites found</div>';
+    results.classList.add('visible');
+  });
+  input.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && matches.length) location.href = link(matches[0]);
+    else if (e.key === 'Escape') { input.value = ''; results.classList.remove('visible'); input.blur(); }
+  });
+})();
+</script>
 <script>
 const STATE_NAMES={"AL":"Alabama","AK":"Alaska","AZ":"Arizona","AR":"Arkansas","CA":"California","CO":"Colorado","CT":"Connecticut","DE":"Delaware","FL":"Florida","GA":"Georgia","HI":"Hawaii","ID":"Idaho","IL":"Illinois","IN":"Indiana","IA":"Iowa","KS":"Kansas","KY":"Kentucky","LA":"Louisiana","ME":"Maine","MD":"Maryland","MA":"Massachusetts","MI":"Michigan","MN":"Minnesota","MS":"Mississippi","MO":"Missouri","MT":"Montana","NE":"Nebraska","NV":"Nevada","NH":"New Hampshire","NJ":"New Jersey","NM":"New Mexico","NY":"New York","NC":"North Carolina","ND":"North Dakota","OH":"Ohio","OK":"Oklahoma","OR":"Oregon","PA":"Pennsylvania","RI":"Rhode Island","SC":"South Carolina","SD":"South Dakota","TN":"Tennessee","TX":"Texas","UT":"Utah","VT":"Vermont","VA":"Virginia","WA":"Washington","WV":"West Virginia","WI":"Wisconsin","WY":"Wyoming"};
 
